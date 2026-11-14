@@ -16,6 +16,9 @@ LIQUIDITY_SCOPE='liquidity-four-world-v2'
 LEGACY_SCOPE='historical-three-references-v1'
 LIQUIDITY_REFERENCES=('resource-30-disconnected','resource-30-connected','resource-60-connected','resource-60-disconnected')
 LIQUIDITY_NODES=(*NODES,'developer-liquidity-director')
+WORKFLOW_SCOPE='open-workflow-r7-v1'
+WORKFLOW_REFERENCES=('R7-original',)
+WORKFLOW_NODES=(*LIQUIDITY_NODES,'information-office','developer-catalog-agenda')
 
 
 def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
@@ -31,23 +34,31 @@ def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
         raise ValueError('fresh fixture output outside historical source/raw required')
     audit_hash=file_sha256(audit_path);a=checked(json.loads(Path(audit_path).read_text()))
     p=checked(json.loads((run/'plan.json').read_text()));before=_inventory(run)
-    if scope not in (LEGACY_SCOPE,LIQUIDITY_SCOPE):raise ValueError('explicit developer staging scope required')
+    if scope not in (LEGACY_SCOPE,LIQUIDITY_SCOPE,WORKFLOW_SCOPE):raise ValueError('explicit developer staging scope required')
     liquidity=scope==LIQUIDITY_SCOPE
-    references=LIQUIDITY_REFERENCES if liquidity else REFERENCES
-    nodes_requested=LIQUIDITY_NODES if liquidity else NODES
-    expected_schema='scienceutopia.native-liquidity-support-audit.v1' if liquidity else 'scienceutopia.native-institution-loop-stopped-audit.v1'
+    workflow=scope==WORKFLOW_SCOPE
+    references=WORKFLOW_REFERENCES if workflow else LIQUIDITY_REFERENCES if liquidity else REFERENCES
+    nodes_requested=WORKFLOW_NODES if workflow else LIQUIDITY_NODES if liquidity else NODES
+    expected_schema=('scienceutopia.native-workflow-objective-loop-audit.v1' if workflow else
+        'scienceutopia.native-liquidity-support-audit.v1' if liquidity else 'scienceutopia.native-institution-loop-stopped-audit.v1')
     if (a['schema']!=expected_schema
             or p['source_commit']!=pinned_revision(source) or a['source_commit']!=p['source_commit']
             or a['plan_sha256']!=p['content_sha256'] or digest(before)!=a['raw_inventory_sha256']
-            or a['closure']['terminal']['status']!=('closed' if liquidity else 'stopped')
+            or a['closure']['terminal']['status']!=('closed' if liquidity or workflow else 'stopped')
             or a['source_proof']['status']!='verified-exact-source-closure'):
         raise ValueError('exact audited historical developer prefix required')
     if liquidity and (len(a['worlds'])!=4 or a['closure']['terminal']['complete_worlds']!=4
             or {j['identity'] for j in p['jobs']}!=set(references)):
         raise ValueError('exact four normally closed developer resource worlds required')
+    if workflow:
+        from scripts.run_native_workflow_objective_loop_v1 import open_institutions, SCHEMA
+        if (p['schema']!=SCHEMA+'.plan' or not open_institutions(p)
+                or p.get('optimizer_reference_labels')!=list(WORKFLOW_REFERENCES)):
+            raise ValueError('explicit open workflow with only original R7 optimizer reference required')
     records=[];origins=[]
     for reference in references:
-        identity=reference if liquidity else 'reference-'+reference
+        identity=('workflow-reference-'+reference.lower() if workflow else
+            reference if liquidity else 'reference-'+reference)
         role='developer-liquidity-control' if liquidity else 'developer-reference'
         matches=[w for w in a['worlds'] if w['identity']==identity and w['role']==role]
         if len(matches)!=1 or matches[0]['status']!='complete':raise ValueError('complete developer reference required')
@@ -71,7 +82,7 @@ def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
             nodes=[n.mechanism_id for n in spec.mechanisms if n.parameters.get('code_artifact')==row['artifact']]
             # Intrinsic native handlers can delegate their own container code
             # without storing code_artifact on a graph node. They are outside
-            # this two-node bank, not evidence of an ambiguous selected node.
+            # this explicitly declared bank, not evidence of an ambiguous selected node.
             if not any(node in nodes_requested for node in nodes):continue
             if len(nodes)!=1:raise ValueError('component artifact has ambiguous node identity')
             selected_nodes.add(nodes[0])
@@ -79,8 +90,8 @@ def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
                 'reference':reference,'seed':w['seed'],'year':row['context']['period'],
                 'code_file_sha256':proof['code_contexts_sha256'],'native_event_id':receipt['matching_event_ids'][0]})
         if selected_nodes!=set(nodes_requested):raise ValueError('a requested native component has no exact recorded input')
-        if liquidity and any(sorted(o['year'] for o in origins if o['reference']==reference and o['node_id']==node)!=[1,2,3,4]
-                for node in nodes_requested):raise ValueError('four exact yearly resource contexts per node required')
+        if (liquidity or workflow) and any(sorted(o['year'] for o in origins if o['reference']==reference and o['node_id']==node)!=[1,2,3,4]
+                for node in nodes_requested):raise ValueError('four exact yearly developer contexts per node required')
     if (before!=_inventory(run) or file_sha256(audit_path)!=audit_hash or pinned_revision(source)!=p['source_commit']):
         raise ValueError('historical source/audit/raw changed while staging component fixtures')
     result={'schema':'scienceutopia.native-component-fixtures.v1','source_commit':p['source_commit'],
@@ -90,6 +101,8 @@ def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
         'scope':'Exact successful developer component inputs, not failed-call reconstructions, new worlds or held-out data'}
     if liquidity:
         result.update(post_edit_reference='resource-30-connected',post_edit_probe_scope='declared-sixtyfour-v2')
+    if workflow:
+        result.update(post_edit_reference='R7-original',post_edit_probe_scope='declared-sixtyfour-v2')
     save(output,result)
 
 
@@ -97,7 +110,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('run','audit','output'):p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--frozen-source',type=Path);p.add_argument('--worker',action='store_true')
-    p.add_argument('--scope',choices=(LEGACY_SCOPE,LIQUIDITY_SCOPE),default=LEGACY_SCOPE);a=p.parse_args()
+    p.add_argument('--scope',choices=(LEGACY_SCOPE,LIQUIDITY_SCOPE,WORKFLOW_SCOPE),default=LEGACY_SCOPE);a=p.parse_args()
     if a.worker:stage(a.run,a.audit,a.output,scope=a.scope);return
     from utopia.optimization.native_component_lab_v1 import fixture_bank
     from utopia.optimization.native_jobs import pinned_revision
