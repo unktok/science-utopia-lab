@@ -5,6 +5,13 @@ the2022 ALA paper abstract and programmatic formulation, and the2025 LLM-based
 mechanism-design abstract/primary HTML. This is a targeted comparison, not a
 full literature survey or evaluation of those papers' empirical reliability.
 
+Correction after resolving both bibliography inputs of `paper/integrated.tex`:
+AMD-LLM already appears as `liu2025mechanism` in `paper/submission-sources.bib`
+and the Related work body. The earlier statement that both works were
+absent was incorrect: it came from checking only `paper/references.bib` and
+the entrypoint rather than the included body and both `.bib` files. Add only
+the2022 program-synthesis reference; do not duplicate the existing2025 entry.
+
 | Primary source | Already established scope | Consequence for our claims |
 | --- | --- | --- |
 | [Science Utopia,2610.01257v1](https://arxiv.org/html/2610.01257v1),§2 | Persistent research agents and an institutional simulation supporting matched interventions. | A persistent scientific world and institutional counterfactuals are inherited, not our contribution. |
@@ -26,7 +33,9 @@ require different optima, or that greater representational freedom causes gains.
 Preserve unfavorable outcomes and overlapping minima. Do not add a hidden
 novelty/improvement constraint to force the desired conclusion.
 
-The currently reviewed81-page PDF is not silently relabelled as incorporating
-this addendum. Its bibliography does not yet include the latter two works;
-integrate them and these claim boundaries in the next consolidated manuscript
-revision, with a new build/visual receipt. R2/R3/R6 remain open.
+The reviewed81-page PDF already includes AMD-LLM, but is not silently relabelled
+as containing the newly added2022 reference or subsequent staged-construction
+status. Current LaTeX adds that reference and makes programmatic-design priority
+boundaries explicit. A new build/visual receipt is still required. R2/R3/R6
+remain open. The old note's mistaken two-missing-reference claim remains
+visible in Git history and this correction, not a changed old PDF/receipt.

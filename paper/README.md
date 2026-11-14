@@ -1,5 +1,12 @@
 # Objective-conditioned institution paper
 
+Current LaTeX is ahead of the reviewed81-page artifact below: it adds the2022
+programmatic mechanism-design precedent and the later SCRIPTED staged
+construction boundary, not new scientific results. AMD-LLM was already cited
+through `submission-sources.bib`; the earlier two-missing-reference statement
+is [explicitly corrected](../research/publication/novelty-addendum-programmatic-institutions-v1.md).
+A new build/visual receipt is required before presenting this source as reviewed.
+
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
 [81-page integrated draft](../output/pdf/science-utopia-lab-integrated-open-institutions-working-paper.pdf),
