@@ -205,3 +205,25 @@ are retained in paper/figures/native-workflow-compiler-feedback-v2. Manuscript
 source adds all six outcomes, exact scientist-input retention, failure feedback
 and cost/headroom limits, without rewriting the older stopped study. The
 existing75-page PDF/receipt remain unchanged; updated-source PDF is pending.
+
+At source58b32ce1, optional-allowance resource observer44892 exits0. Both
+actual samples pass: CPU91.6%/11.0%, free+inactive44.04/47.23GiB, no unclassified
+Python/model executable and no loaded model. The original failed sample stays
+unchanged. The exact other-project CPU diagnostic is only observed/declared;
+its source, state and process are not changed. No dedicated-speed claim.
+
+Original v3 evaluation30142/PID87075 starts06:44:27.531744UTC at frozen2133ffc0.
+The immediate second scan of all3 roots passes before started.json is written.
+First R7 actually runs original corpus/scientist calls, not merely a prepared
+lock or recorded intent. No complete world/score is claimed. Source and plan
+are unchanged. Audit/cost28230 and main-report75369 actually wait at the frozen
+analysis source. Existing generic repeated-readout API starts choices88883,
+effects1305 and requests53773 with explicit fixed-evaluation schema/scope; all
+three handles are confirmed waiting. These five continuations create no model
+calls and stop if original science/analysis stops.
+
+Current figure/manuscript sources and software evidence reach main/GitHub at
+58b32ce1, without modifying frozen science2133ffc0 or analysis sources. The
+dispatch receipt separately preserves exact prepared/pre-dispatch/resource/
+writer hashes. Heavy PDF build/render and independent native QA are deferred
+again during actual evaluation inference. Goal remains active and incomplete.

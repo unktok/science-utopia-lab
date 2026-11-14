@@ -2,7 +2,25 @@
 
 ## Active publication-ready goal
 
-### November14 15:44JST: fixed evaluation prepares three jobs; actual resource allowance is reviewed
+### November14 15:46JST: selection-fixed unused evaluation is actually running
+
+After both real resource samples pass (CPU91.6/11.0%, free+inactive44.04/47.23GiB,
+no unclassified Python/model executable and no loaded endpoint model), writer
+30142/PID87075 starts06:44:27UTC at clean2133ffc0/plan797c8328. All3 immediate
+pre-dispatch inventories pass again. The first R7 evaluation actually executes
+scientist requests on original103107-paper corpus; no full new world/score yet.
+Seed1858637637 and all selected systems remain fixed; no designer call or
+behavior-based deduplication. [Dispatch proof](results/native-workflow-feedback-fixed-evaluation-dispatch-v3.json).
+
+Audit/cost28230, main report75369 and choices88883/effects1305/requests53773
+actually wait from the separate frozen2133ffc0 analysis source. They cannot
+restart science, create inference or turn a stop into closure. Updated working-
+paper source includes the closed development, not new evaluation scores; its
+PDF rebuild is deferred during inference. The overall publication-ready goal
+is incomplete: no own advantage, successful new wiring, independent optimizer
+comparison or final main-track readiness has been demonstrated by this pilot.
+
+### November14 15:43JST: fixed evaluation prepares three jobs; actual resource allowance is reviewed
 
 Frozen2133ffc0 passes49 focused checks and the9-world SCRIPTED native handoff
 (7 development+2 fixed worlds), including the real optional inventory hook and

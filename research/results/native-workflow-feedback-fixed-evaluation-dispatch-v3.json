@@ -1,0 +1,154 @@
+{
+  "schema": "scienceutopia.native-workflow-feedback-fixed-evaluation-dispatch.v3",
+  "classification": "actual-started-unused-condition-evaluation-not-completed-results",
+  "source_commit": "2133ffc02810820607983db499fc66dc6d207f17",
+  "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-v3-a1",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-v3-a1/outputs/native-workflow-feedback-fixed-evaluation-v3-a1",
+  "prepare_session": 38181,
+  "prepare_exit_code": 0,
+  "plan_content_sha256": "797c83282b2eeaf86d5ad37b2c03508cb5c0775c992e85c7e59b0eec9d2304cf",
+  "plan_file_sha256": "160ecfb5b648dde34dcdf7879edbe6da31423373a71624cf72dc3fd0deda6896",
+  "software_fixture_policy_content_sha256": "6a94dfd796d866ae0b934d4330ae361ff00031849091a5e1e37c1c58a218debf",
+  "original_closed_development": {
+    "audit_files": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-analysis-v2-a1/outputs/native-workflow-compiler-feedback-audit-v2-a1/audit-1.json": "868496abf24e62fb9a38c09c43d9ed4416adf2bbb746b069bd5270033f36ae37",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-analysis-v2-a1/outputs/native-workflow-compiler-feedback-audit-v2-a1/audit-2.json": "868496abf24e62fb9a38c09c43d9ed4416adf2bbb746b069bd5270033f36ae37"
+    },
+    "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-v2-a1/outputs/native-workflow-compiler-feedback-v2-a1",
+    "source": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-v2-a1",
+    "source_commit": "7f1fc61f98e4f09d235879c8ccfd4e57714b9d79"
+  },
+  "evaluation_seed": 1858637637,
+  "physical_jobs": [
+    {
+      "identity": "evaluation-000",
+      "seed": 1858637637,
+      "labels": [
+        "reference:R7-original"
+      ]
+    },
+    {
+      "identity": "evaluation-001",
+      "seed": 1858637637,
+      "labels": [
+        "reference:post-funding-cost",
+        "selected:content-utility"
+      ]
+    },
+    {
+      "identity": "evaluation-002",
+      "seed": 1858637637,
+      "labels": [
+        "selected:throughput"
+      ]
+    }
+  ],
+  "physical_sharing_criterion": "literal policy identity, never same observed development inputs or losses",
+  "designer_generation_POSTs": 0,
+  "inventories": [
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab",
+      "prepared_file_sha256": "24540139e1ed0c31b2b305c4694a0f074f7c1b348a3ff53f4d8cd418f4b0ea2f",
+      "pre_dispatch_file_sha256": "67e0c225ad399d9e55b659731e3b9723e243d40028dec49b061aa19597506289",
+      "bindings": 315,
+      "legacy_software_path_exclusions": 2071,
+      "explicit_exact_nonproduction_files": 0,
+      "errors": 0,
+      "prior_matches": 0,
+      "pre_dispatch_checked_utc": "2026-11-14T06:44:24.338183+00:00"
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments",
+      "prepared_file_sha256": "d1396a5e2d35f0dc8c49e5f36d8bc0a071a07992573295f8c6e6772f88c05f7b",
+      "pre_dispatch_file_sha256": "01dda0af93c9ffb5a84ce80d17c145e56c82359ffb644b76edda985fbceb1257",
+      "bindings": 347,
+      "legacy_software_path_exclusions": 71,
+      "explicit_exact_nonproduction_files": 0,
+      "errors": 0,
+      "prior_matches": 0,
+      "pre_dispatch_checked_utc": "2026-11-14T06:44:25.359092+00:00"
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "prepared_file_sha256": "596a0b26dd91ddc398390574008e5c9ee32d0d61874798f2b7fd4e3794b8fc16",
+      "pre_dispatch_file_sha256": "7e2275c9e2355ae4593255f34ba38a37b9c0db5953b131b89dc102c7e5e4f884",
+      "bindings": 663,
+      "legacy_software_path_exclusions": 1441,
+      "explicit_exact_nonproduction_files": 72,
+      "errors": 0,
+      "prior_matches": 0,
+      "pre_dispatch_checked_utc": "2026-11-14T06:44:27.527370+00:00"
+    }
+  ],
+  "resources": {
+    "source_commit": "58b32ce19ec9e66219f2e7fca74a689bbc102870",
+    "session": 44892,
+    "exit_code": 0,
+    "output": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/workflow-fixed-v3-resource-observation-a2",
+    "started_file_sha256": "a8c827023cd0502ce21c1d97c7b83fd67b26cbacf0c923e6af378c670140fa63",
+    "sample_file_sha256": [
+      "15691f86130fdba405ee0b5aab9f887c1ae047f39393a3d1e3e8317a24a8c3d1",
+      "7aa7dd2c59bf1e5b2219659172889620eb2bb50f129dd90842856100f66ab4ae"
+    ],
+    "cpu_percent": [
+      91.60000000000001,
+      10.999999999999998
+    ],
+    "free_plus_inactive_GiB": [
+      44.043426513671875,
+      47.23136901855469
+    ],
+    "unclassified_python_model_executables": [
+      0,
+      0
+    ],
+    "loaded_models": [
+      0,
+      0
+    ],
+    "additional_exact_allowance": "Read-only inspected frozen residence.py and ars/execution.py: finite trusted CPU recurrence tasks, model_calls_allowed=0, bounded CPU/wall limits and idle wait loop. Exact parent command only; no other project changed, no exclusive resource claim.",
+    "prior_failed_resource_observation": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-analysis-v3-a1/outputs/workflow-fixed-v3-resource-observation-a1",
+    "other_projects_changed": false,
+    "exclusive_resource_lease": false
+  },
+  "writer": {
+    "session": 30142,
+    "pid": 87075,
+    "started_utc": "2026-11-14T06:44:27.531744+00:00",
+    "started_file_sha256": "85f4b6d617928157a2aaf4aa3d3f7514e03a09fb28cc842258169e28d4d8c748",
+    "initial_active_job": "evaluation-000",
+    "first_actual_scientist_requests_observed": true
+  },
+  "read_only_continuations": {
+    "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-analysis-v3-a1",
+    "source_commit": "2133ffc02810820607983db499fc66dc6d207f17",
+    "audit_cost": {
+      "session": 28230,
+      "output": "outputs/native-workflow-feedback-fixed-audit-v3-a1"
+    },
+    "report": {
+      "session": 75369,
+      "output": "outputs/native-workflow-feedback-fixed-report-v3-a1"
+    },
+    "choices": {
+      "session": 88883,
+      "output": "outputs/native-workflow-feedback-fixed-choices-v3-a1"
+    },
+    "effects": {
+      "session": 1305,
+      "output": "outputs/native-workflow-feedback-fixed-effects-v3-a1"
+    },
+    "requests": {
+      "session": 53773,
+      "output": "outputs/native-workflow-feedback-fixed-requests-v3-a1"
+    },
+    "actually_waiting": true,
+    "new_inference_allowed": false
+  },
+  "new_completed_evaluation_worlds_at_snapshot": 0,
+  "reselection": false,
+  "independent_optimizer_replication": false,
+  "new_scientific_gain_proved": false,
+  "publication_ready": false,
+  "content_sha256": "9668babe5bff985c6597d84c3da950abeeea7559d067543cc134bd920e486ff4"
+}

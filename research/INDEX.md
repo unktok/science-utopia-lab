@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actually running unused-condition evaluation](results/native-workflow-feedback-fixed-evaluation-dispatch-v3.json):
+  writer30142/PID87075 starts06:44UTC at2133ffc0 after both real resource checks
+  and3 repeated unused-seed inventories pass. Three literal physical policies
+  represent all four frozen own/control labels. Five read-only continuations
+  wait; no completed new score or automatic gain is implied.
+
 - [Closed compiler-feedback study](results/native-workflow-compiler-feedback-closed-v2.json):
   all6 slots/6 physical worlds and all double cold readouts close;4 own outputs
   tie the hand with identical full scientist inputs/choices. No own advantage.
