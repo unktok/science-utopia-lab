@@ -2,7 +2,7 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 09:21JST (November14 00:21UTC)
+### Current overview: November14 09:52JST (November14 00:52UTC)
 
 **New workflow inference is now stopped, not running.** Session70493 exits1;
 its original terminal at00:07:27UTC records PortableStop/APITimeoutError in
@@ -22,6 +22,19 @@ reconstructs this boundary without an original normal audit or new inference.
 Known48 scientist replies report54,479 input/5,939 output tokens; the missing
 request's cost stays unknown. [Continuation/stop verification](results/native-workflow-postprocess-and-stop-v1.json)
 binds the source/handles and both zero-step stopped postprocessors.
+
+**Prospective transport profile is implemented, not scientifically started.**
+The [new900s profile](results/native-workflow-scientist-transport-v3-preparation-v1.json)
+preserves the original native/role factory and request body while applying an
+explicit operator timeout to the existing client; actual installed-SDK mocks,
+31 expanded light checks and10 resource-wait units pass. The first expanded
+attempt's ps PermissionError is retained, not a production/scientific failure.
+At clean frozen6625d8e3, session11803/PID60886 actually waits for observed CPU
+batch26258 to end and two low-load observations. The known MLX job is absent,
+but total CPU remains high (933.9% initially,1040.4% in a later snapshot).
+Its only permitted next task is one SCRIPTED seven-world native check.
+No real-model experiment, new scientific plan or heavy QA has yet started.
+The full native new-profile proof and scientific resource-window recheck remain.
 
 **Not publication-ready. The original presentation experiment is stopped, not
 still running.** Its terminal records20:54:18UTC, an unknown response after a
@@ -48,6 +61,7 @@ choices. See the [closed data](data/native-parameter-comparator-v1/README.md).
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
 | New workflow experiment |Initial real35B readiness passes; original stopped prefix,48 scientist replies, matching49-input/48-choice historical prefix and unknown final response retained |Stopped on scientist120s transport during first reference/year2 funding; zero complete fresh scores/own slots; no repair/refill or normal-closure claim |
 | Workflow analysis/evaluation handoff |Finite closure/report adapters; phase/end-year cashflow reader actually double-exports7 prior SCRIPTED worlds/28 checkpoints/308 phase witnesses identically; literal fixed-selection handoff |No actual-Qwen completed-study phase/ledger result or complete workflow unused-world evaluator/native proof; no evaluation seeds chosen |
+| Prospective scientist transport |Explicit900s read profile wired through plan/production/cold audit; unchanged original264-file source read; real SDK timeout/body/no-retry units |Source-bound full native SCRIPTED proof waits on observed external CPU batch; no new scientific dispatch |
 | Manuscript |[73-page reviewed artifact](../paper/integrated-native-numeric-build-v1.json),38 figures/30 tables/26 references, all pages reviewed;62-file minimal rebuild matches text and all73 page PNGs |Important main claim, independent evidence R2/R3/R6 and final readiness judgment |
 
 No inference or postprocessing remains running for this workflow attempt.
@@ -57,9 +71,10 @@ own T/U slots were the upper bound, not achieved outcomes. The old source and
 consumed plan remain immutable. Earlier absence checks covered this task's
 heavy PDF/native-QA jobs, not all host load: an external direct MLX model was
 already running and separate CPU jobs started later. No exclusive resource
-profile or causal contention diagnosis is claimed. Resource coordination and
-the hardcoded scientist120s transport allowance need a prospective decision
-before any new scientific dispatch; do not resume/refill this stopped study.
+profile or causal contention diagnosis is claimed. The prospective900s
+transport implementation is separate; full software proof and fresh resource
+observations are required before any new scientific dispatch. Do not
+resume/refill this stopped study.
 The [preparation receipt](results/native-workflow-v2-preparation-v1.json)
 preserves the earlier setup-only QA failure and the fresh180.21s software proof.
 Neither that proof nor actual launch establishes model-authored improvement.

@@ -6,7 +6,7 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Current status](STATUS.md): November14 09:21JST; the publication-ready goal
+- [Current status](STATUS.md): November14 09:52JST; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
 - [Actual workflow-v2 first dispatch](results/native-workflow-v2-first-dispatch-v1.json):
@@ -19,6 +19,10 @@ Historical documents retain their paths and source identities.
   both correctly stop before audits/reports, without retry. New workflow
   phase/cashflow and fixed-selection primitives are light-unit tested, not
   actual closed-study analysis or complete unused-world evaluation.
+- [Prospective scientist900 transport](results/native-workflow-scientist-transport-v3-preparation-v1.json):
+  operator-only profile preserves original factory/body/model/loss;31 expanded
+  light checks and10 pure wait units pass. Actual session11803/PID60886 waits
+  on CPU batch26258/low host load before one SCRIPTED native proof, not science.
 - [Complete numeric data](data/native-parameter-comparator-v1/README.md):
   two matching original audits/costs/reports and full input/incumbent readouts,
   all six slots and null-free closure,664 scientist replies,93 critic requests.
