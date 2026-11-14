@@ -1,0 +1,121 @@
+{
+  "schema": "scienceutopia.native-longitudinal-64k-full-path-software-retained.v1",
+  "source_commit": "a5be8d3103854368a4bc6ba4c13eff7552e9dd15",
+  "classification": "SCRIPTED-HTTP-corpus-and-upstream-closure-not-real-model-or-scientific-comparison",
+  "session_id": 96173,
+  "actual_terminal_exit_code": 0,
+  "pytest_summary": "1 passed in934.66s",
+  "junit_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-software-64k-v1-a1/outputs/native-longitudinal-full-path-64k-v1-a1/junit.xml",
+  "junit_file_sha256": "eae083218e54edbf888570fa0e91591af977e24316bb0f71304079bf752bc57d",
+  "junit_suite": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "1",
+    "time": "934.657",
+    "timestamp": "2026-11-15T06:01:35.467887+09:00",
+    "hostname": "flower-man.local"
+  },
+  "verification_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-software-64k-v1-a1/outputs/native-longitudinal-full-path-64k-v1-a1/tmp/test_actual_native_access_work0/verification.json",
+  "verification_file_sha256": "ef8bbf7c4e81e61101ec3cb158ca9b6b98f8e8dacd0c54dc89188b9b29ea35bf",
+  "verification": {
+    "actual_bounded_sessions": 25,
+    "audit_directory": "/private/tmp/science-utopia-longitudinal-cold-5800zm4b",
+    "classification": "SCRIPTED-HTTP-corpus-and-upstream-closure-not-real-model-or-scientific-comparison",
+    "completed_development_native_worlds": 13,
+    "development_annual_checkpoints": 52,
+    "development_audit_sha256": "5e42b5f2930c98f06d98ee197e9255f6e75829e747e1c6de2825da325a11e7b6",
+    "development_cost_content_sha256": "1842bce23744927b04aafb1bb7434a1bb929833ed75270a06b6a968961642af9",
+    "development_native_worlds": 13,
+    "development_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-software-64k-v1-a1/outputs/native-longitudinal-full-path-64k-v1-a1/tmp/test_actual_native_access_work0/development",
+    "fixed_audit_sha256": "1f05d9355090f6d345b9c7e857f1f0d6fe9825acb59914f72f4b7b7c98041c36",
+    "fixed_cost_content_sha256": "c98413c0e636736e58645cbf35e0ff7fded81c8a6a1259c2f58ad1f8bb835493",
+    "fixed_fixture_seed": 72101,
+    "fixed_native_worlds": 3,
+    "fixed_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-software-64k-v1-a1/outputs/native-longitudinal-full-path-64k-v1-a1/tmp/test_actual_native_access_work0/evaluation",
+    "known_invalid_slot_preserved": 1,
+    "maximum_actual_wire_bytes": 165007,
+    "native_timeout_failures_preserved": 0,
+    "new_model_calls": 0,
+    "next_feedback_bearing_trace_request_checked": true,
+    "own_slots": 12,
+    "paired_readout_files": {
+      "development-choices": {
+        "annual-project-states.csv": "c288c3a86b075d16f30ee1675dde71301cfb9df3759c130d00b1704bf86a1856",
+        "manifest.json": "3a473904bfa74cd652abc72c18e5ae4c87472e22b80e4888e24898e11c64539a",
+        "report.json": "f3c4736abceb0d8e2d7a448eddccdebbd7f802afba68dd5d2d00dbb0677ed654"
+      },
+      "development-effects": {
+        "annual-boundaries.csv": "9321a33a3fafbc8964e2c97b5a58fb4db7744519568bd8d9700aa7cd61f81e8f",
+        "manifest.json": "268e3aef267f3a4eb2f79122ff091f56de1c4581985863d8de8ec4eb5e4d4904",
+        "report.json": "4be5df47723a8f854d97fad76cccb6477bd9a2fb6baa34d4d9c7cb1ea27f7bae"
+      },
+      "development-requests": {
+        "manifest.json": "bbcdc848c216dd1dfe1dbdea6bb8973b19b43f9b13021f0df25296336e194f7e",
+        "report.json": "8b5468cbaeff6002cf1bdacc125d6844802186bd5a4814636f2a0f2279da5d1a"
+      },
+      "development-scores": {
+        "manifest.json": "582b45867021354558d52f153768f80d04f910b86617728b44fff8f790a7a137",
+        "objective-loss-paths.png": "e0a647ebdb53c461f3138f2adbd0af3bab52694b325dbeece4749de9c19a1d80",
+        "objective-loss-paths.svg": "9fd1b2beecea2a9c8939ed1f08f1a7362338f1448b7a81410f49e92fea83695d",
+        "report.json": "52ca83de39d9c77cc24fbf36cd8c2d3607fec7c81f65a05b286e2736f7c9bb43",
+        "slots.csv": "3189d053e438b0f0b913295a9f20902c9bb0871f15af69f9abab688dff3e4673"
+      },
+      "fixed-choices": {
+        "annual-project-states.csv": "f50bbdfe6f32d06aa2f3421ef3ac6e0412c927b57c049b5689833da505298dd8",
+        "manifest.json": "eccbaa5a3512bcd89a7b2affcf650354d2ff48f77b42aeeee371c47982605029",
+        "report.json": "7375e202885488a66e9482685d714db77ecff5a70c53b1d26f17411ddd22e748"
+      },
+      "fixed-effects": {
+        "annual-boundaries.csv": "91ec91ad2d5c5b062f17548f5730f58e4ead0a78d8ae4d2bcbac016d842eace3",
+        "manifest.json": "791a272717408c0958019a2b025eda45a597ed281d5a1d7313045c833dbda893",
+        "report.json": "7a8534951f2e37d3318618c40a05aa5a1ea2a19e2d344e07a77b3d66f10bf9f5"
+      },
+      "fixed-requests": {
+        "manifest.json": "add152660b934d9716d52c73e42b68d46f2b5a89fedd955d2fdc3bc7d3de9f0b",
+        "report.json": "84a52c4ca330741979efec224fbab1dec234e7546a865b3dd9047c8b34f28f53"
+      },
+      "fixed-scores": {
+        "fixed-policy-paired-differences.png": "5d9f8e2c9206c8c1bfbc4d8ee10309bfc83a4d1712d26b3009bbb4d428a5f58e",
+        "fixed-policy-paired-differences.svg": "40aa8e5c85ffa0661e144960d1687579618981968a77e0705f750f2f38e711f7",
+        "fixed-policy-seed-scores.png": "86d8c815e30fa3fc80ac58e704a4a41dae89a3d7a0283af94d359dbfaab02a10",
+        "fixed-policy-seed-scores.svg": "1a55afb5844172adb802c1407b18bd295bd7966a0271be45f4376939e4584ada",
+        "information-access-differences.csv": "c0fc62cdcdfbc067fa8c4488febb89ac21122200212f66ba5ac11fab27d3c6a3",
+        "logical-scores.csv": "4146c49879c8b4048ab8f11f1409bae19da2bcde6486f6980623549015742db4",
+        "manifest.json": "bebd4b612a445f140ded844ca28e040407e083cd11910cb40d950728532cd25c",
+        "objective-choice-differences.csv": "31cbfa3bac1f8e68b9ba78e67828954792ed57235651044e8a7e041ebac0386a",
+        "paired-differences.csv": "b0f0b4f2e0e8476c50a7c2077c05e2b4f64639597c43944c9b1db63bbc4c323c",
+        "report.json": "9cb218ed6e33f6389b3a18ba3156d7b15b4972e4e6eb8725553bde7d689c8bf9"
+      }
+    },
+    "publication_ready": false,
+    "real_backend_readiness_proved": false,
+    "same_policy_full_scientist_payloads_equal_across_arm_ids": true,
+    "scalar_archive_embargo_checked": true,
+    "schema": "scienceutopia.native-longitudinal-full-path-software.v1",
+    "scientific_gain_claimed": false,
+    "scientific_reserved_seed_used": false,
+    "scripted_proposal_posts": 71,
+    "scripted_readiness_posts": 372,
+    "source_commit": "a5be8d3103854368a4bc6ba4c13eff7552e9dd15"
+  },
+  "actual_scripted_designer_wire_POSTs": 443,
+  "actual_designer_context_values": [
+    65536
+  ],
+  "actual_designer_output_values": [
+    8192
+  ],
+  "development_and_fixed_audits_both_pairs_byte_equal": true,
+  "development_path_figure_visually_inspected": true,
+  "old40k_a1_a2_failures_preserved_unchanged": true,
+  "old_preparation_snapshot_not_reclassified": true,
+  "new_real_model_POSTs": 0,
+  "real64k_backend_capacity_proved": false,
+  "actual_scientific_request_readiness_proved": false,
+  "scientific_comparison_dispatched": false,
+  "scientific_gain_claimed": false,
+  "publication_ready": false,
+  "content_sha256": "6e6c5f07934cfe11b889c8785c31f822e04b2a11b8d1dc3a6b3e1195cea549fa"
+}

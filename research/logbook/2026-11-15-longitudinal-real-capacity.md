@@ -144,3 +144,32 @@ has occurred. Larger context alone does not establish inference speed or that
 every16-call interaction fits the original1800s session allowance; inspect
 actual capacity-call elapsed times and exact-request readiness before deciding
 on scientific dispatch, without changing an active source or refilling slots.
+
+## Actual new64k full path closes normally
+
+Original session96173 actually exits0:1passed/934.66s. All12 own slots close,
+one prescribed invalid graph remains a generation null, and all13 attempted
+native development worlds complete with52 annual boundaries. All25 actual
+bounded sessions replay; all443 designer wire POSTs (372 readiness+71 proposal)
+carry actual65536 context/8192 output. Original double development audits/costs
+agree. Three fixed worlds/six labels complete without a new designer; both
+fixed audits/costs and all eight paired exports agree. Development path and
+fixed paired plots are visually inspected without the previous long-title
+clipping. Software seed72101 is used, never scientific reservation676047151.
+[Complete source/JUnit/wire/audit/cost/export proof](../results/native-longitudinal-64k-full-path-software-v1.json).
+
+No old40k failed result or prepared snapshot is relabeled. This is the full
+new-source SCRIPTED public path, not a real-model improvement, actual backend
+capacity, independent scientific replication or publication readiness. The
+two derived real-capacity frames remain prepared/unstarted. No heavy Science
+Utopia QA is running after the original session's actual exit.
+
+A fresh post-QA host observation sees383.2% aggregate CPU, no Ollama-loaded
+model and a separate1.4GB PIE comparator process. Read-only source inspection
+shows that process actually performs frozen-model inference on CPU, so empty
+Ollama /api/ps must not be called absence of all model inference. It is not
+added to an allowance or stopped. Hardware sysctl reports18 physical/logical
+CPU cores and64GiB memory: the old250% profile is a conservative observational
+condition, not a statement that383% means the whole machine is saturated.
+This work still sends no model POST and does not silently relax that profile.
+Further resource policy/measurement, actual capacity and readiness remain next.

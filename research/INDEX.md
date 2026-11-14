@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Full new64k SCRIPTED native/cold/fixed proof](results/native-longitudinal-64k-full-path-software-v1.json):
+  sourcea5be8d31,12 own slots,13 completed native worlds/52 annual boundaries,
+  three fixed worlds/six labels, both audit/cost pairs and all eight paired
+  readouts. Original96173 exits0; old40k failures stay failed. This is not real
+  backend capacity, a scientific information effect or publication readiness.
+  Actual two-frame capacity/readiness/resource checks remain next.
+
 - [Finite real comparison prepared, not dispatched](results/native-longitudinal-comparison-prepared-v1.json):
   source85520c4d, two losses/two information arms,12 own slots/two references.
   Full implementation/evidence is now integrated and pushed atce1b6d60;

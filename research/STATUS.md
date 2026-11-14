@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+### November15: new64k SCRIPTED full native/cold/fixed path passes
+
+At frozena5be8d31, original96173 actually exits0 after934.66s. All12 own
+slots close with the prescribed generation null retained; all13 native worlds
+complete/52 annual boundaries. All25 bounded sessions and443 actual SCRIPTED
+designer wires use65536 context/8192 output. Both development/fixed audit and
+cost pairs, three fixed worlds/six labels and all eight paired readouts close.
+[Exact new-source full-path proof](results/native-longitudinal-64k-full-path-software-v1.json).
+Old40k failures/preparations remain unchanged, not relabeled passes. This is
+software evidence with SCRIPTED HTTP/corpus/upstream, not real backend capacity
+or scientific improvement. Heavy QA is no longer running.
+
+Actual64k capacity and exact-request readiness remain unproved; the derived
+two-frame diagnostic is prepared but unstarted. The latest resource snapshot
+still exceeds the old conservative CPU profile and includes another project's
+CPU-model inference, despite empty Ollama loaded-model metadata. No other job
+is changed and no model POST is sent by this work. Hardware has18 CPU cores/
+64GiB; CPU aggregate is not a whole-machine utilization percentage. The real
+scientific comparison remains undispatched; R2/R3/R5/R6 remain open.
+
 ### November15 prospective64k branch: offline later-frame overflow found before inference
 
 The new capacity preparation at clean6b20f7ae has no started model worker.

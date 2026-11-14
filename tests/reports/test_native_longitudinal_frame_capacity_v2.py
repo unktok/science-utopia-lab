@@ -71,6 +71,27 @@ def test_retained64k_scope_and_derived_preparation_are_not_backend_or_full_nativ
         assert p[key] is False
 
 
+def test_new_full64k_software_path_retains_original_failures_and_has_no_real_capacity_claim():
+    from pathlib import Path
+    from utopia.optimization.native_numeric_designer import checked
+    p=checked(json.loads((Path(__file__).resolve().parents[2]/'research/results/native-longitudinal-64k-full-path-software-v1.json').read_text()))
+    v=p['verification']
+    assert p['source_commit']=='a5be8d3103854368a4bc6ba4c13eff7552e9dd15'
+    assert p['actual_terminal_exit_code']==0 and p['session_id']==96173
+    assert int(p['junit_suite']['tests'])==1 and int(p['junit_suite']['failures'])==0
+    assert (v['own_slots'],v['development_native_worlds'],v['completed_development_native_worlds'])==(12,13,13)
+    assert v['development_annual_checkpoints']==52 and v['fixed_native_worlds']==3
+    assert v['known_invalid_slot_preserved']==1 and v['native_timeout_failures_preserved']==0
+    assert v['actual_bounded_sessions']==25 and p['actual_scripted_designer_wire_POSTs']==443
+    assert p['actual_designer_context_values']==[65536] and p['actual_designer_output_values']==[8192]
+    assert len(v['paired_readout_files'])==8 and p['development_and_fixed_audits_both_pairs_byte_equal']
+    assert p['old40k_a1_a2_failures_preserved_unchanged'] and p['old_preparation_snapshot_not_reclassified']
+    assert p['new_real_model_POSTs']==v['new_model_calls']==0
+    for key in ('real64k_backend_capacity_proved','actual_scientific_request_readiness_proved',
+                'scientific_comparison_dispatched','scientific_gain_claimed','publication_ready'):
+        assert p[key] is False
+
+
 def test_shared_real_journal_worker_uses_v2_plan_and_actual_wire_context(tmp_path,monkeypatch):
     frames = [v2.derived_frame(frame(a)) for a in base.ARMS]; posted=[]
     p={'schema':v2.SCHEMA+'.plan','provider':{},'backend':{},'frames':frames}
