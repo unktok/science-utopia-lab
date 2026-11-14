@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+### November15: prospective author-source scope verified on a separate branch
+
+Branch `feat/native-longitudinal-native-connection-v1` is pushed atf4e921e1,
+not merged into main. Its new explicit source declaration at cleanf2c0d1aa
+checks273 inherited native/physical/observer files against actual stagedf47270b9;
+four named author/presentation changes and one added access helper are bound
+to their new committed bytes. The declaration/protocol are also bound. The
+legacy workflow guard is unchanged and actually still rejects the modified
+optimizer under its old contract.41 targeted SCRIPTED source/access/paper
+checks and one retained-record check pass. This is not full native/cold
+runner integration, real backend readiness, a new world or a scientific gain.
+[Branch evidence](https://github.com/unktok/science-utopia-lab/blob/f4e921e1/research/results/native-longitudinal-source-scope-retained-v1.json).
+Next: actual matched runner/measurement/cold/certificate/cost/fixed integration,
+then fresh backend/resource checks before finite scientific dispatch. Do not
+use current unused evaluation outcomes as future development feedback.
+
 ### November15: minimal actual-result paper reconstruction verified
 
 The explicit71-file subset actually rebuilds with cached/untrusted Tectonic,
