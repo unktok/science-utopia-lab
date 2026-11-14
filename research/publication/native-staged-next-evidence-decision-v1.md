@@ -41,7 +41,7 @@ diversity, failure logging, Python institutions or an archive as our invention.
 
 Test whether giving the same open institution author time-resolved native
 resource/production/process records changes its submitted institutions and
-their consequences, relative to scalar feedback, under fixed objectives and
+their consequences, relative to the existing feedback baseline, under fixed objectives and
 the same permitted code/node/wiring/process space.
 
 This is a prospective information intervention, not a promise that richer
@@ -49,6 +49,23 @@ observations help, a comparison of scalar versus differentiable worlds, or a
 requirement to return different systems for T and U. The target is still the
 system selected under each loss. The scientist world is retained, not replaced
 with an easier numerical model. New rules and graphs remain legal in both arms.
+
+Baseline clarification from the actual retained request: the code label
+`scalar` does not mean that only a number is available. The original archive
+already contains common-panel bodies and workflow execution-order witnesses;
+configured staged probes return historical R7 contexts. Keep all those original
+fields/capabilities in both arms. Test the additional parent-specific longitudinal
+accounting/production representation, not a claim that phase order or every
+resource observation was otherwise inaccessible. Its presentation/retrieval
+package does not isolate a single information field's causal effect.
+
+The [prospective implementation boundary](../components/native-longitudinal-feedback-boundary-v1.md)
+now attaches actual checkpoint projections and connects opt-in request/archive/
+bounded-editor views. Active trace data is every run of exactly the selected
+parent; all allowed trajectories remain archived. Scalar projection preserves
+every original request field and hides only newly attached trajectory bodies.
+This is still an unmerged branch, not the matched runner, full native cold
+proof, measured token capacity or a newly dispatched scientific comparison.
 
 The important possible answer is about which longitudinal observations connect
 an institution proposal to persistent scientific consequences. A mere increase

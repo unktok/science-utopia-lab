@@ -1,0 +1,94 @@
+{
+  "actual_backend_readiness": false,
+  "applied_to_active_science": false,
+  "backend_token_capacity_proved": false,
+  "content_sha256": "f5e2a6e07d64cbb1046ec7e4fe4f7d9d6351798931a155c95dd1011c03053fbd",
+  "earlier_software_attempts": [
+    {
+      "exit_code": 1,
+      "failed": 4,
+      "passed": 11,
+      "scope": "Uncommitted unit fixture used mismatched generic sandbox image and reused a campaign directory created by its helper; original guard rejections retained, not repaired scientific programs.",
+      "session": 23063
+    },
+    {
+      "exit_code": 0,
+      "passed": 15,
+      "scope": "Separate corrected fixture before the additional parent/coverage/contract cases.",
+      "seconds": 15.77,
+      "session": 16466
+    }
+  ],
+  "exit_code": 0,
+  "historical_frame_result": {
+    "actual_backend_readiness": false,
+    "context_token_capacity_proved": false,
+    "full_new_production_reconstruction": false,
+    "historical_request_sha256": "c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8",
+    "historical_scientific_source": "f47270b967fa167d59df759bebe7b6b104b383d3",
+    "input_files_sha256": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_4.json.gz": "664e0e85bb024b1632f4574757f2127967704b3129bbc35b0e9b25d921a0ad6e",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/authoring/generation-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/request.json": "a7cbc45fbd5e42444bea7fa697999e24573ee3c55869380daf5abc729315d7cb",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/worlds/native-adaptive-31041c0814053ecdbfe350e6-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_4.json.gz": "93431a08419ec5461ead6d2e5dc059b54bc340f8d6dd71a9e30dd40be551187b"
+    },
+    "new_code_executions": 0,
+    "new_model_calls": 0,
+    "new_native_worlds": 0,
+    "original_files_unchanged": true,
+    "publication_ready": false,
+    "rows": [
+      {
+        "active_parent_runs": 0,
+        "all_original_request_fields_except_new_view_preserved": true,
+        "archived_trajectory_runs": 0,
+        "fixture_sha256": "3a4398202b28c8efd67b048060e47a89f7e7f8711aa1e4d20652516c01f646d8",
+        "mode": "scalar",
+        "source_prompt_utf8_bytes": 65231,
+        "wire_utf8_bytes": 84466
+      },
+      {
+        "active_parent_runs": 1,
+        "all_original_request_fields_except_new_view_preserved": true,
+        "archived_trajectory_runs": 2,
+        "fixture_sha256": "0b73b9bb43e267cad2d3560eac3732b0dc1bf5d764baae4fb66698daaa145ad6",
+        "mode": "parent-trajectory",
+        "source_prompt_utf8_bytes": 78367,
+        "wire_utf8_bytes": 98302
+      }
+    ],
+    "schema": "scienceutopia.longitudinal-historical-frame-fixture.v1.result",
+    "scope": "Initial planner only, on derived copies of actual prior R7/U0 measurements before historical U1. Same public prompt/conversation/payload builders; not a new campaign/certificate, later edited history, inference or causal information result.",
+    "source_commit": "52d343fa6e1c357d91f71808cecf004c5850330a",
+    "status": "closed"
+  },
+  "historical_frame_result_content_sha256": "6b141e5543ab06e546a6a001b0046aabd9a6c3f49ea9fa2dd495914dd2926c24",
+  "historical_frame_session": 91130,
+  "junit_file_sha256": "e576c690ece7f95da15bd3e5005d5e99c7c5958de17d347c1b2e4c1b96b1a938",
+  "junit_summary": {
+    "errors": "0",
+    "failures": "0",
+    "hostname": "flower-man.local",
+    "name": "pytest",
+    "skipped": "0",
+    "tests": "72",
+    "time": "14.678",
+    "timestamp": "2026-11-15T03:19:36.887412+09:00"
+  },
+  "matched_two_arm_scientific_runner_implemented": false,
+  "merged_to_main": false,
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "original_scope_guard": {
+    "error": "original scientist/effect source differs: utopia/optimization/native_adaptive_search.py",
+    "guard_weakened": false,
+    "old_original_source": "8cd61578b94d86dd0cf2ff3b0e581d9a2698fc0f",
+    "status": "rejected-as-required-by-unmodified-original-source-guard"
+  },
+  "publication_ready": false,
+  "schema": "scienceutopia.native-longitudinal-boundary-light.v1",
+  "source_commit": "52d343fa6e1c357d91f71808cecf004c5850330a",
+  "test_session": 52606,
+  "tests": 72,
+  "whole_native_cold_integration_complete": false
+}
