@@ -171,16 +171,24 @@ def export(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for key in ('run', 'frozen-source', 'audit-one', 'audit-two', 'output'):
+    keys = ('run', 'frozen-source', 'audit-one', 'audit-two', 'output')
+    for key in keys:
         parser.add_argument('--' + key, type=Path, required=True)
     parser.add_argument('--study', choices=('development', 'workflow-development', 'fixed-evaluation', 'parent-presentation',
         'joint-fixed-evaluation', 'workflow-fixed-evaluation'), default='development')
     args = parser.parse_args()
+    # Bind caller-relative locations before the cold child changes cwd to the
+    # original scientific source. Never reinterpret an analysis output as a
+    # write inside the immutable experiment or relax its outside-source guard.
+    for name in ('run', 'frozen_source', 'audit_one', 'audit_two', 'output'):
+        setattr(args, name, getattr(args, name).resolve())
     import os, subprocess, sys
     if os.environ.get('SCIENCE_UTOPIA_COLD_PLANNING_CHOICES_WORKER') == '1': export(args); return
     result = subprocess.run([sys.executable, '-c',
         'import runpy,sys;sys.path.insert(0,sys.argv.pop(1));runpy.run_path(sys.argv.pop(1),run_name="__main__")',
-        str(args.frozen_source.resolve()), str(Path(__file__).resolve()), *sys.argv[1:]], cwd=args.frozen_source,
+        str(args.frozen_source), str(Path(__file__).resolve()),
+        *[value for key in keys for value in ('--' + key, str(getattr(args, key.replace('-', '_'))))],
+        '--study', args.study], cwd=args.frozen_source,
         env={**os.environ, 'PYTHONHASHSEED': '42', 'SCIENCE_UTOPIA_COLD_PLANNING_CHOICES_WORKER': '1'}, timeout=1800, check=False)
     if result.returncode: raise SystemExit(result.returncode)
 

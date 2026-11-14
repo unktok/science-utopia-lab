@@ -91,3 +91,25 @@ def test_waiter_uses_exact_workflow_closure_and_explicit_original_source_scope(t
         assert seen['report_extra_arguments'][:2] == ('--frozen-source', str(tmp_path.resolve()))
         assert seen['report_extra_arguments'][-1] == ('workflow-development' if kind == 'choices' else 'workflow-objective-development')
     assert effects.SCOPES['workflow-objective-development'] in requests.AUDITS
+
+
+def test_cold_cli_binds_all_relative_paths_in_caller_not_child_directory(tmp_path, monkeypatch):
+    import subprocess
+    import sys
+    seen = {}
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv('SCIENCE_UTOPIA_COLD_PLANNING_CHOICES_WORKER', raising=False)
+    monkeypatch.setattr(sys, 'argv', ['reader', '--run', 'raw', '--frozen-source', 'science',
+        '--audit-one', 'audit-one.json', '--audit-two', 'audit-two.json', '--output', 'outputs/readout',
+        '--study', 'workflow-development'])
+    def launch(argv, **kwargs):
+        seen.update(argv=argv, **kwargs)
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr(subprocess, 'run', launch)
+    choices.main()
+    assert seen['cwd'] == tmp_path / 'science'
+    for flag, value in (('--run', 'raw'), ('--frozen-source', 'science'),
+            ('--audit-one', 'audit-one.json'), ('--audit-two', 'audit-two.json'),
+            ('--output', 'outputs/readout')):
+        position = seen['argv'].index(flag)
+        assert seen['argv'][position + 1] == str((tmp_path / value).resolve())

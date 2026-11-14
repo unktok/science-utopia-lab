@@ -37,3 +37,15 @@ read-only analysis, not new heavy simulation QA, a real model result or a full
 audit of the still-running scientific experiment. Keep all earlier raw files
 and any failed reader output unchanged. Only after that proof bind the
 closure-gated real readout waiters to a fresh clean readout source.
+
+The first two retained-data cold CLI calls41039/44265 exit1 before creating any
+output: relative output arguments are reinterpreted after the child changes cwd
+to the scientific source, where the unchanged output-isolation guard rejects
+them. This is a reader CLI path-binding defect, not a failed scientist world.
+Retain frozen8bf3e1df unchanged. Resolve all five path arguments at the caller
+and actually construct the child's argv from those resolved values. An initial
+partial fix resolving only the parsed namespace leaves raw sys.argv unchanged;
+the new targeted regression catches it (a4:11pass/1fail,2.49s). The corrected
+child-argv construction is checked at a fresh a5, before any new cold call.
+No outside-source guard, historical receipt, scientific raw or active runtime
+is changed. New automatic mechanism readers have not yet been started.
