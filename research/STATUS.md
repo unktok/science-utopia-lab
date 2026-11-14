@@ -2,7 +2,18 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 10:20JST (November14 01:20UTC)
+### Current overview: November14 10:30JST (November14 01:30UTC)
+
+**Evaluation mechanism readouts and all-null native test are prepared.**
+At147f21de the new scope reaches phase/ledger, literal project-choice and full
+request-class readers.55 light/regression checks pass; prior31 readout checks
+are a subset, not additional experiments. Two native cases are collected but
+unexecuted: the nine-world handoff plus mechanism exports, and a two-world
+all-null named-origin fixture with no own policy/fallback. See the
+[readout receipt](results/native-workflow-fixed-readout-preparation-v1.json).
+The existing waiter is polled live; latest inspected01:29:31UTC has external
+batch26258 present and CPU1067.3%. No new heavy QA/model inference or actual
+evaluation seed is dispatched. Source6625d8e3 and its queued task stay unchanged.
 
 **Workflow-only frozen evaluation is now implemented, not natively verified.**
 At365facef the new independent handoff no longer depends on stopped other
@@ -12,8 +23,8 @@ scores, paired control differences and objective-choice differences stay explici
 45 light checks and50 old-path regressions pass; two heavy exports are not run.
 Four earlier fixture/test-placement failures are retained in the
 [preparation receipt](results/native-workflow-fixed-evaluation-preparation-v1.json).
-The nine-world SCRIPTED integration test is collected but unexecuted; all-null
-native coverage also remains open. No actual evaluation seeds are chosen.
+The nine-world SCRIPTED integration test is collected but unexecuted; the
+separate all-null native test is now prepared, still unverified. No actual evaluation seeds are chosen.
 Live waiter11803 remains on unchanged6625d8e3, not this new code; latest inspected
 01:19:59UTC CPU954.6%, exact external batch26258 still present, QA not started.
 

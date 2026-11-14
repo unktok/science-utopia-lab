@@ -6,7 +6,7 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Current status](STATUS.md): November14 10:20JST; the publication-ready goal
+- [Current status](STATUS.md): November14 10:30JST; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
 - [Workflow-only fixed evaluation preparation](results/native-workflow-fixed-evaluation-preparation-v1.json):
@@ -14,6 +14,10 @@ Historical documents retain their paths and source identities.
   both-objective contrasts implemented at365facef;45 light plus50 regression
   checks pass. Native proof is collected but not run, and no real seed or
   scientific dispatch is chosen. Existing transport waiter remains separate.
+- [Evaluation mechanism readouts and all-null coverage](results/native-workflow-fixed-readout-preparation-v1.json):
+  phase/ledger, actual project choices and full-request-class routes now accept
+  frozen workflow evaluation;55 light checks pass. Both native cases are only
+  collected, not executed; current CPU-batch wait remains live and unchanged.
 - [Actual workflow-v2 first dispatch](results/native-workflow-v2-first-dispatch-v1.json):
   starts23:52:27UTC at frozen3b912d17/planed85d848, session70493/PID21985.
   Initial35B readiness subsequently passes, but first R7/year2 funding stops on

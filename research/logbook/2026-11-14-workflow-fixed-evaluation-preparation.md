@@ -49,3 +49,26 @@ Next: let the already running transport proof obtain its resource window;
 inspect its actual terminal before any new scientific plan. Separately run
 the committed fixed-evaluation native proof when resources permit. No actual
 evaluation seed is selected and no new heavy job is started in this turn.
+
+## 10:30JST follow-up: mechanism readouts and all-null coverage prepared
+
+Commit147f21de connects `workflow-fixed-evaluation` to the existing cold phase/
+ledger, literal project-choice and full-request-class readers. It changes no
+old scientific scope or raw record. The deferred nine-world integration test
+now also requires double byte-matched exports of these three readouts. A second
+two-world native test exercises an explicitly named all-null upstream fixture:
+only controls run, own labels stay unavailable, and no reference becomes an
+own invention. This upstream fixture is not a claim about actual designer results.
+
+[The additional receipt](../results/native-workflow-fixed-readout-preparation-v1.json)
+records55 passing light/regression checks and two collected native cases.
+The earlier31 passing readout checks are included in that55-case scope, not31
+additional independent tests or experiments. Neither native case is executed
+or queued. The previous goal turn made implementation/verification/push progress;
+this turn adds analysis coverage without real model dispatch.
+
+Session11803 is again polled live; latest inspected01:29:31UTC observation has
+external batch26258 present and CPU1067.3%. The unchanged6625d8e3 waiter alone
+can start its earlier seven-world transport check after its declared window.
+This is not a resource lease, a causal timeout diagnosis or an actual scientific
+trajectory. No other job is stopped or reprioritized; goal R2/R3/R6 stays open.

@@ -1,0 +1,60 @@
+{
+  "schema": "scienceutopia.native-workflow-fixed-readout-preparation.v1",
+  "classification": "light-readout-routing-proof-and-unexecuted-native-tests",
+  "implementation_commit": "147f21de6513d4db27b3fdfedb56af66281c15d8",
+  "previous_handoff_receipt": "research/results/native-workflow-fixed-evaluation-preparation-v1.json",
+  "new_readout_scope": "workflow-fixed-evaluation",
+  "implemented": [
+    "original ordered native phase witnesses and reconciled end-year cashflows",
+    "literal project choices, saved memories and native catalog assignments",
+    "full scientist request/reply classes without payload scrubbing or partial-world pooling",
+    "same exact selected policies, every physical job and technical null retained"
+  ],
+  "initial_light_checks": {
+    "junit": "/private/tmp/science-utopia-workflow-fixed-readout-v1-a1.HIzqgQ/junit.xml",
+    "sha256": "9589e7d6fc708e9ee71b5d9cc6f3b37b1a854798815ffaa02c82a9ed562ed083",
+    "passed": 31,
+    "seconds": 7.97,
+    "included_in_final_scope": true
+  },
+  "final_light_checks": {
+    "junit": "/private/tmp/science-utopia-workflow-readout-regression-v1-a1.dhwD7J/junit.xml",
+    "sha256": "0e436ae647bff976709baa70e20946379d11063c2d78b5424bb7450dd3cdf821",
+    "passed": 55,
+    "failed": 0,
+    "seconds": 40.49,
+    "scope": "Working-tree unit/regression checks before commit. Physical proof primitives explicitly SCRIPTED; no native simulation, Docker, rendering or real model inference. Not a committed-source full-native proof."
+  },
+  "collected_but_unexecuted_native_tests": [
+    {
+      "file": "tests/reports/test_native_workflow_fixed_native_v1.py",
+      "scope": "Seven SCRIPTED development worlds plus two actual native-software evaluation worlds, known runtime null, production factories, transport and repeated cold audits/costs/reports plus three mechanism readouts"
+    },
+    {
+      "file": "tests/reports/test_native_workflow_fixed_all_null_native_v1.py",
+      "scope": "Named SCRIPTED all-null upstream closure, two native-software control worlds only, no own policy/fallback, production role/transport factories and repeated cold audits/costs/reports"
+    }
+  ],
+  "collection_exit_code": 0,
+  "collected_cases": 2,
+  "native_tests_queued": false,
+  "existing_resource_wait": {
+    "exec_session": 11803,
+    "pid": 60886,
+    "source_commit": "6625d8e342f69ff4ed21f79ebe5333718220607a",
+    "handle_confirmed_live_this_turn": true,
+    "latest_inspected_observed_utc": "2026-11-14T01:29:31.372309+00:00",
+    "known_external_pid_absent": false,
+    "host_total_cpu_percent": 1067.3,
+    "exclusive_resource_lease_proved": false,
+    "queued_task_remains_only_previous_seven_world_transport_qa": true
+  },
+  "new_real_model_calls": 0,
+  "new_native_worlds_executed": 0,
+  "scientific_evaluation_seeds_chosen": false,
+  "old_scientific_data_or_selection_changed": false,
+  "native_full_path_verified": false,
+  "manuscript_or_pdf_changed": false,
+  "publication_ready": false,
+  "research_goal_complete": false
+}
