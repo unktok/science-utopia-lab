@@ -259,7 +259,9 @@ def test_native_numeric_policy_stages_reviewed_73_page_inputs(tmp_path):
 
 
 def test_workflow_policy_stages_exact_75_page_inputs_without_substituting_older_paper(tmp_path):
-    root = bundle.ROOT
+    root = historical_integrated_root(tmp_path,
+        source='baa85e34a4b509ca33997a7e68848267f015f728',
+        policy_path='research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json')
     policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json').read_text())
     report = bundle.stage(root, policy, tmp_path / 'workflow-subset', source_commit='SCRIPTED-staging-source')
     assert len(report['files']) == 64 and len(report['literal_tex_dependencies']) == 61
@@ -274,7 +276,9 @@ def test_workflow_policy_stages_exact_75_page_inputs_without_substituting_older_
 
 def test_workflow_receipt_rejects_changed_figure_without_altering_original(tmp_path, monkeypatch):
     from copy import deepcopy
-    root = bundle.ROOT
+    root = historical_integrated_root(tmp_path,
+        source='baa85e34a4b509ca33997a7e68848267f015f728',
+        policy_path='research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json')
     original_policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json').read_text())
     read = bundle.read_file
     def changed(base, name):
@@ -284,3 +288,18 @@ def test_workflow_receipt_rejects_changed_figure_without_altering_original(tmp_p
     with pytest.raises(ValueError, match='changed from reviewed receipt'):
         bundle.stage(root, deepcopy(original_policy), tmp_path / 'changed-subset', source_commit='SCRIPTED')
     assert not (tmp_path / 'changed-subset').exists()
+
+
+def test_feedback_policy_stages_reviewed_78_page_source_not_old_pdf_or_scientific_raw(tmp_path):
+    root = bundle.ROOT
+    policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-workflow-feedback-v1.json').read_text())
+    report = bundle.stage(root, policy, tmp_path / 'feedback-subset', source_commit='SCRIPTED-staging-source')
+    assert len(report['files']) == 66 and len(report['literal_tex_dependencies']) == 63
+    assert report['original_build_source_commit'] == '385d8a4902acac1f5c642200acd4d11cdd98364c'
+    assert report['original_build_receipt_schema'] == 'scienceutopia.integrated-workflow-feedback-manuscript.v1'
+    assert {'paper/integrated/native-workflow-feedback.tex',
+        'paper/figures/native-workflow-compiler-feedback-v2/objective-loss-paths.png'} <= set(report['literal_tex_dependencies'])
+    assert 'output/pdf/science-utopia-lab-integrated-workflow-feedback-working-paper.pdf' in report['files']
+    assert 'output/pdf/science-utopia-lab-integrated-workflow-controls-working-paper.pdf' not in report['files']
+    assert not any(name.endswith(('responses.sqlite', 'call.http.json', 'report.json')) for name in report['files'])
+    assert not report['raw_or_model_data_included'] and not report['published_or_uploaded']
