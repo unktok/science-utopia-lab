@@ -37,8 +37,9 @@ IMAGE = 'sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833
 
 @pytest.mark.parametrize('prerequisite_kind', ['legacy-scripted', 'independent-numeric-v2'])
 @pytest.mark.parametrize('scientist_profile', ['legacy', 'read900'])
+@pytest.mark.parametrize('designer_profile', ['legacy', author_module.FEEDBACK_MODE])
 def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_cold_audit(
-        tmp_path, fixed_corpus, monkeypatch, prerequisite_kind, scientist_profile):
+        tmp_path, fixed_corpus, monkeypatch, prerequisite_kind, scientist_profile, designer_profile):
     original, _, _, _ = plan(tmp_path / 'inputs', monkeypatch, IMAGE)
     install_scripted_provider(tmp_path / 'provider', monkeypatch, 2)
     monkeypatch.setattr('requests.get', lambda *a, **k: SimpleNamespace(raise_for_status=lambda: None,
@@ -81,7 +82,8 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         backend=backend, observer_backend=observer_backend, prerequisite=prerequisite,
         sources=driver.native_sources(probe.source_commit),
         scientist_transport=(None if scientist_profile=='legacy' else
-            scientist_transport_contract(read_seconds=900)))
+            scientist_transport_contract(read_seconds=900)),
+        designer_mode=None if designer_profile == 'legacy' else designer_profile)
     root = tmp_path / 'run'; root.mkdir(); driver.save(root / 'plan.json', p)
     monkeypatch.setattr(driver, 'origin_evidence', lambda origin: (original, upstream))
     if prerequisite_kind == 'legacy-scripted':
@@ -114,6 +116,10 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         intent = driver.read(argv[-2]); binding = driver.read(Path(argv[-2]).parent / 'binding.json')
         req = binding['request']; parent = SystemSpec.from_dict(req['parent_system'])
         body = json.loads(intent['payload']['messages'][1]['content'])
+        if designer_profile != 'legacy':
+            assert intent['payload']['think'] is True and isinstance(intent['payload']['format'], dict)
+            assert intent['payload']['options']['num_ctx'] == 57344
+            assert intent['payload']['options']['num_predict'] == 16384
         if binding['purpose'] == 'calibration':
             submission = body['control_submission']
         elif req['generation'] == 1 and req['loss_spec']['id'] == original['losses']['content-utility']['id']:
@@ -144,6 +150,13 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     u2 = [c for c in calls if c['purpose'] == 'proposal' and c['request']['generation'] == 2
         and c['request']['loss_spec']['id'] == original['losses']['content-utility']['id']][0]
     assert u2['context']['consumed_generation_nulls'][0]['literal_submission_failure']['literal_submission']['phase_updates'] == {'world.costs': 999}
+    if designer_profile != 'legacy':
+        intent_paths = list((root / 'search/content-utility/authoring').glob('proposal-*/call.intent.json'))
+        u2_intent = next(driver.read(path) for path in intent_paths
+            if driver.read(path.parent / 'binding.json')['request']['generation'] == 2)
+        feedback = json.loads(u2_intent['payload']['messages'][1]['content'])['consumed_proposal_compiler_feedback']
+        assert len(feedback) == 1 and feedback[0]['compiler_feedback']['valid_under_original_compiler'] is False
+        assert feedback[0]['compiler_feedback']['causal_order_witnesses']
     # Explicit --basetemp may be inside ignored source outputs. Original cold
     # auditors correctly forbid writing anywhere in that source worktree.
     # Retain audit exports in a separate temporary directory, not by weakening
@@ -174,6 +187,7 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         'classification': 'SCRIPTED-HTTP-corpus-origin-and-prerequisite-fixtures', 'source_commit': probe.source_commit,
         'prerequisite_kind': prerequisite_kind,
         'scientist_profile': scientist_profile,
+        'designer_profile': designer_profile,
         'actual_transport_application_records': len(transport_paths),
         'actual_bounded_HTTP_worker_calls': len(calls), 'new_model_calls': 0, 'native_software_worlds': 7,
         'annual_checkpoints': 28, 'known_invalid_slots_preserved': 1, 'consumed_own_slots': 6,

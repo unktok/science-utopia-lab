@@ -47,6 +47,18 @@ def test_explicit_eight_world_domain_and_literal_plan_reconstruction(tmp_path, m
         driver.require_plan(other)
 
 
+def test_feedback_mode_is_explicit_and_changes_no_scientific_contract(tmp_path, monkeypatch):
+    p, original, audit, sources = setup(tmp_path, monkeypatch)
+    other = driver.build_plan(original, audit, source=p['source_commit'], origin=p['origin'],
+        backend=p['backend'], observer_backend=p['observer_contract']['backend'],
+        prerequisite=p['prerequisite'], sources=sources, designer_mode=driver.FEEDBACK_MODE)
+    changed = {'author_settings', 'designer_mode', 'author_profile_protocol'}
+    assert {k:v for k,v in p.items() if k not in changed} == {k:v for k,v in other.items() if k not in changed}
+    assert other['author_settings']['num_ctx'] == 57344 and other['author_settings']['num_predict'] == 16384
+    assert other['author_settings']['think'] is True and other['budget']['designer_POSTs_upper_bound'] == 13
+    assert other['budget']['replace_failed_slots'] is False
+
+
 def test_batched_source_check_reads_actual_git_blobs_and_rechecks_local_bytes(monkeypatch):
     import hashlib
     import subprocess

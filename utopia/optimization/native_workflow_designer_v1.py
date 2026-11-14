@@ -27,6 +27,9 @@ WORKER = 'utopia.optimization.native_numeric_designer'
 SETTINGS = {'max_calls': 1, 'wall_seconds': 1200, 'http_timeout_seconds': [10, 900],
     'num_ctx': 40960, 'num_predict': 8192, 'temperature': .6,
     'maximum_wire_utf8_bytes': 140000, 'truncate': False, 'shift': False, 'think': False}
+FEEDBACK_MODE = 'compiler-feedback-thinking-v2'
+FEEDBACK_PROTOCOL = 'research/protocols/campaigns/native-workflow-compiler-feedback-v2.md'
+FEEDBACK_ADAPTER = 'scripts/native_workflow_submission_feedback_v1.py'
 TASK = ('Minimize the declared loss by designing the order and wiring of the supplied native science system. '
     'Return ONLY the requested JSON object with phase_updates, remove_connections, add_connections, rationale. '
     'Connection removal indexes refer to the current parent, not a prior graph. All changes apply together. '
@@ -43,8 +46,45 @@ class WorkflowCompletionUnknown(BaseException):
     """Unknown endpoint completion stops orchestration before another role."""
 
 
+def settings_for(mode=None):
+    if mode is None: return clone(SETTINGS)
+    if mode != FEEDBACK_MODE: raise ValueError('undeclared workflow designer mode')
+    return {**clone(SETTINGS), 'profile': mode, 'num_ctx': 57344, 'num_predict': 16384,
+        'think': True, 'format': 'schema', 'feedback_adapter': FEEDBACK_ADAPTER,
+        'feedback_adapter_sha256': file_sha256(Path(__file__).resolve().parents[2] / FEEDBACK_ADAPTER)}
+
+
+def recognized_settings(value):
+    if value != SETTINGS and value != settings_for(FEEDBACK_MODE):
+        raise ValueError('undeclared workflow output/context/feedback settings')
+    return value
+
+
+def compiler_feedback(request):
+    from scripts.native_workflow_submission_feedback_v1 import diagnose
+    rows = []
+    for record in request.get('history', []):
+        if not record.get('generation_error'): continue
+        definition = record.get('definition')
+        failure = definition.get('workflow_submission_failure') if isinstance(definition, dict) else None
+        row = {'request_sha256': record['request_sha256'],
+            'recorded_generation_error': clone(record['generation_error']), 'compiler_feedback': None}
+        if failure is not None:
+            row['recorded_submission_failure'] = clone(failure)
+            if failure['literal_submission'] is not None:
+                previous = record['request']
+                if digest(previous) != record['request_sha256']:
+                    raise ValueError('previous workflow request differs from its consumed history')
+                # Diagnose against that proposal's actual parent, not today's
+                # selected parent. No graph/code, raw error or scalar is fixed.
+                row['compiler_feedback'] = diagnose(previous, failure['literal_submission'])
+        rows.append(row)
+    return rows
+
+
 def _payload(binding):
     request, purpose = binding['request'], binding['purpose']
+    settings = recognized_settings(binding['settings'])
     context = workflow_context(request)
     body = {'context': context, 'response_schema': submission_schema(context)}
     task = TASK
@@ -55,15 +95,22 @@ def _payload(binding):
         body['control_submission'] = control_submission(request)
     elif purpose != 'proposal':
         raise ValueError('explicit workflow calibration/proposal purpose required')
-    payload = {'model': binding['provider']['model'], 'stream': False, 'think': False,
-        'format': 'json', 'truncate': False, 'shift': False,
+    if settings.get('profile') == FEEDBACK_MODE:
+        body['consumed_proposal_compiler_feedback'] = compiler_feedback(request)
+        body['causal_order_contract'] = ('For every zero-latency connection, the producer phase must be '
+            'strictly smaller than the consumer phase. Unmentioned phases keep their actual parent values. '
+            'Inspect all incoming and outgoing edges of each moved node. Empty edits retain the parent legally. '
+            'Prior invalid proposals are consumed observations, not a graph the host will repair.')
+    payload = {'model': binding['provider']['model'], 'stream': False, 'think': settings['think'],
+        'format': submission_schema(context) if settings.get('format') == 'schema' else 'json',
+        'truncate': False, 'shift': False,
         'messages': [{'role': 'system', 'content': task}, {'role': 'user', 'content':
             json.dumps(body, sort_keys=True, ensure_ascii=False, allow_nan=False)}],
-        'options': {k: SETTINGS[k] for k in ('num_ctx', 'num_predict', 'temperature')}}
+        'options': {k: settings[k] for k in ('num_ctx', 'num_predict', 'temperature')}}
     payload['options']['seed'] = int(digest([digest(request), purpose])[:8], 16) % 2**31
     schema = submission_schema(context)
     wire = wire_record(payload, schema)
-    if len(wire['request_wire_utf8'].encode()) > SETTINGS['maximum_wire_utf8_bytes']:
+    if len(wire['request_wire_utf8'].encode()) > settings['maximum_wire_utf8_bytes']:
         raise ValueError('literal workflow frame exceeds its predeclared wire allowance; no truncation')
     return payload, schema, wire
 
@@ -127,15 +174,16 @@ def replay_workflow(root):
     root = Path(root)
     binding = checked(json.loads((root / 'binding.json').read_text()))
     if (binding['schema'] != SCHEMA + '.binding'
-            or binding['runtime'] != runtime_binding() or binding['settings'] != SETTINGS):
+            or binding['runtime'] != runtime_binding()):
         raise ValueError('workflow replay source/settings differ')
+    settings = recognized_settings(binding['settings'])
     payload, schema, wire = _payload(binding)
     intent = checked(json.loads((root / 'call.intent.json').read_text()))
     if (intent['schema'] != SCHEMA + '.intent'
             or intent['binding_sha256'] != binding['content_sha256'] or intent['payload'] != payload
             or intent['response_schema'] != schema or intent['request_wire'] != wire
             or intent['provider'] != binding['provider'] or intent['backend'] != binding['backend']
-            or intent['http_timeout_seconds'] != SETTINGS['http_timeout_seconds']):
+            or intent['http_timeout_seconds'] != settings['http_timeout_seconds']):
         raise ValueError('workflow frozen request/payload/schema/transport differs')
     if not (root / 'result.json').is_file():
         raise WorkflowCompletionUnknown('original workflow session has no terminal journal; never redispatch')
@@ -163,18 +211,20 @@ def generation_definition(result):
 
 
 class WorkflowDesigner:
-    def __init__(self, directory, *, provider, backend, inference_lock):
+    def __init__(self, directory, *, provider, backend, inference_lock, mode=None):
         validate_designer_binding(provider)
         if any(backend.get(k) != provider[k] for k in ('model', 'model_digest')):
             raise ValueError('workflow designer backend/model binding differs')
         self.directory, self.lock = Path(directory), Path(inference_lock)
         self.provider, self.backend = clone(provider), clone(backend)
+        self.settings = settings_for(mode)
 
     def execute(self, request, *, purpose, certificate=None):
         if purpose == 'proposal':
-            require_certificate(certificate, request=request, provider=self.provider, backend=self.backend)
+            require_certificate(certificate, request=request, provider=self.provider, backend=self.backend,
+                settings=self.settings)
         binding = {'schema': SCHEMA + '.binding', 'request': clone(request), 'purpose': purpose,
-            'provider': self.provider, 'backend': self.backend, 'settings': clone(SETTINGS),
+            'provider': self.provider, 'backend': self.backend, 'settings': clone(self.settings),
             'runtime': runtime_binding()}
         payload, schema, wire = _payload(binding)
         root = self.directory / (purpose + '-' + digest(request))
@@ -191,11 +241,11 @@ class WorkflowDesigner:
                 intent = save(root / 'call.intent.json', {'schema': SCHEMA + '.intent',
                     'binding_sha256': binding['content_sha256'], 'provider': self.provider, 'backend': self.backend,
                     'payload': payload, 'response_schema': schema, 'request_wire': wire,
-                    'http_timeout_seconds': SETTINGS['http_timeout_seconds'],
+                    'http_timeout_seconds': self.settings['http_timeout_seconds'],
                     'started_utc': datetime.now(timezone.utc).isoformat()})
                 execution = run_bounded([sys.executable, '-m', WORKER, '--worker',
                     str(root / 'call.intent.json'), str(root / 'call.http.json')],
-                    seconds=SETTINGS['wall_seconds'], cwd=Path(__file__).resolve().parents[2])
+                    seconds=self.settings['wall_seconds'], cwd=Path(__file__).resolve().parents[2])
                 path = root / 'call.http.json'
                 raw = checked(json.loads(path.read_text())) if path.is_file() else None
                 result = save(root / 'result.json', {'schema': SCHEMA + '.result',
@@ -215,7 +265,7 @@ class WorkflowDesigner:
         # return type, not an invented richer dictionary supplied by a caller.
         cert = {'schema': SCHEMA + '.certificate', 'runtime': runtime_binding(),
             'request_sha256': digest(request), 'provider': self.provider, 'backend': self.backend,
-            'settings': clone(SETTINGS), 'calibration_root': str(root.resolve()),
+            'settings': clone(self.settings), 'calibration_root': str(root.resolve()),
             'result_sha256': result['content_sha256'], 'passed': result['status'] == 'submitted',
             'copy_equal_diagnostic': copied, 'copy_is_dispatch_veto': False,
             'directed_control_is_free_design_evidence': False, 'created_unix_seconds': time.time()}
@@ -226,14 +276,15 @@ class WorkflowDesigner:
         return path
 
 
-def require_certificate(path, *, request, provider, backend, enforce_age=True):
+def require_certificate(path, *, request, provider, backend, enforce_age=True, settings=None):
     if path is None: raise ValueError('fresh source/model/request-bound workflow certificate required')
+    settings = recognized_settings(SETTINGS if settings is None else settings)
     cert = checked(json.loads(Path(path).read_text()))
     if (type(enforce_age) is not bool or type(cert['created_unix_seconds']) not in (int, float)
             or not math.isfinite(cert['created_unix_seconds'])
             or cert['schema'] != SCHEMA + '.certificate' or cert['runtime'] != runtime_binding()
             or cert['request_sha256'] != digest(request) or cert['provider'] != provider
-            or cert['backend'] != backend or cert['settings'] != SETTINGS
+            or cert['backend'] != backend or cert['settings'] != settings
             or cert['passed'] is not True
             or (enforce_age and not 0 <= time.time() - cert['created_unix_seconds'] <= 86400)):
         raise ValueError('workflow certificate failed, stale or source/model/request mismatched')
@@ -242,6 +293,7 @@ def require_certificate(path, *, request, provider, backend, enforce_age=True):
     if (result['content_sha256'] != cert['result_sha256'] or result['status'] != 'submitted'
             or binding['purpose'] != 'calibration' or binding['request'] != request
             or binding['provider'] != provider or binding['backend'] != backend
+            or binding['settings'] != settings
             or cert['copy_equal_diagnostic'] != (result['literal_submission'] == control_submission(request))
             or cert['copy_is_dispatch_veto'] is not False
             or cert['directed_control_is_free_design_evidence'] is not False):

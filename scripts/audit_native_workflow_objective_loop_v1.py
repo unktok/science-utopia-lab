@@ -41,7 +41,8 @@ def worker(root, output):
             'scripts/run_native_workflow_objective_loop_v1.py', 'scripts/audit_native_workflow_objective_loop_v1.py',
             'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'],
             resources=[driver.PROTOCOL] + ([p['eligibility_protocol']['path']] if 'eligibility_protocol' in p else [])
-                + ([p['operational_protocol']['path']] if 'operational_protocol' in p else []))
+                + ([p['operational_protocol']['path']] if 'operational_protocol' in p else [])
+                + ([p['author_profile_protocol']['path']] if 'author_profile_protocol' in p else []))
         anchor = SystemSpec.from_dict(p['initial_system'])
         observer = ColdObserver(root / 'observer', p['observer_contract']); observer_audit = observer.audit()
         if observer_audit != read(root / 'observer-audit.json'): raise ValueError('original critic audit differs')
@@ -49,7 +50,7 @@ def worker(root, output):
         def author(parent, request, *, proposal=False):
             calibration = parent / ('calibration-' + digest(request)); author_roots.add(calibration)
             cert = require_certificate(calibration / 'certificate.json', request=request,
-                provider=p['designer'], backend=p['backend'], enforce_age=False)
+                provider=p['designer'], backend=p['backend'], enforce_age=False, settings=p['author_settings'])
             value = replay_workflow(calibration)
             if proposal:
                 path = parent / ('proposal-' + digest(request)); author_roots.add(path)

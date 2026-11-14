@@ -17,7 +17,8 @@ from utopia.optimization.native_development_references import build_context
 from utopia.optimization.native_designer_preflight import backend_binding, runtime_binding
 from utopia.optimization.native_jobs import pinned_revision
 from utopia.optimization.native_numeric_designer import checked, save
-from utopia.optimization.native_workflow_designer_v1 import WorkflowDesigner, SETTINGS, generation_definition
+from utopia.optimization.native_workflow_designer_v1 import (
+    WorkflowDesigner, SETTINGS, generation_definition, settings_for, FEEDBACK_MODE, FEEDBACK_PROTOCOL)
 from utopia.optimization.native_workflow_domain_v4 import (
     workflow_design_space, post_funding_cost_control, verify_workflow_interval)
 from utopia.optimization.native_world import evaluate_native_suggestion
@@ -110,7 +111,7 @@ def require_prerequisite(binding):
 
 
 def build_plan(original, audit, *, source, origin, backend, observer_backend, prerequisite, sources,
-        scientist_transport=None):
+        scientist_transport=None, designer_mode=None):
     if (original['schema'] != 'scienceutopia.native-planning-objective-loop.v1.plan'
             or audit['schema'] != 'scienceutopia.native-planning-objective-loop-audit.v1'
             or audit['source_commit'] != original['source_commit'] or sources['original_source'] != original['source_commit']
@@ -133,7 +134,7 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
         **{k: clone(original[k]) for k in ('scientist', 'designer', 'data_cache', 'losses', 'catalog')},
         'backend': clone(backend), 'world': world, 'experiment': experiment, 'observer_contract': observer,
         'initial_system': anchor.to_dict(), 'design_space': workflow_design_space(anchor),
-        'authoring_scope': 'literal-existing-institutions-workflow-only', 'author_settings': clone(SETTINGS),
+        'authoring_scope': 'literal-existing-institutions-workflow-only', 'author_settings': settings_for(designer_mode),
         'reference_order': list(refs), 'reference_systems': refs,
         'objectives': clone(original['objectives']), 'generations': 3, 'optimizer_seed': 68011,
         'strategies': {'local-workflow-designer': {'protocol': PROTOCOL, 'method': 'literal-local-workflow-submission'}},
@@ -145,6 +146,10 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
             'readiness_sessions': 7, 'proposal_POSTs_per_session': 1, 'replace_failed_slots': False},
         'held_out_evaluation': False, 'independent_optimizer_replications': False,
         'structural_freedom_causal_effect_claimed': False, 'publication_ready': False}
+    if designer_mode is not None:
+        result['designer_mode'] = designer_mode
+        result['author_profile_protocol'] = {'path': FEEDBACK_PROTOCOL,
+            'sha256': file_sha256(ROOT / FEEDBACK_PROTOCOL)}
     if prerequisite.get('schema') == 'scienceutopia.native-workflow-numeric-prerequisite.v2':
         from scripts.native_workflow_numeric_prerequisite_v2 import PROTOCOL as eligibility
         result['eligibility_protocol'] = {'path': eligibility, 'sha256': file_sha256(ROOT / eligibility)}
@@ -167,7 +172,8 @@ def require_plan(root):
         raise ValueError('workflow prerequisite changed')
     expected = build_plan(original, audit, source=p['source_commit'], origin=p['origin'], backend=p['backend'],
         observer_backend=p['observer_contract']['backend'], prerequisite=p['prerequisite'],
-        sources=native_sources(original['source_commit']), scientist_transport=p.get('scientist_transport'))
+        sources=native_sources(original['source_commit']), scientist_transport=p.get('scientist_transport'),
+        designer_mode=p.get('designer_mode'))
     if expected != {k: v for k, v in p.items() if k != 'content_sha256'}:
         raise ValueError('literal workflow plan reconstruction differs')
     return p
@@ -186,6 +192,11 @@ def scientist_factory(directory, p, root):
         return factory_for(directory, p, root)
     from utopia.optimization.native_scientist_transport_v1 import factory_for_profile
     return factory_for_profile(directory, p, root)
+
+
+def designer_for(directory, p, root):
+    return WorkflowDesigner(directory, provider=p['designer'], backend=p['backend'],
+        inference_lock=root / 'inference.lock', **({'mode': p['designer_mode']} if 'designer_mode' in p else {}))
 
 
 def measurement(p, observer):
@@ -230,8 +241,7 @@ def run(root):
             'pid': os.getpid(), 'started_utc': utc()})
         stage, consumed, observations, status = 'initial-readiness', 0, 0, 'stopped'
         try:
-            author = WorkflowDesigner(root / 'initial-readiness/author', provider=p['designer'],
-                backend=p['backend'], inference_lock=root / 'inference.lock')
+            author = designer_for(root / 'initial-readiness/author', p, root)
             c = campaign(root, p, p['objectives'][0], prototype=True)
             author.calibrate(c._request([], c._validate(), 1)); require_plan(root)
             observer = CommonContentObserver(root / 'observer', p['observer_contract'],
@@ -257,8 +267,7 @@ def run(root):
                     raise ValueError('consumed/pending workflow generation; no redispatch')
                 request = c._request(c.state['records'], c._validate(), 1)
                 directory = root / 'search' / objective
-                author = WorkflowDesigner(directory / 'authoring', provider=p['designer'], backend=p['backend'],
-                    inference_lock=root / 'inference.lock')
+                author = designer_for(directory / 'authoring', p, root)
                 stage = 'readiness'; progress(root, stage, objective + ':g' + str(generation))
                 certificate = author.calibrate(request); require_plan(root)
                 def generate(req):
@@ -294,7 +303,8 @@ def prepare(args):
         observer_backend=backend_binding(original['scientist']),
         prerequisite=prerequisite_binding(args.after_numeric_chain or args.after_numeric_dispatch),
         sources=native_sources(original['source_commit']),
-        scientist_transport=None if timeout is None else transport_contract(read_seconds=timeout))
+        scientist_transport=None if timeout is None else transport_contract(read_seconds=timeout),
+        designer_mode=getattr(args, 'designer_mode', None))
     args.output.mkdir(parents=True); save(args.output / 'plan.json', p); require_plan(args.output)
     print(json.dumps({'prepared_source': source, 'native_worlds_upper_bound': 8, 'new_model_POSTs': 0}), flush=True)
 
@@ -309,6 +319,7 @@ def main():
     after.add_argument('--after-numeric-dispatch', type=Path)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--scientist-read-timeout-seconds', type=int, choices=(900,))
+    p.add_argument('--designer-mode', choices=(FEEDBACK_MODE,))
     p = sub.add_parser('run'); p.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'prepare': prepare(args)

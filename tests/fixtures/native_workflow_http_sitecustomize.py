@@ -32,9 +32,12 @@ class _Session:
         assert url == 'http://127.0.0.1:11434/api/chat'
         assert kwargs['timeout'] == (10, 900)
         assert kwargs['data'].decode() == self.fixture['expected_request_wire_utf8']
+        message = {'role': 'assistant', 'content': json.dumps(self.fixture['literal_submission'], ensure_ascii=False)}
+        if json.loads(kwargs['data']).get('think') is True:
+            message['thinking'] = 'SCRIPTED separate thinking field, not actual local reasoning'
         return _Response({'model': self.fixture['provider']['model'], 'done': True, 'done_reason': 'stop',
             'prompt_eval_count': 100, 'eval_count': 20,
-            'message': {'role': 'assistant', 'content': json.dumps(self.fixture['literal_submission'], ensure_ascii=False)}})
+            'message': message})
 
 
 requests.Session = _Session
