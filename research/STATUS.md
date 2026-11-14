@@ -2,6 +2,9 @@
 
 ## Active publication-ready goal
 
+The first entry is current; later dated entries retain historical snapshots,
+not live-process checks.
+
 ### November15: new64k SCRIPTED full native/cold/fixed path passes
 
 At frozena5be8d31, original96173 actually exits0 after934.66s. All12 own
@@ -41,6 +44,31 @@ Old85520c4d/6b20f7ae plans remain undispatched/unmodified, not silently upgraded
 proof. New frozen source/plan, native/cold proof, actual capacity/readiness and
 fresh resource observations remain required. This branch is not merged yet.
 Main-track significance/independent evidence/focused paper/readiness remain open.
+### Earlier November15 in-progress snapshot: prepared40k unstarted;64k under verification
+
+Do not launch the old prepared85520c4d comparison as though capacity were
+proved. Digest-verified used-model tokenizer/template analysis gives37296 and
+44320 tokens for the two complete late-history SCRIPTED frames. With8192
+reserved output, both exceed40960 despite passing the byte ceiling. Two local
+exports agree; these are not backend counts, actual model readiness or a
+diagnosis of earlier failures. [Exact offline evidence on the separate branch](https://github.com/unktok/science-utopia-lab/blob/a5be8d3103854368a4bc6ba4c13eff7552e9dd15/research/results/native-longitudinal-offline-token-counts-v1.json).
+
+Separate branch feat/native-longitudinal-real-capacity-v1 is pushed ata5be8d31,
+not merged. It prospectively uses65536 bounded-designer context in both arms,
+retaining8192 output, full prompt data, scientists/world/losses,12 own slots
+and code/wiring freedom. Scope v2 explicitly binds five author-only modules;
+an actual double read verifies272 inherited native files remain literal and
+the unchanged legacy guard still rejects the new optimizer under its old scope.
+73 targeted software checks pass. Original40k prepared sources/records remain
+unchanged and undispatched. No actual model POST is sent by this work.
+
+New frozena5be8d31 SCRIPTED full-path verification96173 is actually running at
+native-longitudinal-software-64k-v1-a1, observed two of12 own records committed.
+It is not a real scientific writer or a completed new native/cold proof.
+Two derived64k capacity frames are prepared separately, not dispatched;
+resources/readiness remain necessary after the heavy software check ends.
+Three earlier resource observations failed above the unchanged CPU ceiling,
+without modifying other projects or dispatching inference. R2/R3/R5/R6 remain open.
 
 ### November15: integration merged/pushed; finite real comparison plan prepared only
 

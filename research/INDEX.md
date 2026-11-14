@@ -12,6 +12,12 @@ Historical documents retain their paths and source identities.
   readouts. Original96173 exits0; old40k failures stay failed. This is not real
   backend capacity, a scientific information effect or publication readiness.
   Actual two-frame capacity/readiness/resource checks remain next.
+- [Original64k capacity/source snapshot](https://github.com/unktok/science-utopia-lab/tree/a5be8d3103854368a4bc6ba4c13eff7552e9dd15):
+  full late-history local-tokenizer counts show the old40k plus output does
+  not fit. New common64k design preserves data/authority/world/loss;
+  73 targeted checks and actual272-file source declaration pass.
+  Its later full SCRIPTED native/cold check closes in the proof above.
+  Old prepared40k plans stay unstarted; real capacity/readiness remain pending.
 
 - [Finite real comparison prepared, not dispatched](results/native-longitudinal-comparison-prepared-v1.json):
   source85520c4d, two losses/two information arms,12 own slots/two references.
