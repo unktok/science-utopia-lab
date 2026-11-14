@@ -6,6 +6,17 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [New source revision, PDF build deferred](../paper/README.md): the full draft
+  now retains the stopped open-code pilot's three completed cells and actual
+  information/content change without improvement. Stale closure statements
+  are corrected;7 lightweight retained/source checks pass for this revision,
+  not a layout or raw-reproduction claim. The78-page PDF remains the
+  earlier reviewed artifact. [Next discriminating-study design, unexecuted](publication/native-open-observability-comparison-design-v1.md).
+- [First complete v3 reference](results/native-open-institution-first-reference-v3.json):
+  R7 completes T=-18/U=-13.3333, all115 full scientist inputs/literal choices
+  equal to prior R7 without scrubbing. The strong hand runs next; no own v3
+  result or independent optimizer replication yet.
+
 - [Actually running task-separated v3](results/native-open-institution-dispatch-v3.json):
   fresh actual initial35B calibration passes in64.039s; original8B R7 world
   runs at frozen25be72cd. Two resource samples pass;33 light checks plus10

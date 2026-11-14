@@ -65,3 +65,59 @@ def test_manuscript_reports_closure_without_invention_or_independence_claim():
             'zero real-model calls', 'not an LLM-invented institution'):
         assert literal in source
     assert 'no complete evaluation outcome is reported here' not in source
+
+
+def test_actual_open_prefix_preserves_worse_own_result_and_stopped_scope():
+    result = load('native-open-institution-stopped-prefix-v2.json')
+    assert result['terminal']['status'] == 'stopped'
+    assert result['terminal']['consumed_slots'] == 1
+    assert not result['scientific_study_closed'] and result['own_selections'] is None
+    assert not result['fixed_evaluation_eligible'] and result['raw_unchanged']
+    assert result['new_model_calls'] == result['new_code_executions'] == 0
+    worlds = {r['label']: r for r in result['worlds']}
+    assert worlds['T0']['throughput_loss'] == worlds['R7']['throughput_loss'] == -18.
+    assert worlds['T0']['content_utility_loss'] > worlds['R7']['content_utility_loss']
+    assert worlds['hand']['throughput_loss'] == -20.
+    for key in ('ordered_full_request_payload_sha256', 'ordered_literal_response_choices_sha256'):
+        assert worlds['T0']['requests'][key] != worlds['R7']['requests'][key]
+    failed = [r for r in result['authors'] if r['status'] == 'failed']
+    assert len(failed) == 1 and not failed[0]['completion_unknown']
+    assert failed[0]['requested_operation_paths'] == ['/mechanisms/-', '/schedules/-']
+    assert failed[0]['actual_operation_paths'] == ['/mechanisms/-']
+    assert failed[0]['missing_schedule_is_only_literal_difference_except_operation_count']
+    assert all(r['two_matching_original_source_replays'] for r in result['authors'])
+
+
+def test_manuscript_open_result_is_not_hidden_by_calibration_stop_or_past_pdf():
+    source = (ROOT / 'paper/integrated/native-workflow-feedback.tex').read_text()
+    for literal in ('R7 reference & $-18$ & $-13.3333$ & 115',
+            'Strong hand, comparison-only & $-20$ & $-15.3333$ & 127',
+            'First own T0 & $-18$ & $-12.3333$ & 114',
+            'first 70 full scientist request payloads match R7',
+            'a whole-study audit or normal optimization closure',
+            '374-file raw inventory remains unchanged',
+            'remaining\nfive own slots have no result'):
+        assert literal in source
+    readme = (ROOT / 'paper/README.md').read_text()
+    assert '78-page integrated draft' in readme
+    assert 'revisions have not yet been rebuilt or visually reviewed' in readme
+    discussion = (ROOT / 'paper/integrated/discussion.tex').read_text()
+    assert 'free planning pilot is not counted as closed scientific evidence here' not in discussion
+
+
+def test_completed_world_physical_readout_keeps_stopped_scope_and_rejoins_losses():
+    result = load('native-open-institution-stopped-physical-readout-v2.json')
+    prefix = load('native-open-institution-stopped-prefix-v2.json')
+    assert result['actual_reader_exit_code'] == 0 and result['all_completed_worlds_covered']
+    assert result['raw_inventory_sha256'] == prefix['raw_inventory_sha256']
+    assert result['raw_files_unchanged'] and result['raw_files'] == 374
+    assert not result['scientific_study_closed'] and not result['full_optimizer_history_replay_claimed']
+    assert not result['original_observer_audit_present'] and not result['missing_original_journal_written']
+    assert result['selection'] is None and not result['fixed_evaluation_eligible']
+    aliases = {'R7-original': 'R7', 'post-funding-cost': 'hand', 'T0': 'T0'}
+    prior = {r['label']: r for r in prefix['worlds']}
+    for row in result['completed_worlds']:
+        original = prior[aliases[row['label']]]
+        assert row['physical_proof_status'] == 'complete' and row['annual_checkpoint_count'] == 4
+        assert row['scores'] == {
+            'throughput': original['throughput_loss'], 'content-utility': original['content_utility_loss']}

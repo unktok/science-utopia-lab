@@ -2,6 +2,31 @@
 
 ## Active publication-ready goal
 
+### November14 18:48JST: v3 first reference complete; real open-code evidence added to source
+
+Writer89980 remains live and advances09:43:03UTC to the strong hand. R7 closes
+T=-18/U=-13.3333; all115 full scientist inputs/literal choices equal the prior
+R7 without score/clock/identity scrubbing. The inspected input files remain
+unchanged; no own result, study closure or independent optimizer replication.
+[Bound completed reference](results/native-open-institution-first-reference-v3.json).
+
+The LaTeX source now adds the stopped v2's three-cell result table, actual
+score→scientist input/content path and unfavorable own result. It fixes the
+outdated statement that the earlier free planning study had not closed.
+Paper README now points to the real latest reviewed78-page artifact; these
+subsequent source edits are explicitly not rebuilt/visually reviewed yet.
+No independent heavy QA or PDF rendering runs during active inference.
+
+Separate original-fe4281f4 readers verify the three completed v2 worlds' real
+role bindings, code receipts, four annual checkpoints each and reconstructed
+critic losses. Reader10250 exits0,374 raw files unchanged; it does not write
+the absent original observer journal or supply a whole optimizer-history audit,
+selection, normal closure or unused eligibility. [Compact physical evidence](results/native-open-institution-stopped-physical-readout-v2.json).
+The [next-study design note](publication/native-open-observability-comparison-design-v1.md)
+separates designer observation access from allowed institution authority. It is
+not implemented/dispatched or a change to this finite run; finish current
+science before choosing further comparisons. Main-track goal remains open.
+
 ### November14 18:28JST: task-separated v3 passes real calibration and runs original R7
 
 At frozen25be72cd/plan33e32136, writer89980/PID5714 starts09:26:51UTC.

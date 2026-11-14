@@ -1,0 +1,72 @@
+{
+  "actual_reader_exit_code": 0,
+  "actual_reader_session": 10250,
+  "all_completed_worlds_covered": true,
+  "classification": "compact-retention-of-exited-original-source-completed-world-read-not-normal-study-or-full-optimizer-audit",
+  "common_observer_read_only_audit_content_sha256": "5b027741102bfacb2e5abf04a44d0a804cfb1c6e06cd9785951f43a5cda205c4",
+  "completed_worlds": [
+    {
+      "annual_checkpoint_count": 4,
+      "label": "R7-original",
+      "measurement_content_sha256": "563ab686efbf4920c8b5fa587faa4d0503a9874518c9bb5189c948c52da30778",
+      "physical_proof_content_sha256": "c6a9dbf35c496a1250809ebe5f60f35e105c181da85d465b8614559590fc9f76",
+      "physical_proof_status": "complete",
+      "scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      }
+    },
+    {
+      "annual_checkpoint_count": 4,
+      "label": "post-funding-cost",
+      "measurement_content_sha256": "9cd9a22cc870816977d4a0c08c7207ed4f59b4ee5d3bdddcbd659a32093f08e3",
+      "physical_proof_content_sha256": "84c1f0f3b40edc8ada92340b75d82c4e41aa9e3d813f7c69d3f3028bf7fd091d",
+      "physical_proof_status": "complete",
+      "scores": {
+        "content-utility": -15.333333333333332,
+        "throughput": -20.0
+      }
+    },
+    {
+      "annual_checkpoint_count": 4,
+      "label": "T0",
+      "measurement_content_sha256": "3b6acea1721688c045070e6fd95cc7c470aa1adaca2a6983463e9405a21b9141",
+      "physical_proof_content_sha256": "96d4422525526ce41c8fd41fe136087bc187f377f439a24a7265f5b137b7648d",
+      "physical_proof_status": "complete",
+      "scores": {
+        "content-utility": -12.333333333333332,
+        "throughput": -18.0
+      }
+    }
+  ],
+  "content_sha256": "bc9c79cc8bed0f172f7437b06a1773b4f72bd0a8e4be00d727477a3e2c88c56c",
+  "fixed_evaluation_eligible": false,
+  "full_optimizer_history_replay_claimed": false,
+  "missing_original_journal_written": false,
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "original_full_read_content_sha256": "15ec9d689316dc7a297629252eb35ddb9454b068224e9c16a5ae59d260315da8",
+  "original_observer_audit_present": false,
+  "original_reader_APIs": [
+    "scripts.native_benchmark_source.source_proofs",
+    "scripts.native_benchmark_physical.physical_proof",
+    "scripts.analyze_native_design_benchmark.loaded",
+    "utopia.optimization.native_scientist_transport_v1.require_cell_transport",
+    "scripts.native_observer_physical_v1.ColdObserver",
+    "scripts.native_observer_physical_v1.reconstruct_measurement",
+    "utopia.optimization.native_workflow_domain_v4.verify_workflow_interval",
+    "utopia.optimization.loss.evaluate_loss"
+  ],
+  "original_terminal_content_sha256": "3682146c185a9d79811f53f631057fcb3fc2f11a11446d377839880c5a90d938",
+  "plan_content_sha256": "5e1e101d939ea05e9880b35fb028b76b0e7c02a163ef1d3bf05e5dc118d4fe5a",
+  "publication_ready": false,
+  "raw_files": 374,
+  "raw_files_unchanged": true,
+  "raw_inventory_sha256": "c5d667ef563c6fecf9077ce735ec72487dc2c15ee3d0373142ce34637fa700e8",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1",
+  "schema": "scienceutopia.native-open-institution-stopped-physical-readout-retention.v2",
+  "scientific_source_commit": "fe4281f47002eb3a160ab26cb625ab586155e2a6",
+  "scientific_study_closed": false,
+  "selection": null,
+  "source_closure_read_status": "verified-exact-source-closure"
+}

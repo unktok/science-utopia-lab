@@ -2,6 +2,25 @@
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
+[78-page integrated draft](../output/pdf/science-utopia-lab-integrated-workflow-feedback-working-paper.pdf),
+with40 figures,33 tables and26 references. Its
+[source/build/visual receipt](integrated-workflow-feedback-build-v1.json) and
+[actual66-file local rebuild](../research/results/integrated-workflow-feedback-rebuild-subset-verification-v1.json)
+bind all78 reviewed page layouts and identical rebuilt text/page images. It
+includes the normally closed compiler-feedback development study and its
+selection-fixed unused condition, without claiming autonomous improvement.
+
+The current LaTeX source additionally describes the later stopped open-code
+pilot:one actual own completion changes scientist information but improves
+neither loss. It corrects stale closure language and distinguishes the separate
+corrected v3 run's initial calibration from future own outcomes. These **source
+revisions have not yet been rebuilt or visually reviewed**. No PDF rendering
+or independent heavy QA is run while real model inference is active; the
+reviewed78-page artifact and all earlier receipts remain unchanged. This is
+not main-track publication readiness, an anonymous release or fresh inference
+reproduction.
+
+The preceding reviewed artifact is the
 [75-page integrated draft](../output/pdf/science-utopia-lab-integrated-workflow-controls-working-paper.pdf),
 with39 figures,31 tables and26 references, without an artificial page cap.
 [Source/build/visual evidence](integrated-workflow-controls-build-v1.json)

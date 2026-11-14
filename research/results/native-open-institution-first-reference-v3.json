@@ -1,0 +1,53 @@
+{
+  "classification": "complete-same-seed-reference-comparison-not-whole-study-closure-or-independent-replication",
+  "content_sha256": "42b55c458f2038236d275e940631941fe216e478aa05340ee513c4338259fa89",
+  "current_requests": {
+    "completed_responses": 115,
+    "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+    "ordered_full_provider_body_hashes_sha256": "3d6d661fc1b964d380052840f44b944eb5adc04d0dca7b76ee2fd52fc99453e8",
+    "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+    "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+    "wire_inputs_without_committed_reply": 0,
+    "wire_requests": 115
+  },
+  "full_inputs_equal": true,
+  "full_provider_envelopes_equal": false,
+  "input_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/R7-original/observation.json": "e74db15ec031fc7ad2b695763af41c92f1f252e50953a81266632cccf534c669",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "67341d5a938ea93c51a26a2dc0626d7f93706a0a57ea568988c7cb86bf54c3b8",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1/references/R7-original/observation.json": "0e33ed599876681b2e9e5f0b45ec0997a93b7b982d85effe38ee9b6affebb69c",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "00f703504c007f5c7e5fd875c8b3bc4d45c913e4a525d34db01c9beedb743ce0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+  },
+  "input_files_unchanged": true,
+  "literal_choices_equal": true,
+  "losses": {
+    "content-utility": -13.333333333333332,
+    "throughput": -18.0
+  },
+  "new_inference_for_readout": 0,
+  "plan_content_sha256": "33e321362809985d9aaba327474d861af2daf62038a30bac45bb15ac648ceb76",
+  "prior_requests": {
+    "completed_responses": 115,
+    "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+    "ordered_full_provider_body_hashes_sha256": "94bece46f9b75fd31eca0461c122056bf5225042779787f3e82e89b33dfdd012",
+    "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+    "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+    "wire_inputs_without_committed_reply": 0,
+    "wire_requests": 115
+  },
+  "prior_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1",
+  "progress": {
+    "active": "post-funding-cost",
+    "observed_utc": "2026-11-14T09:43:03.250422+00:00",
+    "stage": "references"
+  },
+  "publication_ready": false,
+  "reference": "R7-original",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1",
+  "schema": "scienceutopia.native-open-institution-first-reference.v3",
+  "scientific_gain_claimed": false,
+  "scientific_source_commit": "25be72cd4419003edb72a956e2c68cfdc3d36207",
+  "scientific_study_closed": false
+}

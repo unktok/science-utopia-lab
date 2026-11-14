@@ -153,6 +153,20 @@ valid only for its own artifact.
 
 ## Non-negotiable distinctions
 
+November14 open-code source revision (not yet a rebuilt PDF): the closing
+workflow-feedback section now includes the three completed cells inside the
+stoppedfe4281f4 pilot, its unfavorable own T0, score-to-scientist-input path,
+different accepted contents and later directed calibration failure. Evidence:
+`research/results/native-open-institution-stopped-prefix-v2.json`,
+`research/results/native-open-institution-stopped-physical-readout-v2.json` and
+`research/publication/native-open-institution-first-code-effect-v2.md`.
+Original-source completed-world/code/measurement checks are distinct from full
+optimizer-history replay, normal closure and unused-condition evaluation.
+The separately running25be72cd pilot supplies no own outcomes at this snapshot.
+The78-page reviewed PDF and its source385d8a49 receipt remain preserved; the
+new source requires its own cached builds, complete visual review and rebuild
+receipt once real inference ends. Do not relabel the old receipt as current.
+
 Do not pool historical sources into a matched experiment. V8/V12/V13 external
 authoring is not the local35B V2 proposer. Different utility coefficients remain
 different losses. Same-checkpoint cross-scores, shared prefixes, controller

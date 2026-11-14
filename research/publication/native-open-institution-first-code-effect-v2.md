@@ -3,6 +3,10 @@
 Scope: the three completed cells inside the stopped fe4281f4 open-institution
 v2 study, not normal optimization closure or a causal intervention experiment.
 [Bound original-source replay and literal request/choice sequences](../results/native-open-institution-stopped-prefix-v2.json).
+The separate [completed-world physical read](../results/native-open-institution-stopped-physical-readout-v2.json)
+checks all three role bindings, four annual checkpoints per world, native code
+receipts and reconstructed common-observer losses from the frozen source.
+It does not manufacture normal closure or the missing original observer journal.
 
 | System | Throughput loss T | Content utility loss U | Scientist requests |
 | --- | ---: | ---: | ---: |
