@@ -65,7 +65,26 @@ def export(args):
     hashes = {str(p): file_sha256(p) for p in paths}; before = _inventory(root)
     plan, audit = [checked(json.loads(p.read_text())) for p in paths[:2]]
     study = getattr(args, 'study', 'development')
-    if study == 'development':
+    if study == 'workflow-development':
+        from scripts.reports.native_workflow_objective_loop_v1 import summarize
+        if (plan['schema'] != 'scienceutopia.native-workflow-objective-loop.v1.plan'
+                or audit['schema'] != 'scienceutopia.native-workflow-objective-loop-audit.v1'
+                or plan['objectives'] != ['throughput', 'content-utility']):
+            raise ValueError('explicit original workflow development objective/scope required')
+        records = {}
+        for objective in plan['objectives']:
+            state = json.loads((root / 'search' / objective / 'campaign/native-adaptive-state.json').read_text())
+            if state['pending'] is not None or len(state['records']) != 3:
+                raise ValueError('all original terminal workflow slots required for planning trace')
+            records.update({(objective, generation): record
+                for generation, record in enumerate(state['records'])})
+        # Reuse the strict original six-slot/own-selection/reference reader,
+        # not a looser label-only acceptance of a different scientific study.
+        summarize(plan, audit, records)
+        plan_schema = 'scienceutopia.native-workflow-objective-loop.v1.plan'
+        audit_schema = 'scienceutopia.native-workflow-objective-loop-audit.v1'
+        schema = 'scienceutopia.native-workflow-choice-trace.v1'
+    elif study == 'development':
         plan_schema = 'scienceutopia.native-planning-objective-loop.v1.plan'
         audit_schema = 'scienceutopia.native-planning-objective-loop-audit.v1'
         schema = SCHEMA
@@ -154,7 +173,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('run', 'frozen-source', 'audit-one', 'audit-two', 'output'):
         parser.add_argument('--' + key, type=Path, required=True)
-    parser.add_argument('--study', choices=('development', 'fixed-evaluation', 'parent-presentation',
+    parser.add_argument('--study', choices=('development', 'workflow-development', 'fixed-evaluation', 'parent-presentation',
         'joint-fixed-evaluation', 'workflow-fixed-evaluation'), default='development')
     args = parser.parse_args()
     import os, subprocess, sys
