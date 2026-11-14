@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actually running corrected open-institution experiment](results/native-open-institution-dispatch-v2.json):
+  initial real35B calibration passesHTTP200 with literal compiled IR; original
+  8B scientists run R7. Sourcefe4281f4/plan5e1e101d stays frozen; both controls
+  and six own slots remain, with five read-only continuations actually waiting.
+  No own invention/improvement or normally closed study is inferred yet.
 - [Actual initial grammar stop](results/native-open-institution-initial-stop-v1.json)
   and [corrected-source native proof](results/native-open-institution-grammar-software-v2.json):
   the first real call is HTTP400 before any proposal/world; old source/output
@@ -16,9 +21,10 @@ Historical documents retain their paths and source identities.
   latest closed science plus active software path,40 figures/33 tables; all78
   rebuilt page images and extracted text match the reviewed original. This is
   not fresh inference, numerical reproduction, anonymity or publication readiness.
-- [Current status](STATUS.md): the structural feedback study and its unused
-  evaluation are closed; no actual inference writer is active at this snapshot.
-  Own selections tie the strong hand on both objectives, not a new discovery.
+- [Current status](STATUS.md): the earlier structural feedback study and its
+  unused evaluation are closed. Their own selections tie the strong hand on
+  both objectives, not a new discovery; the distinct open-institution run above
+  now exercises broader authority without changing those earlier results.
 - [Complete unused-condition comparison](results/native-workflow-feedback-fixed-closed-v3.json):
   all3 physical worlds/four frozen labels, matching double cold readouts,
   503 scientist replies and123 critic calls, with the corrected cost supplement

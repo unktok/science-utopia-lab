@@ -22,6 +22,16 @@ observation stops before inference on347.6% host CPU (limit250), not a model
 error; the original sample is retained. No competing task or threshold changes.
 Reobserve actual resources after ordinary work settles, before actual calibration.
 
+The separately retained resource-a2 observations both pass (100.4/26.9% CPU,
+42.70/42.92GiB), session13521 exit0. Actual v2 writer59411/PID66524 starts
+08:29:34UTC at frozenfe4281f4/plan5e1e101d. Its real calibration returnsHTTP200
+after63.811s,23062 input/2606 output tokens, a final literal compiled IR and
+passing certificate. The prescribed new memory-office control is copied exactly;
+that equality is diagnostic and is not evidence of useful free invention.
+The first original R7 world then actually runs its Qwen3-8B requests over the
+103107-paper original corpus. All five cold continuations are actually waiting.
+No completed own world or scientific improvement exists at this snapshot.
+
 The complete manuscript is now78 pages/40 figures/33 tables/26 references.
 After inspecting all final pages, the two actual builds have identical text,
 logs and every page PNG; detail views cover Contents and all new section pages.

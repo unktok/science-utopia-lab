@@ -2,6 +2,27 @@
 
 ## Active publication-ready goal
 
+### November14 17:32JST: real corrected calibration passes; original scientist world is running
+
+At frozenfe4281f4/plan5e1e101d, writer59411/PID66524 starts08:29:34UTC.
+Two fresh resource samples13521 pass at100.4/26.9% CPU and42.70/42.92GiB
+free+inactive, with no unknown Python/model executables or loaded models.
+The earlier CPU-failed resource sample remains preserved with unchanged limits.
+Actual initial calibration now returnsHTTP200/done_reason=stop in63.811s,
+23062 prompt/2606 output tokens. Its literal IR compiles; certificate passes
+and directed copy equality is diagnostic true. This resolves the observed
+backend grammar rejection, not a proof of free invention or broad competence.
+
+The original103107-paper2016--2019 corpus and fixedQwen3-8B scientist world
+actually execute the first R7 control; writer59411 is confirmed live by its
+own session output. No new complete world or own loss exists at this snapshot.
+Audit26789/report11712/choices16240/effects82014/requests6312 are actually
+waiting from separate frozenfe4281f4 source, without inference authority.
+[Actual dispatch/call/resource records](results/native-open-institution-dispatch-v2.json).
+Heavy independent tests/rendering are finished and are not restarted during
+inference. Both control worlds precede the six own slots. Main-track readiness,
+effective generated institution differences and reliable own advantage remain open.
+
 ### November14 17:26JST: corrected native proof and actual minimal rebuild pass
 
 Frozenfe4281f4's10-world native integration passes142.83s;65000 exits0 before
