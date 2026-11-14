@@ -1,0 +1,260 @@
+{
+  "analysis_source_commit": "d0dd1d75",
+  "assigned_loss": -13.333333333333332,
+  "candidate_equals_literal_parent_and_R7": true,
+  "candidate_repaired_or_refilled": false,
+  "checked_last_implementation_frame": {
+    "actual_requested_temperature": 0.6,
+    "advertised_functions": {
+      "configure": 1,
+      "edit": 1,
+      "edit_fields": 1,
+      "finish": 1,
+      "read_file": 0,
+      "splice": 1,
+      "write_file": 1
+    },
+    "implementation_task_present": true,
+    "intent_content_sha256": "9363910cc62d145f004f32f8eaf27b498803e6db94d17edd63a63dca7ce63fd4",
+    "literal_current_system_equals_parent": true,
+    "phase": "implementation",
+    "previous_status": "rejected"
+  },
+  "completed_native_worlds_at_snapshot": 4,
+  "completed_own_slots_at_snapshot": 2,
+  "component_testing": {
+    "contract_sha256": "3ee8a829acb2e91a0d55bc22e10d4ff607488aa92c4048631ad43eb321b74ece",
+    "new_model_calls_from_tests": 0,
+    "new_native_worlds": 0,
+    "probe_attempts": 0,
+    "raised": 0,
+    "returned": 0,
+    "veto_on_finish": false
+  },
+  "content_sha256": "aba56295671bcc60274918003cb3dac56b26679c2ad663196f4cb645cf17cd9f",
+  "cross_scores": {
+    "content-utility": -13.333333333333332,
+    "throughput": -18.0
+  },
+  "designer_http_summary": {
+    "all_http_200_final_stop": true,
+    "all_reported_prompt_plus_reserved_output_fit": true,
+    "calls": 14,
+    "context_tokens": 40960,
+    "dispatch_content_sha256": [
+      "7f69f2d44df217446041ab290fb5335d988919915b7937afcf8209dceaceadd7",
+      "e0f51aa1a11eaf63c322adb8e6c262609c6fadd82bf8a2e93a31d4c07431f36e",
+      "555041dd04c348756ed720aa0305c2ce8e8425b3ff297b62df36cc582b11d34d",
+      "7d41088c17f4e9d7c67ba329045432fe8dbf527eb94e1519f55bbaca1f2182b0",
+      "6db622ded5986ac244888a3c3136ec69bddc12d7e5532c3ab63eb63ed0d05144",
+      "69686e0e2aafbec2aa98f16eee7611e555a9bfbbb794de16a5cb847da37443e7",
+      "cf1e6b59c53a00f23e1bd98a26d300078c4bcdb54315724bedfcbec279bf509b",
+      "d7c092c5557638db84375c8b89419d026cfc5cf89ab3d7e685d347be7b969626",
+      "14e755535b9fd1bddaa1cc04d8e3deb7165f964dfc646bc012696a142543411f",
+      "e1148a3b482f1e5db2bfb2b8f017223962ce1f7732ac0d334e645869a6e4472f",
+      "cff029e2894c8184d7aeb7b16145e2c272f01eb0183c0e980c076ae1cef3714b",
+      "2db99dc75e3b2b1ee280f7228c4f370a4e4726c4d835d6055b95ef1567a2d196",
+      "92b2c61ab79538d9ca2c91e496404e3fb439e450f7d8fcf13afc98aa775ee129",
+      "1b82f1152137f349e07b878de126f0cdc3a4ebb36647199b1ccbaeca14a97282"
+    ],
+    "maximum_reported_prompt_tokens": 32599,
+    "output_reservation_tokens": 8192,
+    "reported_output_tokens_sum": 485,
+    "reported_prompt_tokens_sum": 430380
+  },
+  "full_study_cold_audit_complete": false,
+  "generation": 0,
+  "generation_record_sha256": "6aff4a6b46dbad505d0f6383f6cdd21ebedd7faf198cd04423337fe2f64316ae",
+  "host_source_repair": false,
+  "implementation_checkpoint_rejections": [
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 4,
+      "step_content_sha256": "26ef848fdd80fbe414c936d609d9ef426d763284ebd0eb8f26dede792725ac3e",
+      "tool": "read_file"
+    },
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 5,
+      "step_content_sha256": "343b54cf7b4501a156efb2ad373aefcd7daa88744802402afa06d4d74039d452",
+      "tool": "read_file"
+    },
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 6,
+      "step_content_sha256": "cdb28a996fc38cfa12e7797c1301e302bc92bfc7aa0236fb288088e6c7a98e25",
+      "tool": "read_file"
+    },
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 7,
+      "step_content_sha256": "c4a6c1ae6a038d796e1d6ffda5707d551365a163b313652f00c71a3e413e56f4",
+      "tool": "read_file"
+    },
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 8,
+      "step_content_sha256": "8773e4bbd78e5ed7bdacc919c88bbdaecb23145a33ac131ad5d1f4dcc76a5bb9",
+      "tool": "read_file"
+    },
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 9,
+      "step_content_sha256": "03bdd687c48d302ead425167e17055a2008cd8eb74d54be10b4348dbaffb6986",
+      "tool": "read_file"
+    },
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 10,
+      "step_content_sha256": "0580386ce49e4c046e468b67e1917dbabe9affd1f70861a0e3362b134f378700",
+      "tool": "read_file"
+    },
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 11,
+      "step_content_sha256": "213203178d8bc12cf9006e8a3a5da2d455ea49743d56d4e56fd3e1bf0fc152df",
+      "tool": "read_file"
+    },
+    {
+      "errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "step": 12,
+      "step_content_sha256": "415dc6654d853b11de23e96991bf38a320839f9c14cc114f5c8f0f9fd31dda4c",
+      "tool": "read_file"
+    }
+  ],
+  "literal_candidate_sha256": "afbe6626fbad76ff65cf0a6a8875d6e68cc1853378d3d41f1d87c6f0c7bce8d2",
+  "literal_scientist_traces": [
+    {
+      "input_file_sha256": {
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "3a53f9ee0f46c2256bd29ae0ab85308f18854c3d95b5fcd2333b0f06585583db",
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+      },
+      "label": "R7-original",
+      "requests": {
+        "completed_responses": 115,
+        "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_full_provider_body_hashes_sha256": "7bc13748bd4fded2cb4499c241334df57909a28ffc18d9513a090f5831aaac5e",
+        "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 115
+      }
+    },
+    {
+      "input_file_sha256": {
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/worlds/native-adaptive-31041c0814053ecdbfe350e6-s61001/replies/responses.sqlite": "3011812d1dd129a5a49e6857a617ce8e65ab33363d81d162e899877b7f04c831",
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/worlds/native-adaptive-31041c0814053ecdbfe350e6-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+      },
+      "label": "U0",
+      "requests": {
+        "completed_responses": 115,
+        "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_full_provider_body_hashes_sha256": "2a860828f43018d3135349f6dc5ab6d575867caeaf44acc77bc15edf7b268ea3",
+        "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 115
+      }
+    }
+  ],
+  "model_steps": 14,
+  "new_institution_invented_in_this_slot": false,
+  "no_text_ID_or_clock_scrubbing": true,
+  "objective": "content-utility",
+  "observation_sha256": "f8d4498a70393c065ea8a91756e7b9dac3d75c8f7c0d041fe2308d568a6765a6",
+  "observed_utc": "2026-11-14T15:10:47.742056+00:00",
+  "own_advantage_over_hand": false,
+  "own_improvement_over_R7": false,
+  "plan_content_sha256": "e13294a1e3e6ba29b918ed6019b7a428825b9227a80534a894ed049c10f8e2ca",
+  "proposal_response_content_sha256": "3739e0c40e9563db2bf29c2c41640acb35885f9958dcbad1b94498a31d56d211",
+  "proposal_status": "generated",
+  "publication_ready": false,
+  "request_and_choice_comparison": {
+    "ordered_completed_request_payload_sha256": true,
+    "ordered_full_provider_body_hashes_sha256": false,
+    "ordered_full_request_payload_sha256": true,
+    "ordered_literal_response_choices_sha256": true
+  },
+  "request_sha256": "f0048d4ddc2cd8911835fec8d25b6da28b7e3164a5d429193d60233bbe6fa8d6",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1",
+  "schema": "scienceutopia.native-open-staged-first-utility-own.v1",
+  "scope": "Completed U0 prefix, not normal whole-study audit/selection or unused evaluation. Explicit literal retention is a valid candidate, not a technical null or an institutional invention. This last actual implementation frame contains the literal parent and task; all reported responses terminate stop and fit the declared output reservation. These observations do not prove that the interface is bug-free, identify every cause of the read loop or establish semantic equivalence on other histories.",
+  "source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "status": "complete",
+  "step_status_counts": {
+    "applied": 4,
+    "finished": 1,
+    "rejected": 9
+  },
+  "suggestion_id": "native-adaptive-31041c0814053ecdbfe350e6",
+  "tool_counts": {
+    "finish": 1,
+    "plan": 1,
+    "read_file": 12
+  },
+  "total_declared_own_slots": 6,
+  "unused_evaluation_complete": false,
+  "writer": {
+    "current_progress": {
+      "active": "content-utility:g1",
+      "observed_utc": "2026-11-14T15:09:15.571351+00:00",
+      "stage": "readiness"
+    },
+    "pid": 32780,
+    "session": 79701
+  }
+}

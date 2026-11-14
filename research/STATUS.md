@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+### November15 00:09JST: staged U0 completes by retention; U1 readiness starts
+
+The unchanged original writer completes its second own slot at T=-18/
+U=-13.3333, equal to R7 and worse than the hand. U0 explicitly retains the
+exact parent after one plan, three successful reads, nine rejected repeated
+reads and finish:14 charged steps, no write or component probe. All115 full
+scientist payloads/choices equal R7. This is a valid measured retention, not
+a generation null, new institution, host fallback or improvement.
+[Sealed U0 result and actual-frame diagnosis](results/native-open-staged-first-utility-own-v1.md).
+
+All14 actual designer replies terminate stop; reported input counts plus the
+8192-token output reservation fit40960. The inspected implementation frame
+actually contains the literal parent/task and prior rejection. That evidence
+does not prove all interface behavior or isolate every cause of the read loop.
+At15:09:15UTC writer79701 moves to content-utility:g1 readiness. Two of six
+own slots/four physical worlds complete; whole-study audits, selection and
+unused evaluation are pending. No active-source/protocol edit or refill occurs.
+
 ### November14 23:41JST: actual staged T0 completes; no gain, U0 readiness continues
 
 Original writer79701 completes its first own native world at T=-18/U=-13.3333,

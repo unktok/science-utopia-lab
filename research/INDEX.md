@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual staged U0 completes by explicit retention](results/native-open-staged-first-utility-own-v1.md):
+  T=-18/U=-13.3333, with115 literal scientist inputs/choices equal R7.
+  Fourteen charged steps include nine rejected repeated reads, no code write
+  or component probe. Actual inspected frame contains parent/task and responses
+  finish stop; this is not a general interface-health or capacity proof. Two
+  of six own slots complete; U1 readiness begins, no own gain or study closure.
+
 - [Actual staged T0 native/loss completion](results/native-open-staged-first-own-v1.md):
   T=-18/U=-13.3333, equal to R7 and worse than the hand. All115 full inputs
   and literal choices equal R7. One of six own slots completes; U0 readiness

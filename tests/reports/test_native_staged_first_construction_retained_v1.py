@@ -49,3 +49,32 @@ def test_first_actual_native_completion_is_a_tie_not_an_invented_gain_or_whole_s
     assert r['no_text_ID_or_clock_scrubbing']
     assert not r['own_improvement_over_R7'] and not r['own_advantage_over_hand']
     assert not r['full_study_cold_audit_complete'] and not r['publication_ready']
+
+
+def test_utility_explicit_retention_keeps_rejected_reads_and_real_loss_separate():
+    r = checked(json.loads((ROOT/'research/results/native-open-staged-first-utility-own-v1.json').read_text()))
+    assert r['status'] == 'complete' and r['proposal_status'] == 'generated'
+    assert r['candidate_equals_literal_parent_and_R7']
+    assert r['assigned_loss'] == r['cross_scores']['content-utility'] == -13.333333333333332
+    assert r['cross_scores']['throughput'] == -18.
+    assert r['model_steps'] == 14
+    assert r['step_status_counts'] == {'applied': 4, 'rejected': 9, 'finished': 1}
+    assert r['tool_counts'] == {'plan': 1, 'read_file': 12, 'finish': 1}
+    assert [x['step'] for x in r['implementation_checkpoint_rejections']] == list(range(4, 13))
+    assert all('implementation checkpoint' in x['errors'][0]['message']
+        for x in r['implementation_checkpoint_rejections'])
+    assert r['component_testing']['probe_attempts'] == 0
+    assert r['designer_http_summary']['calls'] == 14
+    assert r['designer_http_summary']['all_http_200_final_stop']
+    assert r['designer_http_summary']['all_reported_prompt_plus_reserved_output_fit']
+    frame = r['checked_last_implementation_frame']
+    assert frame['literal_current_system_equals_parent'] and frame['implementation_task_present']
+    assert frame['phase'] == 'implementation' and frame['previous_status'] == 'rejected'
+    assert frame['advertised_functions']['read_file'] == 0
+    assert r['completed_own_slots_at_snapshot'] == 2 and r['total_declared_own_slots'] == 6
+    assert r['request_and_choice_comparison']['ordered_full_request_payload_sha256']
+    assert r['request_and_choice_comparison']['ordered_literal_response_choices_sha256']
+    assert not r['new_institution_invented_in_this_slot'] and not r['host_source_repair']
+    assert not r['own_improvement_over_R7'] and not r['own_advantage_over_hand']
+    assert not r['full_study_cold_audit_complete'] and not r['unused_evaluation_complete']
+    assert not r['publication_ready']
