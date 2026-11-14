@@ -1,6 +1,34 @@
 # Local manuscript rebuild subsets
 
-## Current native numeric manuscript
+## Current workflow-controls manuscript: subset preparation, not yet a rebuilt proof
+
+The [reviewed75-page draft](../paper/integrated-workflow-controls-build-v1.json)
+has39 figures,31 tables and26 references. Its new
+[explicit64-file subset](../research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json)
+adds only the literal workflow section/annual figure and substitutes the correct
+reviewed PDF/receipt. The source and earlier subsets stay unchanged.
+The new receipt schema uses the same exact original Git-blob/source/figure/
+support manifest checks; no hash or dependency guard is relaxed.
+
+Preparation and light metadata tests may proceed while science runs. Cached
+TeX compilation and75-page rendering are deferred until real inference ends.
+Do not treat this preparation as the completed rebuild proof. After committing
+the policy/tool, stage from a clean committed checkout to a fresh destination:
+
+```text
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json \
+  --output outputs/integrated-workflow-controls-rebuild-subset-v1-a1
+```
+
+Follow staged REBUILD.md after checking inference is absent. Extract text in
+default pdftotext mode and render all75 pages at90dpi, matching the original
+reviewed receipt. The dedicated verification reader requires exact text and
+all75 PNG hashes, not a page-count-only or partial visual check. This remains
+local paper-source reproduction, not numerical/raw reproduction, anonymous
+submission, redistribution clearance or publication readiness.
+
+## Preserved native numeric manuscript
 
 The [reviewed73-page draft](../paper/integrated-native-numeric-build-v1.json)
 has38 figures,30 tables and26 references. Its

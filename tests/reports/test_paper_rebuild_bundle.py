@@ -244,7 +244,9 @@ def test_planning_search_policy_stages_historical_69_page_inputs_not_live_tex(tm
 
 
 def test_native_numeric_policy_stages_reviewed_73_page_inputs(tmp_path):
-    root = bundle.ROOT
+    root = historical_integrated_root(tmp_path,
+        source='61da3a255980aa56b81b0e1cfec4c2bc68530d22',
+        policy_path='research/publication/paper-rebuild-allowlist-integrated-native-numeric-v1.json')
     policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-native-numeric-v1.json').read_text())
     report = bundle.stage(root, policy, tmp_path / 'native-numeric-subset', source_commit='SCRIPTED-staging-source')
     assert len(report['files']) == 62 and len(report['literal_tex_dependencies']) == 59
@@ -254,3 +256,31 @@ def test_native_numeric_policy_stages_reviewed_73_page_inputs(tmp_path):
     assert 'output/pdf/science-utopia-lab-integrated-native-numeric-working-paper.pdf' in report['files']
     assert 'output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf' not in report['files']
     assert not report['published_or_uploaded'] and not report['raw_or_model_data_included']
+
+
+def test_workflow_policy_stages_exact_75_page_inputs_without_substituting_older_paper(tmp_path):
+    root = bundle.ROOT
+    policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json').read_text())
+    report = bundle.stage(root, policy, tmp_path / 'workflow-subset', source_commit='SCRIPTED-staging-source')
+    assert len(report['files']) == 64 and len(report['literal_tex_dependencies']) == 61
+    assert report['original_build_source_commit'] == '173d2e342db911ad3b685fe6967c829bb93a2a73'
+    assert report['original_build_receipt_schema'] == 'scienceutopia.integrated-workflow-controls-manuscript.v1'
+    assert {'paper/integrated/native-workflow-controls.tex',
+        'paper/figures/native-workflow-controls-paper-v1/annual-paths.png'} <= set(report['literal_tex_dependencies'])
+    assert 'output/pdf/science-utopia-lab-integrated-workflow-controls-working-paper.pdf' in report['files']
+    assert 'output/pdf/science-utopia-lab-integrated-native-numeric-working-paper.pdf' not in report['files']
+    assert not report['published_or_uploaded'] and not report['raw_or_model_data_included']
+
+
+def test_workflow_receipt_rejects_changed_figure_without_altering_original(tmp_path, monkeypatch):
+    from copy import deepcopy
+    root = bundle.ROOT
+    original_policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json').read_text())
+    read = bundle.read_file
+    def changed(base, name):
+        body = read(base, name)
+        return body + b'changed' if name.endswith('/annual-paths.png') else body
+    monkeypatch.setattr(bundle, 'read_file', changed)
+    with pytest.raises(ValueError, match='changed from reviewed receipt'):
+        bundle.stage(root, deepcopy(original_policy), tmp_path / 'changed-subset', source_commit='SCRIPTED')
+    assert not (tmp_path / 'changed-subset').exists()
