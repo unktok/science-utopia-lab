@@ -42,6 +42,22 @@ The next comparison-only post-funding-cost reference actually starts at
 OriginalPID8708 remains live at22:19:21UTC; whole comparison has no terminal.
 There are still zero own outcomes and no claimed optimization improvement.
 
+Second actual reference also closes normally: post-funding-cost has T=-20 and
+U=-15.333333333333332, better than R7 by2 units on each declared loss. This is
+the prespecified hand comparison, not a newly optimized institution or visible
+designer feedback. Its observation content is
+`5d758ffad979532433d396cc80c689848329d4dbc417058011eaf3519269cae0`, file SHA256
+`db491baa59b9ca4cc16afb381a686eff0a66823f2f035da3bbff62bacdd5dab6`;
+cross-score file SHA256
+`1399e7857d474b54297ca171558565fda901a16e901df612f54461495f945f6c`.
+At22:30:54.371972UTC the original driver advances to exact-request readiness
+for scalar::throughput:g0, with intent file SHA256
+`0976fa0e91b90071c6e09463f0199eb229f67f62946330e8badbabb83cad6b9c`.
+OriginalPID8708 remains live at22:32:15UTC; both references are complete but no
+own slot has completed or been refilled.75 common-panel result records exist
+at reference closure; do not substitute an older study's93-call count merely
+because the two loss values match. Whole raw/cost audit still waits for closure.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
