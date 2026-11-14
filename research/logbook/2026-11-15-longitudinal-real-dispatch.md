@@ -15,6 +15,18 @@ that process live at21:55:31UTC; this is a dated observation, not a lease or a
 permanent liveness claim. Its own actual initial request-bound calibration is
 running; neither a completed certificate nor a native result is inferred.
 
+Later actual milestone at22:01:08UTC: all28 actual initial controls complete
+with ok=True; original certificate all_controls_passed=True, content
+`d0633cc0645d0a7e8b7f4e49368ffb3857856ba28f30650317a0957c7fb7af8c`,
+file SHA256`0e767362870ab673a1b1c3e631157b23adc695312995ea183ea3f69f2e879cda`.
+The public bounded result's file SHA256 is
+`2bf755a25a788cf453a2f5055a4f4d3ca9a67bb47f1b4bd60c6bd95698351629`.
+R7-original is actually started, with initial native checkpoint and scientist
+response journal present; its started file SHA256 is
+`2d4db6c7b6e129d099ac7e9de5073bac76533d9199428871cf10af4e7abd734a`.
+PID8708 remains live. No completed reference loss, own proposal, full comparison
+or institutional gain is claimed at this snapshot.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
@@ -40,6 +52,18 @@ It does not inspect evaluation outcomes or feed them to the author, but it
 does not establish usage outside the three declared local roots/machine.
 Repeat the complete inventory immediately before any fixed dispatch; do not
 change the reserved seed or reselect if prior production usage is found.
+
+The old72-file policy needs an explicit prospective source review for later
+fixed preparation undera5be8d31. The actual five-source diff changes only
+waiter-test parametrization/argument assertion to add construction coverage;
+SQLite fixture builders and all72 exact file bindings stay literal. A separate
+runtime policy records that review and the one new test hash, rather than
+changing the old policy or granting new directory exclusions. Its content is
+`0734e9b4644bc74cc4d5628f27499bcebd92c5425e767a0594e245642faf652b`
+at the feature worktree's`outputs/native-longitudinal-fixed-fixture-policy-v1-a1.json`.
+A separate clean fixed-evaluation worktree is created at the exacta5be8d31;
+it has no plan/selection/inference and must wait for normally closed original
+development, paired original cold audits and a fresh complete seed inventory.
 
 Raw outer admission:
 `science-utopia-lab-experiments/native-longitudinal-shared-dispatch-v1-a1/outputs/native-longitudinal-scientific-resources-v1-a1`.

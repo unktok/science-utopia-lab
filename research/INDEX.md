@@ -8,8 +8,9 @@ Historical documents retain their paths and source identities.
 
 - [Actual longitudinal comparison dispatched](logbook/2026-11-15-longitudinal-real-dispatch.md):
   original82259 starts unchangeda5be8d31 after two independent scientific
-  resource observations. Its own initial actual calibration is in progress,
-  not a certificate or a scientific gain. Reserved-seed inventory checks1414
+  resource observations. Its own28-case initial actual calibration passes and
+  original R7 native world starts; no complete loss or scientific gain yet.
+  Reserved-seed inventory checks1414
   bindings in three local roots; its later-than-preparation timing is explicit.
 
 - [Actual two-frame64k capacity closure](results/native-longitudinal-actual-capacity-v3.json):
