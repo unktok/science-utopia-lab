@@ -12,7 +12,10 @@ the earlier missing-reference claim is explicitly corrected, not duplicated.
 [Exact new PDF receipt](../paper/integrated-staged-construction-build-v1.json).
 No new scientific results or actual LLM repairs follow from this editorial
 update. The81-page artifact and all older bytes remain unchanged. The82-page
-minimal subset is not yet verified; publication readiness remains unachieved.
+minimal68-file subset has also actually rebuilt: extracted text and all82
+page images match, with binary PDF bytes different. All staged inputs stay
+unchanged. [Subset verification](results/integrated-staged-construction-rebuild-subset-verification-v1.json).
+This is not fresh inference, clean-machine reproduction or publication readiness.
 
 The fifth unchanged resource check exits1 at13:10:56UTC with CPU583.2%,
 42.11GiB free+inactive and three unclassified Python workers. A later single

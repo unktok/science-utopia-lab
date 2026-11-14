@@ -1,0 +1,47 @@
+{
+  "actual_build": {
+    "engine": "Tectonic0.17.0",
+    "existing_TeX_cache_required": true,
+    "exit_code": 0,
+    "flags": "--only-cached --untrusted --keep-logs --keep-intermediates",
+    "layout_or_reference_warnings": 0,
+    "log_sha256": "271b2988cfaa03e74a7df12f75d25fc17024a464516f9add5558a432f4c5309c",
+    "tool_session": 5155
+  },
+  "binary_pdf_identical": false,
+  "content_sha256": "853a878203a3376139f47ea23c36c62cb560207fdec47604f366e1a7247735fa",
+  "fresh_inference_or_clean_machine_build_claimed": false,
+  "new_model_calls": 0,
+  "numerical_results_recomputed": false,
+  "original_PDF_or_receipt_overwritten": false,
+  "original_build_source_commit": "40ea7d689ba540ce79e691c25f73bc2b4d2a8afc",
+  "original_receipt": "paper/integrated-staged-construction-build-v1.json",
+  "original_receipt_content_sha256": "d9fc61f25aa532f98c029012b44e00a724204b12e8bf3084872e6c980c7f8392",
+  "original_reviewed_pdf_sha256": "73b14e2f5e6642a5f7468bd0d408f773b7623276be1f8490724fedbfc0664c6e",
+  "policy_file": "research/publication/paper-rebuild-allowlist-integrated-staged-construction-v1.json",
+  "policy_file_sha256": "e5825d48b0586f991acfb93fcfddf2c4fe52efe19cc34661539328095b6c7cb9",
+  "publication_ready": false,
+  "rebuilt_pdf_sha256": "7dfbf243ed4548bf8154718d8fbaa998fe3a2d5ede35b8bbf0e35fbb0197d20e",
+  "render": {
+    "all_page_pixels_match_reviewed_original": true,
+    "dpi": 90,
+    "exit_code": 0,
+    "page_hash_manifest_sha256": "4a4f69c4652147be9004dc13dd0a4d7027cf51aa22a70065e7a1a178f56c00c9",
+    "pages": 82,
+    "tool_session": 92372
+  },
+  "schema": "scienceutopia.integrated-staged-construction-rebuild-subset-verification.v1",
+  "source_and_original_artifacts_unchanged": true,
+  "subset": {
+    "all_staged_input_bytes_unchanged": true,
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/integrated-staged-construction-rebuild-subset-v1-a1",
+    "files": 68,
+    "literal_dependencies": 65,
+    "manifest_content_sha256": "022ebb3eec1e0a833d08a5b474fd4b8b885b291bb3ab81bcab4b11fbc18df1bc"
+  },
+  "text": {
+    "default_pdftotext_sha256": "10e5ecdf518e1ca729d6d6f8ed8942c22694ea37f2b2924e6d9775780658f3a4",
+    "identical_to_reviewed_original": true
+  },
+  "verification_source_commit": "816b8274e254f98f29057fbe460567d9810ba9fe"
+}

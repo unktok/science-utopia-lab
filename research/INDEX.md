@@ -11,6 +11,8 @@ Historical documents retain their paths and source identities.
   Retains42 figures/36 tables, adds only one reference (ALA2022); AMD-LLM was
   already cited. No new scientific result or actual model repair. The earlier
   reviewed81-page artifact and its own subset proof remain unchanged.
+  [Actual68-file reconstruction](results/integrated-staged-construction-rebuild-subset-verification-v1.json)
+  also matches text and all82 page images, not binary PDF bytes or new inference.
 
 - [Actual staged plan prepared, not dispatched](results/native-open-staged-institution-prepared-v1.json):
   frozenf47270b9 preparation succeeds with the unchanged real native world.

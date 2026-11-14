@@ -10,8 +10,12 @@ It adds the2022 programmatic mechanism-design precedent and the SCRIPTED staged
 construction boundary, not new scientific results. AMD-LLM was already cited
 through `submission-sources.bib`; the earlier two-missing-reference statement
 is [explicitly corrected](../research/publication/novelty-addendum-programmatic-institutions-v1.md).
-All older PDFs and receipts remain unchanged. The new minimal rebuild subset
-is not yet verified; the81-page proof below applies only to its own snapshot.
+All older PDFs and receipts remain unchanged. The explicit68-file subset
+(65 literal dependencies plus LICENSE, PDF and receipt) also rebuilds with
+identical extracted text and every82 reviewed page image, using the existing
+TeX cache; [verification](../research/results/integrated-staged-construction-rebuild-subset-verification-v1.json).
+PDF binary bytes differ. This is not numerical reproduction, clean-machine
+setup or main-track readiness. Each older proof still applies to its own snapshot.
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The preceding reviewed artifact is the

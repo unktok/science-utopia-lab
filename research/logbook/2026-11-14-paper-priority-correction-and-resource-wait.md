@@ -53,3 +53,10 @@ because its patch path was relative to the home working directory. It was
 immediately moved via an absolute-path add/delete patch to this repository;
 only that just-created file was removed, recoverable from the repository copy.
 No user file, old record or scientific input was changed by that correction.
+
+At clean816b8274, actual stage88302 exits0 with68 files/65 literal dependencies.
+Actual cached/untrusted Tectonic5155 and90dpi Poppler92372 both exit0. Rebuilt
+default-mode text and all82 PNG hashes equal the reviewed original; every
+staged input and every historical artifact retains its bytes. PDF binary bytes
+differ. Exact verification is retained separately without changing the earlier
+build receipt's snapshot flag. No numerical replay or inference occurs.

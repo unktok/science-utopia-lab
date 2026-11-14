@@ -35,3 +35,18 @@ def test_changed_new_inputs_cannot_inherit_the_reviewed_receipt(tmp_path, monkey
     with pytest.raises(ValueError, match='changed from reviewed receipt'):
         bundle.stage(bundle.ROOT, policy, tmp_path / 'subset', source_commit='SCRIPTED')
     assert not (tmp_path / 'subset').exists()
+
+
+def test_actual_rebuild_matches_all_reviewed_pages_without_claiming_new_science():
+    r = checked(json.loads((bundle.ROOT / 'research/results/integrated-staged-construction-rebuild-subset-verification-v1.json').read_text()))
+    original = checked(json.loads((bundle.ROOT / 'paper/integrated-staged-construction-build-v1.json').read_text()))
+    assert r['original_receipt_content_sha256'] == original['content_sha256']
+    assert r['subset']['files'] == 68 and r['subset']['literal_dependencies'] == 65
+    assert r['subset']['all_staged_input_bytes_unchanged']
+    assert r['actual_build']['exit_code'] == r['render']['exit_code'] == 0
+    assert r['render']['pages'] == 82 and r['render']['all_page_pixels_match_reviewed_original']
+    from utopia.system.design_patch import digest
+    assert r['render']['page_hash_manifest_sha256'] == digest(original['visual_review']['page_png_sha256'])
+    assert r['text']['default_pdftotext_sha256'] == original['build']['text_sha256']
+    assert r['text']['identical_to_reviewed_original'] and r['new_model_calls'] == 0
+    assert not r['original_PDF_or_receipt_overwritten'] and not r['publication_ready']
