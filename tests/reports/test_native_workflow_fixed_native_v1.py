@@ -10,6 +10,7 @@ import tempfile
 import subprocess
 import sys
 from types import SimpleNamespace
+import pytest
 
 from scripts import run_native_workflow_objective_loop_v1 as development
 from scripts import run_native_workflow_fixed_evaluation_v1 as driver
@@ -26,9 +27,10 @@ from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 
-def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_path, fixed_corpus, monkeypatch):
+@pytest.mark.parametrize('designer_profile', ['legacy', development.FEEDBACK_MODE])
+def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_path, fixed_corpus, monkeypatch, designer_profile):
     prior = tmp_path / 'development'
-    development_check(prior, fixed_corpus, monkeypatch, 'independent-numeric-v2', 'read900')
+    development_check(prior, fixed_corpus, monkeypatch, 'independent-numeric-v2', 'read900', designer_profile)
     old_root = prior / 'run'; original = development.read(old_root / 'plan.json')
     verification = json.loads((prior / 'verification.json').read_text())
     old_audits = [Path(verification['original_cold_audit_directory']) / name
@@ -99,6 +101,7 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
         'schema': 'scienceutopia.native-workflow-fixed-software-check.v1',
         'classification': 'SCRIPTED-HTTP-corpus-and-upstream-origin-not-scientific-evaluation',
         'source_commit': p['source_commit'], 'new_model_calls': 0,
+        'designer_profile': designer_profile,
         'development_native_software_worlds': 7, 'additional_native_software_worlds': 2,
         'additional_annual_checkpoints': 8, 'transport_application_records': 2,
         'known_nulls_preserved': 1, 'fixed_selection_unchanged': True,
