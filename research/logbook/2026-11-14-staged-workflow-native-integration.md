@@ -50,3 +50,22 @@ Final retained-evidence/profile/legacy checks89141 exit0:41 cases pass in10.28s.
 Their JUnit remains `outputs/staged-workflow-integration-v1-a3/junit.xml`.
 They do not add41 worlds or real model replies. This source is then frozen
 before actual preparation and shared-resource observation.
+
+## Actual real-model preparation, not dispatch
+
+At cleanf47270b9, new separate scientific and read-only analysis worktrees are
+created.10807 exits0 after reconstructing the original real planning evidence,
+the unchanged264 scientific source files, exact bank and local backend metadata.
+It prepares the six-slot/eight-world plan with zero model POSTs.
+
+Resource a1 fails CPU267.7% and six unknown Python commands. Read-only PID/cwd
+and named source inspection identifies precise orchestration/scoring/test roles,
+not an exclusive lease or transitive no-inference theorem. Additional exact
+command allowances leave CPU250%, memory38GiB and unknown-engine guards intact.
+a2 fails on a newly appeared cohort child at CPU215.1%; a3 fails on new children
+and CPU374.7%; a4 fails at397.9% with still-changing children. All four original
+failures remain. No source, loss, old run, resource threshold or other project
+is modified; no scientific writer or actual-backend calibration starts.
+[Prepared state and retained observations](../results/native-open-staged-institution-prepared-v1.json).
+The next action is a fresh passing two-sample resource window, not another
+immediate threshold change or a claim that inference is running in background.

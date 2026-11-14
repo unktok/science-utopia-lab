@@ -1,0 +1,112 @@
+{
+  "actual_backend_calibration_passed": false,
+  "actual_model_POSTs": 0,
+  "analysis_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1",
+  "authoring_scope": "literal-open-institutions-code-and-graph-v1",
+  "budget": {
+    "candidate_slots": 6,
+    "component_probes_upper_bound": 384,
+    "designer_POSTs_upper_bound": 376,
+    "designer_session_wall_seconds": 1800,
+    "fresh_reference_worlds": 2,
+    "native_worlds_upper_bound": 8,
+    "observer_POSTs_upper_bound": 1500,
+    "proposal_POSTs_per_session": 16,
+    "readiness_POSTs_per_session": 40,
+    "readiness_sessions": 7,
+    "replace_failed_slots": false,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_wall_seconds": 7200
+  },
+  "classification": "source-pinned-plan-prepared-no-inference-resource-window-not-ready",
+  "comparison_only_references": [
+    "post-funding-cost"
+  ],
+  "component_bank_content_sha256": "e281b346b07324981846a32627d658fa489c511ddfa654e5d7e54cee559a1861",
+  "content_sha256": "f9aa30f28f274417059c8a60cc12d30beedaa9c4c8eade241117b5b37efbfa39",
+  "designer_mode": "open-institutions-staged-tests-v1",
+  "next_action": "Wait for acceptable shared CPU/memory/loaded-model/unknown-process observations; retain a fresh two-sample passing record before starting original pinned writer. No scientific job or automatic dispatch is running from this preparation.",
+  "optimizer_visible_references": [
+    "R7-original"
+  ],
+  "other_projects_stopped_or_modified": false,
+  "plan_content_sha256": "e13294a1e3e6ba29b918ed6019b7a428825b9227a80534a894ed049c10f8e2ca",
+  "plan_file_sha256": "6c1f97530ea7c5704fb418d69106a7d624a93799fd2a0d19535d4602a411ba06",
+  "prepare_exit_code": 0,
+  "prepare_session": 10807,
+  "previous_scientific_records_changed": false,
+  "publication_ready": false,
+  "real_writer_started": false,
+  "resource_observations": [
+    {
+      "check_file_sha256": "297445443f9d1967b3092478edf8664abb2330796dc02687ecf65a2a218589dd",
+      "cpu_percent": 267.7,
+      "declared_cpu_ceiling": 250,
+      "declared_minimum_free_plus_inactive_bytes": 40802189312,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a1",
+      "ended_ready_record_exists": false,
+      "exact_argument_allowance_note": null,
+      "free_plus_inactive_GiB": 43.06890869140625,
+      "loaded_models": {
+        "models": []
+      },
+      "ready": false,
+      "started_file_sha256": "de5b3d1dfe88a722322cb2c499f67dbb8490b4f1e6f5e343f46bec590c8b7c36",
+      "unclassified_processes": 6
+    },
+    {
+      "check_file_sha256": "3aef6291ab64bbb36cf5a4f3897081ce2cc8e4d1ff4ce054289caf096f412448",
+      "cpu_percent": 215.10000000000002,
+      "declared_cpu_ceiling": 250,
+      "declared_minimum_free_plus_inactive_bytes": 40802189312,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a2",
+      "ended_ready_record_exists": false,
+      "exact_argument_allowance_note": "Read-only PID/cwd/direct entrypoint and named worker inspection: these exact commands are trusted orchestration, research-controller or container/scoring drivers; no direct host local-model loader was seen in the inspected sources. RRS runtime invokes Codex CLI, recursive driver delegates bounded container work. This is not a transitive no-inference proof or exclusive lease: new children may appear. Aggregate CPU, memory, loaded-model and unknown-executable guards are unchanged. Other projects and old failed observations are untouched.",
+      "free_plus_inactive_GiB": 43.11924743652344,
+      "loaded_models": {
+        "models": []
+      },
+      "ready": false,
+      "started_file_sha256": "3fa0200bd7b1f6d97b2a04f335da50cfb9d5f607ef674c03db561963118c7b89",
+      "unclassified_processes": 1
+    },
+    {
+      "check_file_sha256": "13da613c6ad15ff3e9fcf322c5139011d8643c49217ca467c4eb71131814db0a",
+      "cpu_percent": 374.7,
+      "declared_cpu_ceiling": 250,
+      "declared_minimum_free_plus_inactive_bytes": 40802189312,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a3",
+      "ended_ready_record_exists": false,
+      "exact_argument_allowance_note": "Read-only PID/cwd/direct entrypoint and named worker inspection: these exact commands are trusted orchestration, research-controller or container/scoring drivers; no direct host local-model loader was seen in the inspected sources. RRS runtime invokes Codex CLI, recursive driver delegates bounded container work. This is not a transitive no-inference proof or exclusive lease: new children may appear. Aggregate CPU, memory, loaded-model and unknown-executable guards are unchanged. Other projects and old failed observations are untouched. Also inspected the exact observed method_cohort_worker.py entrypoint and method_cohort worker: bounded CPU/Docker orchestration, no direct host model loader. Add only that observed full argument string; future unclassified children still fail.",
+      "free_plus_inactive_GiB": 43.20137023925781,
+      "loaded_models": {
+        "models": []
+      },
+      "ready": false,
+      "started_file_sha256": "fe7f7066eb0f3b34095e429f07a38b155c99abaf98eac65633abea1634baeeae",
+      "unclassified_processes": 2
+    },
+    {
+      "check_file_sha256": "6ceb0d1b15f475434123c58b0ad01b578409eb2561c0bbd288d06a77ee2064ba",
+      "cpu_percent": 397.9,
+      "declared_cpu_ceiling": 250,
+      "declared_minimum_free_plus_inactive_bytes": 40802189312,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a4",
+      "ended_ready_record_exists": false,
+      "exact_argument_allowance_note": "Read-only PID/cwd/direct entrypoint and named worker inspection: these exact commands are trusted orchestration, research-controller or container/scoring drivers; no direct host local-model loader was seen in the inspected sources. RRS runtime invokes Codex CLI, recursive driver delegates bounded container work. This is not a transitive no-inference proof or exclusive lease: new children may appear. Aggregate CPU, memory, loaded-model and unknown-executable guards are unchanged. Other projects and old failed observations are untouched. Also inspected the exact observed method_cohort_worker.py entrypoint and method_cohort worker: bounded CPU/Docker orchestration, no direct host model loader. Add only that observed full argument string; future unclassified children still fail. The two newly observed exact commands are the same inspected method_driver_worker.py with a new data reference and the test_successors/test_fixed_researcher unittest command; inspected tests use ScriptedResearcher/patched LocalEve, not a host local-model load. No wildcard allowance or resource threshold change.",
+      "free_plus_inactive_GiB": 43.168548583984375,
+      "loaded_models": {
+        "models": []
+      },
+      "ready": false,
+      "started_file_sha256": "342a5585f33ab27678d10be4d3fa4a880875590cc6701b24b166aafe8f2c8d45",
+      "unclassified_processes": 2
+    }
+  ],
+  "resource_thresholds_changed": false,
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1",
+  "schema": "scienceutopia.native-open-staged-institution-prepared.v1",
+  "source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1",
+  "source_inspection_scope": "Read-only PID/cwd and exact named orchestration/scoring/test entrypoints. No direct host local-model loader seen there; not a transitive no-inference proof or exclusive lease. Exact observed command allowances do not authorize future new children."
+}

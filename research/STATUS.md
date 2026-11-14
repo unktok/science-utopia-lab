@@ -2,6 +2,21 @@
 
 ## Active publication-ready goal
 
+### November14: real staged-study plan prepared; resource window prevents inference start
+
+Actual prepare10807 exits0 at frozenf47270b9 with original real corpus/models,
+audited R7-only20-input bank, six own slots/two controls and the376 designer /
+384 component conservative maxima. No writer started or model POST occurred.
+Four fresh resource observations remain not-ready: CPU267.7/215.1/374.7/397.9%,
+with43.07--43.20GiB free+inactive and unclassified changing worker children.
+The CPU ceiling stays250% and memory minimum38GiB; no threshold, failed record
+or other project's work is changed. Exact inspected orchestration/test command
+allowances do not classify future new children or establish an exclusive lease.
+[Prepared plan and actual failed resource observations](results/native-open-staged-institution-prepared-v1.json).
+Next wait for a fresh two-sample passing resource window, then run the pinned
+writer's actual backend calibration. No real optimization job or dispatch
+monitor is claimed live from this preparation. The publication goal stays open.
+
 ### November14: staged mode now traverses the full native campaign and fixed handoff in software
 
 At clean5c986464,21902 exits0 after454.92s. The explicit new mode passes the

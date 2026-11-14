@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual staged plan prepared, not dispatched](results/native-open-staged-institution-prepared-v1.json):
+  frozenf47270b9 preparation succeeds with the unchanged real native world.
+  Four resource checks fail before inference; CPU/unknown-process limits stay
+  unchanged and other projects are untouched. No real writer/model POST yet.
+
 - [Staged author in the actual native campaign and fixed handoff](components/native-open-workflow-staged-campaign-v1.md):
   ten SCRIPTED native worlds,48 real component probes, original cold audit/cost/
   report and fixed mechanism readouts. Full software integration is verified;
