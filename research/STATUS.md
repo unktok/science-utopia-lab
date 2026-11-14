@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+### November14 14:36JST: three own slots terminal; one known compile null is preserved
+
+T0/U0 both complete with T=-20/U=-15.333333333333332, tying the hand control.
+U1 returns a known final graph but sets costs175 before its consumer
+communication170, violating the unchanged causal rule. The original literal,
+error and exact-parent witness are retained as a consumed null, not repaired
+or assigned a scientific loss. This is not a transport timeout. Writer39932
+continues to T1 at05:35:12UTC. That is3/6 own slots terminal,2 own native
+completions,1 generation null and4 completed physical worlds; no final selection.
+
+The previously missing workflow-development choice route is implemented and
+verified through12 final light cases and two actual cold reads of the retained
+SCRIPTED seven-world archive. Relative caller paths are now forwarded as
+absolute child arguments; the frozen-source output guard is not weakened.
+Choices95408/effects15218/requests4775 now actually wait for original normal
+audit/cost closure from cleanb7737169. They generate no inference and cannot
+make a stopped study complete. [Proof, earlier failures and readout bindings](results/native-workflow-development-readouts-preparation-v1.json).
+
 ### November14 14:22JST: first own completes; the first U proposal is also executing
 
 T0 completes T=-20/U=-15.333333333333332 with no technical failures. Both

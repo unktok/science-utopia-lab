@@ -1,0 +1,50 @@
+{
+  "schema": "scienceutopia.native-workflow-development-readouts-preparation.v1",
+  "classification": "SCRIPTED-retained-data-cold-reader-proof-and-real-readonly-waiters-not-new-science",
+  "readout_source_commit": "b77371694328c7d7ac4ab33961a131de2097836f",
+  "readout_source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-readouts-v2-a2",
+  "unit_evidence": {
+    "a1": {"passed": 21, "failed": 4, "cause": "existing audit fixtures reject basetemp inside scientific source; guard retained"},
+    "a2": {"passed": 25, "seconds": 21.52, "junit_sha256": "92d74228b0b754763ce7a85447b7aaac12a8879409fa8bb5bcf85e01f72d0ce9"},
+    "a3": {"passed": 11, "seconds": 1.84, "junit_sha256": "c276cf9648d3c2acb9bebc436f3587da02e17a7e8b18549449940dc40ad0f348"},
+    "a4": {"passed": 11, "failed": 1, "cause": "new regression detects child still receives raw relative argv after namespace-only resolution"},
+    "a5": {"passed": 12, "seconds": 2.09, "junit_sha256": "7e45531eaa7b774b0d79876aa3ef126b57bedf762e08385d2b05681f7a5cdc09"}
+  },
+  "actual_cold_reader_checks": {
+    "scripted_world_source_commit": "7f1fc61f98e4f09d235879c8ccfd4e57714b9d79",
+    "retained_data_kind": "seven native software worlds with scripted HTTP/corpus/upstream provenance; not real model results",
+    "original_audits_directory": "/private/tmp/science-utopia-workflow-audit-pq5w651v",
+    "original_failing_source_commit": "8bf3e1dfec0ce15a219518f30f1778f58698a865",
+    "failed_sessions": [41039, 44265],
+    "failure": "relative CLI output reinterpreted in scientific child cwd; outside-source guard rejects before output creation",
+    "passing_sessions": [62172, 14287],
+    "passing_exit_codes": [0, 0],
+    "passing_outputs": ["outputs/SCRIPTED-workflow-development-choices-cold-v1-a3", "outputs/SCRIPTED-workflow-development-choices-cold-v1-a4"],
+    "all_three_files_byte_identical": true,
+    "file_sha256": {
+      "report.json": "df4aa5be58f04e5d3fb30f4cc9641f6d674361d887aae295c414babe743dec4e",
+      "manifest.json": "9cf2dcc653851741e26fa9799e426585fd5f46e9325ec3654decf34ac44f69df",
+      "annual-project-states.csv": "f36614ea8a174f0a01b6448f8d3a76d9e3d3488cc8e17de2af8ba59a4ee7792f"
+    },
+    "worlds": 7,
+    "annual_boundaries": 28,
+    "direction_requests": 0,
+    "generation_null_retained_in_strict_six_slot_precondition": true,
+    "new_scientist_designer_critic_calls": 0,
+    "new_native_forwards_or_code_executions": 0
+  },
+  "real_readonly_continuations": {
+    "scientific_source_commit": "7f1fc61f98e4f09d235879c8ccfd4e57714b9d79",
+    "requires_original_normal_audit_and_cost_closure": true,
+    "choices_session": 95408,
+    "effects_session": 15218,
+    "requests_session": 4775,
+    "outputs": ["outputs/native-workflow-compiler-feedback-choices-v2-a1", "outputs/native-workflow-compiler-feedback-effects-v2-a1", "outputs/native-workflow-compiler-feedback-requests-v2-a1"],
+    "actually_waiting_at_snapshot": true,
+    "new_model_calls_or_retry_allowed": false,
+    "closed_real_reports_claimed": false
+  },
+  "original_scientific_source_or_raw_modified": false,
+  "new_invention_or_loss_improvement": false,
+  "publication_ready": false
+}

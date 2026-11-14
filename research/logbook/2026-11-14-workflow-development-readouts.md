@@ -49,3 +49,25 @@ the new targeted regression catches it (a4:11pass/1fail,2.49s). The corrected
 child-argv construction is checked at a fresh a5, before any new cold call.
 No outside-source guard, historical receipt, scientific raw or active runtime
 is changed. New automatic mechanism readers have not yet been started.
+
+At freshb7737169, the final12-case suite passes2.09s, JUnit SHA256
+7e45531eaa7b774b0d79876aa3ef126b57bedf762e08385d2b05681f7a5cdc09.
+Actual cold CLI62172/14287 both exit0 on the retained SCRIPTED development
+archive, with7 worlds/28 annual boundaries/zero direction-request calls. All
+three output files match byte-for-byte. This proves the new reader path on
+retained software data, not a new model experiment or live scientific audit.
+[Compact scope/hashes](../results/native-workflow-development-readouts-preparation-v1.json).
+
+After that proof, choices95408, effects15218 and requests4775 actually wait
+from the separate frozenb7737169 readout source. They require normal closure
+of the original7f1fc61f science/audit/cost chain, then export each view twice
+without new inference/retry. Main reports80271 remain independently bound to
+their original7f1fc61f source; no active source/HEAD is changed.
+
+Meanwhile U1 returns a known complete literal graph but fails the unchanged
+causal rule: costs175 feeds communication170. It consumes a generation-null
+slot without a loss or native world. The exact-parent diagnostic retains this
+edge/witness; raw HTTP reports done=stop,24373 input/6705 output tokens, not
+a timeout or missing response. The writer continues to T1 readiness at
+05:35:12UTC and then its free proposal. Thus3/6 own slots are terminal:2 native
+completions,1 known compilation null; the study itself is still live.
