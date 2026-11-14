@@ -84,6 +84,18 @@ def export(args):
         plan_schema = 'scienceutopia.native-workflow-objective-loop.v1.plan'
         audit_schema = 'scienceutopia.native-workflow-objective-loop-audit.v1'
         schema = 'scienceutopia.native-workflow-choice-trace.v1'
+    elif study == 'longitudinal-development':
+        from scripts import run_native_longitudinal_comparison_v1 as driver
+        from scripts.reports.native_workflow_objective_loop_v1 import summarize
+        records = {}
+        for key in driver.history_keys(plan):
+            state = json.loads((driver.history_directory(root,key)/'campaign/native-adaptive-state.json').read_text())
+            if state['pending'] is not None or len(state['records']) != 3:
+                raise ValueError('all twelve original longitudinal slots required for planning trace')
+            records.update({(key,g):r for g,r in enumerate(state['records'])})
+        summarize(plan,audit,records)
+        plan_schema=driver.SCHEMA+'.plan'; audit_schema=driver.AUDIT_SCHEMA
+        schema='scienceutopia.native-longitudinal-choice-trace.v1'
     elif study == 'development':
         plan_schema = 'scienceutopia.native-planning-objective-loop.v1.plan'
         audit_schema = 'scienceutopia.native-planning-objective-loop-audit.v1'
@@ -119,6 +131,12 @@ def export(args):
         plan_schema='scienceutopia.native-workflow-fixed-evaluation.v1.plan'
         audit_schema='scienceutopia.native-workflow-fixed-evaluation-audit.v1'
         schema='scienceutopia.native-workflow-fixed-choice-trace.v1'
+    elif study == 'longitudinal-fixed-evaluation':
+        from scripts.reports.native_objective_fixed_evaluation_v1 import summarize
+        summarize(plan,audit,study='longitudinal-v1')
+        plan_schema='scienceutopia.native-longitudinal-fixed-evaluation.v1.plan'
+        audit_schema='scienceutopia.native-longitudinal-fixed-evaluation-audit.v1'
+        schema='scienceutopia.native-longitudinal-fixed-choice-trace.v1'
     else: raise ValueError('explicit supported planning trace study required')
     if (plan['schema'] != plan_schema
             or audit['schema'] != audit_schema
@@ -175,7 +193,8 @@ def main():
     for key in keys:
         parser.add_argument('--' + key, type=Path, required=True)
     parser.add_argument('--study', choices=('development', 'workflow-development', 'fixed-evaluation', 'parent-presentation',
-        'joint-fixed-evaluation', 'workflow-fixed-evaluation'), default='development')
+        'joint-fixed-evaluation', 'workflow-fixed-evaluation', 'longitudinal-development',
+        'longitudinal-fixed-evaluation'), default='development')
     args = parser.parse_args()
     # Bind caller-relative locations before the cold child changes cwd to the
     # original scientific source. Never reinterpret an analysis output as a

@@ -63,12 +63,18 @@ def graph_change(before, after, *, allow_institution_edits=False):
 
 
 def summarize(p, audit, records):
-    from scripts.run_native_workflow_objective_loop_v1 import open_institutions
-    opened = open_institutions(p)
+    matched = p['schema'] == 'scienceutopia.native-longitudinal-comparison.v1.plan'
+    if matched:
+        from scripts import run_native_longitudinal_comparison_v1 as driver
+        from scripts.run_native_longitudinal_fixed_evaluation_v1 import fixed_selection
+        fixed_selection(p, audit)
+    else:
+        from scripts import run_native_workflow_objective_loop_v1 as driver
+    opened = driver.open_institutions(p)
     visible_references = p.get('optimizer_reference_labels', p['reference_order'])
     change = lambda before, after: graph_change(before, after, allow_institution_edits=opened)
-    if (p['schema'] != 'scienceutopia.native-workflow-objective-loop.v1.plan'
-            or audit['schema'] != 'scienceutopia.native-workflow-objective-loop-audit.v1'
+    if (p['schema'] != driver.SCHEMA+'.plan'
+            or audit['schema'] != getattr(driver, 'AUDIT_SCHEMA', 'scienceutopia.native-workflow-objective-loop-audit.v1')
             or audit['source_commit'] != p['source_commit'] or audit['plan_sha256'] != p['content_sha256']
             or audit['closure']['terminal']['status'] != 'closed'
             or audit['source_proof']['status'] != 'verified-exact-source-closure'
@@ -86,10 +92,10 @@ def summarize(p, audit, records):
         references.append({'label': label, 'physical_job': identity, 'status': w['status'],
             'scores': clone(w['scores']), 'graph_from_anchor': change(p['initial_system'], w['system']),
             **({'optimizer_visible': label in visible_references} if opened else {})})
-    if set(records) != {(s['objective'], s['generation']) for s in p['schedule']}:
+    if set(records) != {(driver.history_key(s), s['generation']) for s in p['schedule']}:
         raise ValueError('all six original structural slots required')
     for index, slot in enumerate(p['schedule']):
-        objective, generation = slot['objective'], slot['generation']; r = records[objective, generation]
+        objective, generation = slot['objective'], slot['generation']; r = records[driver.history_key(slot), generation]
         if (r['request']['generation'] != generation or r['request']['loss_spec'] != p['losses'][objective]
                 or r['request_sha256'] != digest(r['request']) or len(r['observations']) > 1
                 or len(r['draws']) != len(r['observations'])):
@@ -100,13 +106,23 @@ def summarize(p, audit, records):
             'status': 'generation-null', 'physical_job': None, 'loss': None,
             'cross_scores': {o: None for o in p['objectives']},
             'graph_from_parent': None, 'graph_from_anchor': None}
+        if matched:
+            from utopia.optimization.native_longitudinal_feedback_v1 import VIEW
+            view = r['request'][VIEW]
+            if view['access_contract']['mode'] != slot['arm']:
+                raise ValueError('audited author access arm differs')
+            row['trajectory_access'] = {'view_sha256': digest(view),
+                'active_parent_runs': len(view['active_parent']), 'archived_runs': len(view['archive_items']),
+                'active_parent_observation_ids': [e['observation_id'] for e in view['active_parent']],
+                'exposure_is_not_evidence_of_understanding_or_benefit': True}
         if r['observations'] and r['observations'][0] is not None:
             o = r['observations'][0]; identity = o['suggestion_id']; w = worlds[identity]
             suggestion = r['draws'][0]['suggestion']
             if (identity in used or w['role'] != 'workflow-own-proposal' or w['objective'] != objective
                     or w['status'] != o['status'] or w['system'] != o['candidate']
                     or suggestion is None or suggestion['candidate'] != o['candidate']
-                    or o['loss'] != w['scores'][objective]):
+                    or o['loss'] != w['scores'][objective]
+                    or matched and w.get('arm') != slot['arm']):
                 raise ValueError('workflow own world differs from original audited slot')
             used.add(identity)
             row.update(status=o['status'], physical_job=identity, loss=o['loss'], cross_scores=clone(w['scores']),
@@ -117,8 +133,9 @@ def summarize(p, audit, records):
         slots.append(row)
     if used != set(worlds): raise ValueError('unaccounted original workflow world')
     paths = {}
-    for objective in p['objectives']:
-        rows = [r for r in slots if r['objective'] == objective]
+    for history in driver.history_keys(p):
+        objective = driver.history_objective(history)
+        rows = [r for r in slots if driver.history_key(r) == history]
         own, known = None, min(r['scores'][objective] for r in references if r['label'] in visible_references)
         values = []
         for r in rows:
@@ -127,13 +144,18 @@ def summarize(p, audit, records):
             values.append({'generation': r['generation'], 'observed_loss': r['loss'],
                 'status': r['status'], 'best_own_loss': own, 'best_known_loss': known})
         ties = [r['physical_job'] for r in rows if r['status'] == 'complete' and r['loss'] == own]
-        selected = audit['selection']['selected'][objective]
+        selection_key = '::'.join(history) if matched else objective
+        selected = audit['selection']['selected'][selection_key]
         if (selected['loss'] != own or selected['all_tied_ids'] != ties
                 or selected['selected_id'] != (ties[0] if ties else None)
                 or selected['system'] != (worlds[ties[0]]['system'] if ties else None)):
             raise ValueError('workflow own-only selection changed or a reference was substituted')
-        paths[objective] = values
-    return {'schema': SCHEMA, 'source_commit': p['source_commit'], 'plan_sha256': p['content_sha256'],
+        paths[selection_key] = values
+    return {'schema': 'scienceutopia.native-longitudinal-comparison-report.v1' if matched else SCHEMA,
+        'source_commit': p['source_commit'], 'plan_sha256': p['content_sha256'],
+        **({'information_arms': clone(p['arms']), 'history_order': ['::'.join(k) for k in driver.history_keys(p)],
+            'same_optimizer_seed_not_independent_replication': True,
+            'single_information_field_causal_effect_claimed': False} if matched else {}),
         **({'authoring_scope': p['authoring_scope'], 'optimizer_reference_labels': clone(visible_references),
             'best_known_scope': 'Only optimizer-visible reference and own outcomes; comparison-only hand control remains separately reported'} if opened else {}),
         'audit_content_sha256': audit['content_sha256'], 'score_order': clone(p['objectives']),
@@ -156,20 +178,29 @@ def export(args):
             or a['selection'] != checked(json.loads((root / 'selection.json').read_text()))):
         raise ValueError('unchanged original workflow raw and two matching cold audits required')
     records = {}
-    for objective in p['objectives']:
-        state = json.loads((root / 'search' / objective / 'campaign/native-adaptive-state.json').read_text())
+    matched = p['schema'] == 'scienceutopia.native-longitudinal-comparison.v1.plan'
+    if matched:
+        from scripts import run_native_longitudinal_comparison_v1 as driver
+    else:
+        from scripts import run_native_workflow_objective_loop_v1 as driver
+    for key in driver.history_keys(p):
+        state = json.loads((driver.history_directory(root, key) / 'campaign/native-adaptive-state.json').read_text())
         if state['pending'] is not None or len(state['records']) != 3:
             raise ValueError('pending or incomplete original workflow history')
-        records.update({(objective, g): r for g, r in enumerate(state['records'])})
+        records.update({(key, g): r for g, r in enumerate(state['records'])})
     report = summarize(p, a, records)
     if before != _inventory(root) or hashes != {str(f): file_sha256(f) for f in inputs}:
         raise ValueError('workflow report input changed during reading')
     output.mkdir(parents=True); saved = save(output / 'report.json', report)
-    render(saved, output)
+    if matched:
+        from scripts.reports.native_longitudinal_comparison_v1 import render as render_access
+        render_access(saved, output)
+    else:
+        render(saved, output)
     fields = ['slot_index', 'objective', 'generation', 'status', 'physical_job', 'loss', 'throughput',
         'content-utility', 'changed_phases', 'removed_edges', 'added_edges']
-    from scripts.run_native_workflow_objective_loop_v1 import open_institutions
-    if open_institutions(p): fields += ['added_nodes', 'removed_nodes', 'source_edits', 'changed_mechanisms']
+    if matched: fields.insert(1, 'arm')
+    if driver.open_institutions(p): fields += ['added_nodes', 'removed_nodes', 'source_edits', 'changed_mechanisms']
     with (output / 'slots.csv').open('x', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=fields, lineterminator='\n'); writer.writeheader()
         for row in report['slots']:

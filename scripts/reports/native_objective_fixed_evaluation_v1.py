@@ -52,6 +52,16 @@ def summarize(plan,audit,*,study='count-content-v1'):
         from scripts.run_native_workflow_fixed_evaluation_v1 import REFERENCES
         if plan['objectives']!=['throughput','content-utility'] or plan['evaluation']['reference_labels']!=REFERENCES:
             raise ValueError('literal workflow T/U objectives and both controls required')
+    elif study=='longitudinal-v1':
+        from scripts.run_native_longitudinal_fixed_evaluation_v1 import SCHEMA as family, REFERENCES
+        from scripts.run_native_longitudinal_comparison_v1 import ARMS, OBJECTIVES
+        plan_schema=family+'.plan'
+        audit_schema='scienceutopia.native-longitudinal-fixed-evaluation-audit.v1'
+        schema='scienceutopia.native-longitudinal-fixed-report.v1'
+        if (plan['objectives']!=list(OBJECTIVES) or plan['arms']!=list(ARMS)
+                or plan['evaluation']['reference_labels']!=REFERENCES
+                or plan['selection_order']!=[a+'::'+o for a in ARMS for o in OBJECTIVES]):
+            raise ValueError('literal four objective/arm selections and both controls required')
     else:raise ValueError('explicit supported fixed-report study required')
     if (plan['schema']!=plan_schema
             or audit['schema']!=audit_schema
@@ -64,7 +74,7 @@ def summarize(plan,audit,*,study='count-content-v1'):
     worlds={w['identity']:w for w in audit['worlds']}
     if len(worlds)!=len(audit['worlds']) or set(worlds)!={j['identity'] for j in plan['jobs']}:
         raise ValueError('exact unique physical evaluation jobs required')
-    selected_keys=plan['selection_order'] if study=='joint-v1' else plan['objectives']
+    selected_keys=plan['selection_order'] if study in ('joint-v1','longitudinal-v1') else plan['objectives']
     labels=['reference:'+r for r in plan['evaluation']['reference_labels']]+['selected:'+o for o in selected_keys]
     physical=[];logical=[]
     for job in plan['jobs']:
@@ -124,6 +134,23 @@ def summarize(plan,audit,*,study='count-content-v1'):
                 'same_physical_job':a['physical_job'] is not None and a['physical_job']==b['physical_job'],
                 'differences':{k:None if a['scores'][k] is None or b['scores'][k] is None
                     else a['scores'][k]-b['scores'][k] for k in plan['losses']}})
+    if study=='longitudinal-v1':
+        result.update(selection_order=clone(selected_keys), information_arms=clone(plan['arms']),
+            objective_choice_differences=[], information_access_differences=[])
+        def contrast(left,right,seed):
+            a,b=by['selected:'+left,seed],by['selected:'+right,seed]
+            return {'seed':seed,'left':'selected:'+left,'right':'selected:'+right,
+                'left_physical_job':a['physical_job'],'right_physical_job':b['physical_job'],
+                'same_physical_job':a['physical_job'] is not None and a['physical_job']==b['physical_job'],
+                'differences':{k:None if a['scores'][k] is None or b['scores'][k] is None
+                    else a['scores'][k]-b['scores'][k] for k in plan['losses']}}
+        for seed in plan['evaluation']['seeds']:
+            for arm in plan['arms']:
+                result['objective_choice_differences'].append({'arm':arm,
+                    **contrast(arm+'::throughput',arm+'::content-utility',seed)})
+            for objective in plan['objectives']:
+                result['information_access_differences'].append({'objective':objective,
+                    **contrast('parent-trajectory::'+objective,'scalar::'+objective,seed)})
     result['content_sha256']=digest(result);return result
 
 
@@ -148,14 +175,16 @@ def render(report,output):
                 xticklabels=[short(s) for s in report['labels']]);ax.tick_params(axis='x',labelrotation=60)
             for tick in ax.get_xticklabels():tick.set_ha('right')
             ax.grid(axis='y',color='#ededed');ax.legend(title='World seed',fontsize=6,title_fontsize=7)
-        count = ('two' if report['schema']=='scienceutopia.native-workflow-fixed-report.v1' else
+        count = ('two' if report['schema'] in ('scienceutopia.native-workflow-fixed-report.v1',
+            'scienceutopia.native-longitudinal-fixed-report.v1') else
             'eight' if report['schema']=='scienceutopia.native-planning-fixed-report.v1' else 'five')
         fig.suptitle('Frozen submitted policies and '+count+' controls: unused world seeds, no reselection',fontsize=10)
         fig.tight_layout(rect=(0,0,1,.94))
         for ext in ('png','svg'):fig.savefig(output/('fixed-policy-seed-scores.'+ext),dpi=200,metadata={'Date':None} if ext=='svg' else None)
         plt.close(fig)
-        fig,axes=plt.subplots(2,2,figsize=(10,5.6))
-        for ax,(selected,objective) in zip(axes.flat,[(s,o) for s in report['score_order'] for o in report['score_order']]):
+        selected_names=report['selection_order'] if report['schema']=='scienceutopia.native-longitudinal-fixed-report.v1' else report['score_order']
+        fig,axes=plt.subplots(len(selected_names),2,figsize=(10,2.8*len(selected_names)))
+        for ax,(selected,objective) in zip(axes.flat,[(s,o) for s in selected_names for o in report['score_order']]):
             rows=[r for r in report['paired_differences'] if r['label']=='selected:'+selected]
             for ordinal,(seed,color) in enumerate(zip(report['seeds'],colors)):
                 known=[r for r in rows if r['seed']==seed and r['differences'][objective] is not None]
@@ -200,6 +229,12 @@ def export(args,*,study='count-content-v1',renderer=None):
         with (output/'objective-choice-differences.csv').open('x',newline='') as f:
             writer=csv.DictWriter(f,fieldnames=fields+report['score_order']);writer.writeheader()
             for r in report['objective_choice_differences']:writer.writerow({**{k:r[k] for k in fields},**r['differences']})
+    if study=='longitudinal-v1':
+        for name,dimension in (('objective_choice_differences','arm'),('information_access_differences','objective')):
+            fields=[dimension,'seed','left','right','left_physical_job','right_physical_job','same_physical_job']
+            with (output/(name.replace('_','-')+'.csv')).open('x',newline='') as f:
+                writer=csv.DictWriter(f,fieldnames=fields+report['score_order']);writer.writeheader()
+                for r in report[name]:writer.writerow({**{k:r[k] for k in fields},**r['differences']})
     save(output/'manifest.json',{'schema':report['schema']+'.export','inputs':inputs,'raw_inventory_sha256':digest(before),
         'report_content_sha256':report['content_sha256'],'files':{p.name:file_sha256(p) for p in sorted(output.iterdir())},
         'new_model_calls':0,'new_code_executions':0})

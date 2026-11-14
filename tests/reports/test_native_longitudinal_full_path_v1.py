@@ -166,7 +166,24 @@ def test_actual_native_access_worker_certificate_cold_costs_and_fixed_handoff(tm
     for path in audits: auditor.worker(root, path)
     assert audits[0].read_bytes() == audits[1].read_bytes()
     a = driver.read(audits[0]); assert len(a['worlds']) == 13
-    assert sum(len(w['physical_proof']['annual_checkpoints']) for w in a['worlds']) == 52
+    # An actual container wall-time failure is a charged unavailable world,
+    # not a reason to refill it or weaken the physical/time guard. Require
+    # successful repeated worlds in every history, not impossible immunity
+    # to host/container timing. Other failure types still fail this fixture.
+    complete = [w for w in a['worlds'] if w['status'] == 'complete']
+    failed = [w for w in a['worlds'] if w['status'] == 'failed']
+    assert len(complete) + len(failed) == 13
+    assert all(len(w['physical_proof']['annual_checkpoints']) == 4 for w in complete)
+    for arm, objective in driver.history_keys(p):
+        assert sum(w['arm'] == arm and w['objective'] == objective
+            for w in complete if w['role'] == 'workflow-own-proposal') >= 2
+    for w in failed:
+        assert all(value is None for value in w['scores'].values())
+        key = (w['arm'], w['objective']); c = driver.campaign(root, p, key, driver.read(root/'developer-reference-context.json'))
+        o = next(o for r in c.state['records'] for o in r['observations'] if o and o['suggestion_id'] == w['identity'])
+        assert o['metadata']['measurements'] == []
+        assert [(e['error_type'], e['error']) for e in o['metadata']['technical_failures']] == [
+            ('CodeExecutionError', 'container wall-time limit exceeded')]
     values = [costs(root, p, driver.read(path)) for path in audits]
     assert values[0] == values[1]
     readiness = sum(c['posts'] for c in calls if c['purpose'] == 'calibration')
@@ -199,11 +216,35 @@ def test_actual_native_access_worker_certificate_cold_costs_and_fixed_handoff(tm
     fixed_costs = [costs(evaluation, fixed.read(evaluation/'plan.json'), fixed.read(path)) for path in fixed_audits]
     assert fixed_costs[0] == fixed_costs[1]
     assert not any(e['kind'] in ('editor-readiness', 'staged-proposal') for e in fixed_costs[0]['auxiliary']['events'])
+    from scripts.finish_native_institution_loop_v1 import same_files
+    from scripts.reports.native_workflow_objective_loop_v1 import export as development_report
+    from scripts.reports.native_longitudinal_fixed_evaluation_v1 import export as fixed_report
+    from scripts.reports.native_observed_request_classes_v1 import export as request_report
+    from scripts.reports.native_institution_effect_trace_v1 import export as effect_report
+    from scripts.reports.native_planning_choice_trace_v1 import export as choice_report
+    readouts = {}
+    for stage, raw, pair in (('development',root,audits),('fixed',evaluation,fixed_audits)):
+        for name, exporter, extra in (
+                ('scores',development_report if stage=='development' else fixed_report,{}),
+                ('requests',request_report,{}),
+                ('effects',effect_report,{'frozen_source':driver.ROOT,'scope':
+                    'longitudinal-objective-development' if stage=='development' else 'longitudinal-fixed-evaluation'}),
+                ('choices',choice_report,{'frozen_source':driver.ROOT,'study':
+                    'longitudinal-development' if stage=='development' else 'longitudinal-fixed-evaluation'})):
+            for i in (1,2):
+                exporter(SimpleNamespace(run=raw,audit_one=pair[0],audit_two=pair[1],
+                    output=external/(stage+'-'+name+'-'+str(i)),**extra))
+            readouts[stage+'-'+name] = same_files(external/(stage+'-'+name+'-1'),external/(stage+'-'+name+'-2'))
+    final_scores = fixed.read(external/'fixed-scores-1/report.json')
+    assert len(final_scores['logical_rows']) == 6 and len(final_scores['paired_differences']) == 8
+    assert len(final_scores['objective_choice_differences']) == len(final_scores['information_access_differences']) == 2
     write_json_atomic(tmp_path/'verification.json', {
         'schema': 'scienceutopia.native-longitudinal-full-path-software.v1',
         'classification': 'SCRIPTED-HTTP-corpus-and-upstream-closure-not-real-model-or-scientific-comparison',
         'source_commit': p['source_commit'], 'development_native_worlds': 13, 'own_slots': 12,
-        'development_annual_checkpoints': 52, 'known_invalid_slot_preserved': 1,
+        'development_annual_checkpoints': sum(len(w['physical_proof']['annual_checkpoints']) for w in a['worlds']),
+        'completed_development_native_worlds': len(complete), 'native_timeout_failures_preserved': len(failed),
+        'known_invalid_slot_preserved': 1,
         'fixed_native_worlds': len(frozen['jobs']), 'fixed_fixture_seed': 72101,
         'scientific_reserved_seed_used': False, 'actual_bounded_sessions': len(calls),
         'scripted_readiness_posts': readiness, 'scripted_proposal_posts': proposal_posts,
@@ -214,5 +255,6 @@ def test_actual_native_access_worker_certificate_cold_costs_and_fixed_handoff(tm
         'development_audit_sha256': file_sha256(audits[0]), 'fixed_audit_sha256': file_sha256(fixed_audits[0]),
         'development_cost_content_sha256': values[0]['content_sha256'],
         'fixed_cost_content_sha256': fixed_costs[0]['content_sha256'],
+        'paired_readout_files': readouts,
         'new_model_calls': 0, 'real_backend_readiness_proved': False, 'scientific_gain_claimed': False,
         'publication_ready': False}, sort_keys=True)
