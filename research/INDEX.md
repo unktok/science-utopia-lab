@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Prospective64k capacity/source branch](https://github.com/unktok/science-utopia-lab/tree/a5be8d3103854368a4bc6ba4c13eff7552e9dd15):
+  full late-history local-tokenizer counts show the old40k plus output does
+  not fit. New common64k design preserves data/authority/world/loss and stays
+  unmerged;73 targeted checks and actual272-file source declaration pass.
+  The new SCRIPTED native/cold check is running, not scientific inference.
+  Old prepared40k plans stay unstarted; real capacity/readiness remain pending.
+
 - [Finite real comparison prepared, not dispatched](results/native-longitudinal-comparison-prepared-v1.json):
   source85520c4d, two losses/two information arms,12 own slots/two references.
   Full implementation/evidence is now integrated and pushed atce1b6d60;
