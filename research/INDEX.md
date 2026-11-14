@@ -6,6 +6,16 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual initial grammar stop](results/native-open-institution-initial-stop-v1.json)
+  and [corrected-source native proof](results/native-open-institution-grammar-software-v2.json):
+  the first real call is HTTP400 before any proposal/world; old source/output
+  stay stopped. Explicit canonical open-object defaults pass31 focused checks
+  and another10-world native handoff. Fresh actual calibration remains required.
+- [Reviewed78-page integrated paper](../paper/integrated-workflow-feedback-build-v1.json)
+  and [actual66-file rebuild](results/integrated-workflow-feedback-rebuild-subset-verification-v1.json):
+  latest closed science plus active software path,40 figures/33 tables; all78
+  rebuilt page images and extracted text match the reviewed original. This is
+  not fresh inference, numerical reproduction, anonymity or publication readiness.
 - [Current status](STATUS.md): the structural feedback study and its unused
   evaluation are closed; no actual inference writer is active at this snapshot.
   Own selections tie the strong hand on both objectives, not a new discovery.
@@ -19,8 +29,8 @@ Historical documents retain their paths and source identities.
   and passing attempts remain separate. Actual calibration/free invention is next.
 - [Open author component and boundaries](components/native-open-workflow-authoring-v1.md),
   [finite prospective study](protocols/campaigns/native-open-workflow-objective-loop-v1.md)
-  and [full integrated source](../paper/integrated.tex). The new PDF is pending;
-  the reviewed75-page artifact remains preserved, not silently updated.
+  and [full integrated source](../paper/integrated.tex). The reviewed75-page
+  artifact remains preserved beside the new78-page version, not overwritten.
 
 ## November14 earlier navigation snapshots (not current liveness)
 

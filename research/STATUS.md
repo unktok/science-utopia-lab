@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+### November14 17:26JST: corrected native proof and actual minimal rebuild pass
+
+Frozenfe4281f4's10-world native integration passes142.83s;65000 exits0 before
+retention. Source/frame correction preserves canonical host validation and
+active scientist-input changes, all nulls and double cold handoff/readouts.
+[Exact software proof](results/native-open-institution-grammar-software-v2.json).
+The separate v2 scientific source/plan prepares at the samefe4281f4, with no
+inference yet. A fresh resource observation stops before dispatch at CPU347.6%
+(limit250), free+inactive42.76GiB, zero unknown Python/model executables and
+no loaded model. Its original sample includes observer startup, a Node process
+and system media/text/indexing work. No other job is stopped or modified and
+no threshold is relaxed. Fresh passing observations remain required.
+
+The66-file explicitly allowlisted paper subset actually builds with cached
+untrusted Tectonic, exit0. Its extracted text and all78 page PNGs equal the
+reviewed source artifact. The43-case staging/retention regression passes20.51s;
+historical75-page tests use their actual historical source rather than the
+now-edited entrypoint. [Actual rebuild](results/integrated-workflow-feedback-rebuild-subset-verification-v1.json).
+No old PDF/receipt is overwritten; no numerical or inference rerun is claimed.
+
 ### November14 17:16JST: first open calibration stops on a known backend schema incompatibility
 
 Writer33499/PID43426 exits1 after one58.912s HTTP call. The literal provider
