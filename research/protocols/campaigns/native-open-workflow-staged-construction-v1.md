@@ -45,8 +45,10 @@ and HTTP phases share the total1800s worker bound; a pending probe is not retrie
 
 Run an initial directed readiness session and another before each of six own
 proposals, exactly bound to that actual request, runtime, model, backend and
-component declaration. Each has at most40 POSTs and1800s; the current control
-suite contains27 directed cases. The conservative total designer POST upper
+component declaration. Each has at most40 POSTs and1800s; the exact directed
+case list is reconstructed from that request by `planned_cases`, including
+available history-file controls, rather than assuming a constant case count.
+The conservative total designer POST upper
 bound is7*40+6*16=376, not the historical one-shot13. Directed copy equality is
 diagnostic; technical execution-readiness remains required. Directed controls
 do not establish free-design capacity or autonomous repair. A failed, unknown,

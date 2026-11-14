@@ -258,9 +258,13 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     assert cost_reports[0] == cost_reports[1]
     groups = cost_reports[0]['auxiliary']['groups']
     if staged:
+        from utopia.optimization.native_designer_preflight import planned_cases
+        from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
         readiness = sum(c['actual_HTTP_posts'] for c in calls if c['purpose']=='calibration')
         proposal = sum(c['actual_HTTP_posts'] for c in calls if c['purpose']=='proposal')
-        assert readiness == 7*27
+        expected = sum(len(planned_cases(c['request'],'staged-v15',BOUNDED_AUTHORING))
+            for c in calls if c['purpose']=='calibration')
+        assert readiness == expected <= p['budget']['readiness_sessions']*p['budget']['readiness_POSTs_per_session']
         assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind']=='editor-readiness']) == readiness
         assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind']=='staged-proposal']) == proposal
         assert len(list(root.glob('search/*/authoring/proposal-*/editor-session/authoring/generation-*/component-lab/probe-*.intent.json')))==48
