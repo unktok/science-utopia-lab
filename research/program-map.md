@@ -1,6 +1,6 @@
 # 全体のゴールと証拠の対応
 
-2026-11-13更新。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
+2026-11-14更新。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
 [研究目的](../RESEARCH.md) · [直近状態](STATUS.md) · [優先順位](roadmap.md)
 
 以前の[スケールアップ前の終了条件](pre-scale-completion.md)は有限パッケージとして閉じた。
@@ -8,9 +8,20 @@
 [実解析](results/pre-scale-search-v1.md)と英語UIの実データ接続も完了。
 当時の44ページ稿・全紙面／再構築検証も終え、[九項目監査](results/pre-scale-completion-final-audit-v1.md)が閉じた。
 現在は[主会議への投稿準備](publication/publication-ready-v3.md)を進めている。
-旧T/Uの選択固定評価、助言・資源・計画対照、自由計画全14世界と69ページ統合稿を加えたが、
+旧T/Uの選択固定評価、助言・資源・計画対照、自由計画全14世界、数値比較全6世界、
+手設計workflow対照と75ページ統合稿を加えたが、
 研究上の重要な答え・独立反復・最終ready判断は未完了である。
 能力の実装と、研究上の優位性・一般性の実証は別である。
+
+## 最新の実行区切り
+
+[compiler-feedback実験](results/native-workflow-compiler-feedback-dispatch-v2.json)が
+固定7f1fc61fで実際に稼働している。設計者の初期校正は通過し、元の研究者世界で
+対照を実行中。上限は対照2件＋自己提案6枠で、まだ自己提案の損失・最終選択はない。
+失敗理由を次の提案へ返す接続は9世界のSCRIPTED検証を通過したが、
+それを実LLMの発明・改善と数えない。正常終了時だけ監査・費用・レポートへ進む。
+[未使用条件の計画](protocols/campaigns/native-workflow-feedback-fixed-evaluation-v2.md)は
+結果前に固定したが、seed未使用確認と実行は未了。独立optimizer反復とは別である。
 
 ## 一本の研究経路
 
@@ -33,7 +44,7 @@
 | --- | --- | --- |
 | 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、履歴bank。旧T/Uの固定評価に続き、計画権限を含む8対照・6提案も全完走、二回監査・解析が一致 | 全生成案が自己目的で強い参照と同点。探索範囲、目的の支持、提案方法を切り分ける次の研究が必要 |
 | 出来合いでない制度を作る | sandboxed Python、typed ports/state、生成IR。外部設計者のV13で実作用と観測改善 | ローカル設計者の信頼性、コード変更と機構上の新規性の区別 |
-| 構成・関係・プロセスを自由にする | SystemSpec、node/edge/protocol編集、actor/artifact、guard/repetition。V12で新機構の実作用 | パラメータ探索を超える価値の対照比較、信頼境界・世界の単純化の明示 |
+| 構成・関係・プロセスを自由にする | SystemSpec、node/edge/protocol編集、actor/artifact、guard/repetition。V12で新機構の実作用。元世界のworkflowで手設計の3phase／5edge変更が18→20採択の差を生む | 手設計の共同timing／情報経路効果は自動発明や純粋な時点効果ではない。生成制度の対照比較と、一般的code／構成自由度の研究は引き続き必要 |
 | 勾配を利用する | 条件付きLR/LOO/control variate、tensor/局所表現、V10の実経路比較。現在のM1にも2draw→更新→fresh native forwardと無勾配対照を接続し、scripted研究者・corpusと実Dockerで確認 | live研究者に対する勾配の優位性・費用効率、世界全体ADは未証明 |
 | 継続・再帰的な改善 | 評価→own-history→再設計、same-society adoption。現在の遅延情報M3でも、制度変更後の研究者・論文・資源・memory・待機中情報・RNG保持と継続をscripted QAで確認 | live研究者での制度導入効果、改善手続き・設計者自身の改善は未実証 |
 | ゲーム的体験 | 英語pixel/cyberpunk UI、canonical replay、Foundryと経路の表示。実M/O/E記録の時点付き観測画面も実装・ブラウザ確認済み | 新しく閉鎖した計画T/UのUI接続は未確認。経営ゲームとしての体験、人間参加型研究は長期課題 |
@@ -68,6 +79,9 @@
 - [英語UI](../game-ui-v2/README.md)：同じ証拠を見るインターフェース。
 
 ## いま動いているもの
+
+この見出しの最新状態は冒頭のcompiler-feedback実験と[STATUS](STATUS.md)を参照。
+以下は、それ以前に終了した別研究の内訳であり、全研究の推論が停止中という意味ではない。
 
 V1、V45、V2、M比較、T/E、旧T/Uとその固定評価、T/P探索、計画3対照は終了済み。
 凍結8cd6157の自由計画T/Uも11月13日13:25UTCに全14世界が閉鎖し、

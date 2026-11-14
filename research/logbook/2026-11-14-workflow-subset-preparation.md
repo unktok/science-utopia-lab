@@ -25,4 +25,12 @@ The dedicated75-page verification reader is prepared but unexecuted. It cannot
 produce a success receipt without actual cache-only TeX output, matching plain
 pdftotext and all75 rendered page hashes. Heavy build/render and any fresh
 visual review are deferred until real inference is terminal/absent. Staging
-alone will not be called rebuilt reproduction, numerical replication,+anonymous release, independent inference or publication readiness.
+alone will not be called rebuilt reproduction, numerical replication,
+anonymous release, independent inference or publication readiness.
+
+At cleanbaa85e34, actual staging46786 exits0 and copies exactly64 allowlisted
+files. Manifest content hash is
+cd0f705398786f1dd96923f81b627e61c18d8084cef323ee5591cdc77f366634.
+The source recheck finishes before any new retention edit. No TeX, renderer,
+new PDF content or inference is run by staging; the cached build is still
+deferred. The64 files are a local working-draft source subset, not a release.

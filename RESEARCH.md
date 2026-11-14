@@ -54,7 +54,23 @@
 
 ## 現在の到達点
 
-2026年11月14日更新：工程・配線の変更を元の研究者世界へ接続するv4 domainに加え、
+2026年11月14日13:40JST時点：[新しいcompiler-feedback実験](research/results/native-workflow-compiler-feedback-dispatch-v2.json)
+を固定source7f1fc61fで実際に開始した。ローカル35B設計者の初期校正を通過し、
+Qwen3-8Bの元の研究者世界で対照制度を実行中である。対照2件・自己提案6枠が上限で、
+新しい自動発明の改善結果や全実験の完了はまだない。損失・元世界の法則を変えず、
+失敗した制度の正確な因果順序診断を次の提案へ返す。9世界のSCRIPTED通し検証は、
+この接続の動作証拠であり、実モデルでの優位性ではない。旧実験の失敗枠は補充しない。
+
+[75ページ統合稿](paper/integrated-workflow-controls-build-v1.json)は既存の意味ある全トラックに、
+完了した手設計制度の対照・年次図と設計者の限界を加え、全紙面を確認済みである。
+その64ファイル最小subsetは抽出できたが、新しいsubsetからの再ビルドは推論終了後に行う。
+重要な目的別制度の比較、適切な独立／未使用評価と最終投稿判断は未達で、
+ページ数・テスト数・原稿整備を主会議readyの代用にはしない。
+[現在地](research/STATUS.md)を稼働状態の正本とする。
+
+以下の同日・前日の記述は、その時点の経緯であり現在の稼働状態ではない。
+
+2026年11月14日早期の履歴：工程・配線の変更を元の研究者世界へ接続するv4 domainに加え、
 [目的別の有限workflow探索](research/components/native-workflow-objective-loop-v1.md)の実行器・
 literal提案・cold監査・費用集計まで実装した。7世界／28年次境界のSCRIPTED通し検証と
 実データ・モデル識別のreadonly準備は完了したが、実モデルの構造探索はまだ起動していない。
@@ -120,7 +136,7 @@ Pは初期研究者の年末稼働flagを
 以前の58ページ稿も保持している。
 59ページ稿も独自の保存記録を持つ。
 61ページ助言稿も保持し、64ページ稿も独自の記録とともに保持する。
-現在の[69ページ統合稿](output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)は、
+保持した以前の[69ページ統合稿](output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)は、
 元の全トラック、閉鎖T/U探索と641xx固定評価18世界・21セル、助言・資源・T/P・計画の
 各対照に加え、新しい自由計画探索の8参照・6自己提案を全て収録する。
 同点集合・失敗枠・選択固定の評価と独立optimizer反復、入力の同一性と得点の同一性を分ける。
