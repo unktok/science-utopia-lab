@@ -5,13 +5,13 @@ closed R7. A prior reply never fills the new unknown response or supplies loss.
 """
 import argparse
 import fcntl
-import hashlib
 import json
 from pathlib import Path
 import sqlite3
 
 from scripts.analyze_native_open_v7 import _inventory
 from scripts.reports.native_observed_request_classes_v1 import sequence
+from scripts.reports.native_token_costs import cache_usage
 from scripts.run_native_planning_fixed_evaluation_v1 import origin_evidence
 from scripts.run_pre_scale_completion_chain_v1 import process_identity
 from utopia.optimization.native_jobs import pinned_revision
@@ -95,6 +95,7 @@ def main():
             raise ValueError('exact normally audited previous R7 required')
         wires, replies = cell_records(current); old_wires, old_replies = cell_records(previous)
         comparison = prefix(wires, replies, old_wires, old_replies)
+        usage = cache_usage(current / 'replies/responses.sqlite', plan)
         certificates = list((root / 'initial-readiness/author').glob('*/certificate.json'))
         if len(certificates) != 1 or read(certificates[0])['passed'] is not True:
             raise ValueError('original successful initial workflow calibration required')
@@ -107,6 +108,9 @@ def main():
             'prior_raw_inventory_sha256': digest(prior_before),
             'initial_certificate_file_sha256': file_sha256(certificates[0]),
             'comparison': comparison,
+            'scientist_committed_response_costs': {k: v for k, v in usage.items() if k != 'values'},
+            'uncommitted_request_token_cost': None,
+            'recorded_token_sums_exclude_unknown_request_cost': True,
             'last_request_summary': {'year': wires[-1]['year'], 'model': payload['model'],
                 'max_tokens': payload['max_tokens'], 'reasoning_effort': payload.get('reasoning_effort'),
                 'schema_name': payload['response_format']['json_schema']['name'],
