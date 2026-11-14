@@ -6,6 +6,20 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed compiler-feedback study](results/native-workflow-compiler-feedback-closed-v2.json):
+  all6 slots/6 physical worlds and all double cold readouts close;4 own outputs
+  tie the hand with identical full scientist inputs/choices. No own advantage.
+  [Fixed evaluation v3](protocols/campaigns/native-workflow-feedback-fixed-evaluation-v3.md)
+  handles exactly72 inspected software files after v2 preparation stops before
+  inference; it does not substitute another seed or reopen the failed attempt.
+
+- [Current status](STATUS.md): writer39932 exits0; all6 slots close at06:20UTC
+  with4 own native completions tying the hand and2 generation nulls. First-tie
+  own selection is frozen; original second audit/cost/readouts are pending.
+  [75-page subset rebuild](results/integrated-workflow-controls-rebuild-subset-verification-v1.json)
+  now has identical extracted text and all75 reviewed page PNGs, without new
+  inference, original-PDF replacement or a publication-ready claim.
+
 - [Current status](STATUS.md): at15:12JST,5/6 own slots are terminal:3 native
   completions tie the hand control and2 known invalid proposals consume nulls.
   The last U2 world is running. Its actual HTTP input contains U1's exact

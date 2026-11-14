@@ -136,3 +136,40 @@ worlds are complete. Audit/cost89238 is confirmed live and waiting. No seed
 inventory, unused evaluation, whole-study audit or final selection is invented.
 The preceding user-status turn was a verified wait on writer39932, not an
 implementation change. No heavy independent QA/render is started during inference.
+
+Original39932 exits0 and terminal closes06:20:11.873470UTC, consuming all6 slots.
+U2 completes at the hand's utility loss. This yields4 complete own worlds,
+2 generation nulls and2 complete controls; no retry or repaired proposal.
+First chronological tied own choices are T0 and U0. Their original selection
+is retained before any unused evaluation, not replaced by a developer control.
+Original audit1 passes; the second audit and subsequent cost/report/readout
+continuations must still finish. Separate fixed-evaluation science/analysis
+worktrees are clean at a15e229e, but contain no evaluation plan or dispatch yet.
+
+All original continuations subsequently exit0. Double audits/costs/report and
+all choice/effect/request exports match. The retained closed-study JSON includes
+raw/source/export hashes, all six slots/ties/cross-scores and actual costs:
+750 scientist responses,75 critic calls,7 readiness+6 proposal calls,6082.936s
+science wall time. All four complete own outputs have the hand's identical
+127 full scientist payloads and literal choices. This is actual observed
+retention, not global equivalence, a license to skip new worlds or improvement.
+
+Fixed evaluation prepare14309 at a15e229e exits1 before output/plan/inference:
+legacy seed usage fails on72 stores. Later diagnostic30120 independently
+retains inventories from all three roots:315/347/663 readable bindings,
+2071/71/1441 legacy exclusions,0/0/72 errors and zero matching seeds. These
+later observations are not invented original prepare memory. Every error is
+in one of four known unit-test output roots. Inspection matches five byte
+patterns to fixture-generating tests: replies-only SQLite stores, intentionally
+corrupted unit rows and a literal SCRIPTED non-SQLite marker. No raw file is
+moved, fixed or deleted; v2 stays failed and never dispatched.
+
+The new prospective v3 policy retains exactly72 file paths/hashes and reviewed
+test sources. Optional scanner behavior is distinct from legacy mode. It
+rejects changed/missing files, scans metadata-bearing stores even if listed,
+keeps unlisted errors and binds all prepared/pre-dispatch/cold receipts. Known
+invalid preparations/dispatched seed guards retain diagnostics before stopping.
+Initial38 tests pass19.17s; the following49 pass27.90s before final protocol-
+source binding additions. Final source-pinned focused/native validation remains
+required. The original seed1858637637, frozen own selection, losses and model
+roles do not change; this repair is not a favorable-outcome or novelty filter.

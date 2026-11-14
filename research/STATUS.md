@@ -2,6 +2,47 @@
 
 ## Active publication-ready goal
 
+### November14 15:38JST: closed study/readouts verified; unused evaluation preparation stops on fixtures
+
+All original continuations exit0: two audits, costs, objective reports and each
+choice/effect/full-request readout agree byte-for-byte. The6 physical worlds
+contain750 complete scientist replies and75 content-critic calls;13 designer
+calls include7 readiness and6 proposals. Elapsed science wall time6082.936s.
+All4 own completions share the hand's exact127 full scientist inputs and
+literal reply choices; only2 observed input classes exist across6 worlds.
+[Closed actual evidence](results/native-workflow-compiler-feedback-closed-v2.json).
+No own advantage/new wiring or independent replication is demonstrated.
+
+Fixed-evaluation v2 prepare14309 exits1 before a plan or inference: the legacy
+seed inventory rejects72 non-production test stores across4 retained QA roots.
+Later diagnostic30120 scans all3 roots, finds no matching1858637637 seed, but
+retains these errors; it is not the lost original in-memory inventory. Old v2
+stays failed. An explicit72-file policy and optional v3 scanner are implemented:
+changed/missing/unlisted malformed stores still stop; metadata-bearing journals
+cannot be exempted; prepared/dispatched proofs bind the exact list. The first
+38 and subsequent49 light checks pass; final committed-source/native checks
+are pending. [Separate prospective v3 scope](protocols/campaigns/native-workflow-feedback-fixed-evaluation-v3.md).
+No real inference or UI worker is running at this snapshot; no evaluation gain
+or publication readiness is inferred. Latest science is not yet in the PDF.
+
+### November14 15:22JST: all six slots close; original audits are running
+
+Writer39932 exits0. The original terminal closes06:20:11UTC with6 consumed
+slots,6 observations (2 controls+4 own worlds) and no retry. T0/T1 and U0/U2
+complete, all tying the hand on their assigned loss; U1/T2 remain generation
+nulls. Chronological first-tie selection retains T0 and U0, with both tied IDs
+preserved per objective. No automatic advantage or successful new wiring is
+claimed. Original audit1 passes; audit2/costs/reports/mechanism readers still
+must close before unused-condition evaluation. No evaluation has dispatched.
+
+With inference terminal, the staged64-file75-page subset actually rebuilds
+using cache-only untrusted Tectonic. Default extracted text and all75 rendered
+90dpi PNGs equal the reviewed originals; fresh pages55/75 are inspected.
+The PDF binary differs, as allowed; original PDF/receipt bytes are preserved.
+[Actual rebuild receipt](results/integrated-workflow-controls-rebuild-subset-verification-v1.json).
+This is manuscript-source reproduction, not new science or a clean-machine
+build. The latest closed experiment has not yet been added to the manuscript.
+
 ### November14 15:12JST: five own slots terminal; final U world is running
 
 Original writer39932 remains live and executes U2's native world. T0, U0 and

@@ -70,7 +70,14 @@ def worker(root,output,*,study='count-content-v1'):
                     or dispatched['root']!=prepared['root'] or dispatched['seeds']!=p['evaluation']['seeds']
                     or not epoch(prepared['checked_utc'])<=epoch(dispatched['checked_utc'])<=epoch(start['started_utc'])):
                 raise ValueError('literal pre-dispatch unused-seed proof differs')
+            if study == 'workflow-v1' and 'seed_software_exclusions' in p:
+                from scripts.native_benchmark_seed_usage import require_inventory_policy
+                for receipt in (prepared, dispatched):
+                    require_inventory_policy(receipt, p['seed_software_exclusions'])
         resources=[driver.PROTOCOL]
+        if study == 'workflow-v1' and 'seed_software_exclusions' in p:
+            source_scripts.append('scripts/native_benchmark_seed_usage.py')
+            resources.append(p['seed_inventory_protocol']['path'])
         if study=='workflow-v1' and 'operational_protocol' in p:
             resources.append(p['operational_protocol']['path'])
         source=source_proofs(driver.ROOT,p['source_commit'],scripts=source_scripts,resources=resources)

@@ -1,0 +1,939 @@
+{
+  "schema": "scienceutopia.native-workflow-compiler-feedback-closed.v2",
+  "classification": "normally-closed-real-native-study-with-no-own-advantage",
+  "scientific_source_commit": "7f1fc61f98e4f09d235879c8ccfd4e57714b9d79",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-v2-a1/outputs/native-workflow-compiler-feedback-v2-a1",
+  "plan_content_sha256": "277b1831f311e994b2480e15e5ec95e3125784fbaae396329fdce8082d754ff0",
+  "writer": {
+    "session": 39932,
+    "exit_code": 0,
+    "started_utc": "2026-11-14T04:38:48.937315+00:00",
+    "ended_utc": "2026-11-14T06:20:11.873470+00:00",
+    "elapsed_wall_seconds": 6082.936155
+  },
+  "terminal": {
+    "consumed_slots": 6,
+    "content_sha256": "d4abb0a6b30d308a36d1f308f8359fccf40cdd68d07893a73375a295bcfce9cc",
+    "ended_utc": "2026-11-14T06:20:11.873470+00:00",
+    "no_retry": true,
+    "observations": 6,
+    "schema": "scienceutopia.native-workflow-objective-loop.v1.terminal",
+    "stage": "closed",
+    "status": "closed"
+  },
+  "terminal_file_sha256": "c7665383d1cd347a304a638f1fd7a813fbea5065cc69f182aff520f7a441d3c3",
+  "selection_content_sha256": "4a7711a70a73d4e668580804a55e121d2e5b2c2a4e357006c7862a6587733c14",
+  "selected": {
+    "content-utility": {
+      "all_tied_ids": [
+        "native-adaptive-b8d4731685627e04d73f77ad",
+        "native-adaptive-bce26ed78e0b36fd1ce68095"
+      ],
+      "loss": -15.333333333333332,
+      "selected_id": "native-adaptive-b8d4731685627e04d73f77ad",
+      "system_sha256": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5"
+    },
+    "throughput": {
+      "all_tied_ids": [
+        "native-adaptive-1e04ec5851409ebdb6a097c3",
+        "native-adaptive-ad403fc8e09a9668fda58cb5"
+      ],
+      "loss": -20,
+      "selected_id": "native-adaptive-1e04ec5851409ebdb6a097c3",
+      "system_sha256": "33a73640467ed4fa0a0ea17b34aed8c1225b09baa36b8aadb0eeaa77a344faa1"
+    }
+  },
+  "physical_worlds": 6,
+  "references": [
+    {
+      "graph_from_anchor": {
+        "added_connections": [],
+        "phase_updates": {},
+        "removed_connections": [],
+        "source_parameters_nodes_unchanged": true
+      },
+      "label": "R7-original",
+      "physical_job": "workflow-reference-r7-original",
+      "scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18
+      },
+      "status": "complete"
+    },
+    {
+      "graph_from_anchor": {
+        "added_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          }
+        ],
+        "phase_updates": {
+          "developer-liquidity-director": {
+            "after": 161,
+            "before": 78
+          },
+          "developer-liquidity-effects": {
+            "after": 162,
+            "before": 79
+          },
+          "world.costs": {
+            "after": 163,
+            "before": 80
+          }
+        },
+        "removed_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          }
+        ],
+        "source_parameters_nodes_unchanged": true
+      },
+      "label": "post-funding-cost",
+      "physical_job": "workflow-reference-post-funding-cost",
+      "scores": {
+        "content-utility": -15.333333333333332,
+        "throughput": -20
+      },
+      "status": "complete"
+    }
+  ],
+  "all_six_slots": [
+    {
+      "cross_scores": {
+        "content-utility": -15.333333333333332,
+        "throughput": -20
+      },
+      "generation": 0,
+      "generation_error": null,
+      "graph_from_anchor": {
+        "added_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          }
+        ],
+        "phase_updates": {
+          "developer-liquidity-director": {
+            "after": 163,
+            "before": 78
+          },
+          "developer-liquidity-effects": {
+            "after": 164,
+            "before": 79
+          },
+          "world.costs": {
+            "after": 165,
+            "before": 80
+          }
+        },
+        "removed_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          }
+        ],
+        "source_parameters_nodes_unchanged": true
+      },
+      "graph_from_parent": {
+        "added_connections": [],
+        "phase_updates": {
+          "developer-liquidity-director": {
+            "after": 163,
+            "before": 161
+          },
+          "developer-liquidity-effects": {
+            "after": 164,
+            "before": 162
+          },
+          "world.costs": {
+            "after": 165,
+            "before": 163
+          }
+        },
+        "removed_connections": [],
+        "source_parameters_nodes_unchanged": true
+      },
+      "loss": -20,
+      "objective": "throughput",
+      "parent_system_sha256": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5",
+      "physical_job": "native-adaptive-1e04ec5851409ebdb6a097c3",
+      "request_sha256": "6a009d138a1392766d970fe3609cd81ebb23e004f78dbadd2d55493dde57a302",
+      "slot_index": 0,
+      "status": "complete"
+    },
+    {
+      "cross_scores": {
+        "content-utility": -15.333333333333332,
+        "throughput": -20
+      },
+      "generation": 0,
+      "generation_error": null,
+      "graph_from_anchor": {
+        "added_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          }
+        ],
+        "phase_updates": {
+          "developer-liquidity-director": {
+            "after": 161,
+            "before": 78
+          },
+          "developer-liquidity-effects": {
+            "after": 162,
+            "before": 79
+          },
+          "world.costs": {
+            "after": 163,
+            "before": 80
+          }
+        },
+        "removed_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          }
+        ],
+        "source_parameters_nodes_unchanged": true
+      },
+      "graph_from_parent": {
+        "added_connections": [],
+        "phase_updates": {},
+        "removed_connections": [],
+        "source_parameters_nodes_unchanged": true
+      },
+      "loss": -15.333333333333332,
+      "objective": "content-utility",
+      "parent_system_sha256": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5",
+      "physical_job": "native-adaptive-b8d4731685627e04d73f77ad",
+      "request_sha256": "ec334b46f3f8b6b10c21231b84e52bc8eca5687d0d1e9f54d4cdc82609d4dbec",
+      "slot_index": 1,
+      "status": "complete"
+    },
+    {
+      "cross_scores": {
+        "content-utility": null,
+        "throughput": null
+      },
+      "generation": 1,
+      "generation_error": {
+        "loss": null,
+        "message": "complete generated definition/provenance and finite search settings required",
+        "type": "ValueError"
+      },
+      "graph_from_anchor": null,
+      "graph_from_parent": null,
+      "loss": null,
+      "objective": "content-utility",
+      "parent_system_sha256": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5",
+      "physical_job": null,
+      "request_sha256": "928304b0c7f744bbb4218b893d624a55bcabc7639be5b43bf21a024392791aac",
+      "slot_index": 2,
+      "status": "generation-null"
+    },
+    {
+      "cross_scores": {
+        "content-utility": -15.333333333333332,
+        "throughput": -20
+      },
+      "generation": 1,
+      "generation_error": null,
+      "graph_from_anchor": {
+        "added_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          }
+        ],
+        "phase_updates": {
+          "developer-liquidity-director": {
+            "after": 161,
+            "before": 78
+          },
+          "developer-liquidity-effects": {
+            "after": 162,
+            "before": 79
+          },
+          "world.costs": {
+            "after": 163,
+            "before": 80
+          }
+        },
+        "removed_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          }
+        ],
+        "source_parameters_nodes_unchanged": true
+      },
+      "graph_from_parent": {
+        "added_connections": [],
+        "phase_updates": {},
+        "removed_connections": [],
+        "source_parameters_nodes_unchanged": true
+      },
+      "loss": -20,
+      "objective": "throughput",
+      "parent_system_sha256": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5",
+      "physical_job": "native-adaptive-ad403fc8e09a9668fda58cb5",
+      "request_sha256": "dae3104e3f0e585a663438cee9522c07e64ef8666c5f2948380cb2c4037a7740",
+      "slot_index": 3,
+      "status": "complete"
+    },
+    {
+      "cross_scores": {
+        "content-utility": null,
+        "throughput": null
+      },
+      "generation": 2,
+      "generation_error": {
+        "loss": null,
+        "message": "complete generated definition/provenance and finite search settings required",
+        "type": "ValueError"
+      },
+      "graph_from_anchor": null,
+      "graph_from_parent": null,
+      "loss": null,
+      "objective": "throughput",
+      "parent_system_sha256": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5",
+      "physical_job": null,
+      "request_sha256": "581d2b6d9c7c690eca57d2c158ae47880062faee2c1baebc56d285814fd33932",
+      "slot_index": 4,
+      "status": "generation-null"
+    },
+    {
+      "cross_scores": {
+        "content-utility": -15.333333333333332,
+        "throughput": -20
+      },
+      "generation": 2,
+      "generation_error": null,
+      "graph_from_anchor": {
+        "added_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          }
+        ],
+        "phase_updates": {
+          "developer-liquidity-director": {
+            "after": 161,
+            "before": 78
+          },
+          "developer-liquidity-effects": {
+            "after": 162,
+            "before": 79
+          },
+          "world.costs": {
+            "after": 165,
+            "before": 80
+          }
+        },
+        "removed_connections": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "world",
+            "target_mechanism": "native-feature-extractor",
+            "target_port": "observations"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "world",
+            "target_mechanism": "developer-liquidity-director",
+            "target_port": "world"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          }
+        ],
+        "source_parameters_nodes_unchanged": true
+      },
+      "graph_from_parent": {
+        "added_connections": [],
+        "phase_updates": {
+          "world.costs": {
+            "after": 165,
+            "before": 163
+          }
+        },
+        "removed_connections": [],
+        "source_parameters_nodes_unchanged": true
+      },
+      "loss": -15.333333333333332,
+      "objective": "content-utility",
+      "parent_system_sha256": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5",
+      "physical_job": "native-adaptive-bce26ed78e0b36fd1ce68095",
+      "request_sha256": "1d8ecaeae04185cf2607373ff5af847ecc7004257617891e9752c2f1ba091147",
+      "slot_index": 5,
+      "status": "complete"
+    }
+  ],
+  "loss_paths": {
+    "content-utility": [
+      {
+        "best_known_loss": -15.333333333333332,
+        "best_own_loss": -15.333333333333332,
+        "generation": 0,
+        "observed_loss": -15.333333333333332,
+        "status": "complete"
+      },
+      {
+        "best_known_loss": -15.333333333333332,
+        "best_own_loss": -15.333333333333332,
+        "generation": 1,
+        "observed_loss": null,
+        "status": "generation-null"
+      },
+      {
+        "best_known_loss": -15.333333333333332,
+        "best_own_loss": -15.333333333333332,
+        "generation": 2,
+        "observed_loss": -15.333333333333332,
+        "status": "complete"
+      }
+    ],
+    "throughput": [
+      {
+        "best_known_loss": -20,
+        "best_own_loss": -20,
+        "generation": 0,
+        "observed_loss": -20,
+        "status": "complete"
+      },
+      {
+        "best_known_loss": -20,
+        "best_own_loss": -20,
+        "generation": 1,
+        "observed_loss": -20,
+        "status": "complete"
+      },
+      {
+        "best_known_loss": -20,
+        "best_own_loss": -20,
+        "generation": 2,
+        "observed_loss": null,
+        "status": "generation-null"
+      }
+    ]
+  },
+  "normal_original_audits": {
+    "session": 89238,
+    "exit_code": 0,
+    "audit_file_sha256": "868496abf24e62fb9a38c09c43d9ed4416adf2bbb746b069bd5270033f36ae37",
+    "cost_file_sha256": "3568a1da6ce9977755a710106b17f1e376ceb3159f11376a2fe2cfb3bb0cbc84",
+    "two_audits_byte_equal": true,
+    "two_cost_exports_byte_equal": true
+  },
+  "matching_readouts": {
+    "native-workflow-compiler-feedback-report-v2-a1": {
+      "analysis_source_commit": "7f1fc61f98e4f09d235879c8ccfd4e57714b9d79",
+      "output_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-analysis-v2-a1/outputs/native-workflow-compiler-feedback-report-v2-a1",
+      "ended_file_sha256": "902ee42ebfccfcefd7a436740ed60b0639b31edaa85c133ac7f97c8d257de9b1",
+      "matching_export_files": {
+        "report.json": "6bfc9c069d39136bcd6c71483db86b6cdfce366a26afbcf7aedf4ee72b44614b",
+        "objective-loss-paths.svg": "b334297a0b4afed9182c0ecf5de9ee12d203d308c6addd6293caf5c7bfd89c84",
+        "objective-loss-paths.png": "e5d108e4404422c5862c99f7bb07acccb1bc46ba01b1db0a2e52f7bd6e99b549",
+        "objective-cross-scores.png": "bd21f495d167758194957637a6abb4605e87eba380b72191ddf14ae9075720fa",
+        "manifest.json": "63648235705110414cb372d4e0855bde91c21dde4989a0f42df21da66809dadb",
+        "slots.csv": "1c018a30c8fdef1fe0e6835e98c19b00b1db997127a857960f2ad79d03ef820b",
+        "objective-cross-scores.svg": "f99dcef0573c82f490f40fb11164b4cc6167e0978e6f3032d582d108f0f1322a"
+      }
+    },
+    "native-workflow-compiler-feedback-choices-v2-a1": {
+      "analysis_source_commit": "b77371694328c7d7ac4ab33961a131de2097836f",
+      "output_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-readouts-v2-a2/outputs/native-workflow-compiler-feedback-choices-v2-a1",
+      "ended_file_sha256": "f3a61b3968689e9e92c8771e171ac2c08463d3489d08675422a1262c0689c7c8",
+      "matching_export_files": {
+        "report.json": "d7d688af6e0291ca53373ab32a851e7ff09ff91a56b53045b3f1ea960e79f6bb",
+        "manifest.json": "91ccb85bb080e27c59a1c207b9322b3a2eeaf7fc54cbda5db6f402bc007c08a2",
+        "annual-project-states.csv": "e2f20dafa95208543d44e7cbb309892fa954995d123e4a3bbd74434e44efa21b"
+      }
+    },
+    "native-workflow-compiler-feedback-effects-v2-a1": {
+      "analysis_source_commit": "b77371694328c7d7ac4ab33961a131de2097836f",
+      "output_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-readouts-v2-a2/outputs/native-workflow-compiler-feedback-effects-v2-a1",
+      "ended_file_sha256": "67eaddf5b21d65e4c172c72193425a03c1a8cdc471176d8aae0f8c9f282d25f7",
+      "matching_export_files": {
+        "report.json": "6554a6ea3be76cde3c65bc63ba975f429321043bac326c19b5f72147f788f12c",
+        "annual-boundaries.csv": "a461c017e05c94756b1ada032efe64a5395cd8fd7cc67ca04e37fb874ad8bfc5",
+        "manifest.json": "37553bd9e2c485e44dc6c9870426d6d7c4332c8592605a27c2309458fe1d602f"
+      }
+    },
+    "native-workflow-compiler-feedback-requests-v2-a1": {
+      "analysis_source_commit": "b77371694328c7d7ac4ab33961a131de2097836f",
+      "output_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-readouts-v2-a2/outputs/native-workflow-compiler-feedback-requests-v2-a1",
+      "ended_file_sha256": "41734f99b4fba1971fc30d4c5c2494157b6507679adbce05fbd7580fe8d4df18",
+      "matching_export_files": {
+        "report.json": "047d52edc13797391043b9897fa6a8b926c71e2e4febfeecb6af2f890c4dcd9f",
+        "manifest.json": "86fe2ea3c20d3635fa4374c1948cd941059094941e19d1bda8dc980762a96297"
+      }
+    }
+  },
+  "observed_full_request_classes": [
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "physical_ids": [
+        "workflow-reference-r7-original"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": false,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "9ea2ff482f060724c70e21c3991fffe162a9df79e5e403049f21d9312fa04a7c",
+      "physical_ids": [
+        "native-adaptive-1e04ec5851409ebdb6a097c3",
+        "native-adaptive-ad403fc8e09a9668fda58cb5",
+        "native-adaptive-b8d4731685627e04d73f77ad",
+        "native-adaptive-bce26ed78e0b36fd1ce68095",
+        "workflow-reference-post-funding-cost"
+      ],
+      "seed": 61001
+    }
+  ],
+  "scientist": {
+    "responses": 750,
+    "wire_without_reply": 0,
+    "provider_usage": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 750,
+        "missing_responses": 0,
+        "recorded_sum": 168094
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 750,
+        "missing_responses": 0,
+        "recorded_sum": 77254
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 750,
+        "missing_responses": 0,
+        "recorded_sum": 937108
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 750,
+        "missing_responses": 0,
+        "recorded_sum": 1014362
+      }
+    }
+  },
+  "designer": {
+    "workflow-proposal": {
+      "POSTs": 6,
+      "final_responses": 6,
+      "input_tokens": 147740,
+      "output_tokens_including_thinking": 46206,
+      "caller_elapsed_seconds": 1373.9833240837324
+    },
+    "workflow-readiness": {
+      "POSTs": 7,
+      "final_responses": 7,
+      "input_tokens": 169711,
+      "output_tokens_including_thinking": 5490,
+      "caller_elapsed_seconds": 427.2109425817616
+    }
+  },
+  "content_observer": {
+    "input_observer_audit_content_sha256": "164838b2441df93efe73c17b353b5602d9414489972e7397aa79c582c4e4779d",
+    "known_terminal_attempts": 75,
+    "overlap_with_native_response_caches": false,
+    "physical_requests": 75,
+    "scope": "Separate fixed-content critic POSTs; repeated content cache hits are not additional physical ratings.",
+    "usage": {
+      "http_elapsed_seconds": {
+        "known_sum": 310.7192139616236,
+        "unknown_attempts": 0
+      },
+      "output_tokens": {
+        "known_sum": 11685,
+        "unknown_attempts": 0
+      },
+      "prompt_tokens": {
+        "known_sum": 37071,
+        "unknown_attempts": 0
+      }
+    }
+  },
+  "interpretation": {
+    "automatic_gain_over_hand": false,
+    "successful_new_wiring": false,
+    "all_four_complete_own_inputs_and_literal_choices_equal_hand": true,
+    "global_program_equivalence": false,
+    "global_count_optimum_proved": false,
+    "independent_optimizer_replication": false,
+    "world_differentiability": false,
+    "publication_ready": false
+  },
+  "fixed_evaluation": {
+    "v2_prepare_session": 14309,
+    "exit_code": 1,
+    "plan_created": false,
+    "model_calls": 0,
+    "seed": 1858637637,
+    "failure": "72 non-production fixture stores rejected by the legacy inventory; exact explicit-policy v3 preparation is separate and not dispatched"
+  },
+  "content_sha256": "434e470f599bd5ca7e06f85a9f7679bd4dadbcc904d86d1a35752f0b34ec9605"
+}

@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 from scripts.analyze_native_open_v7 import _inventory
-from scripts.native_benchmark_seed_usage import usage_inventory
+from scripts.native_benchmark_seed_usage import usage_inventory, software_fixture_policy, require_inventory_policy
 from scripts.run_native_objective_fixed_evaluation_v1 import fixed_selection, jobs_for, run as run_shared
 from scripts.run_native_objective_instrument_loop_v1 import measure_with, utc
 from scripts.run_native_workflow_objective_loop_v1 import scientist_factory, native_sources
@@ -29,6 +29,7 @@ from utopia.utils.data_utils import file_sha256
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = 'scienceutopia.native-workflow-fixed-evaluation.v1'
 PROTOCOL = 'research/protocols/campaigns/native-workflow-fixed-evaluation-v1.md'
+SEED_SOFTWARE_PROTOCOL = 'research/protocols/campaigns/native-workflow-feedback-fixed-evaluation-v3.md'
 REFERENCES = ['R7-original', 'post-funding-cost']
 
 
@@ -44,7 +45,8 @@ def interval(plan, system, events, seed):
     return verify_workflow_interval(seeded_anchor(plan, seed), system, events, years=4)
 
 
-def build_plan(original, audit, *, source, origin, usages, seeds, observer_backend, source_proof):
+def build_plan(original, audit, *, source, origin, usages, seeds, observer_backend, source_proof,
+        software_exclusions=None):
     selected = fixed_selection(original, audit, study='workflow-v1')
     if (original['objectives'] != ['throughput', 'content-utility'] or original['generations'] != 3
             or original['reference_order'] != REFERENCES or original['held_out_evaluation']
@@ -78,6 +80,12 @@ def build_plan(original, audit, *, source, origin, usages, seeds, observer_backe
             'observer_POSTs_upper_bound': 3000, 'designer_generation_POSTs': 0, 'replace_failed_slots': False},
         'claims': {'independent_optimizer_replications': False, 'scientific_truth': False,
             'publication_ready': False, 'candidate_reselection': False, 'new_institution_design': False}}
+    if software_exclusions is not None:
+        policy = software_fixture_policy(software_exclusions)
+        for u in usages: require_inventory_policy(u, policy)
+        result['seed_software_exclusions'] = clone(policy)
+        result['seed_inventory_protocol'] = {'path': SEED_SOFTWARE_PROTOCOL,
+            'sha256': file_sha256(ROOT / SEED_SOFTWARE_PROTOCOL)}
     if 'scientist_transport' in original:
         from utopia.optimization.native_scientist_transport_v1 import contract, validate, PROTOCOL as operational
         transport = validate(original['scientist_transport'])
@@ -115,7 +123,8 @@ def require_plan(root):
     usages = [read(root / f'seed-usage-{i:02}.json') for i in range(len(p['evaluation']['seed_usage']))]
     expected = build_plan(original, audit, source=p['source_commit'], origin=p['origin'], usages=usages,
         seeds=p['evaluation']['seeds'], observer_backend=p['observer_contract']['backend'],
-        source_proof=native_sources(original['source_commit']))
+        source_proof=native_sources(original['source_commit']),
+        software_exclusions=p.get('seed_software_exclusions'))
     if expected != {k: v for k, v in p.items() if k != 'content_sha256'}:
         raise ValueError('literal workflow evaluation reconstruction differs')
     return p
@@ -132,13 +141,36 @@ def prepare(args):
             str(p.resolve()): file_sha256(p) for p in (args.audit_one, args.audit_two)}}
     with (args.origin_run / 'writer.lock').open('r') as owner:
         fcntl.flock(owner, fcntl.LOCK_EX | fcntl.LOCK_NB); original, audit = origin_evidence(origin)
-        usages = [usage_inventory(p, args.evaluation_seed) for p in args.seed_usage_root]
-        p = build_plan(original, audit, source=source, origin=origin, usages=usages, seeds=args.evaluation_seed,
-            observer_backend=backend_binding({k: original['scientist'][k] for k in ('model', 'model_digest')}),
-            source_proof=native_sources(original['source_commit']))
-        args.output.mkdir(parents=True)
-        for i, u in enumerate(usages): save(args.output / f'seed-usage-{i:02}.json', {k: v for k, v in u.items() if k != 'content_sha256'})
-        save(args.output / 'plan.json', p); require_plan(args.output)
+        policy_file = getattr(args, 'seed_software_exclusions', None)
+        policy = None if policy_file is None else software_fixture_policy(read(policy_file))
+        usages = [usage_inventory(p, args.evaluation_seed, **({} if policy is None else {
+            'software_exclusions': policy})) for p in args.seed_usage_root]
+        # The optional prospective policy route retains inventories even when
+        # they reject preparation. No failed seed proof disappears from memory.
+        if policy is not None:
+            args.output.mkdir(parents=True)
+            save(args.output / 'preparation-started.json', {'started_utc': utc(),
+                'source_commit': source, 'software_fixture_policy_sha256': policy['content_sha256'],
+                'new_model_calls': 0})
+            for i, u in enumerate(usages):
+                save(args.output / f'seed-usage-{i:02}.json', {k: v for k, v in u.items() if k != 'content_sha256'})
+        try:
+            p = build_plan(original, audit, source=source, origin=origin, usages=usages, seeds=args.evaluation_seed,
+                observer_backend=backend_binding({k: original['scientist'][k] for k in ('model', 'model_digest')}),
+                source_proof=native_sources(original['source_commit']), software_exclusions=policy)
+            if policy is None:
+                args.output.mkdir(parents=True)
+                for i, u in enumerate(usages):
+                    save(args.output / f'seed-usage-{i:02}.json', {k: v for k, v in u.items() if k != 'content_sha256'})
+            save(args.output / 'plan.json', p); require_plan(args.output)
+        except BaseException as error:
+            if policy is not None:
+                save(args.output / 'preparation-ended.json', {'status': 'stopped', 'ended_utc': utc(),
+                    'error_type': type(error).__name__, 'error': str(error), 'new_model_calls': 0})
+            raise
+        if policy is not None:
+            save(args.output / 'preparation-ended.json', {'status': 'prepared', 'ended_utc': utc(),
+                'new_model_calls': 0})
     print(json.dumps({'prepared_source': source, 'physical_jobs': len(p['jobs']), 'designer_POSTs': 0}), flush=True)
 
 
@@ -158,7 +190,13 @@ def observe(root, p, job, observer):
     save(directory / 'cross-scores.json', {k: evaluate_loss(v, o['metadata']['measurements']) for k, v in p['losses'].items()})
 
 
-def run(root): return run_shared(root, require_plan_fn=require_plan, observe_fn=observe, schema=SCHEMA)
+def run(root):
+    p = require_plan(root)
+    extra = {}
+    if 'seed_software_exclusions' in p:
+        extra['inventory_fn'] = lambda inventory_root, seeds: usage_inventory(inventory_root, seeds,
+            software_exclusions=p['seed_software_exclusions'])
+    return run_shared(root, require_plan_fn=require_plan, observe_fn=observe, schema=SCHEMA, **extra)
 
 
 def main():
@@ -166,7 +204,9 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     for key in ('origin-run', 'origin-source', 'audit-one', 'audit-two'): parser.add_argument('--' + key, type=Path)
     parser.add_argument('--seed-usage-root', type=Path, action='append')
-    parser.add_argument('--evaluation-seed', type=int, action='append'); args = parser.parse_args(); args.output = args.output.resolve()
+    parser.add_argument('--evaluation-seed', type=int, action='append')
+    parser.add_argument('--seed-software-exclusions', type=Path)
+    args = parser.parse_args(); args.output = args.output.resolve()
     if args.stage == 'prepare':
         if any(getattr(args, k) is None for k in ('origin_run', 'origin_source', 'audit_one', 'audit_two', 'evaluation_seed')):
             parser.error('explicit normally closed workflow origin and unused seeds required')

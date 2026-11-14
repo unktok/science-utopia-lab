@@ -1,0 +1,455 @@
+{
+  "schema": "scienceutopia.seed-software-fixture-policy.v1",
+  "scope": "Only the 72 manually inspected exact non-production stores that caused the stopped v2 preparation. No prefix, glob, recursive directory exemption or real metadata-bearing cache exclusion. Every other file is still scanned.",
+  "original_preparation": {
+    "session": 14309,
+    "exit_code": 1,
+    "source_commit": "a15e229ed585e3abfffe062bbe8dacd340cec4a2",
+    "scientific_model_calls": 0,
+    "evaluation_dispatched": false,
+    "old_plan_reopened": false
+  },
+  "diagnostic_file_sha256": "f7447abbfc0dbc0c07d5c6919753953cc2daa31260323d1b78557b3e98cf76ae",
+  "files": [
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/native-instruction-summary-visual-qa-a1/test_full_export_api_keeps_thr0/raw/controls/instruction-cut/worlds/instruction-cut-s61001/replies/responses.sqlite",
+      "file_sha256": "b12dc784e0c128421ef245fff7e1d46f9fe3942bca2b39b757824379749b96e1",
+      "reason": "Inspected empty replies-only SQLite fixture: instruction timing export unit test, no metadata table or native inference."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/native-instruction-summary-visual-qa-a1/test_full_export_api_keeps_thr0/raw/controls/instruction-early/worlds/instruction-early-s61001/replies/responses.sqlite",
+      "file_sha256": "b12dc784e0c128421ef245fff7e1d46f9fe3942bca2b39b757824379749b96e1",
+      "reason": "Inspected empty replies-only SQLite fixture: instruction timing export unit test, no metadata table or native inference."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/native-instruction-summary-visual-qa-a1/test_full_export_api_keeps_thr0/raw/controls/instruction-late/worlds/instruction-late-s61001/replies/responses.sqlite",
+      "file_sha256": "b12dc784e0c128421ef245fff7e1d46f9fe3942bca2b39b757824379749b96e1",
+      "reason": "Inspected empty replies-only SQLite fixture: instruction timing export unit test, no metadata table or native inference."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/native-instruction-summary-visual-qa-a1/test_ordered_actual_sqlite_pai0/replies/responses.sqlite",
+      "file_sha256": "610153c9adc2df91181f9c2706352c740a9c557061e862879b7667bc123c95af",
+      "reason": "Inspected replies-only SQLite fixture with deliberately wrong data_sha: instruction timing pair-integrity rejection unit test."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/SCRIPTED-failed-own/worlds/SCRIPTED-failed-own-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/reference-advice-reserve21-all/worlds/reference-advice-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/reference-assignment-equalization-all/worlds/reference-assignment-equalization-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/reference-assignment-reserve10-all/worlds/reference-assignment-reserve10-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/reference-assignment-reserve21-all/worlds/reference-assignment-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/reference-assignment-reserve21-no-review-all/worlds/reference-assignment-reserve21-no-review-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/reference-assignment-reserve21-no-review-reject/worlds/reference-assignment-reserve21-no-review-reject-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/reference-assignment-reserve21-score3/worlds/reference-assignment-reserve21-score3-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom0/raw/physical/reference-cut-reserve21-all/worlds/reference-cut-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/SCRIPTED-failed-own/worlds/SCRIPTED-failed-own-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/reference-advice-reserve21-all/worlds/reference-advice-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/reference-assignment-equalization-all/worlds/reference-assignment-equalization-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/reference-assignment-reserve10-all/worlds/reference-assignment-reserve10-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/reference-assignment-reserve21-all/worlds/reference-assignment-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/reference-assignment-reserve21-no-review-all/worlds/reference-assignment-reserve21-no-review-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/reference-assignment-reserve21-no-review-reject/worlds/reference-assignment-reserve21-no-review-reject-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/reference-assignment-reserve21-score3/worlds/reference-assignment-reserve21-score3-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom1/raw/physical/reference-cut-reserve21-all/worlds/reference-cut-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/SCRIPTED-failed-own/worlds/SCRIPTED-failed-own-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/reference-advice-reserve21-all/worlds/reference-advice-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/reference-assignment-equalization-all/worlds/reference-assignment-equalization-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/reference-assignment-reserve10-all/worlds/reference-assignment-reserve10-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/reference-assignment-reserve21-all/worlds/reference-assignment-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/reference-assignment-reserve21-no-review-all/worlds/reference-assignment-reserve21-no-review-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/reference-assignment-reserve21-no-review-reject/worlds/reference-assignment-reserve21-no-review-reject-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/reference-assignment-reserve21-score3/worlds/reference-assignment-reserve21-score3-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom2/raw/physical/reference-cut-reserve21-all/worlds/reference-cut-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/SCRIPTED-failed-own/worlds/SCRIPTED-failed-own-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/reference-advice-reserve21-all/worlds/reference-advice-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/reference-assignment-equalization-all/worlds/reference-assignment-equalization-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/reference-assignment-reserve10-all/worlds/reference-assignment-reserve10-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/reference-assignment-reserve21-all/worlds/reference-assignment-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/reference-assignment-reserve21-no-review-all/worlds/reference-assignment-reserve21-no-review-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/reference-assignment-reserve21-no-review-reject/worlds/reference-assignment-reserve21-no-review-reject-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/reference-assignment-reserve21-score3/worlds/reference-assignment-reserve21-score3-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_changed_scope_never_becom3/raw/physical/reference-cut-reserve21-all/worlds/reference-cut-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_choice_scope_uses_exact_f0/raw/evaluation/evaluation-000/worlds/evaluation-000-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_choice_scope_uses_exact_f0/raw/evaluation/evaluation-001/worlds/evaluation-001-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_choice_scope_uses_exact_f0/raw/evaluation/evaluation-002/worlds/evaluation-002-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_choice_scope_uses_exact_f0/raw/evaluation/evaluation-003/worlds/evaluation-003-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_effect_scope_forwards_eve0/raw/evaluation/evaluation-000/worlds/evaluation-000-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_effect_scope_forwards_eve0/raw/evaluation/evaluation-001/worlds/evaluation-001-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_effect_scope_forwards_eve0/raw/evaluation/evaluation-002/worlds/evaluation-002-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_effect_scope_forwards_eve0/raw/evaluation/evaluation-003/worlds/evaluation-003-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_existing_committed_reply_0/replies/responses.sqlite",
+      "file_sha256": "d2f1b5b21bf51fe529bb185b6a031d9a952dcaeab486aab33ce26830f625b8bd",
+      "reason": "Inspected replies(data) SQLite fixture containing literal SCRIPTED: missing-wire rejection test, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/SCRIPTED-failed-own/worlds/SCRIPTED-failed-own-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/reference-advice-reserve21-all/worlds/reference-advice-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/reference-assignment-equalization-all/worlds/reference-assignment-equalization-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/reference-assignment-reserve10-all/worlds/reference-assignment-reserve10-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/reference-assignment-reserve21-all/worlds/reference-assignment-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/reference-assignment-reserve21-no-review-all/worlds/reference-assignment-reserve21-no-review-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/reference-assignment-reserve21-no-review-reject/worlds/reference-assignment-reserve21-no-review-reject-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/reference-assignment-reserve21-score3/worlds/reference-assignment-reserve21-score3-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_full_export_twice_retains0/raw/physical/reference-cut-reserve21-all/worlds/reference-cut-reserve21-all-s61001/replies/responses.sqlite",
+      "file_sha256": "129bf57b357bc289ad25a3b828cb67528045705864e444a685fa73ed69bd152b",
+      "reason": "Inspected empty replies-only SQLite fixture: planning readout evidence with mocked physical/checkpoint consumers, no metadata table."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_workflow_fixed_audit_cann0/raw/evaluation/evaluation-000/worlds/evaluation-000-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_workflow_fixed_audit_cann0/raw/evaluation/evaluation-001/worlds/evaluation-001-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_workflow_fixed_audit_cann0/raw/evaluation/evaluation-002/worlds/evaluation-002-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_workflow_fixed_audit_cann0/raw/evaluation/evaluation-003/worlds/evaluation-003-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_workflow_fixed_audit_cann1/raw/evaluation/evaluation-000/worlds/evaluation-000-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_workflow_fixed_audit_cann1/raw/evaluation/evaluation-001/worlds/evaluation-001-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_workflow_fixed_audit_cann1/raw/evaluation/evaluation-002/worlds/evaluation-002-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-development-readouts-light-v1-a1/tmp/test_workflow_fixed_audit_cann1/raw/evaluation/evaluation-003/worlds/evaluation-003-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-fixed-light-v1-a3/tmp/test_cold_branch_binds_transpo0/raw/evaluation/evaluation-000/worlds/evaluation-000-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-fixed-light-v1-a3/tmp/test_cold_branch_binds_transpo0/raw/evaluation/evaluation-001/worlds/evaluation-001-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-fixed-light-v1-a4/tmp/test_cold_branch_binds_transpo0/raw/evaluation/evaluation-000/worlds/evaluation-000-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-fixed-light-v1-a4/tmp/test_cold_branch_binds_transpo0/raw/evaluation/evaluation-001/worlds/evaluation-001-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-fixed-light-v1-a4/tmp/test_cold_branch_binds_transpo0/raw/evaluation/evaluation-002/worlds/evaluation-002-s72101/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    },
+    {
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+      "path": "publication-ready-native-v1/outputs/workflow-fixed-light-v1-a4/tmp/test_cold_branch_binds_transpo0/raw/evaluation/evaluation-003/worlds/evaluation-003-s72107/replies/responses.sqlite",
+      "file_sha256": "d552cf54e87c4ef609674bc02675f1ab7ef90aae9a5f617c446891711ef64318",
+      "reason": "Exact literal SCRIPTED cache primitive from workflow fixed-audit/readout unit fixtures, not a SQLite journal."
+    }
+  ],
+  "reviewed_fixture_sources": {
+    "tests/reports/test_native_instruction_timing_report_v1.py": "9da452516ac94ca2ea78fdbf1d466dfa64120c8b98cafb2c1ee1c87fdafc0b8b",
+    "tests/reports/test_native_planning_mechanism_readouts_v1.py": "bfbf6b2e0915648cc63af470e04dfecd4fb2ad255a5801784b78ad38171c8f38",
+    "tests/reports/test_native_workflow_fixed_audit_report_v1.py": "73efcba0ee23fe3929c804611b7e5d1c1573267d98995fab92e3d82be1ea4fd6",
+    "tests/reports/test_native_workflow_fixed_readout_v1.py": "d1adac4300d7b51411b940e38eb8dc17fe6ec514a39eb30998d0d0d8850d8b22",
+    "tests/reports/test_native_workflow_development_readouts_v1.py": "b5557e4debc2b4fc7f300ab8f43fcc9a2fd0bab2f23bc6c28da0e5900bb78643"
+  },
+  "content_sha256": "6a94dfd796d866ae0b934d4330ae361ff00031849091a5e1e37c1c58a218debf"
+}

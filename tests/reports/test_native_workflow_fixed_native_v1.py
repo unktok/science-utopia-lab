@@ -25,10 +25,12 @@ from tests.reports.test_native_workflow_objective_loop_native_v1 import (
     test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_cold_audit as development_check)
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 from utopia.utils.data_utils import file_sha256, write_json_atomic
+from utopia.system.design_patch import digest
 
 
 @pytest.mark.parametrize('designer_profile', ['legacy', development.FEEDBACK_MODE])
-def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_path, fixed_corpus, monkeypatch, designer_profile):
+def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_path, fixed_corpus, monkeypatch,
+        designer_profile, software_fixtures=False):
     prior = tmp_path / 'development'
     development_check(prior, fixed_corpus, monkeypatch, 'independent-numeric-v2', 'read900', designer_profile)
     old_root = prior / 'run'; original = development.read(old_root / 'plan.json')
@@ -41,12 +43,26 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
     # not a richer mock certificate or fabricated development audit.
     old_plan, old_audit = driver.origin_evidence(origin)
     seeds = [72101]  # SCRIPTED software fixture, not a chosen scientific seed.
-    usage = usage_inventory(old_root, seeds)
+    policy = None; inventory_roots = [old_root]
+    if software_fixtures:
+        inventory_root = tmp_path / 'SCRIPTED-seed-inventory'
+        inventory_root.mkdir(); file = inventory_root / 'responses.sqlite'
+        file.write_bytes(b'SCRIPTED cache primitive')
+        source_file = Path(__file__).resolve()
+        policy = {'schema': 'scienceutopia.seed-software-fixture-policy.v1',
+            'files': [{'root': str(inventory_root.resolve()), 'path': 'responses.sqlite',
+                'file_sha256': file_sha256(file), 'reason': 'Explicit SCRIPTED non-production cache'}],
+            'reviewed_fixture_sources': {str(source_file.relative_to(driver.ROOT)): file_sha256(source_file)}}
+        policy['content_sha256'] = digest(policy)
+        inventory_roots.append(inventory_root)
+    usages = [usage_inventory(path, seeds, **({} if policy is None else {'software_exclusions': policy}))
+        for path in inventory_roots]
     p = driver.build_plan(old_plan, old_audit, source=original['source_commit'], origin=origin,
-        usages=[usage], seeds=seeds, observer_backend=original['observer_contract']['backend'],
-        source_proof=development.native_sources(original['source_commit']))
+        usages=usages, seeds=seeds, observer_backend=original['observer_contract']['backend'],
+        source_proof=development.native_sources(original['source_commit']), software_exclusions=policy)
     root = tmp_path / 'evaluation'; root.mkdir()
-    driver.save(root / 'seed-usage-00.json', {k: v for k, v in usage.items() if k != 'content_sha256'})
+    for i, usage in enumerate(usages):
+        driver.save(root / f'seed-usage-{i:02}.json', {k: v for k, v in usage.items() if k != 'content_sha256'})
     driver.save(root / 'plan.json', p); p = driver.require_plan(root)
     assert len(p['jobs']) == 2  # Two controls; exact submitted policies share their actual identities.
     monkeypatch.setattr(common, 'LocalObserverBackend', development.LocalObserverBackend)
@@ -101,7 +117,7 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
         'schema': 'scienceutopia.native-workflow-fixed-software-check.v1',
         'classification': 'SCRIPTED-HTTP-corpus-and-upstream-origin-not-scientific-evaluation',
         'source_commit': p['source_commit'], 'new_model_calls': 0,
-        'designer_profile': designer_profile,
+        'designer_profile': designer_profile, 'explicit_software_fixture_policy': software_fixtures,
         'development_native_software_worlds': 7, 'additional_native_software_worlds': 2,
         'additional_annual_checkpoints': 8, 'transport_application_records': 2,
         'known_nulls_preserved': 1, 'fixed_selection_unchanged': True,
@@ -111,3 +127,8 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
         'matching_report_files': report_files, 'scientific_gain_claimed': False,
         'matching_mechanism_readout_files': readout_files,
         'publication_ready': False}, sort_keys=True)
+
+
+def test_explicit_seed_software_policy_native_handoff_and_cold_audits(tmp_path, fixed_corpus, monkeypatch):
+    test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_path, fixed_corpus, monkeypatch,
+        development.FEEDBACK_MODE, software_fixtures=True)
