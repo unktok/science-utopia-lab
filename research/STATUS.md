@@ -5,7 +5,7 @@
 ### November14 14:36JST: three own slots terminal; one known compile null is preserved
 
 T0/U0 both complete with T=-20/U=-15.333333333333332, tying the hand control.
-U1 returns a known final graph but sets costs175 before its consumer
+U1 returns a known final graph but feeds costs175 into its earlier consumer
 communication170, violating the unchanged causal rule. The original literal,
 error and exact-parent witness are retained as a consumed null, not repaired
 or assigned a scientific loss. This is not a transport timeout. Writer39932

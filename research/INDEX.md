@@ -10,7 +10,7 @@ Historical documents retain their paths and source identities.
   new strict choice-route/cold relative-path fix passes retained-data checks;
   three read-only mechanism/input/choice continuations actually await closure.
   Current science has3/6 terminal own slots:2 completions tying the hand,
- 1 known causal compile null; T1 continues. No full closure or improvement yet.
+  1 known causal compile null; T1 continues. No full closure or improvement yet.
 
 - [First actual own workflow completion](results/native-workflow-compiler-feedback-first-own-v2.json):
   T0 completes T=-20/U=-15.3333, tying its parent. Three phase-label edits leave
