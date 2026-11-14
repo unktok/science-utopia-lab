@@ -25,13 +25,17 @@ def summarize(plan, audit, records, sessions):
     if plan.get('designer_mode') != MODE:
         raise ValueError('explicit staged workflow required; do not relabel earlier one-shot studies')
     result = native_summary(plan, audit, records)
-    keys = {(s['objective'], s['generation']) for s in result['slots']}
+    matched = plan['schema'] == 'scienceutopia.native-longitudinal-comparison.v1.plan'
+    def slot_key(row):
+        history = (row['arm'], row['objective']) if matched else row['objective']
+        return history, row['generation']
+    keys = {slot_key(s) for s in result['slots']}
     if set(sessions) != keys:
         raise ValueError('every consumed slot requires its original staged session, including nulls')
     counts = {'known_probe_attempts': 0, 'returned': 0, 'raised': 0,
         'sessions_missing_component_summary': 0, 'recorded_model_steps': 0}
     for row in result['slots']:
-        key = row['objective'], row['generation']; record = records[key]; session = sessions[key]
+        key = slot_key(row); record = records[key]; session = sessions[key]
         if session['request_sha256'] != record['request_sha256'] or session['definition'] != record['definition']:
             raise ValueError('literal staged wrapper request/definition differs from audited slot')
         response, steps = session['response'], session['steps']
@@ -62,12 +66,14 @@ def summarize(plan, audit, records, sessions):
                 counts[target] += summary[source]
             counts['recorded_model_steps'] += len(steps)
         row['construction_trace'] = trace
-    result.update(schema=SCHEMA, construction_counts=counts)
+    result.update(schema='scienceutopia.native-longitudinal-construction-trace.v1' if matched else SCHEMA,
+        construction_counts=counts)
     result['interpretation'].update(
         component_return_is_native_success=False, observed_revision_is_causal_repair=False,
         staged_method_superiority_claimed=False, new_native_worlds=0,
         independent_optimizer_units_are_not_steps_or_probes=True)
-    result['scope'] = ('Original directed calibration is separate from these six proposal paths. '
+    count = 'twelve' if matched else 'six'
+    result['scope'] = (f'Original directed calibration is separate from these {count} proposal paths. '
         'Same-fixture later-code transitions describe observations, not caused repair or scientific gains. '
         'Untested/new interfaces and technical nulls remain visible. Old suites apply only to their '
         'literal artifact version. Native outcomes, both losses and frozen selections are unchanged.')
@@ -92,13 +98,19 @@ def export(args):
     paths.append(Path(inspect.getfile(persistent_diagnostics)))
     inputs = {str(p.resolve()): file_sha256(p) for p in paths}
     records, sessions = {}, {}
-    for objective in plan['objectives']:
-        state = json.loads((root/'search'/objective/'campaign/native-adaptive-state.json').read_text())
+    matched = plan['schema'] == 'scienceutopia.native-longitudinal-comparison.v1.plan'
+    if matched:
+        from scripts import run_native_longitudinal_comparison_v1 as driver
+    else:
+        from scripts import run_native_workflow_objective_loop_v1 as driver
+    for history in driver.history_keys(plan):
+        history_root = driver.history_directory(root, history)
+        state = json.loads((history_root/'campaign/native-adaptive-state.json').read_text())
         if state['pending'] is not None:
             raise ValueError('pending workflow is not a closed construction trajectory')
         for g, record in enumerate(state['records']):
-            key = objective, g; records[key] = record
-            directory = root/'search'/objective/'authoring'/('proposal-'+record['request_sha256'])
+            key = history, g; records[key] = record
+            directory = history_root/'authoring'/('proposal-'+record['request_sha256'])
             wrapper = checked(json.loads((directory/'result.json').read_text()))
             binding = checked(json.loads((directory/'binding.json').read_text()))
             if binding['request'] != record['request'] or wrapper['binding_sha256'] != binding['content_sha256']:
@@ -115,6 +127,7 @@ def export(args):
     saved = save(out/'report.json', report)
     fields = ['slot_index', 'objective', 'generation', 'status', 'physical_job', 'loss',
         'completed_steps', 'probe_attempts', 'returned', 'raised', 'terminal_response_missing']
+    if matched: fields.insert(1, 'arm')
     with (out/'slots.csv').open('x', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=fields, lineterminator='\n'); writer.writeheader()
         for row in saved['slots']:
