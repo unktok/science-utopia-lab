@@ -36,6 +36,7 @@ then exits0 and records
 all85 page PNGs and default extracted text match the reviewed original; binary
 PDF bytes differ. No raw audit, new model call, numerical recomputation,
 clean-machine rebuild, upload, anonymity/release clearance or readiness follows.
+Final targeted source/retention/subset session31500 exits0 with25passed/8.74s.
 
 The scientific result remains unfavorable: neither selected system improves
 R7 or beats the hand on the single unused condition. Exact R7/T0 scientist
