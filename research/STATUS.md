@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+### November14 15:12JST: five own slots terminal; final U world is running
+
+Original writer39932 remains live and executes U2's native world. T0, U0 and
+T1 finish their assigned losses at-20,-15.333333333333332 and-20, respectively,
+tying the hand control. U1 and T2 are known generation nulls, not losses.
+T2 removes mandatory selection inputs and schedules consumers before their
+producers; the original compiler rejects it. No failure is repaired/refilled.
+There are5 completed physical worlds (2 controls,3 own), not full closure.
+
+U2's actual retained HTTP intent184522287ae45aec6a9b08d6f9e569ef07952968cd3a5639625082e57b8dfa60
+contains the top-level consumed_proposal_compiler_feedback list with U1's
+exact request928304b0 and literal6ae54d15, including costs175→communication170.
+Its new literal compiles and is executing; neither a final score nor improvement
+is inferred. No automatic invention advantage or publication readiness yet.
+Original audit/cost continuation89238 is also confirmed live and waiting.
+The prospective unused-seed evaluation is still undispatched and requires
+normal closure, agreeing original audits and all three seed inventories.
+
 ### November14 14:36JST: three own slots terminal; one known compile null is preserved
 
 T0/U0 both complete with T=-20/U=-15.333333333333332, tying the hand control.

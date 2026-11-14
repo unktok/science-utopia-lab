@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Current status](STATUS.md): at15:12JST,5/6 own slots are terminal:3 native
+  completions tie the hand control and2 known invalid proposals consume nulls.
+  The last U2 world is running. Its actual HTTP input contains U1's exact
+  compiler witness; this is verified feedback delivery, not an improvement
+  result. Normal closure, final selection and unused-condition evaluation remain.
+
 - [Workflow development readouts](results/native-workflow-development-readouts-preparation-v1.json):
   new strict choice-route/cold relative-path fix passes retained-data checks;
   three read-only mechanism/input/choice continuations actually await closure.

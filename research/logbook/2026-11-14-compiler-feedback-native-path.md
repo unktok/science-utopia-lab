@@ -111,3 +111,28 @@ is not established: U uses content-dependent fixed critic scores. Retention is
 legal; no host novelty or improvement veto is added. At05:21UTC the world is
 still running, not a second completed own score or independent optimization
 history. Both read-only continuations still await the original writer.
+
+## Five consumed slots; actual failure feedback reaches the last proposal
+
+At06:12UTC, original writer39932 is live in U2's native world. U0 and T1
+have since finished at their hand-control losses. U1 is a known final proposal
+whose costs175 precedes neither communication170 nor its unchanged edge rule.
+T2 also returns a known final proposal, removing required selection inputs
+and scheduling consumers before producers. Both are retained generation nulls,
+not scientific losses, timeouts, repaired outputs or replacement slots.
+
+Read-only inspection of the actual U2 call.intent.json (file SHA256
+184522287ae45aec6a9b08d6f9e569ef07952968cd3a5639625082e57b8dfa60)
+finds its user-message JSON's top-level consumed_proposal_compiler_feedback
+contains U1's request928304b0c7f744bbb4218b893d624a55bcabc7639be5b43bf21a024392791aac,
+literal6ae54d15b1d6b877f723fe6ff50bcf5a8bff54b38157c25a18f3411083a15383,
+and exact costs175→communication170 witness. U2 compiles, but its world is
+not complete at this snapshot. This establishes feedback delivery, not that
+feedback caused a gain or that the model correctly distinguished parent and
+historical candidate in its prose. The original inputs and rationale stay raw.
+
+Five of six own slots are terminal (three evaluated, two null); both reference
+worlds are complete. Audit/cost89238 is confirmed live and waiting. No seed
+inventory, unused evaluation, whole-study audit or final selection is invented.
+The preceding user-status turn was a verified wait on writer39932, not an
+implementation change. No heavy independent QA/render is started during inference.
