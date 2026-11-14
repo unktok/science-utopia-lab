@@ -18,6 +18,13 @@ reselection, source/guard/model/budget change or cross-arm own feedback occurs.
 The complete first-submission trace, rejection and record digests are retained
 in the dispatch log. Source difference is not an effective-system/gain claim.
 
+A read-only diagnostic of the two completed R7/scalar-T0 leaf worlds confirms
+all115 ordered full scientist payloads and literal choices match, with all
+replies committed; full provider bodies differ. This is scoped observed-history
+invariance, not global equivalence or the still-pending whole-study cold audit.
+Original24137 exits0, no model/world/source/selection change. The second
+parent-trajectory U request-bound readiness continues in original82259.
+
 After actual two-frame capacity closes, separately declared scientific resource
 observations pass and original82259 launches the prepareda5be8d31 public driver
 at21:53:15UTC/06:53:15JST. Its own28-case actual initial request-bound calibration

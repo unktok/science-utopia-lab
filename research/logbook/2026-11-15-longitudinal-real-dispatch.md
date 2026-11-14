@@ -129,6 +129,30 @@ session82259 is actually polled live after the transition, with no whole-study
 terminal. The remaining eleven original slots stay scheduled, without model,
 protocol, guard, selection or runtime changes.
 
+### Read-only two-complete-world diagnostic while the other histories run
+
+Original24137 actually exits0 without model/native calls. It uses the existing
+sourcea5be8d31 request-sequence projector, not the whole-study export CLI or a
+fabricated closure/audit. Both leaf observations are already complete; SQLite
+is read immutable/readonly with no WAL/journal, and both wire/cache file hashes
+are equal before and after. The ongoing writer and remaining histories are
+untouched. Diagnostic content
+`cbf212edd1a142eaf805911a6d2abcd95a5545cf0c5816514cb5c096e146bd17`
+is retained at the feature worktree's
+outputs/native-longitudinal-first-own-request-pair-v1-a1.json.
+
+R7 and scalar-T0 each contain115 full ordered scientist payloads and115
+committed replies, with zero input lacking a reply. Direct parsed-payload and
+literal-choice comparisons both agree. Common ordered full-payload hash:
+`40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb`;
+common ordered choices hash:
+`f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586`.
+Full provider bodies differ and remain unmodified. This explains observed
+downstream input/choice invariance of this source edit more specifically than
+equal losses alone. It does not establish equality of every internal state,
+all possible worlds, whole-study cold validity or all remaining proposals.
+The paired normal-closure audits and all-history readouts remain required.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
