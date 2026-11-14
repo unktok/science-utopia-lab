@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual initial direction-support analysis](publication/native-direction-support-headroom-v1.md):
+  two source-pinned exports agree. Core-only catalog assignment has a
+  duration-only envelope20, while original legacy core+related choices give36.
+  Neither is an attained effect or global optimum; the old20 conditional
+  envelope must not become a whole-workflow impossibility claim. No active
+  loss, control, optimizer context or source is changed.
+
 - [First staged-study R7 completes](results/native-open-staged-institution-first-reference-v1.json):
   T=-18/U=-13.3333 and115 full scientist inputs/choices equal prior R7. The
   hand control now runs; no own policy result or full-study closure. The new

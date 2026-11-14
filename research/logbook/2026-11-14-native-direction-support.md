@@ -26,3 +26,23 @@ assumptions. Fourteen small literal-input tests78007 exit0 in0.96s, without
 Docker, scientific execution, renderer, embeddings or model calls. They do
 not count as fourteen scientific samples. Source-bound actual export follows
 after committing the reader; full claims remain in the separate research note.
+
+After source-binding/immutable-input checks are added, the second14-case suite
+34253 exits0 in1.22s. Commit10ad8ba2 freezes the reader before actual collection.
+Actual60086/35971 exports both exit0 and agree byte-for-byte: core-only20,
+legacy core+related36; initial minima are[2,2,2,2,2] and[1,1,2,1,1]. No original
+bound input changes during either read. Retain the original sealed report
+without JSON round-tripping or calling it a whole-study audit/attained gain.
+
+The live writer has now completed both fresh controls (R7=-18/-13.3333,
+hand=-20/-15.3333) and advances14:12:58UTC to throughput:g0 directed readiness.
+At the subsequent observation21 cases have completed. Own proposal outcomes
+remain absent. These source-based findings are not supplied to the active
+fixed optimizer context, and no new developer policy is implemented here.
+
+The retained-data suite19808 passes15 in0.81s. A subsequent original-run
+observation shows throughput:g0 readiness28/28 and optimization beginning
+14:21:45UTC, with no completed first proposal yet. This starts actual staged
+free design, not a claim that it has finished, repaired source or improved
+the scientific loss. The support finding remains a simulator/adapter diagnostic,
+not a substitute main-track contribution. No PDF rebuild runs during science.

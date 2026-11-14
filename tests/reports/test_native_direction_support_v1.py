@@ -63,3 +63,19 @@ def test_reader_cannot_write_into_original_run_or_frozen_source(tmp_path):
         args = SimpleNamespace(source=source, plan=raw/'plan.json', checkpoint=raw/'checkpoint.gz', output=target)
         with pytest.raises(ValueError, match='outside original'): module.export(args)
         assert not target.exists()
+
+
+def test_retained_actual_initial_support_keeps_relaxation_and_unknown_reachability_separate():
+    import json
+    from utopia.optimization.native_numeric_designer import checked
+    r = checked(json.loads((module.ROOT/'research/data/native-direction-support-v1/report.json').read_text()))
+    a = r['analysis']
+    assert a['duration_only_output_envelopes'] == {'catalog_assignment': 20, 'legacy_native_parser': 36}
+    assert len(a['initial_authors']) == 5
+    assert [x['catalog_assignment']['minimum_project_years'] for x in a['initial_authors']] == [2]*5
+    assert [x['legacy_native_parser']['minimum_project_years'] for x in a['initial_authors']] == [1,1,2,1,1]
+    assert all(not x['unresolved_legacy_allowed_topics'] for x in a['initial_authors'])
+    assert a['conditional_not_global_optimality_proof'] and a['additional_assumptions_not_automatically_proved']
+    assert r['original_bound_inputs_unchanged'] and not r['native_execution_or_whole_study_audit_claimed']
+    assert a['new_model_calls'] == a['new_native_worlds'] == a['new_code_executions'] == 0
+    assert not a['loss_or_selection_changed'] and not a['publication_ready']

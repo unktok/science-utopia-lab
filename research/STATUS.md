@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+### November14 23:21JST: both controls complete; first actual staged proposal starts
+
+Writer79701/PID32780 completes the hand at T=-20/U=-15.3333 after R7=-18/
+-13.3333, then its request-bound throughput:g0 readiness passes28 directed
+cases. At14:21:45UTC it enters optimization, with the first actual staged
+proposal child active. No own policy/native loss is complete yet. The source,
+original scientist world, losses and six-slot budget stay frozenf47270b9.
+
+A [source-bound initial-support readout](publication/native-direction-support-headroom-v1.md)
+now distinguishes the old core-only catalog envelope20 from a legacy native
+core+related-topic duration-only relaxation36. Two actual exports agree;
+15 small retained-data checks pass in0.81s. Neither value is attained future
+performance or a proved global optimum. The20 catalog envelope cannot justify
+declaring broader workflow improvement impossible. This is a simulator/adapter
+diagnostic, not a replacement main-track contribution or permission to change
+the active objective/context/reference. The reviewed82-page artifact stays
+unchanged; integrate the later analysis only with a separately verified update.
+
 ### November14 22:59JST: first staged-study reference completes; construction reader waits separately
 
 Original writer79701/PID32780 completes R7 at T=-18/U=-13.3333 and advances

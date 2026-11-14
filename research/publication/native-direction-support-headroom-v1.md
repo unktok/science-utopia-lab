@@ -62,7 +62,11 @@ The new `native_direction_support_v1` reader parses the frozen catalog with AST
 literal evaluation only, binds the actual year0 R7 policy/checkpoint and plan,
 reports each exact support/minimum and the explicit assumptions, and checks
 bound input bytes before/after. It executes no source, world or model. Its
-sealed actual export is retained separately after committing the reader.
+sealed actual export is now [retained unchanged](../data/native-direction-support-v1/report.json):
+two actual source-pinned exports60086/35971 exit0 and are byte-identical.
+This binds initial support and arithmetic, not future attainability or a full
+original-source native-world audit. The reviewed82-page PDF remains its earlier
+snapshot; this subsequent analysis has not yet been integrated into that PDF.
 
 ## Research decision, without changing the active experiment
 
@@ -79,3 +83,9 @@ labelled developer control, not an automatically invented institution. Compare
 same-actuation alternatives before claiming an isolated support effect. No such
 new rule/world is implemented or dispatched by this note, and a positive result
 would still need appropriate independent evidence before a main-track claim.
+
+This particular support mismatch is a property of the inherited simulator and
+its catalog-command adapter, not by itself an important new general result
+about scientific institutions. Use it to avoid a false saturation explanation
+and design discriminating controls, not to replace the publication goal with
+a small arithmetic/software-interface observation.
