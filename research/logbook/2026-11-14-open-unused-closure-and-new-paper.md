@@ -68,3 +68,13 @@ and editorial issue, not solved by those numeric checks. Only the abstract is
 replaced with a concise question/method/major-result synthesis; all body tracks,
 complete result tables, diagrams and prior evidence remain. Fresh a5/a6 builds
 and review follow; a3/a4 files remain preserved, not declared final reviewed.
+
+The new a5/a6 builds30297/5848 exit0 with81 pages, matching text/logs and
+34778 fully in-page Poppler words. A wider actual source suite69756 exits1
+with45 passes and one obsolete historical README-heading assertion. Its69-page
+artifact and real-figure SHA checks pass. The test is corrected to require the
+same original69-page PDF remain linked, not the transient "Source ahead of
+PDF" heading after later reviewed manuscripts exist. No source/figure/PDF
+hash guard is weakened. The failed JUnit remains preserved; because this test
+belongs to the build receipt's support manifest, fresh source-bound a7/a8
+builds follow even though literal TeX inputs are unchanged.

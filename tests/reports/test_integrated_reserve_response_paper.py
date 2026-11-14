@@ -70,7 +70,9 @@ def test_existing_real_figure_is_bound_and_old_reviewed_pdf_is_unchanged():
         assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest['files'][name]
     old = checked(json.loads((ROOT / 'paper/integrated-planning-search-build-v1.json').read_text()))
     assert old['pages'] == 69 and hashlib.sha256((ROOT / old['output']).read_bytes()).hexdigest() == old['pdf_sha256']
-    assert 'Source ahead of PDF' in (ROOT / 'paper/README.md').read_text()
+    # This69-page artifact remains historical after later reviewed builds;
+    # its continued availability is invariant, not an old transient heading.
+    assert old['output'].split('/')[-1] in (ROOT / 'paper/README.md').read_text()
     assert '\\input{integrated/native-reserve-response}' in (ROOT / 'paper/integrated.tex').read_text()
     printed = checked(json.loads((ROOT / 'paper/figures/native-reserve-paper-v1/manifest.json').read_text()))
     assert printed['figure_width_inches'] == 5.5 and printed['tick_and_legend_font_points'] == 8
