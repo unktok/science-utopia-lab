@@ -2,6 +2,25 @@
 
 ## Active publication-ready goal
 
+### November14:82-page priority/software update reviewed; next actual study still not dispatched
+
+At manuscript source40ea7d68, both cached/untrusted builds exit0. All82 final
+layouts and150dpi first/concept/changed-section details are inspected; extracted
+text/logs and every90dpi page image agree.42 figures/36 tables remain, with27
+references: only ALA2022 is new. AMD-LLM was already in the second bibliography;
+the earlier missing-reference claim is explicitly corrected, not duplicated.
+[Exact new PDF receipt](../paper/integrated-staged-construction-build-v1.json).
+No new scientific results or actual LLM repairs follow from this editorial
+update. The81-page artifact and all older bytes remain unchanged. The82-page
+minimal subset is not yet verified; publication readiness remains unachieved.
+
+The fifth unchanged resource check exits1 at13:10:56UTC with CPU583.2%,
+42.11GiB free+inactive and three unclassified Python workers. A later single
+process observation is240.8%CPU but is not the required two-sample resource
+certificate. The new real study still has only plan.json, no started.json or
+writer. No project inference is claimed live. Do not stop other projects or
+relax resource criteria to make dispatch pass.
+
 ### November14: real staged-study plan prepared; resource window prevents inference start
 
 Actual prepare10807 exits0 at frozenf47270b9 with original real corpus/models,
@@ -34,7 +53,8 @@ two controls, original world/losses and non-veto diagnostics. Native science
 still matches264 original source files. Actual free-model calibration and
 optimization have not started; no real inference job is live from this work.
 The81-page reviewed PDF stays unchanged. [Closest-work claim addendum](publication/novelty-addendum-programmatic-institutions-v1.md)
-also identifies two missing direct references for its next consolidated update.
+is superseded by the explicit bibliography correction and82-page update above;
+only the2022 programmatic reference was absent, not the already cited AMD-LLM.
 Main-track significance, appropriate independent evidence and final readiness
 remain unachieved; source/tests/record counts are not their substitutes.
 

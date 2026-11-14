@@ -1,14 +1,20 @@
 # Objective-conditioned institution paper
 
-Current LaTeX is ahead of the reviewed81-page artifact below: it adds the2022
-programmatic mechanism-design precedent and the later SCRIPTED staged
+The latest reviewed working artifact is the
+[82-page integrated draft](../output/pdf/science-utopia-lab-integrated-staged-construction-working-paper.pdf),
+with42 figures,36 tables and27 references. Its
+[source/build/visual receipt](integrated-staged-construction-build-v1.json)
+binds two actual cached builds with identical text/logs and all82 page images.
+All page layouts and150dpi first/concept/updated-section details are inspected.
+It adds the2022 programmatic mechanism-design precedent and the SCRIPTED staged
 construction boundary, not new scientific results. AMD-LLM was already cited
 through `submission-sources.bib`; the earlier two-missing-reference statement
 is [explicitly corrected](../research/publication/novelty-addendum-programmatic-institutions-v1.md).
-A new build/visual receipt is required before presenting this source as reviewed.
+All older PDFs and receipts remain unchanged. The new minimal rebuild subset
+is not yet verified; the81-page proof below applies only to its own snapshot.
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
-The latest reviewed artifact is the
+The preceding reviewed artifact is the
 [81-page integrated draft](../output/pdf/science-utopia-lab-integrated-open-institutions-working-paper.pdf),
 with42 figures,36 tables and26 references. Its
 [source/build/visual receipt](integrated-open-institutions-build-v1.json)

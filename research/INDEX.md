@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Reviewed82-page priority/software update](../paper/integrated-staged-construction-build-v1.json):
+  all82 layouts inspected and two actual builds' text/logs/page pixels agree.
+  Retains42 figures/36 tables, adds only one reference (ALA2022); AMD-LLM was
+  already cited. No new scientific result or actual model repair. The earlier
+  reviewed81-page artifact and its own subset proof remain unchanged.
+
 - [Actual staged plan prepared, not dispatched](results/native-open-staged-institution-prepared-v1.json):
   frozenf47270b9 preparation succeeds with the unchanged real native world.
   Four resource checks fail before inference; CPU/unknown-process limits stay
@@ -24,7 +30,7 @@ Historical documents retain their paths and source identities.
   correction, new native world or gain. Actual campaign/audit/cost/handoff
   connection and fresh real calibration are still required.
 
-- [Latest reviewed81-page working manuscript](../paper/integrated-open-institutions-build-v1.json):
+- [Preceding reviewed81-page working manuscript](../paper/integrated-open-institutions-build-v1.json):
   all meaningful tracks,42 figures/36 tables, complete real open-code and unused
   results without an advantage claim. Actual two cached builds/all-page pixels
   agree and all layouts are inspected. Old artifacts are preserved.

@@ -35,3 +35,21 @@ scientific optimization.19 source/historical-evidence tests41901 pass; they
 are not a new layout check or scientific sample. Rebuild/review is still
 required before calling the new source a reviewed PDF. All earlier artifacts
 and their own reconstruction policies remain immutable.
+
+## Reviewed82-page artifact retained
+
+Actual Tectonic builds14023/29475 and both90dpi renders57677/86427 exit0.
+First build's requested nice adjustment was denied but the build itself
+succeeded; the second escalated nice adjustment succeeds. Text/logs and all82
+page-image hashes agree. All seven contact sheets plus150dpi pages1/4/63/65/69
+are actually viewed, with no clipping or overlap observed. Retention tool46eda9
+exits0 at clean40ea7d68:82 pages,42 figures,36 tables,27 references, PDF SHA256
+73b14e2f5e6642a5f7468bd0d408f773b7623276be1f8490724fedbfc0664c6e.
+All older PDFs/receipts remain unchanged.53 manuscript/subset/tamper/historical
+checks29095 exit0 in46.34s. New actual subset reconstruction remains next.
+
+An explicit generated allowlist was briefly written under /Users/shiro/research
+because its patch path was relative to the home working directory. It was
+immediately moved via an absolute-path add/delete patch to this repository;
+only that just-created file was removed, recoverable from the repository copy.
+No user file, old record or scientific input was changed by that correction.
