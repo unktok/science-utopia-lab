@@ -20,7 +20,9 @@ or publication readiness yet. [Attempts, locators and dispatch](logbook/2026-11-
 
 Future rationale-budget/metric-semantics fixes are pushed separately, not
 merged/applied; full native integration/readiness remains required. The reviewed
-82-page PDF predates actual staged outcomes. R2 important claim, R3 independent
+82-page PDF predates actual staged outcomes. LaTeX source now adds their full
+table, original path figure, costs and limits;14 static/retained checks pass,
+but no new TeX build/render or current-result PDF is claimed. R2 important claim, R3 independent
 evidence, R5 current focused manuscript and R6 final readiness remain open.
 Earlier entries below are dated snapshots, not current liveness.
 

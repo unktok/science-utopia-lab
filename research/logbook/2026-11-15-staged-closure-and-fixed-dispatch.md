@@ -86,3 +86,19 @@ applied directly, without JavaScript parsing/reserialization of float values.
 Retained closure plus earlier prefix consistency tests88568 exit0:9 passed
 in1.78s. These read only JSON/static records; they are not another cold audit,
 model call, code-container execution, fixed result or publication-ready proof.
+
+## Manuscript source, not a newly delivered PDF
+
+After reading the PDF skill and a successful edit-operation marker, the
+integrated LaTeX adds a separate actual-staged section, full eight-world table,
+original paired-export path figure, U1 content decomposition, per-role costs
+and explicit presentation/selection limits. Abstract and discussion distinguish
+this complete real study from the earlier scripted construction proof and
+failed open-code studies. The copied seven-file figure/data export is checked
+against the original report hash; the existing loss-path PNG is inspected.
+
+Source/retained tests14308 exit0:14 passed in1.13s, after the earlier13-pass
+source snapshot. No inference, TeX build or page rendering is performed by
+these tests. The reviewed82-page PDF and its receipt remain unchanged;
+new-source PDF layout/build/subset verification waits until inference ends.
+Do not deliver an unbuilt source edit as an updated PDF.

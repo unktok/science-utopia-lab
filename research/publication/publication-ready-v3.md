@@ -7,6 +7,18 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November15 02:34JST以降のsnapshot：staged実探索は全6自己枠・8世界を完走し、
+元sourceの二回監査／費用と5種readoutが一致した。84設計step・64部品probeで、
+5案はR7と同点、研究agendaを実際に変えた1案は効用悪化。新node／配線や自己優位はない。
+[完全な実結果と費用](../results/native-open-staged-institution-closed-v1.md)。
+選択を固定したまま事前宣言seed1891355522で3物理worldを実評価中。
+writer19682/PID43744と読み取りhandoff41278は別の役割で、後者は終了後の元監査を待つ。
+[実dispatchと失敗した準備も含む記録](../logbook/2026-11-15-staged-closure-and-fixed-dispatch.md)。
+LaTeX sourceには実6枠・表・元exportの探索図・費用・限界を追記したが、
+現時点の確認済みPDFは下記82頁の旧snapshotのまま。新build／全頁目視は推論終了後に行う。
+指標説明／任意rationale長の修正は別branchで未統合、native通し検証・実校正も未完了。
+R2重要な主張、R3独立証拠、R5最新focused原稿、R6最終判断は未達。
+
 November15 00:55JST snapshot：元の研究者世界でstaged自由制度探索を実行中。
 全6自己枠中3枠、両対照を含む5物理worldが完走し、同じwriterはT1生成へ進んだ。
 T0はsource変更が実入力上inert、U0は明示的な原制度保持。U1は実際に研究計画コードを変え、

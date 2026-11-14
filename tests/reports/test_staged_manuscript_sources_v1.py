@@ -21,9 +21,40 @@ def test_new_staged_paragraph_is_software_scope_not_a_repaired_real_experiment()
     assert 'ten SCRIPTED native worlds and 48 real' in body
     assert 'zero actual model calls' in body
     assert '20 uniquely attributed historical R7' in body
-    assert 'has\nnot passed the shared-resource gate' in body
+    assert 'At this software-proof snapshot' in body
+    assert 'had not passed the shared-resource gate' in body
     assert 'No model-authored repair' in body
     assert '16 designer calls and 64 component probes' in body
+
+
+def test_actual_staged_results_remain_distinct_from_software_and_unused_scores():
+    entry = (ROOT/'paper/integrated.tex').read_text()
+    body = (ROOT/'paper/integrated/native-staged-construction.tex').read_text()
+    assert r'\input{integrated/native-staged-construction}' in entry
+    assert 'all six proposals: five' in entry
+    assert 'All six proposals and eight native worlds complete' in body
+    assert 'for 84 total' in body and 'The 64 probe returns' in body
+    assert 'No new mechanism or connection is' in body
+    assert 'worsens by $4/3$' in body
+    assert '937 complete' in body and '1,117,688 prompt and 98,457 completion' in body
+    assert 'not independent optimizer replications' in body
+    assert 'has started but is not complete' in body
+    assert 'not proof that a target was absent' in body
+
+
+def test_actual_staged_figure_is_the_original_paired_export_not_a_new_simulation():
+    import hashlib
+    import json
+    from utopia.optimization.native_numeric_designer import checked
+    r = checked(json.loads((ROOT/'research/results/native-open-staged-institution-closed-v1.json').read_text()))
+    directory = ROOT/'paper/figures/native-staged-construction-v1'
+    report = checked(json.loads((directory/'report.json').read_text()))
+    assert hashlib.sha256((directory/'report.json').read_bytes()).hexdigest() == r['readouts']['report']['report_file_sha256']
+    assert report['plan_sha256'] == r['plan_sha256']
+    assert [s['cross_scores'] for s in report['slots']] == [s['cross_scores'] for s in r['slots']]
+    body = (ROOT/'paper/integrated/native-staged-construction.tex').read_text()
+    assert 'figures/native-staged-construction-v1/objective-loss-paths.png' in body
+    assert 'one development history without independent error bars' in body
 
 
 def test_reference_absence_correction_is_explicit_and_old_receipt_preserved():
