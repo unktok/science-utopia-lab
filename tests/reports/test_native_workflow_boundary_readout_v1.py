@@ -80,7 +80,8 @@ def test_nonzero_realized_fee_and_grant_are_not_confused_with_conserving_transfe
     assert result['all_author_opening_resources'] - 10 == result['all_author_closing_resources']
 
 
-@pytest.mark.parametrize('scope', ['workflow-objective-development', 'planning-objective-development'])
+@pytest.mark.parametrize('scope', ['workflow-objective-development', 'planning-objective-development',
+    'workflow-fixed-evaluation'])
 def test_cold_child_resolves_paths_in_callers_directory_not_frozen_checkout(tmp_path, monkeypatch, scope):
     import subprocess
     import sys

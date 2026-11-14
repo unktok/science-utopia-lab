@@ -94,6 +94,12 @@ def export(args):
         plan_schema='scienceutopia.native-joint-fixed-evaluation.v1.plan'
         audit_schema='scienceutopia.native-joint-fixed-evaluation-audit.v1'
         schema='scienceutopia.native-joint-fixed-choice-trace.v1'
+    elif study == 'workflow-fixed-evaluation':
+        from scripts.reports.native_objective_fixed_evaluation_v1 import summarize
+        summarize(plan,audit,study='workflow-v1')
+        plan_schema='scienceutopia.native-workflow-fixed-evaluation.v1.plan'
+        audit_schema='scienceutopia.native-workflow-fixed-evaluation-audit.v1'
+        schema='scienceutopia.native-workflow-fixed-choice-trace.v1'
     else: raise ValueError('explicit supported planning trace study required')
     if (plan['schema'] != plan_schema
             or audit['schema'] != audit_schema
@@ -148,7 +154,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('run', 'frozen-source', 'audit-one', 'audit-two', 'output'):
         parser.add_argument('--' + key, type=Path, required=True)
-    parser.add_argument('--study', choices=('development', 'fixed-evaluation', 'parent-presentation', 'joint-fixed-evaluation'), default='development')
+    parser.add_argument('--study', choices=('development', 'fixed-evaluation', 'parent-presentation',
+        'joint-fixed-evaluation', 'workflow-fixed-evaluation'), default='development')
     args = parser.parse_args()
     import os, subprocess, sys
     if os.environ.get('SCIENCE_UTOPIA_COLD_PLANNING_CHOICES_WORKER') == '1': export(args); return

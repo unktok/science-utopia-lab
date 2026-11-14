@@ -10,8 +10,8 @@ from scripts.finish_native_institution_loop_v1 import same_files
 from utopia.system.design_patch import clone
 
 
-def setup(tmp_path, monkeypatch):
-    original, _, _, _ = plan(tmp_path / 'inputs', monkeypatch)
+def setup(tmp_path, monkeypatch, *, image_override=None):
+    original, _, _, _ = plan(tmp_path / 'inputs', monkeypatch, image_override=image_override)
     audit = seal({'schema': 'scienceutopia.native-planning-objective-loop-audit.v1',
         'source_commit': original['source_commit'], 'SCRIPTED': 'not actual original closure'})
     origin = {'SCRIPTED': 'no actual archive attestation'}

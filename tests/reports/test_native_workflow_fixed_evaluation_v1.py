@@ -14,8 +14,8 @@ from utopia.optimization.common_content_observer import CommonContentObserver, O
 from utopia.system.design_patch import clone
 
 
-def evidence(tmp_path, monkeypatch, *, all_null=False, transport=False, both=False):
-    original, _, _, sources = workflow_plan(tmp_path, monkeypatch)
+def evidence(tmp_path, monkeypatch, *, all_null=False, transport=False, both=False, image_override=None):
+    original, _, _, sources = workflow_plan(tmp_path, monkeypatch, image_override=image_override)
     # The new handoff compares against the workflow source, not the planning
     # source used to construct this explicitly SCRIPTED upstream fixture.
     sources = {**sources, 'original_source': original['source_commit']}

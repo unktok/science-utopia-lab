@@ -79,6 +79,9 @@ def test_numeric_seed_uses_actual_sealed_original_dispatch_not_a_hardcoded_defau
     assert 'scienceutopia.native-workflow-objective-loop-audit.v1' in AUDITS
     assert world_seed(tmp_path, p, {'schema': 'scienceutopia.native-workflow-objective-loop-audit.v1'},
         {'seed': 991}) == 991
+    assert 'scienceutopia.native-workflow-fixed-evaluation-audit.v1' in AUDITS
+    assert world_seed(tmp_path, p, {'schema': 'scienceutopia.native-workflow-fixed-evaluation-audit.v1'},
+        {'seed': 72107}) == 72107
 
 
 @pytest.mark.parametrize('case', ['unknown-objective', 'wrong-generation', 'wrong-system',

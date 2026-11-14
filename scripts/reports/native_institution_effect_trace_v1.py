@@ -26,6 +26,7 @@ from utopia.utils.data_utils import file_sha256
 
 SCHEMA='scienceutopia.native-institution-effect-trace.v1'
 SCOPES={
+    'workflow-fixed-evaluation':'scienceutopia.native-workflow-fixed-evaluation-audit.v1',
     'workflow-objective-development':'scienceutopia.native-workflow-objective-loop-audit.v1',
     'joint-fixed-evaluation':'scienceutopia.native-joint-fixed-evaluation-audit.v1',
     'planning-fixed-evaluation':'scienceutopia.native-planning-fixed-evaluation-audit.v1',
@@ -237,7 +238,7 @@ def export(args):
         name=w['identity']+'-s'+str(w['seed']);cells=[p for p in root.glob('**/worlds/'+name) if p.is_dir()]
         if len(cells)!=1:raise ValueError('unique audited physical world directory required')
         worlds.append(trace_world(cells[0],w,plan['source_commit'],
-            workflow=args.scope=='workflow-objective-development'))
+            workflow=args.scope in ('workflow-objective-development','workflow-fixed-evaluation')))
     result={'schema':SCHEMA,'scope':args.scope,'source_commit':plan['source_commit'],'plan_sha256':plan['content_sha256'],
         'audit_content_sha256':audit['content_sha256'],'raw_inventory_sha256':digest(before),'worlds':worlds,
         'interpretation':{'report_only':True,'new_model_calls':0,'new_code_executions':0,'new_native_worlds':0,

@@ -7,6 +7,8 @@ HTTP/corpus/upstream origin remain fixtures; no real model or scientific seed.
 import json
 from pathlib import Path
 import tempfile
+import subprocess
+import sys
 from types import SimpleNamespace
 
 from scripts import run_native_workflow_objective_loop_v1 as development
@@ -80,6 +82,18 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
     report = driver.read(external / 'report-1/report.json')
     assert len(report['logical_rows']) == 4 and len(report['paired_differences']) == 4
     assert len(report['objective_choice_differences']) == 1
+    readout_files = {}
+    for name, extra in (
+            ('native_institution_effect_trace_v1', ('--frozen-source', str(driver.ROOT), '--scope', 'workflow-fixed-evaluation')),
+            ('native_planning_choice_trace_v1', ('--frozen-source', str(driver.ROOT), '--study', 'workflow-fixed-evaluation')),
+            ('native_observed_request_classes_v1', ())):
+        for i in (1, 2):
+            subprocess.run([sys.executable, '-m', 'scripts.reports.' + name,
+                '--run', str(root), '--audit-one', str(audit_paths[0]), '--audit-two', str(audit_paths[1]),
+                '--output', str(external / (name + '-' + str(i))), *extra], cwd=driver.ROOT,
+                check=True, capture_output=True, text=True, timeout=1800)
+        readout_files[name] = same_files(external / (name + '-1'), external / (name + '-2'))
+        assert len(driver.read(external / (name + '-1') / 'report.json')['worlds']) == 2
     assert _inventory(root) == before
     write_json_atomic(tmp_path / 'verification.json', {
         'schema': 'scienceutopia.native-workflow-fixed-software-check.v1',
@@ -92,4 +106,5 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
         'matching_audit_sha256': file_sha256(audit_paths[0]),
         'matching_cost_content_sha256': cost_reports[0]['content_sha256'],
         'matching_report_files': report_files, 'scientific_gain_claimed': False,
+        'matching_mechanism_readout_files': readout_files,
         'publication_ready': False}, sort_keys=True)
