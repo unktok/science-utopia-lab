@@ -4,7 +4,22 @@
 goal toolにも同じ目標を設定した。以前の有限パッケージ完了と、研究の投稿準備完了を分ける。
 現時点は主会議readyではなく、旧稿の自己評価を変えない。
 
-November14 18:36JST current：構造feedback探索と選択固定の未使用評価は閉鎖したが、
+November14 19:53JST current：自由なcode/node/wire/scheduleを許すv3が全6枠を閉じた。
+生成null3・実行null2・完走1で、完走U2はT=-18/U=-12.3333。
+R7の-18/-13.3333、強い手作り対照の-20/-15.3333を改善せず、新node／配線は出なかった。
+元sourceの二回監査・費用・全解析が一致し、失敗も全て保持した。
+[閉鎖結果](../results/native-open-institution-closed-v3.md)。
+Tの自己選択は欠測のまま、U2だけを固定して、未使用seed1516320444でR7／手作り／Uを
+評価中。writer47320の生存を確認した。選び直しや対照へのfallbackはなく、結果は未確定。
+[実dispatch](../results/native-open-institution-fixed-dispatch-v1.json)。
+native年次trajectoryの読み取りprototypeは17テストと3実checkpointで確認したが、
+設計者接続・frame fit・新たな比較実験はまだない。今回の主な障害は自由構築の信頼性で、
+観測情報不足だけが原因とは示していない。最新PDFは以前の確認済み78頁のまま。
+原稿sourceへ閉鎖結果を追記し、推論終了後の新build／目視を待つ。
+R2/R3/R6は未達。改善を要求する隠れた選抜条件を足さず、研究として何を同定できるかを
+次の比較の選択理由にする。
+
+November14 18:36JST snapshot：構造feedback探索と選択固定の未使用評価は閉鎖したが、
 自己選択は強い手作業制度と同点で、実入力・行動も保持した。続くopen-code v2は、
 両対照と最初の自己案T0を完走。T0はT=-18/U=-12.3333でR7より改善せず、
 採否sourceのscore変更は実際の翌年研究者入力へ届いた。その後U0校正で必須scheduleが欠け、

@@ -121,3 +121,48 @@ def test_completed_world_physical_readout_keeps_stopped_scope_and_rejoins_losses
         assert row['physical_proof_status'] == 'complete' and row['annual_checkpoint_count'] == 4
         assert row['scores'] == {
             'throughput': original['throughput_loss'], 'content-utility': original['content_utility_loss']}
+
+
+def test_closed_open_study_preserves_all_nulls_and_missing_throughput_selection():
+    result = load('native-open-institution-closed-v3.json')
+    assert result['terminal']['status'] == 'closed' and result['terminal']['consumed_slots'] == 6
+    assert (result['own_completions'], result['generation_nulls'], result['runtime_nulls']) == (1, 3, 2)
+    assert len(result['own_slots']) == 6 and result['physical_worlds'] == 5
+    assert result['selected']['throughput']['selected_id'] is None
+    assert result['selected']['throughput']['loss'] is None
+    assert result['selected']['content-utility']['loss'] == -12.333333333333332
+    assert not result['baseline_fallback'] and not result['own_advantage_over_hand']
+    assert not result['own_advantage_over_R7'] and not result['held_out_evaluation_complete']
+    assert result['scientist_cost']['completed_responses'] == 358
+    assert result['common_content_observer_cost']['physical_requests'] == 90
+    assert all(v == 0 for v in result['audit']['continuation_exit_codes'].values())
+
+
+def test_new_unused_dispatch_freezes_only_available_own_policy_without_merit_veto():
+    result = load('native-open-institution-fixed-dispatch-v1.json')
+    assert result['unused_seed'] == 1516320444 and result['new_designer_calls'] == 0
+    assert result['selection_fixed_before_evaluation'] and not result['baseline_fallback']
+    assert result['selected']['throughput']['selected_id'] is None
+    labels = [label for job in result['physical_jobs'] for label in job['labels']]
+    assert labels == ['reference:R7-original', 'reference:post-funding-cost', 'selected:content-utility']
+    for checks in result['unused_seed_checks'].values():
+        assert len(checks) == 3 and all(r['errors'] == r['prior_matching_runs'] == 0 for r in checks)
+    assert result['evaluation_outcomes_at_snapshot'] is None and not result['publication_ready']
+
+
+def test_manuscript_retains_closed_open_nulls_and_does_not_invent_missing_selection():
+    source = (ROOT / 'paper/integrated/native-workflow-feedback.tex').read_text()
+    for literal in (
+        'T0 & Runtime null', 'U0 & Generation null', 'U1 & Generation null',
+        'T1 & Runtime null', 'T2 & Generation null',
+        'U2 & Complete & $-18$ & $-12.3333$',
+        '358 complete scientist responses', '90 physical calls',
+        '500 synthetic accept decisions but fails first',
+        'Own-only selection leaves the T policy absent',
+        'no hidden improvement veto', 'There is no synthetic T-selected row.',
+        'do not directly overwrite those panel inputs or ratings',
+    ):
+        assert literal in source
+    assert 'Its remaining control, own results and normal\nclosure remain pending' not in source
+    abstract = (ROOT / 'paper/integrated.tex').read_text()
+    assert 'three generation\nnulls, two runtime nulls and one completed selector' in abstract

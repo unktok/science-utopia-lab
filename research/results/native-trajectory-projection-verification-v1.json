@@ -1,0 +1,154 @@
+{
+  "actual_exports": {
+    "exit_code": 0,
+    "rows": [
+      {
+        "JSON_UTF8_bytes": 24743,
+        "annual": [
+          {
+            "accepted_decision_occurrences": 0,
+            "accepted_distinct_contents_this_year": 0,
+            "active_authors": 5,
+            "closing_resources": 120.0,
+            "year": 1
+          },
+          {
+            "accepted_decision_occurrences": 10,
+            "accepted_distinct_contents_this_year": 10,
+            "active_authors": 5,
+            "closing_resources": 90.0,
+            "year": 2
+          },
+          {
+            "accepted_decision_occurrences": 0,
+            "accepted_distinct_contents_this_year": 0,
+            "active_authors": 4,
+            "closing_resources": 60.0,
+            "year": 3
+          },
+          {
+            "accepted_decision_occurrences": 8,
+            "accepted_distinct_contents_this_year": 8,
+            "active_authors": 2,
+            "closing_resources": 40.0,
+            "year": 4
+          }
+        ],
+        "checkpoint_file_sha256": "e7a45252400301c2353e897ee90a65771734cab5edf824c03f8114b740a52b86",
+        "export": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-trajectory-projection-v1-actual-a1/r7.json",
+        "export_content_sha256": "023c47270de5e76c09054e23815601ff460aeee293d189a7d73f005aafe510c0",
+        "export_file_sha256": "87e7897c772f3992b00fb451ec168d05e2bafeb4a70e26c33dfbff49b1b12021",
+        "label": "r7",
+        "projection_content_sha256": "d9e9a2f661b93eb3524a8a92ef49d613b8fd984ef42120cd8cc60de7d07da86e"
+      },
+      {
+        "JSON_UTF8_bytes": 24874,
+        "annual": [
+          {
+            "accepted_decision_occurrences": 0,
+            "accepted_distinct_contents_this_year": 0,
+            "active_authors": 5,
+            "closing_resources": 120.0,
+            "year": 1
+          },
+          {
+            "accepted_decision_occurrences": 10,
+            "accepted_distinct_contents_this_year": 10,
+            "active_authors": 5,
+            "closing_resources": 90.0,
+            "year": 2
+          },
+          {
+            "accepted_decision_occurrences": 0,
+            "accepted_distinct_contents_this_year": 0,
+            "active_authors": 5,
+            "closing_resources": 60.0,
+            "year": 3
+          },
+          {
+            "accepted_decision_occurrences": 10,
+            "accepted_distinct_contents_this_year": 10,
+            "active_authors": 5,
+            "closing_resources": 30.0,
+            "year": 4
+          }
+        ],
+        "checkpoint_file_sha256": "f3dfd153fb46512849ba50428141fad3e1ac85dd03944391a17e2a2dad3128dd",
+        "export": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-trajectory-projection-v1-actual-a1/hand.json",
+        "export_content_sha256": "9f178cad166b9ca9f235684d64978a2f18d1dd5c951a9d2b567ab9d4f6e9550a",
+        "export_file_sha256": "c4f8ec8eaf34849b8d1596801ff7e1e5103700fc4f8dce129e8854719869243b",
+        "label": "hand",
+        "projection_content_sha256": "a8eb10883889d01b43fbd01d7ad00c4d43941052aebf96963f63cc897666c3ff"
+      },
+      {
+        "JSON_UTF8_bytes": 24743,
+        "annual": [
+          {
+            "accepted_decision_occurrences": 0,
+            "accepted_distinct_contents_this_year": 0,
+            "active_authors": 5,
+            "closing_resources": 120.0,
+            "year": 1
+          },
+          {
+            "accepted_decision_occurrences": 10,
+            "accepted_distinct_contents_this_year": 10,
+            "active_authors": 5,
+            "closing_resources": 90.0,
+            "year": 2
+          },
+          {
+            "accepted_decision_occurrences": 0,
+            "accepted_distinct_contents_this_year": 0,
+            "active_authors": 4,
+            "closing_resources": 60.0,
+            "year": 3
+          },
+          {
+            "accepted_decision_occurrences": 8,
+            "accepted_distinct_contents_this_year": 8,
+            "active_authors": 2,
+            "closing_resources": 40.0,
+            "year": 4
+          }
+        ],
+        "checkpoint_file_sha256": "7e284262bb8fd58f3936f8b742fab3b64b03d2cdc688c88a5e6339f0d439f464",
+        "export": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-trajectory-projection-v1-actual-a1/t0.json",
+        "export_content_sha256": "2641507c1776533b4fd332fa69e270362c3d7b009c63f9df9892b966e042a106",
+        "export_file_sha256": "da4a6bfeeac1dfa8419ac166b880abbef38f545c3807643d12f1123a851d6f1d",
+        "label": "t0",
+        "projection_content_sha256": "f5376dc182df5294508beb0376a85cd0854cb95d00504d7841cd252fcb0c08ad"
+      }
+    ],
+    "session": 79482
+  },
+  "checks": {
+    "exit_code": 0,
+    "junit": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-trajectory-projection-v1-a4/junit.xml",
+    "junit_sha256": "b1f738bbc361240429b0adf544501d3da8b5e59fa6ba17cb6ae712c27d79bc28",
+    "seconds": 5.18,
+    "session": 25326,
+    "tests": 17
+  },
+  "classification": "read-only-original-native-data-prototype-not-connected-author-or-new-scientific-world",
+  "component_source_commit": "6259a87fe8eaada765684a1107dd619bc900d9de",
+  "content_sha256": "3f09022ed358b4d681924c29e03bbcd8ff698485071464af234244d7542a388d",
+  "earlier_actual_read_failure": {
+    "correction": "Use caller-bound actual checkpoint file SHA, not JSON hashing of decoded sets/tuples/shared objects; no old state conversion or edit.",
+    "error": "TypeError: Object of type set is not JSON serializable",
+    "exit_code": 1
+  },
+  "full_source_physical_audit_by_this_projector": false,
+  "measurement_or_author_integration_implemented": false,
+  "model_context_fit_proved": false,
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "original_bytes_changed": false,
+  "publication_ready": false,
+  "schema": "scienceutopia.native-trajectory-projection-verification.v1",
+  "source_files": {
+    "scripts/reports/native_trajectory_projection_v1.py": "de7b536ab45ddca9eb4fa439cd00ec9b46bcda520164ec42fb0a06026f039ce7",
+    "tests/optimization/test_native_trajectory_projection_v1.py": "9cf6eabd97afa8d27791db204f23aac77b542cdafdc94e2d104ed7ab325ae518",
+    "utopia/optimization/native_trajectory_projection_v1.py": "5abcf3760de766c94c10071c0f16b1fd6d8b10d082eb539656df89aa91eaebe7"
+  }
+}

@@ -6,6 +6,19 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed open v3](results/native-open-institution-closed-v3.md): all six own
+  slots finish, with one complete unfavorable U policy, three generation nulls
+  and two runtime nulls. Original double cold readouts agree. T selection is
+  missing, not replaced by a control. [Unused-condition dispatch](results/native-open-institution-fixed-dispatch-v1.json)
+  freezes exactly R7/hand/U on seed1516320444; the original writer is live,
+  not yet a completed comparison or independent optimizer replication.
+- [Read-only trajectory prototype](components/native-trajectory-projection-v1.md):
+  17 tests and three actual checkpoint exports prepare a possible information
+  intervention. No designer connection, full-frame fit or new study exists.
+
+The next three entries are earlier dated v3 observations, superseded by the
+closure above; they do not describe current process liveness.
+
 - [New source revision, PDF build deferred](../paper/README.md): the full draft
   now retains the stopped open-code pilot's three completed cells and actual
   information/content change without improvement. Stale closure statements

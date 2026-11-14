@@ -1,0 +1,181 @@
+{
+  "baseline_fallback": false,
+  "classification": "actual-selection-fixed-unused-condition-running-with-throughput-selection-missing",
+  "content_sha256": "052f5b0b8b79817dfa4e71ade6ec7c3082dbed1a3deb8cda7ef706ea9a8ccb41",
+  "evaluation_outcomes_at_snapshot": null,
+  "independent_optimizer_replication": false,
+  "new_designer_calls": 0,
+  "physical_jobs": [
+    {
+      "identity": "evaluation-000",
+      "labels": [
+        "reference:R7-original"
+      ],
+      "policy_sha256": "7bf7360011f3d4889bd5b5845514c14e5d1eb75276a071abc56be353ae0edad5",
+      "seed": 1516320444
+    },
+    {
+      "identity": "evaluation-001",
+      "labels": [
+        "reference:post-funding-cost"
+      ],
+      "policy_sha256": "546fb55a7f1b47b86721318689747f8c1b26f81a677ad1ee66a8ac2b6a625f50",
+      "seed": 1516320444
+    },
+    {
+      "identity": "evaluation-002",
+      "labels": [
+        "selected:content-utility"
+      ],
+      "policy_sha256": "7866132222cdd41b89357d1b709d8d8e6a84e06f43a52d33ec49c3214f4685e9",
+      "seed": 1516320444
+    }
+  ],
+  "plan_content_sha256": "fe350223e1ea532113114d97808468cbc02f25bebf89639b6245ad2115733709",
+  "prepare": {
+    "exit_code": 0,
+    "session": 15532
+  },
+  "publication_ready": false,
+  "read_only_continuations": {
+    "audit": 29855,
+    "choices": 99335,
+    "dependent_startup_order_verified": true,
+    "effects": 16461,
+    "new_inference_allowed": false,
+    "report": 76839,
+    "requests": 43182,
+    "source_commit": "25be72cd4419003edb72a956e2c68cfdc3d36207",
+    "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-fixed-analysis-v1-a1"
+  },
+  "resources": {
+    "CPU_percent": [
+      94.1,
+      17.199999999999996
+    ],
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-fixed-analysis-v1-a1/outputs/open-fixed-resource-observation-v1-a2",
+    "exclusive_lease_proved": false,
+    "exit_code": 0,
+    "free_plus_inactive_GiB": [
+      52.157623291015625,
+      52.38606262207031
+    ],
+    "inspected_CPU_controller_source_sha256": "80df5e7861845e496e08ac801aded8c3d4886df6fcf72a6796f9921c4972d3c8",
+    "new_exact_CPU_allowance": ".venv/bin/python -m rrs.improver_verification_recovery supervise",
+    "prior_failed_observation": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-fixed-analysis-v1-a1/outputs/open-fixed-resource-observation-v1-a1",
+    "session": 67240,
+    "thresholds_or_other_jobs_changed": false
+  },
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-fixed-evaluation-v1-a1/outputs/native-open-institution-fixed-evaluation-v1-a1",
+  "schema": "scienceutopia.native-open-institution-fixed-dispatch.v1",
+  "scientific_gain_claimed": false,
+  "scientific_source_commit": "25be72cd4419003edb72a956e2c68cfdc3d36207",
+  "selected": {
+    "content-utility": {
+      "all_tied_ids": [
+        "native-adaptive-1e40191732750d389637d725"
+      ],
+      "loss": -12.333333333333332,
+      "selected_id": "native-adaptive-1e40191732750d389637d725",
+      "system_sha256": "73e818971d902fb5940640a229aec8f8009d9a75ad0e41c0c2d6c5d84d4736fe"
+    },
+    "throughput": {
+      "all_tied_ids": [],
+      "loss": null,
+      "selected_id": null,
+      "system_sha256": null
+    }
+  },
+  "selection_fixed_before_evaluation": true,
+  "software_policy_content_sha256": "6a94dfd796d866ae0b934d4330ae361ff00031849091a5e1e37c1c58a218debf",
+  "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-fixed-evaluation-v1-a1",
+  "unused_seed": 1516320444,
+  "unused_seed_checks": {
+    "immediate_pre_dispatch": [
+      {
+        "content_sha256": "d1596876d274e22587ba1c14248ad417ccdec48dbe8165ddf2fc7c3085986ecd",
+        "errors": 0,
+        "explicit_nonproduction_software_files": 0,
+        "file_sha256": "326d30b70506950abcbfd66eb68c166676aecacb9a12b2be3312fcd0de20bf40",
+        "observed_bindings": 315,
+        "prior_matching_runs": 0,
+        "root": "/Users/shiro/unktok/dev/science-utopia-lab",
+        "seeds": [
+          1516320444
+        ]
+      },
+      {
+        "content_sha256": "6a1495d99a6251d64f1ec5c90010257813404aa34812b379afd0433d14527837",
+        "errors": 0,
+        "explicit_nonproduction_software_files": 0,
+        "file_sha256": "7b718c29beaecac5ca12eedc7922019039250bad46893f1621dd209a5a2a505d",
+        "observed_bindings": 358,
+        "prior_matching_runs": 0,
+        "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments",
+        "seeds": [
+          1516320444
+        ]
+      },
+      {
+        "content_sha256": "d340f56692ee152862b1ddfde45edd5bc96536b29a26c61a38b7f053d71f0b23",
+        "errors": 0,
+        "explicit_nonproduction_software_files": 72,
+        "file_sha256": "2a713f10a34f077e2fb1d6b0e06e1a599a69d15d5002a0ef543c2a798f32174f",
+        "observed_bindings": 663,
+        "prior_matching_runs": 0,
+        "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+        "seeds": [
+          1516320444
+        ]
+      }
+    ],
+    "prepare": [
+      {
+        "content_sha256": "7a59e2b718f00ceae96b837c112716bdb85f5282e34db39c777e043878c526f5",
+        "errors": 0,
+        "explicit_nonproduction_software_files": 0,
+        "file_sha256": "769b95c61d0a2672230747cc9b5517eda23c0c63386e918cb54d83675098b9c9",
+        "observed_bindings": 315,
+        "prior_matching_runs": 0,
+        "root": "/Users/shiro/unktok/dev/science-utopia-lab",
+        "seeds": [
+          1516320444
+        ]
+      },
+      {
+        "content_sha256": "650f90c5f897d66eb19e74193c8cc4de963568e41af9c99e3085001eca2299f0",
+        "errors": 0,
+        "explicit_nonproduction_software_files": 0,
+        "file_sha256": "1bdc5d4177fe064a8582f8d3e8113fff606c9e4e4f6c5cdef7a3130f0242d21f",
+        "observed_bindings": 358,
+        "prior_matching_runs": 0,
+        "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments",
+        "seeds": [
+          1516320444
+        ]
+      },
+      {
+        "content_sha256": "fcac27100e1e3a98489fccfe6fff624be39f65c2693d9aa97ace040c31a131a3",
+        "errors": 0,
+        "explicit_nonproduction_software_files": 72,
+        "file_sha256": "13e8419f8b768ce14aa64b415ad4a5b213c20070a3094dbecf876407cc27c325",
+        "observed_bindings": 663,
+        "prior_matching_runs": 0,
+        "root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees",
+        "seeds": [
+          1516320444
+        ]
+      }
+    ]
+  },
+  "writer": {
+    "current_progress": {
+      "active": "evaluation-000",
+      "observed_utc": "2026-11-14T10:38:46.258570+00:00",
+      "stage": "evaluation"
+    },
+    "pid": 63075,
+    "session": 47320,
+    "started_utc": "2026-11-14T10:38:46.239293+00:00"
+  }
+}

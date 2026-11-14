@@ -105,9 +105,10 @@ new objective or a replacement for the actual unfinished research goal.
 
 ## November14 execution evidence constrains the next decision
 
-Five slots of the current scalar v3 are terminal with no own completion:
-three invalid IR submissions and two runtime failures. Its final U2 actually
-submits legal acceptance code with final_score100 and is executing. Its prose
+All six slots of scalar v3 are now terminal: three invalid IR submissions,
+two runtime failures and one complete U2. U2 submits legal acceptance code
+with final_score100 and completes T=-18/U=-12.3333, worse on U than both
+R7 (-13.3333) and the hand (-15.3333). Its prose
 claims that written scores directly improve common-panel utility, which is not
 the measurement implementation. The actual frame retains the correct panel
 formula in exact_loss_spec, while its separate loss_arithmetic view has an
@@ -115,7 +116,11 @@ empty measurement_definitions map for the newer common-content metric. This
 is a descriptive information gap, not proof that it caused a failed proposal
 or that the actual loss is wrong. No active prompt or measurement is amended.
 
-After closure, evaluate technical construction, metric understanding and
+The frozen unused evaluation is running with T selection absent and U2 alone
+as the own policy. No objective-conditioned advantage or new wiring has been
+observed. [Closed evidence](../results/native-open-institution-closed-v3.md).
+
+Evaluate technical construction, metric understanding and
 observation access separately; do not automatically launch the14-world design
 above merely because it is written. If a prospective common-panel definition
 card is added, give the same truthful definitions to both matched arms and

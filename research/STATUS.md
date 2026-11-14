@@ -2,6 +2,41 @@
 
 ## Active publication-ready goal
 
+### November14 19:53JST: open v3 closes; frozen unused-condition evaluation is live
+
+The original v3 writer89980 exits0 at10:26:41UTC after all six declared own
+slots. Three are generation nulls, two are runtime nulls and only U2 completes.
+R7 has T=-18/U=-13.3333, the strong hand -20/-15.3333 and U2 -18/-12.3333;
+both losses are minimized. U2 changes selection source to accept actual papers
+with final_score100, not a new node/wire. All five continuations exit0 and
+double original-source audit/cost/result/choice/effect/request reports agree.
+[All slots, errors, source bindings and actual costs](results/native-open-institution-closed-v3.json),
+[interpretation](results/native-open-institution-closed-v3.md).
+
+T has no complete own selection; no control fallback supplies one. U2 is frozen
+for U despite being worse than both references. The new unused-seed1516320444
+evaluation starts10:38:46UTC with exactly R7, hand and that U policy, zero
+designer calls and no reselection. Writer47320/PID63075 is confirmed live at
+10:51UTC; the first world has four annual checkpoints and its observer work is
+in progress. Five correctly ordered read-only continuations await closure.
+[Actual dispatch, six root inventories and resource observations](results/native-open-institution-fixed-dispatch-v1.json).
+This dated process observation is not a terminal evaluation score or an
+independent optimizer replication.
+
+The read-only trajectory projection prototype passes17 component tests and
+reads all three completed old v2 checkpoints without changing them. It retains
+annual native resources, activity, phase order, project commands and distinct
+paper/decision counts. Its roughly25KB per-cell output is not a context-fit
+proof, and it is not connected to designer prompts or a new study.
+[Bounded verification](results/native-trajectory-projection-verification-v1.json).
+Nine retained-data/manuscript cases also pass; neither count is new science.
+
+Latest reviewed PDF remains78 pages at its earlier source. The current source
+revision still requires a new build and full visual review after active
+inference. Technical construction reliability, important objective-conditioned
+institutional findings, appropriate independent evidence and final main-track
+judgment remain open. No further search is auto-dispatched to chase a winner.
+
 ### November14 18:48JST: v3 first reference complete; real open-code evidence added to source
 
 Writer89980 remains live and advances09:43:03UTC to the strong hand. R7 closes

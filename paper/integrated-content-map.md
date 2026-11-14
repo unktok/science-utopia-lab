@@ -5,19 +5,24 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
-Latest November14 artifact: the reviewed75-page workflow-controls manuscript
-keeps every earlier meaningful track and adds two completed native control
-cells with an actual annual-path figure. It separately records the stopped
-automatic search and five actual interface/capacity calls without claiming
-invention or new scientific losses. Its source/build/visual binding is
-[retained here](integrated-workflow-controls-build-v1.json); the latest minimal
-subset has not yet been rebuilt. The earlier73-page verified subset stays
-valid only for its own artifact.
+Latest November14 reviewed artifact: the78-page workflow-feedback manuscript
+keeps earlier meaningful tracks and adds the normally closed structural search,
+its unused-condition comparison and the SCRIPTED broader native path. Its
+[source/build/visual binding](integrated-workflow-feedback-build-v1.json) and
+[actual66-file rebuild](../research/results/integrated-workflow-feedback-rebuild-subset-verification-v1.json)
+verify only that historical source. The75-page predecessor also has an actual
+text/all-page-image-matching rebuild. Current LaTeX additionally retains the
+stopped real open-code prefix and normally closed v3's one unfavorable own
+completion/five nulls; that revision is not yet built or visually reviewed.
+No older PDF or receipt is overwritten, and none proves publication readiness.
 
 ## Editorial decisions
 
 | Material | Placement | Reason and evidence boundary |
 | --- | --- | --- |
+| November14 closed open-code v3 | Main native-workflow-feedback section, complete all-slot table, abstract and costs | One own completion/five nulls, all double original-source readers agree. U policy worse than both references; T selection missing without control fallback. Three complete native input classes, separate critic measurement and designer misunderstanding retained. Frozen unused condition is live, not a completed result or independent optimizer replication |
+| November14 stopped real open-code v2 | Main native-workflow-feedback subsection, all three complete cells and exact observed content path | Changed institutional score reaches later scientist inputs and changes accepted contents, without improving either loss. Following directed calibration stops. Physical completed-world reads and cold author replay do not fabricate whole-history audit/selection/closure |
+| November14 closed structural search and unused evaluation | Main native-workflow-feedback section, all-slot table and actual path figure | Four own completions tie strong hand and retain full scientist inputs/choices; two generation nulls. Three physical unused worlds/four frozen labels, same hand tie, all readouts and separately corrected critic costs retained. No novel effective wiring or autonomous advantage |
 | November14 workflow control contrast | Main native-workflow section, actual table/annual figure, abstract/discussion | Two completed developer cells inside a stopped search:18→20 accepted decisions, equal80 actual grant units, different activity/resources and routing/timing. Double original-source physical/critic/ledger reads agree. Not isolated fee-order causality, automatic invention, independent replication or a closed optimizer study |
 | November14 actual output-mode/capacity probes | Brief designer-boundary subsection, full raw record in repository | Thinking controls compile but free outputs hit8192 tokens or violate four causal edges after a16384 allowance. Five actual local calls, zero new scientist worlds/losses. Do not treat interface debugging as the main research contribution |
 | November14 conditional reserve-command diagnostic | Included main section after closed planning in73- and75-page PDFs |240 unchanged sandbox-component calls on four fixed native inputs, exact original reserve21 replay,19/17/15/8 command outputs and23 joint signatures. Existing real figure, nonmonotone command table and all5 original year3 founder ledger records. No new native world, loss frontier, inferred alternate trajectory, optimizer feedback or invented improvement. Historical69-page PDF stays unchanged |

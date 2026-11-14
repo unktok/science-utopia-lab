@@ -8,8 +8,13 @@ grammar incompatibility. A distinct correctedfe4281f4 study passes actual
 initial and first-slot calibration; both real native references and its first
 free proposal/world complete. That own result does not improve either loss.
 The next calibration omits a required schedule and stops the study. No full
-optimization closure or publication readiness is established. These dated outcomes supersede the
-earlier preparation-only snapshots below without changing their raw records.
+optimization closure occurs in that v2. A separate calibration-task-corrected
+v3 now normally closes all six own slots:three generation nulls,two runtime
+nulls and one completed U policy, worse than both references. T selection is
+missing; U is frozen for the running unused evaluation. All original-source
+double audit/cost/readouts agree. [Closed v3](../results/native-open-institution-closed-v3.md).
+No publication readiness or effective new wiring is established. These dated
+outcomes supersede earlier preparation-only snapshots without changing records.
 
 The closed structural-only study's four own completions all reproduce the hand
 control's full scientist input/choice sequence. That interface cannot change
