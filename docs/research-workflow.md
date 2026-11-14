@@ -100,6 +100,15 @@ and analysis tooling may progress while a campaign runs, but no code change may
 enter the frozen experiment worktree. A changed simulator or producer
 configuration creates a new campaign revision.
 
+Read-only continuations have startup dependencies too. Start the writer,
+verify its actual started record/PID, then start the audit continuation and
+verify its started record **before** launching dependent reports/readouts.
+The dependent readers load that record immediately; launching parent and child
+simultaneously can race before any analysis starts. Preserve such a failed
+reader/session, use a fresh analysis-only output after verifying the predecessor,
+and never restart scientific inference to fix report startup. A waiting reader
+is not a completed audit, and a stopped writer must not become normal closure.
+
 The authoritative research taxonomy and historical mapping are in
 [`research/INDEX.md`](../research/INDEX.md).
 

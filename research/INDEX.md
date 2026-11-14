@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actually running task-separated v3](results/native-open-institution-dispatch-v3.json):
+  fresh actual initial35B calibration passes in64.039s; original8B R7 world
+  runs at frozen25be72cd. Two resource samples pass;33 light checks plus10
+  SCRIPTED native worlds pass before dispatch. Five read-only continuations
+  await closure. No own v3 result, gain or publication readiness is implied.
+
 - [Open study stopped after its first own world](results/native-open-institution-stopped-prefix-v2.json):
   T0 ties R7 throughput and has worse content utility; full scientist inputs
   differ. The following U0 calibration omits its new node's schedule. Writer

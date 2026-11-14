@@ -2,6 +2,30 @@
 
 ## Active publication-ready goal
 
+### November14 18:28JST: task-separated v3 passes real calibration and runs original R7
+
+At frozen25be72cd/plan33e32136, writer89980/PID5714 starts09:26:51UTC.
+The actual initial calibration passesHTTP200/done_reason=stop in64.039s with
+literal compiled IR; copy equality is diagnostic true. Original103107-paper
+corpus and fixed8B researchers execute R7. No own v3 result or gain exists yet.
+[Actual dispatch, exact budgets and resource receipts](results/native-open-institution-dispatch-v3.json).
+
+Before dispatch,33 focused checks and10 SCRIPTED native development/fixed
+worlds pass;61315 exits0 after146.85s. Both cold native readers/costs agree,
+the actual earlier free-proposal wire is byte-identical under the revised
+adapter, and no scientific source/output is repaired. [Source-bound software proof](results/native-open-institution-calibration-software-v3.json).
+Fresh resource a3 passes183.9/112.4% CPU and46.70/46.59GiB free+inactive after
+explicit inspection of unrelated CPU controllers/tests; a1/a2 failures stay
+preserved, thresholds unchanged, no job stopped and no exclusive lease claimed.
+
+Audit98000, report80693, choices11168, effects13445 and requests79525 wait
+read-only at the same frozen source. Earlier report97223 exits1 because its
+predecessor's started.json was not yet written; only the analysis-only report
+is started anew after that dependency is verified. No scientific retry occurs.
+The earlier stopped v2 result and its [exercised score-to-researcher input path](publication/native-open-institution-first-code-effect-v2.md)
+remain unfavorable evidence, not replaced samples. Six fresh own slots and
+normal closure/unused evaluation remain future work; main-track goal is active.
+
 ### November14 18:12JST: first own open world completes, then U0 calibration stops
 
 Writer59411 exits1 with its original stopped terminal:two controls and one own
