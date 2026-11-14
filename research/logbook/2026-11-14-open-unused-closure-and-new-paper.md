@@ -59,3 +59,12 @@ that withholding the complete hand configuration/outcomes does not hide shared
 component code. Do not imply discovery of unseen hand implementations. Those
 two pre-clarification builds remain in their a1/a2 directories; the revised
 source needs fresh a3/a4 builds and actual visual review, not relabeling.
+
+Both clarified a3/a4 builds77631/51632 exit0. Text/logs and all82 page PNGs
+match; Poppler accounts for35029 words and zero off-page words. Initial actual
+sheet review nevertheless finds that the chronology-heavy abstract spills a
+short final paragraph onto an almost empty second page. This is a real layout
+and editorial issue, not solved by those numeric checks. Only the abstract is
+replaced with a concise question/method/major-result synthesis; all body tracks,
+complete result tables, diagrams and prior evidence remain. Fresh a5/a6 builds
+and review follow; a3/a4 files remain preserved, not declared final reviewed.
