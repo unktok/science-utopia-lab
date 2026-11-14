@@ -50,3 +50,12 @@ invalid program construction, metric understanding and designer observation
 access; a finite designer-controlled test/revision method is only a candidate.
 Important identified main-track findings, appropriate independent evidence,
 focused submission argument and final readiness judgment remain unfinished.
+
+The first two actual cached builds65975/72149 exit0 with82 pages and identical
+text/logs, before an editorial clarification. The retained original graph
+comparison explicitly shows that hand/R7 mechanism sources and parameters are
+identical:only timing/routing differ. The paper and future design note now say
+that withholding the complete hand configuration/outcomes does not hide shared
+component code. Do not imply discovery of unseen hand implementations. Those
+two pre-clarification builds remain in their a1/a2 directories; the revised
+source needs fresh a3/a4 builds and actual visual review, not relabeling.

@@ -31,8 +31,10 @@ necessary, a new optimizer, scientific truth or an isolated benefit of freedom.
   native trajectory projection. The scientist world/model, designer model,
   loss definitions T/U, initial R7 policy and legal action domain stay fixed.
 - Two common freshly measured references, R7 and the strong hand. R7 alone is
-  optimizer-visible in both arms. Neither hand code nor hand trajectory enters
-  either author; there is no teacher-generated repair or proposed winning rule.
+  optimizer-visible in both arms. The full hand realization and its observed
+  trajectory stay outside both banks. Common R7/hand component code is already
+  present in R7; withholding the hand's routing/timing does not hide those
+  shared implementations. There is no teacher-generated repair or winning rule.
 - One separate history per objective/arm, three own proposals each:12 free
   proposals plus two common physical reference worlds, at most14 native worlds.
   Known invalid proposals consume nulls; unknown completion stops. No failed
