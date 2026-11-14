@@ -2,6 +2,31 @@
 
 ## Active publication-ready goal
 
+### November14 12:08JST: completed controls now have separate cold physical proofs
+
+Two actual original-source runs56902/15776 exit0 and yield byte-identical
+stopped-control reports. All333 raw files remain unchanged;304 original source
+files,242 scientist request/reply positions,75 critic rows, original checkpoints,
+loss reconstruction, code receipts and annual resource ledgers are checked.
+All six author roots cold-replay, including the three known failures. This
+scope is explicitly not normal study closure or a full optimization-history
+audit, supplies no selection and cannot enable held-out evaluation.
+[Compact proof and annual data](results/native-workflow-v3-stopped-controls-cold-proof-v1.json).
+
+Both controls receive20 grant units/year. Original end-year active counts are
+5,5,4,2 versus5,5,5,5; resource totals are120,90,60,40 versus120,90,60,30.
+The hand policy is not receiving extra aggregate grants, and its year4 research
+cost is50 rather than40. This is a joint timing/routing contrast, not an isolated
+cost-order effect or automatic invention. Participation/resources remain
+explanatory readouts, not extra loss terms or hidden acceptance constraints.
+
+Output-mode assay sourcea1987ca3 is frozen and its exact original-frame plan
+6eef999c is prepared. Main and GitHub reacha1987ca3 at preparation; the subsequent
+cold-analysis adapter829f812e is local pending the next sync. No new model calls
+have occurred. Live finite resource waiter88766 observes external CPU job41639
+without stopping/reprioritizing it; at12:07JST it remains present. The waiter
+itself dispatches no inference. The assay is not currently running models.
+
 ### Current overview: November14 11:50JST (November14 02:50UTC)
 
 **Workflow-v3 is stopped, not still running.** Original writer8676 exits1 at

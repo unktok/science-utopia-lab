@@ -113,3 +113,37 @@ positive result. If every generated workflow ties or loses, explain the
 exercised authority and observed limitations without a global impossibility
 claim. A stopped transport instead requires a technical diagnosis, not a
 scientific conclusion about institutional design.
+
+## Observed completed-control addendum: November14
+
+The original workflow-v3 study stops at designer readiness, so it has no normal
+optimization selection or unused-seed evaluation. A separately scoped read-only
+adapter now checks the two completed control cells at their original scientific
+source, without fabricating missing original closure or observer-audit files.
+Two independent executions give byte-identical reports; this is repeatable
+analysis of the same observations, **not independent experimental replication**.
+See the [compact proof](../results/native-workflow-v3-stopped-controls-cold-proof-v1.json).
+
+| Observed quantity | R7-original | Hand timing/routing control |
+| --- | --- | --- |
+| Throughput loss T (minimize) | -18 | -20 |
+| Content-utility loss U (minimize) | -13.3333 | -15.3333 |
+| Active original authors, end years1–4 | 5,5,4,2 | 5,5,5,5 |
+| Original-author resource stock, end years1–4 | 120,90,60,40 | 120,90,60,30 |
+| Actual grant income/year | 20,20,20,20 | 20,20,20,20 |
+| Actual research fees/year | 50,50,50,40 | 50,50,50,50 |
+| Conserving internal transfers/year | 12,13,5,0 | 6,10,17,8 |
+
+The observed difference is not financed by extra aggregate grant income.
+Resource distribution and within-year ordering can matter even when aggregate
+annual stocks match through year3: the original loses an active author in
+year3, whereas the hand policy retains five at that boundary. This is an
+operated joint timing/observation-routing comparison with unchanged existing
+mechanism implementations, not an isolated causal estimate of fee timing.
+In particular, later fee collection and different actual transfers are both
+present; end-year stock does not recover intra-year resource minima. The two
+losses happen to prefer the same hand control here, so this pair does not
+demonstrate objective-dependent institution discovery. Activity and resource
+columns explain behavior; they do not add a participation veto to either loss.
+
+The prospective plan above retains its earlier scope and routing caveat.

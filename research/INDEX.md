@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Stopped-study completed-control cold proofs](results/native-workflow-v3-stopped-controls-cold-proof-v1.json):
+  two actual byte-identical original-source reads validate both controls'
+  physical scientist/critic/checkpoint/loss/ledger evidence. They do not create
+  normal optimization closure or own selection. Annual data distinguish the
+  hand timing/routing contrast from added aggregate grant income. The separate
+  output-mode assay is prepared at frozena1987ca3 but awaits a resource window.
+
 - [Current status](STATUS.md): November14 11:50JST; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
