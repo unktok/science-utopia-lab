@@ -44,6 +44,9 @@ def fixed_selection(original,audit,*,study='count-content-v1'):
     elif study=='parameter-comparator-v1':
         plan_schema='scienceutopia.native-parameter-comparator.v1.plan'
         audit_schema='scienceutopia.native-parameter-comparator-audit.v1'
+    elif study=='workflow-v1':
+        plan_schema='scienceutopia.native-workflow-objective-loop.v1.plan'
+        audit_schema='scienceutopia.native-workflow-objective-loop-audit.v1'
     else:raise ValueError('explicit supported fixed-selection study required')
     selection=audit['selection'];checked(selection)
     keys=original['arm_order'] if study=='parent-presentation-v1' else original['objectives']
@@ -60,12 +63,19 @@ def fixed_selection(original,audit,*,study='count-content-v1'):
         criterion=original['arms'][objective]['objective'] if study=='parent-presentation-v1' else objective
         def belongs(w):
             return (w['role']=='numeric-own-proposal' and w['objective']==objective
-                if study=='parameter-comparator-v1' else w['role']=='search:'+objective)
+                if study=='parameter-comparator-v1' else
+                w['role']=='workflow-own-proposal' and w['objective']==objective
+                if study=='workflow-v1' else w['role']=='search:'+objective)
         pool=[w for w in audit['worlds'] if belongs(w) and w['status']=='complete'
             and w['scores'][criterion] is not None]
         # The original full audit proves chronological first-tie selection.
         # Here preserve that sealed result, independently checking its pool.
-        if len(pool)!=s['completed_submissions']:raise ValueError('selected pool differs from original submissions')
+        # Workflow's literal original selection has no completed_submissions
+        # field. Its full audit proves all six slots; validate the exact pool,
+        # losses/ties/chosen system below without fabricating a count or
+        # amending that historical selection. Other study contracts stay exact.
+        if study!='workflow-v1' and len(pool)!=s['completed_submissions']:
+            raise ValueError('selected pool differs from original submissions')
         best=min((w['scores'][criterion] for w in pool),default=None)
         ids={w['identity'] for w in pool if w['scores'][criterion]==best}
         chosen=next((w for w in pool if w['identity']==s['selected_id']),None)
