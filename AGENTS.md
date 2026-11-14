@@ -55,6 +55,10 @@
   original criteria and failed status; never relabel or reuse a failed one.
 - Check semantic nonconsecutive read loops and retained observed values; do
   not infer planning progress from a finished session or an unchanged parent.
+- Report cumulative author/probe totals only from a complete chronological
+  journal prefix or its final sealed summary, reconciling both when available.
+  A few displayed recent steps are a subset, not a cumulative count. Label
+  partial observations explicitly and correct reporting errors without changing raw.
 - A directed copy-control pass is not free-design context-capacity evidence.
   Regress actual failed-history editor frames and malformed graph shapes; keep
   exact failure information while avoiding repeated full bodies and opaque

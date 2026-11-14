@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Five staged native slots complete; final U2 begins](logbook/2026-11-15-final-slot-and-definition-coverage.md):
+  T2 ties R7 on both losses/full inputs/choices. Its complete journal and
+  final summary reconcile20 probes; earlier partial-count commentary is
+  corrected. Actual U1/T2 frames show different inline metric-definition
+  coverage, with the full contract still archived/retrievable. This is a
+  bounded presentation limitation, not an identified cause or implemented fix.
+
 - [Four actual staged slots complete](results/native-open-staged-four-slot-prefix-v1.md):
   T1 returns -18/-13.3333 with115 full scientist inputs/choices equal R7,
   four returned probes and five retained technical rejections. Four of six own

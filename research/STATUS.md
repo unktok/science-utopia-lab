@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+### November15 01:48JST: T2 completes; final U2 starts; definition coverage inspected
+
+T2 returns T=-18/U=-13.3333 and all115 full scientist inputs/choices equal
+R7. Its14 steps contain five same-AST source writes and20 returned probes;
+the final summary and all-step sum agree. A previous commentary's8-probe
+cumulative count was wrong and is corrected without changing the raw record.
+At16:48:12UTC writer79701 advances to final U2 readiness, subsequently generation.
+Five own slots/seven physical worlds complete, no own advantage or full closure.
+[Exact T2 locators, count correction and bounded presentation check](logbook/2026-11-15-final-slot-and-definition-coverage.md).
+
+Actual U1 planner input has exact utility arithmetic but no inline utility
+definition; T2 count has one. The full measurement contract remains available
+in archive/request.json; U1's eight file reads do not request an archive.
+This is not proof of a missing target, broken API or failure cause. Inline
+definition coverage needs a future source-bound correction, not current-input
+repair. No such fix is implemented here. Full original audits/costs/selection,
+fixed evaluation and current-result PDF integration remain pending.
+
 ### November15 01:15JST: four own slots complete; T1 ties R7, T2 readiness starts
 
 Writer79701 completes T1 at T=-18/U=-13.3333; all115 full scientist inputs

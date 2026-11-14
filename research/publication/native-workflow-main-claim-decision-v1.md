@@ -173,3 +173,16 @@ it is not an isolated causal estimate for the keyword term or scientific truth.
 The valid unfavorable candidate remains in its consumed slot. The same writer
 advances to T1 readiness, without refill, host repair or a new objective.
 This closes neither main-track significance nor appropriate independent evidence.
+
+### Inspected objective-definition coverage is another interpretation boundary
+
+The [actual U1/T2 input check](../logbook/2026-11-15-final-slot-and-definition-coverage.md)
+finds exact utility arithmetic but no inline utility-definition entry for U1,
+whereas T2 has an inline accepted-count definition. The complete measurement
+contract remains retrievable from the original request archive; this is not
+a missing computational target, established failure cause or survey of every
+earlier profile. Do not interpret the observed end-to-end T/U procedures as a
+perfectly matched-information objective intervention. Correct the known source-
+owned definition coverage prospectively before new such claims, without changing
+old prompts, measured losses or consumed slots. That correction is not yet
+implemented, calibrated or a new scientific result.
