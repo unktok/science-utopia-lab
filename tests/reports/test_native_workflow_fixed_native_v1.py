@@ -28,7 +28,7 @@ from utopia.utils.data_utils import file_sha256, write_json_atomic
 from utopia.system.design_patch import digest
 
 
-@pytest.mark.parametrize('designer_profile', ['legacy', development.FEEDBACK_MODE])
+@pytest.mark.parametrize('designer_profile', ['legacy', development.FEEDBACK_MODE, development.staged_author.MODE])
 def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_path, fixed_corpus, monkeypatch,
         designer_profile, software_fixtures=False):
     prior = tmp_path / 'development'
@@ -64,7 +64,7 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
     for i, usage in enumerate(usages):
         driver.save(root / f'seed-usage-{i:02}.json', {k: v for k, v in usage.items() if k != 'content_sha256'})
     driver.save(root / 'plan.json', p); p = driver.require_plan(root)
-    expected_jobs = 3 if designer_profile == development.OPEN_IR_MODE else 2
+    expected_jobs = 3 if designer_profile in (development.OPEN_IR_MODE, development.staged_author.MODE) else 2
     assert len(p['jobs']) == expected_jobs  # Exact submitted policies alone share actual identities.
     monkeypatch.setattr(common, 'LocalObserverBackend', development.LocalObserverBackend)
     real_measure = driver.measure_with; invoked = []
@@ -96,7 +96,7 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
     assert common_cost['input_observer_audit_content_sha256'] == proof['observer']['content_sha256']
     assert common_cost['physical_requests'] == proof['observer']['dispatch_intents']
     assert common_cost['usage'] == proof['observer']['usage']
-    assert not any(e['kind'] in ('workflow-readiness', 'workflow-proposal')
+    assert not any(e['kind'] in ('workflow-readiness', 'workflow-proposal','editor-readiness','staged-proposal')
         for e in cost_reports[0]['auxiliary']['events'])
     for i in (1, 2):
         export(SimpleNamespace(run=root, audit_one=audit_paths[0], audit_two=audit_paths[1],

@@ -21,7 +21,8 @@ WORKFLOW_REFERENCES=('R7-original',)
 WORKFLOW_NODES=(*LIQUIDITY_NODES,'information-office','developer-catalog-agenda')
 
 
-def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
+def collect(run, audit_path, *, scope=LEGACY_SCOPE, source_root=None):
+    """Reconstruct the exact bank read-only, also used by prospective plans."""
     from scripts.analyze_native_open_v7 import _inventory
     from utopia.optimization.native_code_trace import validate_record
     from utopia.optimization.native_jobs import pinned_revision
@@ -29,9 +30,7 @@ def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
     from utopia.system import SystemSpec
     from utopia.system.design_patch import digest
     from utopia.utils.data_utils import file_sha256
-    run, output, source = Path(run).resolve(), Path(output).resolve(), Path.cwd()
-    if output.exists() or output.is_relative_to(run) or output.is_relative_to(source):
-        raise ValueError('fresh fixture output outside historical source/raw required')
+    run, source = Path(run).resolve(), Path.cwd() if source_root is None else Path(source_root).resolve()
     audit_hash=file_sha256(audit_path);a=checked(json.loads(Path(audit_path).read_text()))
     p=checked(json.loads((run/'plan.json').read_text()));before=_inventory(run)
     if scope not in (LEGACY_SCOPE,LIQUIDITY_SCOPE,WORKFLOW_SCOPE):raise ValueError('explicit developer staging scope required')
@@ -103,7 +102,15 @@ def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
         result.update(post_edit_reference='resource-30-connected',post_edit_probe_scope='declared-sixtyfour-v2')
     if workflow:
         result.update(post_edit_reference='R7-original',post_edit_probe_scope='declared-sixtyfour-v2')
-    save(output,result)
+    return result
+
+
+def stage(run, audit_path, output, *, scope=LEGACY_SCOPE):
+    from utopia.optimization.native_numeric_designer import save
+    output=Path(output).resolve()
+    if output.exists() or output.is_relative_to(Path(run).resolve()) or output.is_relative_to(Path.cwd()):
+        raise ValueError('fresh fixture output outside historical source/raw required')
+    save(output,collect(run,audit_path,scope=scope))
 
 
 def main():

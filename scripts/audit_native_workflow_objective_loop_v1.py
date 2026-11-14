@@ -12,7 +12,7 @@ def worker(root, output):
     from scripts import run_native_workflow_objective_loop_v1 as driver
     from scripts.analyze_native_open_v7 import _inventory
     from scripts.analyze_native_design_benchmark import loaded
-    from scripts.audit_native_institution_loop_v1 import epoch
+    from scripts.audit_native_institution_loop_v1 import epoch, require_age
     from scripts.native_benchmark_source import source_proofs
     from scripts.native_benchmark_physical import physical_proof
     from scripts.native_observer_physical_v1 import ColdObserver, accepted_request_keys, reconstruct_measurement
@@ -41,6 +41,10 @@ def worker(root, output):
             'utopia/optimization/native_workflow_designer_v1.py',
             'utopia/optimization/native_authoring_ir.py',
             'utopia/optimization/native_search_generator_v14.py'] if driver.open_institutions(p) else [])
+        staged = p.get('designer_mode') == driver.staged_author.MODE
+        if staged:
+            author_sources += ['utopia/optimization/native_workflow_staged_designer_v1.py',
+                'scripts/reports/stage_native_component_fixtures_v1.py']
         source = source_proofs(driver.ROOT, p['source_commit'], scripts=[
             'scripts/run_native_workflow_objective_loop_v1.py', 'scripts/audit_native_workflow_objective_loop_v1.py',
             'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'] + author_sources,
@@ -51,8 +55,34 @@ def worker(root, output):
         observer = ColdObserver(root / 'observer', p['observer_contract']); observer_audit = observer.audit()
         if observer_audit != read(root / 'observer-audit.json'): raise ValueError('original critic audit differs')
         cells, caches, author_roots, keys, worlds = set(), set(), set(), set(), []
+        staged_wire_directories = set()
         def author(parent, request, *, proposal=False):
             calibration = parent / ('calibration-' + digest(request)); author_roots.add(calibration)
+            if staged:
+                from utopia.optimization.native_bounded_staged_designer import replay as replay_bounded
+                def cold(path, purpose):
+                    value = driver.staged_author.replay(path, request=request, provider=p['designer'],
+                        backend=p['backend'], source_commit=p['source_commit'], bank=p['component_bank'], purpose=purpose)
+                    session = path/('editor-readiness' if purpose=='calibration' else 'editor-session')
+                    wire = session/'wire'; staged_wire_directories.add(wire.resolve())
+                    for intent_path in wire.glob('dispatch-*.intent.json'):
+                        intent = read(intent_path)
+                        if not epoch(start['started_utc']) <= epoch(intent['started_utc']) <= epoch(end['ended_utc']):
+                            raise ValueError('staged workflow dispatch outside original study interval')
+                    return value, session
+                value, calibration_session = cold(calibration, 'calibration')
+                certificate_path = calibration_session/'calibration/certificate.json'
+                cert = driver.staged_author.cold_certificate(certificate_path, request=request,
+                    provider=p['designer'], backend=p['backend'], contract=p['post_edit_contract'])
+                if proposal:
+                    path = parent/('proposal-'+digest(request)); author_roots.add(path)
+                    value, session = cold(path, 'proposal')
+                    intent = read(session/'intent.json')
+                    if intent['certificate'] != str(certificate_path.resolve()):
+                        raise ValueError('staged workflow proposal used a different readiness certificate')
+                    for intent_path in (session/'wire').glob('dispatch-*.intent.json'):
+                        require_age(read(intent_path)['started_utc'], cert['completed_epoch'])
+                return value
             cert = require_certificate(calibration / 'certificate.json', request=request,
                 provider=p['designer'], backend=p['backend'], enforce_age=False, settings=p['author_settings'])
             value = replay_workflow(calibration)
@@ -151,6 +181,8 @@ def worker(root, output):
                 or not {r['key'] for r in observer_audit['rows']} <= keys
                 or end['observations'] != len(worlds)):
             raise ValueError('unaccounted workflow world/cache/author/critic slot')
+        if staged and staged_wire_directories != {v.parent.resolve() for v in root.rglob('dispatch-*.intent.json')}:
+            raise ValueError('unaccounted staged workflow calibration/proposal dispatch directory')
         if before != _inventory(root): raise ValueError('workflow raw changed during cold audit')
         driver.save(output, {'schema': 'scienceutopia.native-workflow-objective-loop-audit.v1',
             'source_commit': p['source_commit'], 'plan_sha256': p['content_sha256'], 'source_proof': source,

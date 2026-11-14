@@ -19,6 +19,7 @@ from utopia.optimization.native_jobs import pinned_revision
 from utopia.optimization.native_numeric_designer import checked, save
 from utopia.optimization.native_workflow_designer_v1 import (
     WorkflowDesigner, SETTINGS, generation_definition, settings_for, FEEDBACK_MODE, FEEDBACK_PROTOCOL, OPEN_IR_MODE)
+from utopia.optimization import native_workflow_staged_designer_v1 as staged_author
 from utopia.optimization.native_workflow_domain_v4 import (
     workflow_design_space, post_funding_cost_control, verify_workflow_interval)
 from utopia.optimization.native_world import evaluate_native_suggestion
@@ -38,9 +39,11 @@ def read(path): return checked(json.loads(Path(path).read_text()))
 
 
 def open_institutions(plan):
-    if plan.get('designer_mode') != OPEN_IR_MODE:
+    mode = plan.get('designer_mode')
+    if mode not in (OPEN_IR_MODE, staged_author.MODE):
         return False
-    if plan.get('authoring_scope') != OPEN_SCOPE or plan.get('protocol') != OPEN_PROTOCOL:
+    protocol = staged_author.PROTOCOL if mode == staged_author.MODE else OPEN_PROTOCOL
+    if plan.get('authoring_scope') != OPEN_SCOPE or plan.get('protocol') != protocol:
         raise ValueError('explicit open-institution study scope/protocol required')
     return True
 
@@ -134,7 +137,7 @@ def require_prerequisite(binding):
 
 
 def build_plan(original, audit, *, source, origin, backend, observer_backend, prerequisite, sources,
-        scientist_transport=None, designer_mode=None):
+        scientist_transport=None, designer_mode=None, component_bank=None, component_evidence=None):
     if (original['schema'] != 'scienceutopia.native-planning-objective-loop.v1.plan'
             or audit['schema'] != 'scienceutopia.native-planning-objective-loop-audit.v1'
             or audit['source_commit'] != original['source_commit'] or sources['original_source'] != original['source_commit']
@@ -147,8 +150,11 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
     for key in original['observer_contract']:
         if key not in ('source_commit', 'content_sha256') and original['observer_contract'][key] != observer[key]:
             raise ValueError('original common content observer changed')
-    opened = designer_mode == OPEN_IR_MODE
-    protocol = OPEN_PROTOCOL if opened else PROTOCOL
+    staged = designer_mode == staged_author.MODE
+    if not staged and (component_bank is not None or component_evidence is not None):
+        raise ValueError('component fixtures require the explicit staged workflow profile')
+    opened = designer_mode in (OPEN_IR_MODE, staged_author.MODE)
+    protocol = staged_author.PROTOCOL if staged else OPEN_PROTOCOL if opened else PROTOCOL
     experiment = {'protocol': protocol, 'role': ('objective-conditioned-native-open-institution-design'
         if opened else 'objective-conditioned-native-workflow-design')}
     world = {**clone(original['world']), 'source_commit': source, 'experiment': experiment,
@@ -162,7 +168,7 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
         'backend': clone(backend), 'world': world, 'experiment': experiment, 'observer_contract': observer,
         'initial_system': anchor.to_dict(), 'design_space': workflow_design_space(anchor),
         'authoring_scope': OPEN_SCOPE if opened else 'literal-existing-institutions-workflow-only',
-        'author_settings': settings_for(designer_mode),
+        'author_settings': staged_author.settings() if staged else settings_for(designer_mode),
         'reference_order': list(refs), 'reference_systems': refs,
         'objectives': clone(original['objectives']), 'generations': 3, 'optimizer_seed': 68011,
         'strategies': {'local-workflow-designer': {'protocol': protocol,
@@ -177,12 +183,26 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
         'structural_freedom_causal_effect_claimed': False, 'publication_ready': False}
     if designer_mode is not None:
         result['designer_mode'] = designer_mode
-        profile_protocol = settings_for(designer_mode)['open_protocol'] if opened else FEEDBACK_PROTOCOL
+        profile_protocol = staged_author.PROTOCOL if staged else settings_for(designer_mode)['open_protocol'] if opened else FEEDBACK_PROTOCOL
         result['author_profile_protocol'] = {'path': profile_protocol,
             'sha256': file_sha256(ROOT / profile_protocol)}
     if opened:
         result['optimizer_reference_labels'] = ['R7-original']
         result['comparison_only_reference_labels'] = ['post-funding-cost']
+    if staged:
+        if not isinstance(component_bank, dict) or not isinstance(component_evidence, dict):
+            raise ValueError('staged workflow requires explicit original component bank/evidence')
+        bank = staged_author.require_bank(component_bank, component_evidence, anchor.to_dict())
+        result.update(component_bank=bank, component_evidence=clone(component_evidence),
+            post_edit_contract=staged_author.component_feedback(bank, original['designer'], source).contract)
+        result['strategies']['local-workflow-designer'].update(method=staged_author.MODE,
+            post_edit_component_contract=clone(result['post_edit_contract']))
+        config = result['author_settings']
+        result['budget'].update(designer_POSTs_upper_bound=7*config['calibration_maximum_posts']+6*config['proposal_maximum_posts'],
+            proposal_POSTs_per_session=config['proposal_maximum_posts'],
+            readiness_POSTs_per_session=config['calibration_maximum_posts'],
+            component_probes_upper_bound=6*config['maximum_component_probes'],
+            designer_session_wall_seconds=config['session_wall_seconds'])
     if prerequisite.get('schema') == 'scienceutopia.native-workflow-numeric-prerequisite.v2':
         from scripts.native_workflow_numeric_prerequisite_v2 import PROTOCOL as eligibility
         result['eligibility_protocol'] = {'path': eligibility, 'sha256': file_sha256(ROOT / eligibility)}
@@ -206,7 +226,8 @@ def require_plan(root):
     expected = build_plan(original, audit, source=p['source_commit'], origin=p['origin'], backend=p['backend'],
         observer_backend=p['observer_contract']['backend'], prerequisite=p['prerequisite'],
         sources=native_sources(original['source_commit']), scientist_transport=p.get('scientist_transport'),
-        designer_mode=p.get('designer_mode'))
+        designer_mode=p.get('designer_mode'), component_bank=p.get('component_bank'),
+        component_evidence=p.get('component_evidence'))
     if expected != {k: v for k, v in p.items() if k != 'content_sha256'}:
         raise ValueError('literal workflow plan reconstruction differs')
     return p
@@ -228,6 +249,9 @@ def scientist_factory(directory, p, root):
 
 
 def designer_for(directory, p, root):
+    if p.get('designer_mode') == staged_author.MODE:
+        return staged_author.StagedWorkflowDesigner(directory, provider=p['designer'], backend=p['backend'],
+            inference_lock=root/'inference.lock', source_commit=p['source_commit'], bank=p['component_bank'])
     return WorkflowDesigner(directory, provider=p['designer'], backend=p['backend'],
         inference_lock=root / 'inference.lock', **({'mode': p['designer_mode']} if 'designer_mode' in p else {}))
 
@@ -332,12 +356,21 @@ def prepare(args):
     original, audit = origin_evidence(origin)
     timeout = getattr(args, 'scientist_read_timeout_seconds', None)
     from utopia.optimization.native_scientist_transport_v1 import contract as transport_contract
+    component_args = [getattr(args, 'component_'+key, None) for key in ('bank','run','audit','source')]
+    component_options = {}
+    if any(v is not None for v in component_args):
+        if not all(v is not None for v in component_args):
+            raise ValueError('all four explicit component bank/run/audit/source paths required')
+        bank_path, run_path, audit_path, source_path = component_args
+        component_options = {'component_bank': read(bank_path), 'component_evidence': {
+            'run': str(run_path.resolve()), 'audit': str(audit_path.resolve()),
+            'source': str(source_path.resolve()), 'audit_file_sha256': file_sha256(audit_path)}}
     p = build_plan(original, audit, source=source, origin=origin, backend=backend_binding(original['designer']),
         observer_backend=backend_binding(original['scientist']),
         prerequisite=prerequisite_binding(args.after_numeric_chain or args.after_numeric_dispatch),
         sources=native_sources(original['source_commit']),
         scientist_transport=None if timeout is None else transport_contract(read_seconds=timeout),
-        designer_mode=getattr(args, 'designer_mode', None))
+        designer_mode=getattr(args, 'designer_mode', None), **component_options)
     args.output.mkdir(parents=True); save(args.output / 'plan.json', p); require_plan(args.output)
     print(json.dumps({'prepared_source': source, 'native_worlds_upper_bound': 8, 'new_model_POSTs': 0}), flush=True)
 
@@ -352,7 +385,8 @@ def main():
     after.add_argument('--after-numeric-dispatch', type=Path)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--scientist-read-timeout-seconds', type=int, choices=(900,))
-    p.add_argument('--designer-mode', choices=(FEEDBACK_MODE, OPEN_IR_MODE))
+    p.add_argument('--designer-mode', choices=(FEEDBACK_MODE, OPEN_IR_MODE, staged_author.MODE))
+    for name in ('bank','run','audit','source'): p.add_argument('--component-'+name, type=Path)
     p = sub.add_parser('run'); p.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'prepare': prepare(args)

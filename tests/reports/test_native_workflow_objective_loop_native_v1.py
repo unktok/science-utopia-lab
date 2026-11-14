@@ -37,9 +37,23 @@ IMAGE = 'sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833
 
 @pytest.mark.parametrize('prerequisite_kind', ['legacy-scripted', 'independent-numeric-v2'])
 @pytest.mark.parametrize('scientist_profile', ['legacy', 'read900'])
-@pytest.mark.parametrize('designer_profile', ['legacy', author_module.FEEDBACK_MODE, author_module.OPEN_IR_MODE])
+@pytest.mark.parametrize('designer_profile', ['legacy', author_module.FEEDBACK_MODE, author_module.OPEN_IR_MODE, driver.staged_author.MODE])
 def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_cold_audit(
         tmp_path, fixed_corpus, monkeypatch, prerequisite_kind, scientist_profile, designer_profile):
+    staged = designer_profile == driver.staged_author.MODE
+    opened = designer_profile in (author_module.OPEN_IR_MODE, driver.staged_author.MODE)
+    component_options = {}
+    if staged:
+        if prerequisite_kind != 'independent-numeric-v2' or scientist_profile != 'read900':
+            pytest.skip('staged full-path proof uses its one explicit prospective profile')
+        names = ('SCIENCE_UTOPIA_WORKFLOW_BANK','SCIENCE_UTOPIA_WORKFLOW_RUN',
+            'SCIENCE_UTOPIA_WORKFLOW_AUDIT','SCIENCE_UTOPIA_WORKFLOW_SOURCE')
+        if not all(os.environ.get(name) for name in names):
+            pytest.skip('opt-in original audited R7 component evidence required')
+        bank, raw, proof, source = (Path(os.environ[name]) for name in names)
+        component_options = {'component_bank': driver.read(bank), 'component_evidence': {
+            'run':str(raw.resolve()), 'audit':str(proof.resolve()), 'source':str(source.resolve()),
+            'audit_file_sha256':file_sha256(proof)}}
     original, _, _, _ = plan(tmp_path / 'inputs', monkeypatch, IMAGE)
     install_scripted_provider(tmp_path / 'provider', monkeypatch, 2)
     monkeypatch.setattr('requests.get', lambda *a, **k: SimpleNamespace(raise_for_status=lambda: None,
@@ -83,7 +97,7 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         sources=driver.native_sources(probe.source_commit),
         scientist_transport=(None if scientist_profile=='legacy' else
             scientist_transport_contract(read_seconds=900)),
-        designer_mode=None if designer_profile == 'legacy' else designer_profile)
+        designer_mode=None if designer_profile == 'legacy' else designer_profile, **component_options)
     root = tmp_path / 'run'; root.mkdir(); driver.save(root / 'plan.json', p)
     monkeypatch.setattr(driver, 'origin_evidence', lambda origin: (original, upstream))
     if prerequisite_kind == 'legacy-scripted':
@@ -111,8 +125,36 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     monkeypatch.setattr(driver, 'LocalObserverBackend', lambda **kw: Critics())
     child_path = tmp_path / 'child-http-fixture'; child_path.mkdir()
     shutil.copyfile(driver.ROOT / 'tests/fixtures/native_workflow_http_sitecustomize.py', child_path / 'sitecustomize.py')
+    if staged:
+        shutil.copyfile(driver.ROOT/'tests/fixtures/native_workflow_staged_http_sitecustomize.py', child_path/'sitecustomize.py')
     calls = []
     def child(argv, **kwargs):
+        if staged:
+            intent = driver.read(argv[-2]); req = intent['request']; purpose = intent['kind']
+            source = next(n['parameters']['code_artifact']['source'] for n in req['parent_system']['mechanisms']
+                if n['mechanism_id']=='world.selection')
+            from tests.reports.native_open_workflow_fixture_v1 import authored_program
+            bad = "def step(context):\n    raise TypeError('SCRIPTED-workflow-construction-probe')\n"
+            write = lambda value: {'tool':'write_file','filename':'code/world.selection.py','content':value}
+            invalid = req['generation']==1 and req['loss_spec']['id']==original['losses']['content-utility']['id']
+            edits = authored_program(req)['operations']
+            if invalid:
+                index = next(i for i,s in enumerate(req['parent_system']['schedules']) if s['mechanism_id']=='world.costs')
+                edits = [{'op':'replace','path':'/schedules/'+str(index)+'/phase','value':999}]
+            actions = [{'tool':'plan','objective_reasoning':'SCRIPTED software fixture, not optimization',
+                'design_intent':'Exercise literal test feedback and active code/wiring'}, write(bad),write(source),
+                {'tool':'edit','operations':edits}]
+            actions += [{'tool':'finish','rationale':'SCRIPTED explicit submission'}]*(12 if invalid else 1)
+            fixture = tmp_path/('staged-child-http-'+str(len(calls))+'.json')
+            write_json_atomic(fixture, {'provider':p['designer'],'purpose':purpose,'actions':actions})
+            execution = run_bounded(argv, **kwargs, env={**os.environ,'PYTHONPATH':str(child_path),
+                'SCIENCE_UTOPIA_STAGED_WORKFLOW_HTTP_FIXTURE':str(fixture)})
+            wires = [driver.read(path) for path in sorted((Path(argv[-2]).parent/'wire').glob('dispatch-*.intent.json'))]
+            payloads = [json.loads(w['wire_utf8']) for w in wires]
+            calls.append({'purpose':purpose,'request':clone(req),'context':clone(req),
+                'wire_utf8_bytes':max((len(w['wire_utf8'].encode()) for w in wires),default=0),
+                'actual_HTTP_posts':len(wires),'actual_payloads':payloads})
+            return execution
         intent = driver.read(argv[-2]); binding = driver.read(Path(argv[-2]).parent / 'binding.json')
         req = binding['request']; parent = SystemSpec.from_dict(req['parent_system'])
         body = json.loads(intent['payload']['messages'][1]['content'])
@@ -148,7 +190,11 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
             'submission': clone(submission), 'wire_utf8_bytes': len(intent['request_wire']['request_wire_utf8'].encode())})
         return run_bounded(argv, **kwargs, env={**os.environ, 'PYTHONPATH': str(child_path),
             'SCIENCE_UTOPIA_WORKFLOW_HTTP_FIXTURE': str(fixture)})
-    monkeypatch.setattr(author_module, 'run_bounded', child)
+    if staged:
+        from utopia.optimization import native_bounded_staged_designer as bounded_module
+        monkeypatch.setattr(bounded_module,'run_bounded',child)
+    else:
+        monkeypatch.setattr(author_module, 'run_bounded', child)
     # No certificate return, compiler, workflow validation, campaign, factory,
     # role receipt, response journal or physical auditor is mocked.
     p = driver.require_plan(root); driver.run(root)
@@ -157,14 +203,20 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     assert len(calls) == 13 and sum(c['purpose'] == 'proposal' for c in calls) == 6
     u2 = [c for c in calls if c['purpose'] == 'proposal' and c['request']['generation'] == 2
         and c['request']['loss_spec']['id'] == original['losses']['content-utility']['id']][0]
-    if designer_profile == author_module.OPEN_IR_MODE:
+    if opened:
         first_free = next(c for c in calls if c['purpose'] == 'proposal')
         assert first_free['request']['parent_system'] == p['reference_systems']['R7-original']
         assert len(first_free['request']['observations']) == 1
         assert first_free['request']['observations'][0]['suggestion']['suggestion_id'] == 'workflow-reference-r7-original'
-        failures = u2['context']['own_history']['generation_authoring_failures']
-        assert len(failures) == 1 and failures[0]['technical_errors']
-        assert failures[0]['failed_ir_receipts'][0]['raw_ir_available']
+        if staged:
+            nulls = [r for r in u2['request']['history'] if r['generation_error']]
+            assert len(nulls)==1 and nulls[0]['definition']['generation_failure']
+            for call in (c for c in calls if c['purpose']=='proposal'):
+                assert 'SCRIPTED-workflow-construction-probe' in json.dumps(call['actual_payloads'][2])
+        else:
+            failures = u2['context']['own_history']['generation_authoring_failures']
+            assert len(failures) == 1 and failures[0]['technical_errors']
+            assert failures[0]['failed_ir_receipts'][0]['raw_ir_available']
     else:
         assert u2['context']['consumed_generation_nulls'][0]['literal_submission_failure']['literal_submission']['phase_updates'] == {'world.costs': 999}
     if designer_profile == author_module.FEEDBACK_MODE:
@@ -187,7 +239,7 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     proof = driver.read(audit_paths[0]); assert len(proof['worlds']) == 7
     assert all(len(w['physical_proof']['annual_checkpoints']) == 4 for w in proof['worlds'])
     active_input_change = None
-    if designer_profile == author_module.OPEN_IR_MODE:
+    if opened:
         from scripts.reports.native_instruction_timing_v1 import completed_pairs
         hand = root / 'references/post-funding-cost/worlds/workflow-reference-post-funding-cost-s61001'
         own = next(w for w in proof['worlds'] if w['role'] == 'workflow-own-proposal' and w['objective'] == 'throughput')
@@ -205,13 +257,21 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     cost_reports = [costs(root, p, driver.read(path)) for path in audit_paths]
     assert cost_reports[0] == cost_reports[1]
     groups = cost_reports[0]['auxiliary']['groups']
-    assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind'] == 'workflow-readiness']) == 7
-    assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind'] == 'workflow-proposal']) == 6
+    if staged:
+        readiness = sum(c['actual_HTTP_posts'] for c in calls if c['purpose']=='calibration')
+        proposal = sum(c['actual_HTTP_posts'] for c in calls if c['purpose']=='proposal')
+        assert readiness == 7*27
+        assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind']=='editor-readiness']) == readiness
+        assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind']=='staged-proposal']) == proposal
+        assert len(list(root.glob('search/*/authoring/proposal-*/editor-session/authoring/generation-*/component-lab/probe-*.intent.json')))==48
+    else:
+        assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind'] == 'workflow-readiness']) == 7
+        assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind'] == 'workflow-proposal']) == 6
     reports = [workflow_report(SimpleNamespace(run=root, audit_one=audit_paths[0], audit_two=audit_paths[1],
         output=audit_directory / ('report-' + str(i)))) for i in (1, 2)]
     assert reports[0] == reports[1] and reports[0]['consumed_own_slots'] == 6
     assert sum(row['loss'] is None for row in reports[0]['slots']) == 1
-    if designer_profile == author_module.OPEN_IR_MODE:
+    if opened:
         changes = [r['graph_from_parent'] for r in reports[0]['slots'] if r['status'] == 'complete']
         assert all(d['source_edits'] and d['added_nodes'] for d in changes)
     report_files = same_files(audit_directory / 'report-1', audit_directory / 'report-2')
