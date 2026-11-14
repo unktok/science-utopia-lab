@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Longitudinal native/frozen-handoff software proof](results/native-longitudinal-native-handoff-software-v1.json):
+  all12 SCRIPTED own slots, preserved generation/native nulls, matching double
+  cold audits,25 bounded session replays and full costs. Separate continuation
+  completes3 frozen-evaluation worlds/six labels and eight matching paired
+  readouts, without redoing own slots. Original a1/a2 tests stay failed.
+  This is not actual backend token capacity/readiness, a scientific information
+  effect or main-track readiness; fresh real checks and comparison remain next.
+
 - [Reviewed85-page actual-result manuscript](../paper/integrated-staged-actual-build-v1.json):
   all meaningful earlier tracks plus complete staged development/fixed outcomes,
   44 figures/38 tables/28 references. Two actual builds agree in text/logs/all

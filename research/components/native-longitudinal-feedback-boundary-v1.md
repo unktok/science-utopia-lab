@@ -1,5 +1,22 @@
 # Prospective longitudinal feedback boundary
 
+## November15 integrated source-bound software update
+
+The paragraphs below retain the earlier prototype/source-only snapshots.
+The new matched runner now enables the checkpoint collector, designer-access
+projection, public bounded calibration/proposal/replay, complete physical cold
+reconstruction, cost accounting and four-history own-only frozen handoff.
+At85520c4d, all12 SCRIPTED slots are terminal; both13-world development audits
+agree, including a native timeout null. A separate same-source continuation
+replays all25 sessions and completes3 fixed worlds/six labels, both fixed
+audits/costs and all eight paired readouts. It exits0 without reopening or
+refilling any own slot; original a1/a2 test failures remain failed.
+[Retained evidence](../results/native-longitudinal-native-handoff-software-v1.json).
+Actual backend token capacity, real readiness and the scientific comparison
+remain unproved/undispatched. No information benefit or publication readiness
+follows from software closure. Later plot-layout-only corrections are separate
+from this source85520c4d proof and cannot alter its exported raw/score hashes.
+
 Branch `feat/native-longitudinal-feedback-v1`, implementation52d343fa, builds
 on the combined future annotation/metric-definition corrections. It is not
 merged into main or either active/frozen scientific source.

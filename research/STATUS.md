@@ -2,6 +2,31 @@
 
 ## Active publication-ready goal
 
+### November15: longitudinal native/cold/frozen handoff exercised, no new real-model study
+
+At clean85520c4d, the new matched runner actually processes all12 SCRIPTED
+own slots/four histories.13 native worlds are attempted:12 complete; one
+container-wall timeout retains a null after two completed annual boundaries.
+One separate deliberately invalid graph remains a generation null. Original
+a1/a2 pytest attempts remain failed, not relabeled successful. Both a2 physical/
+author/critic cold audits agree. A separate continuation at the same unchanged
+source replays all25 bounded sessions, reconciles372 readiness/71 proposal
+POSTs, verifies full scientist-input equality for the same policy across arm
+identities, and completes3 fixed native worlds/six logical labels. Both fixed
+audits/costs and all eight paired analysis exports agree; continuation52898
+actually exits0 after137.77s. No old own slot is reopened or refilled.
+[Exact proof, failures and complete readouts](results/native-longitudinal-native-handoff-software-v1.json).
+
+This is SCRIPTED software evidence, not a new Qwen study or institutional gain.
+The two original full-test failures are retained. The source-bound continuation
+proves the previously unreached path rather than silently retrying the original
+study. Actual later history-bearing proposal wires fit the200KB byte ceiling;
+this is not measured backend token capacity. A long fixed-plot title found at
+visual review is corrected separately, without changing raw/audits/scores.
+Next: finite real-backend frame/capacity check, fresh host observations and exact
+request-bound readiness before the prospectively declared scientific comparison.
+No actual comparison is prepared/dispatched. Main-track R2/R3/R5/R6 remain open.
+
 ### November15: prospective author-source scope verified on a separate branch
 
 Branch `feat/native-longitudinal-native-connection-v1` is pushed atf4e921e1,

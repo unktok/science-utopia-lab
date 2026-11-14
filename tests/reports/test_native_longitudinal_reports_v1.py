@@ -101,6 +101,19 @@ def test_six_labels_and_separate_objective_vs_access_contrasts(tmp_path, monkeyp
 
 
 def test_two_actual_renders_are_byte_identical_and_not_empty_contrast_panels(tmp_path, monkeypatch):
+    import matplotlib.pyplot as plt
+    original_close = plt.close
+    inspected_titles = []
+    def close_with_title_bounds(figure=None):
+        if hasattr(figure, 'axes'):
+            figure.canvas.draw()
+            renderer = figure.canvas.get_renderer()
+            for axis in figure.axes:
+                box = axis.title.get_window_extent(renderer)
+                assert box.x0 >= 0 and box.x1 <= figure.bbox.x1
+                inspected_titles.append(axis.get_title())
+        original_close(figure)
+    monkeypatch.setattr(plt, 'close', close_with_title_bounds)
     p, a = fixed_fixture(tmp_path/'input', monkeypatch)
     r = fixed_report.summarize(p,a,study='longitudinal-v1')
     directories = [tmp_path/'one',tmp_path/'two']
@@ -108,4 +121,6 @@ def test_two_actual_renders_are_byte_identical_and_not_empty_contrast_panels(tmp
     assert {p.name: p.read_bytes() for p in directories[0].iterdir()} == {p.name:p.read_bytes() for p in directories[1].iterdir()}
     svg = (directories[0]/'fixed-policy-paired-differences.svg').read_text()
     assert 'Unavailable: no paired completed loss' not in svg
-    assert all('Selected '+key+' / scored by' in svg for key in r['selection_order'])
+    assert all('Selected '+key.replace('::', ' / ') in svg for key in r['selection_order'])
+    assert all('Scored by '+key in svg for key in r['score_order'])
+    assert len(inspected_titles) == 20  # two seed and eight paired panels, twice.

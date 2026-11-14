@@ -15,10 +15,11 @@ def render(report, output):
         fig, axes = plt.subplots(2, 2, figsize=(10, 6.2), sharex='col')
         for column, objective in enumerate(report['score_order']):
             for arm, color in zip(arms, colors):
+                style = '--' if arm == 'parent-trajectory' else '-'
                 path = report['loss_paths'][arm+'::'+objective]
                 x = [r['generation'] for r in path]
                 own = [float('nan') if r['best_own_loss'] is None else r['best_own_loss'] for r in path]
-                axes[0, column].plot(x, own, color=color, label=arm, lw=1.7)
+                axes[0, column].plot(x, own, color=color, label=arm, lw=1.7, ls=style)
                 valid = [r for r in path if r['status'] == 'complete']
                 axes[0, column].scatter([r['generation'] for r in valid], [r['observed_loss'] for r in valid],
                     color=color, s=23, zorder=3)
@@ -28,7 +29,7 @@ def render(report, output):
                         color=color, marker='x', s=24, label=arm+' null (no loss)', zorder=4)
                 initial = min(r['scores'][objective] for r in report['references'] if r['optimizer_visible'])
                 axes[1, column].plot([-1]+x, [initial]+[r['best_known_loss'] for r in path],
-                    color=color, lw=1.7, marker='o', ms=3, label=arm)
+                    color=color, lw=1.7, ls=style, marker='o', ms=3, label=arm)
             for row in range(2):
                 ax = axes[row, column]
                 for reference, color in zip(report['references'], ('#7c8793', '#c18034')):

@@ -80,3 +80,76 @@ scientific records are unchanged. Failed pytest2038 outputs remain preserved.
 Combined reader/plan/selection/legacy-profile session32052 subsequently exits0
 with117passed/35.25s. This includes actual paired synthetic figure rendering,
 not actual scientific outcomes or a completed replacement native full check.
+
+## Second original full attempt: failed, preserved; same-source continuation
+
+At unchanged85520c4dac89c33a9c5f41bc7407737a7af83500, original session85470
+actually exits1 after991.93s. All12 own slots and25 bounded sessions close;
+the two development audits agree, file SHA256
+2008fb83e7b38a9444fd87552222acea8b8b5715c012c10005f25f6579c60857.
+Thirteen native worlds are attempted,12 complete. This time the trajectory-U
+history has the prescribed generation-null g1 and a native-timeout null g2
+(native-adaptive-162a432ee36fbf698f869948). The failed world retains two closed
+annual checkpoints, no measurement/loss, and exact CodeExecutionError /
+container wall-time limit exceeded. There are50 observed annual checkpoints,
+48 from completed worlds plus two from the failed partial world. Do not
+reinterpret the partial world as complete. No timeout/budget is enlarged.
+
+The software assertion of two successful worlds per history is incompatible
+with retaining both these nulls in a three-slot history. That assertion is not
+a production loss/admission rule. Preserve its failed JUnit; verify all actual
+attempts, full completed boundaries, known exact failure and available selection
+instead of replaying twelve scientific slots to obtain a greener test.
+
+The literal external continuation harness is retained at
+tests/fixtures/native_longitudinal_closed_a2_handoff_v1.py. It executes with
+the exact old source85520c4d and named SCRIPTED HTTP/corpus/upstream fixtures,
+not an upgraded production source or real model. Session52898 actually exits0
+after137.77s. It replays all25 actual bounded sessions, reconciles372 readiness
+and71 proposal POSTs against both costs, verifies same-policy full scientist
+payload equality across arm IDs, and preserves original development inventory.
+Without a new author, it performs three literal-distinct fixed worlds/six
+labels at software seed72101, both actual fixed audits and costs, then two
+exports each of scores/requests/effects/choices for both stages. Every paired
+file agrees. Eight reference contrasts, two within-arm objective contrasts
+and two within-objective information-access contrasts remain distinct.
+
+[Sealed proof](../results/native-longitudinal-native-handoff-software-v1.json)
+binds both failed original JUnits, actual continuation JUnit, literal harness,
+verification JSON, both cold pairs, costs, every paired exported hash and later
+history-bearing proposal-wire examples. There are zero actual model calls,
+zero use of scientific unused676047151, no own-slot refill, no new scientific
+benefit and no publication-ready claim. This is a split software path proof,
+not a relabeled passing original full test.
+
+Visual review finds the final long fixed-panel titles reach the image edge.
+A separate reader-only correction wraps those labels and makes overlapping
+arm paths distinguishable with dash styles. Original source85520c4d exports
+and their hashes stay unchanged. A corrected prospective full-test assertion
+now accounts for all attempts and the deliberate generation null, requires a
+completed selection in each fixture history, and still checks the exact native
+timeout/no measurement/no numerical penalty; it is not itself a new full pass.
+
+Read-only preflight observations show local Ollama0.33.3, expected two model
+digests and no model loaded at that moment. A host-wide observation sees612
+processes and443% aggregate CPU, including our full QA and other projects;
+this is not a ready/exclusive resource certificate or proof of the timeout's
+cause. One transient unnamed Python PID disappears before targeted inspection.
+Fresh resource observations and real frame/token/readiness checks are still
+required after software work ends. Other projects are not changed or stopped.
+
+The separate reader-layout exports65208 actually exit0. Both development and
+fixed outputs agree bytewise across two exports. Original report.json and
+every CSV retain their previous exact bytes; only the changed path/paired
+figure PNG/SVG and their containing manifests differ. Corrected figures are
+visually inspected. A new test draws every title and checks horizontal image
+bounds, in addition to double-render equality and all four selection panels.
+Initial test10138 has3pass/1failure from incorrectly expecting18 rather than
+20 title inspections (two seed panels plus eight paired panels, twice).
+Its failed pytest2040 record remains. Correct only that count. Next81947
+has36pass/1failure because the sandbox denies an existing ps-based predecessor
+completion guard; do not bypass that guard. With required process-inspection
+permission, session97166 actually exits0:61 reader/retention/plan/legacy tests
+pass in31.33s. No full native run or real-model readiness is inferred from this
+targeted set. The prospective full-test assertion change has not been rerun as
+a new whole study, and the historical a1/a2 JUnits remain failed.

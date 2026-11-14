@@ -193,7 +193,10 @@ def render(report,output):
             if not any(r['differences'][objective] is not None for r in rows):
                 ax.text(.5,.5,'Unavailable: no paired completed loss',transform=ax.transAxes,ha='center',color='#a9444a')
             ax.axhline(0,color='#777777',lw=.8);ax.grid(axis='y',color='#ededed')
-            ax.set(title='Selected '+selected+' / scored by '+objective,ylabel='Selected minus reference loss',
+            title = ('Selected '+selected.replace('::', ' / ')+'\nScored by '+objective
+                if report['schema']=='scienceutopia.native-longitudinal-fixed-report.v1'
+                else 'Selected '+selected+' / scored by '+objective)
+            ax.set(title=title,ylabel='Selected minus reference loss',
                 xticks=range(len(report['reference_labels'])),xticklabels=[short(r) for r in report['reference_labels']])
             ax.tick_params(axis='x',labelrotation=25,labelsize=6)
             for tick in ax.get_xticklabels():tick.set_ha('right')
