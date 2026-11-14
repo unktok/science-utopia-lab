@@ -1,0 +1,69 @@
+{
+  "schema": "scienceutopia.native-workflow-compiler-feedback-dispatch.v2",
+  "classification": "started-real-native-study-not-completed-optimization-or-improvement",
+  "source_commit": "7f1fc61f98e4f09d235879c8ccfd4e57714b9d79",
+  "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-v2-a1",
+  "run": "outputs/native-workflow-compiler-feedback-v2-a1",
+  "plan_content_sha256": "277b1831f311e994b2480e15e5ec95e3125784fbaae396329fdce8082d754ff0",
+  "plan_file_sha256": "8b400912287003bd84a155b547a2baad2c387d6de1fa2ba56ac506a5357fcf15",
+  "prepare": {
+    "session": 36316,
+    "exit_code": 0,
+    "inference_POSTs": 0,
+    "prior_sandbox_GET_failure_session": 34804,
+    "prior_failure_created_run_or_called_inference": false
+  },
+  "pre_dispatch": {
+    "observer_source_commit": "7b770d95",
+    "initial_failed_observation_output": "outputs/compiler-feedback-resource-observation-v2-a1",
+    "initial_failure": "second exact CPU-only sweep command not yet declared; no inference",
+    "successful_output": "outputs/compiler-feedback-resource-observation-v2-a2",
+    "session": 54194,
+    "exit_code": 0,
+    "CPU_percent": [193.7, 119.7],
+    "free_plus_inactive_GiB": [40.248138427734375, 40.954864501953125],
+    "sample_file_sha256": [
+      "3f5060b80d65847828e273c31def4ba2cbed6320ac4e5bb0da80e5025cc530ac",
+      "0d030d3ae8bbd28a18e668dfb8e073294973972a7c71080723a89a89fc66a8d8"
+    ],
+    "unclassified_python_model_executables": [0, 0],
+    "loaded_endpoint_models": [0, 0],
+    "inspected_external_NumPy_SciPy_CPU_jobs_allowed": true,
+    "other_projects_changed": false,
+    "exclusive_resource_lease_or_future_absence_of_contention_proved": false
+  },
+  "writer": {
+    "session": 39932,
+    "pid": 9167,
+    "started_utc": "2026-11-14T04:38:48.937315+00:00",
+    "started_file_sha256": "62f30fbaa4145a7d5434c5ad02e99c9185f0e9e396e7698cc459531c3b890542",
+    "initial_actual_calibration_passed": true,
+    "certificate_file_sha256": "5cee88c44aec36dfc345e9a78b9d0bddd38d935928d8c342eeeebeb756ec5522",
+    "copy_equal_is_diagnostic_not_veto": true,
+    "directed_control_is_free_design_evidence": false,
+    "latest_retained_stage": "references:R7-original",
+    "latest_stage_utc": "2026-11-14T04:39:33.746475+00:00",
+    "completed_worlds_at_snapshot": 0,
+    "completed_own_slots_at_snapshot": 0,
+    "maximum_reference_worlds": 2,
+    "maximum_own_slots": 6,
+    "maximum_native_worlds": 8,
+    "maximum_designer_POSTs": 13,
+    "stopped_old_studies_resumed": false,
+    "independent_optimizer_replication_claimed": false
+  },
+  "read_only_continuations": {
+    "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-analysis-v2-a1",
+    "source_commit": "7f1fc61f98e4f09d235879c8ccfd4e57714b9d79",
+    "audit_and_cost_session": 89238,
+    "audit_and_cost_output": "outputs/native-workflow-compiler-feedback-audit-v2-a1",
+    "report_session": 80271,
+    "report_output": "outputs/native-workflow-compiler-feedback-report-v2-a1",
+    "actually_waiting_at_snapshot": true,
+    "new_model_calls_allowed": false,
+    "requires_normal_scientific_closure": true
+  },
+  "scientific_held_out_seed_chosen": false,
+  "new_scientific_gain_proved": false,
+  "publication_ready": false
+}

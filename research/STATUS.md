@@ -2,6 +2,23 @@
 
 ## Active publication-ready goal
 
+### November14 13:40JST: fresh real compiler-feedback study is running
+
+Writer39932/PID9167 actually starts04:38:48UTC at clean7f1fc61f/plan277b1831.
+New real35B initial calibration passes; the first R7 native world is executing
+scientist requests. There is no complete new world/own loss at this snapshot.
+Audit/cost89238 and report80271 actually wait on normal closure from a separate
+frozen7f1fc61f analysis source. They add no inference or retries.
+[Dispatch evidence](results/native-workflow-compiler-feedback-dispatch-v2.json).
+
+Two observed resource samples pass with CPU193.7/119.7% and free+inactive
+40.25/40.95GiB, empty model endpoint and no unclassified Python/model executable.
+Two inspected CPU-only sweep commands may remain; other projects stay untouched.
+This is not an exclusive resource lease or a dedicated-speed measurement.
+The earlier sample stopped before inference when a new CPU sweep command was
+not yet declared; its record is unchanged. Profile/proofs/notes reach main and
+GitHub at7b770d95, without changing either active frozen source.
+
 ### November14: compiler feedback now passes the actual software path; fresh science prepared
 
 At7f1fc61f,36 focused checks and the final2-case native integration test pass.

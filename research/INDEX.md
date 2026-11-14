@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual compiler-feedback dispatch](results/native-workflow-compiler-feedback-dispatch-v2.json):
+  writer39932/PID9167 starts04:38:48UTC, initial real35B readiness passes and
+  R7's original native scientist world runs. Two read-only continuations wait.
+  No complete new score/own proposal at this snapshot; old stops stay stopped.
+
 - [Compiler-feedback production-path proof](results/native-workflow-compiler-feedback-software-v2.json):
   36 focused checks plus9 SCRIPTED native worlds through original factories,
   failed-proposal feedback, normal closure, fixed selection and matching cold

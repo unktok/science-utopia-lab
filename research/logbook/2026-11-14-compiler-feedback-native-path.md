@@ -40,3 +40,18 @@ starts with a different m/L range. Its exact command is initially unclassified,
 not a scientific error or evidence of GPU competition. After inspecting the
 same NumPy/SciPy entrypoint/imports, declare both exact sweep commands in a
 fresh resource observation output. Keep the first failed sample unchanged.
+
+## Actual scientific dispatch, not only preparation
+
+Fresh observation54194 exits0: CPU193.7%/119.7%, free+inactive40.25/40.95GiB,
+empty endpoint and no unclassified Python/model executable at either sample.
+No other project is paused or changed. Writer39932/PID9167 actually starts at
+04:38:48UTC with plan277b1831; new real source-bound initial calibration passes.
+The first R7 world starts04:39:33UTC and actually executes scientist requests.
+No new own proposal/world result or complete score exists at that snapshot.
+
+Audit/cost89238 and report80271 actually wait from the separate frozen7f1fc61f
+analysis source. They cannot generate models or turn a stop into normal closure.
+The current software proof, profile and notes are merged to main and pushed at
+7b770d95. Live scientific/analysis sources remain7f1fc61f and are never edited.
+[Exact dispatch bounds and evidence](../results/native-workflow-compiler-feedback-dispatch-v2.json).
