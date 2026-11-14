@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Prospective open code/mechanism/graph author](components/native-open-workflow-authoring-v1.md):
+  the existing arbitrary Stable-ID compiler now connects to the bounded
+  one-POST API/certificate/replay path. Light tests cover new code/nodes/wires
+  and next failure feedback. Native execution, wider study/audit/report/fixed
+  handoff and actual model calibration remain unverified/unexecuted.
+
 - [Actually running unused-condition evaluation](results/native-workflow-feedback-fixed-evaluation-dispatch-v3.json):
   writer30142/PID87075 starts06:44UTC at2133ffc0 after both real resource checks
   and3 repeated unused-seed inventories pass. Three literal physical policies

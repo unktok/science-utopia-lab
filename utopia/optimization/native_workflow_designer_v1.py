@@ -30,6 +30,7 @@ SETTINGS = {'max_calls': 1, 'wall_seconds': 1200, 'http_timeout_seconds': [10, 9
 FEEDBACK_MODE = 'compiler-feedback-thinking-v2'
 FEEDBACK_PROTOCOL = 'research/protocols/campaigns/native-workflow-compiler-feedback-v2.md'
 FEEDBACK_ADAPTER = 'scripts/native_workflow_submission_feedback_v1.py'
+OPEN_IR_MODE = 'open-institutions-ir-v1'
 TASK = ('Minimize the declared loss by designing the order and wiring of the supplied native science system. '
     'Return ONLY the requested JSON object with phase_updates, remove_connections, add_connections, rationale. '
     'Connection removal indexes refer to the current parent, not a prior graph. All changes apply together. '
@@ -48,6 +49,14 @@ class WorkflowCompletionUnknown(BaseException):
 
 def settings_for(mode=None):
     if mode is None: return clone(SETTINGS)
+    if mode == OPEN_IR_MODE:
+        from .native_open_workflow_submission_v1 import PROTOCOL
+        from .native_authoring_ir import StableIDAuthoringProtocol
+        root = Path(__file__).resolve().parents[2]
+        return {**clone(SETTINGS), 'profile': mode, 'num_ctx': 57344, 'num_predict': 16384,
+            'think': True, 'format': 'schema', 'authoring_protocol': StableIDAuthoringProtocol().binding(),
+            'open_adapter_sha256': file_sha256(root / 'utopia/optimization/native_open_workflow_submission_v1.py'),
+            'open_protocol': PROTOCOL, 'open_protocol_sha256': file_sha256(root / PROTOCOL)}
     if mode != FEEDBACK_MODE: raise ValueError('undeclared workflow designer mode')
     return {**clone(SETTINGS), 'profile': mode, 'num_ctx': 57344, 'num_predict': 16384,
         'think': True, 'format': 'schema', 'feedback_adapter': FEEDBACK_ADAPTER,
@@ -55,9 +64,18 @@ def settings_for(mode=None):
 
 
 def recognized_settings(value):
+    if value.get('profile') == OPEN_IR_MODE and value == settings_for(OPEN_IR_MODE):
+        return value
     if value != SETTINGS and value != settings_for(FEEDBACK_MODE):
         raise ValueError('undeclared workflow output/context/feedback settings')
     return value
+
+
+def calibration_control(request, provider, settings):
+    if settings.get('profile') == OPEN_IR_MODE:
+        from .native_open_workflow_submission_v1 import control_submission as control_ir
+        return control_ir(request, provider)
+    return control_submission(request)
 
 
 def compiler_feedback(request):
@@ -87,6 +105,9 @@ def compiler_feedback(request):
 def _payload(binding):
     request, purpose = binding['request'], binding['purpose']
     settings = recognized_settings(binding['settings'])
+    if settings.get('profile') == OPEN_IR_MODE:
+        from .native_open_workflow_submission_v1 import payload
+        return payload(binding)
     context = workflow_context(request)
     body = {'context': context, 'response_schema': submission_schema(context)}
     task = TASK
@@ -126,6 +147,7 @@ def _payload(binding):
 def _outcome(binding, intent, execution, raw):
     definition = literal = None
     error = None
+    diagnostics = []
     transport_schema = None
     if execution['timed_out'] or raw is None:
         error = {'type': 'CompletionUnknown', 'message': 'Owned worker ended without a known final response; no redispatch.'}
@@ -166,9 +188,15 @@ def _outcome(binding, intent, execution, raw):
             if literal != raw['literal_submission']:
                 raise ValueError('workflow literal submission differs from raw provider content')
             try:
-                definition = compile_submission(binding['request'], literal)
+                if binding['settings'].get('profile') == OPEN_IR_MODE:
+                    from .native_open_workflow_submission_v1 import compile_submission as compile_ir
+                    definition = compile_ir(binding['request'], literal,
+                        binding_sha256=binding['content_sha256'], provider=binding['provider'])
+                else:
+                    definition = compile_submission(binding['request'], literal)
             except Exception as e:
                 error = {'type': type(e).__name__, 'message': str(e)[:4000]}
+                diagnostics = clone(getattr(e, 'diagnostics', []))
     result = {'definition': definition, 'literal_submission': literal, 'technical_error': error,
         'completion_unknown': error is not None and error.get('type') == 'CompletionUnknown',
         'status': 'submitted' if definition is not None else 'failed',
@@ -181,6 +209,9 @@ def _outcome(binding, intent, execution, raw):
         # replay reconstructs it from that original received JSON and request.
         from scripts.native_workflow_submission_feedback_v1 import diagnose
         result['compiler_feedback'] = diagnose(binding['request'], literal) if literal is not None and error is not None else None
+    if binding.get('settings', {}).get('profile') == OPEN_IR_MODE:
+        result.update(open_authoring_protocol=clone(binding['settings']['authoring_protocol']),
+            authoring_request_sha256=digest(binding['request']), technical_diagnostics=diagnostics)
     return result
 
 
@@ -221,6 +252,18 @@ def generation_definition(result):
         raise WorkflowCompletionUnknown('workflow completion unknown; stop before another inference role')
     if result['definition'] is not None:
         return clone(result['definition'])
+    if 'open_authoring_protocol' in result:
+        errors = [{'error': clone(result['technical_error']),
+            'diagnostics': clone(result['technical_diagnostics'])}]
+        return {'generation_failure': {'schema': SCHEMA + '.open-ir-failure',
+            'request_sha256': result['authoring_request_sha256'],
+            'authoring_protocol': clone(result['open_authoring_protocol']),
+            'reason': 'One consumed open-IR proposal failed; no repair/refill',
+            'technical_errors': errors, 'journal_content_sha256': result['content_sha256'],
+            'attempt_evidence': [{'attempt': 0, 'status': 'invalid',
+                'raw_ir': clone(result['literal_submission']), 'technical_errors': errors,
+                'started_sha256': None, 'completed_sha256': None,
+                'transport_intent_content_sha256': result['intent_sha256']}]}}
     failure = {'literal_submission': clone(result['literal_submission']),
         'error': clone(result['technical_error']), 'journal_sha256': result['content_sha256']}
     if 'compiler_feedback' in result: failure['compiler_feedback'] = clone(result['compiler_feedback'])
@@ -277,7 +320,7 @@ class WorkflowDesigner:
     def calibrate(self, request):
         result = self.execute(request, purpose='calibration')
         root = self.directory / ('calibration-' + digest(request))
-        copied = result['literal_submission'] == control_submission(request)
+        copied = result['literal_submission'] == calibration_control(request, self.provider, self.settings)
         # A public certificate is reconstructed from the actual cold transport
         # return type, not an invented richer dictionary supplied by a caller.
         cert = {'schema': SCHEMA + '.certificate', 'runtime': runtime_binding(),
@@ -311,7 +354,7 @@ def require_certificate(path, *, request, provider, backend, enforce_age=True, s
             or binding['purpose'] != 'calibration' or binding['request'] != request
             or binding['provider'] != provider or binding['backend'] != backend
             or binding['settings'] != settings
-            or cert['copy_equal_diagnostic'] != (result['literal_submission'] == control_submission(request))
+            or cert['copy_equal_diagnostic'] != (result['literal_submission'] == calibration_control(request, provider, settings))
             or cert['copy_is_dispatch_veto'] is not False
             or cert['directed_control_is_free_design_evidence'] is not False):
         raise ValueError('workflow certificate differs from actual cold calibration result')

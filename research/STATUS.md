@@ -2,6 +2,25 @@
 
 ## Active publication-ready goal
 
+### November14 16:10JST: one unused control completes; open-institution author API is prepared
+
+Original writer30142 remains live and advances to evaluation-001 at07:01:48UTC.
+The first R7 unused-condition world completes T=-32/U=-24.666666666666668.
+It is not a comparison with development scores or an own improvement. The
+hand+U-selected and separate T-selected physical worlds are still unfinished.
+No final original audit or normally closed evaluation is inferred.
+
+In the feature worktree, a new optional open-institutions-ir-v1 profile connects
+the already existing arbitrary Stable-ID code/mechanism/protocol/graph compiler
+to the newer one-POST worker/certificate/replay API.23 light SCRIPTED tests pass;
+no new inference/Docker/native-world execution occurs. Full original parent,
+all own scalars/failures and explicit omission hashes fit six retrospective
+frames at103919--109726 bytes; this is not measured token capacity. Earlier
+oversized attempts are preserved and corrected as declared projections, not
+loss/graph repair. [Scope and remaining native wiring](components/native-open-workflow-authoring-v1.md).
+The structural-only runner/audit/report/fixed handoff do not yet admit the
+wider mode. Heavy native QA and PDF rebuilding remain deferred during inference.
+
 ### November14 15:46JST: selection-fixed unused evaluation is actually running
 
 After both real resource samples pass (CPU91.6/11.0%, free+inactive44.04/47.23GiB,
