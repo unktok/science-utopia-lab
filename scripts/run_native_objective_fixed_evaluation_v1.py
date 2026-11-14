@@ -91,7 +91,8 @@ def jobs_for(p):
     projection['content_sha256']=digest(projection)
     selected_policies=clone(p['fixed_selection']['selected'])
     if p.get('schema') in ('scienceutopia.native-joint-fixed-evaluation.v1.plan',
-            'scienceutopia.native-workflow-fixed-evaluation.v1.plan'):
+            'scienceutopia.native-workflow-fixed-evaluation.v1.plan',
+            'scienceutopia.native-longitudinal-fixed-evaluation.v1.plan'):
         # JSON object order is not durable. This explicit new-study order also
         # determines label lists on shared physical jobs. Historical studies
         # retain their original source/semantics; do not rewrite their jobs.

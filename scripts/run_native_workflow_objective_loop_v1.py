@@ -241,6 +241,21 @@ def campaign(root, p, objective, context=None, *, prototype=False):
         **({} if context is None else {'development_references': context}))
 
 
+def history_keys(p): return p['objectives']
+
+
+def history_key(slot): return slot['objective']
+
+
+def history_objective(key): return key
+
+
+def history_directory(root, key): return root / 'search' / key
+
+
+def history_metadata(key): return {}
+
+
 def scientist_factory(directory, p, root):
     if 'scientist_transport' not in p:
         return factory_for(directory, p, root)

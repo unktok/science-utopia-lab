@@ -8,8 +8,11 @@ import subprocess
 import sys
 
 
-def worker(root, output):
-    from scripts import run_native_workflow_objective_loop_v1 as driver
+def worker(root, output, *, driver_module=None):
+    if driver_module is None:
+        from scripts import run_native_workflow_objective_loop_v1 as driver
+    else:
+        driver = driver_module
     from scripts.analyze_native_open_v7 import _inventory
     from scripts.analyze_native_design_benchmark import loaded
     from scripts.audit_native_institution_loop_v1 import epoch, require_age
@@ -34,9 +37,9 @@ def worker(root, output):
         start, end = read(root / 'started.json'), read(root / 'terminal.json')
         if (start['schema'] != driver.SCHEMA + '.start' or start['plan_sha256'] != p['content_sha256']
                 or end['schema'] != driver.SCHEMA + '.terminal' or end['status'] != 'closed'
-                or end['stage'] != 'closed' or end['consumed_slots'] != 6
+                or end['stage'] != 'closed' or end['consumed_slots'] != len(p['schedule'])
                 or epoch(end['ended_utc']) < epoch(start['started_utc'])):
-            raise ValueError('normally closed exact six-slot workflow study required')
+            raise ValueError('normally closed exact declared workflow study required')
         author_sources = (['utopia/optimization/native_open_workflow_submission_v1.py',
             'utopia/optimization/native_workflow_designer_v1.py',
             'utopia/optimization/native_authoring_ir.py',
@@ -47,7 +50,8 @@ def worker(root, output):
                 'scripts/reports/stage_native_component_fixtures_v1.py']
         source = source_proofs(driver.ROOT, p['source_commit'], scripts=[
             'scripts/run_native_workflow_objective_loop_v1.py', 'scripts/audit_native_workflow_objective_loop_v1.py',
-            'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'] + author_sources,
+            'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'] + author_sources
+                + getattr(driver, 'AUDIT_SCRIPTS', []),
             resources=[p['protocol']] + ([p['eligibility_protocol']['path']] if 'eligibility_protocol' in p else [])
                 + ([p['operational_protocol']['path']] if 'operational_protocol' in p else [])
                 + ([p['author_profile_protocol']['path']] if 'author_profile_protocol' in p else []))
@@ -102,7 +106,7 @@ def worker(root, output):
         initial = driver.campaign(root, p, p['objectives'][0], prototype=True)
         if initial.state['records'] or initial.state['pending']: raise ValueError('initial readiness dispatched science')
         author(root / 'initial-readiness/author', initial._request([], initial._validate(), 1))
-        def physical(directory, suggestion, o, objective, role):
+        def physical(directory, suggestion, o, objective, role, history=None):
             spec = SystemSpec.from_dict(suggestion['candidate'])
             require_workflow_candidate(anchor, spec, structure_only=not driver.open_institutions(p))
             m = o['metadata']; identity = suggestion['suggestion_id']
@@ -128,6 +132,8 @@ def worker(root, output):
                 if measurements:
                     interval = verify_workflow_interval(anchor, spec, state['native_system']['events'], years=4)
                     rebuilt = {**reconstruct_measurement(state, proof['measurement'], observer), 'native_workflow_interval': interval}
+                    if hasattr(driver, 'reconstruct_extra_measurement'):
+                        rebuilt = driver.reconstruct_extra_measurement(p, state, rebuilt, runs[0])
                     if measurements != [rebuilt] or m['technical_failures']:
                         raise ValueError('workflow measurement differs from original checkpoint/critic/event data')
                 elif o['status'] != 'failed' or not m['technical_failures']:
@@ -142,7 +148,8 @@ def worker(root, output):
                 raise ValueError('workflow original assigned loss/status differs')
             worlds.append({'identity': identity, 'role': role, 'objective': objective, 'seed': driver.SEED,
                 'system': spec.to_dict(), 'status': o['status'], 'scores': {k: v['loss'] for k, v in scores.items()},
-                'physical_proof': proof, 'loaded': gate})
+                'physical_proof': proof, 'loaded': gate,
+                **({} if history is None else driver.history_metadata(history))})
             return scores
         pairs = []
         for label in p['reference_order']:
@@ -157,22 +164,23 @@ def worker(root, output):
         context = driver.reference_context(p, pairs)
         if context != read(root / 'developer-reference-context.json'): raise ValueError('workflow common bank differs')
         campaigns = {}
-        for objective in p['objectives']:
-            if not (root / 'search' / objective / 'campaign/native-adaptive-state.json').is_file():
+        for key in driver.history_keys(p):
+            if not (driver.history_directory(root, key) / 'campaign/native-adaptive-state.json').is_file():
                 raise ValueError('original workflow campaign missing')
-            c = driver.campaign(root, p, objective, context)
+            c = driver.campaign(root, p, key, context)
             if c.state['pending'] or len(c.state['records']) != 3: raise ValueError('workflow six slots not terminal')
-            campaigns[objective] = c
+            campaigns[key] = c
         for slot in p['schedule']:
-            objective, g = slot['objective'], slot['generation']; c = campaigns[objective]
+            objective, g = slot['objective'], slot['generation']; key = driver.history_key(slot); c = campaigns[key]
             record = c.state['records'][g]
-            result = author(root / 'search' / objective / 'authoring', record['request'], proposal=True)
+            result = author(driver.history_directory(root, key) / 'authoring', record['request'], proposal=True)
             if generation_definition(result) != record['definition']:
                 raise ValueError('workflow generated definition differs from exact received operations')
             for draw, o in zip(record['draws'], record['observations']):
                 if draw['suggestion'] is not None:
                     if o is None: raise ValueError('workflow compiled draw lacks its consumed observation')
-                    physical(root / 'search' / objective, draw['suggestion'], o, objective, 'workflow-own-proposal')
+                    physical(driver.history_directory(root, key), draw['suggestion'], o, objective,
+                        'workflow-own-proposal', history=key)
         if literal(read(root / 'selection.json')) != driver.selection(root, p, context):
             raise ValueError('workflow original own-only selection differs')
         if (cells != {v.resolve() for v in root.glob('**/worlds/*') if v.is_dir()}
@@ -184,7 +192,7 @@ def worker(root, output):
         if staged and staged_wire_directories != {v.parent.resolve() for v in root.rglob('dispatch-*.intent.json')}:
             raise ValueError('unaccounted staged workflow calibration/proposal dispatch directory')
         if before != _inventory(root): raise ValueError('workflow raw changed during cold audit')
-        driver.save(output, {'schema': 'scienceutopia.native-workflow-objective-loop-audit.v1',
+        driver.save(output, {'schema': getattr(driver, 'AUDIT_SCHEMA', 'scienceutopia.native-workflow-objective-loop-audit.v1'),
             'source_commit': p['source_commit'], 'plan_sha256': p['content_sha256'], 'source_proof': source,
             'closure': {'started': start, 'terminal': end}, 'worlds': worlds, 'selection': read(root / 'selection.json'),
             'observer': observer_audit, 'raw_inventory_sha256': digest(before), 'raw_files': len(before),

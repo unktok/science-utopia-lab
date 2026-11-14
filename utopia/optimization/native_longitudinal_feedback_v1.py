@@ -80,8 +80,8 @@ def attach_projection(measurement, view, *, run):
 def measurement_adapter(measure, *, source_commit, years):
     """Optional real checkpoint collector for both future comparison arms.
 
-    Not enabled in the current runner. The future runner/cold reader must bind
-    this source and reconstruct this extra metadata, not merely trust it.
+    Enabled only by the explicit prospective longitudinal comparison runner.
+    Its cold reader must reconstruct this metadata, not merely trust it.
     """
     if not callable(measure) or type(years) is not int or years < 1:
         raise ValueError('trusted measure callback and literal positive horizon required')
