@@ -1,0 +1,65 @@
+{
+  "classification": "actual-completed-reference-prefix-not-closed-study-or-own-improvement",
+  "completed_own_slots": 0,
+  "completed_references": 1,
+  "content_sha256": "0ad72f49ce36492a498cdf388b736d046646d692035dc594d444fc037e6b4b8c",
+  "literal_input_and_choice_comparison": {
+    "current": {
+      "completed_responses": 115,
+      "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "ordered_full_provider_body_hashes_sha256": "94bece46f9b75fd31eca0461c122056bf5225042779787f3e82e89b33dfdd012",
+      "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+      "wire_inputs_without_committed_reply": 0,
+      "wire_requests": 115
+    },
+    "full_inputs_equal": true,
+    "full_provider_bodies_equal": false,
+    "input_file_sha256": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/R7-original/cross-scores.json": "102791e7d17e845580221b9c5eeb54d09eb0644f1b512dfe56e6dc4babbce524",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/R7-original/observation.json": "e74db15ec031fc7ad2b695763af41c92f1f252e50953a81266632cccf534c669",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "67341d5a938ea93c51a26a2dc0626d7f93706a0a57ea568988c7cb86bf54c3b8",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-v2-a1/outputs/native-workflow-compiler-feedback-v2-a1/references/R7-original/observation.json": "b905700a4f5485eacb7f628a23173c2df249b91665912b18de56cf148aec2d2e",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-v2-a1/outputs/native-workflow-compiler-feedback-v2-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "c948f59c6f49064009b657e0de768891bf8750256e32eead93b5050a0278d44a",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-v2-a1/outputs/native-workflow-compiler-feedback-v2-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+    },
+    "input_files_unchanged": true,
+    "literal_response_choices_equal": true,
+    "prior": {
+      "completed_responses": 115,
+      "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "ordered_full_provider_body_hashes_sha256": "59781ebc6c4de6c56304ba34407862d01a92f5571ff0444471367528de3b25d2",
+      "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+      "wire_inputs_without_committed_reply": 0,
+      "wire_requests": 115
+    },
+    "prior_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-compiler-feedback-v2-a1/outputs/native-workflow-compiler-feedback-v2-a1",
+    "reader": "scripts.reports.native_observed_request_classes_v1.sequence",
+    "scope": "Completed same-seed R7 cells only; all full payloads and literal choices remain unsanitized. Not whole-world equivalence or independent optimizer replication.",
+    "two_matching_read_only_reads": true
+  },
+  "losses": {
+    "content-utility": -13.333333333333332,
+    "throughput": -18.0
+  },
+  "new_inference_for_analysis": 0,
+  "next_stage": {
+    "active": "post-funding-cost",
+    "observed_utc": "2026-11-14T08:45:11.248957+00:00",
+    "stage": "references"
+  },
+  "plan_content_sha256": "5e1e101d939ea05e9880b35fb028b76b0e7c02a163ef1d3bf05e5dc118d4fe5a",
+  "publication_ready": false,
+  "reference": "R7-original",
+  "reference_observation_file_sha256": "e74db15ec031fc7ad2b695763af41c92f1f252e50953a81266632cccf534c669",
+  "reference_started_utc": "2026-11-14T08:30:41.137027+00:00",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1",
+  "schema": "scienceutopia.native-open-institution-first-reference.v2",
+  "scientific_gain_claimed": false,
+  "scientific_source_commit": "fe4281f47002eb3a160ab26cb625ab586155e2a6",
+  "whole_study_normal_closure_proved": false,
+  "writer_pid": 66524,
+  "writer_session": 59411
+}

@@ -11,6 +11,11 @@ Historical documents retain their paths and source identities.
   8B scientists run R7. Sourcefe4281f4/plan5e1e101d stays frozen; both controls
   and six own slots remain, with five read-only continuations actually waiting.
   No own invention/improvement or normally closed study is inferred yet.
+- [First complete reference](results/native-open-institution-first-reference-v2.json):
+  R7=-18/-13.3333, with all115 original scientist inputs and literal choices
+  equal to the earlier completed same-seed R7. The strong hand is now running;
+  no own result or full-study closure yet. This is bounded-cell comparison,
+  not a substitute for the later original-source whole-study audits.
 - [Actual initial grammar stop](results/native-open-institution-initial-stop-v1.json)
   and [corrected-source native proof](results/native-open-institution-grammar-software-v2.json):
   the first real call is HTTP400 before any proposal/world; old source/output

@@ -2,6 +2,19 @@
 
 ## Active publication-ready goal
 
+### November14 17:48JST: first actual open-study control completes with matched original inputs
+
+Writer59411 remains live and advances08:45:11UTC to the strong hand reference.
+R7 completes T=-18/U=-13.333333333333332. Two read-only bounded-cell comparisons
+find all115 full scientist inputs and literal choices equal to the earlier
+closed compiler-feedback R7; provider envelopes differ. Input files remain
+unchanged, with no timestamp/identity/score scrubbing and zero new inference
+for the comparison. [Actual completed prefix](results/native-open-institution-first-reference-v2.json).
+This checks that the unchanged reference still behaves the same after the author
+interface correction; it is not a whole-study audit, independent optimizer
+replication, own proposal, useful invention or gain. The hand and six own slots
+are still unfinished. The five read-only continuations remain unchanged.
+
 ### November14 17:32JST: real corrected calibration passes; original scientist world is running
 
 At frozenfe4281f4/plan5e1e101d, writer59411/PID66524 starts08:29:34UTC.
