@@ -78,3 +78,42 @@ def test_utility_explicit_retention_keeps_rejected_reads_and_real_loss_separate(
     assert not r['own_improvement_over_R7'] and not r['own_advantage_over_hand']
     assert not r['full_study_cold_audit_complete'] and not r['unused_evaluation_complete']
     assert not r['publication_ready']
+
+
+def test_operated_agenda_change_keeps_worse_utility_and_objective_specific_reference():
+    import math
+    r = checked(json.loads((ROOT/'research/results/native-open-staged-first-operative-agenda-v1.json').read_text()))
+    assert r['status'] == 'complete' and r['assigned_loss'] == -12.
+    assert r['cross_scores'] == {'throughput': -18., 'content-utility': -12.}
+    assert r['reference_saved_assigned_loss'] == -18.
+    assert r['reference_cross_scores']['R7-original']['content-utility'] == -13.333333333333332
+    assert r['reference_saved_assigned_loss_is_not_utility_comparator']
+    assert math.isclose(r['own_assigned_loss_minus_R7'], 4/3)
+    assert r['step_status_counts'] == {'applied': 13, 'finished': 1}
+    assert r['tool_counts'] == {'plan': 1, 'read_file': 8, 'write_file': 4, 'finish': 1}
+    assert r['component_testing']['probe_attempts'] == r['component_testing']['returned'] == 16
+    assert r['component_testing']['raised'] == 0
+    versions = r['authored_versions']
+    assert [v['step'] for v in versions] == [2, 4, 6, 10]
+    assert len({v['ast_sha256'] for v in versions}) == 1
+    assert versions[-1]['source_utf8_sha256'] == r['literal_graph_change']['source_edits']['developer-catalog-agenda']['after_source_utf8_sha256']
+    for v in versions:
+        assert all(q['same_context_as_original'] for q in v['probe_comparisons_with_original_saved_input'])
+        assert [q['period'] for q in v['probe_comparisons_with_original_saved_input'] if not q['result_equals_original']] == [1, 3]
+    change = r['first_changed_scientist_input']
+    assert change['zero_based_request_index'] == change['preceding_exact_equal_payloads'] == 22
+    assert change['R7_research_topic'] == 'distributed_systems'
+    assert change['U1_research_topic'] == 'software_engineering'
+    assert r['source_change_reached_observed_native_scientist_input']
+    assert not r['request_and_choice_comparison']['ordered_full_request_payload_sha256']
+    d = r['accepted_occurrence_decomposition']
+    assert d['R7_accepted_count'] == d['U1_accepted_count'] == 18 and d['shared_count'] == 12
+    assert d['shared_utility'] == 8 and d['U1_only_utility'] == 4
+    assert math.isclose(d['R7_only_utility'], 16/3)
+    assert math.isclose(d['loss_difference_reconstructed'], r['own_assigned_loss_minus_R7'])
+    assert sum(x['multiplicity'] for x in d['R7_only']) == sum(x['multiplicity'] for x in d['U1_only']) == 6
+    assert r['completed_own_slots_at_snapshot'] == 3 and r['total_declared_own_slots'] == 6
+    assert not r['own_improvement_over_R7'] and not r['own_advantage_over_hand']
+    assert not r['host_source_repair'] and not r['component_error_repair_demonstrated']
+    assert not r['full_study_cold_audit_complete'] and not r['unused_evaluation_complete']
+    assert not r['publication_ready']

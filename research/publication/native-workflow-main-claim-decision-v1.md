@@ -156,3 +156,20 @@ gain. Its source edit is inert on that observed history. The broader six-slot
 study still runs, and no active loss, reference, context or budget is changed
 by this analysis. Further important claims still require meaningful operated
 effects and appropriate independent evidence, not more source/test counts.
+
+## November15 staged U1: operated algorithm change is not institutional advantage
+
+The [third actual staged slot](../results/native-open-staged-first-operative-agenda-v1.md)
+changes agenda source, reaches a real scientist's direction input and returns
+T=-18/U=-12. The generated keyword-count heuristic is not a validated utility
+predictor. Four writes share an AST and16 probes return; neither count is an
+independent discovery/repair unit. There is no new node/wire or source-only
+fingerprint substituted for an actual consumer observation.
+
+Both R7 and U1 accept18 occurrences. Twelve identical fixed-rated occurrences
+contribute8, while six R7-only occurrences contribute16/3 and six U1-only
+occurrences contribute4. This reconstructs the4/3 assigned-loss deterioration;
+it is not an isolated causal estimate for the keyword term or scientific truth.
+The valid unfavorable candidate remains in its consumed slot. The same writer
+advances to T1 readiness, without refill, host repair or a new objective.
+This closes neither main-track significance nor appropriate independent evidence.

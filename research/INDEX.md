@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Staged U1 operates an agenda change, but worsens utility](results/native-open-staged-first-operative-agenda-v1.md):
+  T=-18/U=-12. Four source writes share one AST;16 real probes return. A
+  changed topic reaches the23rd scientist input. Twelve shared accepted
+  occurrences contribute8; six changed each side contribute16/3 versus4,
+  explaining deterioration rather than gain. Three of six own slots complete;
+  T1 readiness starts, with whole-study/fixed evaluation still pending.
+
 - [Actual staged U0 completes by explicit retention](results/native-open-staged-first-utility-own-v1.md):
   T=-18/U=-13.3333, with115 literal scientist inputs/choices equal R7.
   Fourteen charged steps include nine rejected repeated reads, no code write

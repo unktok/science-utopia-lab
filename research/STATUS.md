@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+### November15 00:45JST: staged U1 changes actual native input; utility worsens
+
+Writer79701 completes the third own slot at T=-18/U=-12, worse than R7's
+-18/-13.3333 and the hand's -20/-15.3333. The model changes agenda source to
+rank directions by years minus0.01 times keyword count. Four writes share one
+AST;16 probes return, with no error-repair demonstration or new node/wire.
+The23rd full scientist input changes its research topic from distributed_systems
+to software_engineering. This is an actual operated source change, not a gain.
+[Exact construction/native/content decomposition](results/native-open-staged-first-operative-agenda-v1.md).
+
+Both worlds accept18 occurrences:12 shared contribute utility8; R7-only six
+contribute16/3, U1-only six contribute4, reconstructing the4/3 deterioration.
+Cross-score the original measurements; R7's saved assigned -18 is throughput,
+not the utility comparator. At15:45:03UTC the unchanged writer advances to
+throughput:g1 readiness. Three own slots/five physical worlds complete; normal
+whole-study audit/costs/selection/unused evaluation and publication readiness
+remain incomplete. No live-source edit, candidate repair or refill is made.
+
 ### November15 00:09JST: staged U0 completes by retention; U1 readiness starts
 
 The unchanged original writer completes its second own slot at T=-18/
