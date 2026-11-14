@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+### November14 17:12JST: reviewed full PDF retained; open-institution study prepared
+
+The new78-page integrated PDF/receipt at manuscript source385d8a49 retains all
+earlier meaningful tracks plus closed development/unused results and the
+SCRIPTED active-institution proof. Two cached local builds have identical text,
+logs and every rendered page; all78 final page layouts and fresh detail views
+are inspected, with zero off-page words or unresolved references. It has40
+figures,33 tables and26 references. [Reviewed new artifact](../paper/integrated-workflow-feedback-build-v1.json).
+The old75-page PDF and earlier receipts remain byte-preserved. This is an
+updated working paper, not a main-track-ready claim or a new minimal rebuild.
+
+The broader study prepares at cleanb0db5916/plan2deee54a, with264 original native
+source files verified, original8B scientists and approved local35B designer.
+Both controls remain measured; R7 alone is optimizer-visible. Six own slots,
+at most8 native worlds/13 designer POSTs, unchanged T/U and no repair/refill.
+[Actual prepare](results/native-open-institution-prepared-v1.json).
+The separate unused seed1516320444 is declared before any own result; its
+inventories and evaluation remain future work. Resource observations59089
+both pass before inference; the next operation is actual initial calibration.
+
 ### November14 17:00JST: unused evaluation and active open-institution native proof close
 
 Original writer30142 exits0 after all3 physical jobs on the predeclared unused

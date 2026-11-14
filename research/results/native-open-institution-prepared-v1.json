@@ -1,0 +1,95 @@
+{
+  "actual_new_model_calls": 0,
+  "authoring_scope": "literal-open-institutions-code-and-graph-v1",
+  "budget": {
+    "candidate_slots": 6,
+    "designer_POSTs_upper_bound": 13,
+    "fresh_reference_worlds": 2,
+    "native_worlds_upper_bound": 8,
+    "observer_POSTs_upper_bound": 1500,
+    "proposal_POSTs_per_session": 1,
+    "readiness_sessions": 7,
+    "replace_failed_slots": false,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_wall_seconds": 7200
+  },
+  "classification": "prepared-not-dispatched-not-model-calibrated",
+  "comparison_only_references": [
+    "post-funding-cost"
+  ],
+  "content_sha256": "86ec594732d42a7f3fe6ec645afbf7edc874607fa15c2faff7ec4c5d9fc03cab",
+  "designer": "qwen3.6:35b-mlx-64k",
+  "designer_mode": "open-institutions-ir-v1",
+  "independent_optimizer_replication": false,
+  "losses": {
+    "content-utility": {
+      "across_seeds": {
+        "aggregation": "mean_plus_population_sd",
+        "dispersion_weight": 0.0,
+        "minimum_valid_runs": 1
+      },
+      "direction": "minimize",
+      "id": "native-common-content-utility-v1",
+      "interpretation": "Minimize minus the sum of (fixed common content panel mean - 3) over actual accepted decision records. The observer contract fixes rubric, model, pooling and budget separately. This is an abstract-based preference, not truth. All-accept, all-reject and review removal are legal. No hidden participation, fairness or structural novelty veto.",
+      "optimization_seed_role": "development",
+      "per_run": {
+        "intercept": 0.0,
+        "terms": [
+          {
+            "coefficient": -1.0,
+            "metric_id": "native.common_content_utility_sum",
+            "slice_id": null
+          }
+        ]
+      },
+      "schema": "scienceutopia.loss-spec.v1",
+      "status": "abstract-based-fixed-model-preference-not-scientific-truth",
+      "version": "1"
+    },
+    "throughput": {
+      "across_seeds": {
+        "aggregation": "mean_plus_population_sd",
+        "dispersion_weight": 0.0,
+        "minimum_valid_runs": 1
+      },
+      "direction": "minimize",
+      "id": "native-joint-v5-throughput",
+      "interpretation": "Minimize -A, where A is actual accepted review-history decisions. All-accept is legal. This gameable throughput proxy is not scientific value. No hidden fairness, quality, or participation veto.",
+      "optimization_seed_role": "development",
+      "per_run": {
+        "intercept": 0.0,
+        "terms": [
+          {
+            "coefficient": -1.0,
+            "metric_id": "native.accepted_decisions",
+            "slice_id": null
+          }
+        ]
+      },
+      "schema": "scienceutopia.loss-spec.v1",
+      "status": "engineering-proxy-not-scientific-value",
+      "version": "1"
+    }
+  },
+  "native_software_proof": "research/results/native-open-workflow-native-software-v1.json",
+  "objectives": [
+    "throughput",
+    "content-utility"
+  ],
+  "optimizer_seed": 68011,
+  "optimizer_visible_references": [
+    "R7-original"
+  ],
+  "original_source_files_verified": 264,
+  "plan_content_sha256": "2deee54a60eaa328a7eb822e0ec68940e72583f86749fa03e5584d0c9a784d70",
+  "plan_file_sha256": "2cb33d42fcc643edee074591b10685c969aa4c3a446dcc4ca9cec6126301d10e",
+  "prepare_exit_code": 0,
+  "prepare_session": 87019,
+  "publication_ready": false,
+  "reused_development_world_seed": 61001,
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v1-a1/outputs/native-open-institution-objective-loop-v1-a1",
+  "schema": "scienceutopia.native-open-institution-prepared.v1",
+  "scientist": "qwen3:8b",
+  "source_commit": "b0db59162e7a57e5d36d46dcc7b8f2a83ad9da97",
+  "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v1-a1"
+}
