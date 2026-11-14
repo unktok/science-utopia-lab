@@ -6,14 +6,19 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Current status](STATUS.md): November14 08:58JST; the publication-ready goal
+- [Current status](STATUS.md): November14 09:21JST; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
 - [Actual workflow-v2 first dispatch](results/native-workflow-v2-first-dispatch-v1.json):
   starts23:52:27UTC at frozen3b912d17/planed85d848, session70493/PID21985.
-  That initial snapshot precedes the subsequent passing local35B certificate;
-  the first fresh R7 control is now executing. Two fresh controls/six own slots
-  are the fixed upper bound; no complete model-world result yet.
+  Initial35B readiness subsequently passes, but first R7/year2 funding stops on
+  a scientist timeout. No complete world/own result; the planned8 worlds are
+  not achieved outcomes. [Actual prefix diagnosis](results/native-workflow-stop-prefix-diagnostic-v1.json)
+  matches49 inputs/48 literal replies to earlier closed R7, leaving one unknown.
+- [Read-only continuations and stop](results/native-workflow-postprocess-and-stop-v1.json):
+  both correctly stop before audits/reports, without retry. New workflow
+  phase/cashflow and fixed-selection primitives are light-unit tested, not
+  actual closed-study analysis or complete unused-world evaluation.
 - [Complete numeric data](data/native-parameter-comparator-v1/README.md):
   two matching original audits/costs/reports and full input/incumbent readouts,
   all six slots and null-free closure,664 scientist replies,93 critic requests.

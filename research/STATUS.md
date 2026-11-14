@@ -2,7 +2,7 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 09:12JST (November14 00:12UTC)
+### Current overview: November14 09:21JST (November14 00:21UTC)
 
 **New workflow inference is now stopped, not running.** Session70493 exits1;
 its original terminal at00:07:27UTC records PortableStop/APITimeoutError in
@@ -17,8 +17,11 @@ as required; no normal audit, selection or improvement is fabricated.
 Separate active MLX inference and CPU jobs from other projects are observed
 on the same host. Competition is a plausible timing factor, not a proved
 cause. No other project's job or the consumed workflow plan is changed.
-The remaining overview below describes the immediately preceding running
-snapshot, not current liveness, until the complete stop diagnosis is retained.
+The [actual prefix diagnosis](results/native-workflow-stop-prefix-diagnostic-v1.json)
+reconstructs this boundary without an original normal audit or new inference.
+Known48 scientist replies report54,479 input/5,939 output tokens; the missing
+request's cost stays unknown. [Continuation/stop verification](results/native-workflow-postprocess-and-stop-v1.json)
+binds the source/handles and both zero-step stopped postprocessors.
 
 **Not publication-ready. The original presentation experiment is stopped, not
 still running.** Its terminal records20:54:18UTC, an unknown response after a
@@ -43,17 +46,20 @@ choices. See the [closed data](data/native-parameter-comparator-v1/README.md).
 | Presentation comparison |8 references,4 own slots, literal partial records | Stopped; do not refill or call complete |
 | Numeric comparator |All6 real worlds/slots close; double audits/costs/reports and input/incumbent exports match |No incumbent gain; independent scope and important scientific answer remain open |
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
-| New workflow experiment |[Actual first dispatch](results/native-workflow-v2-first-dispatch-v1.json) starts23:52:27UTC from frozen3b912d17/planed85d848; initial real-backend readiness now passes, references/R7-original begins23:53:19UTC |First fresh four-year control is executing, year2 submissions observed; zero complete fresh reference/own-world scores yet; old2c7ec07f plan unchanged/unused |
+| New workflow experiment |Initial real35B readiness passes; original stopped prefix,48 scientist replies, matching49-input/48-choice historical prefix and unknown final response retained |Stopped on scientist120s transport during first reference/year2 funding; zero complete fresh scores/own slots; no repair/refill or normal-closure claim |
+| Workflow analysis/evaluation handoff |Finite read-only closure/report adapters; explicit workflow phase/end-year cashflow reader; literal fixed-selection handoff; light unit checks |Actual completed-study phase/ledger readout and complete workflow unused-world evaluator/native proof remain unverified; no evaluation seeds chosen |
 | Manuscript |[73-page reviewed artifact](../paper/integrated-native-numeric-build-v1.json),38 figures/30 tables/26 references, all pages reviewed;62-file minimal rebuild matches text and all73 page PNGs |Important main claim, independent evidence R2/R3/R6 and final readiness judgment |
 
-The new real inference is running, not merely queued: original started.json
-and first request intent are retained, process21985 and the local35B runner
-are observed directly. Initial certificate passed=true, with copy equality
-diagnostic rather than a veto. The directed pass is not free-design capacity
-evidence. No heavy PDF/native-QA process overlaps its dispatch.
-Two fresh shared controls then six own T/U slots are the unchanged upper bound,
-with original scientist/effect code and exact losses. A failed readiness or
-unknown completion stops; no repair/refill or merit veto is introduced.
+No inference or postprocessing remains running for this workflow attempt.
+Its original initial certificate passed=true, with copy equality diagnostic,
+not a veto or free-design capacity evidence. Two fresh shared controls and six
+own T/U slots were the upper bound, not achieved outcomes. The old source and
+consumed plan remain immutable. Earlier absence checks covered this task's
+heavy PDF/native-QA jobs, not all host load: an external direct MLX model was
+already running and separate CPU jobs started later. No exclusive resource
+profile or causal contention diagnosis is claimed. Resource coordination and
+the hardcoded scientist120s transport allowance need a prospective decision
+before any new scientific dispatch; do not resume/refill this stopped study.
 The [preparation receipt](results/native-workflow-v2-preparation-v1.json)
 preserves the earlier setup-only QA failure and the fresh180.21s software proof.
 Neither that proof nor actual launch establishes model-authored improvement.

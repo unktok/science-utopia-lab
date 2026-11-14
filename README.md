@@ -37,8 +37,12 @@ closes all six actual worlds with matching cold audits, costs and reports;
 no own policy improves the known reference incumbent. The new
 [workflow-v2 experiment](research/results/native-workflow-v2-first-dispatch-v1.json)
 starts23:52:27UTC on November13 from a clean frozen source/unused plan.
-Initial real-backend readiness passes and the first fresh R7 reference begins;
-two references/six own slots are the finite upper bound, not completed results.
+Initial real-backend readiness passes, but the first fresh R7 reference stops
+in year2 funding on a scientist transport timeout. The
+[literal prefix diagnosis](research/results/native-workflow-stop-prefix-diagnostic-v1.json)
+matches49 requests/48 committed replies with a previous closed R7 run; the last
+response and its cost remain unknown. Zero complete fresh worlds/own slots;
+the planned two references/six own slots are not achieved outcomes or refilled.
 See [current status](research/STATUS.md) for liveness, not software-test scores.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)

@@ -27,6 +27,13 @@
   Do not pause/kill a scientific job to make room for QA. Shared-resource timing
   is not a dedicated model-speed benchmark, and contention must not be ruled
   out without measurements when diagnosing an inference timeout.
+- Before model dispatch, inspect host-wide CPU/inference processes, not only
+  this project's command names. A separate in-process MLX model can compete
+  for the same unified memory/GPU without appearing as an Ollama runner.
+  Record the scope of observations; absence in a filtered process list is not
+  proof of an idle machine or an exclusive resource lease. Other projects may
+  start later. Never stop or modify their work without authority, and never
+  infer that observed competition proves a particular timeout's cause.
 - Declare finite designer connect/read time allowances before dispatch and
   record them even on transport failure. For non-streaming reasoning, check
   their suitability for the declared output budget; a read timeout is not a
