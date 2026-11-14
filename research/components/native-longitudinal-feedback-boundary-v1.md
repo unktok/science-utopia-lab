@@ -91,3 +91,24 @@ backend readiness and shared-resource observations remain necessary.
 Current science, losses, nulls, selections and unused data stay unchanged.
 Representability, verified execution and a scientific information benefit are
 different claims. R2/R3/R5/R6 and publication readiness remain open.
+
+## Prospective source declaration, still not full runner integration
+
+Follow-up branch `feat/native-longitudinal-native-connection-v1` implements
+the [explicit source scope](../protocols/campaigns/native-longitudinal-source-scope-v1.md),
+without editing the legacy workflow guard. At cleanf2c0d1aa, two actual reads
+of the new scope agree:273 inherited native/physical/observer files retain
+actual stagedf47270b9 bytes; four declared author/presentation modules and
+one added access helper are bound to exact new committed bytes. The declaration
+helper and protocol themselves are also bound. The old guard actually still
+rejects native_adaptive_search.py, as required by its historical contract.
+[Compact proof](../results/native-longitudinal-source-scope-retained-v1.json).
+
+41 targeted SCRIPTED source/access/paper checks pass, including undeclared
+scientist/measurement/physical-script changes, added/deleted modules, dirty
+author/protocol/guard bytes, symlinks and stale HEAD. The initial scope snapshot
+before self-binding is retained separately, not claimed to cover that addition.
+This addresses the explicit source-declaration prerequisite only. The real
+matched runner, its actual calibration/measurement/cold/cost/fixed return paths
+and fresh real backend readiness remain unimplemented/unverified; there are
+zero new model calls and no new scientific result.

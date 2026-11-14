@@ -1,0 +1,72 @@
+{
+  "added_author_modules": {
+    "utopia/optimization/native_longitudinal_feedback_v1.py": {
+      "role": "Read-only completed-checkpoint attachment and deterministic author-access projection",
+      "sha256": "3ec7874646fa393c9ce76c05a737a9aa15a9bd36aa9627c45e1c97568488c699"
+    }
+  },
+  "base_native_source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "content_sha256": "56cf4ef78739113a12e80fcf38dcc7a5accc8ea673f4dc55e3c91c90a38ff8a4",
+  "declared_author_modules": {
+    "utopia/optimization/native_adaptive_search.py": {
+      "base_sha256": "029681ea4120a84ec1d61610360434ab8fd4cf4914b40c60e2cab09ea1c94ed7",
+      "literal_changed": true,
+      "prospective_sha256": "0d91da0e29bab157dc55ccb700d173a97c6a0bb0406f02b66a85bee32d7db6bd",
+      "role": "Opt-in optimizer binding and request projection, not a researcher or world transition"
+    },
+    "utopia/optimization/native_bounded_author_context_v45.py": {
+      "base_sha256": "4d1c327dc7edb1dc7afe4401c028efb14f6fe08e55a658970d1c32ab541ff292",
+      "literal_changed": true,
+      "prospective_sha256": "68703a81df812f998328ba916affe4470a7448ae89f2007e8edc04abbff29f22",
+      "role": "Inline designer presentation of the explicitly selected parent trajectory"
+    },
+    "utopia/optimization/native_objective_view.py": {
+      "base_sha256": "8fdf230f7293a60de2f0c8642b3fcdf2874a65126e81b2392626625bc39790e9",
+      "literal_changed": true,
+      "prospective_sha256": "16c27b82adf63ea0bcdd336f4b2954ca6f69e2352933e8fb1a2e57f45a2ec59a",
+      "role": "Source-owned descriptions of existing common-content measurement arithmetic"
+    },
+    "utopia/optimization/native_staged_author_v15.py": {
+      "base_sha256": "25368fddce5fbda2509f09ca76d0823b83d625b08e58cf6027dbcbf44d31248e",
+      "literal_changed": true,
+      "prospective_sha256": "9601bd3b21e54066d362d6beb9e2362f3ab580aef877f31f97b510900eed03e7",
+      "role": "Optional rationale schema and exact designer component-source bindings"
+    }
+  },
+  "earlier_scope_snapshot": {
+    "content_sha256": "a5ef0919a7cd75890350a22dead0b9cdf3c97debce3a986d4bc264182c020c50",
+    "limitation": "Did not yet bind the declaration helper itself; preserved, not substituted for the self-bound final scope.",
+    "path": "outputs/native-longitudinal-source-scope-v1-a1/scope.json",
+    "source_commit": "68a36052631c63bacc9bc28d45db4465aef911c3"
+  },
+  "guard": {
+    "path": "scripts/native_longitudinal_source_scope_v1.py",
+    "sha256": "44adf17eaa11118b247f8d3c6424678fada565a9b20ed42812e139ecb78b33f8"
+  },
+  "inherited_manifest_sha256": "d10447391942f1d027782edb511f77702bc783f1476ec2bf46a3db7db1ddf682",
+  "inherited_native_files": 273,
+  "legacy_guard_actual_rejection": {
+    "error": "original scientist/effect source differs: utopia/optimization/native_adaptive_search.py",
+    "type": "ValueError"
+  },
+  "legacy_guard_modified": false,
+  "new_model_calls": 0,
+  "protocol": {
+    "path": "research/protocols/campaigns/native-longitudinal-source-scope-v1.md",
+    "sha256": "c3a7ee126ed0a188caac765319d8b6bbed658f0b9ab7fd5c25be0999751adfca"
+  },
+  "publication_ready": false,
+  "raw_scope": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-longitudinal-source-scope-v1-a2/scope.json",
+  "raw_scope_file_sha256": "58b9794f1853ecfa0729a8bec1012ad31e637e7a233491e06367898568538c59",
+  "real_backend_readiness_proved": false,
+  "runner_cold_integration_proved": false,
+  "schema": "scienceutopia.native-longitudinal-source-scope-retained.v1",
+  "scientific_gain_claimed": false,
+  "scope_content_sha256": "aa0a94783ea13a695fa2f9e76fb23260b8d889708c81d9edaa37f3a74c60eb40",
+  "source_commit": "f2c0d1aabdfbf68893b1ecf5c711a163d7fe9b96",
+  "targeted_tests": {
+    "elapsed_seconds": 17.27,
+    "passed": 41,
+    "scope": "SCRIPTED source inheritance/failure cases, existing optional trajectory boundary and actual-result paper subset; no native/LLM/generated execution"
+  }
+}
