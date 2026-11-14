@@ -7,14 +7,16 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
-Latest22:50:56UTC observation: original82259/PID8708 remains live. Both fresh
-references complete: R7 T=-18/U=-13.333333333333332, comparison-only hand
-T=-20/U=-15.333333333333332. First scalar::throughput:g0 passes28-case actual
-readiness and explicitly submits at22:47:20UTC after14 steps/eight component
-returns. Only selection source changes, no new node/wire/schedule. Its original
-native world now runs with year1 checkpoint present. Zero of12 own outcomes
-are complete; no own loss or improvement yet. The existing read-checkpoint
-rejection and exact source/evidence hashes are retained in the dispatch log.
+First scalar::throughput:g0 now completes all four native years and measurement:
+T=-18/U=-13.333333333333332, tying fresh R7 and worse than the hand's
+-20/-15.333333333333332. No technical failure or optimization improvement is
+observed in this slot. One of12 own outcomes is committed; whole comparison,
+paired cold/cost/readouts and frozen unused evaluation remain incomplete.
+Original82259 remains live and advances at22:57:50UTC to separate
+parent-trajectory::content-utility:g0 exact-request readiness. No refill,
+reselection, source/guard/model/budget change or cross-arm own feedback occurs.
+The complete first-submission trace, rejection and record digests are retained
+in the dispatch log. Source difference is not an effective-system/gain claim.
 
 After actual two-frame capacity closes, separately declared scientific resource
 observations pass and original82259 launches the prepareda5be8d31 public driver

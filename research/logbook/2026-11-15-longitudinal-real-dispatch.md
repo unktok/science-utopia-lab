@@ -103,6 +103,32 @@ present, no whole-study terminal or completed own outcome exists. This is the
 first own submission of the new matched study, not the first executable own
 institution of the project. Preserve the earlier closed studies separately.
 
+## First completed own native outcome; original writer continues
+
+The original scalar::throughput history commits its first complete record,
+digest`cdc20e6297c19dbf2ac611eb4e00d1b832bb91aded40359f3fe13cbdc21a1104`;
+observation digest
+`9deb5931a7127e9ba907789241948a0ac72da83a864c64ee16e20ba44fcfae63`.
+All four native years and assigned measurement complete, with no technical
+failure. Assigned T=-18; the unchanged original U evaluator on that same
+measurement gives-13.333333333333332. This ties fresh R7 on both losses and
+is worse than the comparison-only hand by2 on each. No gain or new effective
+wiring is claimed, and neither result triggers a refill or loss change.
+
+At this point the campaign has one of12 own outcomes, not a normally closed
+comparison or a frozen final selection. Common-panel result count remains75;
+this records no additional physical critic results, not proof of full input,
+choice or publication-set equality. Those readouts still await original normal
+closure and the paired cold/cost chain. The recorded source-only difference
+must not be described as an operated useful institution from its score alone.
+
+At22:57:50.361913UTC the same writer proceeds to exact-request readiness for
+parent-trajectory::content-utility:g0. Its history is separate: the completed
+scalar T result is not injected into that arm's initial feedback. Original
+session82259 is actually polled live after the transition, with no whole-study
+terminal. The remaining eleven original slots stay scheduled, without model,
+protocol, guard, selection or runtime changes.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
