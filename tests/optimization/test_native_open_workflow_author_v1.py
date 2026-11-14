@@ -65,6 +65,44 @@ def test_actual_payload_uses_explicit_defaults_but_preserves_canonical_prompt_sc
     assert body['parent_system'] == req['parent_system']
 
 
+def test_calibration_task_does_not_compete_with_optimization_or_bury_schedule(tmp_path):
+    req = request(tmp_path / 'campaign')
+    before = digest(req)
+    binding = {'request': req, 'provider': PROVIDER,
+        'settings': engine.settings_for(engine.OPEN_IR_MODE)}
+    calibrated, schema, wire = ir.payload({**binding, 'purpose': 'calibration'})
+    free, free_schema, _ = ir.payload({**binding, 'purpose': 'proposal'})
+    context = json.loads(calibrated['messages'][1]['content'])
+    target = json.loads(calibrated['messages'][-1]['content'])
+    proposal = json.loads(free['messages'][1]['content'])
+    assert len(calibrated['messages']) == 3 and len(free['messages']) == 2
+    assert context['instructions'] == target['task'] == calibrated['messages'][0]['content']
+    assert context['task_mode'] == 'directed-interface-control-not-optimization'
+    assert target['control_submission'] == context['control_submission'] == ir.control_submission(req, PROVIDER)
+    assert target['operation_count'] == 2
+    assert [o['path'] for o in target['control_submission']['operations']] == ['/mechanisms/-', '/schedules/-']
+    for key in ('parent_system', 'exact_loss_spec', 'own_history', 'exact_design_space', 'response_schema'):
+        assert context[key] == proposal[key]
+    assert 'task_mode' not in proposal and 'control_submission' not in proposal
+    assert schema == free_schema and digest(req) == before
+    assert json.loads(wire['request_wire_utf8']) == calibrated
+
+
+def test_missing_schedule_calibration_is_preserved_and_stops_not_repaired(tmp_path, monkeypatch):
+    req = request(tmp_path / 'campaign')
+    literal = ir.control_submission(req, PROVIDER)
+    literal['operations'] = literal['operations'][:1]
+    author, calls = author_at(tmp_path / 'author', monkeypatch, [literal])
+    with pytest.raises(ValueError, match='calibration failed'):
+        author.calibrate(req)
+    result = engine.replay_workflow(author.directory / ('calibration-' + digest(req)))
+    assert result['status'] == 'failed' and result['literal_submission'] == literal
+    assert 'exactly one annual schedule' in result['technical_error']['message']
+    assert result['definition'] is None and not result['completion_unknown']
+    assert not result['source_repair'] and not result['retry_or_refill']
+    assert len(calls) == 1
+
+
 def institution(req):
     # Two genuinely code-defined nodes and an explicit new protocol/wire.
     # They extend the original scientist graph, not a substituted number world.

@@ -1,0 +1,157 @@
+{
+  "authors": [
+    {
+      "completion_unknown": false,
+      "done_reason": "stop",
+      "elapsed_seconds": 63.81107487506233,
+      "http_status": 200,
+      "literal_submission_sha256": "015f4e6899d87e5966ea3638f522040323dd410d39b9385777562129fb2c6296",
+      "output_tokens": 2606,
+      "prompt_tokens": 23062,
+      "purpose": "calibration",
+      "request_wire_sha256": "b524e5690ca41319e44e1c3bed00cfc546db36f51848d8f39a87f6751261c996",
+      "result_sha256": "bc3beaf3e9da832fda6e8158a5303553090bd8b52ca404893d9db1099bba46eb",
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/initial-readiness/author/calibration-836a5622d6c5011345a13ffc17b10bbdd0c34445d3d41b1c56612418ce299902",
+      "status": "submitted",
+      "technical_error": null,
+      "two_matching_original_source_replays": true
+    },
+    {
+      "actual_operation_paths": [
+        "/mechanisms/-"
+      ],
+      "completion_unknown": false,
+      "done_reason": "stop",
+      "elapsed_seconds": 112.67500629206188,
+      "http_status": 200,
+      "literal_submission_sha256": "1aa7c35470a3047f283a50f58b48f0b3b1316a2aeab9e87bb92124f95108ea5d",
+      "missing_schedule_is_only_literal_difference_except_operation_count": true,
+      "output_tokens": 4382,
+      "prompt_tokens": 23678,
+      "purpose": "calibration",
+      "request_wire_sha256": "058604c653a0466b8cc6548fd55045c50b79112f968fbf4e7603dc2f600d3ddd",
+      "requested_operation_paths": [
+        "/mechanisms/-",
+        "/schedules/-"
+      ],
+      "result_sha256": "80653823b208214782d521250a06b6d45fc975d4130bee232d4532ece360f319",
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/search/content-utility/authoring/calibration-f0952bd7acb6e97246faf31b0daa36e6a001ab14570a21848cbbb8b9e8d24afa",
+      "status": "failed",
+      "technical_error": {
+        "message": "workflow-v4 requires exactly one annual schedule per node",
+        "type": "ValueError"
+      },
+      "two_matching_original_source_replays": true
+    },
+    {
+      "completion_unknown": false,
+      "done_reason": "stop",
+      "elapsed_seconds": 96.58831983292475,
+      "http_status": 200,
+      "literal_submission_sha256": "015f4e6899d87e5966ea3638f522040323dd410d39b9385777562129fb2c6296",
+      "output_tokens": 3634,
+      "prompt_tokens": 23638,
+      "purpose": "calibration",
+      "request_wire_sha256": "ee579cdab4386e68eed1dd4690dbf455278868ee34375ad14d46e38f97ab33ac",
+      "result_sha256": "d1e2ba1741dfebaa297ad8c286ef89111f2fcce0fcdf6cfbc5d2278582e65e22",
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/search/throughput/authoring/calibration-7d7c0366e68a050806ba2e79986a8618aefa210971364acca115490d1d45ac84",
+      "status": "submitted",
+      "technical_error": null,
+      "two_matching_original_source_replays": true
+    },
+    {
+      "completion_unknown": false,
+      "done_reason": "stop",
+      "elapsed_seconds": 107.49663508404046,
+      "http_status": 200,
+      "literal_submission_sha256": "f591f294434aff659f99f08b0b943f2b7a9eaa9df135a927cfacef48794b817f",
+      "output_tokens": 4906,
+      "prompt_tokens": 23347,
+      "purpose": "proposal",
+      "request_wire_sha256": "5b04f2b701ba9859cd481678cf90d43b6ad6df66e34c1a2110b14ca0f5e457c1",
+      "result_sha256": "2655f227a17e0902cce81828c91164a2f091a503557a00f5fc3d130974175ea0",
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/search/throughput/authoring/proposal-7d7c0366e68a050806ba2e79986a8618aefa210971364acca115490d1d45ac84",
+      "status": "submitted",
+      "technical_error": null,
+      "two_matching_original_source_replays": true
+    }
+  ],
+  "classification": "original-source-cold-author-replays-and-completed-cell-input-choice-readout-not-whole-study-audit",
+  "content_sha256": "04c076153b84a84e6405cce1b4906110113d9a5637d7f195c7f8b66f7728fcb4",
+  "fixed_evaluation_eligible": false,
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "own_selections": null,
+  "plan_content_sha256": "5e1e101d939ea05e9880b35fb028b76b0e7c02a163ef1d3bf05e5dc118d4fe5a",
+  "publication_ready": false,
+  "raw_files": 374,
+  "raw_inventory_sha256": "c5d667ef563c6fecf9077ce735ec72487dc2c15ee3d0373142ce34637fa700e8",
+  "raw_unchanged": true,
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1",
+  "schema": "scienceutopia.native-open-institution-stopped-prefix.v2",
+  "scientific_gain_claimed": false,
+  "scientific_source_commit": "fe4281f47002eb3a160ab26cb625ab586155e2a6",
+  "scientific_study_closed": false,
+  "terminal": {
+    "consumed_slots": 1,
+    "content_sha256": "3682146c185a9d79811f53f631057fcb3fc2f11a11446d377839880c5a90d938",
+    "ended_utc": "2026-11-14T09:12:10.765725+00:00",
+    "error": "workflow interface calibration failed; no proposal/world dispatch",
+    "error_type": "ValueError",
+    "no_retry": true,
+    "observations": 3,
+    "schema": "scienceutopia.native-workflow-objective-loop.v1.terminal",
+    "stage": "readiness",
+    "status": "stopped"
+  },
+  "worlds": [
+    {
+      "cell": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001",
+      "content_utility_loss": -13.333333333333332,
+      "label": "R7",
+      "requests": {
+        "completed_responses": 115,
+        "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_full_provider_body_hashes_sha256": "94bece46f9b75fd31eca0461c122056bf5225042779787f3e82e89b33dfdd012",
+        "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 115
+      },
+      "status": "complete",
+      "throughput_loss": -18.0
+    },
+    {
+      "cell": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/references/post-funding-cost/worlds/workflow-reference-post-funding-cost-s61001",
+      "content_utility_loss": -15.333333333333332,
+      "label": "hand",
+      "requests": {
+        "completed_responses": 127,
+        "ordered_completed_request_payload_sha256": "9ea2ff482f060724c70e21c3991fffe162a9df79e5e403049f21d9312fa04a7c",
+        "ordered_full_provider_body_hashes_sha256": "621318db81191c9d3a53f50e763c89e4cba8e9515deec67cb70f393278ec85b0",
+        "ordered_full_request_payload_sha256": "9ea2ff482f060724c70e21c3991fffe162a9df79e5e403049f21d9312fa04a7c",
+        "ordered_literal_response_choices_sha256": "42f000dfc162a2765db737da946980fb014c8eeb0758d617daa315c230d929cb",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 127
+      },
+      "status": "complete",
+      "throughput_loss": -20.0
+    },
+    {
+      "cell": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v2-a1/outputs/native-open-institution-objective-loop-v2-a1/search/throughput/worlds/native-adaptive-dfc043d964d739880c6e08da-s61001",
+      "content_utility_loss": -12.333333333333332,
+      "label": "T0",
+      "requests": {
+        "completed_responses": 114,
+        "ordered_completed_request_payload_sha256": "918ea347d4687436e7a4568a0928c8ba12f016436e192b869faa2998f94976b3",
+        "ordered_full_provider_body_hashes_sha256": "be4530eee28632d4b64043a2e72d4cff29935e226925094dfff5cd9f1328199a",
+        "ordered_full_request_payload_sha256": "918ea347d4687436e7a4568a0928c8ba12f016436e192b869faa2998f94976b3",
+        "ordered_literal_response_choices_sha256": "ccc3c0ee576ed3004685c0db0d51a7a96b666045a4322a265f9ace8be06f292b",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 114
+      },
+      "status": "complete",
+      "throughput_loss": -18.0
+    }
+  ]
+}

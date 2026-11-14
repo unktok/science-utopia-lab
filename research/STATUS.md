@@ -2,6 +2,27 @@
 
 ## Active publication-ready goal
 
+### November14 18:12JST: first own open world completes, then U0 calibration stops
+
+Writer59411 exits1 with its original stopped terminal:two controls and one own
+T0 complete; no six-slot closure, own selection or unused evaluation. T0 has
+T=-18/U=-12.3333 versus R7=-18/-13.3333 and hand=-20/-15.3333. Its authored
+selection code sets final_score=1 and retains accept-all, with no new node/wire.
+Its114 full scientist inputs/choices differ from R7's115:throughput ties do
+not establish globally inert source. There is no measured own improvement.
+
+The next U0 directed calibration returns final HTTP200 but omits the required
+annual schedule for its added node. All four actual author calls recompile
+identically in two original-source cold reads; the raw374-file inventory stays
+unchanged. All five continuations exit1 without fabricated audits/reports.
+[Exact original prefix and losses](results/native-open-institution-stopped-prefix-v2.json).
+The actual prompt contains competing calibration/optimization instructions and
+the reply expresses confusion. A narrow prospective calibration-only correction
+separates task authority and repeats the complete target last;33 focused tests
+pass17.44s. No failure is repaired, no source is modified in the stopped checkout,
+and no claim of model infallibility or main-track readiness is made.
+[Finite v3 declaration](protocols/campaigns/native-open-institution-calibration-task-v3.md).
+
 ### November14 17:48JST: first actual open-study control completes with matched original inputs
 
 Writer59411 remains live and advances08:45:11UTC to the strong hand reference.

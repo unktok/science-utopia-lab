@@ -53,6 +53,14 @@ structured compiler diagnostics and hashes in the normal own-history format.
 Unknown completion stops further inference. Cold replay reconstructs the same
 payload, returned literal and compile result, without redispatch or repair.
 
+Following the actual v2 missing-schedule calibration stop, calibration framing
+uses a directed root instruction instead of the shared optimization instruction,
+explicitly marks parent/loss/history as context, and repeats its complete
+directed target in a final user message. Every original context value remains;
+the free proposal payload/schema/authority and technical checks are unchanged.
+There is no exact-copy enum constraint, automatic schedule completion or retry.
+See [prospective task separation](native-open-institution-calibration-task-v3.md).
+
 ## Explicit JSON Schema defaults on the wire
 
 The first actual b0db5916 calibration stops with a known HTTP400 grammar

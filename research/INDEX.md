@@ -6,6 +6,16 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Open study stopped after its first own world](results/native-open-institution-stopped-prefix-v2.json):
+  T0 ties R7 throughput and has worse content utility; full scientist inputs
+  differ. The following U0 calibration omits its new node's schedule. Writer
+  and five readers are terminal, not live. Original-source cold author replays
+  agree without modifying374 raw files. A calibration-only task separation is
+  declared prospectively; it does not narrow free design or repair the old run.
+
+The following dated dispatch/reference entries are historical observations,
+not current liveness; the stopped prefix above supersedes them.
+
 - [Actually running corrected open-institution experiment](results/native-open-institution-dispatch-v2.json):
   initial real35B calibration passesHTTP200 with literal compiled IR; original
   8B scientists run R7. Sourcefe4281f4/plan5e1e101d stays frozen; both controls

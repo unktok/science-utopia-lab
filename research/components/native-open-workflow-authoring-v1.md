@@ -3,8 +3,13 @@
 Status: optional API and explicit wider study/audit/report/fixed handoff are
 implemented. Frozen75813efe passes a10-world SCRIPTED native integration,
 including actual sandbox code execution and changed full scientist inputs.
-No real-model calibration/proposal, scientific campaign, own improvement or
-publication readiness is established for this mode.
+The first real b0db5916 calibration stops before proposals on a known backend
+grammar incompatibility. A distinct correctedfe4281f4 study passes actual
+initial and first-slot calibration; both real native references and its first
+free proposal/world complete. That own result does not improve either loss.
+The next calibration omits a required schedule and stops the study. No full
+optimization closure or publication readiness is established. These dated outcomes supersede the
+earlier preparation-only snapshots below without changing their raw records.
 
 The closed structural-only study's four own completions all reproduce the hand
 control's full scientist input/choice sequence. That interface cannot change
@@ -78,8 +83,30 @@ normal closure and double cold readers are exercised with zero real-model
 calls. The final check binds critic costs to the original observer audit.
 [Original failing a1 and passing a2/a3](../results/native-open-workflow-native-software-v1.json).
 
-The scientific finite study is separately declared. Actual source/model/backend-
-bound calibration and free proposals remain unexecuted; light request byte fit
-and the native scripted proof are not real model context-capacity evidence.
+The scientific finite study is separately declared. Source/model/backend-bound
+actual calibration now passes for the initial and first own-slot frames after
+the explicit JSON Schema default correction. The first free proposal completes
+as code-only acceptance edits:18 acceptances, T=-18/U=-12.3333, versus R7's
+-18/-13.3333 and the hand's-20/-15.3333. Its full scientist inputs/choices differ
+from R7, so it is not called globally inert from its throughput tie. There are
+no new nodes/wires or demonstrated gains. The following U0 calibration drops
+the schedule operation from its directed new-node target and stops the study
+before any U0 proposal. [Original-source cold prefix](../results/native-open-institution-stopped-prefix-v2.json).
+The prospective calibration-only task separation removes competing optimization
+instructions and repeats the complete directed target last; free design and
+losses stay unchanged. Light request byte
+fit, directed copying and the native scripted proof are not broad free-design
+competence or future context-capacity evidence.
 An important empirical objective-to-system comparison and independent evidence
 are still needed, not more interface tests counted as scientific success.
+
+## Actual first free request: distinguish discovery from inheriting the hand
+
+Both fresh references finish at T/U=-18/-13.3333 for R7 and-20/-15.3333 for
+the strong hand. The actual first free T0 request receives R7 as parent and
+its only reference observation. The hand reference label is absent from the
+actual wire; it remains a separately measured comparison, not the incumbent
+provided to the designer. [Original request and reference hashes](../results/native-open-institution-first-proposal-dispatch-v2.json).
+This is a prospective information-access difference from the earlier structural
+study, not an isolated code/graph-expressivity effect. Empty edits, worse valid
+systems and known invalid nulls remain legal and are never repaired/refilled.
