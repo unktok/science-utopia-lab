@@ -31,7 +31,7 @@ def read(path):
 def transparent_office(request):
     """Prescribed new literal node and two wires, not autonomous discovery."""
     parent = request['parent_system']
-    identity = 'SCRIPTED-transparent-observation-office'
+    identity = 'scripted-transparent-observation-office'
     assert all(n['mechanism_id'] != identity for n in parent['mechanisms'])
     edge = next(e for e in parent['connections'] if e['target_mechanism'] == 'world.selection'
         and e['target_port'] == 'observations')
@@ -39,15 +39,15 @@ def transparent_office(request):
     port = next(p for p in selection['inputs'] if p['port_id'] == 'observations')
     node = {'mechanism_id': identity, 'family': 'custom', 'implementation': 'code.python.v1',
         'version': 1, 'inputs': [{**port, 'port_id': 'world'}],
-        'outputs': [{**port, 'port_id': 'world'}], 'parameters': {
+        'outputs': [{**port, 'port_id': 'observations'}], 'parameters': {
             'runtime_image_id': selection['parameters']['runtime_image_id'],
             'code_artifact': {'schema': 'scienceutopia.code-mechanism.v1',
                 'label': 'SCRIPTED transparent wiring software probe, not invented science',
-                'source': "def step(context):\n    return {'outputs': {'world': context['inputs']['world']}, 'state': {}}\n",
+                'source': "def step(context):\n    return {'outputs': {'observations': context['inputs']['world']}, 'state': {}}\n",
                 'inputs': {'world': {'type': 'object'}},
-                'outputs': {'world': {'type': 'object'}}, 'state_schema': {'type': 'object'}}}}
+                'outputs': {'observations': {'type': 'object'}}, 'state_schema': {'type': 'object'}}}}
     connections = clone(parent['connections'])
-    connections[connections.index(edge)] = {**edge, 'source_mechanism': identity, 'source_port': 'world'}
+    connections[connections.index(edge)] = {**edge, 'source_mechanism': identity, 'source_port': 'observations'}
     connections.append({**edge, 'target_mechanism': identity, 'target_port': 'world'})
     phase = next(s['phase'] for s in parent['schedules'] if s['mechanism_id'] == 'world.selection') - 1
     return {'tool': 'edit', 'operations': [
@@ -87,7 +87,7 @@ def test_original_workflow_errors_reach_next_outer_prompt_and_do_not_veto_finish
     actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED software replay, not optimization',
         'design_intent': 'Exercise original failed source and explicit author-controlled correction'}, write(bad_source)]
     if repair:
-        actions.extend([{'tool': 'read_file', 'filename': 'archive/steps/01.json', 'limit': 30000},
+        actions.extend([{'tool': 'read_file', 'filename': 'archive/steps/00.json', 'limit': 30000},
             write(original_source), transparent_office(request)])
     actions.append({'tool': 'finish', 'rationale': 'SCRIPTED explicit submission; not an invented improvement'})
 
@@ -135,16 +135,16 @@ def test_original_workflow_errors_reach_next_outer_prompt_and_do_not_veto_finish
     assert definition is not None and 'generation_failure' not in definition
     generation = tmp_path/'proposal/authoring'/('generation-'+digest(request))
     steps = [read(p) for p in sorted(generation.glob('step-*.completed.json'))]
-    first = steps[1]['transition']['result']['component_feedback']
+    first = steps[0]['transition']['result']['component_feedback']
     assert first['probe_attempts'] == 4
     assert all(r['status'] == 'raised' for r in first['tests'][0]['results'])
     assert all('payload' in r['error_excerpt'] for r in first['tests'][0]['results'])
     assert 'payload' in json.dumps(Session.production[2])
     if repair:
-        corrected = steps[3]['transition']['result']['component_feedback']
+        corrected = steps[2]['transition']['result']['component_feedback']
         assert corrected['probe_attempts'] == 4
         assert all(r['status'] == 'returned' for r in corrected['tests'][0]['results'])
-        assert steps[4]['transition']['result']['component_feedback']['tests'][0]['status'] == 'not-configured'
+        assert steps[3]['transition']['result']['component_feedback']['tests'][0]['status'] == 'not-configured'
         candidate = GeneratedMixedDesign(parent, definition, loss_spec=request['loss_spec'],
             seed=request['rng_seed'], single_draw_blackbox=True).base
         assert len(candidate.mechanisms) == len(parent.mechanisms)+1
