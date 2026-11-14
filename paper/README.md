@@ -2,6 +2,22 @@
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
+[81-page integrated draft](../output/pdf/science-utopia-lab-integrated-open-institutions-working-paper.pdf),
+with42 figures,36 tables and26 references. Its
+[source/build/visual receipt](integrated-open-institutions-build-v1.json)
+binds two actual cached builds with identical extracted text/logs and all81
+page images. All final layouts and150dpi first/concept/new-result pages are
+reviewed; the unnecessary abstract spill page is removed without dropping any
+body research track. The stopped open-code prefix, all six normally closed
+v3 slots, accepted-content decomposition, missing T selection and unfavorable
+three-policy unused comparison are retained, with all actual costs and nulls.
+No generation/measurement failure is silently replaced or counted as a loss.
+The new minimal rebuild subset is not yet verified. This is a complete updated
+working paper, not a main-track-ready claim, anonymous release or fresh
+inference reproduction. The scientific source is frozen separately from later
+navigation and retention updates; preserve its receipt and use its own inputs.
+
+The preceding reviewed artifact is the
 [78-page integrated draft](../output/pdf/science-utopia-lab-integrated-workflow-feedback-working-paper.pdf),
 with40 figures,33 tables and26 references. Its
 [source/build/visual receipt](integrated-workflow-feedback-build-v1.json) and
@@ -10,18 +26,9 @@ bind all78 reviewed page layouts and identical rebuilt text/page images. It
 includes the normally closed compiler-feedback development study and its
 selection-fixed unused condition, without claiming autonomous improvement.
 
-The current LaTeX source additionally describes the later stopped open-code
-pilot:one actual own completion changes scientist information but improves
-neither loss. It also retains every slot of the separate normally closed v3:
-three generation nulls, two runtime nulls and one unfavorable own completion,
-with a missing T selection. Its frozen unused evaluation completes all three
-physical policies:the own U selection loses to both references on both losses.
-It corrects stale closure language. These **source
-revisions have not yet been rebuilt or visually reviewed**. No PDF rendering
-or independent heavy QA is run while real model inference is active; the
-reviewed78-page artifact and all earlier receipts remain unchanged. This is
-not main-track publication readiness, an anonymous release or fresh inference
-reproduction.
+This older artifact predates the real open-code studies now included in the81-
+page version. It and all earlier receipts remain unchanged. No PDF rendering
+or independent heavy QA was run during the completed real inference campaign.
 
 The preceding reviewed artifact is the
 [75-page integrated draft](../output/pdf/science-utopia-lab-integrated-workflow-controls-working-paper.pdf),

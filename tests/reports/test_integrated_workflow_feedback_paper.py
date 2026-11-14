@@ -101,7 +101,8 @@ def test_manuscript_open_result_is_not_hidden_by_calibration_stop_or_past_pdf():
         assert literal in source
     readme = (ROOT / 'paper/README.md').read_text()
     assert '78-page integrated draft' in readme
-    assert 'revisions have not yet been rebuilt or visually reviewed' in readme
+    assert '81-page integrated draft' in readme
+    assert 'integrated-open-institutions-build-v1.json' in readme
     discussion = (ROOT / 'paper/integrated/discussion.tex').read_text()
     assert 'free planning pilot is not counted as closed scientific evidence here' not in discussion
 

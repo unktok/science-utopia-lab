@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Latest reviewed81-page working manuscript](../paper/integrated-open-institutions-build-v1.json):
+  all meaningful tracks,42 figures/36 tables, complete real open-code and unused
+  results without an advantage claim. Actual two cached builds/all-page pixels
+  agree and all layouts are inspected. Old artifacts are preserved. The new
+  minimal subset and main-track readiness remain unfinished.
+
 - [Closed unused comparison](results/native-open-institution-fixed-closed-v1.json):
   all three physical policies complete; R7 T=-30/U=-25, hand -32/-26, own U
   -28/-23. T selection remains missing, not a control fallback. All five

@@ -78,3 +78,15 @@ PDF" heading after later reviewed manuscripts exist. No source/figure/PDF
 hash guard is weakened. The failed JUnit remains preserved; because this test
 belongs to the build receipt's support manifest, fresh source-bound a7/a8
 builds follow even though literal TeX inputs are unchanged.
+
+Final sourcef344c77e a7/a8 builds3333/1517 exit0. Actual renders36121/2272
+exit0; every final81-page pixel matches both builds and the reviewed a5 layout.
+All seven labelled sheets (81 pages) are inspected, plus fresh150dpi pages
+1,4,59--62. There is no remaining abstract spill, off-page word, unresolved
+reference or observed overlapping/clipped content. The wider corrected source
+suite49984 exits0 with46 passes3.57s. The final retention84710 exits0 and
+records81 pages/42 figures/36 tables/26 references, original source hashes,
+old-artifact preservation, and new PDF SHA
+efc6c5179d11ad5c5d5b4513fcdcf560148fd182a8f18f384c4a2c5f04da0ad3.
+The create marker is not repeated. This is not numerical reproduction or a
+claim that the unverified new minimal bundle/important main-track goal is done.

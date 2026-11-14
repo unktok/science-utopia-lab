@@ -2,6 +2,28 @@
 
 ## Active publication-ready goal
 
+### November14 20:40JST: complete current working PDF reviewed; publication goal still open
+
+The new81-page working PDF at manuscript sourcef344c77e retains all previous
+meaningful body tracks plus the stopped and closed open-code studies, actual
+content replacement, all fixed labels and per-role costs. It has42 figures,
+36 tables and26 references. Two actual cache-only/untrusted builds agree in
+text/logs and every rendered page; all81 layouts and150dpi first/concept/new
+result details are reviewed, with34778 fully in-page words. The first draft's
+abstract spill page is fixed by condensing only the abstract, not cutting body
+research. All older reviewed PDFs/receipts remain unchanged.
+[New PDF and actual source/visual receipt](../paper/integrated-open-institutions-build-v1.json).
+The new minimal rebuild subset is still unverified, and this is not a focused
+main-track-ready submission or new inference. [Paper navigation](../paper/README.md).
+
+The finite open development and unused comparison plus all their readers are
+terminal, not running. Own U loses to both strong controls; T stays missing.
+Next: finish the new artifact's minimal rebuild proof, then implement/evaluate
+a genuinely useful next construction/information method under a finite new
+protocol. Do not count more documentation/tests as closing the important
+empirical question or independently supported contribution. R2/R3/R6 remain
+open and no further model campaign is auto-dispatched from a written idea.
+
 ### November14 20:28JST: unused comparison and all readers close; no own advantage
 
 Original writer47320 exits0 at11:19:27UTC with all three fixed physical policies

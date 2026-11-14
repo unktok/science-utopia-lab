@@ -75,3 +75,20 @@ def test_local_unused_data_and_figure_bytes_match_both_original_exports():
                     '138 physical calls', 'there are no new designer calls',
                     'same-year/paper/content', 'No accepted record in'):
         assert literal in source
+
+
+def test_latest_reviewed_complete_paper_keeps_all_old_artifacts_and_current_results():
+    receipt = read('paper/integrated-open-institutions-build-v1.json')
+    assert (receipt['pages'], receipt['figures'], receipt['tables'], receipt['cited_references']) == (81, 42, 36, 26)
+    assert file_sha256(ROOT / receipt['output']) == receipt['pdf_sha256']
+    assert file_sha256(ROOT / 'paper/integrated.tex') == receipt['tex_sha256']
+    assert receipt['visual_review']['all_final_pages_reviewed']
+    assert receipt['visual_review']['pages_reviewed'] == list(range(1, 82))
+    assert len(receipt['visual_review']['page_png_sha256']) == 81
+    assert receipt['build']['rendered_page_identity_verified'] and receipt['build']['off_page_text_words'] == 0
+    for name, expected in receipt['preserved_files'].items():
+        assert file_sha256(ROOT / name) == expected
+    scope = receipt['scientific_scope']
+    assert scope['open_v3_own_completions'] == 1 and scope['throughput_selection_missing']
+    assert scope['open_fixed_physical_worlds'] == 3 and not scope['own_advantage_demonstrated']
+    assert not receipt['new_paper_rebuild_subset_verified'] and not receipt['publication_ready']

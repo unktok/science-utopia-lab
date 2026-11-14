@@ -4,7 +4,15 @@
 goal toolにも同じ目標を設定した。以前の有限パッケージ完了と、研究の投稿準備完了を分ける。
 現時点は主会議readyではなく、旧稿の自己評価を変えない。
 
-November14 20:28JST current：選択固定の未使用比較も全3物理worldと後続全5解析が完了。
+November14 20:40JST current：全意味のある本文トラックを保持した81頁working稿を更新。
+42図／36表／26引用、二回cached buildの本文／log／全81頁画像が一致し、全頁配置と
+新規結果の150dpi表示を確認した。旧稿は全て保持。要旨だけを整理して不要なspill頁を
+解消した。[実source／build／目視receipt](../../paper/integrated-open-institutions-build-v1.json)。
+新稿の最小rebuild subsetは未検証で、focusedな主会議投稿稿・R2/R3/R6の達成ではない。
+全実験／後続readerは閉鎖済み。次はsubset証明を閉じ、構築信頼性と情報アクセスの
+違いを検証できる実装／有限比較へ進む。未使用結果での選び直しや勝つまでの増量はしない。
+
+November14 20:28JST snapshot：選択固定の未使用比較も全3物理worldと後続全5解析が完了。
 R7 T=-30/U=-25、手作り-32/-26、自己U2 -28/-23で、自己案は両損失で両対照に劣る。
 自己T選択は欠測のまま。元監査／費用／全readout二回が一致し、実験は稼働中ではない。
 [閉鎖結果](../results/native-open-institution-fixed-closed-v1.json)。

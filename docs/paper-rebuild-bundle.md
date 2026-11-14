@@ -1,6 +1,18 @@
 # Local manuscript rebuild subsets
 
-## Latest reviewed artifact: preserved78-page feedback manuscript
+## Latest reviewed artifact:81-page open-institution working manuscript
+
+The [new reviewed artifact](../paper/integrated-open-institutions-build-v1.json)
+has42 figures,36 tables and26 references at sourcef344c77e342d302e6fb1ce0484015749d0198607.
+Two full-checkout cached builds have identical text/logs and all81 rendered
+page images; all layouts and new-result details are inspected. The source
+includes the complete unfavorable open-code/unused comparison and preserves
+all earlier meaningful tracks. Its own minimal rebuild subset is **not yet
+staged/rebuilt/verified**. Do not substitute the old78-page policy or change
+old receipts to claim it is. This working paper is not main-track ready,
+anonymous, fresh-inference reproduced or cleared for external redistribution.
+
+## Preserved78-page feedback manuscript
 
 The [reviewed78-page draft](../paper/integrated-workflow-feedback-build-v1.json)
 has40 figures,33 tables and26 references. Its
