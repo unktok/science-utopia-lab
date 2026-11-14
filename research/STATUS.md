@@ -5,7 +5,21 @@
 The first entry is current; later dated entries retain historical snapshots,
 not live-process checks.
 
-### November15: new64k SCRIPTED full native/cold/fixed path passes
+### November15: actual matched comparison starts at unchangeda5be8d31
+
+After actual two-frame capacity closes, separately declared scientific resource
+observations pass and original82259 launches the prepareda5be8d31 public driver
+at21:53:15UTC/06:53:15JST. Its own actual initial request-bound calibration is
+running, not a completed certificate or scientific world. Actual PID8708 is
+observed live at21:55:31UTC. Two losses/two arms,12 own slots/two references,
+all world/loss/selection bytes unchanged; no new result or advantage yet.
+[Dispatch, scope and inventory timing deviation](logbook/2026-11-15-longitudinal-real-dispatch.md).
+Reserved676047151 inventory covers1414 bindings in three broad local roots,
+no match/error, checked during initial calibration rather than at preparation;
+repeat before fixed evaluation. R2/R3/R5/R6 remain open. Older entries below
+are dated snapshots, not current liveness or current undispatched status.
+
+### Earlier November15: new64k SCRIPTED full native/cold/fixed path passes
 
 Subsequent actual capacity diagnostic39363 exits0 at frozen7daa1665, preserving
 all utopia bytes froma5be8d31. After its separately declared capacity-only CPU

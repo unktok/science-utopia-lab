@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual longitudinal comparison dispatched](logbook/2026-11-15-longitudinal-real-dispatch.md):
+  original82259 starts unchangeda5be8d31 after two independent scientific
+  resource observations. Its own initial actual calibration is in progress,
+  not a certificate or a scientific gain. Reserved-seed inventory checks1414
+  bindings in three local roots; its later-than-preparation timing is explicit.
+
 - [Actual two-frame64k capacity closure](results/native-longitudinal-actual-capacity-v3.json):
   original39363 exits0; backend37298/44322 input tokens plus8192 reserved output
   fit65536 and both replies finish stop. Exactly one empty load/two chat POSTs,
