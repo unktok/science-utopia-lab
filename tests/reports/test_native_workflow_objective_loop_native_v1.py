@@ -25,6 +25,7 @@ from utopia.optimization import native_workflow_designer_v1 as author_module
 from utopia.optimization.common_content_observer import make_contract
 from utopia.optimization.native_factory import LocalQwenNativeFactory
 from utopia.optimization.native_loaded_roles_v38 import LocalRoleBoundNativeFactory, SCIENTIST_DIGEST
+from utopia.optimization.native_scientist_transport_v1 import contract as scientist_transport_contract
 from utopia.optimization.native_workflow_domain_v4 import post_funding_cost_control
 from utopia.runtime.bounded_process import run_bounded
 from utopia.system import SystemSpec
@@ -35,8 +36,9 @@ IMAGE = 'sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833
 
 
 @pytest.mark.parametrize('prerequisite_kind', ['legacy-scripted', 'independent-numeric-v2'])
+@pytest.mark.parametrize('scientist_profile', ['legacy', 'read900'])
 def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_cold_audit(
-        tmp_path, fixed_corpus, monkeypatch, prerequisite_kind):
+        tmp_path, fixed_corpus, monkeypatch, prerequisite_kind, scientist_profile):
     original, _, _, _ = plan(tmp_path / 'inputs', monkeypatch, IMAGE)
     install_scripted_provider(tmp_path / 'provider', monkeypatch, 2)
     monkeypatch.setattr('requests.get', lambda *a, **k: SimpleNamespace(raise_for_status=lambda: None,
@@ -77,7 +79,9 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     backend = {k: original['designer'][k] for k in ('model', 'model_digest')}; backend['ollama_version'] = 'SCRIPTED'
     p = driver.build_plan(original, upstream, source=probe.source_commit, origin=origin,
         backend=backend, observer_backend=observer_backend, prerequisite=prerequisite,
-        sources=driver.native_sources(probe.source_commit))
+        sources=driver.native_sources(probe.source_commit),
+        scientist_transport=(None if scientist_profile=='legacy' else
+            scientist_transport_contract(read_seconds=900)))
     root = tmp_path / 'run'; root.mkdir(); driver.save(root / 'plan.json', p)
     monkeypatch.setattr(driver, 'origin_evidence', lambda origin: (original, upstream))
     if prerequisite_kind == 'legacy-scripted':
@@ -85,7 +89,14 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         monkeypatch.setattr(driver, 'require_prerequisite', lambda binding: {'SCRIPTED': 'no actual chain is closed here'})
     real_make = LocalRoleBoundNativeFactory.__call__
     def make(self, *a, **kw):
-        sim = real_make(self, *a, **kw); sim.llm.sim = sim; return sim
+        sim = real_make(self, *a, **kw); sim.llm.sim = sim
+        if scientist_profile=='read900':
+            # Only the scripted HTTP facade is extended. The real production
+            # adapter/record, role factory, cold reader and SDK unit stay real.
+            sim.llm.client.max_retries = 0
+            sim.llm.client.base_url = 'http://127.0.0.1:11434/v1'
+            sim.llm.client.timeout = 120
+        return sim
     monkeypatch.setattr(LocalRoleBoundNativeFactory, '__call__', make)
     class Critics:
         @contextmanager
@@ -145,6 +156,9 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     assert audit_paths[0].read_bytes() == audit_paths[1].read_bytes()
     proof = driver.read(audit_paths[0]); assert len(proof['worlds']) == 7
     assert all(len(w['physical_proof']['annual_checkpoints']) == 4 for w in proof['worlds'])
+    transport_paths = list(root.rglob('scientist-transport.json'))
+    assert len(transport_paths) == (7 if scientist_profile=='read900' else 0)
+    assert all(driver.read(path)['applied']['http_timeout_seconds']['read']==900 for path in transport_paths)
     cost_reports = [costs(root, p, driver.read(path)) for path in audit_paths]
     assert cost_reports[0] == cost_reports[1]
     groups = cost_reports[0]['auxiliary']['groups']
@@ -159,6 +173,8 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     write_json_atomic(tmp_path / 'verification.json', {'schema': 'scienceutopia.native-workflow-objective-software-check.v1',
         'classification': 'SCRIPTED-HTTP-corpus-origin-and-prerequisite-fixtures', 'source_commit': probe.source_commit,
         'prerequisite_kind': prerequisite_kind,
+        'scientist_profile': scientist_profile,
+        'actual_transport_application_records': len(transport_paths),
         'actual_bounded_HTTP_worker_calls': len(calls), 'new_model_calls': 0, 'native_software_worlds': 7,
         'annual_checkpoints': 28, 'known_invalid_slots_preserved': 1, 'consumed_own_slots': 6,
         'maximum_actual_wire_utf8_bytes': max(c['wire_utf8_bytes'] for c in calls),

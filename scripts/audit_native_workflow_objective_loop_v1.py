@@ -40,7 +40,8 @@ def worker(root, output):
         source = source_proofs(driver.ROOT, p['source_commit'], scripts=[
             'scripts/run_native_workflow_objective_loop_v1.py', 'scripts/audit_native_workflow_objective_loop_v1.py',
             'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'],
-            resources=[driver.PROTOCOL] + ([p['eligibility_protocol']['path']] if 'eligibility_protocol' in p else []))
+            resources=[driver.PROTOCOL] + ([p['eligibility_protocol']['path']] if 'eligibility_protocol' in p else [])
+                + ([p['operational_protocol']['path']] if 'operational_protocol' in p else []))
         anchor = SystemSpec.from_dict(p['initial_system'])
         observer = ColdObserver(root / 'observer', p['observer_contract']); observer_audit = observer.audit()
         if observer_audit != read(root / 'observer-audit.json'): raise ValueError('original critic audit differs')
@@ -75,6 +76,8 @@ def worker(root, output):
                     or m['world_backend'] != 'native-research-world'):
                 raise ValueError('workflow actual native observation identity differs')
             cell = directory / 'worlds' / (identity + '-s' + str(driver.SEED)); cells.add(cell)
+            from utopia.optimization.native_scientist_transport_v1 import require_cell_transport
+            require_cell_transport(cell, p, spec, seed=driver.SEED, failed=o['status'] == 'failed')
             cache = cell / 'replies/responses.sqlite'
             if cache.is_file(): caches.add(cache)
             gate = loaded(cell / 'role-load-000.json', cell / 'loaded-role-context-000.json', provider=p['scientist'],

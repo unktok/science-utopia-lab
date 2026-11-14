@@ -109,7 +109,8 @@ def require_prerequisite(binding):
         'audit_content_sha256': audits[0]['content_sha256']}
 
 
-def build_plan(original, audit, *, source, origin, backend, observer_backend, prerequisite, sources):
+def build_plan(original, audit, *, source, origin, backend, observer_backend, prerequisite, sources,
+        scientist_transport=None):
     if (original['schema'] != 'scienceutopia.native-planning-objective-loop.v1.plan'
             or audit['schema'] != 'scienceutopia.native-planning-objective-loop-audit.v1'
             or audit['source_commit'] != original['source_commit'] or sources['original_source'] != original['source_commit']
@@ -147,6 +148,13 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
     if prerequisite.get('schema') == 'scienceutopia.native-workflow-numeric-prerequisite.v2':
         from scripts.native_workflow_numeric_prerequisite_v2 import PROTOCOL as eligibility
         result['eligibility_protocol'] = {'path': eligibility, 'sha256': file_sha256(ROOT / eligibility)}
+    if scientist_transport is not None:
+        from utopia.optimization.native_scientist_transport_v1 import contract, validate, PROTOCOL as operational
+        value = validate(scientist_transport)
+        if value != contract(read_seconds=900):
+            raise ValueError('this prospective workflow profile requires its declared900s read allowance')
+        result['scientist_transport'] = value
+        result['operational_protocol'] = {'path': operational, 'sha256': file_sha256(ROOT / operational)}
     return result
 
 
@@ -159,7 +167,7 @@ def require_plan(root):
         raise ValueError('workflow prerequisite changed')
     expected = build_plan(original, audit, source=p['source_commit'], origin=p['origin'], backend=p['backend'],
         observer_backend=p['observer_contract']['backend'], prerequisite=p['prerequisite'],
-        sources=native_sources(original['source_commit']))
+        sources=native_sources(original['source_commit']), scientist_transport=p.get('scientist_transport'))
     if expected != {k: v for k, v in p.items() if k != 'content_sha256'}:
         raise ValueError('literal workflow plan reconstruction differs')
     return p
@@ -171,6 +179,13 @@ def campaign(root, p, objective, context=None, *, prototype=False):
         loss_spec=p['losses'][objective], seeds=[SEED], world_binding=p['world'], strategies=p['strategies'],
         mode='blackbox', seed=p['optimizer_seed'], design_space=p['design_space'],
         **({} if context is None else {'development_references': context}))
+
+
+def scientist_factory(directory, p, root):
+    if 'scientist_transport' not in p:
+        return factory_for(directory, p, root)
+    from utopia.optimization.native_scientist_transport_v1 import factory_for_profile
+    return factory_for_profile(directory, p, root)
 
 
 def measurement(p, observer):
@@ -227,7 +242,7 @@ def run(root):
                 directory = root / 'references' / label
                 s = Suggestion('workflow-reference-' + label.lower(), p['reference_systems'][label], 0, 'developer-reference')
                 save(directory / 'started.json', {'suggestion': s.to_dict(), 'seed': SEED, 'started_utc': utc()})
-                o = evaluate_native_suggestion(s, seeds=[SEED], simulation_factory=factory_for(directory / 'worlds', p, root),
+                o = evaluate_native_suggestion(s, seeds=[SEED], simulation_factory=scientist_factory(directory / 'worlds', p, root),
                     loss_spec=p['losses']['throughput'], measurement_adapter=measurement(p, observer)).to_dict()
                 save(directory / 'observation.json', o)
                 save(directory / 'cross-scores.json', {k: evaluate_loss(v, o['metadata']['measurements']) for k, v in p['losses'].items()})
@@ -250,7 +265,7 @@ def run(root):
                     if req != request: raise ValueError('actual workflow generation request differs from calibration')
                     return generation_definition(author.execute(req, purpose='proposal', certificate=certificate))
                 stage = 'optimization'; progress(root, stage, objective + ':g' + str(generation))
-                record = c.advance(simulation_factory=factory_for(directory / 'worlds', p, root),
+                record = c.advance(simulation_factory=scientist_factory(directory / 'worlds', p, root),
                     generators={'local-workflow-designer': generate}, count=1, measurement_adapter=measurement(p, observer),
                     measurement_contract=p['observer_contract'])
                 consumed += 1; observations += sum(o is not None for o in record['observations']); require_plan(root)
@@ -273,10 +288,13 @@ def prepare(args):
         'source_commit': original_audit['source_commit'],
         'audit_files': {str(v.resolve()): file_sha256(v) for v in (args.audit_one, args.audit_two)}}
     original, audit = origin_evidence(origin)
+    timeout = getattr(args, 'scientist_read_timeout_seconds', None)
+    from utopia.optimization.native_scientist_transport_v1 import contract as transport_contract
     p = build_plan(original, audit, source=source, origin=origin, backend=backend_binding(original['designer']),
         observer_backend=backend_binding(original['scientist']),
         prerequisite=prerequisite_binding(args.after_numeric_chain or args.after_numeric_dispatch),
-        sources=native_sources(original['source_commit']))
+        sources=native_sources(original['source_commit']),
+        scientist_transport=None if timeout is None else transport_contract(read_seconds=timeout))
     args.output.mkdir(parents=True); save(args.output / 'plan.json', p); require_plan(args.output)
     print(json.dumps({'prepared_source': source, 'native_worlds_upper_bound': 8, 'new_model_POSTs': 0}), flush=True)
 
@@ -290,6 +308,7 @@ def main():
     after.add_argument('--after-numeric-chain', type=Path)
     after.add_argument('--after-numeric-dispatch', type=Path)
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--scientist-read-timeout-seconds', type=int, choices=(900,))
     p = sub.add_parser('run'); p.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'prepare': prepare(args)

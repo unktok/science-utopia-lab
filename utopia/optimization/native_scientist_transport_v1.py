@@ -6,7 +6,10 @@ create callback or changing a completion payload. No retries or salvage.
 """
 from importlib.metadata import version
 import math
+import json
 from pathlib import Path
+import sqlite3
+import time
 
 import httpx
 
@@ -16,6 +19,7 @@ from utopia.system.design_patch import clone, digest
 
 SCHEMA = 'scienceutopia.native-scientist-transport.v1'
 ENDPOINT = 'http://127.0.0.1:11434/v1'
+PROTOCOL = 'research/protocols/campaigns/native-workflow-scientist-transport-v3.md'
 
 
 def contract(*, read_seconds):
@@ -104,3 +108,42 @@ class LocalTransportBoundNativeFactory(LocalRoleBoundNativeFactory):
             sim.llm.response_cache.close()
             raise
         return sim
+
+
+def factory_for_profile(directory, plan, root):
+    """Same original role factory arguments and safe-point budget, new transport."""
+    factory = LocalTransportBoundNativeFactory(directory, Path(plan['data_cache']), years=4, corpus_years=4,
+        designer_provider=plan['designer'], record_wire=True, record_code=True, maximum_http_attempts=1024,
+        experiment_binding=plan['experiment'], inference_lock=root / 'inference.lock',
+        world_conditions=plan['world']['world_conditions'], scientist_transport=plan['scientist_transport'])
+    if factory.model_digest != plan['scientist']['model_digest'] or factory.corpus_sha256 != plan['scientist']['corpus_sha256']:
+        raise ValueError('actual researcher/corpus differs from plan')
+    def construct(spec, seed, run_id):
+        sim = factory(spec, seed, run_id)
+        if sim.llm.response_cache.stop is not sim.portable_stop:
+            raise ValueError('native safe-point binding differs')
+        sim.portable_stop.deadline = time.monotonic() + plan['budget']['world_wall_seconds']
+        return sim
+    return construct
+
+
+def require_cell_transport(cell, plan, spec, *, seed, failed):
+    """Validate the operator-owned profile without rerunning or repairing it."""
+    path = cell / 'scientist-transport.json'; value = plan.get('scientist_transport')
+    if value is None:
+        if path.exists():
+            raise ValueError('unplanned scientist transport application')
+        return None
+    if not path.exists():
+        # Original role loading can fail before a client/cache is constructed.
+        # Any dispatched scientist wire requires the profile's original record.
+        wire = cell / 'wire-requests.jsonl'
+        if not failed or (wire.exists() and wire.stat().st_size):
+            raise ValueError('scientist transport application missing after dispatch')
+        return {'status': 'not-configured-before-scientific-dispatch', 'scientific_POSTs': 0}
+    with sqlite3.connect((cell / 'replies/responses.sqlite').resolve().as_uri() + '?mode=ro', uri=True) as db:
+        bindings = db.execute('SELECT binding FROM metadata').fetchall()
+    if len(bindings) != 1:
+        raise ValueError('one original cache binding required for scientist transport')
+    return require_record(json.loads(path.read_text()), value, source=plan['source_commit'],
+        system_fingerprint=spec.fingerprint, seed=seed, run_id=cell.name, cache_binding=json.loads(bindings[0][0]))
