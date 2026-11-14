@@ -10,13 +10,15 @@ from utopia.optimization.native_numeric_designer import save
 
 
 @pytest.mark.parametrize('fail',[None,'closure','report-1','report-2','different-bytes'])
-@pytest.mark.parametrize('variant',['legacy','objective','fixed-objective','development-trace','evaluation-trace'])
+@pytest.mark.parametrize('variant',['legacy','objective','fixed-objective','development-trace','evaluation-trace','workflow'])
 def test_exact_analysis_chain_two_exports_or_stop_without_retry(tmp_path,monkeypatch,fail,variant):
-    objective=variant in ('objective','development-trace')
+    objective=variant in ('objective','development-trace');workflow=variant=='workflow'
     fixed=variant in ('fixed-objective','evaluation-trace');trace=variant.endswith('-trace')
-    plan_schema=('scienceutopia.native-objective-fixed-evaluation.v1.plan' if fixed else
+    plan_schema=('scienceutopia.native-workflow-objective-loop.v1.plan' if workflow else
+        'scienceutopia.native-objective-fixed-evaluation.v1.plan' if fixed else
         'scienceutopia.native-objective-instrument-loop.v1.plan' if objective else 'scienceutopia.native-code-tested-loop.v1.plan')
-    preceding_schema=('scienceutopia.native-objective-fixed-evaluation-finish.v1' if fixed else
+    preceding_schema=('scienceutopia.native-workflow-objective-loop-finish.v1' if workflow else
+        'scienceutopia.native-objective-fixed-evaluation-finish.v1' if fixed else
         'scienceutopia.native-objective-instrument-loop-finish.v1' if objective else 'scienceutopia.code-tested-loop-finish.v1')
     raw=tmp_path/'raw';raw.mkdir();analysis=tmp_path/'analysis';analysis.mkdir()
     save(raw/'plan.json',{'schema':plan_schema,'source_commit':'a'*40})
@@ -30,7 +32,8 @@ def test_exact_analysis_chain_two_exports_or_stop_without_retry(tmp_path,monkeyp
         return {'audit_file_sha256':'c'*64,'cost_file_sha256':'d'*64}
     monkeypatch.setattr(module,'wait_analysis',wait)
     def execute(argv,**kwargs):
-        assert argv[2]==('scripts.reports.native_institution_effect_trace_v1' if trace else 'scripts.reports.native_objective_fixed_evaluation_v1' if fixed else
+        assert argv[2]==('scripts.reports.native_workflow_objective_loop_v1' if workflow else
+            'scripts.reports.native_institution_effect_trace_v1' if trace else 'scripts.reports.native_objective_fixed_evaluation_v1' if fixed else
             'scripts.reports.native_objective_instrument_loop_v1' if objective else 'scripts.reports.native_code_tested_loop_v1')
         if trace:
             assert argv[argv.index('--frozen-source')+1]==str((tmp_path/'scientific').resolve())
@@ -45,6 +48,8 @@ def test_exact_analysis_chain_two_exports_or_stop_without_retry(tmp_path,monkeyp
     if trace:
         from scripts.finish_native_institution_effect_trace_v1 import run
         args.frozen_source=tmp_path/'scientific';args.scope='fixed-evaluation' if fixed else 'objective-development'
+    elif workflow:
+        from scripts.finish_native_workflow_objective_report_v1 import run
     elif fixed:
         from scripts.finish_native_objective_fixed_report_v1 import run
     elif objective:
