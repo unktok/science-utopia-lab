@@ -9,7 +9,7 @@ Historical documents retain their paths and source identities.
 - [New source revision, PDF build deferred](../paper/README.md): the full draft
   now retains the stopped open-code pilot's three completed cells and actual
   information/content change without improvement. Stale closure statements
-  are corrected;7 lightweight retained/source checks pass for this revision,
+  are corrected;47 lightweight retained/source/historical-staging checks pass,
   not a layout or raw-reproduction claim. The78-page PDF remains the
   earlier reviewed artifact. [Next discriminating-study design, unexecuted](publication/native-open-observability-comparison-design-v1.md).
 - [First complete v3 reference](results/native-open-institution-first-reference-v3.json):

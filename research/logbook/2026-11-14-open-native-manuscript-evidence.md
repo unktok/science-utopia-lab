@@ -70,3 +70,21 @@ and checkpoint sources are identified, not claimed already connected to the
 author. No new model call, trace-enabled study or optimizer advantage exists.
 Finish this current finite run before choosing that further comparison; do
 not treat an unexecuted plan or a bigger paper as closing R2/R3/R6.
+
+## Historical staging follows the reviewed source, not later draft bytes
+
+The old78-page subset test still used the changing current entrypoint. Its
+actual single-case run31840 exits1 in2.72s on the correctly enforced source-
+receipt mismatch; outputs/open-native-historical-paper-staging-v1-a1 remains.
+The staging guard is unchanged. The historical test now materializes exact
+24e0f1ba inputs using the existing explicit-allowlist local Git helper, and a
+new test changes that fixture's entrypoint and requires rejection without
+rewriting the old receipt or creating a destination. Thus a passing historical
+test does not claim later unreviewed source matches an old PDF.
+
+The combined source/retention/staging suite22269 exits0 with47 passes30.98s,
+JUnit outputs/open-native-historical-paper-staging-v1-a2/junit.xml. No PDF build,
+render or model call occurs. Rebuild guide now gives the exact78-page historical
+checkout and its verified66-file reconstruction; the older75-page reconstruction
+is also correctly marked completed with its own source/receipt. Current source
+still needs a new actual build/visual review after the active inference ends.

@@ -30,9 +30,10 @@ completed workflow controls and their actual annual paths, equal aggregate
 grants, joint timing/routing caveat, stopped own search and actual output-mode/
 capacity failures. It does not turn hand gains or valid calibration into
 autonomous invention. All28 historical PDF/receipt files remain unchanged.
-The current75-page minimal subset has not yet been rebuilt; the older73-page
-subset's verified status applies only to that older artifact. This manuscript
-update is not a publication-readiness judgment.
+The75-page minimal subset has also actually rebuilt with identical extracted
+text and all75 page images; [verification](../research/results/integrated-workflow-controls-rebuild-subset-verification-v1.json).
+Its frozen source is distinct from the later78-page artifact and the current
+unbuilt revisions. This is not a publication-readiness judgment.
 
 The preceding reviewed artifact is the
 [73-page integrated draft](../output/pdf/science-utopia-lab-integrated-native-numeric-working-paper.pdf),

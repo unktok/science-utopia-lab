@@ -291,7 +291,9 @@ def test_workflow_receipt_rejects_changed_figure_without_altering_original(tmp_p
 
 
 def test_feedback_policy_stages_reviewed_78_page_source_not_old_pdf_or_scientific_raw(tmp_path):
-    root = bundle.ROOT
+    root = historical_integrated_root(tmp_path,
+        source='24e0f1ba2ccf01c5b8fd997279a38476b1c2d498',
+        policy_path='research/publication/paper-rebuild-allowlist-integrated-workflow-feedback-v1.json')
     policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-workflow-feedback-v1.json').read_text())
     report = bundle.stage(root, policy, tmp_path / 'feedback-subset', source_commit='SCRIPTED-staging-source')
     assert len(report['files']) == 66 and len(report['literal_tex_dependencies']) == 63
@@ -303,3 +305,17 @@ def test_feedback_policy_stages_reviewed_78_page_source_not_old_pdf_or_scientifi
     assert 'output/pdf/science-utopia-lab-integrated-workflow-controls-working-paper.pdf' not in report['files']
     assert not any(name.endswith(('responses.sqlite', 'call.http.json', 'report.json')) for name in report['files'])
     assert not report['raw_or_model_data_included'] and not report['published_or_uploaded']
+
+
+def test_feedback_receipt_rejects_later_unreviewed_source_without_rewriting_old_receipt(tmp_path):
+    root = historical_integrated_root(tmp_path,
+        source='24e0f1ba2ccf01c5b8fd997279a38476b1c2d498',
+        policy_path='research/publication/paper-rebuild-allowlist-integrated-workflow-feedback-v1.json')
+    policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-workflow-feedback-v1.json').read_text())
+    receipt = (root / policy['receipt']).read_bytes()
+    entry = root / policy['entrypoint']
+    entry.write_bytes(entry.read_bytes() + b'\n% SCRIPTED later unreviewed manuscript revision\n')
+    with pytest.raises(ValueError, match='changed from reviewed receipt: paper/integrated.tex'):
+        bundle.stage(root, policy, tmp_path / 'unreviewed-feedback-subset', source_commit='SCRIPTED')
+    assert (root / policy['receipt']).read_bytes() == receipt
+    assert not (tmp_path / 'unreviewed-feedback-subset').exists()

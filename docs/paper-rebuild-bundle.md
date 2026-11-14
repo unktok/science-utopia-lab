@@ -1,32 +1,45 @@
 # Local manuscript rebuild subsets
 
-## Current workflow-controls manuscript: subset preparation, not yet a rebuilt proof
+## Latest reviewed artifact: preserved78-page feedback manuscript
 
-The [reviewed75-page draft](../paper/integrated-workflow-controls-build-v1.json)
-has39 figures,31 tables and26 references. Its new
-[explicit64-file subset](../research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json)
-adds only the literal workflow section/annual figure and substitutes the correct
-reviewed PDF/receipt. The source and earlier subsets stay unchanged.
-The new receipt schema uses the same exact original Git-blob/source/figure/
-support manifest checks; no hash or dependency guard is relaxed.
+The [reviewed78-page draft](../paper/integrated-workflow-feedback-build-v1.json)
+has40 figures,33 tables and26 references. Its
+[explicit66-file subset](../research/publication/paper-rebuild-allowlist-integrated-workflow-feedback-v1.json)
+has actually rebuilt with identical extracted text and all78 rendered page
+images, using only the existing TeX cache. [Actual verification](../research/results/integrated-workflow-feedback-rebuild-subset-verification-v1.json).
+This is not fresh inference, numerical/raw reproduction or a cache-free machine.
 
-Preparation and light metadata tests may proceed while science runs. Cached
-TeX compilation and75-page rendering are deferred until real inference ends.
-Do not treat this preparation as the completed rebuild proof. After committing
-the policy/tool, stage from a clean committed checkout to a fresh destination:
+The main LaTeX source has since been revised to include the stopped open-code
+pilot and is **not yet rebuilt/reviewed**. The78-page receipt must intentionally
+reject those later source bytes. To reproduce the preserved78-page artifact,
+use a separate clean checkout at24e0f1ba2ccf01c5b8fd997279a38476b1c2d498,
+which contains the exact source385d8a49 inputs, reviewed artifact and policy.
+Do not overwrite the current source or amend historical hashes. From that
+checkout, stage to a fresh local destination:
 
 ```text
 <approved-project-python> -m scripts.reports.paper_rebuild_bundle \
-  --policy research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json \
-  --output outputs/integrated-workflow-controls-rebuild-subset-v1-a1
+  --policy research/publication/paper-rebuild-allowlist-integrated-workflow-feedback-v1.json \
+  --output <fresh-local-staging-directory>
 ```
 
-Follow staged REBUILD.md after checking inference is absent. Extract text in
-default pdftotext mode and render all75 pages at90dpi, matching the original
-reviewed receipt. The dedicated verification reader requires exact text and
-all75 PNG hashes, not a page-count-only or partial visual check. This remains
-local paper-source reproduction, not numerical/raw reproduction, anonymous
-submission, redistribution clearance or publication readiness.
+Follow staged REBUILD.md only when real inference is absent. Keep cached/untrusted
+TeX flags, default pdftotext extraction and90dpi rendering consistent with the
+reviewed receipt. A new PDF of later source requires its own actual builds,
+complete visual review and new receipt; no automatic historical fallback,
+page-count-only check or relabeling makes it reviewed. The material is local,
+not anonymous, publication-ready or cleared for redistribution.
+
+## Preserved75-page workflow-controls manuscript
+
+The [reviewed75-page draft](../paper/integrated-workflow-controls-build-v1.json)
+has39 figures,31 tables and26 references. Its
+[explicit64-file subset](../research/publication/paper-rebuild-allowlist-integrated-workflow-controls-v1.json)
+also actually rebuilt with identical text and all75 rendered page images;
+[verification](../research/results/integrated-workflow-controls-rebuild-subset-verification-v1.json).
+Recover exact inputs frombaa85e34a4b509ca33997a7e68848267f015f728, not the
+subsequently changed main entrypoint. The source/figure/hash guards remain
+unchanged; use its own policy and fresh destination, not the78-page PDF.
 
 ## Preserved native numeric manuscript
 
