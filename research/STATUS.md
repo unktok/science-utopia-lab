@@ -7,6 +7,18 @@ not live-process checks.
 
 ### November15: new64k SCRIPTED full native/cold/fixed path passes
 
+Subsequent actual capacity diagnostic39363 exits0 at frozen7daa1665, preserving
+all utopia bytes froma5be8d31. After its separately declared capacity-only CPU
+sharing observations, one empty load and two literal late-history chat POSTs
+complete: backend37298/44322 input tokens,669/539 output, both final stop and
+both input plus8192 reserved output fit65536. Provider38.773/43.906s; whole
+worker95.948s. No retry, action execution or scientific world. This resolves
+two-frame backend capacity, not future-frame capacity or request readiness.
+[Measured diagnostic and boundaries](logbook/2026-11-15-real64k-capacity-closed.md).
+Scientific comparison remains unstarted; fresh scientific resource admission
+and its own request-bound calibration remain next. Older paragraphs below
+retain their earlier snapshot, not current diagnostic liveness.
+
 The implementation and retained evidence are now integrated in main at8358e4c5;
 all actual scientific/diagnostic worktrees keep their separate frozen sources.
 The matching actual64k comparison plan is prepared in its owna5be8d31

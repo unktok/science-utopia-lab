@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual two-frame64k capacity closure](results/native-longitudinal-actual-capacity-v3.json):
+  original39363 exits0; backend37298/44322 input tokens plus8192 reserved output
+  fit65536 and both replies finish stop. Exactly one empty load/two chat POSTs,
+ 95.948s whole worker under separately declared capacity-only CPU sharing.
+  No returned action/scientific world, request readiness or gain is claimed.
+  Fresh scientific admission and its own calibration remain next.
+
 - [Full new64k SCRIPTED native/cold/fixed proof](results/native-longitudinal-64k-full-path-software-v1.json):
   sourcea5be8d31,12 own slots,13 completed native worlds/52 annual boundaries,
   three fixed worlds/six labels, both audit/cost pairs and all eight paired
