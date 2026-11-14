@@ -2,6 +2,41 @@
 
 ## Active publication-ready goal
 
+### November14 20:28JST: unused comparison and all readers close; no own advantage
+
+Original writer47320 exits0 at11:19:27UTC with all three fixed physical policies
+complete on unused seed1516320444. R7 has T=-30/U=-25, hand -32/-26 and the
+frozen U2 -28/-23. Both losses are minimized. Missing T selection remains a
+fourth logical label with no physical job/loss, not a substituted control.
+All five original continuations exit0; both original-source audits/costs and
+all four pairs of result/choice/effect/request reports agree.521 raw files
+are bound to the audit.467 scientist replies and138 separate critic calls
+are recorded over2441.556445s of shared-host science time. All three complete
+input classes differ. [Complete closed evidence](results/native-open-institution-fixed-closed-v1.json).
+No inference job from this campaign remains live; other projects are untouched.
+
+An original-audit-bound fixed-record reader also explains the development U
+disadvantage: R7/U2 share13 accepted occurrences, with five on each remaining
+side contributing4 versus3 utility units. All56 accepted occurrences in the
+three complete development cells have nonnegative centered opinions. No
+strict T/U conflict is observed in this archive, not proof of global alignment
+or permission to change the loss. Both byte-identical retrospective exports
+retain all six slots/five nulls. [Readout and representation verification](results/native-open-content-and-trace-verification-v1.json).
+
+The native trajectory's lossless columnar prototype shrinks actual views to
+about14KB; a single R7 attachment fits six old frames. It is not author-connected,
+token-capacity proof or a test of future successful own histories. Current
+losses, scientist weights and already executed model inputs are unchanged.
+52 light content/projection/source/retention tests pass; they are not52 worlds.
+The next-study note separates construction reliability from observation access
+and does not auto-dispatch a larger search. Main-track significance, suitable
+independent evidence and final readiness remain open.
+
+The complete working source now includes both open-code studies, exact content
+differences, every unused label and actual costs, plus two original verified
+figures. Its new cached PDF build/full visual review is next now that inference
+is absent. The older reviewed78-page PDF/receipt remains unchanged. [Chronology](logbook/2026-11-14-open-unused-closure-and-new-paper.md).
+
 ### November14 19:53JST: open v3 closes; frozen unused-condition evaluation is live
 
 The original v3 writer89980 exits0 at10:26:41UTC after all six declared own

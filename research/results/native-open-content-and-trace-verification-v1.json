@@ -1,0 +1,257 @@
+{
+  "R7_only_frame_preview": {
+    "both_exit_codes": 0,
+    "corrected_content_sha256": "e1b339bdb60e5682fd7e3840c5aa50359d77f4047858fcfa1d6eb3ee2d8cedb0",
+    "corrected_file_sha256": "6cc9c5bd5622f25a9d97e4648f9e7e20635e9192559956375592cad2bf8569af",
+    "correction_session": 79219,
+    "full_own_histories_tested": false,
+    "measured_model_token_fit": false,
+    "original_inputs_unchanged": true,
+    "original_preview_preserved": true,
+    "original_session": 9839,
+    "prior_mislabeled_hash_field_retained": true,
+    "prospective_bank_authorization_claimed": false,
+    "rows": [
+      {
+        "arm": "content-utility",
+        "counterfactual_R7_only_wire_bytes": 117025,
+        "declared_cap": 140000,
+        "fits_declared_byte_cap": true,
+        "original_binding_file_sha256": "b53346f433a57bad69f2ab3151f9cf225091c4cea1f9b00a2e3928b8afddeb8d",
+        "original_intent_file_sha256": "076032403a2be753d5de6a617a06c1e0af48f307a947ed2339a013b2167a7a6f",
+        "original_wire_bytes": 102387,
+        "prior_mislabeled_request_sha256_value": "native-research-world",
+        "request_sha256": "3b5f63ca03eab3f265c2ab1783a09a506b2fccd95313e76200c70981cfb3a3b5"
+      },
+      {
+        "arm": "content-utility",
+        "counterfactual_R7_only_wire_bytes": 120073,
+        "declared_cap": 140000,
+        "fits_declared_byte_cap": true,
+        "original_binding_file_sha256": "e62805643bc9b8660baa93076e798e2430fd68d6fad83c4686995c72bf7f6dc9",
+        "original_intent_file_sha256": "b8edf24197e12bcdb0ccc3a282d3d1d7a9e81bd6e639cb34bf1183e7dce9171a",
+        "original_wire_bytes": 105435,
+        "prior_mislabeled_request_sha256_value": "native-research-world",
+        "request_sha256": "77ae20cd5f40b4bda1971d996578b9eac42912f79ceefb5185858d4a93a6cac6"
+      },
+      {
+        "arm": "content-utility",
+        "counterfactual_R7_only_wire_bytes": 123426,
+        "declared_cap": 140000,
+        "fits_declared_byte_cap": true,
+        "original_binding_file_sha256": "a2a8908ae5991d5c8e2002f859bd1cf3bfcd52cc30fe271356a72a5076e25a27",
+        "original_intent_file_sha256": "8f35550239125cf96e76c9d715233a6183760433fe1e2bfed9cef160bbeb56d2",
+        "original_wire_bytes": 108788,
+        "prior_mislabeled_request_sha256_value": "native-research-world",
+        "request_sha256": "c334f4b5069b9216493aeebed112a2ee2938dac10ce3f5fd4035777a3ca7470e"
+      },
+      {
+        "arm": "throughput",
+        "counterfactual_R7_only_wire_bytes": 121822,
+        "declared_cap": 140000,
+        "fits_declared_byte_cap": true,
+        "original_binding_file_sha256": "edda60e5933329114ed5b16b3597c63af5937ec889f207fdc56595454dabf48c",
+        "original_intent_file_sha256": "3b7c0320f925136c3a33ea06d580f9b91d4a0dad7a8d6562193b10bbaca29bab",
+        "original_wire_bytes": 107184,
+        "prior_mislabeled_request_sha256_value": "native-research-world",
+        "request_sha256": "23ef3eba79b1b1ff190cc0a5901ef212d0c86d9ae2f5742d1a0857f04652b5e8"
+      },
+      {
+        "arm": "throughput",
+        "counterfactual_R7_only_wire_bytes": 116869,
+        "declared_cap": 140000,
+        "fits_declared_byte_cap": true,
+        "original_binding_file_sha256": "dd9b77ffa7e149a4a4f69541df3f99c52a43f70240cd6ce4f88dd9f854e6d85c",
+        "original_intent_file_sha256": "d1da95d8e4964836aa7ffc730668b788d7709b2cee62a8f4d542a185aaadae72",
+        "original_wire_bytes": 102231,
+        "prior_mislabeled_request_sha256_value": "native-research-world",
+        "request_sha256": "9ef4f29bf4658459241f50c69a36c8a184a7976971f55489068904dd21d06ff5"
+      },
+      {
+        "arm": "throughput",
+        "counterfactual_R7_only_wire_bytes": 119874,
+        "declared_cap": 140000,
+        "fits_declared_byte_cap": true,
+        "original_binding_file_sha256": "72eed50eff5c5ccb5b525a3c4eb6dc7070d552479bfa3faa84db873afcda901a",
+        "original_intent_file_sha256": "553bcf31b8f6fe1f05d4be1b9d79aba415c47efce3853bbc728e3bb56104ab9a",
+        "original_wire_bytes": 105236,
+        "prior_mislabeled_request_sha256_value": "native-research-world",
+        "request_sha256": "d1749c9d61b8770e47fefbc524646372ca66bb580b4a81cfcab269a614797fc5"
+      }
+    ]
+  },
+  "author_or_measurement_connection_implemented": false,
+  "checks": {
+    "exit_code": 0,
+    "junit": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-open-content-and-columnar-v1-a2/junit.xml",
+    "junit_sha256": "cafdf61266982742957666a77e01cad9cd98de3e228e346f5c925fc612b2f16f",
+    "seconds": 5.61,
+    "session": 63633,
+    "tests": 48
+  },
+  "codec_actual_exports": {
+    "exit_code": 0,
+    "rows": [
+      {
+        "columnar_bytes": 13753,
+        "exact_roundtrip": true,
+        "export_content_sha256": "2cc07a8fdda5956ace90b0523a562d0c0589ff819ef7617e149a7b2b22b8f1ab",
+        "file_sha256": "01209bdb17600a3f1732292e0fdab7b73c795dc951a46c03acb9133559ce0425",
+        "label": "r7",
+        "original_bytes": 24743,
+        "original_projection_content_sha256": "d9e9a2f661b93eb3524a8a92ef49d613b8fd984ef42120cd8cc60de7d07da86e"
+      },
+      {
+        "columnar_bytes": 13825,
+        "exact_roundtrip": true,
+        "export_content_sha256": "f4075d5da401ccd5d508274c443fdffc55aaff37dfe7f36ac7fd772ee0ca7843",
+        "file_sha256": "92eca35a011991131c89f945a126a211ec639e4ef9fbda484fce26fbf283eab6",
+        "label": "hand",
+        "original_bytes": 24874,
+        "original_projection_content_sha256": "a8eb10883889d01b43fbd01d7ad00c4d43941052aebf96963f63cc897666c3ff"
+      },
+      {
+        "columnar_bytes": 13753,
+        "exact_roundtrip": true,
+        "export_content_sha256": "c6f8a3211f316987a9579c70be7a987d6fb0c5c7362885f2484261e0bfc8d6a2",
+        "file_sha256": "5cadc7317d6849bd5c7b9e49267b63945a61c78fb18dd84a10d14a3c9c537f7f",
+        "label": "t0",
+        "original_bytes": 24743,
+        "original_projection_content_sha256": "f5376dc182df5294508beb0376a85cd0854cb95d00504d7841cd252fcb0c08ad"
+      }
+    ],
+    "session": 65421
+  },
+  "component_file_sha256": {
+    "scripts/reports/native_trajectory_columnar_v1.py": "867f2b2a19fbca10f38cbba1cdd12fe2e03b3b35873e8c3ee6db941c2f2eeb03",
+    "scripts/reports/native_workflow_content_delta_v1.py": "18fdca887afcebc5cf35d82edb986ade368e12db1c1395453b0959b62ed192c7",
+    "tests/optimization/test_native_trajectory_columnar_v1.py": "49c22e798a3db097dc21a5949886f93eda5785068168ce2aed9bf5ace95247f0",
+    "tests/reports/test_native_workflow_content_delta_v1.py": "80fadc775f613d9bb08a7392b67ad28101e92d1c1df045942b5e9096de94e9d8",
+    "utopia/optimization/native_trajectory_columnar_v1.py": "63e07c0fcef0fc46201941e71b4829e9320236baca9f762101b618f6cadd55d5"
+  },
+  "component_source_commit": "fe30dfc39f26a55eb2f88c1febcf1d970b127177",
+  "content_comparison": {
+    "all_slots": [
+      {
+        "generation": 0,
+        "objective": "throughput",
+        "physical_job": "native-adaptive-903fd12193c2d20fa9302996",
+        "status": "failed"
+      },
+      {
+        "generation": 0,
+        "objective": "content-utility",
+        "physical_job": null,
+        "status": "generation-null"
+      },
+      {
+        "generation": 1,
+        "objective": "content-utility",
+        "physical_job": null,
+        "status": "generation-null"
+      },
+      {
+        "generation": 1,
+        "objective": "throughput",
+        "physical_job": "native-adaptive-5aa19878f157cd47523fd0d0",
+        "status": "failed"
+      },
+      {
+        "generation": 2,
+        "objective": "throughput",
+        "physical_job": null,
+        "status": "generation-null"
+      },
+      {
+        "generation": 2,
+        "objective": "content-utility",
+        "physical_job": "native-adaptive-1e40191732750d389637d725",
+        "status": "complete"
+      }
+    ],
+    "analysis_content_sha256": "e9069194a4a626715c40389203df803691167b52c980f1881246d03d7ee5965e",
+    "exit_code": 0,
+    "export_content_sha256": "e50ab19744614f4d07a3f800764b2323ba07839396e9cfa1d4f91d206274c5f8",
+    "file_sha256": "7abf730ca1ba83f02e80afd158bde42c7d1fe24d04350cada12e8daf8710c23a",
+    "original_bytes_unchanged": true,
+    "pair_count": 3,
+    "raw_files": 469,
+    "raw_inventory_sha256": "f43d1f9825ab5358c538a6027ee356403fec267acc4b36f025b7c2d92b811a75",
+    "session": 83497,
+    "two_exports_identical": true,
+    "worlds": [
+      {
+        "identity": "workflow-reference-r7-original",
+        "label": "R7-original",
+        "scores": {
+          "content-utility": -13.333333333333332,
+          "throughput": -18.0
+        },
+        "sign_counts": {
+          "negative": 0,
+          "positive": 13,
+          "zero": 5
+        },
+        "status": "complete"
+      },
+      {
+        "identity": "workflow-reference-post-funding-cost",
+        "label": "post-funding-cost",
+        "scores": {
+          "content-utility": -15.333333333333332,
+          "throughput": -20.0
+        },
+        "sign_counts": {
+          "negative": 0,
+          "positive": 15,
+          "zero": 5
+        },
+        "status": "complete"
+      },
+      {
+        "identity": "native-adaptive-903fd12193c2d20fa9302996",
+        "label": "T0",
+        "scores": {
+          "content-utility": null,
+          "throughput": null
+        },
+        "sign_counts": null,
+        "status": "failed"
+      },
+      {
+        "identity": "native-adaptive-5aa19878f157cd47523fd0d0",
+        "label": "T1",
+        "scores": {
+          "content-utility": null,
+          "throughput": null
+        },
+        "sign_counts": null,
+        "status": "failed"
+      },
+      {
+        "identity": "native-adaptive-1e40191732750d389637d725",
+        "label": "U2",
+        "scores": {
+          "content-utility": -12.333333333333332,
+          "throughput": -18.0
+        },
+        "sign_counts": {
+          "negative": 0,
+          "positive": 12,
+          "zero": 6
+        },
+        "status": "complete"
+      }
+    ]
+  },
+  "content_sha256": "494b537918aa98693463b6710c27ca094e58fc63cee8034c98f5bcd995bc6840",
+  "full_frame_token_fit_proved": false,
+  "loss_changed": false,
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false,
+  "schema": "scienceutopia.native-open-content-and-trace-verification.v1",
+  "scientific_gain_claimed": false,
+  "selection_changed": false
+}

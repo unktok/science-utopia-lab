@@ -6,6 +6,19 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed unused comparison](results/native-open-institution-fixed-closed-v1.json):
+  all three physical policies complete; R7 T=-30/U=-25, hand -32/-26, own U
+  -28/-23. T selection remains missing, not a control fallback. All five
+  readers and paired original audits/exports close. No campaign inference
+  remains live. The generated policy loses on both conditions and both losses.
+- [Content and trace verification](results/native-open-content-and-trace-verification-v1.json):
+  exact fixed-record replacement explains the development utility difference;
+  all56 accepted opinions are nonnegative, without a global alignment claim.
+  The lossless trace codec is preparation, not a connected author or new study.
+  Complete working source is updated; a new PDF build/review is next.
+
+The following dispatch/source observations are dated history, not current liveness.
+
 - [Closed open v3](results/native-open-institution-closed-v3.md): all six own
   slots finish, with one complete unfavorable U policy, three generation nulls
   and two runtime nulls. Original double cold readouts agree. T selection is

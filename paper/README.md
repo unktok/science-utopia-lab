@@ -14,7 +14,8 @@ The current LaTeX source additionally describes the later stopped open-code
 pilot:one actual own completion changes scientist information but improves
 neither loss. It also retains every slot of the separate normally closed v3:
 three generation nulls, two runtime nulls and one unfavorable own completion,
-with a missing T selection and the frozen unused evaluation still pending.
+with a missing T selection. Its frozen unused evaluation completes all three
+physical policies:the own U selection loses to both references on both losses.
 It corrects stale closure language. These **source
 revisions have not yet been rebuilt or visually reviewed**. No PDF rendering
 or independent heavy QA is run while real model inference is active; the

@@ -1,0 +1,410 @@
+{
+  "audit": {
+    "content_sha256": "1acd306194fca416829bf9d8da39b0943e940c4ba3c3e6b44814155a9917bb2c",
+    "continuation_exit_codes": {
+      "audit": 0,
+      "choices": 0,
+      "effects": 0,
+      "report": 0,
+      "requests": 0
+    },
+    "cost_content_sha256": "72d149ebb8be114ccb8be949842bf8f10980ed68ef79c7c4a6f2e6d0b4e1728b",
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-fixed-analysis-v1-a1/outputs/native-open-institution-fixed-audit-v1-a1",
+    "file_sha256": "53a4b202862e88d328f365a338bac461aa18cbb28db72ae8d9f4466bbb6b6e2a",
+    "raw_files": 521,
+    "raw_inventory_sha256": "cce6f6d1a00f0ee8e86d79082bbb5ce7fd440764e92310c9f275d92d93cd3b8a",
+    "source_proof_status": "verified-exact-source-closure",
+    "two_cost_exports_identical": true,
+    "two_original_audits_identical": true
+  },
+  "baseline_fallback": false,
+  "classification": "normally-closed-selection-fixed-unused-world-with-missing-T-selection-and-unfavorable-U-policy",
+  "common_content_observer_cost": {
+    "input_observer_audit_content_sha256": "2970acf7acb4c1265ca11423d54b97c95202a4897d30d3c60feb9235bc31fa18",
+    "known_terminal_attempts": 138,
+    "overlap_with_native_response_caches": false,
+    "physical_requests": 138,
+    "scope": "Separate fixed-content critic POSTs; repeated content cache hits are not additional physical ratings.",
+    "usage": {
+      "http_elapsed_seconds": {
+        "known_sum": 540.2125556250103,
+        "unknown_attempts": 0
+      },
+      "output_tokens": {
+        "known_sum": 19547,
+        "unknown_attempts": 0
+      },
+      "prompt_tokens": {
+        "known_sum": 62169,
+        "unknown_attempts": 0
+      }
+    }
+  },
+  "complete_observed_input_classes": [
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "6d8144b77b8871ae052034deade87bc21baef73ad4cacef061fd8976c7b6d055",
+      "physical_ids": [
+        "evaluation-002"
+      ],
+      "seed": 1516320444
+    },
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "e5c05fc80622342ff2c73e2473dfad616ab854e1cbf23202eb3eb48a4933c736",
+      "physical_ids": [
+        "evaluation-001"
+      ],
+      "seed": 1516320444
+    },
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "fa3c91e0fc809159e3d3b74dd62b44e49715007e93afc9fd28f2816f331fc05d",
+      "physical_ids": [
+        "evaluation-000"
+      ],
+      "seed": 1516320444
+    }
+  ],
+  "content_sha256": "b714f3ca86f166589252a05ff586b50c8badc08f1a84737b642ab64d72f3494d",
+  "frozen_selection": {
+    "baseline_fallback": false,
+    "original_content_sha256": "162abe9a1cb549b1e74ec91c5b66b09cf998085768ef4ddbcb76b29a92bf90cf",
+    "selected": {
+      "content-utility": {
+        "all_tied_ids": [
+          "native-adaptive-1e40191732750d389637d725"
+        ],
+        "loss": -12.333333333333332,
+        "selected_id": "native-adaptive-1e40191732750d389637d725",
+        "system_sha256": "73e818971d902fb5940640a229aec8f8009d9a75ad0e41c0c2d6c5d84d4736fe"
+      },
+      "throughput": {
+        "all_tied_ids": [],
+        "loss": null,
+        "selected_id": null,
+        "system_sha256": null
+      }
+    }
+  },
+  "independent_optimizer_replication": false,
+  "logical_rows": [
+    {
+      "label": "reference:R7-original",
+      "physical_job": "evaluation-000",
+      "scores": {
+        "content-utility": -25.0,
+        "throughput": -30.0
+      },
+      "seed": 1516320444,
+      "status": "complete"
+    },
+    {
+      "label": "reference:post-funding-cost",
+      "physical_job": "evaluation-001",
+      "scores": {
+        "content-utility": -26.0,
+        "throughput": -32.0
+      },
+      "seed": 1516320444,
+      "status": "complete"
+    },
+    {
+      "label": "selected:throughput",
+      "physical_job": null,
+      "scores": {
+        "content-utility": null,
+        "throughput": null
+      },
+      "seed": 1516320444,
+      "status": "no-completed-submission"
+    },
+    {
+      "label": "selected:content-utility",
+      "physical_job": "evaluation-002",
+      "scores": {
+        "content-utility": -23.0,
+        "throughput": -28.0
+      },
+      "seed": 1516320444,
+      "status": "complete"
+    }
+  ],
+  "matching_report_files": {
+    "choices": {
+      "annual-project-states.csv": "d6ab05f0114ab6451939fa0185ab317cd9fa8a9f83e365b471ef7ab42b8049b5",
+      "manifest.json": "23e2eeea946b7a09a0a87fda1441c5c941f969244f8f5cd9121f559622281608",
+      "report.json": "393e17583f87486aad56f7e7c72a85036d605e8cfa472950cb96078869204182"
+    },
+    "effects": {
+      "annual-boundaries.csv": "62788827c7eaceace7779de43bdffb921bb99bc018b24c0026a7bdd83adf0dc3",
+      "manifest.json": "677704a6df044620207028d08a66f7b0ce002a910fb6c4bf384c47ae425f72dc",
+      "report.json": "644427d494bc5fa228be8864beb9280204d0b30b36cf2a5aeb0d1b8ea579377b"
+    },
+    "report": {
+      "fixed-policy-paired-differences.png": "b14a89d5226e1b1fcec1fc3cc939a5da594e195e3ded28fe2e79c632993c2a1d",
+      "fixed-policy-paired-differences.svg": "4cdece0d722ae2669237afe5f1601a5cc13ea6d4dc027d94e074883cd6cc0571",
+      "fixed-policy-seed-scores.png": "5f734b6b5183ec46a8130c7be94bfbe6e8685a77c2aafc7b0a90e80531469500",
+      "fixed-policy-seed-scores.svg": "91aedd09e84aeec8c2639051d6d2c9f8f586f46c7ddd70888c4d88a370f65a3d",
+      "logical-scores.csv": "fbd206183684038caf57cbf552533fec75b81469a3ecdfa8aa47135957703db7",
+      "manifest.json": "59dec112fe4892ef5f8c4a83cfd38028a8b592c1e266f539dc4a903c369822e5",
+      "objective-choice-differences.csv": "016af49ab5ef38949d339a964343b4e37b0367c732195d6780864f6b250e4a8d",
+      "paired-differences.csv": "7f0ff74238b893ff6f9163d079e252b29bc32c05f06f583a59cca1121923ab6c",
+      "report.json": "78f8102d9d08d9164af6a95ac181d05692687d6647695039ec585601d07b30a3"
+    },
+    "requests": {
+      "manifest.json": "160a95f92f1982cc45de27fb0a326531b7fdbf89cb2d6240105e25aaf004f499",
+      "report.json": "003f6cf71934c4acd35f5755ec3d03fcff6ef1a75f2793b0ea0b4d45db520135"
+    }
+  },
+  "new_designer_calls": 0,
+  "objective_choice_differences": [
+    {
+      "differences": {
+        "content-utility": null,
+        "throughput": null
+      },
+      "left": "selected:throughput",
+      "left_physical_job": null,
+      "right": "selected:content-utility",
+      "right_physical_job": "evaluation-002",
+      "same_physical_job": false,
+      "seed": 1516320444
+    }
+  ],
+  "origin_audit_content_sha256": "bfd7a7dc56c2923e26ab7155d58c547ac22ca800f4fad324897bd80b3a1d2d36",
+  "own_advantage_over_R7": false,
+  "own_advantage_over_hand": false,
+  "paired_differences": [
+    {
+      "differences": {
+        "content-utility": null,
+        "throughput": null
+      },
+      "label": "selected:throughput",
+      "physical_job": null,
+      "reference": "R7-original",
+      "reference_physical_job": "evaluation-000",
+      "same_physical_job": false,
+      "seed": 1516320444
+    },
+    {
+      "differences": {
+        "content-utility": null,
+        "throughput": null
+      },
+      "label": "selected:throughput",
+      "physical_job": null,
+      "reference": "post-funding-cost",
+      "reference_physical_job": "evaluation-001",
+      "same_physical_job": false,
+      "seed": 1516320444
+    },
+    {
+      "differences": {
+        "content-utility": 2.0,
+        "throughput": 2.0
+      },
+      "label": "selected:content-utility",
+      "physical_job": "evaluation-002",
+      "reference": "R7-original",
+      "reference_physical_job": "evaluation-000",
+      "same_physical_job": false,
+      "seed": 1516320444
+    },
+    {
+      "differences": {
+        "content-utility": 3.0,
+        "throughput": 4.0
+      },
+      "label": "selected:content-utility",
+      "physical_job": "evaluation-002",
+      "reference": "post-funding-cost",
+      "reference_physical_job": "evaluation-001",
+      "same_physical_job": false,
+      "seed": 1516320444
+    }
+  ],
+  "physical_worlds": 3,
+  "plan_sha256": "fe350223e1ea532113114d97808468cbc02f25bebf89639b6245ad2115733709",
+  "publication_ready": false,
+  "schema": "scienceutopia.native-open-institution-fixed-closed.v1",
+  "science_wall_seconds": 2441.556445,
+  "scientific_truth_improvement_claimed": false,
+  "scientist_cost": {
+    "completed_responses": 467,
+    "physical_response_caches": [
+      {
+        "completed_responses": 156,
+        "file_sha256": "2ff8e54878869a9a684a573cfaf99b9930fc044b5511f802b4b245f6f73763ee",
+        "matched_wire_indices_sha256": "48b4a0f77203c93b53231416e8e2a5b110bf4faeb8f7f4e0c5ebe57caca085f7",
+        "path": "evaluation/evaluation-000/worlds/evaluation-000-s1516320444/replies/responses.sqlite",
+        "provider_total_component_disagreements": 0,
+        "usage": {
+          "cached_prompt_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 156,
+            "missing_responses": 0,
+            "recorded_sum": 40100
+          },
+          "completion_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 156,
+            "missing_responses": 0,
+            "recorded_sum": 13552
+          },
+          "prompt_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 156,
+            "missing_responses": 0,
+            "recorded_sum": 222143
+          },
+          "total_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 156,
+            "missing_responses": 0,
+            "recorded_sum": 235695
+          }
+        },
+        "wire_inputs": 156,
+        "wire_inputs_without_committed_reply": 0
+      },
+      {
+        "completed_responses": 163,
+        "file_sha256": "ac4cae4cbef719c94777cdf248a56ab20eed9933046c6a0fbfe417581c2bcd1a",
+        "matched_wire_indices_sha256": "00294705ee760140a7a636c1ab42374a21d7fe4f1e0fb89740c079781ff3f6f7",
+        "path": "evaluation/evaluation-001/worlds/evaluation-001-s1516320444/replies/responses.sqlite",
+        "provider_total_component_disagreements": 0,
+        "usage": {
+          "cached_prompt_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 163,
+            "missing_responses": 0,
+            "recorded_sum": 40976
+          },
+          "completion_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 163,
+            "missing_responses": 0,
+            "recorded_sum": 14134
+          },
+          "prompt_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 163,
+            "missing_responses": 0,
+            "recorded_sum": 236697
+          },
+          "total_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 163,
+            "missing_responses": 0,
+            "recorded_sum": 250831
+          }
+        },
+        "wire_inputs": 163,
+        "wire_inputs_without_committed_reply": 0
+      },
+      {
+        "completed_responses": 148,
+        "file_sha256": "c91f49b175f6c918ab58848097b4a386970dcbe5c2860b0c519ae37bfffc3850",
+        "matched_wire_indices_sha256": "366f38341b4e61ed927426c7de48a12d28a7d4b1ff07f88f5c31bc05352031dc",
+        "path": "evaluation/evaluation-002/worlds/evaluation-002-s1516320444/replies/responses.sqlite",
+        "provider_total_component_disagreements": 0,
+        "usage": {
+          "cached_prompt_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 148,
+            "missing_responses": 0,
+            "recorded_sum": 41702
+          },
+          "completion_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 148,
+            "missing_responses": 0,
+            "recorded_sum": 12747
+          },
+          "prompt_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 148,
+            "missing_responses": 0,
+            "recorded_sum": 209184
+          },
+          "total_tokens": {
+            "all_completed_responses_known": true,
+            "invalid_responses": 0,
+            "known_responses": 148,
+            "missing_responses": 0,
+            "recorded_sum": 221931
+          }
+        },
+        "wire_inputs": 148,
+        "wire_inputs_without_committed_reply": 0
+      }
+    ],
+    "provider_usage": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 467,
+        "missing_responses": 0,
+        "recorded_sum": 122778
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 467,
+        "missing_responses": 0,
+        "recorded_sum": 40433
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 467,
+        "missing_responses": 0,
+        "recorded_sum": 668024
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 467,
+        "missing_responses": 0,
+        "recorded_sum": 708457
+      }
+    },
+    "wire_inputs_without_committed_reply": 0,
+    "wire_only_worlds": []
+  },
+  "source_commit": "25be72cd4419003edb72a956e2c68cfdc3d36207",
+  "started_utc": "2026-11-14T10:38:46.239293+00:00",
+  "terminal": {
+    "completed_jobs": 3,
+    "content_sha256": "c300c79a3922dc0f7e8669efd4706bf2aff5695df148d619cffa0e54fda4c88a",
+    "ended_utc": "2026-11-14T11:19:27.795738+00:00",
+    "held_out_world_seeds": true,
+    "publication_ready": false,
+    "schema": "scienceutopia.native-workflow-fixed-evaluation.v1.terminal",
+    "status": "closed"
+  },
+  "unused_seeds": [
+    1516320444
+  ],
+  "writer": {
+    "exit_code": 0,
+    "pid": 63075,
+    "session": 47320
+  }
+}

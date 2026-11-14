@@ -1,0 +1,5 @@
+label,reference,seed,physical_job,reference_physical_job,same_physical_job,throughput,content-utility
+selected:throughput,R7-original,1516320444,,evaluation-000,False,,
+selected:throughput,post-funding-cost,1516320444,,evaluation-001,False,,
+selected:content-utility,R7-original,1516320444,evaluation-002,evaluation-000,False,2.0,2.0
+selected:content-utility,post-funding-cost,1516320444,evaluation-002,evaluation-001,False,4.0,3.0
