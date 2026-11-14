@@ -74,6 +74,38 @@ costs, with each mixed workflow explicitly validated for typed data freshness
 and native effects. It is not enough to rename a phase while retaining a stale
 world snapshot. No mixed control or new world is dispatched by this note.
 
+### November14 static decomposition, not an executed followup
+
+The [prospective constructor and actual static exports](../results/native-workflow-timing-corners-static-v1.json)
+now verify that all four early/late liquidity-by-cost graphs are legal in the
+existing native domain, without changing sources, parameters, effects or initial
+state. The original and existing hand control are literal endpoints; mixed
+controls do not repair or replace any submitted optimizer policy.
+
+| Liquidity timing | Cost timing | Changed phases | Rewired edges | Liquidity reads | Selection features read |
+| --- | --- | --- | --- | --- | --- |
+| Early | Early |0|0| Submission snapshot | Costs snapshot |
+| Late | Early |2|1| Funding snapshot | Costs snapshot |
+| Early | Late |1|4| Submission snapshot | Submission snapshot |
+| Late | Late |3|5| Funding snapshot | Submission snapshot |
+
+This clarifies a remaining identification problem, rather than solving it:
+moving costs past selection requires a new causal upstream observation route.
+With early liquidity but late costs, the submission snapshot can also precede
+that year's early transfer. Resource-transfer effects emit receipts, not a new
+`world` observation port; one cannot assume that a later consumer receives a
+refreshed world merely because its phase moved. The four legal graphs are thus
+well-defined **timing-plus-observation policies**, not a pure action-timing
+factorial. A future mechanism study must explicitly hold suitable observation
+rules constant or separately manipulate them, and retain stale-input failures
+if that is the declared policy. Do not silently add a new snapshot capability,
+change the fixed pilot or claim an isolated effect from these static graphs.
+
+The eight pure checks and two identical source-bound static exports execute
+no native world, model or institutional code. The input anchor is a literal
+plan from the stopped workflow attempt; using its graph proves no normal
+closure or outcome for that attempt. No new comparison or seed is queued.
+
 Only then fix a finite independent-history/unused-condition comparison and
 lock the selected systems before evaluation. Do not choose seeds, refill a
 failed proposal, remove a strong control or revise the loss to manufacture a

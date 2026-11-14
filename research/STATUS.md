@@ -2,7 +2,18 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 10:30JST (November14 01:30UTC)
+### Current overview: November14 10:40JST (November14 01:40UTC)
+
+**Prospective mechanism contrasts are statically validated, not dispatched.**
+Sourcee67de592 derives four legal liquidity/cost timing graphs, retaining exact
+original and hand-control endpoints, without code/parameter/native-effect edits.
+Eight pure checks and two byte-identical actual static CLI exports pass; no
+world/model/component runs. The [receipt](results/native-workflow-timing-corners-static-v1.json)
+and [interpretation plan](publication/native-workflow-mechanism-readout-v1.md)
+make the remaining information-routing confound explicit: legal timing corners
+alone do not isolate a pure cost-order effect. The stopped plan is only a graph
+anchor, never a normally closed result. No followup or evaluation seed is queued.
+Existing waiter11803 is polled live and stays on unchanged6625d8e3.
 
 **Evaluation mechanism readouts and all-null native test are prepared.**
 At147f21de the new scope reaches phase/ledger, literal project-choice and full

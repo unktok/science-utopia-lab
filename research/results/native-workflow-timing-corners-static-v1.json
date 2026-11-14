@@ -1,0 +1,44 @@
+{
+  "schema": "scienceutopia.native-workflow-timing-corners-static.v1.verification",
+  "classification": "static-prospective-mechanism-design-not-native-execution-or-scientific-comparison",
+  "source_commit": "e67de59287e4da345376a5b4b2124327bf88b30c",
+  "unit_checks": {
+    "passed": 8,
+    "failed": 0,
+    "seconds": 10.62,
+    "junit": "/private/tmp/science-utopia-timing-corners-v1-a1.9OvVZn/junit.xml",
+    "junit_sha256": "8112a512ce448892950a2b68d2144203993bce55f18154da45f1c8b8cac61130"
+  },
+  "actual_static_exports": {
+    "directories": ["outputs/native-timing-corners-v1-a1", "outputs/native-timing-corners-v1-a2"],
+    "observed_exit_codes": [0, 0],
+    "all_corresponding_bytes_equal": true,
+    "report_sha256": "9229219804fcd02726f43209b571051d1d30d37a4ced019ee3494c6c0f0b8000",
+    "report_content_sha256": "cb3ad7b288d8f4c319a97771d4f5209c6125e623e1cccad54bb87ed4e9162941",
+    "manifest_sha256": "514fdc0fec3d39d7019c238ec06cea4d29237cae50720c8e49410cdea83c42ea",
+    "anchor_plan_content_sha256": "ed85d848b26a4ee9c7523a022262239001e813540ec1a479fa8abe81e59e7957",
+    "anchor_plan_file_sha256": "ffa675be9cd9fdf1e4bb2373655fecd6a05f87433866acebefadd7485dc73d8d",
+    "anchor_is_from_stopped_study": true,
+    "source_or_anchor_normal_scientific_closure_claimed": false
+  },
+  "corners": [
+    {"label": "early-liquidity_early-cost", "changed_phases": 0, "changed_edges": 0, "literal_original_anchor": true},
+    {"label": "late-liquidity_early-cost", "changed_phases": 2, "changed_edges": 1},
+    {"label": "early-liquidity_late-cost", "changed_phases": 1, "changed_edges": 4},
+    {"label": "late-liquidity_late-cost", "changed_phases": 3, "changed_edges": 5, "literal_existing_joint_hand_control": true}
+  ],
+  "all_four_pass_original_native_workflow_structure_only_domain": true,
+  "sources_parameters_nodes_initial_state_or_native_effects_changed": false,
+  "information_rule_caveat": "The late-cost level reroutes selection features to the submission snapshot, while late liquidity reads funding's snapshot. These legal corners alone do not isolate a pure timing effect or hold every information route fixed. A future causal followup must name and handle that distinction before dispatch.",
+  "hand_controls_are_optimizer_inventions": false,
+  "scientific_losses_or_failures_repaired": false,
+  "current_scientific_plan_changed": false,
+  "new_comparison_queued": false,
+  "evaluation_seeds_selected": false,
+  "new_native_worlds": 0,
+  "new_model_calls": 0,
+  "new_component_code_executions": 0,
+  "causal_effect_or_institutional_improvement_identified": false,
+  "publication_ready": false,
+  "research_goal_complete": false
+}

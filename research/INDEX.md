@@ -6,7 +6,7 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Current status](STATUS.md): November14 10:30JST; the publication-ready goal
+- [Current status](STATUS.md): November14 10:40JST; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
 - [Workflow-only fixed evaluation preparation](results/native-workflow-fixed-evaluation-preparation-v1.json):
@@ -18,6 +18,10 @@ Historical documents retain their paths and source identities.
   phase/ledger, actual project choices and full-request-class routes now accept
   frozen workflow evaluation;55 light checks pass. Both native cases are only
   collected, not executed; current CPU-batch wait remains live and unchanged.
+- [Prospective timing mechanism corners](results/native-workflow-timing-corners-static-v1.json):
+  four legal graphs retain exact original/hand endpoints;8 pure checks and two
+  matching static exports pass, with no worlds or new study. Changing timing
+  also changes snapshot routing, so a pure timing effect remains unidentified.
 - [Actual workflow-v2 first dispatch](results/native-workflow-v2-first-dispatch-v1.json):
   starts23:52:27UTC at frozen3b912d17/planed85d848, session70493/PID21985.
   Initial35B readiness subsequently passes, but first R7/year2 funding stops on

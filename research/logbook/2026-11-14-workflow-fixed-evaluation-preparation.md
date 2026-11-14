@@ -72,3 +72,22 @@ external batch26258 present and CPU1067.3%. The unchanged6625d8e3 waiter alone
 can start its earlier seven-world transport check after its declared window.
 This is not a resource lease, a causal timeout diagnosis or an actual scientific
 trajectory. No other job is stopped or reprioritized; goal R2/R3/R6 stays open.
+
+## 10:40JST follow-up: prospective mechanism identification, not more worlds
+
+The previous goal turn added readout/all-null coverage and pushed it, so it
+was progress. Current turn polls live waiter11803 again and prepares a research
+design dependency: the existing two-reference contrast jointly changes liquidity,
+costs and observation routing. The
+[static corner receipt](../results/native-workflow-timing-corners-static-v1.json)
+binds sourcee67de592, eight pure checks and two actual CLI exports with identical
+bytes, deriving four legal graphs from the unchanged original workflow plan.
+Zero models, components or native worlds execute; no followup is queued.
+
+The literal endpoints reproduce R7 and the existing hand control; mixed cases
+require2/1 and1/4 phase/edge edits. The exercise also exposes why these are not
+a pure timing factorial: late costs require a different feature snapshot,
+and a transfer receiver has receipts but no refreshed world-output port. This
+is now explicit in the [mechanism analysis plan](../publication/native-workflow-mechanism-readout-v1.md).
+It changes the design of any future causal followup, not current losses,
+authored submissions, stopped records or the active resource waiter.
