@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Construction-to-native outcome readout](components/native-workflow-construction-readout-v1.md):
+  optional post-closure reader joins all six staged paths/component results/
+  final artifact applicability to original native losses/nulls/selection.
+  27 JSON-only software checks pass, not an actual free-design or gain result;
+  real-study export waits for normal closure and matching original audits.
+
 - [Actual28-case readiness passes; R7 world starts](results/native-open-staged-institution-initial-readiness-v1.json):
   original Qwen3-8B world now runs after local35B controls, not free invention
   or an own gain. [One prospective fixed condition](protocols/campaigns/native-open-staged-fixed-evaluation-v1.md)

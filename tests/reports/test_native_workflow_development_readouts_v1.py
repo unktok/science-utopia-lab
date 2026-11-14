@@ -79,14 +79,14 @@ def test_incomplete_or_relabeled_workflow_never_becomes_valid_choice_export(tmp_
     assert not args.output.exists()
 
 
-@pytest.mark.parametrize('kind', ['choices', 'effects', 'requests'])
+@pytest.mark.parametrize('kind', ['choices', 'effects', 'requests', 'construction'])
 def test_waiter_uses_exact_workflow_closure_and_explicit_original_source_scope(tmp_path, monkeypatch, kind):
     seen = {}; monkeypatch.setattr(finish, 'finish', lambda args, **kw: seen.update(kw))
     finish.run(SimpleNamespace(kind=kind, frozen_source=tmp_path))
     assert seen['plan_schema'] == 'scienceutopia.native-workflow-objective-loop.v1.plan'
     assert seen['preceding_schema'] == 'scienceutopia.native-workflow-objective-loop-finish.v1'
     assert seen['continuation_schema'] == 'scienceutopia.native-workflow-' + kind + '-finish.v1'
-    if kind == 'requests': assert seen['report_extra_arguments'] == ()
+    if kind in ('requests', 'construction'): assert seen['report_extra_arguments'] == ()
     else:
         assert seen['report_extra_arguments'][:2] == ('--frozen-source', str(tmp_path.resolve()))
         assert seen['report_extra_arguments'][-1] == ('workflow-development' if kind == 'choices' else 'workflow-objective-development')
