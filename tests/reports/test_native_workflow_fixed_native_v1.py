@@ -112,7 +112,7 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
                 '--output', str(external / (name + '-' + str(i))), *extra], cwd=driver.ROOT,
                 check=True, capture_output=True, text=True, timeout=1800)
         readout_files[name] = same_files(external / (name + '-1'), external / (name + '-2'))
-        assert len(driver.read(external / (name + '-1') / 'report.json')['worlds']) == 2
+        assert len(driver.read(external / (name + '-1') / 'report.json')['worlds']) == expected_jobs
     assert _inventory(root) == before
     write_json_atomic(tmp_path / 'verification.json', {
         'schema': 'scienceutopia.native-workflow-fixed-software-check.v1',
