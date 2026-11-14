@@ -52,3 +52,12 @@ The current unused seed/outcomes stay outside future development banks.
 
 R2 important contribution, R3 suitable independent evidence, R5 focused
 supported manuscript and R6 final publication-readiness decision remain open.
+
+The manuscript/fixed results and71-file reconstruction are merged into main
+and pushed atf6ecdc10. Subsequent prospective source-scope work is separately
+pushed atf4e921e1 (`feat/native-longitudinal-native-connection-v1`), not merged.
+At its cleanf2c0d1aa,273 inherited runtime files retain stagedf47270b9 bytes;
+four author/presentation changes and one added helper are bound, not ignored.
+The old guard still actually rejects the changed optimizer.41 targeted checks
+plus one retained-record check pass; no new native world, model call, backend
+readiness or complete matched-runner/cold connection is claimed.
