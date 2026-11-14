@@ -1,0 +1,100 @@
+{
+  "assigned_loss": -18.0,
+  "candidate_repaired_or_refilled": false,
+  "completed_controls": [
+    {
+      "label": "R7-original",
+      "scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      }
+    },
+    {
+      "label": "post-funding-cost",
+      "scores": {
+        "content-utility": -15.333333333333332,
+        "throughput": -20.0
+      }
+    }
+  ],
+  "completed_native_worlds_at_snapshot": 3,
+  "completed_own_slots": 1,
+  "content_sha256": "d0cc718dd8e62256fa5d78dcadf061087fed950f94d141d0e260ce860a87c37e",
+  "cross_scores": {
+    "content-utility": -13.333333333333332,
+    "throughput": -18.0
+  },
+  "first_construction_evidence_content_sha256": "e8c43d71ae490a6a5d7ff83f608e2c0a15380d019fdb252047d5453086dff114",
+  "full_study_cold_audit_complete": false,
+  "generation": 0,
+  "generation_error": null,
+  "literal_candidate_sha256": "d35b4be934b975f2e580411a2adb34bb2987269f40e95a0049a53a6105d958a2",
+  "literal_scientist_traces": [
+    {
+      "input_file_sha256": {
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "3a53f9ee0f46c2256bd29ae0ab85308f18854c3d95b5fcd2333b0f06585583db",
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+      },
+      "label": "R7-original",
+      "requests": {
+        "completed_responses": 115,
+        "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_full_provider_body_hashes_sha256": "7bc13748bd4fded2cb4499c241334df57909a28ffc18d9513a090f5831aaac5e",
+        "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 115
+      }
+    },
+    {
+      "input_file_sha256": {
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/throughput/worlds/native-adaptive-a7d6d1561ad006ce3aed5cfa-s61001/replies/responses.sqlite": "49e4fcbae1944e7c28ab6830b0b432b3ac9a0c5929476fc4a66f3894d032688b",
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/throughput/worlds/native-adaptive-a7d6d1561ad006ce3aed5cfa-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+      },
+      "label": "T0",
+      "requests": {
+        "completed_responses": 115,
+        "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_full_provider_body_hashes_sha256": "736c06526715bb9ddb92f27f58cbc5468caf7b51db170e416a5b3ccc61fd98ab",
+        "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+        "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 115
+      }
+    }
+  ],
+  "no_text_ID_or_clock_scrubbing": true,
+  "objective": "throughput",
+  "observation_sha256": "be71cb46a911110c28b49460a5dcfc3e3f7db7d89ab9b5bf819fd1c8c713d6a1",
+  "observed_utc": "2026-11-14T14:44:37.699492+00:00",
+  "own_advantage_over_hand": false,
+  "own_improvement_over_R7": false,
+  "plan_content_sha256": "e13294a1e3e6ba29b918ed6019b7a428825b9227a80534a894ed049c10f8e2ca",
+  "publication_ready": false,
+  "raw_campaign_file_sha256_at_snapshot": "77c92641437bf3029d54449f7bce1564219770c4f484ee2743b31a176c13e0ee",
+  "request_and_choice_comparison": {
+    "ordered_completed_request_payload_sha256": true,
+    "ordered_full_provider_body_hashes_sha256": false,
+    "ordered_full_request_payload_sha256": true,
+    "ordered_literal_response_choices_sha256": true
+  },
+  "request_sha256": "9f4399eaadb888d0ad6147069cdfaaa883e8e88eb3cb61a90d920c2f06313017",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1",
+  "schema": "scienceutopia.native-open-staged-first-own.v1",
+  "scope": "First actual staged proposal completes native execution and its declared loss is durably recorded. Full original-source whole-study audit/selection/unused evaluation remain pending. Exact input equality and literal observed choices concern these completed seed61001 histories, not all possible programs or seeds.",
+  "source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "source_edit_was_observationally_inert_on_recorded_full_scientist_inputs": true,
+  "status": "complete",
+  "suggestion_id": "native-adaptive-a7d6d1561ad006ce3aed5cfa",
+  "total_declared_own_slots": 6,
+  "writer": {
+    "current_progress": {
+      "active": "content-utility:g0",
+      "observed_utc": "2026-11-14T14:41:17.851182+00:00",
+      "stage": "readiness"
+    },
+    "observed_live": true,
+    "pid": 32780,
+    "session": 79701
+  }
+}

@@ -66,3 +66,20 @@ the tested step8 code. No nodes/wires/phases change and no native completion
 or gain follows from that. Original writer79701 is observed executing this
 T0 in the actual scientist world, with its own loss still pending. Exact stable
 proposal inputs/readbacks/controls are retained in a separate prefix record.
+
+## First own native/loss completion, not a source-hash improvement
+
+At14:41:17UTC writer79701 completes T0 and advances to U0 readiness. Its actual
+saved assigned loss is -18; common-content cross loss is -13.333333333333332.
+It ties R7 and loses to the hand -20/-15.333333333333332. All115 full scientist
+payloads and literal response choices equal R7; full provider bodies differ.
+No text/clock/identity is scrubbed, no control is skipped/reused, and no whole-
+study original-source cold audit is inferred from the prefix comparison.
+
+The actual first staged generation/probe/submit/compile/native/loss iteration
+is now observed. It is not an operative new institution, automatic error repair
+or useful invention. Its measured loss is durably in throughput's history;
+the next active U0 belongs to the separate objective. All remaining five own
+slots, original audits/costs/readouts, frozen selection and unused evaluation
+remain. No hidden novelty/improvement admission gate or failed-slot refill is
+introduced to make the result look favorable.

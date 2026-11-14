@@ -138,3 +138,21 @@ actual authority, objective support and observed behavior, including the wider
 code/mechanism/composition freedom; do not substitute a simpler world or change
 losses to force a win. None of this adds a new admission/promotion veto, changes
 the running study, repairs a candidate or refills its finite proposal budget.
+
+## November14 later source check:20 is not the whole workflow's ceiling
+
+The [actual initial-support analysis](native-direction-support-headroom-v1.md)
+now distinguishes core-only catalog assignments (minimum durations2 for each
+of the five initial authors) from the original non-strict native parser's
+core-plus-direct-related choices (minima1/1/2/1/1). Their duration-only
+relaxations are20 and36, not attained counts or proved global optima. The old
+catalog-conditional envelope remains conditional; do not promote it to an
+impossibility explanation for every legal institution. This is a simulator/
+adapter diagnostic, not itself a replacement main-track contribution.
+
+The first actual staged candidate [now completes](../results/native-open-staged-first-own-v1.md)
+at T=-18/U=-13.3333, with all115 scientist inputs/choices equal R7 and no own
+gain. Its source edit is inert on that observed history. The broader six-slot
+study still runs, and no active loss, reference, context or budget is changed
+by this analysis. Further important claims still require meaningful operated
+effects and appropriate independent evidence, not more source/test counts.

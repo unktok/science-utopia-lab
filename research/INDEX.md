@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual staged T0 native/loss completion](results/native-open-staged-first-own-v1.md):
+  T=-18/U=-13.3333, equal to R7 and worse than the hand. All115 full inputs
+  and literal choices equal R7. One of six own slots completes; U0 readiness
+  continues, with no whole-study closure, own gain or fixed evaluation yet.
+
 - [First actual staged proposal submitted](results/native-open-staged-first-construction-v1.md):
  14 steps/eight real probes, explicit finish after a retained annotation
  rejection; the original native T0 world now runs. Only selection source

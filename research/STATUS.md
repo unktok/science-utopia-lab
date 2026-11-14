@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+### November14 23:41JST: actual staged T0 completes; no gain, U0 readiness continues
+
+Original writer79701 completes its first own native world at T=-18/U=-13.3333,
+tying R7 and losing to the hand's -20/-15.3333. The source-only proposal has
+all115 full scientist inputs and literal reply choices equal to R7; no scrub
+or control reuse occurs. One own slot of six and three physical worlds are
+complete. At14:41:17UTC the unchanged writer moves to content-utility:g0
+readiness, not normal study closure or fixed evaluation. [Exact first-own result](results/native-open-staged-first-own-v1.md).
+
+This completes the first actual staged generation/probe/submit/native/loss
+iteration, not autonomous error repair, an operative new institution or gain.
+The measured T0 enters throughput's own history; U0 is the separate objective's
+first proposal. Keep the remaining finite slots and original readout chain;
+no novel-source/improvement veto, refill, loss change or hand fallback is added.
+Main-track significance and appropriate independent evidence remain open.
+
 ### November14 23:31JST: first actual staged institution submitted; native T0 world runs
 
 The local35B author finishes T0 at step13 after14 steps, two applied source

@@ -33,3 +33,19 @@ def test_source_change_and_native_start_do_not_become_an_improvement_claim():
     assert not r['whole_study_cold_audit_complete'] and not r['new_institutional_advantage_claimed']
     assert not r['publication_ready']
     assert [c['scores']['throughput'] for c in r['completed_controls']] == [-18., -20.]
+
+
+def test_first_actual_native_completion_is_a_tie_not_an_invented_gain_or_whole_study_close():
+    r = checked(json.loads((ROOT/'research/results/native-open-staged-first-own-v1.json').read_text()))
+    construction = checked(json.loads((ROOT/'research/results/native-open-staged-first-construction-v1.json').read_text()))
+    assert r['first_construction_evidence_content_sha256'] == construction['content_sha256']
+    assert r['request_sha256'] == construction['request_sha256']
+    assert r['status'] == 'complete' and r['assigned_loss'] == -18.
+    assert r['cross_scores'] == {'throughput': -18., 'content-utility': -13.333333333333332}
+    assert r['completed_own_slots'] == 1 and r['total_declared_own_slots'] == 6
+    assert all(x['requests']['completed_responses'] == 115 for x in r['literal_scientist_traces'])
+    assert r['request_and_choice_comparison']['ordered_full_request_payload_sha256']
+    assert r['request_and_choice_comparison']['ordered_literal_response_choices_sha256']
+    assert r['no_text_ID_or_clock_scrubbing']
+    assert not r['own_improvement_over_R7'] and not r['own_advantage_over_hand']
+    assert not r['full_study_cold_audit_complete'] and not r['publication_ready']
