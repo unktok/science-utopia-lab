@@ -26,6 +26,7 @@ from utopia.utils.data_utils import file_sha256
 
 SCHEMA='scienceutopia.native-institution-effect-trace.v1'
 SCOPES={
+    'workflow-objective-development':'scienceutopia.native-workflow-objective-loop-audit.v1',
     'joint-fixed-evaluation':'scienceutopia.native-joint-fixed-evaluation-audit.v1',
     'planning-fixed-evaluation':'scienceutopia.native-planning-fixed-evaluation-audit.v1',
     'planning-objective-development':'scienceutopia.native-planning-objective-loop-audit.v1',
@@ -96,7 +97,41 @@ def checkpoint(cell,item,system):
     return state
 
 
-def trace_world(cell,world,source):
+def workflow_boundary(events, year, reconciled, categories):
+    """Actual ordered phase witnesses and reconciled end-year cashflows.
+
+    A phase's observation hash is not a recovered resource vector. This does
+    not infer a within-phase attrition timestamp or treat funding summaries
+    as if they were taken after later institutional mutations.
+    """
+    phases = [{'original_event_ordinal': i, 'event': clone(e)} for i, e in enumerate(events)
+        if e['year'] == year and e['event_type'] == 'native.system.phase_executed']
+    if not phases:
+        raise ValueError('workflow boundary lacks original native phase witnesses')
+    stages = []
+    for row in phases:
+        e = row['event']; p = e['payload']; stages.append(p['stage'])
+        value = p['observation_sha256']
+        if (not isinstance(p['stage'], str) or not p['stage'] or type(e['phase']) is not int
+                or not isinstance(value, str) or len(value) != 64
+                or any(c not in '0123456789abcdef' for c in value)
+                or not isinstance(e['provenance']['mechanism_id'], str)):
+            raise ValueError('literal audited workflow phase witness required')
+    if len(stages) != len(set(stages)):
+        raise ValueError('duplicate native phase witness in a workflow year')
+    cash = {key: math.fsum(row[key] for row in reconciled) for key in categories}
+    return {'native_phase_witnesses_in_original_order': phases,
+        'all_author_cashflows': cash,
+        'all_author_opening_resources': math.fsum(row['opening_balance'] for row in reconciled),
+        'all_author_closing_resources': math.fsum(row['closing_balance'] for row in reconciled),
+        'all_author_opening_active': sum(row['opening_active'] for row in reconciled),
+        'all_author_closing_active': sum(row['closing_active'] for row in reconciled),
+        'funding_stage_summary_used_as_end_year_state': False,
+        'phase_resource_vectors_recovered_from_observation_hashes': False,
+        'within_phase_attrition_timestamp_measured': False}
+
+
+def trace_world(cell,world,source,*,workflow=False):
     proof=world['physical_proof'];system=world['system'];spec=SystemSpec.from_dict(system)
     if proof.get('status') in ('pre-response-journal-failure','technical-failure-before-initial-checkpoint'):
         return {'identity':world['identity'],'role':world['role'],'seed':world['seed'],'status':world['status'],'annual':[],
@@ -128,6 +163,8 @@ def trace_world(cell,world,source):
             'minimum_founder_resources':min(a['resources'] for a in actual),'all_author_ledger':reconciled,
             'transfer_events':clone(transfers),'transferred_units':math.fsum(e['payload']['actual_debit'] for e in transfers),
             'actual_event_counts':dict(sorted(Counter(e['event_type'] for e in events if e['year']==year).items()))})
+        if workflow:
+            annual[-1]['workflow_boundary'] = workflow_boundary(events, year, reconciled, ledger.categories)
     binding={'source_commit':source,'system_fingerprint':spec.fingerprint,'run_id':cell.name}
     path=cell/'code-contexts.jsonl'
     rows=[validate_record(json.loads(line)) for line in path.read_text().splitlines()] if path.exists() else []
@@ -199,7 +236,8 @@ def export(args):
     for w in audit['worlds']:
         name=w['identity']+'-s'+str(w['seed']);cells=[p for p in root.glob('**/worlds/'+name) if p.is_dir()]
         if len(cells)!=1:raise ValueError('unique audited physical world directory required')
-        worlds.append(trace_world(cells[0],w,plan['source_commit']))
+        worlds.append(trace_world(cells[0],w,plan['source_commit'],
+            workflow=args.scope=='workflow-objective-development'))
     result={'schema':SCHEMA,'scope':args.scope,'source_commit':plan['source_commit'],'plan_sha256':plan['content_sha256'],
         'audit_content_sha256':audit['content_sha256'],'raw_inventory_sha256':digest(before),'worlds':worlds,
         'interpretation':{'report_only':True,'new_model_calls':0,'new_code_executions':0,'new_native_worlds':0,
