@@ -2,6 +2,20 @@
 
 ## Active publication-ready goal
 
+### November15 03:55JST: actual-result manuscript reviewed; no new science
+
+The new[85-page integrated paper](../paper/integrated-staged-actual-build-v1.json)
+contains complete staged development/fixed results,44 figures,38 tables and28
+references. Two actual cached/untrusted builds have identical text/logs and
+all85 page images; all pages are visually inspected, with fresh150dpi checks
+of first/concept/new-result pages. No clipping, unresolved references or TeX
+layout warnings are observed. The old82-page artifact/receipt remain byte-
+unchanged.24 targeted source/retention/subset checks pass, not full runtime QA.
+The new71-file reconstruction policy is prepared; an actual subset rebuild
+remains pending. No new model calls or new institutional gain is claimed.
+Future longitudinal runtime remains unmerged and incomplete as described below.
+R2/R3/R5 focused contribution/R6 remain open despite the current full manuscript.
+
 ### November15 03:45JST: fixed evaluation and all original readouts close
 
 All three physical worlds/four frozen labels complete at unchangedf47270b9.

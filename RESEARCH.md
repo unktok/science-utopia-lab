@@ -11,10 +11,11 @@
 さらに簡単な数値世界へ置き換える理由でもない。
 
 現在の実行状態・達成範囲は[STATUS](research/STATUS.md)を参照する。
-最新の確認済み統合PDFは[82ページの原稿記録](paper/integrated-staged-construction-build-v1.json)
-と[PDF](output/pdf/science-utopia-lab-integrated-staged-construction-working-paper.pdf)。
-その後の実staged6候補と固定評価は監査まで終了し、結果・図表・費用は
-LaTeX sourceへ追記済みだが、新しいPDF build／目視はまだ未実施である。
+最新の確認済み統合PDFは[85ページの原稿記録](paper/integrated-staged-actual-build-v1.json)
+と[PDF](output/pdf/science-utopia-lab-integrated-staged-actual-working-paper.pdf)。
+実staged6候補と全固定評価の結果・図表・費用を含む。2回のcached buildの本文・log・
+全85ページの画像が一致し、全紙面と概念図・新結果ページの拡大表示を目視確認した。
+原稿再構築は研究結果の独立再現ではなく、主会議readyの根拠の代わりではない。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 
 ## 最初からやりたかったこと

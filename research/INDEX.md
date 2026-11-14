@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Reviewed85-page actual-result manuscript](../paper/integrated-staged-actual-build-v1.json):
+  all meaningful earlier tracks plus complete staged development/fixed outcomes,
+  44 figures/38 tables/28 references. Two actual builds agree in text/logs/all
+  page images; every layout is inspected. Old PDFs remain unchanged. This is
+  not new inference, independent scientific replication or main-track readiness.
+
 - [Complete actual staged unused evaluation](results/native-open-staged-fixed-closed-v1.md):
   all three physical worlds/four labels and original paired readouts close.
   Both own selections tie R7 and lose to the hand on both losses. No current
