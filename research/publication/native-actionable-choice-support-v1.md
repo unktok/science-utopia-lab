@@ -57,6 +57,43 @@ finding a one-year catalog label does not establish an implementable gain.
 Funding and timing may become more consequential under frequent production;
 that remains a hypothesis, not a new result or silent environmental change.
 
+### Venue follow-through: category absence is not a hard submission ban
+
+A subsequent read-only inspection at01:48UTC checks the originala5be8d31
+submission path. `BaseAgent.get_paper_submission_prompt` receives the current
+conference list and presents every supplied venue, with its preferred topics;
+its response schema enumerates those conference IDs. In
+`Simulation._validate_submission_entry`, the checks require a retrieved paper
+ID (or opt-out), a reason and a registered venue, not equality between the
+research topic's category and the venue category. The batch path also filters
+already submitted content and handles duplicate/invalid choices. Its existing
+retry/fallback behavior is inherited scientist-world behavior, not permission
+to repair or refill institution proposals.
+
+The actual downstream call in `_run_phase_2_submit_papers` passes the paper to
+`Conference.submit_paper`. That method checks conference submission status and
+conference identity; its topic-overlap rejection is commented out. Therefore
+an initialization message saying a category has no dedicated conference does
+not itself prove that its one-year topics cannot produce a valid submission
+to any existing venue. Conversely, this static route inspection proves neither
+retrievable content, a scientist's compliance, review acceptance nor an output
+gain. A venue's topics may still affect choices and downstream reviews. No
+venue mechanism is added or changed, and no new feasibility run is dispatched.
+
+The inspected feature copies match the original Git blobs byte-for-byte:
+
+| Original source | SHA-256 |
+| --- | --- |
+| `utopia/agents/base_agent.py` | `2ebecbb76289e3e5b9721f31c4c90ba21dfa6c5a2e59a486bc103feefb42ae77` |
+| `utopia/agents/conference.py` | `5af9f781c64694ebc914bcf57bf75d694a141ed58154613b4e73217d71100f6d` |
+| `utopia/simulation.py` | `2e978f91af3448edadac67eb2ca7267ed1f7cc9f3fc043b768e8f7430e170b4d` |
+
+This is an additional source-level check, not a modification of the earlier
+sealed six-source support record or a full-world execution test. The20/36
+conditional arithmetic remains non-feasibility evidence. Any later feasibility
+protocol must follow retrieval, production resources, scientist choice and
+review consequences rather than adding an unnecessary category bypass.
+
 ## Consequence for the next research decision, after complete closure
 
 This is one native opportunity to consider alongside the complete search
