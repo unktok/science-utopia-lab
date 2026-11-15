@@ -5,6 +5,11 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Next free-system optimization protocol](protocols/campaigns/native-topic-free-optimization-v1.md)
+  and [separate implementation preparation](logbook/2026-11-15-topic-free-preparation.md):
+  three explicit objectives, strong visible same-authority parents, free source/nodes/wires;
+  authored software is not yet public-path verified or scientifically dispatched.
+
 - [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):
   two same-authority hand controls; not automatic invention or a new optimized objective.

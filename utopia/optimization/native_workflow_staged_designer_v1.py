@@ -37,12 +37,18 @@ def settings():
 
 def require_bank(bank, evidence, anchor):
     """Reconstruct original native attribution, not just a self-hashed bank."""
-    from scripts.reports.stage_native_component_fixtures_v1 import collect, WORKFLOW_SCOPE
+    from scripts.reports.stage_native_component_fixtures_v1 import collect, WORKFLOW_SCOPE, TOPIC_SCOPE
     checked(bank)
-    if (set(evidence) != {'run','source','audit','audit_file_sha256'}
+    scope = evidence.get('staging_scope', WORKFLOW_SCOPE)
+    expected_keys = {'run','source','audit','audit_file_sha256'}
+    if 'staging_scope' in evidence:
+        expected_keys.add('staging_scope')
+        if scope != TOPIC_SCOPE:
+            raise ValueError('explicit same-authority topic component staging scope required')
+    if (set(evidence) != expected_keys
             or file_sha256(evidence['audit']) != evidence['audit_file_sha256']):
         raise ValueError('exact original component audit/source/run evidence required')
-    original = collect(evidence['run'], evidence['audit'], scope=WORKFLOW_SCOPE, source_root=evidence['source'])
+    original = collect(evidence['run'], evidence['audit'], scope=scope, source_root=evidence['source'])
     if bank != {**original, 'content_sha256': digest(original)}:
         raise ValueError('workflow component bank differs from original audited R7 inputs')
     spec = SystemSpec.from_dict(anchor)

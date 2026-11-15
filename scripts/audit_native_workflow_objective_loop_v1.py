@@ -24,6 +24,8 @@ def worker(root, output, *, driver_module=None):
     from utopia.optimization.native_development_references import build_context
     from utopia.optimization.native_workflow_designer_v1 import replay_workflow, require_certificate, generation_definition
     from utopia.optimization.native_workflow_domain_v4 import require_workflow_candidate, verify_workflow_interval
+    check_candidate = getattr(driver, 'require_candidate', require_workflow_candidate)
+    check_interval = getattr(driver, 'verify_interval', verify_workflow_interval)
     from utopia.runtime.checkpointing import read_portable_checkpoint
     from utopia.system import SystemSpec
     from utopia.system.design_patch import clone, digest
@@ -108,7 +110,7 @@ def worker(root, output, *, driver_module=None):
         author(root / 'initial-readiness/author', initial._request([], initial._validate(), 1))
         def physical(directory, suggestion, o, objective, role, history=None):
             spec = SystemSpec.from_dict(suggestion['candidate'])
-            require_workflow_candidate(anchor, spec, structure_only=not driver.open_institutions(p))
+            check_candidate(anchor, spec, structure_only=not driver.open_institutions(p))
             m = o['metadata']; identity = suggestion['suggestion_id']
             if (o['candidate'] != suggestion['candidate'] or o['suggestion_id'] != identity
                     or o['observation_id'] != 'observation-' + identity or m['system_fingerprint'] != spec.fingerprint
@@ -130,7 +132,7 @@ def worker(root, output, *, driver_module=None):
                 state = read_portable_checkpoint(runs[0]['checkpoint_path'])
                 keys.update(accepted_request_keys(state, p['observer_contract']))
                 if measurements:
-                    interval = verify_workflow_interval(anchor, spec, state['native_system']['events'], years=4)
+                    interval = check_interval(anchor, spec, state['native_system']['events'], years=4)
                     rebuilt = {**reconstruct_measurement(state, proof['measurement'], observer), 'native_workflow_interval': interval}
                     if hasattr(driver, 'reconstruct_extra_measurement'):
                         rebuilt = driver.reconstruct_extra_measurement(p, state, rebuilt, runs[0])
@@ -168,7 +170,8 @@ def worker(root, output, *, driver_module=None):
             if not (driver.history_directory(root, key) / 'campaign/native-adaptive-state.json').is_file():
                 raise ValueError('original workflow campaign missing')
             c = driver.campaign(root, p, key, context)
-            if c.state['pending'] or len(c.state['records']) != 3: raise ValueError('workflow six slots not terminal')
+            if c.state['pending'] or len(c.state['records']) != p.get('generations', 3):
+                raise ValueError('workflow declared own slots not terminal')
             campaigns[key] = c
         for slot in p['schedule']:
             objective, g = slot['objective'], slot['generation']; key = driver.history_key(slot); c = campaigns[key]

@@ -12,6 +12,13 @@ SCHEMA = 'scienceutopia.native-objective-view.v21'
 # Measurement definitions, not candidate institutions or extra objectives.
 # These describe existing native endpoint and common-content observer arithmetic.
 NATIVE_MEASUREMENT_DEFINITIONS = {
+    'native.collected_activity_resource_cost': 'Sum actual collected original annual-research, '
+        'production/submission, resubmission and funding-application costs over every declared year '
+        'and every author, including later and inactive authors. Income and transfers are excluded. '
+        'Complete original ledgers must reconcile; unavailable cost is unknown, never zero. '
+        'Native resource units are not money, compute, welfare or scientific truth.',
+    'native.uncollected_activity_resource_cost': 'Separate sum of uncollected costs in those four '
+        'activity categories; never imputed as collected consumption or used as a hidden veto.',
     'native.accepted_decisions': 'Count review-history decisions whose decision is accept.',
     'native.rejected_decisions': 'Count review-history decisions whose decision is reject.',
     'native.review_records': 'Count individual review records across all review-history decisions, not papers.',

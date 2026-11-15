@@ -178,6 +178,8 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
                                    for e in events))
             assert outside[0] == 0 and outside[1] > 0
         driver.save(tmp_path / 'audit-retained.json', {k: v for k, v in audits[0].items() if k != 'content_sha256'})
+        if topic:
+            driver.save(tmp_path / 'audit-retained-2.json', {k: v for k, v in audits[1].items() if k != 'content_sha256'})
         driver.save(tmp_path / 'cost-retained.json', {k: v for k, v in cost_pair[0].items() if k != 'content_sha256'})
     with pytest.raises(ValueError, match='no redispatch'): operator.run(root)
     write_json_atomic(tmp_path / 'verification.json', {
@@ -194,3 +196,5 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
         'paired_cost_content_sha256': cost_pair[0]['content_sha256'],
         'new_real_model_calls': 0, 'scientific_feasibility_or_gain_claimed': False,
         'publication_ready': False}, sort_keys=True)
+    return {'run': root, 'clients': clients, 'scientist_requests': sent,
+            'audit_one': tmp_path/'audit-retained.json', 'audit_two': tmp_path/'audit-retained-2.json'}

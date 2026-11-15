@@ -19,6 +19,8 @@ LIQUIDITY_NODES=(*NODES,'developer-liquidity-director')
 WORKFLOW_SCOPE='open-workflow-r7-v1'
 WORKFLOW_REFERENCES=('R7-original',)
 WORKFLOW_NODES=(*LIQUIDITY_NODES,'information-office','developer-catalog-agenda')
+TOPIC_SCOPE='same-authority-topic-core-control-v1'
+TOPIC_REFERENCES=('core-only',)
 
 
 def collect(run, audit_path, *, scope=LEGACY_SCOPE, source_root=None):
@@ -33,17 +35,20 @@ def collect(run, audit_path, *, scope=LEGACY_SCOPE, source_root=None):
     run, source = Path(run).resolve(), Path.cwd() if source_root is None else Path(source_root).resolve()
     audit_hash=file_sha256(audit_path);a=checked(json.loads(Path(audit_path).read_text()))
     p=checked(json.loads((run/'plan.json').read_text()));before=_inventory(run)
-    if scope not in (LEGACY_SCOPE,LIQUIDITY_SCOPE,WORKFLOW_SCOPE):raise ValueError('explicit developer staging scope required')
+    if scope not in (LEGACY_SCOPE,LIQUIDITY_SCOPE,WORKFLOW_SCOPE,TOPIC_SCOPE):raise ValueError('explicit developer staging scope required')
     liquidity=scope==LIQUIDITY_SCOPE
     workflow=scope==WORKFLOW_SCOPE
-    references=WORKFLOW_REFERENCES if workflow else LIQUIDITY_REFERENCES if liquidity else REFERENCES
-    nodes_requested=WORKFLOW_NODES if workflow else LIQUIDITY_NODES if liquidity else NODES
-    expected_schema=('scienceutopia.native-workflow-objective-loop-audit.v1' if workflow else
+    topic=scope==TOPIC_SCOPE
+    expected_seed=p['jobs'][0]['seed'] if topic else 61001
+    references=TOPIC_REFERENCES if topic else WORKFLOW_REFERENCES if workflow else LIQUIDITY_REFERENCES if liquidity else REFERENCES
+    nodes_requested=WORKFLOW_NODES if workflow or topic else LIQUIDITY_NODES if liquidity else NODES
+    expected_schema=('scienceutopia.native-legacy-topic-pilot-audit.v1' if topic else
+        'scienceutopia.native-workflow-objective-loop-audit.v1' if workflow else
         'scienceutopia.native-liquidity-support-audit.v1' if liquidity else 'scienceutopia.native-institution-loop-stopped-audit.v1')
     if (a['schema']!=expected_schema
             or p['source_commit']!=pinned_revision(source) or a['source_commit']!=p['source_commit']
             or a['plan_sha256']!=p['content_sha256'] or digest(before)!=a['raw_inventory_sha256']
-            or a['closure']['terminal']['status']!=('closed' if liquidity or workflow else 'stopped')
+            or a['closure']['terminal']['status']!=('closed' if liquidity or workflow or topic else 'stopped')
             or a['source_proof']['status']!='verified-exact-source-closure'):
         raise ValueError('exact audited historical developer prefix required')
     if liquidity and (len(a['worlds'])!=4 or a['closure']['terminal']['complete_worlds']!=4
@@ -54,16 +59,22 @@ def collect(run, audit_path, *, scope=LEGACY_SCOPE, source_root=None):
         if (p['schema']!=SCHEMA+'.plan' or not open_institutions(p)
                 or p.get('optimizer_reference_labels')!=list(WORKFLOW_REFERENCES)):
             raise ValueError('explicit open workflow with only original R7 optimizer reference required')
+    if topic:
+        from scripts import run_native_legacy_topic_pilot_v1 as driver
+        if (p['schema']!=driver.SCHEMA+'.plan' or len(a['worlds'])!=2
+                or [j['condition'] for j in p['jobs']]!=list(driver.LABELS)
+                or a['automatic_invention'] or a['policy_selection'] or a['held_out_world_seeds']):
+            raise ValueError('exact closed same-authority developer topic controls required')
     records=[];origins=[]
     for reference in references:
-        identity=('workflow-reference-'+reference.lower() if workflow else
+        identity=('legacy-topic-'+reference if topic else 'workflow-reference-'+reference.lower() if workflow else
             reference if liquidity else 'reference-'+reference)
-        role='developer-liquidity-control' if liquidity else 'developer-reference'
+        role='developer-same-authority-topic-control' if topic else 'developer-liquidity-control' if liquidity else 'developer-reference'
         matches=[w for w in a['worlds'] if w['identity']==identity and w['role']==role]
         if len(matches)!=1 or matches[0]['status']!='complete':raise ValueError('complete developer reference required')
         w=matches[0];spec=SystemSpec.from_dict(w['system']);proof=w['physical_proof']['code_proof']
-        cell=run/('worlds-by-job' if liquidity else 'references')/reference/'worlds'/(identity+'-s'+str(w['seed']));path=cell/'code-contexts.jsonl'
-        if (w['seed']!=61001 or proof['one_to_one_physical_execution_proven'] is not True
+        cell=run/('controls' if topic else 'worlds-by-job' if liquidity else 'references')/(identity if topic else reference)/'worlds'/(identity+'-s'+str(w['seed']));path=cell/'code-contexts.jsonl'
+        if (w['seed']!=expected_seed or proof['one_to_one_physical_execution_proven'] is not True
                 or file_sha256(path)!=proof['code_contexts_sha256']):
             raise ValueError('developer input file differs from original physical proof')
         rows=[validate_record(json.loads(line)) for line in path.read_text().splitlines()]
@@ -89,7 +100,7 @@ def collect(run, audit_path, *, scope=LEGACY_SCOPE, source_root=None):
                 'reference':reference,'seed':w['seed'],'year':row['context']['period'],
                 'code_file_sha256':proof['code_contexts_sha256'],'native_event_id':receipt['matching_event_ids'][0]})
         if selected_nodes!=set(nodes_requested):raise ValueError('a requested native component has no exact recorded input')
-        if (liquidity or workflow) and any(sorted(o['year'] for o in origins if o['reference']==reference and o['node_id']==node)!=[1,2,3,4]
+        if (liquidity or workflow or topic) and any(sorted(o['year'] for o in origins if o['reference']==reference and o['node_id']==node)!=[1,2,3,4]
                 for node in nodes_requested):raise ValueError('four exact yearly developer contexts per node required')
     if (before!=_inventory(run) or file_sha256(audit_path)!=audit_hash or pinned_revision(source)!=p['source_commit']):
         raise ValueError('historical source/audit/raw changed while staging component fixtures')
@@ -102,6 +113,8 @@ def collect(run, audit_path, *, scope=LEGACY_SCOPE, source_root=None):
         result.update(post_edit_reference='resource-30-connected',post_edit_probe_scope='declared-sixtyfour-v2')
     if workflow:
         result.update(post_edit_reference='R7-original',post_edit_probe_scope='declared-sixtyfour-v2')
+    if topic:
+        result.update(post_edit_reference='core-only',post_edit_probe_scope='declared-sixtyfour-v2')
     return result
 
 
@@ -117,7 +130,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('run','audit','output'):p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--frozen-source',type=Path);p.add_argument('--worker',action='store_true')
-    p.add_argument('--scope',choices=(LEGACY_SCOPE,LIQUIDITY_SCOPE,WORKFLOW_SCOPE),default=LEGACY_SCOPE);a=p.parse_args()
+    p.add_argument('--scope',choices=(LEGACY_SCOPE,LIQUIDITY_SCOPE,WORKFLOW_SCOPE,TOPIC_SCOPE),default=LEGACY_SCOPE);a=p.parse_args()
     if a.worker:stage(a.run,a.audit,a.output,scope=a.scope);return
     from utopia.optimization.native_component_lab_v1 import fixture_bank
     from utopia.optimization.native_jobs import pinned_revision

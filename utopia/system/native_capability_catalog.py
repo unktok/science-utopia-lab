@@ -212,6 +212,7 @@ def _information():
 
 def _domain():
     from .native_catalog_planning import apply_catalog_project, validate_catalog_assignment
+    from .native_legacy_topic_planning import apply_legacy_topic_project, validate_legacy_topic_assignment
     from .native_open_domain import (IMPLEMENTATION, STATE_ARTIFACT, COMMAND_SCHEMA,
         default_actions, register_native_domain, apply_domain_commands)
     actions = default_actions()
@@ -233,12 +234,16 @@ def _domain():
             'native project/context/transfer actions retain their own original-world semantic constraints',
             'native.catalog-project.v1 requires a legacy active idle author, an actual displayed expertise topic '
             'and its exact original catalog content/duration; filtered exploration candidates are unsupported in v1',
+            'native.legacy-topic-project.v1 instead permits core expertise plus directly related original catalog '
+            'topics, with exact original content/duration and active idle author requirements; no shortest-topic '
+            'or merit rule is imposed. This action still needs an explicit grant and a study domain permitting it',
             'schemas describe data; generated code never becomes a trusted host handler'],
         'cost': {'scientist_model_calls': 0, 'resources': 'only explicitly granted conserving native transfer effect'},
         'privilege': {'granted': ['only the explicitly declared action capability grants'],
             'not_granted': ['register arbitrary host Python', 'silently invent new native privilege', 'bypass schema/identity checks']},
         'validators': [_source(register_native_domain), _source(apply_domain_commands),
-            _source(apply_catalog_project), _source(validate_catalog_assignment)],
+            _source(apply_catalog_project), _source(validate_catalog_assignment),
+            _source(apply_legacy_topic_project), _source(validate_legacy_topic_assignment)],
         'schema_scope': 'actual registered action payload schemas; command envelope and semantic checks remain explicit'}
 
 

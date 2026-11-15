@@ -10,6 +10,7 @@ from .native_authoring_ir import StableIDAuthoringProtocol, json_type
 from .native_design_space import require_candidate_in_space
 from .native_objective_view import loss_arithmetic
 from .native_workflow_domain_v4 import SCOPE, require_workflow_candidate
+from .native_workflow_domain_v5 import SCOPE as TOPIC_SCOPE, require_legacy_topic_workflow_candidate
 from .native_designer_wire import wire_record
 from utopia.system import SystemSpec
 from utopia.system.design_patch import clone, digest
@@ -37,15 +38,23 @@ def transport_schema(schema):
     return result
 
 
-def bound_systems(request):
+def domain_validator(request):
+    """Explicit request-scoped authority; historical v4 does not gain grants."""
     contract = request.get('design_space')
     if (not isinstance(contract, dict) or contract.get('kind') != 'code-and-graph'
-            or contract.get('world_law_scope') != SCOPE):
-        raise ValueError('explicit original native workflow-v4 code-and-graph domain required')
+            or contract.get('world_law_scope') not in (SCOPE, TOPIC_SCOPE)):
+        raise ValueError('explicit original native workflow-v4 or legacy-topic workflow-v5 code-and-graph domain required')
+    return (require_workflow_candidate if contract['world_law_scope'] == SCOPE
+            else require_legacy_topic_workflow_candidate)
+
+
+def bound_systems(request):
+    check = domain_validator(request)
+    contract = request['design_space']
     anchor = SystemSpec.from_dict(request['design_space_anchor'])
     parent = SystemSpec.from_dict(request['parent_system'])
     require_candidate_in_space(anchor, parent, contract)
-    require_workflow_candidate(anchor, parent)
+    check(anchor, parent)
     return anchor, parent
 
 
@@ -180,7 +189,7 @@ def compile_submission(request, literal, *, binding_sha256, provider):
         if mixed.policy else [mixed.base])
     for system in systems:
         require_candidate_in_space(anchor, system, request['design_space'])
-        require_workflow_candidate(anchor, system)
+        domain_validator(request)(anchor, system)
     # This checks declared discrete branches at their compiled base values.
     # Continuous draws still require ordinary domain validation before execution.
     # No source is executed and no outcome or merit is inferred here.
