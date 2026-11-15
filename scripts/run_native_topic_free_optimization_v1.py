@@ -19,6 +19,7 @@ from utopia.optimization.native_jobs import pinned_revision
 from utopia.optimization.native_parent_evidence_v46 import OPTION as PARENT_OPTION, MODE as PARENT_MODE
 from utopia.optimization.native_resource_cost import measure as resource_measure
 from utopia.optimization.native_topic_objectives_v1 import objective_specs, OBJECTIVES
+from utopia.optimization.native_world import evaluate_native_suggestion
 from utopia.optimization.native_institution_workflow_domain_v6 import (
     SCOPE, institution_workflow_design_space, require_institution_workflow_candidate,
     verify_institution_workflow_interval)

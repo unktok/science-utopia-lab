@@ -74,3 +74,10 @@ production calibration/transport guard. Preserve a2 and use fresh a3.
 Original69985 exits0 from a separate clean582049bf reader export; its full
 real-pilot report matches original59951 byte-for-byte. The reader/source/inputs
 stay fixed for this pair, rather than relabelling later-code output as earlier.
+
+Clean49689a64 original87828 exits1 in36.42s. The public initial bounded
+readiness now passes; entry to the first new reference exposes a real missing
+`evaluate_native_suggestion` import in the new operator. Add the missing import,
+not a fallback. No new-study world or real model ran; all previous software
+outputs remain. This is precisely why public runner execution, not only syntax
+or plan checks, is required before actual designer/scientist dispatch.
