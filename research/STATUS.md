@@ -1,6 +1,23 @@
 # Current research status
 
-## Active publication-ready goal
+## Resumed by explicit user instruction — November15 12:57UTC /21:57JST
+
+The user explicitly requested continuation and reactivated the original goal.
+The pause below is historical. Resume starts with the unmerged passive resource
+instrument; no old scientific experiment is restarted. No new objective has
+yet been adopted and publication readiness remains unestablished.
+
+## Historical pause — November15 07:51UTC
+
+The user instructed, through the coordinating chat, that this old autonomous
+research line be paused pending a newly designed main line. The thread goal is
+was then set to `paused`, not complete. Automatic restart was prohibited;
+the explicit new request above now revokes that pause.
+See [the pause handoff](continuation-paused-2026-11-15.md) for exact current
+state, unfinished local changes and restart instructions. No push was made for
+this pause handoff; existing scientific evidence and conditions are preserved.
+
+## Active publication-ready goal (not achieved)
 
 Optimize freely designed scientific institutions under explicit objectives in
 the original persistent researcher world, using available gradients or black-box
