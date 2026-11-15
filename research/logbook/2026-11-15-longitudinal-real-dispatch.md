@@ -760,6 +760,35 @@ audits/readouts, fixed unused evaluation and final research interpretation are
 still open. No refill, host repair, new penalty, loss/source/budget change or
 early stopping of the final slot is introduced because earlier results tied.
 
+## Twelfth explicit submission, final native outcome still pending
+
+Parent-trajectory T2 request
+`7228f101c8a3b3268867c14d7284d1f072acaf8f2204aa4f5775f4445746c18b`
+begins authoring at03:30:17.145878UTC and explicitly finishes at
+03:39:29.531505UTC. All14 actions complete: one plan, nine reads, three writes,
+one finish; no rejected/invalid action. All12 component probe terminals return.
+Response content`45cb6f0405aff1595df588c585c915cdc3da6da3ae93effa4b85da9645871067`,
+file SHA`701d5ff2433be0dda54d29880d260bf1d0b96aeab597d9f186d677687911f249`.
+Candidate`native-adaptive-34e921359289076c7360efb8` has fingerprint
+`98de316539156ac23c32b6f803de6bddb2080b5811aece4978a2466effada1cb`.
+Only selection source changes among24 nodes, no other root/node/wire/schedule
+changes. Literal source SHA
+`83f756d2dd04c0feb90c4fa911e89aabdbec399c129bc9538de18cf66f6cf9fe`,
+Python3.11.15 AST-dump SHA
+`f85c225c20fff66055ad4aede1136510ecd88a747a6157ffc6e6ada04e9d1e8a`;
+this is not the shared parsed program of slots8/10/11.
+
+The program accepts real submitted papers and writes constant `final_score: 1.0`,
+retaining the valid unscored empty-year marker. That score is not a direct
+input to either assigned loss, but possible effects through subsequent native
+information/decisions must be checked, not declared inert from the measurement
+formula alone. Native execution passes year1 and proceeds to year2. No final
+loss, improvement, input equality, isolated information effect or whole-study
+closure is inferred yet. All12 proposals are submitted, but only11 slots have
+terminal outcomes (nine valid ties/two technical nulls). The original writer
+and three postprocessing continuation handles remain live at their last checks;
+no repair, refill, loss/source/budget change or early selection is introduced.
+
 ## Read-only scope check: new mechanisms are not forbidden by the file API
 
 While scalar U2 readiness continues, inspect the existing virtual workspace

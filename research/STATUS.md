@@ -18,7 +18,7 @@ not a live heartbeat.
 | Scientific source | Clean, fixed `a5be8d3103854368a4bc6ba4c13eff7552e9dd15`; not this later documentation checkout |
 | Design | Two losses (throughput T/content utility U), two information conditions, three own proposals per history:12 slots total |
 | Own slots processed | Eleven: nine valid native outcomes and two known runtime failures |
-| Current slot | Twelfth/final, parent-trajectory T2, in actual-request readiness; no completed twelfth loss yet |
+| Current slot | Twelfth/final, parent-trajectory T2, submitted and running its native world; no completed twelfth loss yet |
 | Valid outcomes | All nine T=-18/U=-13.333333333333332; tie original R7 and lose to the hand by2 on each loss |
 | Seventh slot | Parent-trajectory U1 returns a scored empty-year marker; actual native consumer rejects it. Loss unknown, not zero or a measured bad loss |
 | Ninth slot | Scalar T2 double-wraps decision payloads; actual consumer rejects the empty-year batch. Loss unknown, no host unwrapping/repair |
