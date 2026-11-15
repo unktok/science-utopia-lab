@@ -1,5 +1,36 @@
 # Current research status
 
+## Latest closed study — November16 03:35:39JST
+
+The [real three-objective free-system study closes](results/native-topic-free-optimization-closed-v1.json):
+all6 own slots consumed,5 complete native outcomes and1 runtime null; both
+fresh references complete. Original writer94527 exits0 at03:30:59JST.
+Original98474 then closes two identical source/physical audits and two matching
+cost exports, and8526 closes two matching seven-file readouts. These original
+processes have exited; this study has no remaining inference or waiting worker.
+
+All selected own systems tie the known strong reference. Four complete own
+worlds share its179 full scientist inputs/choices, while U0 reproduces the
+weaker127-input core-only reference. No new node/wire/schedule or additional
+institution-authored scientist work is exercised.81 actual proposal POSTs,
+199 readiness POSTs,19 applied file writes and56 returned component probes
+remain separate counts. C0's loss and K stay unknown, not zero. T1 completes
+on the observed path without erasing its recorded empty-fixture incompatibility.
+
+[Exact eight submitted/reference specifications and frozen selection](data/native-topic-free-optimization-v1/README.md)
+are retained for collaborators, without model caches or corpus. [Two matching
+effect-map/print exports](results/native-topic-effect-map-retention-v1.json)
+are now complete and their used PNG layouts inspected. A presentation overlap
+in the original frozen wide plot is preserved and avoided in the new print
+plot; old source/results are not rewritten. Current manuscript source still
+contains the earlier4-slot snapshot, and the reviewed91-page PDF is older.
+Full6-slot manuscript/PDF integration is next. Important supported claim,
+appropriate independent evidence and final readiness remain open. Do not
+automatically scale or repeat an unchanged search until a favorable result.
+
+Older dated snapshots below retain their original stages rather than current
+heartbeats. The whole publication-ready goal is active and not achieved.
+
 ## Latest recorded execution stage — November16 03:05:25JST
 
 [Content-utility g1 completes](results/native-topic-free-utility-g1-outcome-v1.json)

@@ -17,8 +17,8 @@
 
 固定a5be8d31の12枠longitudinal比較に加え、[選択固定の未使用評価](results/native-longitudinal-fixed-closed-v1.json)
 も閉鎖済み。その後、元の選択3対照と同権限topic2対照を完了し、三つの明示目的による
-[自由制度6枠の探索](protocols/campaigns/native-topic-free-optimization-v1.md)を別source48e1d268で実行している。
-全枠の完了・強い対照への改善・主会議readyはまだ主張しない。
+[自由制度6枠の探索](results/native-topic-free-optimization-closed-v1.json)も別source48e1d268で正常閉鎖した。
+全枠・二重監査／費用／解析は完了したが、強い対照への改善と主会議readyは未達。
 個別の完了数と日付付きの実行位置は[STATUS](STATUS.md)に置き、ここへliveカウントを複製しない。
 [時点付きの進捗](STATUS.md)と[元の実dispatchログ](logbook/2026-11-15-longitudinal-real-dispatch.md)
 を正本とし、ここへliveカウントを複製しない。二目的・二情報条件でも作用権限は同じで、
@@ -84,7 +84,7 @@
 
 ## いま動いているもの
 
-この見出しの最新状態は冒頭の三目的自由制度探索と[STATUS](STATUS.md)を参照。
+この見出しの最新状態は冒頭の閉鎖済み三目的自由制度探索と[STATUS](STATUS.md)を参照。
 以下は、それ以前に終了した別研究の内訳であり、全研究の推論が停止中という意味ではない。
 
 V1、V45、V2、M比較、T/E、旧T/Uとその固定評価、T/P探索、計画3対照は終了済み。

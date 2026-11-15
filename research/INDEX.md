@@ -8,22 +8,22 @@ This page is navigation, not a chronological experiment transcript.
 - [Next free-system optimization protocol](protocols/campaigns/native-topic-free-optimization-v1.md)
   runs three declared losses with strong visible same-authority parents and free
   source/node/wiring/process authoring. [Actual pinned dispatch](results/native-topic-free-optimization-dispatch-v1.json)
-  uses local35B designer/fixed8B researchers; both [fresh references](results/native-topic-free-reference-prefix-v1.json)
-  and two own native results complete. [Throughput g0](results/native-topic-free-first-own-outcome-v1.json)
-  ties its strong parent on all three losses and179 full scientist inputs/choices.
-  [Content-utility g0](results/native-topic-free-first-utility-outcome-v1.json) changes source
-  but reproduces the weaker core-only127-request path and losses. [Resource-aware
-  g0 fails on ineligible two-hop topics; g1 ties its strong parent](results/native-topic-free-first-resource-outcomes-v1.json).
-  [Content-utility g1 retains its parent and ties179 full inputs/choices](results/native-topic-free-utility-g1-outcome-v1.json).
-  At03:05JST5/6 own slots are consumed:4 complete native outcomes and1 runtime
-  null. Final throughput g1 readiness starts; remaining slots
-  are not completed or improved. Exact [first author trace](results/native-topic-free-first-own-submission-v1.json)
+  uses local35B designer/fixed8B researchers. [The whole study now closes](results/native-topic-free-optimization-closed-v1.json):
+  both references, all6 own slots,5 own completions/1 runtime null, matching
+  paired original-source audits/costs/readouts and frozen selection. No own
+  selected loss improves the strong reference; complete paths reproduce the
+  recorded strong/weak input classes. The [closure log](logbook/2026-11-15-free-topic-study-closed.md),
+  [exact programs/selection](data/native-topic-free-optimization-v1/README.md)
+  and [reviewed effect-map/print figures](results/native-topic-effect-map-retention-v1.json)
+  separate edits, observed inputs and outcomes. [Final T1's conditional empty-case
+  defect](results/native-topic-free-throughput-g1-submission-v1.json) remains recorded,
+  not turned into a failed observed world. Exact [first author trace](results/native-topic-free-first-own-submission-v1.json)
   and [SCRIPTED full public software proof](results/native-topic-free-public-software-retention-v1.json)
   stay separate. [Prepared three-objective readouts](components/native-topic-free-readouts-v1.md)
-  wait for original paired audit/cost closure; figures/review remain pending.
+  have completed original paired closure and export. Whole-study paper integration remains pending.
   [Current unbuilt manuscript](logbook/2026-11-15-topic-manuscript-prefix-analysis.md)
-  includes the first four own slots and conditional analyses; the fifth
-  completion is not yet included. The reviewed91-page PDF predates both.
+  includes the first four own slots and conditional analyses; the final
+  two completions and closed-study figures are not yet included. The reviewed91-page PDF predates both.
   [Calendar capacity](components/native-topic-calendar-envelope-v1.md) and
   [fixed-record headroom/evidence decision](publication/native-topic-objective-headroom-and-next-evidence-v1.md)
   are conditional diagnostics, not a replacement world or global optimum.

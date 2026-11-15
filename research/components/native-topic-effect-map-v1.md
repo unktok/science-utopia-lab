@@ -20,3 +20,15 @@ exits0 with9 passes in1.80s. These are pure SCRIPTED joins only, not a render,
 new native world or original complete-study export. Actual paired exports,
 deterministic figure comparison, visual review and manuscript inclusion are
 pending. The whole publication goal is not achieved by implementing this map.
+
+## Actual closed-data export and visual review
+
+[Original37dffa6b exports14767/26403](../results/native-topic-effect-map-retention-v1.json)
+now both exit0; all nine files match. They read the normally closed original
+paired readout without another model, code execution or native world. The
+three PNG layouts (wide map, native-width print map and print loss paths)
+are actually inspected; no overlap/clipping is observed. SVGs match across
+exports but are not separately rasterized/reviewed. The original frozen wide
+loss plot has an overlapping null label; its original bytes stay unchanged,
+and the new print plot moves that annotation away from the reference line.
+Manuscript source/PDF inclusion is still pending at this retention point.

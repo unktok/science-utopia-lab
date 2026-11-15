@@ -1,0 +1,7 @@
+slot_index,objective,generation,status,physical_job,loss,throughput,content-utility,resource-aware-content,collected_resource_cost
+0,throughput,0,complete,native-adaptive-560a9f185f2dfcceeaf73bf9,-36.0,-36.0,-28.666666666666668,-8.666666666666668,200.0
+1,content-utility,0,complete,native-adaptive-30e1c6a6ecd2aeb662c6bc80,-15.333333333333332,-20.0,-15.333333333333332,4.666666666666668,200.0
+2,resource-aware-content,0,failed,native-adaptive-14b011c218d0725c73290419,,,,,
+3,resource-aware-content,1,complete,native-adaptive-cf44981a008435a82a7b42b1,-8.666666666666668,-36.0,-28.666666666666668,-8.666666666666668,200.0
+4,content-utility,1,complete,native-adaptive-fe01e134f7f3230b9c128899,-28.666666666666668,-36.0,-28.666666666666668,-8.666666666666668,200.0
+5,throughput,1,complete,native-adaptive-80c6a22628387b81c0455955,-36.0,-36.0,-28.666666666666668,-8.666666666666668,200.0

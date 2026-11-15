@@ -1,0 +1,21 @@
+{
+  "schema": "scienceutopia.native-topic-free-retained-systems.v1",
+  "scientific_source_commit": "48e1d268c49960d1387e5d54362b38d1a180127d",
+  "copy_method": "Exact bytes copied only after original writer, audits, costs and readouts all exited; not regenerated source or model replies.",
+  "files_sha256": {
+    "systems/core-only.json": "3d66f957a9203ad5f1b52dfa83f3f5e5f739f3acc35bac9972c8ca4d05315b39",
+    "systems/core-plus-related.json": "e2180df35de70a014e3a7d0dd982d0f285a69d496a74357f50a7860e4b6b37a5",
+    "systems/throughput-g0.json": "e36a3d64fe148c673941fe315c4914235098159a69ed1a45508633b40fd53783",
+    "systems/content-utility-g0.json": "a127ab2e7a00bfb2428a16557961e2a6b8c0a76e56f4c353102b375b575954ac",
+    "systems/resource-aware-content-g0.json": "52e7bec7963870ca256f58d1fbe3ed4c4c63b2c040f81c84ff4b6098b50cdfcd",
+    "systems/resource-aware-content-g1.json": "73cfd989a0cb87f7136de7b2c16a90f30e4de3520cf1989b50619c74b5457486",
+    "systems/content-utility-g1.json": "e2180df35de70a014e3a7d0dd982d0f285a69d496a74357f50a7860e4b6b37a5",
+    "systems/throughput-g1.json": "4cd4300a9b6f29d75b7229fe28d46b8a6f24034751d0d17af3cd634cfa85688a",
+    "selection.json": "dacd279fd54e0c7c3bccd612e133f900caf90dd009c575dc9b4c85a397dba3b2"
+  },
+  "selection_labels": {"throughput": "throughput-g0", "content-utility": "content-utility-g1", "resource-aware-content": "resource-aware-content-g1"},
+  "includes_failed_submission": true,
+  "generated_code_should_execute_only_in_declared_sandbox": true,
+  "raw_model_responses_corpus_and_caches_included": false,
+  "independent_inference_reproduction_claimed": false
+}
