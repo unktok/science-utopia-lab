@@ -53,7 +53,8 @@ exact existing native consumer/window. It never auto-repairs an incompatible
 graph or installs a policy into an optimizer. Static parse/v6 scope checks
 are only software evidence. An isolated handoff test uses original transfer,
 agent-update and ledger methods with SCRIPTED literal commands derived from
-measured balances. It is not a complete researcher world, Docker execution of
+measured year4 balances in a newly opened component year1 ledger. Native
+ledgers cannot start at4; this is not the original year4 ledger. It is not a complete researcher world, Docker execution of
 the new source, the public native cost phase or scientific loss evidence.
 
 Never execute institution source on the host. Sandbox/full-public-path QA and

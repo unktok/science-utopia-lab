@@ -19,6 +19,7 @@ from utopia.system.runtime import DeliveredValue
 
 ROOT=Path(__file__).resolve().parents[2]
 IMAGE='sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833'
+COMPONENT_YEAR=1
 
 
 @pytest.fixture
@@ -58,12 +59,12 @@ class Actor:
 
 
 def handoff():
-    # Measured final-cost handoff, but this newly opened isolated ledger is
-    # NOT the original world's ledger or a complete scientific simulation.
+    # Measured year4 balance vector in a SCRIPTED standalone year1 handoff.
+    # Native ledgers must begin at1. This is NOT the original year4 ledger.
     r=json.loads((ROOT/'research/results/native-legacy-topic-pilot-closed-v1.json').read_text())
     rows=r['original_resource_instrument_categories']['core-plus-related'][-1]['reconciled_authors']
     actors={a['researcher_id']:Actor(a['researcher_id'],a['closing_balance']+a['annual_research_cost']) for a in rows}
-    ledger=ResourceLedger(); ledger.start_year(4,actors)
+    ledger=ResourceLedger(); ledger.start_year(COMPONENT_YEAR,actors)
     kernel=SimpleNamespace(_simulation=SimpleNamespace(ecosystem=SimpleNamespace(agent_population=actors),
         resource_ledger=ledger),_frame={},events=[])
     return actors,ledger,kernel
@@ -74,9 +75,9 @@ def charge_and_close(actors,ledger):
     # Original resource/ledger primitives, not Simulation._charge_annual_costs.
     for actor in actors.values():
         assert actor.is_active
-        actor.update_resources(-fee,category='annual_research_cost',year=4,project='SCRIPTED-component-project')
-    ledger.close_year(4,actors)
-    return ledger.reconcile(4,actors,require_closed=True)
+        actor.update_resources(-fee,category='annual_research_cost',year=COMPONENT_YEAR,project='SCRIPTED-component-project')
+    ledger.close_year(COMPONENT_YEAR,actors)
+    return ledger.reconcile(COMPONENT_YEAR,actors,require_closed=True)
 
 
 def test_actual_transfer_clipping_ledger_primitives_expose_collected_vs_uncollected_cost():
@@ -87,8 +88,8 @@ def test_actual_transfer_clipping_ledger_primitives_expose_collected_vs_uncollec
         if aid!=banker:
             commands.append(DeliveredValue(ChannelKind.RESOURCE,'SCRIPTED-transfer',
                 {'transaction_id':'SCRIPTED-terminal-'+aid,'from_actor':aid,'to_actor':banker,'amount':a.resources},
-                (aid,banker),(),('SCRIPTED-producer-event',),'SCRIPTED-producer','funds',4,4))
-    context=SimpleNamespace(inputs={'transfers':tuple(commands)},period=4,state={})
+                (aid,banker),(),('SCRIPTED-producer-event',),'SCRIPTED-producer','funds',COMPONENT_YEAR,COMPONENT_YEAR))
+    context=SimpleNamespace(inputs={'transfers':tuple(commands)},period=COMPONENT_YEAR,state={})
     result=apply_native_resource_transfers(kernel,context)
     assert len(result.events)==4 and sum(a.resources for a in actors.values())==before
     assert all(a.is_active for a in actors.values())  # Exact zero is not deactivation.
