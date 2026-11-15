@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [First actual own-feedback wire](logbook/2026-11-15-first-own-feedback-wire.md):
+  fifth slot passes29 readiness cases and enters free authoring; its actual
+  first frame has only declared R7/own T0 observations and exact history
+  references. The source-bound projection matches. Four slots are complete;
+  exposure and a valid plan are not useful invention or information benefit.
+  The old stopped literal-parent presentation study is not this live study.
+
 - Four of12 own slots now complete: all g0 histories tie R7 and lose to the
   hand on both losses. Original82259 advances to parent-trajectory T1 readiness
   at00:27:41UTC, with own feedback only. [Full generation-zero input/choice diagnostic](results/native-longitudinal-generation-zero-requests-v1.json)

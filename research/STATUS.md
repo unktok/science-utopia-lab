@@ -7,6 +7,15 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Fifth slot parent-trajectory T1 passes29 actual readiness controls and begins
+optimization at00:38:29UTC. Read-only78950 exits0: its first actual returned
+wire carries the original R7 and own T0 scalar result, exact own-history/archive
+references and R7's four annual records; no hand/other-arm own observation in
+the declared channels. The first frame fits its recorded65536/8192 reservation
+and completes stop. This is exposure/completion evidence, not understanding,
+native gain or all-future-frame capacity. Four own outcomes remain complete.
+[Actual first own-feedback frame and earlier presentation boundary](logbook/2026-11-15-first-own-feedback-wire.md).
+
 Current prefix at00:27:41UTC/09:27:41JST: four of12 own slots complete, all
 T=-18/U=-13.333333333333332 with no technical world failures. All tie fresh R7
 and lose to the hand by2 on each loss. First proposals in all four histories
