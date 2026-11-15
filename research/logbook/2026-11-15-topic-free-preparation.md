@@ -81,3 +81,15 @@ readiness now passes; entry to the first new reference exposes a real missing
 not a fallback. No new-study world or real model ran; all previous software
 outputs remain. This is precisely why public runner execution, not only syntax
 or plan checks, is required before actual designer/scientist dispatch.
+
+Cleana35111bd original22705 exits1 in295.32s. All six finite software slots
+are consumed, but all six new fixture worlds fail at year1: the reused
+`transparent_office` fixture forwarded incoming runtime envelopes, including
+`emitted_period`, as generated output. The real sandbox output validator
+correctly rejects that metadata; each failed world has one earlier actual
+fixed-scientist work response, hence6 rather than24. These are not six
+successful worlds and the terminal slot count alone is not success evidence.
+Correct the *literal prescribed fixture source* to emit only payload/actor_ids/
+artifact_ids, never weaken the runtime ABI or repair a scientific candidate.
+Preserve all six nulls and original a4. Add a cheap stdlib missing-global
+diagnostic alongside the real public path; it is not a proof of bug freedom.

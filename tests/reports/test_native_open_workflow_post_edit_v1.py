@@ -42,7 +42,7 @@ def transparent_office(request, *, identity='scripted-transparent-observation-of
             'runtime_image_id': selection['parameters']['runtime_image_id'],
             'code_artifact': {'schema': 'scienceutopia.code-mechanism.v1',
                 'label': 'SCRIPTED transparent wiring software probe, not invented science',
-                'source': "def step(context):\n    return {'outputs': {'observations': context['inputs']['world']}, 'state': {}}\n",
+                'source': "def step(context):\n    rows = [{'payload': v['payload'], 'actor_ids': v.get('actor_ids', []), 'artifact_ids': v.get('artifact_ids', [])} for v in context['inputs']['world']]\n    return {'outputs': {'observations': rows}, 'state': {}}\n",
                 'inputs': {'world': {'type': 'object'}},
                 'outputs': {'observations': {'type': 'object'}}, 'state_schema': {'type': 'object'}}}}
     connections = clone(parent['connections'])
