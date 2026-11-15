@@ -1,6 +1,6 @@
 # Current research status
 
-## Current matched study: references3/3 complete; first own slot active
+## Current matched study: references3/3 and own slots2/8 complete
 
 The [once-dispatched local-model study](results/native-consumer-source-comparison-dispatch-v1.json)
 runs from immutable7e51b2a4: fixed8B researchers, local35B designer, unchanged
@@ -13,7 +13,8 @@ is development-informed, not a blind independent method comparison.
 | --- | --- |
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
-| Own-system optimization | [First interface-only / content-utility / g0 submits](results/native-consumer-source-first-own-submission-v1.json) and enters native evaluation;0/8 own slots complete at observation |
+| Own-system optimization | [Interface-only / U / g0 completes](results/native-consumer-source-first-own-outcome-prefix-v1.json) at-28.6667; [literal-consumers / C / g0 completes](results/native-consumer-source-second-own-outcome-prefix-v1.json) at-8.6667. Both tie their strong parent;2/8 own slots complete |
+| Next original slot | Interface-only / C / g0 enters exact-request readiness at23:19:37UTC November15 (08:19:37JST November16); not another dispatched study |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -31,6 +32,14 @@ headroom, not automatic invention, reduced requested work or better science.
 Whole original cold closure remains pending. The third hand policy is not in
 either optimizer's reference context or selection pool.
 
+Each completed own world has179 full scientist inputs and179 literal response
+choices matching its strong reference, with equal measured metrics and different
+provider envelopes. The first changes selection source/parameters; the second
+changes only agenda-source formatting, with matching parsed AST. Both execute
+and are scored: no exact-copy, novelty or merit gate rejects them. Neither adds
+a node, wire or schedule. These two differently assigned slots do not identify
+an isolated information-condition effect or establish whole-program equivalence.
+
 [Low-disk archive](results/native-consumer-closed-checkout-archive-v1.json):
 after an observation near260MiB free,16 completed clean code copies are
 removed only after their outputs/pytest caches move intact to main's ignored
@@ -38,6 +47,13 @@ archive. Directory identities and main-history source commits are checked.
 No scientific/QA raw record is deleted; original paths can be restored.
 The following free-space observation is about6GiB, not a continuous guarantee.
 Active frozen sources and unrelated projects/processes are untouched.
+
+A [second recoverable archive](results/native-consumer-closed-checkout-archive-v2.json)
+reclaims40 additional clean, main-integrated tracked code copies. All903 ignored
+data/cache/tmp directory identities survive the same-volume moves; branches,
+commits and raw records remain. Its later free-space observation is11.57GB,
+not a continuous guarantee or an attribution of all filesystem/swap changes
+to cleanup. Active scientific/origin/analysis/readout sources stay in place.
 
 The [reference/own transition log](logbook/2026-11-16-native-consumer-first-reference.md)
 and [preserved previous top section](status-history-2026-11-16-consumer-reference-prefix.md)

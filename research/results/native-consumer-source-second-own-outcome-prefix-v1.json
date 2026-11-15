@@ -1,0 +1,128 @@
+{
+  "schema": "scienceutopia.native-consumer-source-second-own-outcome-prefix.v1",
+  "recorded_utc": "2026-11-15T23:25:19.027546+00:00",
+  "classification": "actual-native-own-outcome-prefix-not-whole-study-original-cold-closure",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "original_writer_handle": 15471,
+  "writer_pid": 11821,
+  "progress": {
+    "active": "interface-only::resource-aware-content:g0",
+    "observed_utc": "2026-11-15T23:19:37.612838+00:00",
+    "stage": "readiness"
+  },
+  "arm": "literal-consumers",
+  "objective": "resource-aware-content",
+  "generation": 0,
+  "status": "complete",
+  "request_sha256": "85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911",
+  "suggestion_id": "native-adaptive-3435cdfa551f266e50faca5c",
+  "assigned_loss": -8.666666666666668,
+  "parent_reference": "core-plus-related",
+  "parent_assigned_loss": -8.666666666666668,
+  "parent_loss_scope": "C=-U+0.1K recomputed from measured parent metrics; original reference observation carries U loss",
+  "own_minus_parent_loss": 0.0,
+  "metrics": {
+    "native.accepted_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.accepted_peer_score_sum": {
+      "status": "measured",
+      "value": 0.0
+    },
+    "native.accepted_unreviewed_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.collected_activity_resource_cost": {
+      "status": "measured",
+      "value": 200.0
+    },
+    "native.common_content_score_sum": {
+      "status": "measured",
+      "value": 136.66666666666666
+    },
+    "native.common_content_utility_sum": {
+      "status": "measured",
+      "value": 28.666666666666668
+    },
+    "native.final_active_authors": {
+      "status": "measured",
+      "value": 5
+    },
+    "native.final_author_resources": {
+      "status": "measured",
+      "value": 30.0
+    },
+    "native.institutional_context_deliveries": {
+      "status": "measured",
+      "value": 20
+    },
+    "native.rejected_decisions": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.review_records": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.uncollected_activity_resource_cost": {
+      "status": "measured",
+      "value": 0.0
+    }
+  },
+  "original_campaign_record_sha256": "1dc2f619028239a99df220b98379d3e98676d1979fdca396b1670638352366ab",
+  "campaign_state_file_sha256_at_snapshot": "7bfb0aef4af58b22932743c7ee263dfdb536b8d74e1810086f51bebf690274b6",
+  "reference_observation_file_sha256": "6fb9e640ad918e410c65e0c1186094d638f43959888201ad3e3286a1b614f38e",
+  "authored_change": {
+    "only_changed_system_top_level_field": "mechanisms",
+    "only_changed_mechanism_id": "developer-catalog-agenda",
+    "only_changed_mechanism_field": "parameters.code_artifact.source",
+    "added_nodes": 0,
+    "removed_nodes": 0,
+    "connections_equal": true,
+    "other_system_fields_equal": true,
+    "source_bytes_equal": false,
+    "source_ast_equal_without_attributes": true,
+    "source_change_description": "Indentation/formatting only in the agenda source; this was executed and scored, not rejected by an exact-copy or novelty veto."
+  },
+  "passive_complete_request_sequences": {
+    "own": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "dbc30b3c8da4cfc9a5ad2b2b11d34e006b4643ab0f581083fe507acb0736f38d"
+    },
+    "parent": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "72029c0e657b29b0ded39fd885ae1e40880d2d58f103a4e820b67bd8bf8d8821"
+    }
+  },
+  "parent_comparison": {
+    "full_scientist_inputs_equal": true,
+    "literal_response_choices_equal": true,
+    "full_provider_envelopes_equal": false,
+    "all_literal_metrics_equal": true,
+    "global_program_equivalence_claimed": false,
+    "identified_information_condition_effect_claimed": false
+  },
+  "own_completed_slots_at_snapshot": 2,
+  "whole_study_closed": false,
+  "paired_original_audit_cost_readout_closed": false,
+  "institution_improved": false,
+  "held_out_evaluation": false,
+  "independent_optimizer_replication": false,
+  "publication_ready": false,
+  "new_model_calls_by_observation": 0,
+  "new_generated_code_executions_by_observation": 0,
+  "scope": "Literal passive read of completed original records, source ASTs and full wire/reply sequences. Not a new world, repaired candidate, independent optimizer replication or whole-study cold audit. First two slots have different assigned objectives/conditions; do not infer the isolated information effect. An initial diagnostic asserted equality of unlike stored U/C loss specs and failed without writing or dispatch; corrected comparison explicitly re-scores the parent under C."
+}

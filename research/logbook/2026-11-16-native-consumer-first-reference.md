@@ -123,3 +123,55 @@ The full publication goal remains active: own outcomes, original paired
 audit/cost/readout, reviewed new figures, important differentiated evidence,
 independent histories, frozen unused evaluation, focused paper and final
 readiness audit are not yet complete.
+
+## First two own outcomes complete; next original slot continues
+
+The first interface-only/U/g0 world completes and original progress advances
+at22:52:56.696655UTC November15. Its [retained outcome](../results/native-consumer-source-first-own-outcome-prefix-v1.json)
+is U=-28.666666666666668, equal to the visible strong parent. A passive complete
+wire/SQLite comparison finds179 identical full request payloads and literal
+response choices, equal metrics, and different provider envelopes. Source edits
+are not evidence of operative improvement or global program equivalence.
+
+The literal-consumers/C/g0 world then completes; original progress enters
+interface-only/C/g0 readiness at23:19:37.612838UTC (08:19:37JST November16).
+Its [retained outcome](../results/native-consumer-source-second-own-outcome-prefix-v1.json)
+is C=-8.666666666666668, again equal to the strong parent under C. The original
+reference record stores U, so its C comparison is explicitly re-scored from
+the same measured U and K, not obtained by subtracting unlike stored losses.
+An initial passive assertion of unlike U/C loss-spec equality fails without
+any write or dispatch; the corrected diagnostic records the comparison scope.
+
+This second candidate changes only formatting in developer-catalog-agenda's
+Python source; its AST matches. No node, connection or schedule changes. It is
+nevertheless executed and evaluated, without a copy/novelty/merit veto. Its179
+full scientist inputs/literal choices and all metrics match the strong parent;
+provider envelopes differ. This is not evidence that additional source cards
+cause no effect generally: the first two slots differ in both objective and
+information condition, and the complete planned factorial remains unfinished.
+
+The original writer11821 and original audit/cost11949 and readout11967 remain
+live. Two of eight own slots now complete, without gain or whole paired cold
+closure. No scientific source, budget, model, loss, selection or visibility rule
+changes; no failure refill, independent heavy QA or new scientific job is added.
+
+## Additional clean-code archival under recurring disk pressure
+
+Free space again falls near1.1GB around a model-role transition, then rises to
+about3.9GB before further cleanup. That observation is not proof of a unique
+cause or an exclusive hardware lease. The [second archive receipt](../results/native-consumer-closed-checkout-archive-v2.json)
+preserves903 wholly untracked outputs/cache/tmp directories from40 completed
+clean feature checkouts by same-volume rename, checking every directory inode.
+All40 source commits remain in main history; original roots are absent and
+unregistered after normal worktree removal. Logical tracked replicas total
+5,291,570,114 bytes; raw scientific/QA/model records and branches are not deleted.
+The later11,568,680,960-byte free-space observation is not a continuous guarantee
+or a claim that cleanup explains all shared filesystem/swap variation.
+
+The active scientific, origin-input, analysis and readout worktrees and current
+editable feature remain in place. Historical source-bound raw replay requires
+restoring its original path/source and archived directory layout as described
+in the [recovery instructions](../../docs/research-workflow.md). No old evidence
+is rewritten to claim it originated in the archive. The previous v1 receipt's
+skipped tmp-layout observation remains historical; v2 separately records its
+later classified preservation. The full publication-ready goal remains active.

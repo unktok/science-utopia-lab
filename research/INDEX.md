@@ -10,15 +10,19 @@ This page is navigation, not a chronological experiment transcript.
   keeps the native world, fixed scientists, free v6 authority and U/C losses.
   Both initial real readiness conditions pass and [all3 fresh references complete](results/native-consumer-source-reference-bank-prefix-v1.json).
   Only the core/related baselines reach either optimizer; the known terminal
-  hand comparator stays withheld. [First own submission](results/native-consumer-source-first-own-submission-v1.json)
-  reaches finish and native evaluation; no own outcome/gain or whole-study closure yet.
+  hand comparator stays withheld. [First own U outcome](results/native-consumer-source-first-own-outcome-prefix-v1.json)
+  and [second own C outcome](results/native-consumer-source-second-own-outcome-prefix-v1.json)
+  complete and tie the strong parent;2/8 own slots complete, with no own gain
+  or whole-study closure yet. The next original interface-only/C slot is in readiness.
   [Public software proof and19 checks](results/native-consumer-source-comparison-software-v1.json)
   are separate SCRIPTED evidence. [Prepared figure data](components/native-consumer-source-figures-v1.md)
   passes11 light checks, not visual review. Original15471 runs;46051/79215 wait
   for paired audit/cost/readout closure. [Observation log](logbook/2026-11-16-native-consumer-first-reference.md)
   and [preserved stage snapshots](status-history-2026-11-16-consumer-reference-prefix.md)
   retain the chronology. [Closed-checkout archive](results/native-consumer-closed-checkout-archive-v1.json)
-  preserves all raw records while reclaiming only recoverable code copies.
+  preserves all raw records while reclaiming only recoverable code copies;
+  [the second archive](results/native-consumer-closed-checkout-archive-v2.json)
+  retains903 data/cache/tmp directories from40 additional clean checkouts.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)
