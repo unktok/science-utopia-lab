@@ -5,8 +5,10 @@
 The user explicitly requested continuation and reactivated the original goal.
 The pause below is historical. The passive resource instrument and its actual
 original-source readouts are now implemented and retained; no old
-scientific experiment was restarted. No new objective has yet been adopted
-and publication readiness remains unestablished.
+scientific experiment was restarted. No new objective had been adopted at that
+resumption snapshot. The later prospective C-objective study below is now
+running; historical T/U and their selections are unchanged. Publication
+readiness remains unestablished.
 
 ## Historical pause — November15 07:51UTC
 
@@ -186,7 +188,7 @@ The new reviewed91-page PDF includes this readout and the three-choice pilot;
 the earlier88-page PDF remains unchanged. The [resumption log](logbook/2026-11-15-resource-instrument-resumption.md)
 records the completed software checks and exact terminal reader sessions.
 
-## Current experiment: November15
+## Earlier normally closed studies (November15)
 
 The [three-control original-choice pilot](results/native-legacy-choice-pilot-closed-v1.json)
 normally closes at07:13:48UTC/16:13:48JST from clean frozen566f2c91.
@@ -294,12 +296,13 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
    71st request (index70), year4 round intention: delivered publication-history
    and native past-paper scores change0.0 to1.0. Retain this trace and distinguish observed-path
    equivalence from global policy equivalence.
-3. Decide the next objective-conditioned free-system research question using
-   these complete controls. Native choice is exercised, but broader nominal
-   support and advice alone do not yield the strongest observed system. Both
-   original losses prefer the same recorded control here. Do not automatically
-   add seeds, repeat the same search, force different objective winners, substitute
-   new losses for old ones or claim a global optimum or a new invented mechanism.
+3. Complete the currently pinned three-objective free-system study, including
+   all six own slots/nulls, actual institutional behavior, costs and matched cold
+   readouts. Both original losses prefer the same strong hand control so far;
+   different objective winners are not a success requirement. Determine the
+   appropriate next independent evidence only after interpreting this finite
+   study. Do not automatically add seeds, repeat the same search, substitute
+   new losses for old ones or claim a global optimum or invented mechanism.
 4. Produce a focused main-paper account with appropriate supporting material
    and a critical readiness decision. A complete broad working paper is not
    itself the focused, adequately substantiated conference contribution.
