@@ -1,0 +1,31 @@
+{
+  "schema": "scienceutopia.native-topic-free-readouts-preparation.v1",
+  "tested_source_commit": "0a82cc4019bc1c6069a1f1a82aa9edb4241405cc",
+  "original_session": 82710,
+  "exit_code": 0,
+  "tests_passed": 17,
+  "pytest_reported_seconds": 5.06,
+  "junit": "research/data/native-topic-free-readouts-software-v1/junit.xml",
+  "junit_sha256": "ded8d259fefcd1be31a47021a58ada9c07b084cf028d481f325ad6de6b5be287",
+  "files_sha256": {
+    "scripts/reports/native_topic_free_readout_v1.py": "9df30c90812ac6b0ccd4fb6032547a11ba9b335b146127a5121b162ca4c826fb",
+    "scripts/finish_native_topic_free_readouts_v1.py": "4e56fd5671e8817a357168859c73d8e874ee1c5598be25fb06ed0aad5fc23250",
+    "tests/reports/test_native_topic_free_readout_v1.py": "009ac1901d3421f0c168672b7f97a90aead78fc22b851d4bde74a3303ea7cd19"
+  },
+  "scope": "Light pure arithmetic/slot/construction/continuation tests and read-only projection of existing completed SCRIPTED public-path journals. The opt-in retained fixture checks eight recorded worlds, six completed own slots, four recorded institutional-work events per own world and forty-two recorded completed proposal steps. No model, Docker, physical-world rerun, checkpoint trace, figure render or cold-audit rerun.",
+  "prior_checks": [
+    {"session": 90977, "tests_passed": 10, "seconds": 2.8, "source": "uncommitted earlier readout"},
+    {"session": 58438, "tests_passed": 15, "seconds": 3.23, "source": "uncommitted intermediate readout"}
+  ],
+  "pending": [
+    "Actual cold-source complete export and deterministic paired figure/file comparison after normal scientific/audit closure",
+    "Visual inspection of new figures",
+    "Scientific interpretation, manuscript integration and publication-readiness decision"
+  ],
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "new_native_worlds": 0,
+  "active_scientific_source_changed": false,
+  "loss_or_selection_changed": false,
+  "publication_ready": false
+}

@@ -82,6 +82,17 @@ local35B compatibility at the initial request, not free-design capacity or usefu
 invention; own proposal slots are still unstarted at this observation. No model,
 source, budget or objective was changed after dispatch.
 
+The separate [three-objective readout](components/native-topic-free-readouts-v1.md)
+now implements all six slots/nulls, literal T/U/C/K, three loss-path panels,
+actual parent/graph differences, original staged construction and actual native
+input/code/ledger traces. [Original light verification82710](results/native-topic-free-readouts-preparation-v1.json)
+exits0 with17 passes in5.06s, including read-only projection of the existing
+complete SCRIPTED public-path journals. No new world, model, Docker or render.
+At15:50UTC the real writer still executes the second reference; the first
+core-only observation is complete, own proposals unstarted. Full source-bound
+closed-study exports, paired figure comparison, visual review and manuscript
+integration are pending, not established by these light tests.
+
 ### Normally closed same-authority developer controls (v5)
 
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)

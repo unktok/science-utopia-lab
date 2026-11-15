@@ -15,6 +15,9 @@ This page is navigation, not a chronological experiment transcript.
   starts00:11JST November16; [actual initial28-control readiness](results/native-topic-free-initial-readiness-v1.json)
   passes00:17JST and fresh reference evaluation starts. Own proposals follow;
   the finite closure chain is waiting, not completed.
+  [Three-objective readouts](components/native-topic-free-readouts-v1.md) and
+  [their light software verification](results/native-topic-free-readouts-preparation-v1.json)
+  are prepared separately; actual closed-study exports/figure review remain pending.
 
 - [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):
