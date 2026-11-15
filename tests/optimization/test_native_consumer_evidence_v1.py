@@ -79,6 +79,7 @@ def test_wrong_native_source_or_scope_never_silently_degrades_to_control(mutatio
 
 def test_binding_rejects_unsupported_profile_before_any_model_calls(tmp_path):
     value = body(); model = Model([])
+    model.conversation_profile = 'plain-function-recovery-v44'
     author = StagedVocabularyGenerator(model, tmp_path/'author', image_id=IMAGE,
         provider_binding=BINDING, max_steps=16, max_tokens=8192,
         conversation_profile='plain-function-recovery-v44')
