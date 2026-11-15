@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 POLICY = 'research/publication/paper-rebuild-allowlist-integrated-staged-actual-v1.json'
 RECEIPT = 'paper/integrated-staged-actual-build-v1.json'
 OUTPUT = 'research/results/integrated-staged-actual-rebuild-subset-verification-v1.json'
+SCHEMA = 'scienceutopia.integrated-staged-actual-subset-verification.v1'
 
 
 def sha(path):
@@ -55,7 +56,7 @@ def main():
     pages = {p.name: sha(p) for p in sorted((subset/'tmp/pdfs/render').glob('page-*.png'))}
     if pages != original['visual_review']['page_png_sha256']:
         raise ValueError('every actual reconstructed page must match the reviewed page')
-    result = {'schema': 'scienceutopia.integrated-staged-actual-subset-verification.v1',
+    result = {'schema': SCHEMA,
         'verification_source_commit': source, 'staging_source_commit': manifest['source_commit'],
         'original_build_source_commit': original['source_commit'],
         'original_receipt_content_sha256': original['content_sha256'],

@@ -1,5 +1,22 @@
 # Current research status
 
+## Latest manuscript integration — November16
+
+The [98-page reviewed working paper](../paper/README.md) now includes the complete
+six-slot three-objective free-system study, paired closure, fixed selection,
+exact observed input classes, failure diagnoses, two print figures and per-role
+costs. All meaningful earlier tracks remain. Its
+[receipt](../paper/integrated-topic-systems-build-v1.json) binds committed source
+cb2fca8a, two actual cached builds with matching text/logs and all 98 page images,
+50 figures, 46 tables and 29 references. All page layouts and first/concept/new
+details are inspected. The new minimal rebuild is pending; old PDF/receipts
+remain unchanged and apply to their own earlier snapshots.
+
+This is manuscript integration, not new inference, automatic institutional gain
+or publication readiness. Important supported findings, appropriate independent
+evidence and a focused main-track argument remain open. The original scientific
+study below is closed with no remaining inference worker. The whole goal remains active.
+
 ## Latest closed study — November16 03:35:39JST
 
 The [real three-objective free-system study closes](results/native-topic-free-optimization-closed-v1.json):
@@ -22,9 +39,8 @@ are retained for collaborators, without model caches or corpus. [Two matching
 effect-map/print exports](results/native-topic-effect-map-retention-v1.json)
 are now complete and their used PNG layouts inspected. A presentation overlap
 in the original frozen wide plot is preserved and avoided in the new print
-plot; old source/results are not rewritten. Current manuscript source still
-contains the earlier4-slot snapshot, and the reviewed91-page PDF is older.
-Full6-slot manuscript/PDF integration is next. Important supported claim,
+plot; old source/results are not rewritten. The full six-slot manuscript/PDF
+integration is now complete as recorded above. Important supported claim,
 appropriate independent evidence and final readiness remain open. Do not
 automatically scale or repeat an unchanged search until a favorable result.
 

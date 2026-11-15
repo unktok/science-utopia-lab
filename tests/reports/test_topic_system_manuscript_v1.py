@@ -1,4 +1,4 @@
-"""Current unbuilt source/data boundaries; not TeX build or visual evidence."""
+"""Current source/data boundaries; actual build proof has a separate receipt."""
 import json
 from pathlib import Path
 import re
@@ -53,8 +53,8 @@ def test_declared_objective_and_closed_execution_are_not_retroactive_or_ready_cl
         'not main-track readiness','original native research, production, funding and resource effects remain'):
         assert phrase in text
     entry=(ROOT/'paper/README.md').read_text()
-    assert 'current unbuilt source' in entry and '91-page reviewed PDF' in entry
-    assert 'unchanged and predates this section' in entry
+    assert '98-page integrated draft' in entry and 'Every selected system ties' in entry
+    assert 'not a focused main-track-ready' in entry
 
 
 def test_complete_own_table_and_failure_diagnosis_preserve_retained_original_prefix():

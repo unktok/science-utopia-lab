@@ -20,10 +20,11 @@ This page is navigation, not a chronological experiment transcript.
   not turned into a failed observed world. Exact [first author trace](results/native-topic-free-first-own-submission-v1.json)
   and [SCRIPTED full public software proof](results/native-topic-free-public-software-retention-v1.json)
   stay separate. [Prepared three-objective readouts](components/native-topic-free-readouts-v1.md)
-  have completed original paired closure and export. Whole-study paper integration remains pending.
-  [Current unbuilt manuscript](logbook/2026-11-15-topic-manuscript-prefix-analysis.md)
-  includes the first four own slots and conditional analyses; the final
-  two completions and closed-study figures are not yet included. The reviewed91-page PDF predates both.
+  have completed original paired closure and export. The
+  [98-page reviewed manuscript](../paper/README.md) now includes all six slots,
+  fixed selection, costs, figures and conditional analyses. The
+  [earlier four-slot source note](logbook/2026-11-15-topic-manuscript-prefix-analysis.md)
+  remains historical, not current source or visual evidence.
   [Calendar capacity](components/native-topic-calendar-envelope-v1.md) and
   [fixed-record headroom/evidence decision](publication/native-topic-objective-headroom-and-next-evidence-v1.md)
   are conditional diagnostics, not a replacement world or global optimum.
@@ -76,8 +77,9 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Manuscript and evidence
 
-- [Paper entry point](../paper/README.md): latest reviewed91-page working PDF,
-  source-bound receipt and actual77-file reconstruction with matching text/pages.
+- [Paper entry point](../paper/README.md): latest reviewed 98-page working PDF,
+  source-bound receipt and all-page visual review. Its minimal rebuild is pending;
+  the earlier actual 77-file reconstruction applies only to its 91-page snapshot.
   A reviewed working paper is not main-track readiness or fresh inference replication.
 - [Completed previous six-slot staged study](results/native-open-staged-institution-closed-v1.md)
   and [its fixed unused evaluation](results/native-open-staged-fixed-closed-v1.json).

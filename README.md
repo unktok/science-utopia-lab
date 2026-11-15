@@ -25,10 +25,13 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The [latest reviewed integrated manuscript](paper/README.md) is91 pages,
-with48 figures,43 tables and29 references. Two actual cached builds match in
-text/logs and all91 page images; all layouts and new-result details are reviewed.
-Its separate77-file reconstruction also matches text and every page image.
+The [latest reviewed integrated manuscript](paper/README.md) is 98 pages,
+with 50 figures, 46 tables and 29 references. Two actual cached builds match in
+text/logs and all 98 page images; all layouts and new-result details are reviewed.
+It includes the closed six-slot three-objective system search and its failures,
+exact input classes and costs. All selected systems tie the strong reference;
+no new wiring is generated. The new minimal rebuild is pending; the older
+77-file reconstruction remains proof only for its own 91-page snapshot.
 The original studies and older PDFs remain intact, without an artificial page
 cap. Document reconstruction and paper length are not publication readiness.
 
@@ -44,7 +47,7 @@ followed by all paired audits/costs/readouts. Direct assignment has T=-20/U=-15.
 unadvised native choice-14/-10, and advised choice-16/-12. Advice improves on
 unadvised choice here but not the strong direct control; exact recommended
 topic matches are0/10. These developer controls are not automatic invention.
-The current91-page PDF includes this pilot and the passive resource readout:
+The reviewed PDF includes this pilot and the passive resource readout:
 R7/valid own development worlds consume190 units for18 accepted decisions;
 the hand consumes200 for20. This is not new-objective optimization.
 Stable strong-rule advantage,

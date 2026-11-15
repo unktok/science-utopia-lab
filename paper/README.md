@@ -1,19 +1,37 @@
 # Objective-conditioned institution paper
 
-The current unbuilt source additionally includes
-[same-authority original-topic controls and the closed three-objective free-system study](integrated/native-topic-system-search.tex).
-The former is a normally closed developer contrast, not automatic invention.
-The latter now includes all6 own slots:5 completed native outcomes and1
-runtime null, no gain over the strong parent, matching paired original audits/
-costs/readouts, all exact programs and frozen selection. Calendar/fixed-content
-analyses, the two-hop failure, read-loop/empty-cycle diagnoses, two readable
-print figures and per-role costs are included. Prospective feedback and the
-developer cost-control forecast remain preparation, not scientific gains.
-The91-page reviewed PDF below
-is unchanged and predates this section. No new build/page count or visual
-verification is claimed for the new source until its actual build/review completes.
-
 The latest reviewed working artifact is the
+[98-page integrated draft](../output/pdf/science-utopia-lab-integrated-topic-systems-working-paper.pdf),
+with 50 figures, 46 tables and 29 references. Its
+[source/build/visual receipt](integrated-topic-systems-build-v1.json) binds source
+`cb2fca8a` (full identity in the receipt) and reviewed PDF SHA256
+`49d7f679aa41a16a0a3e19ef3c0d764fe65d4b5605e516dc7c77c2f21e2c983e`.
+Two cached builds have identical layout text/logs and all 98 rendered page images.
+All layouts and 150dpi first/concept/new-result details are inspected. An
+abstract spill and orphan contents entry were corrected without dropping body
+research tracks; the earlier build attempts remain recorded. Two inherited
+`h`-to-`ht` float notices remain, not unresolved references or overfull boxes.
+
+The [new section](integrated/native-topic-system-search.tex) includes the
+same-authority hand controls and all six free-system proposals: five complete
+native worlds, one runtime null, paired original audits/costs/readouts and
+frozen own selection. Every selected system ties the strong visible reference.
+Calendar/fixed-content analyses, full-input/choice matches, two-hop failure,
+read-loop/empty-cycle diagnoses, two print figures and per-role costs are
+included. Exact submitted programs are retained separately in the repository.
+Optional feedback and the terminal-cost forecast are preparation, not observed
+scientific gains. The new minimal paper rebuild is pending; the old 77-file
+rebuild remains evidence only for its older snapshot.
+
+The broad working paper is not a focused main-track-ready paper. Important
+supported findings, appropriate independent evidence and final readiness remain
+open. Source-bound reconstruction is not independent inference or release clearance.
+Reconstruct this reviewed snapshot from its exact inputs, not arbitrary later HEAD bytes.
+See [current research status](../research/STATUS.md).
+
+## Earlier reviewed snapshots
+
+The preceding reviewed working artifact is the
 [91-page integrated draft](../output/pdf/science-utopia-lab-integrated-choice-resource-working-paper.pdf),
 with48 figures,43 tables and29 references. Its
 [source/build/visual receipt](integrated-choice-resource-build-v1.json) binds source
@@ -38,8 +56,6 @@ The canonical source is [integrated.tex](integrated.tex), including the new
 [choice/resource section](integrated/native-choice-resource.tex). Reconstruct a
 reviewed snapshot using its exact inputs, not arbitrary later HEAD bytes.
 See [current research status](../research/STATUS.md).
-
-## Earlier reviewed snapshots
 
 The preceding reviewed working artifact is the
 [88-page integrated draft](../output/pdf/science-utopia-lab-integrated-longitudinal-working-paper.pdf),

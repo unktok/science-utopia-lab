@@ -5,7 +5,7 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
-November16 unbuilt source adds the normally closed same-authority original-topic
+The November16 reviewed 98-page manuscript adds the normally closed same-authority original-topic
 pilot (T=-20/-36, U=-15.33/-28.67, equal K200), actual calendar/content/resource
 paths and per-role costs. The same section adds conditional calendar saturation
 and fixed-record content support, with their assumptions rather than a global
@@ -17,10 +17,14 @@ failure, retention/read loops and the conditional empty sentinel are included.
 Prospective non-veto
 diagnostics and a developer cost-collection hypothesis remain distinguished
 from automatic-invention or new-world evidence. No old body
-track, PDF or receipt is removed. This source revision has not been compiled
-or visually reviewed at this source-update point; real inference is now closed.
+track, PDF or receipt is removed. The
+[actual build/visual receipt](integrated-topic-systems-build-v1.json) binds two
+cached builds, matching text/logs and all 98 page images, with 50 figures,
+46 tables and 29 references. All layouts and first/concept/new-result details
+are reviewed. The new minimal reconstruction is pending; this is not new
+inference or main-track readiness.
 
-Latest November15 reviewed artifact: the91-page choice/resource manuscript adds
+Historical November15 reviewed artifact: the91-page choice/resource manuscript adds
 all three original-choice controls, actual advice delivery/topic/duration traces,
 content differences, per-role costs and passive original-ledger resource use.
 Its [actual source/build/visual receipt](integrated-choice-resource-build-v1.json)

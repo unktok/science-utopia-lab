@@ -10,20 +10,21 @@ ROOT=Path(__file__).resolve().parents[2]
 def test_first_integrated_pdf_pointer_matches_the_latest_closed_receipt():
     text=(ROOT/'paper/README.md').read_text()
     paths=re.findall(r'\]\((\.\./output/pdf/[^)]+\.pdf)\)',text)
-    receipt=json.loads((ROOT/'paper/integrated-choice-resource-build-v1.json').read_text())
+    receipt=json.loads((ROOT/'paper/integrated-topic-systems-build-v1.json').read_text())
     first=(ROOT/'paper'/paths[0]).resolve()
     assert first==ROOT/receipt['output']
     assert hashlib.sha256(first.read_bytes()).hexdigest()==receipt['pdf_sha256']
     assert f"{receipt['pages']}-page integrated draft" in text
-    assert f"with{receipt['figures']} figures,{receipt['tables']} tables" in text
+    assert f"with {receipt['figures']} figures, {receipt['tables']} tables" in text
     assert not receipt['publication_ready']
     assert receipt['scientific_scope']['new_scientific_model_calls_by_manuscript_work']==0
-    assert receipt['scientific_scope']['previous_receipt_scope']['own_slots']==12
+    assert receipt['scientific_scope']['own_slots']==6
+    assert receipt['scientific_scope']['previous_receipt_scope']['previous_receipt_scope']['own_slots']==12
     current=text.split('## Earlier reviewed snapshots',1)[0]
-    assert 'five physical frozen\nevaluation worlds remain' in current
-    assert 'all three original-choice controls' in current
+    assert 'all six free-system proposals' in current
+    assert 'All meaningful earlier tracks' in (ROOT/'research/STATUS.md').read_text()
     assert 'not a focused main-track-ready' in current
-    assert receipt['source_commit'] in current and receipt['pdf_sha256'] in current
+    assert receipt['source_commit'][:8] in current and receipt['pdf_sha256'] in current
 
 
 def test_earlier_resource_pdf_keeps_its_own_literal_identity():
@@ -73,7 +74,7 @@ def test_navigation_separates_historical_heartbeats_from_current_orientation():
     text=(ROOT/'research/INDEX.md').read_text()
     active,old=text.split('## Records and historical navigation',1)
     assert 'native-longitudinal-postprocessing-v1.md' in active
-    assert 'reviewed91-page working PDF' in active
+    assert 'reviewed 98-page working PDF' in active
     assert 'index-history-2026-11-15-longitudinal-prefix.md' in old
     assert 'not current heartbeats' in old
     assert 'Latest54-page integrated manuscript' not in active
