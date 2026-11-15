@@ -7,8 +7,8 @@ from scripts.finish_native_code_tested_report_v1 import run as finish
 
 def run(args):
     extra = ('--frozen-source', str(args.frozen_source.resolve()),
-        '--cost-one', str(args.analysis.resolve() / 'cost-1.json'),
-        '--cost-two', str(args.analysis.resolve() / 'cost-2.json'))
+        '--cost-one', str(args.analysis.resolve() / 'costs-1.json'),
+        '--cost-two', str(args.analysis.resolve() / 'costs-2.json'))
     return finish(args, plan_schema='scienceutopia.native-consumer-source-comparison.v1.plan',
         preceding_schema='scienceutopia.native-consumer-source-comparison.v1.finish',
         continuation_schema='scienceutopia.native-consumer-source-comparison.v1.readout.finish',

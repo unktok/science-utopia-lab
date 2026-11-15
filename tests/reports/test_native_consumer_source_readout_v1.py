@@ -77,6 +77,17 @@ def test_missing_slot_is_not_filled_filtered_or_a_zero_cost():
     assert result['loss_paths']['interface-only::content-utility'][0]['best_own_loss'] is None
 
 
+def test_finisher_uses_actual_original_cost_stage_filenames(tmp_path, monkeypatch):
+    from scripts import finish_native_consumer_source_readouts_v1 as continuation
+    captured = {}
+    monkeypatch.setattr(continuation, 'finish', lambda args, **kw: captured.update(kw))
+    continuation.run(SimpleNamespace(frozen_source=tmp_path / 'source', analysis=tmp_path / 'analysis'))
+    extra = captured['report_extra_arguments']
+    assert extra[3] == str(tmp_path / 'analysis/costs-1.json')
+    assert extra[5] == str(tmp_path / 'analysis/costs-2.json')
+    assert captured['preceding_schema'] == reader.STUDY + '.finish'
+
+
 @pytest.mark.parametrize('mutation', ['visibility', 'reference', 'selection', 'loss', 'slot'])
 def test_wrong_visibility_withheld_leak_reselection_and_missing_records_are_rejected(mutation):
     p, a, r, o = fixture()
