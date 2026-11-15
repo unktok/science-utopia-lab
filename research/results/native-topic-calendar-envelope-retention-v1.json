@@ -1,0 +1,24 @@
+{
+  "schema": "scienceutopia.native-topic-calendar-envelope-retention.v1",
+  "analysis_source_commit": "29859f44ca51cb44eb6d607cab2156f0bfea039f",
+  "scientific_source_commit": "2f70147a801b9a3a549cca1a24b8fa38bb9525a4",
+  "original_export_sessions": [84315, 58547],
+  "original_export_exit_codes": [0, 0],
+  "all_three_export_files_identical": true,
+  "retained_files_sha256": {
+    "research/data/native-topic-calendar-envelope-v1/report.json": "d0ca17a4d22309c2f48aee95d215861dc076c0e0d59528354fd0c1d3f453fe34",
+    "research/data/native-topic-calendar-envelope-v1/calendar-envelope.csv": "a93ff428dfa89a79e581d140127767bb3f29159b417d9d9ae3cace82676d0343",
+    "research/data/native-topic-calendar-envelope-v1/manifest.json": "673a1ecddbabaf490b427163771c2ac445421919e7ecb4c223b75b955ad92fa9",
+    "research/data/native-topic-calendar-envelope-v1/junit.xml": "e628bed96b7cfa56ee06849b190e254e908b7c233927ebd924c1a6d90f865cdf"
+  },
+  "original_light_test_session": 46250,
+  "tests_passed": 8,
+  "pytest_reported_seconds": 0.65,
+  "conditional_new_paper_slots": [20, 36],
+  "observed_accepted_decisions": [20, 36],
+  "scope": "Two source-bound read-only exports of an explicitly conditional original-calendar relaxation using the retained normally closed real developer pilot and its original plan/catalog. Eight primitive files match original Git bytes; old cold audits are not reexecuted or counted anew. Not a new native world, optimizer, full v6/global optimality proof, utility/resource bound or duration-only causal effect.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "active_scientific_conditions_changed": false,
+  "publication_ready": false
+}

@@ -21,6 +21,10 @@ This page is navigation, not a chronological experiment transcript.
   [Both fresh references now complete](results/native-topic-free-reference-prefix-v1.json),
   first own-session readiness starts00:56JST. The [current unbuilt manuscript update](logbook/2026-11-15-topic-manuscript-source-update.md)
   distinguishes the old completed hand contrast from the new running free search.
+  [First actual own submission](results/native-topic-free-first-own-submission-v1.json)
+  completes14 editor steps and changes tensor parameters only; native evaluation
+  is executing. [Conditional original-calendar headroom](components/native-topic-calendar-envelope-v1.md)
+  reaches20/36 slots for the two hand rules, not a certified global or U/K/C bound.
 
 - [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):

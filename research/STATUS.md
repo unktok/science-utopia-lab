@@ -118,6 +118,21 @@ provider wire dispatch](results/native-topic-free-first-own-dispatch-v1.json)
 starts16:03:24UTC/01:03:24JST with10/900-second allowance and zero retries.
 This is free authoring, not a completed proposal/native outcome or loss gain.
 
+The [first own author session now submits](results/native-topic-free-first-own-submission-v1.json):
+all14 completed steps and generated terminal reconcile; five writes change only
+the existing addressed-selection tensor parameters, not code/nodes/wires/order.
+Its actual compiled system is executing in the native world. Component summary
+reports0 probes; no own native outcome, request equality or improvement is yet
+claimed. One direct consumer ignores the changed scores; a separate memory
+branch prevents inferring whole-world inertness from that static fact alone.
+
+Separate [conditional calendar readouts](results/native-topic-calendar-envelope-retention-v1.json)
+from the old normally closed real pilot give20/36 optimistic paper slots, matching
+the observed hand outputs, using exact original plan/catalog and8 unchanged
+primitive files. Both public exports and all three files match. This explicitly
+conditional capacity calculation is not a new world, globally certified v6
+optimum, utility/resource bound or a change to the running six-slot protocol.
+
 ### Normally closed same-authority developer controls (v5)
 
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)

@@ -1,0 +1,3 @@
+condition,observed_accepted_decisions,conditional_new_paper_slots,observed_project_assignments,conditional_completed_project_slots,observed_content_utility_loss,observed_collected_resource_cost
+core-only,20,20,10,10,-15.333333333333332,200.0
+core-plus-related,36,36,18,18,-28.666666666666668,200.0
