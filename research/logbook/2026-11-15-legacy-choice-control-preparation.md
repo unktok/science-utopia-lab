@@ -92,3 +92,58 @@ compliance. The prospective pilot operator runner/900-second binding and real
 feasibility measurements remain unverified; their separate checks still precede
 any actual three-world dispatch. The construction helper itself now has actual
 original-native/Docker/consumer/cold coverage, not only graph parsing.
+
+## Public operator, real SDK transport, double cold/cost and actual dispatch
+
+The separate public pilot driver now reconstructs all three literal controls
+from the unchanged post-funding-cost anchor and preceding closed12-slot study.
+It requires the actual closed five-world unused record, preserves original
+world sources/T/U and applies the existing scientist900 profile. Original
+writer locks and clean pinned sources remain enforced. All three known-seed
+controls run once in declared order; technical failure stops further dispatch
+without refill, whereas a tied/unfavorable complete loss is not a stop/veto.
+No designer is called and no host converts advice into a project assignment.
+
+Pure plan/dispatch/transport checks first pass20 tests in4.30s. A wider selection
+passes54 with one deliberately skipped opt-in native test in6.79s. The first
+opt-in attempt at13106944 stops before any world: the SCRIPTED cache directory
+was not created. Test-only setup is corrected and committed as566f2c91. The
+next attempt stops before code execution because the sandbox denies Docker
+socket access. Both failures/JUnit records remain; the production guard is not
+weakened. The same566f2c91 code then runs under approved Docker permission.
+
+Original85986 exits0, one full check passes in36.09s. No source/HEAD or tracked
+file changes occur during it. Three original five-founder/four-year worlds,
+12 annual boundaries, actual sandboxed code and role-load journals complete.
+Every one of459 scientist HTTP requests traverses the installed OpenAI SDK and
+HTTPX mock transport with read header900/retry header0 and the explicit timeout
+extension, without adding timeout fields to scientific payloads. Both original
+choice conditions have16 direction requests, and only the advice condition
+delivers its protocol in all16 direction prompts. The actual public prepare/run
+path rejects redispatch. Two cold source/physical/critic/transport audits match,
+as do two cost exports; no SDK construction is allowed during those reads.
+The upstream closure/corpus/HTTP/critics remain SCRIPTED fixtures, not new
+scientific outcomes or independent confirmation of the historical upstream.
+
+The [retained original verification](../results/native-legacy-choice-pilot-software-verification-v1.json)
+and [hash/source/JUnit receipt](../results/native-legacy-choice-pilot-software-retention-v1.json)
+preserve this evidence and both earlier failures. Five subsequent lightweight
+pilot/retention/continuation checks pass in3.36s. The generic existing readonly
+closure chain is reused, rather than starting another scientific run from analysis.
+
+An independent clean detached experiment checkout is created at the same
+566f2c9128ef2338609943265812ca27ab9d8232. Actual preparation succeeds with no
+generation; plan content is
+`65a52abeba004e21ddb738e963d1499298bbdc6d7ce525cffd749c49f62c2c91`.
+Host-wide top-CPU and model-process samples show no matching live inference
+immediately before dispatch; an unrelated research-evolver Node task exists.
+This is not an exclusive resource lease. No other task is stopped or modified.
+No independent heavy QA, embedding, build/render or video work accompanies inference.
+
+[Actual real dispatch](../results/native-legacy-choice-pilot-dispatch-v1.json)
+starts06:39:11.736458UTC/15:39:11JST. Original90768/PID43791 reaches the first
+core-assignment world's native funding applications. Original Qwen3-8B,
+offline103,107-paper corpus, four-year horizon, three fixed controls and budget
+remain unchanged; scientist transport is900 seconds with zero SDK retries.
+No complete loss or improvement is claimed. This is a development feasibility
+pilot with known seed61001, not unused evaluation or automatic institution invention.

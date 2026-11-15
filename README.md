@@ -37,8 +37,9 @@ are closed: ten measured proposals tie their assigned reference loss, two have
 runtime-null losses, and all four frozen own selections tie R7 and lose to the
 hand control on one reserved unused condition. Actual input/choice equivalence,
 one operative history-score path, content differences and costs are retained.
-The next native-choice feasibility pilot has SCRIPTED construction/cold proof,
-but its real-Qwen three-world run has not started. Stable strong-rule advantage,
+The next native-choice feasibility pilot has actual public operator/SDK900/cold
+software proof and starts its real-Qwen three-world run at06:39:11UTC November15.
+Its outcomes are not complete. Stable strong-rule advantage,
 useful automatic structural invention and main-track readiness remain unproven.
 
 ### Earlier November13--14 observations (historical, not live state)

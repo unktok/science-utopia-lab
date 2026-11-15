@@ -5,6 +5,9 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Original-choice pilot actual dispatch](results/native-legacy-choice-pilot-dispatch-v1.json)
+  and [public operator/SDK900/cold software proof](results/native-legacy-choice-pilot-software-retention-v1.json):
+  three hand controls in the original world; real outcomes not yet complete.
 - [Current status and remaining work](STATUS.md): the original12-slot native
   longitudinal comparison and fixed unused evaluation are normally closed.
   Publication readiness is not established.

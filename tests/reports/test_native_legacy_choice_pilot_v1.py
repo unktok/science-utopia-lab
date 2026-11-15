@@ -80,3 +80,38 @@ def test_public_run_consumes_all_complete_controls_or_stops_on_technical_failure
     with pytest.raises(ValueError, match='no redispatch'):
         driver.run(root)
     assert len(calls) == (3 if failure_at is None else 2)
+
+
+def test_retained_public_path_proof_binds_actual_httpx_and_historical_failures():
+    import hashlib
+    import json
+    import subprocess
+    from utopia.optimization.native_numeric_designer import checked
+    receipt = checked(json.loads((driver.ROOT / 'research/results/native-legacy-choice-pilot-software-retention-v1.json').read_text()))
+    raw = (driver.ROOT / receipt['verification_file']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == receipt['verification_file_sha256']
+    value = json.loads(raw)
+    assert value['source_commit'] == receipt['source_commit']
+    assert value['scientist_httpx_requests'] == receipt['scientist_httpx_requests'] == 459
+    assert value['all_scientist_read_headers'] == ['900'] and value['all_scientist_retry_headers'] == ['0']
+    assert value['native_direction_requests'] == [0, 16, 16]
+    assert value['advice_delivered_in_direction_prompts'] == [0, 0, 16]
+    for name, expected in receipt['source_files'].items():
+        body = subprocess.check_output(['git', 'show', receipt['source_commit'] + ':' + name], cwd=driver.ROOT)
+        assert hashlib.sha256(body).hexdigest() == expected
+    assert len(receipt['preserved_prior_failures']) == 2
+    assert receipt['historical_upstream_closure_is_scripted_fixture']
+    assert not receipt['scientific_feasibility_or_improvement_claimed']
+    assert receipt['new_real_model_calls'] == 0 and not receipt['publication_ready']
+
+
+def test_closure_uses_the_existing_finite_readonly_chain_not_another_scientific_run(monkeypatch):
+    from scripts import finish_native_legacy_choice_pilot_v1 as finish
+    captured = {}
+    def invoke(args, **kwargs):
+        captured.update(kwargs); return 'SCRIPTED-contract-only'
+    monkeypatch.setattr(finish, 'finish', invoke)
+    assert finish.run(SimpleNamespace()) == 'SCRIPTED-contract-only'
+    assert captured['plan_schema'] == driver.SCHEMA + '.plan'
+    assert captured['audit_module'] == 'scripts.audit_native_legacy_choice_pilot_v1'
+    assert captured['writer_command'] == 'scripts.run_native_legacy_choice_pilot_v1 run'

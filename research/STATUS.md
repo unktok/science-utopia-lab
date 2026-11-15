@@ -10,6 +10,18 @@ manuscript. Publication readiness is **not established**; acceptance is not prom
 
 ## Current experiment: November15
 
+The next [three-control original-choice pilot](results/native-legacy-choice-pilot-dispatch-v1.json)
+actually starts at06:39:11UTC/15:39:11JST from clean frozen566f2c91.
+Original session90768/PID43791 enters `legacy-choice-core-assignment`.
+It compares direct core assignment, original native choice and code-authored
+advice with unchanged T/U, four-year world and Qwen3-8B scientists. This is a
+reused-development-seed hand-control feasibility study, not optimization,
+automatic invention or unused evaluation. No complete outcome is claimed here.
+The [actual public-path software proof](results/native-legacy-choice-pilot-software-retention-v1.json)
+binds three original SOFTWARE worlds, installed SDK/HTTPX900/zero-retry headers,
+two cold audits and two matching cost projections. Historical setup/permission
+failures remain. Frozen scientific source/runtime is not edited during inference.
+
 Development closed November15 at03:49:55UTC/12:49:55JST. Paired closure,
 costs and all five readouts closed by03:58:26UTC; allocation followed at03:58:41UTC.
 These are completed records, not live heartbeats. See the
@@ -68,10 +80,11 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
 1. The [fixed evaluation and paired reconstruction](results/native-longitudinal-fixed-closed-v1.json)
    are closed and retained, now integrated in the reviewed88-page PDF.
    Do not call this an independent optimizer replication.
-2. The original native-choice route controls have actual SCRIPTED execution,
-   context-delivery and cold-reconstruction evidence, not real-Qwen feasibility
-   outcomes. Implement and verify the finite pilot's public operator path and
-   exact900-second profile before real dispatch; the three-world pilot is not started.
+2. The original native-choice pilot's public operator path and exact900-second
+   profile now have actual SCRIPTED through-run/cold/cost evidence; real dispatch
+   has started. Finish the three declared controls and original-source paired
+   reconstruction, preserving technical nulls without refill and complete unfavorable
+   losses without an improvement gate. Software proof is not real-Qwen feasibility.
    The final development candidate's first different scientist input is the
    71st request (index70), year4 round intention: delivered publication-history
    and native past-paper scores change0.0 to1.0. Retain this trace and distinguish observed-path
