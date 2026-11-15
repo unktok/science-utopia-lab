@@ -1,0 +1,19 @@
+{
+  "schema": "scienceutopia.native-topic-effect-map-preparation.v1",
+  "tested_source_commit": "b2aec63029f5a2af88e28179bf7393479954642e",
+  "original_session": 46386,
+  "exit_code": 0,
+  "passed": 9,
+  "pytest_reported_seconds": 1.80,
+  "junit": "research/data/native-topic-effect-map-v1/junit.xml",
+  "junit_sha256": "8adb9da7cf7ba6eeb944d87458fa1ca0c8557f777283c71682ebb3f282ec8a99",
+  "verified_scope": "Pure SCRIPTED all-six-slot joins of submitted source/graph changes, actual recorded full scientist-input/choice classes and literal assigned losses versus visible reference. Nulls, unmatched prefixes, seed boundaries and original ordering remain explicit. No rendering or whole-study export is exercised.",
+  "planned_output": "Separate paired-readout-derived edit/input/objective map, full report and CSV, after original whole-study normal audit/cost/readout closure. Frozen running reader/source stay unchanged.",
+  "pending": ["actual normally closed original paired-readout export", "two matching effect-map exports", "actual figure visual review", "manuscript inclusion"],
+  "figure_rendered": false,
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "new_native_worlds": 0,
+  "active_study_changed": false,
+  "publication_ready": false
+}
