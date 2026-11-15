@@ -74,3 +74,28 @@ important main-track result. Preserve the remaining eight original slots,
 paired closure/readouts and frozen unused evaluation before the next research
 decision. R2/R3/R5/R6 remain open; no new model/native experiment, source/loss
 change, hidden novelty gate, host code repair or proposal refill occurs here.
+
+## First feedback-bearing submission closes, native loss still pending
+
+The same T1 request explicitly finishes at00:49:46.728313UTC. All14 original
+steps are now known: one plan, ten read attempts (seven applied/three rejected),
+two applied writes and one explicit finish; no invalid-response step. Both
+writes target world.selection. The final component summary retains eight
+attempts/eight returns/zero raised; no model or native-world calls originate
+from those component tests and no merit veto is added.
+
+The plan's agenda-edit target is not an implemented agenda change. Direct
+complete SystemSpec comparison to R7 shows only selection source differs:
+24 nodes, no root-field, wiring or schedule changes. The final candidate is
+literally distinct from R7 and all four g0 candidates; that is identity, not
+behavioral diversity or gain. Fingerprint
+`9005ea5ca0c3302b5be6884f21a67f845862b01b580e5ac4bebfac43903f86bb`;
+response content
+`aaf635941f5479631478a1e2715cc7edbb1643e12703a3f0732c234e4b2afc86`,
+fileSHA`01b87c3e1c89947db1f7242f11728b6a749969c92e752ffb92bdb6133eba3278`.
+
+Original native cell
+`search/parent-trajectory/throughput/worlds/native-adaptive-8936df2412c955102e1ad357-s61001`
+starts and generates its original scientist traffic. Four of12 own outcomes
+are still complete; the fifth loss and whole-study audit remain pending.
+No running source, objective, budget, model, selection or failed step changes.

@@ -7,6 +7,13 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Fifth T1 explicitly submits at00:49:46UTC after14 charged steps/eight component
+returns and starts its original native world. Final changes are selection
+source only, not the agenda change named in its plan. No root/wire/schedule
+changes; the literal candidate differs from R7/all four g0 submissions. Its
+native loss/effect is still pending, so four of12 own outcomes are complete.
+[Full own-feedback/submission boundary](logbook/2026-11-15-first-own-feedback-wire.md).
+
 Fifth slot parent-trajectory T1 passes29 actual readiness controls and begins
 optimization at00:38:29UTC. Read-only78950 exits0: its first actual returned
 wire carries the original R7 and own T0 scalar result, exact own-history/archive
