@@ -33,6 +33,8 @@ def test_derive_preserves_original_losses_and_records_annual_unpaid_values_witho
     assert result['contrast_control_minus_reference']['reported_C_loss'] == -4
     assert result['annual_cost_support'][1]['years'][-1]['uncollected_activity_cost'] == 40
     assert not result['requested_cost_score_is_optimized'] and not result['loss_or_selection_changed']
+    assert not result['automatic_invention'] and not result['held_out_evaluation']
+    assert not result['independent_optimizer_replications']
 
 
 @pytest.mark.parametrize('field,new', [('automatic_invention', True), ('held_out_evaluation', True),

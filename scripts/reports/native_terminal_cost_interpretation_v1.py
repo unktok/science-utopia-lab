@@ -36,7 +36,8 @@ def derive(report):
         'scientific_source_commit': report['scientific_source_commit'],
         'original_readout_source_commit': report['analysis_source_commit'],
         'annual_cost_support': annual, 'requested_cost_score_is_optimized': False,
-        'new_code_executions': 0}
+        'new_code_executions': 0, 'automatic_invention': False,
+        'held_out_evaluation': False, 'independent_optimizer_replications': False}
 
 
 def render(report, output):
