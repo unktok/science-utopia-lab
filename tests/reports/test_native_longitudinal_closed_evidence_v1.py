@@ -61,3 +61,28 @@ def test_full_input_difference_keeps_both_score_routes_and_the_partial_trace():
     assert v2['dossier_score_fields_changed'] == 4
     assert v2['native_past_paper_score_fields_changed'] == 2
     assert not v1['isolated_causal_effect_claimed'] and not v2['isolated_causal_effect_claimed']
+
+
+def test_fixed_batch_headroom_is_not_mislabeled_a_global_bound():
+    value = read(ROOT / 'research/results/native-longitudinal-selection-headroom-v1.json')
+    assert len(value['worlds']) == 12  # Ten measured own worlds plus two references.
+    assert value['technical_nulls_excluded_from_complete_worlds'] == 2
+    assert all(w['rejected_total'] == 0 for w in value['worlds'])
+    hand = next(w for w in value['worlds'] if w['identity'] == 'workflow-reference-post-funding-cost')
+    assert hand['accepted_total'] == 20
+    assert all(w['accepted_total'] == 18 for w in value['worlds'] if w is not hand)
+    assert not value['global_policy_upper_bound_claimed']
+    assert not value['causal_explanation_for_search_concentration_proved']
+    assert value['new_model_calls'] == value['new_code_executions'] == 0
+
+
+def test_paper_path_series_keeps_unknown_losses_separate_from_best_own():
+    from scripts.reports.native_longitudinal_paper_v1 import series
+    value = read(DATA / 'scores/report.json')
+    t = series(value, 'scalar', 'throughput')
+    assert [r['observed'] for r in t] == [-18.0, -18.0, None]
+    assert [r['best_own'] for r in t] == [-18.0] * 3
+    assert [r['null'] for r in t] == [False, False, True]
+    u = series(value, 'parent-trajectory', 'content-utility')
+    assert [r['null'] for r in u] == [False, True, False]
+    assert u[1]['observed'] is None

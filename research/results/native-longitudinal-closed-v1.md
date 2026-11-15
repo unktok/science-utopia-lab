@@ -53,6 +53,17 @@ removes a mechanism, connection or schedule, or changes other system fields.
 The API supports authored new nodes and whole-system wiring edits; those abilities
 were not used successfully as structural invention in this search.
 
+A [read-only final-checkpoint screen](native-longitudinal-selection-headroom-v1.json)
+finds zero rejected records in every completed world:18 accepted in R7 and each
+valid own world,20 in the hand comparison. On each actually recorded decision
+batch, accepting everything already saturates immediate acceptance count. This
+helps localize the empirical failure: edits concentrate in a stage with zero
+immediate fixed-batch throughput headroom, while the hand changes upstream
+timing/routing and the eventual batch size. It does not prove why the author
+concentrated there or a global throughput upper bound. Different decisions can
+change later information, resources and submissions; none of those hypothetical
+policies is evaluated by this screen.
+
 Full scientist request sequences form three completed observed-input classes:
 
 - R7 plus nine valid own worlds share one exact full request-sequence digest and

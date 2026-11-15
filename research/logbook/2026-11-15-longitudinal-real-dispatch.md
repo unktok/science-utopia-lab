@@ -937,3 +937,25 @@ Nine focused retained-evidence/navigation tests pass in0.84s, and the default
 documentation checker passes25 documents/415 local links/six old snapshots.
 These lightweight checks make no model, world, container or embedding call;
 they are not independent scientific replications or a publication-ready verdict.
+
+## Localizing the zero-gain result without a new scientific run
+
+Read all twelve completed final checkpoints (ten own plus two references),
+preserving each file hash before/after decoding. All annual decision summaries
+and final archive status counts show zero rejected records. R7 and every valid
+own world accept18, while the hand comparison accepts20. The
+[headroom screen](../results/native-longitudinal-selection-headroom-v1.json)
+therefore identifies zero immediate acceptance headroom on the actual fixed
+decision batches where all document-changing operations concentrated.
+This is not a global throughput bound, a hypothetical policy execution or a
+proven cognitive explanation of the author's concentration. Upstream changes
+and downstream feedback may alter subsequent batches. The editable manuscript
+and closed interpretation now state that conditional limitation explicitly.
+
+A paper-specific path renderer is prepared in
+`scripts/reports/native_longitudinal_paper_v1.py`, separating numerical loss
+axes from a distinct nonnumeric null strip and labelling visible/withheld
+references. Only its data-series logic is tested during inference; actual
+public rendering and image inspection remain pending until inference ends.
+The original immutable readout figures stay unchanged. The expanded retained
+evidence/navigation suite passes11 tests in0.74s, with no new model/world call.
