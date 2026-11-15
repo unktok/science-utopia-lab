@@ -1,6 +1,34 @@
 # Objective-conditioned institution paper
 
 The latest reviewed working artifact is the
+[85-page integrated draft](../output/pdf/science-utopia-lab-integrated-staged-actual-working-paper.pdf),
+with44 figures,38 tables and28 references. Its
+[source/build/visual receipt](integrated-staged-actual-build-v1.json) binds source
+`a40df5ba04ef5cdb52cea94f17661a8b43af5e94` and the reviewed PDF SHA256
+`5e79f5774ff73e61a0e07fcd833f8401875fda92ed092e1fc60d861118d887c9`.
+The retained two-build evidence agrees in extracted text/logs/all page images,
+and all85 layouts are reviewed. It includes the completed six-slot staged
+study and its frozen unused evaluation, including unfavorable/tied outcomes.
+The [71-file allowlist](../research/publication/paper-rebuild-allowlist-integrated-staged-actual-v1.json)
+and [actual local reconstruction](../research/results/integrated-staged-actual-rebuild-subset-verification-v1.json)
+rebuild identical text and all85 page images with the existing cache; PDF binary
+bytes differ. This is not a clean-machine build or independent inference rerun.
+
+The editable [integrated.tex](integrated.tex) and its included sources are newer
+than that reviewed artifact. They currently cite29 records, adding SciMARS and
+clarifying the contribution boundary. Those source changes have passed source/
+citation checks, not a new PDF build or visual review. The ongoing12-slot
+longitudinal comparison and its final fixed evaluation are not yet integrated
+as completed results. See [current status](../research/STATUS.md) and the
+[source-only update](../research/logbook/2026-11-15-manuscript-positioning-source-update.md).
+Do not attribute the old PDF's page count, hash or review receipt to current
+HEAD sources. To reconstruct a reviewed snapshot, use its exact source-bound
+allowlist/receipt; the build command below instead builds your checked-out sources.
+None of these working artifacts is main-track ready, submitted or release-cleared.
+
+## Earlier reviewed snapshots
+
+The preceding reviewed artifact is the
 [82-page integrated draft](../output/pdf/science-utopia-lab-integrated-staged-construction-working-paper.pdf),
 with42 figures,36 tables and27 references. Its
 [source/build/visual receipt](integrated-staged-construction-build-v1.json)
@@ -209,6 +237,11 @@ not demonstrated. Fixed-record loss algebra is not a dynamic-policy bound.
 
 ## Build the integrated manuscript with the existing cache
 
+This previews the checked-out source, not necessarily any historical reviewed
+PDF. Do not run independent heavy build/render/QA while real inference is live
+unless that concurrent resource profile was explicitly declared. Preserve all
+historical PDFs and receipts; use a fresh preview output for a new build.
+
 From the repository root, using the existing Tectonic installation:
 
 ```sh
@@ -218,7 +251,8 @@ cd paper
   --keep-intermediates --outdir ../tmp/pdfs/integrated-local integrated.tex
 ```
 
-Inspect the newly rendered pages before replacing the reviewed PDF and receipt.
+Inspect every newly rendered page before retaining a new named PDF and its
+source/build/visual receipt. Never overwrite a historical reviewed PDF or receipt.
 The preserved older build uses source5fcf2b7,37 pages reviewed at90dpi, plus150dpi checks
 of dense figures/provenance. No layout or unresolved-reference warning remains.
 The old paper-only13-path policies still rebuild the narrower V2 draft. The

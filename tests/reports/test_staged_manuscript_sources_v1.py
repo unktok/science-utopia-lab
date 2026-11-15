@@ -98,3 +98,17 @@ def test_scientific_harness_precedent_does_not_become_a_reproduction_or_priority
     assert "not the researchers' memory service" in body
     assert 'not reported here before the frozen analysis closes' in body
     assert 'that setting alone does not establish an important empirical answer' in body
+
+
+def test_paper_navigation_names_latest_reviewed_snapshot_not_current_source_as_reviewed():
+    import json
+    receipt = json.loads((ROOT/'paper/integrated-staged-actual-build-v1.json').read_text())
+    readme = (ROOT/'paper/README.md').read_text()
+    latest = readme.split('## Earlier reviewed snapshots',1)[0]
+    assert str(receipt['pages'])+'-page integrated draft' in latest
+    assert Path(receipt['output']).name in latest
+    assert receipt['source_commit'] in latest and receipt['pdf_sha256'] in latest
+    assert 'not a new PDF build or visual review' in latest
+    assert 'Do not attribute the old PDF' in latest
+    assert 'build command below instead builds your checked-out sources' in latest
+    assert 'Never overwrite a historical reviewed PDF or receipt' in readme

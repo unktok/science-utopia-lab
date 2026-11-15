@@ -41,3 +41,15 @@ perform the frozen unused evaluation under its fresh inventory/resource
 contract, then integrate the actual evidence, build separately and inspect
 every resulting PDF page. A focused main-track argument still needs a supported
 important answer, not additional citations, QA counts or paper length.
+
+## Later navigation correction, with inference still live
+
+`paper/README.md` still introduced the82-page artifact as latest, despite the
+already retained85-page artifact. Its front matter now links the actual85-page
+receipt and71-file reconstruction, explicitly distinguishes29-citation editable
+source from the unchanged28-citation reviewed PDF, and says the example build
+uses the checked-out source rather than reproducing any historical snapshot.
+Historical PDFs/receipts must not be overwritten. The actual85-page PDF hash
+still matches its receipt; all75 local README links resolve. Thirteen source/
+editorial checks pass in1.99s. No PDF build/render or native experiment is added
+by this correction, and it does not close the focused-paper or importance gap.
