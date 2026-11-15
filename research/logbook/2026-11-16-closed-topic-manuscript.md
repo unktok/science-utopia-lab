@@ -91,3 +91,15 @@ The updated entry-point/historical-artifact/source/rebuild tests80712 exit0:
 86 pass in33.54s, exact JUnit retained separately. This resolves the obsolete
 abstract-string assertion, not a scientific runtime bug. The broader old PDFs'
 source-bound identity and scientific limits remain tested, not silently replaced.
+
+Original final follow-up80015 exits0 from3da9a1ef:87 tests pass in33.47s,
+including actual80-file reconstruction retention. This adds a reconstruction
+check, not another scientific trial. The original build receipt stays immutable;
+the separate reconstruction proof records the later verification.
+
+The next research decision must distinguish real objective headroom from
+search failure before increasing scale. A separately predeclared terminal-cost
+control still needs sandbox/public-native execution; its predicted gain is not
+observed or automatic invention. Repeating unchanged local design histories
+against the same conditionally saturated count target is not the default next
+step, and a positive hand control alone would not close the publication goal.

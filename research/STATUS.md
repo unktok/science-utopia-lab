@@ -462,11 +462,11 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
 ## Remaining publication work
 
 1. The [fixed evaluation and paired reconstruction](results/native-longitudinal-fixed-closed-v1.json)
-   are closed and retained, now included in both the88- and91-page PDFs.
+   are closed and retained, included in the historical88-/91-page and current98-page PDFs.
    Do not call this an independent optimizer replication.
 2. The three-control pilot, resource readout and their actual analyses are now
-   integrated in the reviewed91-page PDF, with48 figures/43 tables/29 references.
-   Two builds and the actual77-file subset match in text/all91 page images;
+   retained in the reviewed98-page PDF, with50 figures/46 tables/29 references.
+   Two builds and the actual80-file subset match in text/all98 page images;
    all layouts and150dpi first/concept/new-result pages are inspected.
    Do not promote the hand advice contrast to autonomous
    invention or infer literal obedience from message presence.
@@ -474,13 +474,17 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
    71st request (index70), year4 round intention: delivered publication-history
    and native past-paper scores change0.0 to1.0. Retain this trace and distinguish observed-path
    equivalence from global policy equivalence.
-3. Complete the currently pinned three-objective free-system study, including
-   all six own slots/nulls, actual institutional behavior, costs and matched cold
-   readouts. Both original losses prefer the same strong hand control so far;
-   different objective winners are not a success requirement. Determine the
-   appropriate next independent evidence only after interpreting this finite
-   study. Do not automatically add seeds, repeat the same search, substitute
-   new losses for old ones or claim a global optimum or invented mechanism.
+3. The three-objective free-system study is now fully closed and integrated:
+   six own slots/nulls, actual institutional behavior, costs and matching cold
+   readouts. No selected system beats the visible strong reference; no new
+   wiring or additional institutional work is used. Decide the next important
+   empirical question before another free search. The prepared terminal-cost
+   control can test whether a specific original-world objective opportunity is
+   real, but first needs sandbox/public-native verification and a separate
+   finite protocol. Even a positive hand control is not automatic invention or
+   sufficient main-track evidence. Different objective winners are not required.
+   Do not automatically add seeds, repeat until positive, substitute new losses
+   for old ones or claim a global optimum or useful invented mechanism.
 4. Produce a focused main-paper account with appropriate supporting material
    and a critical readiness decision. A complete broad working paper is not
    itself the focused, adequately substantiated conference contribution.
@@ -493,15 +497,16 @@ updates; numerical QA counts are not scientific replications.
 
 ## Manuscript and historical records
 
-The latest reviewed artifact is the91-page working PDF with48 figures/43 tables/
-29 references, including the earlier studies, completed12-slot comparison,
-five-world unused evaluation, all3 choice controls and passive resource readout.
-Two cached builds have identical text/logs/all91 page images; all layouts and
+The latest reviewed artifact is the98-page working PDF with50 figures/46 tables/
+29 references, including all earlier meaningful studies, completed12-slot comparison,
+five-world unused evaluation, choice controls, passive resource readout, same-authority
+topic pilot and all six slots of the closed three-objective study.
+Two cached builds have identical text/logs/all98 page images; all layouts and
 150dpi first/concept/new-result details are reviewed. The
-[paper entry point](../paper/README.md) links its exact receipt and actual77-file
+[paper entry point](../paper/README.md) links its exact receipt and actual80-file
 local reconstruction, which also matches text and every page image. Binary PDF
 bytes differ. This is not clean-machine reproduction, independent inference or
-main-track readiness; older88-/85-page artifacts and receipts are unchanged.
+main-track readiness; older91-/88-/85-page artifacts and receipts are unchanged.
 
 The previous[3,185-line status](status-history-2026-11-15-longitudinal-prefix.md)
 and[1,140-line index](index-history-2026-11-15-longitudinal-prefix.md) are retained
