@@ -290,6 +290,44 @@ slots, paired closure/cost/readouts, interpretation/visual review, fresh unused
 inventory, frozen evaluation and main-track importance judgment remain open.
 Neither an extra reader nor another unchanged own outcome closes R2/R3/R5/R6.
 
+## Three-own closed-leaf input diagnostic inside the still-live study
+
+Read-only original86329 exits0 using the existing `sequence` projector from the
+unchangeda5be8d31 source. It extends the earlier R7/scalar-T0 diagnostic to
+parent-trajectory U0 and scalar U0. Each selected original observation is
+complete, has one seed61001 world and no technical failures. All four year4
+checkpoints exist. Per-cell SQLite caches are read `mode=ro&immutable=1`, with
+no WAL/SHM/journal allowed. All listed wire/cache/checkpoint/reader/plan file
+hashes and each selected original campaign record are unchanged afterward;
+the source remains clean and pinned. This does not claim the still-written
+whole-run inventory is frozen or that a cold audit is complete.
+
+Every world has115 wire requests and115 committed replies, none unmatched.
+All full parsed payloads are directly compared without scrubbing; the ordered
+digest is`40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb`.
+All literal response-choice sequences also match, digest
+`f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586`.
+Each full provider-body sequence has a different digest and remains retained;
+it is not silently normalized to response-choice equality.
+
+[Tracked compact diagnostic](../results/native-longitudinal-three-own-request-prefix-v1.json)
+is byte-identical to runtime
+`outputs/native-longitudinal-three-own-request-prefix-v1-a1.json` in the feature
+worktree. Its contentSHA is
+`a2aee07078a4d087c4f94d5dd6c3ec327050c46ddc1cd0b3f209c99134b6415c`,
+fileSHA`5d9b36aa71d49a405521786c5458ac4b9e9643eb8fb3c27e48bbd1bf5915cadb`.
+It binds the three raw original record/observation/request digests and every
+listed reader/input hash; it contains no raw scientist prompt/reply bodies.
+
+Thus these three own outcomes share R7's observed scientist input/choice path,
+not merely equal final losses. This cannot prove every internal state or global
+program equivalence, identify a causal information effect, establish independent
+optimizer replication, complete the twelve-slot audit, or justify skipping a
+future world. No new model/world/code-execution experiment, repair, selection
+or loss modification occurs. At00:08UTC the same fourth author is still live,
+with a five-step complete journal prefix; that is not its final author total.
+The full normally closed analysis and frozen evaluation remain required.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,

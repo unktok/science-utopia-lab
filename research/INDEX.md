@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Three completed own worlds: full observed scientist inputs/choices](results/native-longitudinal-three-own-request-prefix-v1.json):
+  original86329 exits0,115 literal ordered payloads/choices per complete world
+  match R7, while full provider envelopes differ. No new model/world call,
+  whole-study audit, causal information conclusion or global equivalence.
+  This extends the earlier first-own-only diagnostic, not the experiment's
+  authority to skip future worlds or select a different policy.
+
 - [Primary-source positioning, manuscript source only](logbook/2026-11-15-manuscript-positioning-source-update.md):
   SciMARS is added without a generic harness-revision priority claim or a
   matched reproduction claim. A v3 identity chain covers all29 current citations;

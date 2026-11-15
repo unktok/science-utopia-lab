@@ -7,6 +7,17 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Read-only extension86329 exits0: all three already completed own worlds and
+R7 each have115 committed scientist inputs/replies. Their full ordered literal
+payloads and response choices match; full provider bodies differ. Listed
+wire/cache/year4-checkpoint/reader inputs remain unchanged; SQLite is opened
+read-only/immutable with no WAL/journal. This is observed-path invariance for
+these four complete leaves, not every internal state/global program equivalence,
+a causal information effect, whole-study cold proof or a deduplication rule.
+[Compact bound diagnostic](results/native-longitudinal-three-own-request-prefix-v1.json).
+Fourth authoring and all original continuations are polled live; no experiment
+setting, selection, world, loss or source is changed.
+
 Subsequent00:02:50UTC observation: fourth parent-trajectory T0 request readiness
 passes and original82259 advances to free authoring. Three own outcomes remain
 complete, all tying R7. The next manuscript source now cites SciMARS and narrows
