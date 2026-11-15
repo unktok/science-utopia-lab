@@ -66,18 +66,21 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
 ## Remaining publication work
 
 1. The [fixed evaluation and paired reconstruction](results/native-longitudinal-fixed-closed-v1.json)
-   are closed and retained. Finish manuscript/PDF integration and critical
-   interpretation; do not call this an independent optimizer replication.
-2. The editable manuscript now contains both completed studies and costs.
-   Review its actual new PDF and figures. The final development candidate's first different scientist input is the
+   are closed and retained, now integrated in the reviewed88-page PDF.
+   Do not call this an independent optimizer replication.
+2. The original native-choice route controls have actual SCRIPTED execution,
+   context-delivery and cold-reconstruction evidence, not real-Qwen feasibility
+   outcomes. Implement and verify the finite pilot's public operator path and
+   exact900-second profile before real dispatch; the three-world pilot is not started.
+   The final development candidate's first different scientist input is the
    71st request (index70), year4 round intention: delivered publication-history
    and native past-paper scores change0.0 to1.0. Retain this trace and distinguish observed-path
    equivalence from global policy equivalence.
 3. Decide what important question the evidence actually answers. If tied/inferior,
    do not automatically add seeds, enlarge search or claim a new mechanism.
-4. Integrate evidence and primary-source positioning into the full working paper,
-   build/render/review after real inference ends, and produce a focused main-paper
-   account with appropriate supporting material and a critical readiness decision.
+4. Produce a focused main-paper account with appropriate supporting material
+   and a critical readiness decision. A complete broad working paper is not
+   itself the focused, adequately substantiated conference contribution.
 
 R2 (importance), R3 (adequate independent evidence), R5 (current focused manuscript)
 and R6 (final readiness) remain open. Earlier R1/R4 implementation and completed
@@ -87,12 +90,14 @@ updates; numerical QA counts are not scientific replications.
 
 ## Manuscript and historical records
 
-The latest reviewed artifact is the85-page working PDF with44 figures/38 tables/
-28 references, including the earlier six-slot staged study and its unused evaluation.
-The[paper entry point](../paper/README.md) links its exact receipt and71-file local
-reconstruction. Editable sources are newer (29 citations) and now contain the
-completed12-slot development study, but are not a newly built/reviewed PDF.
-The source now also contains the closed fixed evaluation, not a newly reviewed PDF.
+The latest reviewed artifact is the88-page working PDF with46 figures/40 tables/
+29 references, including both the earlier studies and the completed12-slot
+development/five-world unused evaluation. Two cached builds have identical
+text/logs/all88 page images; all layouts and150dpi new-result details are reviewed.
+The[paper entry point](../paper/README.md) links its exact receipt and actual74-file
+local reconstruction, which also matches text and every page image. Binary PDF
+bytes differ. This is not clean-machine reproduction, independent inference or
+main-track readiness; the older85-page artifact and receipts are unchanged.
 
 The previous[3,185-line status](status-history-2026-11-15-longitudinal-prefix.md)
 and[1,140-line index](index-history-2026-11-15-longitudinal-prefix.md) are retained

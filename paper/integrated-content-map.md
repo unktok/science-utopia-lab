@@ -5,7 +5,17 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
-Latest November14 reviewed artifact: the78-page workflow-feedback manuscript
+Latest November15 reviewed artifact: the88-page longitudinal manuscript includes
+the full twelve-slot comparison, two runtime nulls, five physical frozen unused
+worlds, complete assigned-loss paths, exact observed input/choice classes, the
+operative score-history route, shared/content-only utility decomposition and
+per-role costs. [Actual source/build/visual binding](integrated-longitudinal-build-v1.json)
+and [74-file reconstruction](../research/results/integrated-longitudinal-rebuild-subset-verification-v1.json)
+retain two full builds and matching text/all88 page images. All46 figures,
+40 tables and29 cited references remain. This is not a focused main-track-ready
+paper, reliable automatic invention or independent optimizer replication.
+
+Historical November14 snapshot: the78-page workflow-feedback manuscript
 keeps earlier meaningful tracks and adds the normally closed structural search,
 its unused-condition comparison and the SCRIPTED broader native path. Its
 [source/build/visual binding](integrated-workflow-feedback-build-v1.json) and

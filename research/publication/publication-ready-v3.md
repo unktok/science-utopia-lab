@@ -7,7 +7,27 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
-## 十二枠の完了後に何を研究するか（November15）
+## 十二枠と未使用評価の閉鎖後のsnapshot（November15）
+
+development全十二枠（十測定・二runtime null）と未使用評価の全五物理worldは正常閉鎖し、
+二回の元監査／費用／各readoutは一致した。全自己選択はR7と同点で、強い手作り制度に劣る。
+固定評価の内容差は共通28記録と各側6／8記録へ分解でき、効用差13/3を正確に説明する。
+これは一つの結合条件の記録分解であり、独立反復や科学的真実の測定ではない。
+
+[最新88頁原稿](../../paper/integrated-longitudinal-build-v1.json)に全結果・経路・費用を統合し、
+二回build、全頁画像一致、全頁配置と新結果150dpiを確認した。
+[別74-file実再構築](../results/integrated-longitudinal-rebuild-subset-verification-v1.json)も本文と
+全88頁画像が一致する。これは広いworking稿の更新であり、R2重要な答え、R3適切な独立証拠、
+R5焦点を持つ主会議稿、R6最終投稿判断の完了ではない。
+
+次の最小三条件pilotは、元のcore+related選択経路とコード定義の助言を比較する。
+[literal対照の実native構築／cold証拠](../results/native-legacy-choice-construction-software-v1.json)
+はSCRIPTEDなソフトウェア検証として完了したが、実Qwenの三世界は未着手。
+公開operator経路と900秒profileの通し検証が次の実装である。目的は有効な作用経路を
+確かめることであり、手設計対照の差を自動発明や方法優位へ言い換えない。
+後続の目的別自由探索・独立評価は別途有限設計し、単なる同一探索の増量にはしない。
+
+## 十二枠の完了後に何を研究するか（November15の途中時点）
 
 新十二枠のdevelopmentは閉鎖し、二重監査・費用・全readoutと
 [作用の解釈](../results/native-longitudinal-closed-v1.md)を保持した。

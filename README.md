@@ -25,12 +25,23 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The [latest reviewed integrated manuscript](paper/README.md) is75 pages,
-with39 figures and31 tables. Its two cached builds have matching text/logs and
-all75 final layouts are reviewed. The earlier73-page artifact's62-file minimal
-rebuild remains verified; the75-page minimal subset is not yet rebuilt.
-It preserves the research program and prior
-drafts without an artificial page cap; paper length is not publication readiness.
+The [latest reviewed integrated manuscript](paper/README.md) is88 pages,
+with46 figures,40 tables and29 references. Two actual cached builds match in
+text/logs and all88 page images; all layouts and new-result details are reviewed.
+Its separate74-file reconstruction also matches text and every page image.
+The original studies and older PDFs remain intact, without an artificial page
+cap. Document reconstruction and paper length are not publication readiness.
+
+The latest twelve-slot native comparison and selection-fixed unused evaluation
+are closed: ten measured proposals tie their assigned reference loss, two have
+runtime-null losses, and all four frozen own selections tie R7 and lose to the
+hand control on one reserved unused condition. Actual input/choice equivalence,
+one operative history-score path, content differences and costs are retained.
+The next native-choice feasibility pilot has SCRIPTED construction/cold proof,
+but its real-Qwen three-world run has not started. Stable strong-rule advantage,
+useful automatic structural invention and main-track readiness remain unproven.
+
+### Earlier November13--14 observations (historical, not live state)
 
 The [parent-presentation comparison](research/components/native-parent-presentation-loop-v1.md)
 is stopped with its exact partial records and unknown completion preserved.

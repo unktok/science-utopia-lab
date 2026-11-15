@@ -1,6 +1,33 @@
 # Objective-conditioned institution paper
 
 The latest reviewed working artifact is the
+[88-page integrated draft](../output/pdf/science-utopia-lab-integrated-longitudinal-working-paper.pdf),
+with46 figures,40 tables and29 references. Its
+[source/build/visual receipt](integrated-longitudinal-build-v1.json) binds source
+`9b03cbb023947b142d13a8111c70cf5beb8ec847` and reviewed PDF SHA256
+`64945b6808c21c2abcbe3302166f9d856ab4ac830ab02846a7649bf450e0567f`.
+Two actual cached builds have identical extracted layout text, logs and all88
+rendered page images. All layouts and150dpi first/concept/new-result details
+are inspected. The complete twelve-slot development comparison and all five
+physical unused-evaluation worlds are now included, with nulls, full input/
+choice equivalence, actual score-history effects, content differences and costs.
+The [74-file allowlist](../research/publication/paper-rebuild-allowlist-integrated-longitudinal-v1.json)
+and [actual local reconstruction](../research/results/integrated-longitudinal-rebuild-subset-verification-v1.json)
+rebuild identical layout text and all88 page images using the existing cache.
+PDF binary bytes differ. The earlier output-directory setup failure is retained;
+no manuscript input or scientific result was changed to resolve it. This is not
+a clean-machine build, independent inference rerun, anonymous submission or
+release clearance. The broad integrated paper is not a focused main-track-ready
+paper; importance, adequate independent evidence and the final decision remain open.
+
+The canonical whole-program source is [integrated.tex](integrated.tex). Its
+included [longitudinal section](integrated/native-longitudinal-comparison.tex)
+contains both closed studies. Reconstruct a reviewed snapshot with its own exact
+source/allowlist, not arbitrary later HEAD bytes. See [current status](../research/STATUS.md).
+
+## Earlier reviewed snapshots
+
+The preceding reviewed working artifact is the
 [85-page integrated draft](../output/pdf/science-utopia-lab-integrated-staged-actual-working-paper.pdf),
 with44 figures,38 tables and28 references. Its
 [source/build/visual receipt](integrated-staged-actual-build-v1.json) binds source
@@ -14,22 +41,9 @@ and [actual local reconstruction](../research/results/integrated-staged-actual-r
 rebuild identical text and all85 page images with the existing cache; PDF binary
 bytes differ. This is not a clean-machine build or independent inference rerun.
 
-The editable [integrated.tex](integrated.tex) and its included sources are newer
-than that reviewed artifact. They currently cite29 records, adding SciMARS and
-clarifying the contribution boundary. Those source changes have passed source/
-citation checks, not a new PDF build or visual review. The12-slot longitudinal
-comparison is now closed and included in the editable source section
-[native-longitudinal-comparison.tex](integrated/native-longitudinal-comparison.tex).
-Its final fixed evaluation is also closed and included in that editable section.
-In the old reviewed PDF, these current outcomes are not yet integrated
-as completed results. See [current status](../research/STATUS.md) and the
-[source-only update](../research/logbook/2026-11-15-manuscript-positioning-source-update.md).
-Do not attribute the old PDF's page count, hash or review receipt to current
-HEAD sources. To reconstruct a reviewed snapshot, use its exact source-bound
-allowlist/receipt; the build command below instead builds your checked-out sources.
-None of these working artifacts is main-track ready, submitted or release-cleared.
-
-## Earlier reviewed snapshots
+The85-page artifact predates the completed twelve-slot comparison, its fixed
+evaluation and the SciMARS citation. Its receipt remains literal and unchanged;
+do not attribute its page count, hash or visual review to later source bytes.
 
 The preceding reviewed artifact is the
 [82-page integrated draft](../output/pdf/science-utopia-lab-integrated-staged-construction-working-paper.pdf),

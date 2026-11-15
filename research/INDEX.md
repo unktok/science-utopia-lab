@@ -25,8 +25,8 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Manuscript and evidence
 
-- [Paper entry point](../paper/README.md): latest reviewed85-page working PDF,
-  source-bound receipt/rebuild evidence, and newer unbuilt editable sources.
+- [Paper entry point](../paper/README.md): latest reviewed88-page working PDF,
+  source-bound receipt and actual74-file reconstruction with matching text/pages.
   A reviewed working paper is not main-track readiness or fresh inference replication.
 - [Completed previous six-slot staged study](results/native-open-staged-institution-closed-v1.md)
   and [its fixed unused evaluation](results/native-open-staged-fixed-closed-v1.json).

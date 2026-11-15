@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[2]
 def test_first_integrated_pdf_pointer_matches_the_latest_closed_receipt():
     text=(ROOT/'paper/README.md').read_text()
     paths=re.findall(r'\]\((\.\./output/pdf/[^)]+\.pdf)\)',text)
-    receipt=json.loads((ROOT/'paper/integrated-staged-actual-build-v1.json').read_text())
+    receipt=json.loads((ROOT/'paper/integrated-longitudinal-build-v1.json').read_text())
     first=(ROOT/'paper'/paths[0]).resolve()
     assert first==ROOT/receipt['output']
     assert hashlib.sha256(first.read_bytes()).hexdigest()==receipt['pdf_sha256']
@@ -18,10 +18,10 @@ def test_first_integrated_pdf_pointer_matches_the_latest_closed_receipt():
     assert f"with{receipt['figures']} figures,{receipt['tables']} tables" in text
     assert not receipt['publication_ready']
     assert receipt['scientific_scope']['new_scientific_model_calls_by_manuscript_work']==0
-    assert receipt['scientific_scope']['own_slots']==6
+    assert receipt['scientific_scope']['own_slots']==12
     current=text.split('## Earlier reviewed snapshots',1)[0]
-    assert 'not yet integrated\nas completed results' in current
-    assert 'not a new PDF build or visual review' in current
+    assert 'all five\nphysical unused-evaluation worlds are now included' in current
+    assert 'not a focused main-track-ready' in current
     assert receipt['source_commit'] in current and receipt['pdf_sha256'] in current
 
 
@@ -33,11 +33,43 @@ def test_earlier_resource_pdf_keeps_its_own_literal_identity():
     assert not receipt['scientific_scope']['new_objective_actual_model_optimization_claimed']
 
 
+def test_current_longitudinal_document_proof_preserves_the_old_reviewed_artifact():
+    from scripts.reports.paper_rebuild_bundle import integrated_expected, literal_dependencies
+    from utopia.optimization.native_numeric_designer import checked
+    receipt=checked(json.loads((ROOT/'paper/integrated-longitudinal-build-v1.json').read_text()))
+    old=checked(json.loads((ROOT/'paper/integrated-staged-actual-build-v1.json').read_text()))
+    proof=checked(json.loads((ROOT/'research/results/integrated-longitudinal-rebuild-subset-verification-v1.json').read_text()))
+    policy=json.loads((ROOT/'research/publication/paper-rebuild-allowlist-integrated-longitudinal-v1.json').read_text())
+    assert (receipt['pages'],receipt['figures'],receipt['tables'],receipt['cited_references'])==(88,46,40,29)
+    assert receipt['visual_review']['pages_reviewed']==list(range(1,89))
+    assert len(receipt['visual_review']['page_png_sha256'])==88
+    assert receipt['build']['rendered_page_identity_verified']
+    assert receipt['build']['layout_or_undefined_reference_warnings']==0
+    assert receipt['scientific_scope']['fixed_worlds']==5
+    assert receipt['scientific_scope']['fixed_logical_labels']==6
+    assert not receipt['scientific_scope']['own_advantage_demonstrated']
+    assert proof['original_receipt_content_sha256']==receipt['content_sha256']
+    assert proof['page_png_sha256']==receipt['visual_review']['page_png_sha256']
+    assert proof['all_rendered_page_pixels_match_reviewed_original']
+    assert proof['prior_setup_failure']['exit_code']==1
+    assert not proof['independent_inference_rerun'] and not proof['publication_ready']
+    assert proof['input_files']==len(policy['files'])==74
+    assert proof['literal_dependencies']==71
+    expected=integrated_expected(ROOT,receipt,policy['entrypoint'])
+    for name in policy['files']:
+        if name not in ('LICENSE',policy['receipt']):
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==expected[name]
+    bodies={n:(ROOT/n).read_bytes() for n in policy['files']}
+    assert literal_dependencies(bodies,policy['entrypoint'],repository_parent_inputs=True)==receipt['literal_dependencies']
+    assert hashlib.sha256((ROOT/old['output']).read_bytes()).hexdigest()==old['pdf_sha256']
+    assert receipt['preserved_files'][old['output']]==old['pdf_sha256']
+
+
 def test_navigation_separates_historical_heartbeats_from_current_orientation():
     text=(ROOT/'research/INDEX.md').read_text()
     active,old=text.split('## Records and historical navigation',1)
     assert 'native-longitudinal-postprocessing-v1.md' in active
-    assert 'reviewed85-page working PDF' in active
+    assert 'reviewed88-page working PDF' in active
     assert 'index-history-2026-11-15-longitudinal-prefix.md' in old
     assert 'not current heartbeats' in old
     assert 'Latest54-page integrated manuscript' not in active

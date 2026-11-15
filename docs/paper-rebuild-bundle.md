@@ -1,6 +1,35 @@
 # Local manuscript rebuild subsets
 
-## Latest reviewed artifact:81-page open-institution working manuscript
+## Latest reviewed artifact:88-page longitudinal working manuscript
+
+The [reviewed current artifact](../paper/integrated-longitudinal-build-v1.json)
+contains46 figures,40 tables and29 references at source
+`9b03cbb023947b142d13a8111c70cf5beb8ec847`. Two actual full-checkout cached
+builds agree in layout text/logs/all88 page images. All page layouts and150dpi
+first/concept/new-result details are inspected. The complete twelve-slot study,
+runtime nulls and five-world frozen unused evaluation are included.
+The [explicit74-file subset](../research/publication/paper-rebuild-allowlist-integrated-longitudinal-v1.json)
+has actually rebuilt with identical layout text and all88 page images;
+[source-bound verification](../research/results/integrated-longitudinal-rebuild-subset-verification-v1.json).
+Binary PDF bytes differ. The initial wrong-relative-output-directory error is
+retained; it was resolved by a fresh absolute output path, not a source change.
+
+From a clean checkout containing the exact reviewed inputs and policy:
+
+```text
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-longitudinal-v1.json \
+  --output <fresh-local-staging-directory>
+```
+
+Follow staged REBUILD.md and create the exact output directory before invoking
+Tectonic. These74 files comprise71 literal dependencies plus LICENSE, PDF and
+receipt; they do not include raw worlds, weights or model replies. This verifies
+local cached document reconstruction, not independent numerical reproduction,
+clean-machine installation, release/anonymity clearance or main-track readiness.
+Every historical artifact below retains its own unchanged scope and source.
+
+## Preserved81-page open-institution working manuscript
 
 The [new reviewed artifact](../paper/integrated-open-institutions-build-v1.json)
 has42 figures,36 tables and26 references at sourcef344c77e342d302e6fb1ce0484015749d0198607.
