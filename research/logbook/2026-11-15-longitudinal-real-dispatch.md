@@ -328,6 +328,39 @@ or loss modification occurs. At00:08UTC the same fourth author is still live,
 with a five-step complete journal prefix; that is not its final author total.
 The full normally closed analysis and frozen evaluation remain required.
 
+## Fourth submission is explicit; original native world runs
+
+Parent-trajectory T0 passes actual-request readiness and enters optimization
+at00:02:50.565969UTC. Request
+`b368140899e5adaedaaee5bf922acd21b1bb4269be7d08db7cd6b0fb4beb58fd`
+explicitly finishes at00:16:09.548276UTC. Its full14-step journal has one plan,
+eight applied reads, three applied writes, one invalid response and one finish;
+there are no action-transition rejections. The invalid response stays charged,
+not salvaged/retried/refilled. The final component summary has12 attempts/
+12 returns/zero raised, across actual source versions, no model/world call
+from those tests and no merit veto. This is not12 independent native trials.
+
+All three host-mapped writes target only world.selection source. Direct literal
+comparison to R7 finds no other changed node or root field:24 nodes, unchanged
+wiring/schedules. The final source removes control-rule/threshold and review-
+mean computation, emitting accept decisions with final_score0. It is literally
+distinct from the first three own candidates and R7, not evidence of a new
+mechanism, exercised new authority, changed scientist behavior or improvement.
+Candidate fingerprint
+`7a5c65a0f53564b72d394516df2860f9ae5d1e193d9c0a4e20adf125f00b8c26`;
+response content
+`768cd098955d20b653363d0484131e9b17d7158a57550f9f19272c090b294795`,
+fileSHA`0feb586273ac3740ed358589a98f718dcb1400b03622d854ac984f82120f7339`.
+
+Original native cell
+`search/parent-trajectory/throughput/worlds/native-adaptive-c416fad20f60f879fef446aa-s61001`
+starts normally, saves year0/year1 checkpoints and proceeds to year2. Its own
+observation/loss is still pending. Original82259 is polled live; there is no
+whole-study terminal. Leave all original protocols, sources, roles, losses and
+budgets unchanged. No new independent heavy QA, external model or duplicate
+scientific writer is dispatched. Previous completed-prefix evidence remains
+limited to those complete leaves, not this fourth incomplete world.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,

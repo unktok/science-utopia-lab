@@ -7,6 +7,15 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Fourth parent-trajectory T0 explicitly submits at00:16:09UTC and starts its
+native world, with year1 checkpoint now saved. Its full14-step journal retains
+one invalid response, eight applied reads, three selection-source writes and
+one plan/finish each;12 component returns are not12 whole-world evaluations.
+Only world.selection changes in the24-node system; no root field, wire or
+schedule changes. The candidate is literally distinct from R7 and all first
+three own candidates, but no fourth loss/effective behavior/improvement is
+claimed yet. Original82259 remains live; the experiment source staysa5be8d31.
+
 Read-only extension86329 exits0: all three already completed own worlds and
 R7 each have115 committed scientist inputs/replies. Their full ordered literal
 payloads and response choices match; full provider bodies differ. Listed
