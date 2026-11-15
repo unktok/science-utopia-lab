@@ -5,6 +5,10 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
+  and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):
+  two same-authority hand controls; not automatic invention or a new optimized objective.
+
 - [Next reachable-action study design](publication/native-legacy-topic-next-study-v1.md)
   and [actual native/Docker/workflow/cold construction](results/native-legacy-topic-software-retention-v2.json):
   explicit original core-plus-related action/workflow-v5, not new real-model

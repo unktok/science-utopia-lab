@@ -51,7 +51,14 @@ HTTP/corpus give300 fixture calls:14 core-only project effects and20 broad-rule
 effects,16 of them outside core. Four corrupted witness shapes per world are
 rejected. Both append measured resource cost200. These are software events,
 not real-Qwen feasibility, scientific loss gains or automatic discoveries.
-No real model call or new optimization study has begun. The reviewed91-page
+The new [two-control public-path software proof](results/native-legacy-topic-pilot-software-retention-v1.json)
+also completes from clean da7349aa: public prepare/run,300 actual installed-SDK
+requests with SCRIPTED HTTP, matching double cold audits/costs and equal initial
+physical societies. All48 original effect witnesses across four years per world
+and passive K200 reconcile;0/16 actual assignments are outside core. Original
+sessions1756/71020 exit0; the latter passes59 regressions, including the old
+three-control public path. No real model call or new optimization study has
+begun at this observation. The reviewed91-page
 PDF predates this new implementation and remains unchanged.
 
 ## New development-only resource readout (after explicit resumption)
