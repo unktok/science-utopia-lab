@@ -9,10 +9,12 @@ This page is navigation, not a chronological experiment transcript.
   runs three declared losses with strong visible same-authority parents and free
   source/node/wiring/process authoring. [Actual pinned dispatch](results/native-topic-free-optimization-dispatch-v1.json)
   uses local35B designer/fixed8B researchers; both [fresh references](results/native-topic-free-reference-prefix-v1.json)
-  and [first own native result](results/native-topic-free-first-own-outcome-v1.json)
-  complete. Own1/6 ties its strong parent on all three losses and179 full scientist
-  inputs/choices. [Content-utility g0 now authors source](logbook/2026-11-15-fixed-record-support-and-utility-authoring.md);
-  remaining slots are not completed or improved. Exact [first author trace](results/native-topic-free-first-own-submission-v1.json)
+  and two own native results complete. [Throughput g0](results/native-topic-free-first-own-outcome-v1.json)
+  ties its strong parent on all three losses and179 full scientist inputs/choices.
+  [Content-utility g0](results/native-topic-free-first-utility-outcome-v1.json) changes source
+  but reproduces the weaker core-only127-request path and losses. Own2/6 are
+  complete; resource-aware content g0 readiness starts01:55JST. Remaining slots
+  are not completed or improved. Exact [first author trace](results/native-topic-free-first-own-submission-v1.json)
   and [SCRIPTED full public software proof](results/native-topic-free-public-software-retention-v1.json)
   stay separate. [Prepared three-objective readouts](components/native-topic-free-readouts-v1.md)
   wait for original paired audit/cost closure; figures/review remain pending.

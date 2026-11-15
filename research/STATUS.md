@@ -1,13 +1,18 @@
 # Current research status
 
-## Latest recorded execution stage — November16 01:35:43JST
+## Latest recorded execution stage — November16 01:55:37JST
 
-Original free-system writer14919 is rechecked live at16:41UTC/01:41JST, with
-audit15136/readout22876 waiting. Both fresh references and1/6 own slots are
+Original free-system writer14919 is rechecked live at16:56UTC/01:56JST, with
+audit15136/readout22876 waiting. Both fresh references and2/6 own slots are
 complete. First throughput own ties its strong parent, including179 full
-scientist inputs/choices; content-utility g0 is now authoring source, with a
-recorded write to the topic-agenda code. That prefix is not a final submission
-or native outcome. See the [current bounded evidence note](logbook/2026-11-15-fixed-record-support-and-utility-authoring.md).
+scientist inputs/choices. [Content-utility g0 now completes](results/native-topic-free-first-utility-outcome-v1.json):
+its topic-agenda source edit implements core-only choice, with T=-20,
+U-loss=-15.333333333333332, C=4.666666666666668 and K200; worse than its
+strong parent. Its127 full scientist inputs/choices equal the weaker core-only
+reference. Source metadata's candidate_policy label is stale/ignored by the
+new code; there is no new node/wiring. All24 component probes returned, not
+24 native loss evaluations. The original writer proceeds to resource-aware
+content g0 readiness. Whole-study closure/paired audits remain pending.
 The experiment/source/losses/budgets stay unchanged. This dated snapshot is
 not a continuing heartbeat; the later detailed entries retain older stages.
 
