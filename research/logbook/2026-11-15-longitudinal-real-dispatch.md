@@ -483,6 +483,46 @@ The lightweight consumer module passes all7 cases in0.79s, including the exact
 scored-empty payload. This executes the existing consumer with stub state, not
 the authored source, Docker, model inference or a native-world rerun.
 
+### Follow-through: empty inputs were tested, not their downstream consumer
+
+Read-only inspection of all three write-step probe sets clarifies the gap.
+Every set uses recorded years1--4 with submitted-paper counts0/10/0/8. The
+first write (step4, journal digest
+`1f6dcf67eb72d2d979e90a76b786588148dc99cda9c237e834cd83f13cdca1c7`)
+returns the valid unscored empty marker for years1/3. Steps8 and12 instead
+return the scored-empty marker on both same empty fixtures, while all probe
+terminals remain `returned`. Their journal digests are
+`99eb1aa997269392d64dc43bcbf323de3b3b6c1c6d07a49b80372bf188b71872`
+and`6dea3600289a3330ab8fa6a3cf938df59e62f86024f7de3581be8c5a910a1084`.
+For the final edit's year1 fixture, terminal digest is
+`18467ac709988b612547894815f16c9de89ef4df705578b1614df562383a1ab3`;
+year3 is`ce6fe3200589530f8c26b6909ac73c375c3e25e40c2ee510fc7610287f08933a`.
+Thus missing empty-year inputs do not explain this inspected failure. The
+component executor records literal returns; it does not run the publication
+consumer. This is consistent with the declared component scope, not evidence
+of a successful consumer test or a fabricated successful whole-world loss.
+
+The two actual model frames that precede steps8/12 also carry the explicit
+common-content measurement definition at
+`loss_arithmetic.measurement_definitions.native.common_content_utility_sum`:
+ratings use original title/abstract/topics and institution-written `final_score`
+is not an input. Exact request UTF-8 hashes are
+`e811bca616091744479c395321d1fde50d330bbf77dd743cfe94bd0c2b261225`
+and`6d22d48dffd1aee8126043d0180b3411ea8b13db4de8d0004cdbe12796e8a241`.
+Each raw wire hash and parsed payload agree; the bounded active-session JSON
+is parsed from the actual user message, not inferred from task-source prose.
+This establishes exposure to the definition, not understanding or the model's
+internal reason for returning a score. It is not evidence that changing that
+score changes the assigned loss. No fixture, feedback, author instruction or
+live consumer guard is changed in response to the observed proposal.
+
+If a later protocol revises feedback, explicit non-veto consumer-contract
+diagnostics address this particular gap more directly than merely adding
+another empty input. Such a revision is not implemented/dispatched here and
+must not be retrofitted into this finite running comparison. Original82259
+passes scalar T1 readiness and begins its free authoring at01:56:36.954936UTC;
+seven slots remain processed, six with valid losses and one technical null.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,
