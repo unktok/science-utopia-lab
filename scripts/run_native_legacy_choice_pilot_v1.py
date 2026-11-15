@@ -119,15 +119,19 @@ def interval(plan, system, events, seed):
     return verify_workflow_interval(SystemSpec.from_dict(plan['initial_system']), system, events, years=4)
 
 
-def observe(root, p, job, observer):
+def observe(root, p, job, observer, *, role=None, interval_reader=None, metric_adapter=None):
     directory = root / 'controls' / job['identity']
     if (directory / 'started.json').exists():
         raise ValueError('consumed control; no redispatch')
-    suggestion = Suggestion(job['identity'], job['system'], 0, ROLE)
+    suggestion = Suggestion(job['identity'], job['system'], 0, ROLE if role is None else role)
     save(directory / 'started.json', {'job': clone(job), 'suggestion': suggestion.to_dict(), 'started_utc': utc()})
     measure = measure_with(observer, p['observer_contract'])
     def measured(sim, base):
-        return {**measure(sim, base), 'native_workflow_interval': interval(
+        value = measure(sim, base)
+        if metric_adapter is not None:
+            value = metric_adapter(sim, value)
+        check_interval = interval if interval_reader is None else interval_reader
+        return {**value, 'native_workflow_interval': check_interval(
             p, sim.native_system.spec, sim.native_system.events, job['seed'])}
     observation = evaluate_native_suggestion(suggestion, seeds=[job['seed']],
         simulation_factory=scientist_factory(directory / 'worlds', p, root),
@@ -139,8 +143,11 @@ def observe(root, p, job, observer):
         raise ValueError('technical-null control retained; no refill or further inference')
 
 
-def run(root):
-    require_environment(); p = require_plan(root)
+def run(root, *, plan_reader=None, observe_function=None, schema=None):
+    plan_reader = require_plan if plan_reader is None else plan_reader
+    observe_function = observe if observe_function is None else observe_function
+    schema = SCHEMA if schema is None else schema
+    require_environment(); p = plan_reader(root)
     with ExitStack() as stack:
         paths = {root / 'writer.lock', Path(p['origin']['run']) / 'writer.lock',
                  Path(p['preceding_fixed_receipt']['run']) / 'writer.lock'}
@@ -149,8 +156,8 @@ def run(root):
             fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
         if (root / 'started.json').exists():
             raise ValueError('consumed pilot; no redispatch')
-        require_plan(root)
-        save(root / 'started.json', {'schema': SCHEMA + '.start', 'pid': os.getpid(),
+        plan_reader(root)
+        save(root / 'started.json', {'schema': schema + '.start', 'pid': os.getpid(),
             'plan_sha256': p['content_sha256'], 'started_utc': utc()})
         status, completed, failure = 'stopped', 0, {}
         try:
@@ -158,19 +165,22 @@ def run(root):
                 backend=LocalObserverBackend(inference_lock=root / 'inference.lock'))
             for job in p['jobs']:
                 progress(root, 'controls', job['identity'])
-                observe(root, p, job, observer); completed += 1; require_plan(root)
+                observe_function(root, p, job, observer); completed += 1; plan_reader(root)
             workflow.retain_observer_audit(root, observer)
             status = 'closed'; progress(root, 'closed')
         except BaseException as error:
             failure = {'error_type': type(error).__name__, 'error': str(error)}
             raise
         finally:
-            save(root / 'terminal.json', {'schema': SCHEMA + '.terminal', 'status': status,
+            save(root / 'terminal.json', {'schema': schema + '.terminal', 'status': status,
                 'completed_jobs': completed, 'ended_utc': utc(), 'held_out_world_seeds': False,
                 'policy_selection': False, 'automatic_invention': False, 'publication_ready': False, **failure})
 
 
-def prepare(args):
+def prepare(args, *, plan_builder=None, plan_reader=None, source_reader=None):
+    plan_builder = build_plan if plan_builder is None else plan_builder
+    plan_reader = require_plan if plan_reader is None else plan_reader
+    source_reader = workflow.native_sources if source_reader is None else source_reader
     require_environment(); source = pinned_revision(ROOT)
     origin = {'run': str(args.origin_run.resolve()), 'source': str(args.origin_source.resolve()),
         'source_commit': read(args.audit_one)['source_commit'], 'audit_files': {
@@ -186,11 +196,11 @@ def prepare(args):
         original, audit, fixed = preceding_evidence(origin)
         if not Path(original['data_cache']).is_dir():
             raise ValueError('existing offline corpus required')
-        p = build_plan(original, audit, fixed, source=source, origin=origin,
+        p = plan_builder(original, audit, fixed, source=source, origin=origin,
             observer_backend=backend_binding(original['scientist']),
-            original_sources=workflow.native_sources(original['source_commit']))
-        output.mkdir(parents=True); save(output / 'plan.json', p); require_plan(output)
-    print(json.dumps({'prepared_source': source, 'worlds_upper_bound': 3, 'designer_generation_POSTs': 0}), flush=True)
+            original_sources=source_reader(original['source_commit']))
+        output.mkdir(parents=True); save(output / 'plan.json', p); plan_reader(output)
+    print(json.dumps({'prepared_source': source, 'worlds_upper_bound': len(p['jobs']), 'designer_generation_POSTs': 0}), flush=True)
 
 
 def main():

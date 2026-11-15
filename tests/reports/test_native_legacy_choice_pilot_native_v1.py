@@ -35,6 +35,15 @@ from utopia.utils.data_utils import file_sha256, write_json_atomic
 @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_LEGACY_CHOICE_PILOT_QA') != '1',
                     reason='opt-in clean committed-source hardware window required')
 def test_public_operator_actual_sdk_profile_three_worlds_and_double_cold(tmp_path, fixed_corpus, monkeypatch):
+    public_operator_path(tmp_path, monkeypatch)
+
+
+def public_operator_path(tmp_path, monkeypatch, *, topic=False):
+    base = driver
+    operator, cold_reader = driver, auditor
+    if topic:
+        from scripts import run_native_legacy_topic_pilot_v1 as operator
+        from scripts import audit_native_legacy_topic_pilot_v1 as cold_reader
     declared = os.environ.get('SCIENCE_UTOPIA_WORKFLOW_PLAN')
     if not declared:
         pytest.skip('explicit original world/provider/observer binding required')
@@ -93,7 +102,8 @@ def test_public_operator_actual_sdk_profile_three_worlds_and_double_cold(tmp_pat
             original['designer'][key] = clone(getattr(probe, key))
     # Use software seed42, not the scientific pilot's declared61001 or a
     # reserved unused condition. This explicit fixture does not certify seeds.
-    monkeypatch.setattr(driver, 'SEED', 42)
+    monkeypatch.setattr(base, 'SEED', 42)
+    monkeypatch.setattr(operator, 'SEED', 42)
     original['initial_system']['initial_state']['seed'] = 42
     for spec in original['reference_systems'].values(): spec['initial_state']['seed'] = 42
     backend = {k: original['scientist'][k] for k in ('model', 'model_digest')}
@@ -106,15 +116,17 @@ def test_public_operator_actual_sdk_profile_three_worlds_and_double_cold(tmp_pat
     origin = tmp_path / 'SCRIPTED-origin'; origin.mkdir(); (origin / 'writer.lock').touch()
     for i in (1, 2): driver.save(origin / f'audit-{i}.json', {k: v for k, v in upstream.items() if k != 'content_sha256'})
     monkeypatch.setattr(driver, 'preceding_evidence', lambda value: (original, upstream, fixed))
-    monkeypatch.setattr(driver.workflow, 'native_sources', lambda source: {'original_source': source,
+    source_owner = operator if topic else driver.workflow
+    monkeypatch.setattr(source_owner, 'native_sources', lambda source: {'original_source': source,
         'SCRIPTED': 'upstream evidence only, actual execution source checked by cold reader'})
     monkeypatch.setattr(driver, 'backend_binding', lambda provider: clone(backend))
     root = tmp_path / 'pilot'
-    driver.prepare(SimpleNamespace(output=root, origin_run=origin, origin_source=driver.ROOT,
+    operator.prepare(SimpleNamespace(output=root, origin_run=origin, origin_source=driver.ROOT,
         audit_one=origin / 'audit-1.json', audit_two=origin / 'audit-2.json'))
-    driver.run(root)
-    p = driver.require_plan(root); end = driver.read(root / 'terminal.json')
-    assert end['status'] == 'closed' and end['completed_jobs'] == 3
+    operator.run(root)
+    p = operator.require_plan(root); end = driver.read(root / 'terminal.json')
+    count = 2 if topic else 3
+    assert end['status'] == 'closed' and end['completed_jobs'] == count
     assert not end['held_out_world_seeds'] and not end['automatic_invention']
     assert sent and all(v['timeout'] == p['scientist_transport']['http_timeout_seconds'] for v in sent)
     assert all(v['read_header'] == '900' and v['retry_header'] == '0' for v in sent)
@@ -127,7 +139,9 @@ def test_public_operator_actual_sdk_profile_three_worlds_and_double_cold(tmp_pat
         requests = [w for w in wires if w['payload'].get('response_format', {}).get('json_schema', {}).get(
             'name') == 'research_direction_selection']
         directions.append(len(requests)); advice.append(sum(ADVICE in json.dumps(w['payload']) for w in requests))
-        if job['condition'] == 'core-assignment': assert not requests
+        if topic:
+            assert not requests
+        elif job['condition'] == 'core-assignment': assert not requests
         elif job['condition'] == 'native-choice': assert requests and not advice[-1]
         else: assert requests and advice[-1] == len(requests)
     for client in clients: client.close()
@@ -135,7 +149,7 @@ def test_public_operator_actual_sdk_profile_three_worlds_and_double_cold(tmp_pat
     monkeypatch.setattr(OpenAI, '__init__', lambda *a, **k: pytest.fail('no SDK construction during cold audit'))
     with tempfile.TemporaryDirectory(prefix='legacy-choice-pilot-audit-') as external:
         outputs = [Path(external) / f'audit-{i}.json' for i in (1, 2)]
-        for path in outputs: auditor.worker(root, path)
+        for path in outputs: cold_reader.worker(root, path)
         audits = [driver.read(path) for path in outputs]
         assert outputs[0].read_bytes() == outputs[1].read_bytes()
         cost_pair = [costs(root, p, a) for a in audits]
@@ -144,17 +158,38 @@ def test_public_operator_actual_sdk_profile_three_worlds_and_double_cold(tmp_pat
         assert len({digest(w['physical_proof']['initial_identity']) for w in audits[0]['worlds']}) == 1
         assert all(not audits[0][k] for k in ('held_out_world_seeds', 'automatic_invention', 'policy_selection'))
         assert 'fixed_selection' not in audits[0]
+        if topic:
+            from utopia.optimization.native_resource_cost import METRIC, UNCOLLECTED_METRIC
+            from utopia.runtime.checkpointing import read_portable_checkpoint
+            from utopia.system.native_legacy_topic_planning import EVENT
+            outside = []
+            for world in audits[0]['worlds']:
+                measurement, = world['measurements']
+                assert measurement['metrics'][METRIC] == {'status': 'measured', 'value': 200.0}
+                assert measurement['metrics'][UNCOLLECTED_METRIC] == {'status': 'measured', 'value': 0.0}
+                assert measurement['native_workflow_interval']['effect_witnesses'] == 48
+                assignments = world['physical_proof']['native_counts']['project_assignments_verified']
+                assert assignments
+                checkpoint, = root.glob('controls/' + world['identity'] + '/worlds/**/portable_checkpoint_year_4.json.gz')
+                state = read_portable_checkpoint(checkpoint)
+                events = [e['payload'] for e in state['native_system']['events'] if e['event_type'] == EVENT]
+                assert len(events) == len(assignments)
+                outside.append(sum(e['assignment']['direction']['topic'] not in e['eligible_actor_before']['expertise']
+                                   for e in events))
+            assert outside[0] == 0 and outside[1] > 0
         driver.save(tmp_path / 'audit-retained.json', {k: v for k, v in audits[0].items() if k != 'content_sha256'})
         driver.save(tmp_path / 'cost-retained.json', {k: v for k, v in cost_pair[0].items() if k != 'content_sha256'})
-    with pytest.raises(ValueError, match='no redispatch'): driver.run(root)
+    with pytest.raises(ValueError, match='no redispatch'): operator.run(root)
     write_json_atomic(tmp_path / 'verification.json', {
-        'schema': 'scienceutopia.native-legacy-choice-pilot-software.v1',
+        'schema': ('scienceutopia.native-legacy-topic-pilot-software.v1' if topic
+                   else 'scienceutopia.native-legacy-choice-pilot-software.v1'),
         'classification': 'SCRIPTED-HTTP-corpus-critics-upstream-not-scientific-feasibility',
         'source_commit': probe.source_commit, 'original_plan_file_sha256': file_sha256(declared),
-        'public_prepare_run_and_double_cold': True, 'worlds': 3, 'annual_boundaries': 12,
+        'public_prepare_run_and_double_cold': True, 'worlds': count, 'annual_boundaries': 4 * count,
         'scientist_httpx_requests': len(sent), 'all_scientist_read_headers': ['900'],
         'all_scientist_retry_headers': ['0'], 'scientific_request_body_timeout_fields': 0,
         'native_direction_requests': directions, 'advice_delivered_in_direction_prompts': advice,
+        **({'outside_core_project_effects': outside} if topic else {}),
         'paired_audit_content_sha256': audits[0]['content_sha256'],
         'paired_cost_content_sha256': cost_pair[0]['content_sha256'],
         'new_real_model_calls': 0, 'scientific_feasibility_or_gain_claimed': False,

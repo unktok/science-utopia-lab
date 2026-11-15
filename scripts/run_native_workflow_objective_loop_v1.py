@@ -61,7 +61,7 @@ def reference_context(plan, pairs):
     return build_context(selected, world=plan['world'], seeds=[SEED], loss_spec=plan['losses']['throughput'])
 
 
-def native_sources(source):
+def native_sources(source, *, adapters=None):
     import hashlib
     import io
     import subprocess
@@ -76,7 +76,8 @@ def native_sources(source):
     batch = subprocess.run(['git', 'cat-file', '--batch'], cwd=ROOT,
         input=''.join(source + ':' + n + '\n' for n in names).encode(),
         stdout=subprocess.PIPE, check=True).stdout
-    stream = io.BytesIO(batch); files = {}
+    stream = io.BytesIO(batch); files = {}; adapted = {}
+    adapters = {} if adapters is None else adapters
     for name in names:
         header = stream.readline().split()
         if len(header) != 3 or header[1] != b'blob':
@@ -85,13 +86,30 @@ def native_sources(source):
         if len(raw) != size or stream.read(1) != b'\n':
             raise ValueError('original source Git batch framing differs')
         path = ROOT / name
-        if path.is_symlink() or not path.is_file() or path.read_bytes() != raw:
+        if path.is_symlink() or not path.is_file():
             raise ValueError('original scientist/effect source differs: ' + name)
-        files[name] = hashlib.sha256(raw).hexdigest()
+        current = path.read_bytes()
+        if current != raw:
+            adapter = adapters.get(name)
+            if (not isinstance(adapter, dict) or set(adapter) != {'source_commit', 'role'}
+                    or not isinstance(adapter['role'], str) or not adapter['role']):
+                raise ValueError('original scientist/effect source differs: ' + name)
+            approved = subprocess.check_output(['git', 'show', adapter['source_commit'] + ':' + name], cwd=ROOT)
+            if current != approved:
+                raise ValueError('explicit versioned native adapter differs: ' + name)
+            adapted[name] = {**clone(adapter), 'original_sha256': hashlib.sha256(raw).hexdigest(),
+                'current_sha256': hashlib.sha256(current).hexdigest()}
+        else:
+            files[name] = hashlib.sha256(raw).hexdigest()
     if stream.read(): raise ValueError('unconsumed original source Git batch bytes')
-    return {'original_source': source, 'literal_files': files, 'author_domain_only_exclusions': list(exclusions),
+    result = {'original_source': source, 'literal_files': files, 'author_domain_only_exclusions': list(exclusions),
         'exclusion_role': 'designer context/transport or explicit design-domain guard, not native science',
         'global_semantic_equivalence_claimed': False}
+    if adapters:
+        if set(adapted) != set(adapters):
+            raise ValueError('explicit native adapters must name exactly the changed original files')
+        result['explicit_native_adapters'] = adapted
+    return result
 
 
 def prerequisite_binding(directory):

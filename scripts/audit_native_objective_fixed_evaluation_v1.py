@@ -9,7 +9,8 @@ import sys
 
 
 def worker(root,output,*,study='count-content-v1'):
-    pilot = study == 'legacy-choice-v1'
+    topic_pilot = study == 'legacy-topic-v1'
+    pilot = study in ('legacy-choice-v1', 'legacy-topic-v1')
     if study=='count-content-v1':
         from scripts import run_native_objective_fixed_evaluation_v1 as driver
         audit_schema='scienceutopia.native-objective-fixed-evaluation-audit.v1'
@@ -45,6 +46,14 @@ def worker(root,output,*,study='count-content-v1'):
         audit_schema='scienceutopia.native-longitudinal-fixed-evaluation-audit.v1'
         source_scripts=['scripts/run_native_longitudinal_fixed_evaluation_v1.py',
             'scripts/audit_native_longitudinal_fixed_evaluation_v1.py',
+            'scripts/audit_native_objective_fixed_evaluation_v1.py',
+            'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+    elif topic_pilot:
+        from scripts import run_native_legacy_topic_pilot_v1 as driver
+        audit_schema='scienceutopia.native-legacy-topic-pilot-audit.v1'
+        source_scripts=['scripts/run_native_legacy_topic_pilot_v1.py',
+            'scripts/run_native_legacy_choice_pilot_v1.py',
+            'scripts/audit_native_legacy_topic_pilot_v1.py',
             'scripts/audit_native_objective_fixed_evaluation_v1.py',
             'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
     elif pilot:
@@ -95,7 +104,7 @@ def worker(root,output,*,study='count-content-v1'):
         if study in ('workflow-v1','longitudinal-v1') and 'seed_software_exclusions' in p:
             source_scripts.append('scripts/native_benchmark_seed_usage.py')
             resources.append(p['seed_inventory_protocol']['path'])
-        if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1') and 'operational_protocol' in p:
+        if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1','legacy-topic-v1') and 'operational_protocol' in p:
             resources.append(p['operational_protocol']['path'])
         source=source_proofs(driver.ROOT,p['source_commit'],scripts=source_scripts,resources=resources)
         observer=ColdObserver(root/'observer',p['observer_contract']);observer_audit=observer.audit()
@@ -114,7 +123,7 @@ def worker(root,output,*,study='count-content-v1'):
                     or m['loss_spec_sha256']!=loss_spec_sha256(p['losses']['throughput'])):
                 raise ValueError('fixed native observation identity/loss differs')
             cell=directory/'worlds'/(job['identity']+'-s'+str(job['seed']));cells.add(cell)
-            if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1'):
+            if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1','legacy-topic-v1'):
                 from utopia.optimization.native_scientist_transport_v1 import require_cell_transport
                 require_cell_transport(cell,p,spec,seed=job['seed'],failed=o['status']=='failed')
             cache=cell/'replies/responses.sqlite'
@@ -128,7 +137,9 @@ def worker(root,output,*,study='count-content-v1'):
                 state=read_portable_checkpoint(runs[0]['checkpoint_path']);keys.update(accepted_request_keys(state,p['observer_contract']))
                 if measurements:
                     rebuilt=reconstruct_measurement(state,proof['measurement'],observer)
-                    if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1'):
+                    if topic_pilot:
+                        rebuilt=driver.additional_from_checkpoints(rebuilt,cell)
+                    if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1','legacy-topic-v1'):
                         rebuilt={**rebuilt,'native_workflow_interval':driver.interval(
                             p,spec,state['native_system']['events'],job['seed'])}
                     if measurements!=[rebuilt] or m['technical_failures']:raise ValueError('literal additional measurement differs')
@@ -162,10 +173,10 @@ def worker(root,output,*,study='count-content-v1'):
             'held_out_world_seeds':not pilot,'independent_optimizer_replications':False,'publication_ready':False}
         if pilot:
             result.update(development_seed_reused=True, policy_selection=False, automatic_invention=False)
-            if (len(worlds) != 3 or any(w['status'] != 'complete' for w in worlds)
+            if (len(worlds) != (2 if topic_pilot else 3) or any(w['status'] != 'complete' for w in worlds)
                     or len({digest(w['physical_proof']['initial_identity']) for w in worlds}) != 1
                     or end['held_out_world_seeds'] or end['policy_selection'] or end['automatic_invention']):
-                raise ValueError('three complete same-initial-society controls without selection required')
+                raise ValueError('all declared same-initial-society controls without selection required')
         else:
             result['fixed_selection']=p['fixed_selection']
         result['content_sha256']=digest(result);write_json_atomic(output,result,sort_keys=True,allow_nan=False)
