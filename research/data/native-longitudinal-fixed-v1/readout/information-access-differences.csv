@@ -1,0 +1,3 @@
+objective,seed,left,right,left_physical_job,right_physical_job,same_physical_job,throughput,content-utility
+throughput,676047151,selected:parent-trajectory::throughput,selected:scalar::throughput,evaluation-003,evaluation-002,False,0.0,0.0
+content-utility,676047151,selected:parent-trajectory::content-utility,selected:scalar::content-utility,evaluation-004,evaluation-000,False,0.0,0.0

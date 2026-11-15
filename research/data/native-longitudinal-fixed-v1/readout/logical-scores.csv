@@ -1,0 +1,7 @@
+label,seed,physical_job,status,throughput,content-utility
+reference:R7-original,676047151,evaluation-000,complete,-34.0,-25.666666666666668
+reference:post-funding-cost,676047151,evaluation-001,complete,-36.0,-30.0
+selected:scalar::throughput,676047151,evaluation-002,complete,-34.0,-25.666666666666668
+selected:scalar::content-utility,676047151,evaluation-000,complete,-34.0,-25.666666666666668
+selected:parent-trajectory::throughput,676047151,evaluation-003,complete,-34.0,-25.666666666666668
+selected:parent-trajectory::content-utility,676047151,evaluation-004,complete,-34.0,-25.666666666666668

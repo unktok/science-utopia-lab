@@ -20,7 +20,8 @@ clarifying the contribution boundary. Those source changes have passed source/
 citation checks, not a new PDF build or visual review. The12-slot longitudinal
 comparison is now closed and included in the editable source section
 [native-longitudinal-comparison.tex](integrated/native-longitudinal-comparison.tex).
-Its final fixed evaluation is running; those outcomes are not yet integrated
+Its final fixed evaluation is also closed and included in that editable section.
+In the old reviewed PDF, these current outcomes are not yet integrated
 as completed results. See [current status](../research/STATUS.md) and the
 [source-only update](../research/logbook/2026-11-15-manuscript-positioning-source-update.md).
 Do not attribute the old PDF's page count, hash or review receipt to current

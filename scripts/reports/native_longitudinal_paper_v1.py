@@ -32,7 +32,7 @@ def render(report, output):
     from matplotlib.lines import Line2D
 
     navy, gray, gold, red = '#254a70', '#737f8b', '#b67723', '#b34545'
-    rc = {'font.size': 9, 'axes.spines.top': False, 'axes.spines.right': False,
+    rc = {'font.size': 12, 'axes.spines.top': False, 'axes.spines.right': False,
           'svg.hashsalt': 'native-longitudinal-paper-v1'}
     with plt.rc_context(rc):
         fig = plt.figure(figsize=(9.4, 6.9))
@@ -58,7 +58,7 @@ def render(report, output):
                 ax.set(ylim=(min(numbers)-pad, max(numbers)+pad), xlim=(-.15, 2.15),
                        title=('Scalar' if arm == 'scalar' else 'Parent trajectory') +
                        (' / throughput' if objective == 'throughput' else ' / content utility'))
-                ax.set_ylabel('Assigned loss (lower is better)'); ax.grid(axis='y', color='#e4e8ec')
+                ax.set_ylabel('Assigned loss'); ax.grid(axis='y', color='#e4e8ec')
                 ax.tick_params(axis='x', labelbottom=False, bottom=False)
                 strip.set(ylim=(-1, 1), yticks=[], xticks=[0, 1, 2], xlabel='Generation')
                 strip.set_facecolor('#f4f5f6'); strip.spines['left'].set_visible(False)
@@ -70,10 +70,10 @@ def render(report, output):
                    Line2D([], [], color=gray, ls=':', label='R7 (optimizer-visible)'),
                    Line2D([], [], color=gold, ls='--', label='Hand control (withheld)')]
         fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.5, .045),
-                   ncol=3, frameon=False, fontsize=8)
-        fig.suptitle('Twelve own proposals: no assigned-loss improvement', y=.975, fontsize=13)
-        fig.text(.5, .925, 'One reused development condition; no independent error bars. '
-                 'Crosses are unknown losses, not penalties.', ha='center', fontsize=8.5, color='#46515d')
+                   ncol=3, frameon=False, fontsize=11)
+        fig.suptitle('Twelve own proposals: no assigned-loss improvement', y=.975, fontsize=16)
+        fig.text(.5, .925, 'Lower is better. One reused condition; no independent error bars. '
+                 'Crosses are nulls, not penalties.', ha='center', fontsize=11, color='#46515d')
         for ext in ('png', 'svg'):
             fig.savefig(output / ('assigned-loss-paths-print.' + ext), dpi=200,
                         metadata={'Date': None} if ext == 'svg' else None)

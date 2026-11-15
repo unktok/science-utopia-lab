@@ -1,0 +1,9 @@
+label,reference,seed,physical_job,reference_physical_job,same_physical_job,throughput,content-utility
+selected:scalar::throughput,R7-original,676047151,evaluation-002,evaluation-000,False,0.0,0.0
+selected:scalar::throughput,post-funding-cost,676047151,evaluation-002,evaluation-001,False,2.0,4.333333333333332
+selected:scalar::content-utility,R7-original,676047151,evaluation-000,evaluation-000,True,0.0,0.0
+selected:scalar::content-utility,post-funding-cost,676047151,evaluation-000,evaluation-001,False,2.0,4.333333333333332
+selected:parent-trajectory::throughput,R7-original,676047151,evaluation-003,evaluation-000,False,0.0,0.0
+selected:parent-trajectory::throughput,post-funding-cost,676047151,evaluation-003,evaluation-001,False,2.0,4.333333333333332
+selected:parent-trajectory::content-utility,R7-original,676047151,evaluation-004,evaluation-000,False,0.0,0.0
+selected:parent-trajectory::content-utility,post-funding-cost,676047151,evaluation-004,evaluation-001,False,2.0,4.333333333333332

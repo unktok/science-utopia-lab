@@ -6,10 +6,12 @@ This page is navigation, not a chronological experiment transcript.
 ## Current study and publication goal
 
 - [Current status and remaining work](STATUS.md): the original12-slot native
-  longitudinal comparison is closed; fixed unused evaluation has started.
+  longitudinal comparison and fixed unused evaluation are normally closed.
   Publication readiness is not established.
 - [Completed twelve-slot comparison](results/native-longitudinal-closed-v1.md):
   all candidates, two runtime nulls, tied assigned losses and actual-input equivalence.
+- [Closed unused evaluation](results/native-longitudinal-fixed-closed-v1.json):
+  six frozen labels/five physical worlds, matched audits/costs/readouts and no own gain.
 - [Actual dispatch and observations](logbook/2026-11-15-longitudinal-real-dispatch.md):
   exact requests, submitted systems, measured losses and technical nulls.
 - [Prospective scientific decision](publication/native-staged-next-evidence-decision-v1.md)

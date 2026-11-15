@@ -26,8 +26,8 @@ These are completed records, not live heartbeats. See the
 | Ninth slot | Scalar T2 double-wraps decision payloads; actual consumer rejects the empty-year batch. Loss unknown, no host unwrapping/repair |
 | Original runner | Session82259 exited0; no restart, source/guard/loss change, repair or failed-slot refill |
 | Analysis | Two original-source audits and cost reports match; all five paired readout file sets and paired allocation match. Their original continuation sessions exited0 |
-| Fixed unused evaluation | Started at04:36:07UTC/13:36:07JST, original session54645, runner PID21817. Two of five physical jobs complete; evaluation-002 starts05:08:27UTC. R7/scalar-U shared job has T=-34/U=-25.666666666666668; the hand has T=-36/U=-30. Remaining selections are not yet measured; zero designer-generation POSTs |
-| Fixed postprocessing | Original-source audit/cost continuation97825 and subsequent paired-readout continuation4958 are confirmed live in clean frozen38ea9d38 analysis source. They wait for normal scientific closure; no audit/report completion is claimed yet |
+| Fixed unused evaluation | Normally closed at05:45:43UTC; original54645 exited0, all five physical worlds complete. Every frozen own selection and R7 has T=-34/U=-25.666666666666668; the hand has T=-36/U=-30. Zero designer-generation POSTs, no reselection or refill |
+| Fixed postprocessing | Original97825/4958/65850 exited0. Two audits/costs match; paired scores/full inputs/choices/effects all match, closed by05:47:31UTC. Four own/R7 physical request paths and literal choices coincide on this condition; provider envelopes are not all identical |
 
 The[actual dispatch log](logbook/2026-11-15-longitudinal-real-dispatch.md) retains
 exact submitted identities, complete journal-prefix counts and observed failures.
@@ -65,12 +65,11 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
 
 ## Remaining publication work
 
-1. Execute and cold-audit the already prepared fixed evaluation. Original own
-   minima/chronological ties are frozen, and fresh preparation inventories found
-   no prior reserved-seed use in the declared roots. Recheck before inference.
-   Share only literal-identical policies; no held-out reselection or substitution.
-2. Integrate the closed paired development analyses and all costs into the
-   manuscript. The final candidate's first different scientist input is the
+1. The [fixed evaluation and paired reconstruction](results/native-longitudinal-fixed-closed-v1.json)
+   are closed and retained. Finish manuscript/PDF integration and critical
+   interpretation; do not call this an independent optimizer replication.
+2. The editable manuscript now contains both completed studies and costs.
+   Review its actual new PDF and figures. The final development candidate's first different scientist input is the
    71st request (index70), year4 round intention: delivered publication-history
    and native past-paper scores change0.0 to1.0. Retain this trace and distinguish observed-path
    equivalence from global policy equivalence.
@@ -93,7 +92,7 @@ The latest reviewed artifact is the85-page working PDF with44 figures/38 tables/
 The[paper entry point](../paper/README.md) links its exact receipt and71-file local
 reconstruction. Editable sources are newer (29 citations) and now contain the
 completed12-slot development study, but are not a newly built/reviewed PDF.
-The ongoing fixed evaluation has no completed-result claim in that source.
+The source now also contains the closed fixed evaluation, not a newly reviewed PDF.
 
 The previous[3,185-line status](status-history-2026-11-15-longitudinal-prefix.md)
 and[1,140-line index](index-history-2026-11-15-longitudinal-prefix.md) are retained
