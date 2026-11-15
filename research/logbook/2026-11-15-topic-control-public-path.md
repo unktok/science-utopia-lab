@@ -61,3 +61,42 @@ paired frozen-source audits and costs. No ongoing source/HEAD/settings edit,
 redispatch, scientific repair, refill or new objective is authorized by this
 observation. The [dispatch record](../results/native-legacy-topic-pilot-dispatch-v1.json)
 binds actual paths, plan, source, process, budgets and pre-dispatch record.
+
+## Normally closed actual comparison
+
+Original64339 exits0; terminal14:35:12UTC/23:35:12JST. Original14705 exits0
+after two matching frozen-source audits/costs, ended14:36:05UTC. All original
+source/HEAD/settings remained fixed; no refill, repair or model dispatch in
+postprocessing. Elapsed1873.342582s is shared-host time. A later host-wide
+snapshot observes another project's Node program; it is neither stopped nor
+modified, and no exclusive resource lease or timing cause is inferred.
+
+Core-only T=-20/U=-15.333333333333332/K200; core-plus-related
+T=-36/U=-28.666666666666668/K200. Both start from the same cold physical society.
+The10 core projects all last2 original years; the18 related projects have16
+one-year/two two-year durations, all18 outside core. No native duration, content
+or production cap is changed. Each verifies48 original native effect witnesses.
+Both original ledgers collect50 annual-research units/year,200 in total; the
+other three activity categories and uncollected activity costs are0. This
+exposes the cost model's scope, not equal real effort or scientific truth.
+
+Readout59951 exits0 from clean582049bf. A separate clean582049bf reader
+worktree then gives original69985 exit0; report, CSV and manifest all match
+byte-for-byte, using original scientific checkpoint/response decoders. Content
+multisets share0 accepted year/paper/content occurrences, versus20/36 unique
+to each rule; exact U difference40/3. Full scientist inputs first differ at
+wire0/year1. This is not simply the same papers plus16 additions.
+
+306 scientist responses,168 critic POSTs,2 scientist load attempts and0 designer
+generation POSTs are retained. Scientist reported total458048 tokens includes
+428849 prompt/29199 completion;68876 cached prompt tokens are a subset. Critic
+tokens remain separate; missing load usage is not zero. The
+[complete retention](../results/native-legacy-topic-pilot-closed-v1.json) binds
+all outcomes, source, matched audits/costs, raw573-file inventory and paired
+readouts. This is a hand-rule feasibility result on one reused condition,
+not automatic invention, objective-conditioned optimization, independent
+replication, a global optimum or publication readiness.
+
+Original retention check1324 exits0:1 test passes in0.60s and active docs
+check25 documents/467 local links/6 snapshots, no errors. These check retained
+records, not new scientific worlds or independent inference replication.

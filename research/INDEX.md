@@ -9,7 +9,9 @@ This page is navigation, not a chronological experiment transcript.
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):
   two same-authority hand controls; not automatic invention or a new optimized objective.
   [Actual pinned real dispatch](results/native-legacy-topic-pilot-dispatch-v1.json)
-  starts23:03JST with its finite no-inference closure chain.
+  starts23:03JST; [complete outcomes and paired readouts](results/native-legacy-topic-pilot-closed-v1.json)
+  now close normally. Related-topic hand control improves T/U here at equal native K,
+  not automatic invention or a new optimized objective.
 
 - [Next reachable-action study design](publication/native-legacy-topic-next-study-v1.md)
   and [actual native/Docker/workflow/cold construction](results/native-legacy-topic-software-retention-v2.json):
