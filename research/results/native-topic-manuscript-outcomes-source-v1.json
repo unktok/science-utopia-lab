@@ -1,0 +1,22 @@
+{
+  "schema": "scienceutopia.native-topic-manuscript-outcomes-source.v1",
+  "tested_source_commit": "abb03cc474310aca03a7c476b014588a7f3f2a47",
+  "original_session": 38068,
+  "exit_code": 0,
+  "passed": 17,
+  "pytest_reported_seconds": 0.70,
+  "junit": "research/data/native-topic-manuscript-outcomes-v1/junit.xml",
+  "junit_sha256": "b4be859f19dc7254789d1ec99d89d8259a1b2c9a47ecca5bd6ca0fcbc299f576",
+  "source_files_sha256": {
+    "paper/integrated/native-topic-system-search.tex": "423698372516d3ac84f819274828c6741db3cc161aa7c4c213bac584eb6d519f",
+    "paper/integrated.tex": "b378122a7c9c4a6113f4c0e64f12fe67c29d69c7a4e1ecc5a1e677f110505992"
+  },
+  "scope": "Source-only actual4/6-slot prefix, original received/generated/observed distinctions, failure support diagnosis, conditional calendar/fixed-content analysis, prospective-control limits, retained data correspondence, crossreferences/environments and repository documentation. Not a whole-study result, TeX compilation, figure export or visual review.",
+  "pdf_skill_marker": "Successful edit marker before first manuscript authoring command in this continuation",
+  "pdf_built": false,
+  "visual_review_complete": false,
+  "old_reviewed_pdfs_changed": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false
+}
