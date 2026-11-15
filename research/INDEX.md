@@ -5,6 +5,15 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
+  [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)
+  and [software/source-binding proof](results/native-terminal-cost-pilot-software-retention-v1.json):
+  two fresh same-authority original-world hand controls, fixed scientists,
+  source-only final-year transfer change and the already declared C loss.
+  Actual inference is active; outcomes/paired closure remain pending. A positive
+  hand contrast would show objective opportunity, not automatic invention,
+  independent optimizer replication, real efficiency or publication readiness.
+
 - [Next free-system optimization protocol](protocols/campaigns/native-topic-free-optimization-v1.md)
   runs three declared losses with strong visible same-authority parents and free
   source/node/wiring/process authoring. [Actual pinned dispatch](results/native-topic-free-optimization-dispatch-v1.json)

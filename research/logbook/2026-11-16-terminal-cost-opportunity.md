@@ -48,3 +48,26 @@ user Python study later appears, so neither idle hardware nor exclusive access
 is inferred. Other projects are not stopped. A fresh host/model snapshot is
 still required before actual model dispatch. No main-track improvement or
 publication readiness is claimed.
+
+## Corrected exact-source check and actual dispatch
+
+Original10126 exits0 from9af325fff6ee0ff48fc64ed63efd1d53c25c0317:
+19 tests pass in33.98s, including the two actual native software worlds and
+new real-Git-source guard (with unauthorized native-law-byte rejection).
+The compact verification/JUnit and all344 source-proof hashes are retained;
+no raw model/cache/corpus files are added to Git.
+
+New immutable pilot-v1-a2 and analysis-v1-a2 use that exact9af source. Original
+prepare42642 exits0. This is the first consumed scientific run: original
+writer92265/PID77164 starts2026-11-15T19:31:42.125629+00:00 (04:31:42JST).
+The host-wide program/CPU and full filtered command observations show no model
+runner at dispatch and actual local loaded-model list is empty; backend0.33.3
+and approved8B tag digest are verified. This does not prove exclusive resources.
+
+Original continuation26893/PID77320 waits for that exact writer, then performs
+two original-source audits and two cost projections without new inference.
+It is not a detached promise or a replacement scientist run. The source/root
+and active limits stay unchanged; no independent heavy QA/PDF rendering runs
+beside real inference. Actual closure, gain or content/participation effects
+are pending. The existing98-page paper is not silently relabelled as including
+this new run.

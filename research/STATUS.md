@@ -1,5 +1,31 @@
 # Current research status
 
+## Active native opportunity control — November16 04:31:42JST
+
+The [finite terminal-cost protocol](protocols/campaigns/native-terminal-cost-opportunity-v1.md)
+has [actually dispatched](results/native-terminal-cost-pilot-dispatch-v1.json)
+from immutable source9af325ff. Original writer92265/PID77164 is running the
+strong related-topic reference first, followed by the source-only terminal
+consolidation control. Exactly two fresh native worlds are scheduled; there
+are no local designer generations, failed-slot refills or held-out claims.
+The original paired-audit/cost continuation26893/PID77320 is waiting for this
+exact writer. Normal closure and real C/T/U outcomes are not yet established.
+
+The [software proof](results/native-terminal-cost-pilot-software-retention-v1.json)
+passes19 tests, including actual Docker/native/SDK/cold/cost execution with
+SCRIPTED corpus/HTTP/critics/upstream, and actual immutable-source binding.
+The first prepare stops before any study root or scientist cell because a
+later optional feedback module is absent from the old adapter set. That source
+is preserved; the new explicit adapter is covered without accepting changes
+to original native laws. No failed scientific candidate is repaired/refilled.
+The software fixture's predicted cost contrast is not real-model gain.
+
+This study asks whether a specific reachable C-objective opportunity exists,
+not whether the local designer invented it. Requested versus collected costs,
+unpaid expense and attrition will be reported without hidden vetoes. No
+independent heavy QA or PDF work overlaps inference. The98-page manuscript
+below predates this new run; the publication-ready goal remains active.
+
 ## Latest manuscript integration — November16
 
 The [98-page reviewed working paper](../paper/README.md) now includes the complete
@@ -17,7 +43,8 @@ Old PDF/receipts remain unchanged and apply to their own earlier snapshots.
 This is manuscript integration, not new inference, automatic institutional gain
 or publication readiness. Important supported findings, appropriate independent
 evidence and a focused main-track argument remain open. The original scientific
-study below is closed with no remaining inference worker. The whole goal remains active.
+previous free-design study below is closed with no remaining worker; the new
+opportunity study above is separate. The whole goal remains active.
 
 ## Latest closed study — November16 03:35:39JST
 
