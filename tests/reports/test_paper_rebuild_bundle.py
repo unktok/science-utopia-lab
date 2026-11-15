@@ -148,7 +148,8 @@ def test_v2_empirical_allowlist_has_all_actual_literal_inputs():
 
 
 def historical_integrated_root(tmp_path, *, source='ef104f33f14b408fc48201757cff794a3db3c3b9',
-                               policy_path='research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json'):
+                               policy_path='research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json',
+                               explicit_policy=None):
     """Materialize only the earlier allowlist; never amend its frozen receipt.
 
     A shared local clone permits the real source-manifest git-show checks. No
@@ -157,8 +158,12 @@ def historical_integrated_root(tmp_path, *, source='ef104f33f14b408fc48201757cff
     import subprocess
     root = tmp_path / 'historical-source'
     subprocess.run(['git', 'clone', '--shared', '--no-checkout', '--quiet', str(bundle.ROOT), str(root)], check=True)
-    policy = json.loads(subprocess.check_output(['git', 'show', source + ':' + policy_path], cwd=bundle.ROOT))
-    for name in [*policy['files'], policy_path]:
+    policy = explicit_policy if explicit_policy is not None else json.loads(subprocess.check_output(
+        ['git', 'show', source + ':' + policy_path], cwd=bundle.ROOT))
+    # A prospective allowlist can refer to an already reviewed snapshot without
+    # pretending that this newer policy existed in the historical source.
+    names = policy['files'] if explicit_policy is not None else [*policy['files'], policy_path]
+    for name in names:
         destination = root / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(subprocess.check_output(['git', 'show', source + ':' + name], cwd=bundle.ROOT))
@@ -319,3 +324,39 @@ def test_feedback_receipt_rejects_later_unreviewed_source_without_rewriting_old_
         bundle.stage(root, policy, tmp_path / 'unreviewed-feedback-subset', source_commit='SCRIPTED')
     assert (root / policy['receipt']).read_bytes() == receipt
     assert not (tmp_path / 'unreviewed-feedback-subset').exists()
+
+
+def terminal_snapshot(tmp_path):
+    policy = json.loads((bundle.ROOT /
+        'research/publication/paper-rebuild-allowlist-integrated-terminal-cost-v1.json').read_text())
+    root = historical_integrated_root(tmp_path,
+        source='487f8c208c1f5ee4f9ad3ce63d0fcbbd61a232b1', explicit_policy=policy)
+    return root, policy
+
+
+def test_terminal_policy_stages_exact_reviewed_100_page_inputs_not_later_related_work(tmp_path):
+    root, policy = terminal_snapshot(tmp_path)
+    result = bundle.stage(root, policy, tmp_path / 'terminal-subset', source_commit='SCRIPTED-staging-source')
+    assert len(result['files']) == 82 and len(result['literal_tex_dependencies']) == 79
+    assert result['original_build_source_commit'] == '382be46d9af1347ed09b671d9afffb4b98272aac'
+    assert result['original_build_receipt_schema'] == 'scienceutopia.integrated-terminal-cost-manuscript.v1'
+    assert {'paper/integrated/native-terminal-cost.tex',
+        'paper/figures/native-terminal-cost-v1/collected-versus-requested.png'} <= set(result['literal_tex_dependencies'])
+    assert 'output/pdf/science-utopia-lab-integrated-terminal-cost-working-paper.pdf' in result['files']
+    assert 'output/pdf/science-utopia-lab-integrated-topic-systems-working-paper.pdf' not in result['files']
+    assert not result['raw_or_model_data_included'] and not result['published_or_uploaded']
+    assert not result['numerical_reproduction_or_clean_machine_build_claimed']
+
+
+@pytest.mark.parametrize('name', ['paper/integrated/discussion.tex', 'paper/submission-sources.bib',
+    'paper/figures/native-terminal-cost-v1/collected-versus-requested.png',
+    'output/pdf/science-utopia-lab-integrated-terminal-cost-working-paper.pdf'])
+def test_terminal_snapshot_rejects_changed_source_illustration_or_pdf_without_repair(tmp_path, name):
+    root, policy = terminal_snapshot(tmp_path)
+    receipt = (root / policy['receipt']).read_bytes()
+    path = root / name
+    path.write_bytes(path.read_bytes() + b'\nSCRIPTED later unreviewed content')
+    with pytest.raises(ValueError, match='changed from reviewed receipt'):
+        bundle.stage(root, policy, tmp_path / 'changed-terminal-subset', source_commit='SCRIPTED')
+    assert not (tmp_path / 'changed-terminal-subset').exists()
+    assert (root / policy['receipt']).read_bytes() == receipt
