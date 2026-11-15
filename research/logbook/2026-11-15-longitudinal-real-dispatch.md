@@ -564,6 +564,38 @@ known technical null. The final four slots, whole-study analysis/selection and
 frozen unused evaluation remain open. No source/guard/objective/budget change,
 host repair, failed-slot refill, new penalty or stronger-policy substitution.
 
+## Ninth slot: actual two-own-outcome frame, not yet a scientific result
+
+Scalar T2 request
+`068fd5f9fdbe34df0e7e27a9f8f1696698006a7f65cac25edf99f0769af7dec7`
+passes29 request-readiness records (`all_controls_passed: true`), certificate
+content`d69d6c21ee0dd301a8c321b6c020635e06609e94ef78124a82d910d054f93ade`.
+Original82259 begins generation at02:20:58.461773UTC. No ninth native loss,
+submitted institution, useful revision or complete comparison is established.
+
+The first completed actual author frame (02:21:23.740395UTC) has exactly three
+inline observation summaries: original R7, own scalar T0 and own scalar T1,
+all T=-18. Full own-history body399,107 UTF-8 bytes remains a declared on-demand
+`archive/request.json` `/history` reference with value digest
+`f8920698d86b3c595107342c7a070d445ca89c1583b994b0a9c4684e70558415`;
+it is not automatically inserted into the prompt or proved read/understood.
+Step digest`4f1e810a5e6dec79c75a13c7e69c53ee792893caddc1d463dc1504edc66bcf84`,
+wire SHA`319b5eb6c9dde0e5be2184290fe467440097e17931b4c2e7f8732aef57b57a52`.
+Its87,274 wire bytes complete with backend21,598 input/263 output tokens,
+`done: true`, `done_reason: stop`, under unchanged65,536/8,192 reservations.
+
+A later actual step3 wire also retains the complete current literal document:
+its digest equals the declared current-system and transition-before digest
+`afbe6626fbad76ff65cf0a6a8875d6e68cc1853378d3d41f1d87c6f0c7bce8d2`.
+Wire SHA`b0eea77fab2850b8c83a9c19f69b5edb912b5a2065d3540f5b206d83d8429d03`,
+139,058 bytes, backend32,119 input/48 output tokens, complete stop. Step digest
+`454d638a9041ff68e56d685fe6586e332a429d13118ba5fcb0c324746dd53414`.
+The returned read action is rejected, not counted as an applied read or source
+change. Exact raw wire hashes and parsed payloads agree in both inspected
+frames. These checks do not establish capacity/attention for every later frame,
+the model's internal reason for the rejection, whole-framework correctness,
+or scientific benefit. The original source, budgets and feedback are unchanged.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,
