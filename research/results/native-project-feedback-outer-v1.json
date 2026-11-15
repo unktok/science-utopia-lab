@@ -7,6 +7,16 @@
   "pytest_reported_seconds": 58.28,
   "junit": "research/data/native-project-feedback-outer-v1/junit.xml",
   "junit_sha256": "2f74e24f1f08701e019ed74d18816dee40286dd051dc359552378c9fd5bdb38a",
+  "subsequent_docs_and_project_fields_check": {
+    "source_commit": "49c67aa7393691687eb3372780819863e5f5eb26",
+    "original_session": 41967,
+    "exit_code": 0,
+    "passed": 27,
+    "pytest_reported_seconds": 6.37,
+    "junit": "research/data/native-project-feedback-outer-v1/docs-and-fields-junit.xml",
+    "junit_sha256": "5d26bcb43b594c9a1dd53d8de8c642951c5c4aae658806186dab12076eb3c3a2",
+    "scope": "Current repository navigation/snapshots and earlier concrete pure-validator/staged-prompt checks; not another outer test, model or world."
+  },
   "scope": "Actual generic bounded execute/worker/replay, actual calibration return/certificate, actual role factory/staged generator/persistent prompt, cold replay and finite probe options. HTTP, executor, source pin, role load and child supervision are explicitly SCRIPTED. No native world, actual container, real-model capacity, deadline supervision or original campaign fixture attribution is certified.",
   "project_option_matrix": {
     "enabled_or_disabled": [false, true],
