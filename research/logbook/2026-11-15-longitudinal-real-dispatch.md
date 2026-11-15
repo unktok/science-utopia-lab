@@ -681,6 +681,30 @@ unreviewed acceptance to common utility does not change the fixed common-content
 consumer or prove monotonicity for arbitrary accepted content. No new host
 policy is supplied to turn that prose into an operative measurement rule.
 
+### Tenth native outcome completes without improvement
+
+At02:52:15.257126UTC the original writer advances to scalar U2 readiness.
+U2's full four-year world and measurement complete, no generation error or
+technical failure. Re-evaluating both hash-checked original plan losses on its
+retained measurements gives T=-18/U=-13.333333333333332, one valid run each.
+Both tie R7 and lose to the hand by2, not an improvement or an information effect.
+Record digest`d7d405c7671c7b66c1649d0fd402460f39ff6239f3c38bd2dcf276e91afc532c`,
+observation`a8b76ce1fde7e5e9cf256c6790c0f5a926123fe5561d3d5d5754aff9bb34d7b4`.
+
+All ten collected metrics, ordered accepted(year,ID) pairs and four annual
+author accounting-row lists equal the actual fresh R7 observation. Final-active
+count2 and resources40 are not a new contrast against R7, nor an extra loss
+or adoption criterion. Full scientist-input/choice equivalence, global program
+equivalence and an isolated effect of feedback are not inferred from these
+recorded projections. The source comment does not substitute for the metric's
+actual content consumer. Whole-study paired analysis is still pending.
+
+Ten of12 original slots are now processed: eight valid ties, two known technical
+nulls. Scalar T and parent-trajectory U have each finished all three original
+proposals; scalar U and parent-trajectory T each have their final slot remaining.
+There is no refill, proposal repair, best-reference substitution, hidden penalty,
+objective/source/budget change or early selection from the remaining outcomes.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,
