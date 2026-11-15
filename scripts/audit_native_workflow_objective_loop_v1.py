@@ -103,11 +103,14 @@ def worker(root, output, *, driver_module=None):
             if proposal and not 0 <= epoch(intent['started_utc']) - cert['created_unix_seconds'] <= 86400:
                 raise ValueError('workflow actual dispatch did not have a fresh readiness certificate')
             return value
-        initial_file = root / 'initial-readiness/campaign/native-adaptive-state.json'
-        if not initial_file.is_file(): raise ValueError('original workflow initial campaign missing')
-        initial = driver.campaign(root, p, p['objectives'][0], prototype=True)
-        if initial.state['records'] or initial.state['pending']: raise ValueError('initial readiness dispatched science')
-        author(root / 'initial-readiness/author', initial._request([], initial._validate(), 1))
+        initial_jobs = (driver.initial_readiness_jobs(p) if hasattr(driver, 'initial_readiness_jobs')
+                        else [(p['objectives'][0], Path('initial-readiness'))])
+        for initial_key, relative in initial_jobs:
+            initial_file = root / relative / 'campaign/native-adaptive-state.json'
+            if not initial_file.is_file(): raise ValueError('original workflow initial campaign missing')
+            initial = driver.campaign(root, p, initial_key, prototype=True)
+            if initial.state['records'] or initial.state['pending']: raise ValueError('initial readiness dispatched science')
+            author(root / relative / 'author', initial._request([], initial._validate(), 1))
         def physical(directory, suggestion, o, objective, role, history=None):
             spec = SystemSpec.from_dict(suggestion['candidate'])
             check_candidate(anchor, spec, structure_only=not driver.open_institutions(p))

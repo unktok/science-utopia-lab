@@ -32,7 +32,7 @@ from utopia.utils.data_utils import write_json_atomic
 
 @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_TOPIC_FREE_PUBLIC_QA') != '1',
                    reason='explicit clean-source hardware window, no real inference active')
-def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_path,fixed_corpus,monkeypatch):
+def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_path,fixed_corpus,monkeypatch,matched=False):
     sdk_init=OpenAI.__init__
     upstream=public_operator_path(tmp_path/'SCRIPTED-upstream',monkeypatch,topic=True)
     from scripts.reports import native_legacy_topic_pilot_v1 as readout
@@ -65,6 +65,8 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
         return value
     monkeypatch.setattr(models,'VLLMServerModel',model)
     monkeypatch.setattr(driver,'SEED',42)
+    if matched:
+        monkeypatch.setattr(driver.free,'SEED',42)
     monkeypatch.setattr(driver,'LocalObserverBackend',lambda **kw:ScriptedCritic())
     monkeypatch.setattr(driver,'native_sources',lambda old,source:{'original_source':old,
         'SCRIPTED':'historical scientist provenance only; actual runtime source fully cold checked'})
@@ -72,7 +74,7 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
     # their corpus/HTTP/critic inputs remain SCRIPTED, including source origin.
     old=driver.read(upstream['run']/'plan.json'); provider=old['designer']; scientist=old['scientist']
     current={'request':None,'kind':None}; production=[]; calibration=[]; feedback=[]
-    session_counts={}
+    session_counts={}; submitted_requests={}
     class Session(ScriptedSession):
         calls=[]
         def get(self,url,**kw):
@@ -108,6 +110,17 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
                         **({'thinking':'SCRIPTED calibration reasoning'} if payload['think'] else {})}})
             req=current['request']; assert current['kind']=='proposal'
             key=digest(req); i=session_counts.get(key,0); session_counts[key]=i+1
+            submitted_requests[key]=clone(req)
+            if matched:
+                from utopia.optimization.native_consumer_evidence_v1 import OPTION
+                data,_=json.JSONDecoder().raw_decode(payload['messages'][1]['content'].split('BOUNDED ACTIVE SESSION DATA\n',1)[1])
+                has_source=OPTION in req['strategy_provenance']
+                assert ('literal_native_consumer_source_evidence' in data)==has_source
+                if has_source:
+                    assert data['literal_native_consumer_source_evidence']==req['strategy_provenance'][OPTION]
+                assert [v['suggestion']['suggestion_id'] for v in req['developer_reference_context']['pairs']]==[
+                    'workflow-reference-core-only','workflow-reference-core-plus-related']
+                assert 'terminal-consolidation' not in json.dumps(req)
             original=next(n['parameters']['code_artifact']['source'] for n in req['parent_system']['mechanisms']
                           if n['mechanism_id']=='world.selection')
             actions=[{'tool':'plan','objective_reasoning':'SCRIPTED explicit loss arithmetic software test',
@@ -119,6 +132,8 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
                 transparent_office(req,identity='scripted-feedback-office-'+str(req['generation'])),
                 work_edit(req),
                 {'tool':'finish','rationale':'SCRIPTED submitted system, not optimization evidence'}]
+            if matched and req['generation']==0:
+                actions=actions[:4]+actions[-1:]
             action=actions[i]; production.append(payload)
             if i==2:
                 # The bad name also occurs in literal source. Require the actual
@@ -139,17 +154,19 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
         audit_one=upstream['audit_one'],audit_two=upstream['audit_two']))
     driver.run(root)
     p=driver.require_plan(root); end=driver.read(root/'terminal.json')
-    assert end['status']=='closed' and end['consumed_slots']==6 and end['observations']==8
-    assert len(session_counts)==6 and set(session_counts.values())=={7}
-    assert feedback==[True]*6 and len(production)==42 and calibration
-    assert len(work_payloads)>=24
+    own,worlds=(8,11) if matched else (6,8)
+    assert end['status']=='closed' and end['consumed_slots']==own and end['observations']==worlds
+    assert len(session_counts)==own and set(session_counts.values())==({5,7} if matched else {7})
+    assert feedback==[True]*own and len(production)==(48 if matched else 42) and calibration
+    assert len(work_payloads)>=(16 if matched else 24)
     assert p['losses']['throughput']==old['losses']['throughput']
     assert p['losses']['content-utility']==old['losses']['content-utility']
-    assert set(p['losses'])==set(driver.OBJECTIVES)
+    assert set(p['losses'])==set(driver.free.OBJECTIVES if matched else driver.OBJECTIVES)
     assert p['additional_measurements']['optimization_loss_changed']
     assert p['additional_measurements']['historical_losses_unchanged']
-    for objective in p['objectives']:
-        c=driver.campaign(root,p,objective,driver.read(root/'developer-reference-context.json'))
+    sequences=[]
+    for key in driver.history_keys(p):
+        c=driver.campaign(root,p,key,driver.read(root/'developer-reference-context.json'))
         assert len(c.state['records'])==2 and not c.state['pending']
         for r in c.state['records']:
             assert r['request']['design_space']['world_law_scope']==driver.SCOPE
@@ -157,8 +174,17 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
             for observation in r['observations']:
                 assert observation['status']=='complete'
                 assert observation['metadata']['measurements'][0]['metrics'][METRIC]['status']=='measured'
-                assert observation['metadata']['measurements'][0]['native_workflow_interval']['institutional_work_events']>=4
-                assert len(observation['candidate']['mechanisms'])>len(r['request']['parent_system']['mechanisms'])
+                work=observation['metadata']['measurements'][0]['native_workflow_interval']['institutional_work_events']
+                if matched and r['request']['generation']==0:
+                    assert work==0 and len(observation['candidate']['mechanisms'])==len(r['request']['parent_system']['mechanisms'])
+                    cell=driver.history_directory(root,key)/'worlds'/(observation['suggestion_id']+'-s42')
+                    sequences.append([json.loads(line)['payload'] for line in (cell/'wire-requests.jsonl').read_text().splitlines()])
+                else:
+                    assert work>=4
+                    assert len(observation['candidate']['mechanisms'])>len(r['request']['parent_system']['mechanisms'])
+    if matched:
+        assert len(sequences)==4 and all(seq==sequences[0] for seq in sequences)
+        assert sum('native_consumer_source_evidence' in req['strategy_provenance'] for req in submitted_requests.values())==4
     for client in upstream['clients']: client.close()
     monkeypatch.setattr(OpenAI,'__init__',lambda *a,**kw:pytest.fail('cold reader cannot construct SDK'))
     before=(len(production),len(calibration))
@@ -168,17 +194,17 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
         audits=[driver.read(path) for path in paths]
         assert paths[0].read_bytes()==paths[1].read_bytes()
         pair=[costs(root,p,a) for a in audits]; assert pair[0]==pair[1]
-        assert len(audits[0]['worlds'])==8 and all(w['status']=='complete' for w in audits[0]['worlds'])
+        assert len(audits[0]['worlds'])==worlds and all(w['status']=='complete' for w in audits[0]['worlds'])
         assert not audits[0]['held_out_evaluation'] and not audits[0]['publication_ready']
         driver.save(tmp_path/'audit-retained.json',{k:v for k,v in audits[0].items() if k!='content_sha256'})
         driver.save(tmp_path/'cost-retained.json',{k:v for k,v in pair[0].items() if k!='content_sha256'})
     assert before==(len(production),len(calibration))
     with pytest.raises(ValueError,match='no redispatch'): driver.run(root)
     write_json_atomic(tmp_path/'verification.json',{
-        'schema':'scienceutopia.native-topic-free-public-software.v1','source_commit':p['source_commit'],
+        'schema':('scienceutopia.native-consumer-source-public-software.v1' if matched else 'scienceutopia.native-topic-free-public-software.v1'),'source_commit':p['source_commit'],
         'classification':'SCRIPTED-HTTP-corpus-critics-and-child-supervision-not-real-model-optimization',
         'public_prepare_run_calibration_execute_replay_and_double_cold':True,
-        'native_worlds':8,'upstream_software_worlds':2,'own_slots':6,'objectives':p['objectives'],
+        'native_worlds':worlds,'upstream_software_worlds':2,'own_slots':own,'objectives':p['objectives'],
         'scripted_proposal_POSTs':len(production),'scripted_calibration_POSTs':len(calibration),
         'every_actual_next_feedback_prompt_contains_error':all(feedback),
         'actual_fixed_scientist_institutional_work_requests':len(work_payloads),
