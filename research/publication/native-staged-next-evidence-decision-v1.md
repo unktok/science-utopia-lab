@@ -239,3 +239,22 @@ can be considered without requiring a differentiable world. First check existing
 implementations/prior methods and the completed evidence; this paragraph is not
 a new algorithm contribution, an evidence-producing result, an active experiment
 amendment or permission to skip the remaining current slots/frozen evaluation.
+
+## Source/initial-state support screen while original inference continues
+
+The [native choice-support screen](native-actionable-choice-support-v1.md)
+finds a concrete authority distinction: the typed catalog-project action permits
+core expertise only, while ordinary legacy researcher selection also permits
+related topics. Four of these five founders have a one-year related option,
+although every core minimum is two years. The optimistic20/36 duration
+arithmetic is not a feasible policy, measured gain or global acceptance bound;
+cash flow, output/venue/content constraints and other action paths remain.
+Do not assume the observed hand20 is globally optimal, or call these two
+routes same-topic-authority controls without matching their eligible sets.
+
+This screen does not change or expose advice to the current author. It is
+one possible native opportunity for the post-closure decision, not a selected
+new campaign, metric change, API repair or permission to skip remaining slots
+and frozen unused evaluation. Test any later feasibility and optimizer claim
+in the original world under a fresh finite protocol, not by substituting the
+arithmetic for actual science-system outcomes.

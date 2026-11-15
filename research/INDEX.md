@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Native choice-support screen](publication/native-actionable-choice-support-v1.md):
+  source/checkpoint inspection distinguishes core-only direct assignment from
+  legacy core-plus-related choices. Four founders have one-year related options;
+  conditional duration arithmetic is not a feasible policy or global bound.
+  No live input/source/loss change or new native world. This informs a later
+  research decision, not an invented improvement or an additional campaign.
+
 - Five of12 own outcomes complete at01:01:54UTC; first own-feedback T1 still
   ties R7 on both losses and loses to the hand. Original82259 proceeds to scalar
   U1 readiness without source/objective/budget changes. [Actual first revision](logbook/2026-11-15-first-own-feedback-wire.md)

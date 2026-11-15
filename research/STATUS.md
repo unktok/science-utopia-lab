@@ -7,6 +7,14 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Subsequent01:12:17UTC: sixth slot scalar U1 begins free authoring after its
+actual-request readiness. Five own native outcomes remain complete, all ties
+to R7. The separately retained [choice-support screen](publication/native-actionable-choice-support-v1.md)
+distinguishes core-only direct assignment from legacy core-plus-related choice;
+conditional20/36 arithmetic is not a global bound or a feasible native policy.
+No active input/loss/source/budget changes. Three lightweight arithmetic/Git
+source checks pass, not new inference, whole-study closure or improvement.
+
 Latest01:01:54UTC/10:01:54JST: five of12 own outcomes complete, all tying R7
 at T=-18/U=-13.333333333333332 and worse than the hand by2 on both losses.
 First feedback-bearing T1 completes without generation/world technical errors,
