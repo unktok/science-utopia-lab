@@ -3,9 +3,10 @@
 ## Resumed by explicit user instruction — November15 12:57UTC /21:57JST
 
 The user explicitly requested continuation and reactivated the original goal.
-The pause below is historical. Resume starts with the unmerged passive resource
-instrument; no old scientific experiment is restarted. No new objective has
-yet been adopted and publication readiness remains unestablished.
+The pause below is historical. The passive resource instrument and its actual
+original-source readouts are now complete in the feature branch; no old
+scientific experiment was restarted. No new objective has yet been adopted
+and publication readiness remains unestablished.
 
 ## Historical pause — November15 07:51UTC
 
@@ -24,6 +25,33 @@ the original persistent researcher world, using available gradients or black-box
 evaluation. Produce an important supported answer, strong controls, mechanism
 analysis, selection-fixed unused evaluation, reproducible records and a verified
 manuscript. Publication readiness is **not established**; acceptance is not promised.
+
+## New development-only resource readout (after explicit resumption)
+
+The [passive original-world instrument](components/native-collected-resource-instrument-v1.md)
+now measures actual collected activity-resource costs from all original annual
+ledgers. Income and transfers are not consumption; uncollected activity costs
+are separate, and incomplete runs remain unknown. The actual native public
+evaluation path accepts the metric as an additive measurement adapter; it does
+not change old metrics or impose a new loss/merit constraint.
+
+[Two exact matching cold exports per study](results/native-resource-cost-development-retention-v1.json)
+use original scientific checkpoint decoders/ledger reconcilers, fixed sources,
+matching prior audits and unchanged complete raw inventories. Of14 longitudinal
+development worlds,12 measure and2 remain unknown. R7 and all10 valid own
+policies have collected cost190 and18 accepted decisions; the hand has cost200
+and20 decisions. All3 choice controls cost200, with20/14/16 accepted decisions.
+All measured activity uncollected costs are zero. The
+[separate-study graph and exact algebra](results/native-resource-cost-development-summary-v1.json)
+are retrospective diagnostics, not newly optimized policies or unused evaluation.
+For the fixed observed R7/hand pair only, `-A + lambda*K` ties atlambda1/5;
+no value oflambda or new campaign is adopted. The two plotted study sets are
+not pooled or treated as independent optimizer replications. No new model call,
+native scientific world or institutional code execution is performed.
+
+The reviewed88-page PDF remains unchanged and does not yet include this readout
+or the three-choice pilot. The [resumption log](logbook/2026-11-15-resource-instrument-resumption.md)
+records the completed software checks and exact terminal reader sessions.
 
 ## Current experiment: November15
 

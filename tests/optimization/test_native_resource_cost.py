@@ -194,3 +194,27 @@ def test_actual_native_checkpoint_live_and_cold_paths_are_additive(tmp_path, fix
         with pytest.raises(ValueError, match='distinct'): measure_from_checkpoints(base, [paths[0]] * 2)
     finally:
         sim.llm.response_cache.close()
+
+
+def test_new_metric_reaches_the_public_native_loss_observation_boundary(tmp_path, fixed_corpus):
+    from tests.runtime.test_portable_checkpoint_integration import SmallRealSimulation, FakeHTTPModel, seed
+    from tests.optimization.test_native_world import loss_spec
+    from utopia.optimization.blackbox import Suggestion
+    from utopia.optimization.native_world import evaluate_native_suggestion
+    from utopia.system.native_kernel import NativeScienceKernel, legacy_world_system
+
+    def factory(spec, run_seed, run_id):
+        seed()
+        root = tmp_path / run_id
+        sim = SmallRealSimulation(root, FakeHTTPModel(root, []), ledger=True)
+        sim.native_system = NativeScienceKernel(spec)
+        return sim
+
+    system = legacy_world_system()
+    result = evaluate_native_suggestion(Suggestion('SCRIPTED-resource-public', system.to_dict(), 0, 'initial'),
+        seeds=[42], simulation_factory=factory, loss_spec=loss_spec(METRIC, .25), measurement_adapter=measure)
+    assert result.status == 'complete'
+    measurement = result.metadata['measurements'][0]
+    assert result.loss == .25 * measurement['metrics'][METRIC]['value']
+    assert measurement['metrics']['native.accepted_decisions']['status'] == 'measured'
+    assert not result.metadata['technical_failures']

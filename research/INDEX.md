@@ -5,6 +5,11 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Collected original activity-resource instrument](components/native-collected-resource-instrument-v1.md),
+  [actual paired cold retention](results/native-resource-cost-development-retention-v1.json)
+  and [separate-study support](results/native-resource-cost-development-summary-v1.json):
+  new retrospective development measurement, not a new objective or optimization.
+
 - [Original-choice pilot actual dispatch](results/native-legacy-choice-pilot-dispatch-v1.json)
   and [public operator/SDK900/cold software proof](results/native-legacy-choice-pilot-software-retention-v1.json):
   three hand controls in the original world, now normally closed.
