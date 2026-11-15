@@ -32,3 +32,12 @@ paired audit/cost chain, then export twice without model calls or retry. This
 is a postprocessing dependency, not another optimization campaign or a passed
 analysis. The reviewed91-page PDF is unchanged and predates the new real topic
 controls/free study. R2/R3/R5/R6 remain open; the full goal stays active.
+
+At15:51:35UTC/00:51:35JST the actual new continuation8526/PID22876 starts
+from separate clean frozen7d3a9c2e. The
+[literal sealed launch record](../results/native-topic-free-readouts-launch-v1.json)
+binds the real48e1d268 scientific source, original plan-file hash, preceding
+audit/cost analysis and exact original scientific-decoder argument. Original
+8526 reports `await-audit-and-cost-closure`, new_model_calls0. It is waiting,
+not a passed pair of report exports. Original scientific14919/audit15136
+remain live. No active worktree is edited or restarted.

@@ -92,6 +92,10 @@ At15:50UTC the real writer still executes the second reference; the first
 core-only observation is complete, own proposals unstarted. Full source-bound
 closed-study exports, paired figure comparison, visual review and manuscript
 integration are pending, not established by these light tests.
+At15:51:35UTC the [actual separate readout continuation](results/native-topic-free-readouts-launch-v1.json)
+starts8526/PID22876 from clean frozen7d3a9c2e, waiting on original paired
+audit/cost closure. It will export twice and require identical files, with no
+model calls or retry; it has not yet exported or visually reviewed any figure.
 
 ### Normally closed same-authority developer controls (v5)
 
