@@ -1,0 +1,50 @@
+{
+  "schema": "scienceutopia.native-consumer-low-disk-cleanup.v1",
+  "observed_utc": "2026-11-15T21:45:16.341902+00:00",
+  "plans": [
+    {
+      "attempt": "a1",
+      "archived_plan": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-undispatched-prepares-v1/a1/plan.json",
+      "file_sha256": "68dff06d0caa87d4c4ebb85b0db59e90509f4e4b42062d314d314ef11675d6b3",
+      "inode": 52580766,
+      "bytes": 3366988
+    },
+    {
+      "attempt": "a2",
+      "archived_plan": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-undispatched-prepares-v1/a2/plan.json",
+      "file_sha256": "9773aefd5e5b991cffa328215eb23702133408ee89ccd52f0abb9df8c9a27776",
+      "inode": 52609990,
+      "bytes": 3366988
+    }
+  ],
+  "disk_free_bytes": 2883321856,
+  "swap_observation": "vm.swapusage: total = 7168.00M  used = 5651.62M  free = 1516.38M  (encrypted)",
+  "removed": [
+    {
+      "attempt": "a1",
+      "worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a1",
+      "source_commit": "bd57e4ae22d4a74680afdec21121bb737e582c4a",
+      "original_plan": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a1/outputs/native-consumer-source-comparison-v1-a1/plan.json",
+      "file_sha256": "68dff06d0caa87d4c4ebb85b0db59e90509f4e4b42062d314d314ef11675d6b3",
+      "inode": 52580766,
+      "bytes": 3366988
+    },
+    {
+      "attempt": "a2",
+      "worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a2",
+      "source_commit": "4d81ed0600f7243cdfa60d67fcc00fbb9077adac",
+      "original_plan": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a2/outputs/native-consumer-source-comparison-v1-a2/plan.json",
+      "file_sha256": "9773aefd5e5b991cffa328215eb23702133408ee89ccd52f0abb9df8c9a27776",
+      "inode": 52609990,
+      "bytes": 3366988
+    }
+  ],
+  "raw_model_records_deleted": 0,
+  "scientific_results_deleted": 0,
+  "unused_tracked_checkouts_removed": 2,
+  "plan_transfer": "Same-volume rename; plan hashes, sizes and inodes unchanged.",
+  "active_scientific_source_untouched": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "source_recovery": "The two detached source checkouts can be recreated at their original paths with git worktree add --detach and their recorded commits. Restore each archived plan directory under outputs with its original directory name. No actual model POST or started.json existed in either old preparation.",
+  "resource_scope": "An earlier observation saw about1.1GiB free, only55MiB in the active raw root and7GiB allocated swap/5.65GiB used. This does not identify the whole disk-space decrease or prove a contention/timeout cause. After own unused checkout removal, the current free-space value is observed, not all attributed to cleanup. No unrelated project, process, model setting, raw QA or scientific record was changed; no heavy compression was run.",
+  "storage_question": "Asynchronously asked user for an available larger local/external storage path; current experiment continues without waiting."
+}

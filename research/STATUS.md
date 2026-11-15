@@ -43,6 +43,12 @@ passes11 SCRIPTED checks with no rendering/model/world/code execution. The new
 path/outcome figures are not rendered or visually reviewed yet. The
 [preparation log](logbook/2026-11-16-native-consumer-figure-preparation.md) also
 reconciles the research-purpose page with the existing100-page reviewed PDF.
+Later disk free space falls to about1.1GiB. [Two unused a1/a2 preparations are
+archived and only their recoverable code copies removed](results/native-consumer-low-disk-cleanup-v1.json);
+plan hashes/inodes are unchanged and no scientific/QA raw record is deleted.
+The following free-space observation is about2.7GiB, not a continuous guarantee.
+The user is asked asynchronously for a larger available local/external path;
+the original experiment continues without waiting or changing its settings.
 
 ## Latest real study closed — November16 05:05:33JST
 

@@ -56,3 +56,27 @@ outcomes, paired original audits/costs/readouts, actual interpreted paths and
 reviewed new figures. Important differentiated evidence, independent histories,
 appropriate frozen unused evaluation, a focused main-track paper and final
 publication-ready audit remain open. The full goal stays active.
+
+## Low-disk observation and recoverable unused preparation cleanup
+
+A later observation finds about1.1GiB free, while the live raw root is only55MiB.
+The host reports7GiB allocated swap and about5.65GiB used. These observations do
+not identify all disk growth or prove that contention causes a timeout; the
+original experiment has not timed out. No model setting, active frozen source,
+unrelated process or project is changed. The user is asynchronously asked for a
+larger available local/external storage path, without pausing this run.
+
+[Cleanup receipt](../results/native-consumer-low-disk-cleanup-v1.json): the two
+old scientific a1/a2 preparations have never dispatched. Each has only its
+3,366,988-byte plan, no started.json and a clean source checkout. Their plan
+directories move by same-volume rename to main's ignored
+`outputs/native-consumer-undispatched-prepares-v1/a1` and `a2`; exact plan hash,
+size and inode remain unchanged. Only their redundant tracked code checkouts
+are removed with `git worktree remove`. Both recorded commits remain in Git
+and their original source/plan layouts can be restored. No QA raw record,
+scientific result, failed candidate or model output is deleted or rewritten.
+
+The later measured free-space value is2,883,321,856 bytes. It is not all
+attributed to this cleanup, since shared filesystem/system changes can also
+occur. Further disk use remains a practical concern; no heavy compression or
+independent heavy QA/PDF/video is introduced beside model inference.
