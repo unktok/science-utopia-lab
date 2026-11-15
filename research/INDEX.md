@@ -11,8 +11,9 @@ This page is navigation, not a chronological experiment transcript.
   interface evidence with six exact fixed-consumer source cards. The public
   [74 SCRIPTED/source/editor/calibration/role/feedback/cold checks pass](results/native-consumer-source-preparation-v1.json), not real-model
   optimization. [Implementation log](logbook/2026-11-16-native-consumer-evidence.md)
-  preserves the failed fixture and narrower proof scope. New scientific driver,
-  public-native integration and real readiness/dispatch remain pending. No
+  preserves the failed fixture and narrower proof scope. [Matched runner,
+  auditor and all-slot readout](logbook/2026-11-16-native-consumer-comparison-implementation.md)
+  are implemented; final public-native integration and real readiness/dispatch remain pending. No
   scientific inference or waiting continuation is currently live for this work.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),

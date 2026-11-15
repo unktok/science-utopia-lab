@@ -1,6 +1,6 @@
 # Current research status
 
-## Next matched source-evidence study — preparation, not inference
+## Next matched source-evidence study — runner implemented, proof in progress
 
 An [optional source-evidence interface](components/native-consumer-source-evidence-v1.md)
 now presents six exact fixed-native-consumer/measurement code cards to the
@@ -15,9 +15,13 @@ The [prospective pilot](protocols/campaigns/native-consumer-source-comparison-v1
 plans interface-only versus literal-consumers at U/C with equal design authority,
 models, visible parent bank and output/probe budgets. Eight own slots/three
 fresh references are a declared finite pilot, not independent method-superiority
-evidence. New scientific driver/full public-native proof and actual real-model
-readiness/dispatch are pending. No model experiment or waiting continuation is
-live for this work. The full publication-ready goal remains active.
+evidence. The [driver, auditor, cost/readout continuations and literal all-slot
+analysis are implemented](logbook/2026-11-16-native-consumer-comparison-implementation.md).
+Eighteen targeted software checks pass; the final matched public-native check
+is in progress after two preserved test-assertion failures. The existing legacy
+full public path passes. Actual real-model readiness/dispatch and scientific
+outcomes are pending. No model experiment or waiting continuation is live for
+this work. The full publication-ready goal remains active.
 
 ## Latest real study closed — November16 05:05:33JST
 
