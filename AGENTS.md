@@ -19,6 +19,14 @@
   and verify the basetemp/JUnit targets are unused. JUnit may create that parent
   only after tmp_path setup has already failed. Preserve such setup failures;
   do not silently overwrite an earlier output or count them as scientific runs.
+- `git worktree add --no-checkout` can leave a new worktree with only `.git`
+  and an empty index; sparse-checkout configuration alone need not populate it.
+  Before a cherry-pick or source-bound command, assert actual clean status and
+  required files, not just the exit code of `git status`. For an explicitly
+  verified new empty worktree only, initialize its index/selected checkout before
+  proceeding (for example `git read-tree -mu HEAD`). Never use this to overwrite
+  a user's populated checkout. A failed preparation stops dependent commands;
+  retain it and use a distinct fresh output for the corrected attempt.
 - Read-only report/figure exporters can require outputs outside both scientific
   and reader checkouts. A pytest `tmp_path` under a source-local `--basetemp`
   violates that contract. Use an external `TemporaryDirectory` for successful

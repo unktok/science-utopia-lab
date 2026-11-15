@@ -20,7 +20,10 @@
   "assigned_loss": -8.666666666666668,
   "parent_reference": "core-plus-related",
   "parent_assigned_loss": -8.666666666666668,
-  "parent_loss_scope": "C=-U+0.1K recomputed from measured parent metrics; original reference observation carries U loss",
+  "parent_loss_scope": "C=-U+0.1K recomputed from measured parent metrics; original reference observation carries T loss",
+  "parent_original_stored_loss": -36.0,
+  "parent_original_stored_loss_spec_id": "native-joint-v5-throughput",
+  "reporting_correction": "The initial descriptive label said stored U; the literal original reference stores T=-36. The separately recomputed C value, own C value, zero C difference and all original raw records are unchanged.",
   "own_minus_parent_loss": 0.0,
   "metrics": {
     "native.accepted_decisions": {
@@ -124,5 +127,5 @@
   "publication_ready": false,
   "new_model_calls_by_observation": 0,
   "new_generated_code_executions_by_observation": 0,
-  "scope": "Literal passive read of completed original records, source ASTs and full wire/reply sequences. Not a new world, repaired candidate, independent optimizer replication or whole-study cold audit. First two slots have different assigned objectives/conditions; do not infer the isolated information effect. An initial diagnostic asserted equality of unlike stored U/C loss specs and failed without writing or dispatch; corrected comparison explicitly re-scores the parent under C."
+  "scope": "Literal passive read of completed original records, source ASTs and full wire/reply sequences. Not a new world, repaired candidate, independent optimizer replication or whole-study cold audit. First two slots have different assigned objectives/conditions; do not infer the isolated information effect. An initial diagnostic asserted equality of unlike stored T/C loss specs and failed without writing or dispatch; corrected comparison explicitly re-scores the parent under C."
 }

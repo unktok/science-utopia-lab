@@ -15,6 +15,32 @@ verified. Do not apply an older allowlist to changed TeX or promote an older
 reconstruction receipt into proof for this snapshot. See the
 [manuscript overview](../paper/README.md) and [current status](../research/STATUS.md).
 
+The [new explicit82-file policy](../research/publication/paper-rebuild-allowlist-integrated-terminal-cost-v1.json)
+now has [source-only staging preparation](../research/results/integrated-terminal-rebuild-subset-preparation-v1.json):
+27 checks pass, and the actual CLI at clean
+`a6e834857977b440e58b92f932aa64c7d15798dc`
+(`proof/integrated-terminal-subset-v1`) stages all82 exact files/79 literal
+dependencies. Its main-side ignored output is
+`outputs/integrated-terminal-rebuild-subset-v1-a2/`. The first empty-index
+checkout setup failure is retained, not erased or counted as a scientific run.
+No Tectonic build, text/page comparison or fresh visual check has run yet.
+The later related-work source amendment must not be mixed into these reviewed
+inputs or described as part of this100-page PDF.
+
+From that exact clean staging commit, with a fresh output:
+
+```text
+<approved-project-python> -B -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-terminal-cost-v1.json \
+  --output <fresh-local-staging-directory>
+```
+
+Wait for staging to exit successfully before the build step. Follow its
+REBUILD.md only after real inference is absent; keep cached/untrusted flags,
+default pdftotext and90dpi page rendering consistent with the reviewed receipt.
+Do not label a copied original PDF or passing file-stage checks as a rebuilt,
+visually verified or independently reproduced scientific result.
+
 ## Preserved98-page topic-systems working manuscript
 
 The [preceding reviewed receipt](../paper/integrated-topic-systems-build-v1.json)

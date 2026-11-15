@@ -1,0 +1,127 @@
+{
+  "schema": "scienceutopia.native-consumer-source-third-own-outcome-prefix.v1",
+  "recorded_utc": "2026-11-15T23:50:51.726957+00:00",
+  "classification": "actual-native-own-outcome-prefix-not-whole-study-original-cold-closure",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "writer_pid": 11821,
+  "original_writer_handle": 15471,
+  "arm": "interface-only",
+  "objective": "resource-aware-content",
+  "generation": 0,
+  "request_sha256": "3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c",
+  "suggestion_id": "native-adaptive-4cad5bce2111e3de30f4846d",
+  "status": "complete",
+  "assigned_loss": -8.666666666666668,
+  "parent_original_stored_loss": -36.0,
+  "parent_original_stored_loss_spec": {
+    "id": "native-joint-v5-throughput",
+    "sha256": "10f3880a252d008a04535ea629c8ef674e3f442d06324d14d3ffd31b3de932ba",
+    "version": "1"
+  },
+  "parent_re_scored_under_assigned_loss": -8.666666666666668,
+  "own_minus_parent_assigned_loss": 0.0,
+  "cross_scores": {
+    "content-utility": -28.666666666666668,
+    "resource-aware-content": -8.666666666666668,
+    "throughput": -36.0
+  },
+  "metrics": {
+    "native.accepted_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.accepted_peer_score_sum": {
+      "status": "measured",
+      "value": 0.0
+    },
+    "native.accepted_unreviewed_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.collected_activity_resource_cost": {
+      "status": "measured",
+      "value": 200.0
+    },
+    "native.common_content_score_sum": {
+      "status": "measured",
+      "value": 136.66666666666666
+    },
+    "native.common_content_utility_sum": {
+      "status": "measured",
+      "value": 28.666666666666668
+    },
+    "native.final_active_authors": {
+      "status": "measured",
+      "value": 5
+    },
+    "native.final_author_resources": {
+      "status": "measured",
+      "value": 30.0
+    },
+    "native.institutional_context_deliveries": {
+      "status": "measured",
+      "value": 20
+    },
+    "native.rejected_decisions": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.review_records": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.uncollected_activity_resource_cost": {
+      "status": "measured",
+      "value": 0.0
+    }
+  },
+  "candidate_matches_retained_submission": true,
+  "submission_record_file_sha256": "d75733ce1dd17e842ddc361073d948db45d3bb5653fdb2b4b1c3086ef64141da",
+  "original_campaign_record_sha256": "1a2a6b2bf37131ba2dc100f8d44e8ab60f04c30d1cd38e3d4275ab260e6c7f9a",
+  "campaign_state_file_sha256_at_snapshot": "589cf6744be611eac74534e7f5e32a26bd16f97ecc27d57da56a150655100aac",
+  "reference_observation_file_sha256": "6fb9e640ad918e410c65e0c1186094d638f43959888201ad3e3286a1b614f38e",
+  "passive_complete_request_sequences": {
+    "own": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "9dd6630f7073601f18fb4d5a225f992400bd0373a534e7174e6e846688d9b3f5"
+    },
+    "parent": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "72029c0e657b29b0ded39fd885ae1e40880d2d58f103a4e820b67bd8bf8d8821"
+    }
+  },
+  "parent_comparison": {
+    "full_scientist_inputs_equal": true,
+    "literal_response_choices_equal": true,
+    "full_provider_envelopes_equal": false,
+    "all_literal_metrics_equal": true,
+    "global_program_equivalence_claimed": false,
+    "isolated_information_effect_identified": false
+  },
+  "progress_at_snapshot": {
+    "active": "literal-consumers::content-utility:g0",
+    "observed_utc": "2026-11-15T23:49:15.376295+00:00",
+    "stage": "readiness"
+  },
+  "own_completed_slots_at_snapshot": 3,
+  "whole_study_closed": false,
+  "paired_original_audit_cost_readout_closed": false,
+  "institution_improved": false,
+  "held_out_evaluation": false,
+  "independent_optimizer_replication": false,
+  "publication_ready": false,
+  "new_model_calls_by_observation": 0,
+  "new_generated_code_executions_by_observation": 0,
+  "scope": "Completed original native record and passive full scientist request/response comparison, not a new execution, final all-slot analysis or original cold audit. Cross-objective parent scoring uses the declared assigned C objective, never the original stored reference T loss."
+}

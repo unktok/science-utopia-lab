@@ -1,0 +1,72 @@
+{
+  "schema": "scienceutopia.integrated-terminal-rebuild-subset-preparation.v1",
+  "recorded_utc": "2026-11-15T23:51:32.547989+00:00",
+  "classification": "source-bound-actual-file-staging-not-PDF-rebuild-or-visual-verification",
+  "original_build_source_commit": "382be46d9af1347ed09b671d9afffb4b98272aac",
+  "original_receipt_file_sha256": "3b55598d507b3aa3a6f28b2e881fd9388265652d25eb40f67f231cfac49027e8",
+  "original_reviewed_pdf_sha256": "3085879ffd974c0c08977990fafb027302929730e042d3fe939e381de2adb0c7",
+  "qa_source_commit": "997629cea6ac643d9258c7f0b2fa13ad7dcb1a76",
+  "qa": {
+    "original_process_handle": 96833,
+    "exit_code": 0,
+    "passed": 27,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 39.393,
+    "deselected": 18,
+    "junit": "research/data/native-terminal-rebuild-subset-v1/junit.xml",
+    "junit_file_sha256": "cbc10f9a84ae061b562ff4cb76f6d5a727c6715b7fb2a56947abf5b82ab63421",
+    "scope": "27 source-only checks, including exact historical reviewed input blobs and corruption rejection. No TeX, renderer, inference, native world or generated code."
+  },
+  "initial_setup_failure": {
+    "worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/integrated-terminal-subset-v1-a1",
+    "source_commit": "3f3238ce2a119c1e883e834d5bda8c8b27557f8f",
+    "reason": "A new --no-checkout worktree still had an empty index and only .git after sparse-checkout set; its status showed staged deletions, not user file deletion.",
+    "observed_index_entries": 0,
+    "observed_top_entries": [
+      ".git"
+    ],
+    "cherry_pick_exit_code": 128,
+    "premature_staging_exit_code": 1,
+    "premature_staging_error": "ModuleNotFoundError: No module named scripts",
+    "attempted_output": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/integrated-terminal-rebuild-subset-v1-a1",
+    "attempted_output_created": false,
+    "correction": "Only after verifying this new empty checkout and no cherry-pick/merge state, initialize its index/selected files with git read-tree -mu HEAD. Then verify clean status, cherry-pick the exact staging patch and use a fresh a2 output.",
+    "scientific_job_restarted": false,
+    "source_guard_weakened": false
+  },
+  "successful_staging": {
+    "original_process_handle": 46129,
+    "exit_code": 0,
+    "frozen_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/integrated-terminal-subset-v1-a1",
+    "staging_source_commit": "a6e834857977b440e58b92f932aa64c7d15798dc",
+    "retained_branch": "proof/integrated-terminal-subset-v1",
+    "output": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/integrated-terminal-rebuild-subset-v1-a2",
+    "policy_file": "research/publication/paper-rebuild-allowlist-integrated-terminal-cost-v1.json",
+    "policy_file_sha256": "e6787ce587078130fbd7f02a9a9edca3ef0fab8565408e209b5edb32b06d068c",
+    "manifest_file_sha256": "9e7146876a2805f8483a096877d36fe2e5a139aca11e42b90411843c41ae5a8c",
+    "manifest_content_sha256": "c0d3c1b3639d3de896e9fffa4d145f0d167dc2154b9ead432a92387310e98a2b",
+    "input_files": 82,
+    "literal_dependencies": 79,
+    "all_staged_bytes_match_exact_staging_commit": true,
+    "staging_source_still_clean": true,
+    "all_manifest_hashes_verified": true
+  },
+  "remaining": {
+    "actual_cache_only_untrusted_Tectonic_build": true,
+    "matching_default_pdftotext": true,
+    "matching_all100_page_images": true,
+    "fresh_visual_checks": true
+  },
+  "actual_PDF_rebuild_performed": false,
+  "visual_review_performed": false,
+  "current_related_work_amendment_included": false,
+  "original_PDF_or_receipt_overwritten": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "published_or_uploaded": false,
+  "anonymous_or_release_clearance": false,
+  "independent_inference_rerun": false,
+  "publication_ready": false
+}

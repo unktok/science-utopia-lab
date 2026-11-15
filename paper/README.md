@@ -27,6 +27,13 @@ open. A minimal source-only rebuild specific to this100-page snapshot has not
 yet been verified. Earlier reconstruction proofs apply to their own snapshots,
 not arbitrary current HEAD. See [current research status](../research/STATUS.md).
 
+The [82-file rebuild policy](../research/publication/paper-rebuild-allowlist-integrated-terminal-cost-v1.json)
+now has [27 passing source checks and actual clean CLI staging](../research/results/integrated-terminal-rebuild-subset-preparation-v1.json).
+This reconstructs the reviewed input bytes at the recorded separate staging
+commit, not the later related-work amendment. Actual cached TeX rebuild,
+all100 page comparisons and fresh visual checks remain pending until inference
+ends; the original PDF and its receipt are unchanged.
+
 Source-only update after the100-page snapshot: the integrated related-work
 section and bibliography now acknowledge FunSearch, AlphaEvolve and ShinkaEvolve.
 The [primary-source check and prospective comparison boundary](../research/publication/native-search-method-controls-source-review-v1.md)

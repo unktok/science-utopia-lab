@@ -137,9 +137,9 @@ The literal-consumers/C/g0 world then completes; original progress enters
 interface-only/C/g0 readiness at23:19:37.612838UTC (08:19:37JST November16).
 Its [retained outcome](../results/native-consumer-source-second-own-outcome-prefix-v1.json)
 is C=-8.666666666666668, again equal to the strong parent under C. The original
-reference record stores U, so its C comparison is explicitly re-scored from
+reference record stores T, so its C comparison is explicitly re-scored from
 the same measured U and K, not obtained by subtracting unlike stored losses.
-An initial passive assertion of unlike U/C loss-spec equality fails without
+An initial passive assertion of unlike T/C loss-spec equality fails without
 any write or dispatch; the corrected diagnostic records the comparison scope.
 
 This second candidate changes only formatting in developer-catalog-agenda's
@@ -236,3 +236,29 @@ prefix links; the final navigation check is run again before commit. No model,
 native world, generated code, Docker QA, PDF build or render is invoked by
 these source checks. The reviewed100-page PDF and frozen receipt remain unchanged;
 its29-reference count must not be relabelled as containing the3 new citations.
+
+## Third outcome complete; fourth original readiness
+
+Original progress advances to literal-consumers/U/g0 readiness at
+23:49:15.376295UTC November15 (08:49:15JST November16). The
+[third original outcome](../results/native-consumer-source-third-own-outcome-prefix-v1.json)
+is complete at C=-8.666666666666668, equal to the strong parent re-scored under
+that declared C loss. Its installed candidate matches the retained14-step
+submission;179 full scientist inputs/literal response choices and all metrics
+match the parent, while provider envelopes differ. No graph or source effect,
+gain, whole-study closure or isolated information-condition effect is inferred.
+Three of eight own slots now complete. The same writer and both continuations
+remain live, with no scientific-source or setting change.
+
+Reporting correction: the previous second-outcome descriptive text called the
+original reference's stored loss U. The actual original reference stores
+T=-36, id native-joint-v5-throughput. Its separately computed C=-8.6667 was
+already correct, so no measured loss, zero C contrast, selection or raw record
+changes. The second receipt and the corresponding earlier narrative label are
+corrected explicitly; Git preserves the original wording. The new third receipt
+stores both the literal T reference and its explicit C re-score.
+
+Light [100-page reconstruction preparation](2026-11-16-terminal-subset-preparation.md)
+is completed separately during this verified wait. It runs no scientific world,
+model, generated code, TeX or renderer. Actual manuscript rebuild/all-page
+verification remains pending, not replaced by the file-stage checks.

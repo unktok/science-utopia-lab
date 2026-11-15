@@ -12,9 +12,10 @@ This page is navigation, not a chronological experiment transcript.
   Only the core/related baselines reach either optimizer; the known terminal
   hand comparator stays withheld. [First own U outcome](results/native-consumer-source-first-own-outcome-prefix-v1.json)
   and [second own C outcome](results/native-consumer-source-second-own-outcome-prefix-v1.json)
-  complete and tie the strong parent;2/8 own slots complete, with no own gain
-  or whole-study closure yet. The [third original slot submits and reaches native scientist requests](results/native-consumer-source-third-own-submission-prefix-v1.json),
-  with its outcome pending. [The first two complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
+  complete and tie the strong parent. [The third own C outcome](results/native-consumer-source-third-own-outcome-prefix-v1.json)
+  also completes and ties it;3/8 own slots complete, with no own gain or whole-study
+  closure yet. The next original consumers/U slot is in readiness.
+  [The first two complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
   distinguish ordinary early finish and baseline recovery from an observed editor error.
   [Public software proof and19 checks](results/native-consumer-source-comparison-software-v1.json)
   are separate SCRIPTED evidence. [Prepared figure data](components/native-consumer-source-figures-v1.md)
@@ -124,7 +125,8 @@ This page is navigation, not a chronological experiment transcript.
   no new method study, novelty veto or completed manuscript build is claimed.
 
 - [Paper entry point](../paper/README.md): latest reviewed100-page working PDF,
-  source-bound receipt and all-page visual review. Its source-only subset rebuild
+  source-bound receipt and all-page visual review. Its [82-file preparation](results/integrated-terminal-rebuild-subset-preparation-v1.json)
+  passes27 checks and actual clean-source staging, but its PDF subset rebuild
   is not yet verified. The earlier80-file reconstruction applies to the98-page
   snapshot and77-file reconstruction to the91-page snapshot only.
   A reviewed working paper is not main-track readiness or fresh inference replication.

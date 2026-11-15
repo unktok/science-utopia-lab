@@ -1,6 +1,6 @@
 # Current research status
 
-## Current matched study: references3/3 and own slots2/8 complete
+## Current matched study: references3/3 and own slots3/8 complete
 
 The [once-dispatched local-model study](results/native-consumer-source-comparison-dispatch-v1.json)
 runs from immutable7e51b2a4: fixed8B researchers, local35B designer, unchanged
@@ -13,8 +13,8 @@ is development-informed, not a blind independent method comparison.
 | --- | --- |
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
-| Own-system optimization | [Interface-only / U / g0 completes](results/native-consumer-source-first-own-outcome-prefix-v1.json) at-28.6667; [literal-consumers / C / g0 completes](results/native-consumer-source-second-own-outcome-prefix-v1.json) at-8.6667. Both tie their strong parent;2/8 own slots complete |
-| Next original slot | [Interface-only / C / g0 submits](results/native-consumer-source-third-own-submission-prefix-v1.json) after14 steps, compiles and enters an actual native scientist world; its outcome is pending |
+| Own-system optimization | [Interface-only / U / g0](results/native-consumer-source-first-own-outcome-prefix-v1.json) at-28.6667, [literal-consumers / C / g0](results/native-consumer-source-second-own-outcome-prefix-v1.json) and [interface-only / C / g0](results/native-consumer-source-third-own-outcome-prefix-v1.json) at-8.6667 all complete and tie their strong parent;3/8 own slots complete |
+| Next original slot | Literal-consumers / U / g0 enters readiness at23:49:15UTC November15 (08:49:15JST November16); no new study is dispatched |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -50,15 +50,20 @@ that the model understands every consumer. This localizes the observed lack of
 change without proving the editor bug-free or identifying a causal reason.
 
 The third candidate changes world.selection source with a matching parsed AST;
-the installed SystemSpec equals its submitted candidate. Scientist requests
-are actually observed, not inferred from an empty job directory. This prefix
-does not establish its final loss or a global behavioral equivalence.
+the installed SystemSpec equals its [submitted candidate](results/native-consumer-source-third-own-submission-prefix-v1.json).
+Its completed179 full scientist inputs/literal choices and metrics match the
+strong parent. This is a complete observed path, not global program equivalence.
 
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history
 retention from program-pool parent sampling. This is unbuilt manuscript source
 and a prospective comparison boundary, not a newly dispatched method study.
 The reviewed100-page PDF and its receipt remain unchanged.
+
+[100-page reconstruction preparation](results/integrated-terminal-rebuild-subset-preparation-v1.json)
+passes27 source checks and actually stages82 files at clean a6e83485. Actual
+cached build, all-page comparison and fresh visual checks remain pending; no
+TeX/render overlaps inference. The first empty-checkout setup failure is retained.
 
 [Low-disk archive](results/native-consumer-closed-checkout-archive-v1.json):
 after an observation near260MiB free,16 completed clean code copies are
