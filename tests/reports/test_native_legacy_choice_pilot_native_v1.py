@@ -91,7 +91,7 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
     monkeypatch.setattr(driver, 'LocalObserverBackend', lambda **kwargs: ScriptedCritic())
 
     probe = LocalQwenNativeFactory(tmp_path / 'probe', tmp_path / 'cache', years=4, corpus_years=4)
-    (tmp_path / 'cache').mkdir(exist_ok=True)
+    (tmp_path / 'cache').mkdir(parents=True, exist_ok=True)
     original = {k: deepcopy(v) for k, v in original.items() if k != 'content_sha256'}
     original['source_commit'] = probe.source_commit; original['data_cache'] = str(tmp_path / 'cache')
     for key in ('model', 'model_digest', 'corpus_sha256', 'dataset_identity', 'runtime_seed_binding', 'source_commit'):

@@ -47,3 +47,15 @@ prepare API writes. The production selection reader correctly required it.
 Seal that explicitly SCRIPTED fixture; do not weaken the production reader or
 count this as a scientific failure. Preserve the original a1 JUnit/raw tree.
 Public full-path execution is still unverified at this observation.
+
+Clean582049bf original54845 exits1:89 passed and1 full-path setup failure in
+16.96s. The reusable upstream software helper had only been called at an
+existing tmp root; its new nested caller exposed a missing cache-parent mkdir.
+No world or model ran in that failed setup. Create parents in the fixture
+helper, retain the original a1 outputs, and use a distinct a2 attempt. The
+scientific source2f70147a and completed real pilot are unchanged.
+
+Original read-only scientific readout59951 exits0 using original frozen
+checkpoint/response decoders and current clean582049bf reader. It finds10/18
+actual project assignments. Its paired copy and retained scientific summary
+remain to be completed; this is not a fresh world or designer proposal.
