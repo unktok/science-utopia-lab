@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- Seven of12 own slots processed at01:49:50UTC: six valid ties and one
+  technical null, not seven measured losses. Parent-trajectory U1 adds a score
+  to its empty-year marker; the actual native consumer rejects it. No host
+  repair/refill or numeric penalty; original82259 proceeds to scalar T1.
+  [Submitted code/trace and retained unknown loss](logbook/2026-11-15-longitudinal-real-dispatch.md).
+
 - Six of12 own outcomes complete at01:29:37UTC, all ties to R7 and worse than
   the hand. Scalar U1 explicitly submits an unchanged parent, not new invention
   or host fallback. Original82259 continues to parent-trajectory U1 readiness.

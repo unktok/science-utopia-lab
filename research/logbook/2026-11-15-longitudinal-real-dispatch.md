@@ -437,6 +437,52 @@ Source/literal identity or equal losses alone are not a fresh complete-input
 comparison for this world. The full paired cold/readout chain remains pending;
 all remaining slots, frozen selections and unused evaluation are unchanged.
 
+## Seventh slot: submitted U1 fails the actual empty-year consumer
+
+At01:49:12.521500UTC, parent-trajectory U1 explicitly finishes request
+`a68657c9c20b5aaa675b93fbdc521f2ae445d9d22e0e1a7a12ada8f914e85b39`.
+The complete chronological14-step journal has one plan, nine applied reads,
+three applied writes and one finish, with no rejected/invalid actions. All
+twelve component probe terminals return; these are not twelve successful
+whole-world evaluations.
+Only `world.selection` changes among24 nodes; no node/root/wire/schedule is
+added or removed. Response content digest
+`3056aa6d3e37944115ea2396539de17c7d5f5abc7accb4ce028b1e99ff96e85d`,
+response file SHA
+`6f505dfb6848ac0186aff4fb6eb12f798e67ffd9fd664c13433751d423bd59d0`.
+
+Suggestion `native-adaptive-2ff42eabacafede1b6c036c4` has candidate fingerprint
+`404ac87e674f0c67ab64362ccb340f3d0adf8b79983cc429bee1e9c7a6aef683`.
+Its source explicitly returns `{'empty_cycle': True, 'final_score': 10.0}`
+when there are no papers. The actual year1/phase130 context has zero submitted
+papers at FOCS and records that exact result. The context journal's raw file
+SHA is `e3ec9b80e78a9b595b8537de45cc1c30571b7cb535053d1a0443f37cfc8fabbe`.
+Originala5be8d31 `NativeScienceKernel._apply_decisions` accepts only the exact
+`[{'empty_cycle': True}]` payload list when there are no known papers, so the
+actual consumer raises `GraphRuntimeError: empty native cycle requires an
+explicit empty decision batch`. No complete world or scientific loss exists.
+
+The original campaign retains a known technical failure, `loss: null`, empty
+measurements/runs, without assigning a penalty, salvaging scores, changing the
+guard, repairing source or refilling the slot. Record digest
+`941c5009d83cd182b35fc3f927618acd07c2687294b61d785397d7e628c49020`,
+observation digest
+`5c808099f96f2891d03068d2f3cc4887f02758672f64603a90edfbaa335f1587`.
+At01:49:50.411472UTC, the same original writer advances to scalar T1 readiness.
+Seven slots are processed; only six have valid native losses, all ties to R7
+and worse than the hand. The original twelve-slot study remains incomplete.
+
+This observed failure is not explained by a transport timeout or a malformed
+editor action: all fourteen staged actions complete. It does not prove the
+whole framework bug-free or establish the author's internal motivation. The
+scored-empty payload is added to the existing lightweight consumer unit cases
+in a separate feature worktree, without executing generated code on the host
+or modifying the scientific source. Component returns do not validate every
+downstream native consumer; cold analysis must retain that distinction.
+The lightweight consumer module passes all7 cases in0.79s, including the exact
+scored-empty payload. This executes the existing consumer with stub state, not
+the authored source, Docker, model inference or a native-world rerun.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,

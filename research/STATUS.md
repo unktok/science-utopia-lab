@@ -7,6 +7,16 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Latest01:49:50UTC/10:49:50JST: seven of12 own slots are processed, NOT seven
+valid native outcomes. Parent-trajectory U1 explicitly submits, then fails in
+year1 because its generated selection source adds `final_score: 10.0` to the
+empty-cycle marker. The native consumer requires the exact no-paper marker;
+this is a known technical null, loss unknown, not zero, a tie or improvement.
+The first six valid outcomes still tie R7 and lose to the hand. Original82259
+advances to scalar T1 readiness without repair/refill/source/budget changes.
+[Exact submission and actual consumer failure](logbook/2026-11-15-longitudinal-real-dispatch.md).
+Whole-study closure, paired analyses and frozen unused evaluation stay open.
+
 Latest01:29:37UTC/10:29:37JST: six of12 own outcomes complete. Scalar U1
 explicitly retains R7 after14 charged steps (three applied/nine rejected reads,
 no edits/probes) and completes its original four-year world without generation/

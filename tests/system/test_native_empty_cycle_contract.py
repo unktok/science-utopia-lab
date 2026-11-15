@@ -35,6 +35,9 @@ def test_exact_empty_marker_completes_no_paper_cycle_without_mutation():
 
 @pytest.mark.parametrize('payloads', [[], [{'empty_cycle': False}],
     [{'empty_cycle': True, 'decision': 'accept'}],
+    # Actual longitudinal parent-trajectory U1: a score on no paper is not
+    # an accepted-paper observation or a reason to repair the author's output.
+    [{'empty_cycle': True, 'final_score': 10.0}],
     [{'empty_cycle': True}, {'empty_cycle': True}]])
 def test_other_empty_batches_fail_without_becoming_an_acceptance_or_loss(payloads):
     before = deepcopy(payloads)
