@@ -57,3 +57,31 @@ zero-probe terminal totals against the actual submitted system; the terminal
 itself contains14 steps as well. It executes no probe or institution. Original
 writer94527 remains live and its observed output has reached native year3;
 audit15136/readout22876 are still waiting, not completed.
+
+## First own native outcome is complete, next original slot proceeds
+
+At16:26:08UTC/01:26:08JST the original writer moves to content-utility g0
+readiness. Throughput g0 is complete: T=-36, U-loss=-28.666666666666668,
+C=-8.666666666666668 and measured K200, all equal the visible strong parent.
+It has0 institution-work events and no technical failure. This is1/6 completed
+own slots, not normal closure of the study. No failed attempt is refilled and
+no conditions changed. The [literal result and read-only individual-cell
+comparison](../results/native-topic-free-first-own-outcome-v1.json) remain
+separate from the pending original whole-study paired cold audits.
+
+Both parent and own have179 full scientist requests/179 committed responses
+and0 reply gaps. Actual ordered full payload dictionaries and literal response
+choices match; full provider bodies do not. Source-bound cell input hashes
+before/after the original48e1d268 helper read agree. This is exact equality on
+one observed condition, not global program equivalence, repeated optimizer
+replication or proof of all auxiliary state/event equality.
+
+There is a specific actual planning mismatch, not a newly observed execution
+bug: step0's untrusted model-authored plan says the hardcoded accept-all
+world.selection relies on addressed-selection scores and tuning the tensor
+can increase count beyond36. The unchanged literal consumer does not read
+that scores port. The original complete run also preserves all scientist
+inputs/choices and losses. This supports describing an incorrect stated
+actuation story, not a causal psychological explanation for the designer or
+a claim that the remaining objectives/programs must fail. Keep the rest of
+the declared finite study running and interpret actual consumers, not names.

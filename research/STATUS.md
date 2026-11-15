@@ -133,6 +133,16 @@ primitive files. Both public exports and all three files match. This explicitly
 conditional capacity calculation is not a new world, globally certified v6
 optimum, utility/resource bound or a change to the running six-slot protocol.
 
+At16:26:08UTC/01:26:08JST [throughput g0 completes](results/native-topic-free-first-own-outcome-v1.json)
+with T=-36, U-loss=-28.666666666666668, C=-8.666666666666668 and K200, all
+equal its visible parent; no technical failure. Full179 scientist requests and
+179 literal response choices coincide with that parent; provider body sequences
+do not. This individual-cell read is not the pending whole-study paired audit
+or global program equivalence. The plan's claimed direct score-to-acceptance
+path contradicts the unchanged selector source, which ignores that port.
+Original writer proceeds to content-utility g0 readiness, with1/6 own slots
+complete. The remaining five slots and all active conditions stay unchanged.
+
 ### Normally closed same-authority developer controls (v5)
 
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)

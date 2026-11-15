@@ -25,6 +25,9 @@ This page is navigation, not a chronological experiment transcript.
   completes14 editor steps and changes tensor parameters only; native evaluation
   is executing. [Conditional original-calendar headroom](components/native-topic-calendar-envelope-v1.md)
   reaches20/36 slots for the two hand rules, not a certified global or U/K/C bound.
+  [First own native result now complete](results/native-topic-free-first-own-outcome-v1.json):
+  all three losses and179 full scientist inputs/choices match its strong parent;
+  original writer proceeds to content-utility g0. Whole-study paired audit remains pending.
 
 - [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):

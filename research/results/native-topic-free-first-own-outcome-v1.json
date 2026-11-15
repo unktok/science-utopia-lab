@@ -1,0 +1,52 @@
+{
+  "schema": "scienceutopia.native-topic-free-first-own-outcome.v1",
+  "scientific_source_commit": "48e1d268c49960d1387e5d54362b38d1a180127d",
+  "original_writer_session": 94527,
+  "objective": "throughput",
+  "generation": 0,
+  "identity": "native-adaptive-560a9f185f2dfcceeaf73bf9",
+  "request_sha256": "50853a47265a5941d209ef2f882567be9c2024d172d299c7f85174b27cdecbdc",
+  "original_observation_sha256": "16a820378e383bc7507fdef7f74a58ab3c9ad8009f29ff6f1f33ea9ae954b6a2",
+  "status": "complete",
+  "assigned_loss": -36.0,
+  "cross_scores": {
+    "throughput": -36.0,
+    "content-utility": -28.666666666666668,
+    "resource-aware-content": -8.666666666666668
+  },
+  "collected_resource_cost": {"status": "measured", "value": 200.0},
+  "institutional_work_events": 0,
+  "technical_failures": [],
+  "all_three_losses_equal_visible_parent": true,
+  "observed_path_comparison": {
+    "reader_scope": "Original frozen48e1d268 sequence helper plus read-only SQLite and full literal wire dictionaries; both completed individual-cell input hashes unchanged before/after. Not the pending whole-study source/physical cold audit.",
+    "parent_identity": "workflow-reference-core-plus-related",
+    "parent_wire_requests": 179,
+    "own_wire_requests": 179,
+    "parent_completed_responses": 179,
+    "own_completed_responses": 179,
+    "wire_inputs_without_committed_reply": [0, 0],
+    "literal_full_requests_equal": true,
+    "literal_response_choices_equal": true,
+    "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+    "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+    "parent_full_provider_body_hashes_sha256": "1a26a20b792fd16ef098dc8bccc165c735885b5c9a833eac33e886f110774bb7",
+    "own_full_provider_body_hashes_sha256": "4b03d7bc664a5f76bc8d4ef85743893b84455546ef14d35543fb14766832fc97",
+    "full_provider_bodies_equal": false,
+    "global_program_equivalence_proved": false
+  },
+  "observed_planning_source_mismatch": {
+    "model_authored_plan_step": 0,
+    "plan_is_untrusted_self_report_not_causal_explanation": true,
+    "model_statement": "The plan says the hardcoded accept-all world.selection relies on addressed-selection scores and lowering tensor thresholds can increase accepted decisions beyond36.",
+    "literal_source_fact": "The unchanged world.selection code never reads its scores port. Its acceptance is control_rule == accept-all or a review-based threshold. Other auxiliary memory behavior is not ruled out by this one source fact.",
+    "interpretation": "The stated direct acceptance mechanism contradicts the actual consumer; all observed scientist inputs/choices and T/U/C/K also coincide with the parent on this condition. This is not evidence that all future programs, inputs or objectives are equivalent."
+  },
+  "next_original_stage": {"active": "content-utility:g0", "observed_utc": "2026-11-15T16:26:08.817583+00:00", "stage": "readiness"},
+  "completed_own_slots_at_observation": 1,
+  "declared_own_slots": 6,
+  "whole_study_cold_reconstruction_complete": false,
+  "new_inference_from_this_readout": 0,
+  "active_source_loss_or_budget_changed": false,
+  "publication_ready": false
+}
