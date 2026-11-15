@@ -218,7 +218,7 @@ def domain_proofs(saved, kernel, code_rows=None):
                     raise ValueError('domain context command did not persist in the actual researcher state')
                 context_proofs.append({'command_key': receipt['command_key'], 'actor_id': actor,
                     'received_year': receipt['received_year'], 'message_sha256': digest(exact[0])})
-        elif command['action'] in ('native.project', 'native.catalog-project.v1'):
+        elif command['action'] in ('native.project', 'native.catalog-project.v1', 'native.legacy-topic-project.v1'):
             assignment = command['payload']['assignment']
             effects = [e for e in native['events'] if e['event_type'] == 'native.domain.project_applied'
                 and e['year'] == receipt['received_year'] and e['payload'].get('command_key') == receipt['command_key']]
@@ -246,6 +246,28 @@ def domain_proofs(saved, kernel, code_rows=None):
                 validate_catalog_assignment(assignment, actor, year=receipt['received_year'], catalog=catalog)
                 project['catalog_validation'] = {'event_id': validations[0]['event_id'],
                     'catalog_sha256': payload['catalog_sha256'], 'eligible_actor_before_sha256': digest(actor)}
+            elif command['action'] == 'native.legacy-topic-project.v1':
+                from utopia.system.native_legacy_topic_planning import (
+                    EVENT, eligible_topics, validate_legacy_topic_assignment)
+                from utopia.system.native_catalog_planning import catalog_contract
+                validations = [e for e in native['events'] if e['event_type'] == EVENT
+                    and e['year'] == receipt['received_year']
+                    and e['payload'].get('command_key') == receipt['command_key']]
+                if len(validations) != 1:
+                    raise ValueError('legacy-topic project lacks unique original native validation event')
+                payload = validations[0]['payload']; catalog = catalog_contract()
+                actor = payload['eligible_actor_before']
+                if (payload['assignment'] != assignment or actor['id'] != assignment['actor_id']
+                        or actor['expertise'] != agents[actor['id']]['expertise']
+                        or payload['catalog_sha256'] != catalog['directions_sha256']
+                        or payload['eligible_topics'] != eligible_topics(actor, catalog=catalog)
+                        or payload['shortest_or_merit_rule_enforced'] is not False):
+                    raise ValueError('original legacy-topic validation and immutable expertise differ')
+                validate_legacy_topic_assignment(assignment, actor, year=receipt['received_year'], catalog=catalog)
+                project['catalog_validation'] = {'event_id': validations[0]['event_id'],
+                    'catalog_sha256': payload['catalog_sha256'], 'eligible_actor_before_sha256': digest(actor),
+                    'choice_domain': 'original-core-plus-direct-related',
+                    'eligible_topics_sha256': digest(payload['eligible_topics'])}
             projects.append(project)
     processes = [e for e in native['events'] if e['event_type'] in {'native.process.completed', 'native.process.skipped'}]
     for event in processes:

@@ -63,6 +63,11 @@ def _protected(anchor):
 
 
 def require_workflow_candidate(anchor, candidate, *, structure_only=False):
+    return _require_workflow_candidate(anchor, candidate, structure_only=structure_only)
+
+
+def _require_workflow_candidate(anchor, candidate, *, structure_only=False,
+                                allowed_extra_project_actions=()):
     """Check literal candidate; never synthesize a corrected graph or source.
 
     Native production, paper identities, costs, grants and effect bridges retain
@@ -105,6 +110,10 @@ def require_workflow_candidate(anchor, candidate, *, structure_only=False):
                 raise ValueError('workflow-v4 requires explicit capability lists')
             if any('native.project' in v for v in [grants['bootstrap'], *grants['roles'].values()]):
                 raise ValueError('arbitrary project reassignment is outside workflow-v4')
+            from utopia.system.native_legacy_topic_planning import ACTION as LEGACY_TOPIC_PROJECT
+            if (LEGACY_TOPIC_PROJECT not in allowed_extra_project_actions
+                    and any(LEGACY_TOPIC_PROJECT in v for v in [grants['bootstrap'], *grants['roles'].values()])):
+                raise ValueError('legacy-topic project authority requires explicit workflow-v5')
         if node.implementation == 'code.python.v1' and node.parameters.get('runtime_image_id') not in images:
             raise ValueError('workflow-v4 code requires the pinned runtime image')
     rank = {identity: i for i, identity in enumerate(order)}

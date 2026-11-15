@@ -117,6 +117,8 @@ def require_fixed_production(anchor,candidate, *, scope=SCOPE):
             if (scope != CATALOG_PLANNING_SCOPE and any('native.catalog-project.v1' in v
                     for v in [grants['bootstrap'], *grants['roles'].values()])):
                 raise ValueError('catalog project authority is outside this declared pilot domain')
+            if any('native.legacy-topic-project.v1' in v for v in [grants['bootstrap'], *grants['roles'].values()]):
+                raise ValueError('legacy-topic project authority is outside this historical fixed-production domain')
     # The native base plan cannot be swapped for an invented/shorter project.
     # The graph still permits arbitrary information/selection paths and new
     # institutional entities. A future production-design domain may relax this.

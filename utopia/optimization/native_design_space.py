@@ -80,8 +80,11 @@ def validate_design_space(anchor,contract):
     if 'world_law_scope' in contract:
         from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
         from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+        from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
         if contract['world_law_scope'] == WORKFLOW_SCOPE:
             require_workflow_candidate(anchor,anchor)
+        elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+            require_legacy_topic_workflow_candidate(anchor,anchor)
         elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
             require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
         else:
@@ -112,8 +115,11 @@ def require_candidate_in_space(anchor,candidate,contract):
     if 'world_law_scope' in contract:
         from .native_fixed_production_domain import require_fixed_production
         from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+        from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
         if contract['world_law_scope'] == WORKFLOW_SCOPE:
             require_workflow_candidate(anchor,candidate)
+        elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+            require_legacy_topic_workflow_candidate(anchor,candidate)
         else:
             require_fixed_production(anchor,candidate,scope=contract['world_law_scope'])
     if contract['kind']=='code-and-graph':return
