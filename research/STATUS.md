@@ -1,6 +1,6 @@
 # Current research status
 
-## Next matched source-evidence study — runner implemented, proof in progress
+## Matched source-evidence study — actually dispatched November16 06:23JST
 
 An [optional source-evidence interface](components/native-consumer-source-evidence-v1.md)
 now presents six exact fixed-native-consumer/measurement code cards to the
@@ -17,11 +17,20 @@ models, visible parent bank and output/probe budgets. Eight own slots/three
 fresh references are a declared finite pilot, not independent method-superiority
 evidence. The [driver, auditor, cost/readout continuations and literal all-slot
 analysis are implemented](logbook/2026-11-16-native-consumer-comparison-implementation.md).
-Eighteen targeted software checks pass; the final matched public-native check
-is in progress after two preserved test-assertion failures. The existing legacy
-full public path passes. Actual real-model readiness/dispatch and scientific
-outcomes are pending. No model experiment or waiting continuation is live for
-this work. The full publication-ready goal remains active.
+The [final actual public-native software path and19 targeted/saved-reader checks
+pass](results/native-consumer-source-comparison-software-v1.json), including paired
+cold/cost outputs and matching read-only reports. Failed/skipped earlier checks
+remain preserved; SCRIPTED software outcomes are not real-model gains.
+
+The [actual local-model study starts](results/native-consumer-source-comparison-dispatch-v1.json)
+from immutable7e51b2a4, original15471/PID11821. Initial designer readiness is
+active at dispatch; references/own outcomes are not yet complete. Separate
+original46051/PID11949 and79215/PID11967 wait for paired audit/cost closure and
+two matching readouts respectively. No independent heavy QA/PDF/video overlaps
+inference. Host observations do not establish exclusive resources. Unused clean
+checkouts, not experiment records, are removed to restore about1.2GiB; dispatch
+disk free space is about3.2GiB. Scientific gains, independent evidence, unused
+evaluation and publication readiness remain unestablished. The full goal is active.
 
 ## Latest real study closed — November16 05:05:33JST
 

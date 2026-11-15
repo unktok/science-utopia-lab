@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="432.368" timestamp="2026-11-16T06:02:24.820366+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_native_consumer_source_public_v1" name="test_matched_source_visibility_native_worlds_and_paired_original_cold" time="431.066"><failure message="AttributeError: module 'scripts.run_native_consumer_source_comparison_v1' has no attribute 'SCOPE'">tmp_path = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-readouts-v1/outputs/native-consumer-comparison-public-v1-a3/checks/test_matched_source_visibility0')
+fixed_corpus = None
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x126267110&gt;
+
+    @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_CONSUMER_PUBLIC_QA') != '1',
+                       reason='explicit clean-source hardware window, no real inference active')
+    def test_matched_source_visibility_native_worlds_and_paired_original_cold(tmp_path,fixed_corpus,monkeypatch):
+        monkeypatch.setattr(shared,'driver',driver)
+        monkeypatch.setattr(shared,'auditor',auditor)
+&gt;       shared.test_actual_bounded_editor_feedback_native_objectives_and_double_cold(
+            tmp_path,fixed_corpus,monkeypatch,matched=True)
+
+tests/reports/test_native_consumer_source_public_v1.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-readouts-v1/outputs/native-consumer-comparison-public-v1-a3/checks/test_matched_source_visibility0')
+fixed_corpus = None
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x126267110&gt;
+matched = True
+
+    @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_TOPIC_FREE_PUBLIC_QA') != '1',
+                       reason='explicit clean-source hardware window, no real inference active')
+    def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_path,fixed_corpus,monkeypatch,matched=False):
+        sdk_init=OpenAI.__init__
+        upstream=public_operator_path(tmp_path/'SCRIPTED-upstream',monkeypatch,topic=True)
+        from scripts.reports import native_legacy_topic_pilot_v1 as readout
+        with tempfile.TemporaryDirectory(prefix='topic-control-software-readout-') as external:
+            outputs=[Path(external)/f'readout-{i}' for i in (1,2)]
+            for output in outputs:
+                readout.export(SimpleNamespace(run=upstream['run'],frozen_source=driver.ROOT,
+                    audit_one=upstream['audit_one'],audit_two=upstream['audit_two'],output=output))
+            assert (outputs[0]/'report.json').read_bytes()==(outputs[1]/'report.json').read_bytes()
+            summary=driver.read(outputs[0]/'report.json')
+            assert [w['outside_core_assignments'] for w in summary['worlds']]==[0,16]
+            assert summary['new_model_calls']==0 and not summary['automatic_invention']
+        monkeypatch.setattr(OpenAI,'__init__',sdk_init)
+        from utopia.models import models
+        from openai.types.chat import ChatCompletion
+        old_model=models.VLLMServerModel; work_payloads=[]
+        def model(name,**kw):
+            value=old_model(name,**kw); old_reply=value.reply
+            def reply(**payload):
+                if payload.get('response_format',{}).get('json_schema',{}).get('name')!='native_researcher_work_v15':
+                    return old_reply(**payload)
+                work_payloads.append(payload)
+                value.context=value.contexts.get(payload['seed'],getattr(value,'context',None))
+                value.requests.append((value.context,payload))
+                return ChatCompletion.model_validate({'id':'SCRIPTED-work','object':'chat.completion','created':0,
+                    'model':name,'choices':[{'index':0,'message':{'role':'assistant',
+                    'content':json.dumps({'note':'SCRIPTED fixed-scientist institutional response'})},'finish_reason':'stop'}],
+                    'usage':{'prompt_tokens':5,'completion_tokens':3,'total_tokens':8}})
+            value.reply=reply
+            return value
+        monkeypatch.setattr(models,'VLLMServerModel',model)
+        monkeypatch.setattr(driver,'SEED',42)
+        if matched:
+            monkeypatch.setattr(driver.free,'SEED',42)
+        monkeypatch.setattr(driver,'LocalObserverBackend',lambda **kw:ScriptedCritic())
+        monkeypatch.setattr(driver,'native_sources',lambda old,source:{'original_source':old,
+            'SCRIPTED':'historical scientist provenance only; actual runtime source fully cold checked'})
+        # All public upstream plan/physical audits are actual software operations;
+        # their corpus/HTTP/critic inputs remain SCRIPTED, including source origin.
+        old=driver.read(upstream['run']/'plan.json'); provider=old['designer']; scientist=old['scientist']
+        current={'request':None,'kind':None}; production=[]; calibration=[]; feedback=[]
+        session_counts={}; submitted_requests={}
+        class Session(ScriptedSession):
+            calls=[]
+            def get(self,url,**kw):
+                if url.endswith('/version'): return Response({'version':'SCRIPTED'})
+                if url.endswith('/ps'):
+                    return Response({'models':[{'name':p['model'],'digest':p['model_digest'],
+                        'context_length':65536 if p is provider else 40960} for p in (provider,scientist)]})
+                assert url.endswith('/tags')
+                return Response({'models':[{'name':p['model'],'digest':p['model_digest']} for p in (provider,scientist)]})
+            def post(self,url,**kw):
+                payload=json.loads(kw['data'])
+                if url.endswith('/generate'):
+                    assert payload['prompt']==''
+                    return Response({'model':payload['model'],'done':True,'done_reason':'load',
+                        'response':'','eval_count':0,'prompt_eval_count':0})
+                assert url.endswith('/chat')
+                if current['kind']=='calibration':
+                    calibration.append(payload)
+                    # Bounded planning controls place their exact target after
+                    # planning data in the USER message, not in the system header.
+                    marker='nothing is executed or adopted.\n'
+                    text=next(m['content'] for m in reversed(payload['messages']) if marker in m['content'])
+                    target=text.rsplit(marker,1)[1]
+                    from utopia.optimization.native_designer_preflight import CONTROL_JSON_BEGIN,CONTROL_JSON_END
+                    if target.startswith(CONTROL_JSON_BEGIN):
+                        target=target.removeprefix(CONTROL_JSON_BEGIN).split(CONTROL_JSON_END,1)[0]
+                    action,_=json.JSONDecoder().raw_decode(target.lstrip())
+                    if set(action)=={'name','arguments'}:
+                        action={'tool':action['name'],**action['arguments']}
+                    return Response({'model':provider['model'],'done':True,'done_reason':'stop',
+                        'prompt_eval_count':120,'eval_count':12,
+                        'message':{'role':'assistant','content':json.dumps(function_data(action)),
+                            **({'thinking':'SCRIPTED calibration reasoning'} if payload['think'] else {})}})
+                req=current['request']; assert current['kind']=='proposal'
+                key=digest(req); i=session_counts.get(key,0); session_counts[key]=i+1
+                submitted_requests[key]=clone(req)
+                if matched:
+                    from utopia.optimization.native_consumer_evidence_v1 import OPTION
+                    data,_=json.JSONDecoder().raw_decode(payload['messages'][1]['content'].split('BOUNDED ACTIVE SESSION DATA\n',1)[1])
+                    has_source=OPTION in req['strategy_provenance']
+                    assert ('literal_native_consumer_source_evidence' in data)==has_source
+                    if has_source:
+                        assert data['literal_native_consumer_source_evidence']==req['strategy_provenance'][OPTION]
+                    assert [v['reference'] for v in req['developer_reference_context']['summary']]==[
+                        'workflow-reference-core-only','workflow-reference-core-plus-related']
+                    assert 'terminal-consolidation' not in json.dumps(req)
+                original=next(n['parameters']['code_artifact']['source'] for n in req['parent_system']['mechanisms']
+                              if n['mechanism_id']=='world.selection')
+                actions=[{'tool':'plan','objective_reasoning':'SCRIPTED explicit loss arithmetic software test',
+                    'design_intent':'Exercise actual invalid-code feedback, correction and authored wiring; not discovery'},
+                    {'tool':'write_file','filename':'code/world.selection.py',
+                     'content':"def step(context):\n    return SCRIPTED_undefined_name\n"},
+                    {'tool':'read_file','filename':'archive/steps/01.json','limit':30000},
+                    {'tool':'write_file','filename':'code/world.selection.py','content':original},
+                    transparent_office(req,identity='scripted-feedback-office-'+str(req['generation'])),
+                    work_edit(req),
+                    {'tool':'finish','rationale':'SCRIPTED submitted system, not optimization evidence'}]
+                if matched and req['generation']==0:
+                    actions=actions[:4]+actions[-1:]
+                action=actions[i]; production.append(payload)
+                if i==2:
+                    # The bad name also occurs in literal source. Require the actual
+                    # error type, not merely an echo of that source string.
+                    feedback.append('NameError' in json.dumps(payload))
+                return Response({'model':provider['model'],'done':True,'done_reason':'stop',
+                    'prompt_eval_count':120,'eval_count':12,
+                    'message':{'role':'assistant','content':json.dumps(function_data(action)),
+                        **({'thinking':'SCRIPTED separate reasoning'} if payload['think'] else {})}})
+        monkeypatch.setattr('requests.Session',Session)
+        def child(argv,**kw):
+            intent=driver.read(Path(argv[-2])); current.update(request=intent['request'],kind=intent['kind'])
+            bounded.worker(argv[-2],argv[-1])
+            return {'timed_out':False,'returncode':0}
+        monkeypatch.setattr(bounded,'run_bounded',child)
+        root=tmp_path/'free-study'
+        driver.prepare(SimpleNamespace(output=root,origin_run=upstream['run'],origin_source=driver.ROOT,
+            audit_one=upstream['audit_one'],audit_two=upstream['audit_two']))
+        driver.run(root)
+        p=driver.require_plan(root); end=driver.read(root/'terminal.json')
+        own,worlds=(8,11) if matched else (6,8)
+        assert end['status']=='closed' and end['consumed_slots']==own and end['observations']==worlds
+        assert len(session_counts)==own and set(session_counts.values())==({5,7} if matched else {7})
+        assert feedback==[True]*own and len(production)==(48 if matched else 42) and calibration
+        assert len(work_payloads)&gt;=(16 if matched else 24)
+        assert p['losses']['throughput']==old['losses']['throughput']
+        assert p['losses']['content-utility']==old['losses']['content-utility']
+        assert set(p['losses'])==set(driver.free.OBJECTIVES if matched else driver.OBJECTIVES)
+        assert p['additional_measurements']['optimization_loss_changed']
+        assert p['additional_measurements']['historical_losses_unchanged']
+        sequences=[]
+        for key in driver.history_keys(p):
+            c=driver.campaign(root,p,key,driver.read(root/'developer-reference-context.json'))
+            assert len(c.state['records'])==2 and not c.state['pending']
+            for r in c.state['records']:
+&gt;               assert r['request']['design_space']['world_law_scope']==driver.SCOPE
+                                                                        ^^^^^^^^^^^^
+E               AttributeError: module 'scripts.run_native_consumer_source_comparison_v1' has no attribute 'SCOPE'
+
+tests/reports/test_native_topic_free_public_path_v1.py:172: AttributeError</failure></testcase></testsuite></testsuites>

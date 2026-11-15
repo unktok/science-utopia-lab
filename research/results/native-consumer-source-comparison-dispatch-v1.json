@@ -1,0 +1,329 @@
+{
+  "schema": "scienceutopia.native-consumer-source-comparison-dispatch.v1",
+  "recorded_utc": "2026-11-15T21:25:30.085894+00:00",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "scientific_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "plan_file_sha256": "b744a971a23c9a393cf659bdec60fb125ddd3c70349a7e1df3b72d12f5f958c4",
+  "plan_content_sha256": "2e4a3a16959a6e1edb6774c03538ac0e4a6be68e19f802b38c9f666574d941dc",
+  "original_writer_handle": 15471,
+  "writer": {
+    "content_sha256": "3c8914b302c727858d2aaf1def24c17a1121812d6c73e412e34bdb6fbf265105",
+    "pid": 11821,
+    "plan_sha256": "2e4a3a16959a6e1edb6774c03538ac0e4a6be68e19f802b38c9f666574d941dc",
+    "schema": "scienceutopia.native-consumer-source-comparison.v1.start",
+    "started_utc": "2026-11-15T21:23:07.684933+00:00"
+  },
+  "scientist": {
+    "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+    "corpus_years": 4,
+    "dataset_identity": {
+      "categories": [
+        "cs.AI",
+        "cs.AR",
+        "cs.CC",
+        "cs.CE",
+        "cs.CG",
+        "cs.CL",
+        "cs.CR",
+        "cs.CY",
+        "cs.DB",
+        "cs.DC",
+        "cs.DL",
+        "cs.DM",
+        "cs.DS",
+        "cs.ET",
+        "cs.FL",
+        "cs.LG",
+        "cs.LO",
+        "cs.NI",
+        "cs.OH",
+        "cs.OS",
+        "cs.PF",
+        "cs.PL",
+        "cs.RO",
+        "cs.SE",
+        "cs.SY"
+      ],
+      "configuration": "arxiv",
+      "dataset": "Ahren09/SciEvo",
+      "normalization": "parallel",
+      "num_years": 4,
+      "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+      "start_year": 2016
+    },
+    "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+  },
+  "designer": {
+    "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+    "corpus_years": 4,
+    "dataset_identity": {
+      "categories": [
+        "cs.AI",
+        "cs.AR",
+        "cs.CC",
+        "cs.CE",
+        "cs.CG",
+        "cs.CL",
+        "cs.CR",
+        "cs.CY",
+        "cs.DB",
+        "cs.DC",
+        "cs.DL",
+        "cs.DM",
+        "cs.DS",
+        "cs.ET",
+        "cs.FL",
+        "cs.LG",
+        "cs.LO",
+        "cs.NI",
+        "cs.OH",
+        "cs.OS",
+        "cs.PF",
+        "cs.PL",
+        "cs.RO",
+        "cs.SE",
+        "cs.SY"
+      ],
+      "configuration": "arxiv",
+      "dataset": "Ahren09/SciEvo",
+      "normalization": "parallel",
+      "num_years": 4,
+      "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+      "start_year": 2016
+    },
+    "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+    "model": "qwen3.6:35b-mlx-64k",
+    "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8"
+  },
+  "backend": {
+    "model": "qwen3.6:35b-mlx-64k",
+    "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8",
+    "ollama_version": "0.33.3"
+  },
+  "designer_upstream_revision_and_conversion": "unknown; no invented provenance",
+  "protocol": "research/protocols/campaigns/native-consumer-source-comparison-v1.md",
+  "protocol_sha256": "e60ecb1da2858298297e6da508c6471fe16dd601be651bc38f5b494356c6065b",
+  "arms": [
+    "interface-only",
+    "literal-consumers"
+  ],
+  "objectives": [
+    "content-utility",
+    "resource-aware-content"
+  ],
+  "schedule": [
+    {
+      "arm": "interface-only",
+      "generation": 0,
+      "objective": "content-utility"
+    },
+    {
+      "arm": "literal-consumers",
+      "generation": 0,
+      "objective": "resource-aware-content"
+    },
+    {
+      "arm": "interface-only",
+      "generation": 0,
+      "objective": "resource-aware-content"
+    },
+    {
+      "arm": "literal-consumers",
+      "generation": 0,
+      "objective": "content-utility"
+    },
+    {
+      "arm": "literal-consumers",
+      "generation": 1,
+      "objective": "content-utility"
+    },
+    {
+      "arm": "interface-only",
+      "generation": 1,
+      "objective": "resource-aware-content"
+    },
+    {
+      "arm": "literal-consumers",
+      "generation": 1,
+      "objective": "resource-aware-content"
+    },
+    {
+      "arm": "interface-only",
+      "generation": 1,
+      "objective": "content-utility"
+    }
+  ],
+  "reference_order": [
+    "core-only",
+    "core-plus-related",
+    "terminal-consolidation"
+  ],
+  "optimizer_reference_labels": [
+    "core-only",
+    "core-plus-related"
+  ],
+  "comparison_only_labels": [
+    "terminal-consolidation"
+  ],
+  "budget": {
+    "candidate_slots": 8,
+    "component_probes_upper_bound": 512,
+    "designer_POSTs_upper_bound": 528,
+    "designer_session_wall_seconds": 1800,
+    "fresh_reference_worlds": 3,
+    "native_worlds_upper_bound": 11,
+    "observer_POSTs_upper_bound": 6000,
+    "proposal_POSTs_per_session": 16,
+    "readiness_POSTs_per_session": 40,
+    "readiness_sessions": 10,
+    "replace_failed_slots": false,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_wall_seconds": 7200
+  },
+  "losses": {
+    "content-utility": {
+      "across_seeds": {
+        "aggregation": "mean_plus_population_sd",
+        "dispersion_weight": 0.0,
+        "minimum_valid_runs": 1
+      },
+      "direction": "minimize",
+      "id": "native-common-content-utility-v1",
+      "interpretation": "Minimize minus the sum of (fixed common content panel mean - 3) over actual accepted decision records. The observer contract fixes rubric, model, pooling and budget separately. This is an abstract-based preference, not truth. All-accept, all-reject and review removal are legal. No hidden participation, fairness or structural novelty veto.",
+      "optimization_seed_role": "development",
+      "per_run": {
+        "intercept": 0.0,
+        "terms": [
+          {
+            "coefficient": -1.0,
+            "metric_id": "native.common_content_utility_sum",
+            "slice_id": null
+          }
+        ]
+      },
+      "schema": "scienceutopia.loss-spec.v1",
+      "status": "abstract-based-fixed-model-preference-not-scientific-truth",
+      "version": "1"
+    },
+    "resource-aware-content": {
+      "across_seeds": {
+        "aggregation": "mean_plus_population_sd",
+        "dispersion_weight": 0.0,
+        "minimum_valid_runs": 1
+      },
+      "direction": "minimize",
+      "id": "native-topic-resource-aware-content-v1",
+      "interpretation": "Minimize -U + 0.1 K. U is the original centered fixed-model content opinion, not truth. K is actual collected original activity cost, not money or compute. Ten resource units trade against one utility unit by an explicit developer-chosen preference, not an empirically identified social value. Historical T/U are unchanged. No hidden activity, fairness, novelty, improvement or adoption constraint.",
+      "optimization_seed_role": "development",
+      "per_run": {
+        "intercept": 0.0,
+        "terms": [
+          {
+            "coefficient": -1.0,
+            "metric_id": "native.common_content_utility_sum",
+            "slice_id": null
+          },
+          {
+            "coefficient": 0.1,
+            "metric_id": "native.collected_activity_resource_cost",
+            "slice_id": null
+          }
+        ]
+      },
+      "schema": "scienceutopia.loss-spec.v1",
+      "status": "prospective-development-preference-not-policy-welfare",
+      "version": "1"
+    },
+    "throughput": {
+      "across_seeds": {
+        "aggregation": "mean_plus_population_sd",
+        "dispersion_weight": 0.0,
+        "minimum_valid_runs": 1
+      },
+      "direction": "minimize",
+      "id": "native-joint-v5-throughput",
+      "interpretation": "Minimize -A, where A is actual accepted review-history decisions. All-accept is legal. This gameable throughput proxy is not scientific value. No hidden fairness, quality, or participation veto.",
+      "optimization_seed_role": "development",
+      "per_run": {
+        "intercept": 0.0,
+        "terms": [
+          {
+            "coefficient": -1.0,
+            "metric_id": "native.accepted_decisions",
+            "slice_id": null
+          }
+        ]
+      },
+      "schema": "scienceutopia.loss-spec.v1",
+      "status": "engineering-proxy-not-scientific-value",
+      "version": "1"
+    }
+  },
+  "host_observation": {
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-source-host-observation-v1-a1.json",
+    "file_sha256": "d564aa5d892184ad1cd0255d92640e93ef641c3606398b267596cf3164bbb47e",
+    "observed_utc": "2026-11-15T21:22:52.715257+00:00",
+    "disk_free_bytes": 3413663744,
+    "loaded_models": {
+      "models": []
+    },
+    "scope": "All host processes by comm/CPU, not a project-name filter. No exclusive lease or continuously idle-host claim.",
+    "highest_CPU_note": "Node91010 is the existing coding tool; Python11773 was the observation itself and exited. A follow-up host inference-name scan found no Python/MLX/llama/vLLM process before dispatch. Not a continuous guarantee."
+  },
+  "continuations": {
+    "audit_and_cost": {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-analysis-v1-a3/outputs/native-consumer-source-closure-v1-a1",
+      "original_handle": 46051,
+      "pid": 11949,
+      "started_file_sha256": "bb607ccbcdb7a8339ba987de64d73bbd01a31841a288c9c4a6d250ab4337e0df",
+      "started": {
+        "analysis_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+        "maximum_wait_seconds": 86400,
+        "new_inference_allowed": false,
+        "plan_file_sha256": "b744a971a23c9a393cf659bdec60fb125ddd3c70349a7e1df3b72d12f5f958c4",
+        "retry_failed_stages": false,
+        "schema": "scienceutopia.native-consumer-source-comparison.v1.finish",
+        "scientific_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+        "started_utc": "2026-11-15T21:23:32.144437+00:00",
+        "writer_identity": "Mon Nov 16 06:23:06 2026     /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -B -m scripts.run_native_consumer_source_comparison_v1 run --output /Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+        "writer_pid": 11821
+      },
+      "status_at_dispatch": "waiting for exact original predecessor; no new inference"
+    },
+    "readout": {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-readouts-v1-a3/outputs/native-consumer-source-readout-v1-a1",
+      "original_handle": 79215,
+      "pid": 11967,
+      "started_file_sha256": "8101e48253bc5ddbf9e2fe05278e4a9f241fafe98a7b34cbc69927ecce21d6ce",
+      "started": {
+        "analysis_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+        "content_sha256": "b5648181db481b08937d0dd91b735bbbd4908e14f908f422a46ec00a1f46cc8d",
+        "maximum_wait_seconds": 86400,
+        "new_inference_allowed": false,
+        "plan_file_sha256": "b744a971a23c9a393cf659bdec60fb125ddd3c70349a7e1df3b72d12f5f958c4",
+        "preceding_analysis": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-analysis-v1-a3/outputs/native-consumer-source-closure-v1-a1",
+        "report_extra_arguments": [
+          "--frozen-source",
+          "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3",
+          "--cost-one",
+          "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-analysis-v1-a3/outputs/native-consumer-source-closure-v1-a1/costs-1.json",
+          "--cost-two",
+          "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-analysis-v1-a3/outputs/native-consumer-source-closure-v1-a1/costs-2.json"
+        ],
+        "report_module": "scripts.reports.native_consumer_source_comparison_v1",
+        "retry_failed_stages": false,
+        "schema": "scienceutopia.native-consumer-source-comparison.v1.readout.finish",
+        "scientific_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+        "started_utc": "2026-11-15T21:23:34.385639+00:00"
+      },
+      "status_at_dispatch": "waiting for exact original predecessor; no new inference"
+    }
+  },
+  "status_at_dispatch": "initial-readiness; no scientific completion or gain yet",
+  "unused_evaluation_attached": false,
+  "publication_ready": false,
+  "scope": "Finite development-informed comparison; unchanged U/C losses, same free native authority and fixed scientists. No external service, extra fee, hidden merit gate, output salvage, failed-slot refill, source repair or reference fallback. Old a1/a2 prepares made no model POST and remain undispatched, not consumed scientific trials."
+}

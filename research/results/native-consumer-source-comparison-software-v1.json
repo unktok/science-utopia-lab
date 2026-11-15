@@ -1,0 +1,172 @@
+{
+  "schema": "scienceutopia.native-consumer-source-comparison-software-retention.v1",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "classification": "SCRIPTED-HTTP-corpus-critics-and-child-supervision-not-real-model-optimization",
+  "public_original_handle": 69200,
+  "public_exit_code": 0,
+  "public_elapsed_seconds": 641.98,
+  "public_verification": {
+    "actual_fixed_scientist_institutional_work_requests": 16,
+    "audit_content_sha256": "c54bc5ea094f74c4a466b87f6449622246ccf654f36dbcf3c01364f64589a125",
+    "automatic_invention_or_improvement_claimed": false,
+    "classification": "SCRIPTED-HTTP-corpus-critics-and-child-supervision-not-real-model-optimization",
+    "cost_content_sha256": "ab0fe4464567eac011e3055573690be2a758304ca469f9d32eda5e58ed8ab752",
+    "deadline_supervision_tested": false,
+    "every_actual_next_feedback_prompt_contains_error": true,
+    "native_worlds": 11,
+    "new_real_model_calls": 0,
+    "objectives": [
+      "content-utility",
+      "resource-aware-content"
+    ],
+    "own_slots": 8,
+    "public_prepare_run_calibration_execute_replay_and_double_cold": true,
+    "publication_ready": false,
+    "schema": "scienceutopia.native-consumer-source-public-software.v1",
+    "scientist_installed_sdk_requests_including_upstream": 2083,
+    "scripted_calibration_POSTs": 284,
+    "scripted_proposal_POSTs": 48,
+    "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+    "upstream_software_worlds": 2
+  },
+  "final_targeted_original_handle": 20738,
+  "final_targeted_exit_code": 0,
+  "final_targeted_tests": 19,
+  "final_targeted_skips": 0,
+  "final_targeted_elapsed_seconds": 15.74,
+  "saved_readout_exports_byte_identical": [
+    "report.json",
+    "slots.csv",
+    "manifest.json"
+  ],
+  "legacy_regression": {
+    "source_commit": "bd57e4ae22d4a74680afdec21121bb737e582c4a",
+    "original_handle": 53004,
+    "exit_code": 0,
+    "elapsed_seconds": 484.66
+  },
+  "retained_directory": "research/data/native-consumer-source-comparison-v1/software",
+  "files": {
+    "initial-unit.xml": {
+      "file_sha256": "a684701f150ba27c5d7d961f72e2107c98dbcd9b796708c2cf9ab9643be6a148",
+      "bytes": 1947,
+      "junit_totals": {
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "legacy-public.xml": {
+      "file_sha256": "f62e95323c1586724f3dc84ebd2a3ad41b13893f6972ddda635084b58cbdd6ec",
+      "bytes": 422,
+      "junit_totals": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "public-a1-skipped.xml": {
+      "file_sha256": "871fc8af813e85822db192a58a42348ac7d1d35b51a0726ac8f2b16d4866bda1",
+      "bytes": 738,
+      "junit_totals": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 1
+      }
+    },
+    "public-a2-failed.xml": {
+      "file_sha256": "6281f842a1179460ed25271a5e089fa5f64518b84c39d1244b0b12e6e0550906",
+      "bytes": 4499,
+      "junit_totals": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "public-a3-failed.xml": {
+      "file_sha256": "1e9a5d4b3a329e70e364c1c7f706a6ba94d23ba88e8f071ae29d348e079a7972",
+      "bytes": 12438,
+      "junit_totals": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "public-a4-passed.xml": {
+      "file_sha256": "5a835ca968c5a29aaeb23e1b9c4d7e1b66e69282e99671b5fcf21fc2bc88a22b",
+      "bytes": 422,
+      "junit_totals": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "public-verification.json": {
+      "file_sha256": "343ef2d05ab071426f54c4df76ccf4edd7d1cec196c922ebb100250c7328fdb5",
+      "bytes": 1003
+    },
+    "readout-unit-a1.xml": {
+      "file_sha256": "1bed45f6b02deabb9942eec43ff7a015755efb565fd0487162f6e6e5b694c2a1",
+      "bytes": 1946,
+      "junit_totals": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 1
+      }
+    },
+    "readout-unit-a2-no-collection.xml": {
+      "file_sha256": "3d394267f1b1eb6c18a146081fcf702e7dea57e3a323a10b35558e77193c44fe",
+      "bytes": 242,
+      "junit_totals": {
+        "tests": 0,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "readout-unit-a3.xml": {
+      "file_sha256": "e8b9a7177690dfb1de7865cd7b2ee814603e5120abfbf79f9c88099fb02f1752",
+      "bytes": 3794,
+      "junit_totals": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 1
+      }
+    },
+    "readout-unit-a4.xml": {
+      "file_sha256": "d3795e1f871e3b3bad47c3bccd862bf3ac4d197c559dc1fd8928e1daed7d350f",
+      "bytes": 3794,
+      "junit_totals": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 1
+      }
+    },
+    "readout-unit-a5-saved-passed.xml": {
+      "file_sha256": "41bfa037393908b1d3191f2dd2557bda544f3d5ae93994edb662f67c1650b231",
+      "bytes": 3521,
+      "junit_totals": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "public_audit_file_sha256": "4ff164578899086f384e5ec43f2d4609ecf953ddd429b4583da652e5e7263cef",
+  "public_cost_file_sha256": "eef7d1fe7e2ca85ef47f5639fa205871264f55b9d1ee2f72638683b3d8fe7d4d",
+  "deadline_supervision_tested": false,
+  "new_real_model_calls": 0,
+  "scientific_improvement_claimed": false,
+  "publication_ready": false,
+  "scope": "Actual public native/Docker/installed SDK/editor/readiness/feedback/cold/cost with SCRIPTED providers/corpus/critics and synchronous child supervision. Source guard is additionally checked against actual Git. Saved-reader test executes no new world or generated code. Failed/skipped/zero-collection attempts remain literal and are not passes."
+}

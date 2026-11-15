@@ -1,12 +1,16 @@
 # Prospective literal-consumer-source comparison
 
-Status: finite study design and optional author interface under construction;
-NOT dispatched, not a completed experiment and not publication readiness.
-Recorded after the earlier six-slot free-system search and normally closed
-terminal-cost controls. Their known outcomes motivate this design; this is not
-a blind hypothesis. No historical result, selection or objective is changed.
-The final exact driver/source/budget plan and public native software proof are
-still required before dispatch.
+Current status: [the software proof passes](../../results/native-consumer-source-comparison-software-v1.json)
+and [the actual local-model study dispatches06:23JST November16](../../results/native-consumer-source-comparison-dispatch-v1.json).
+Scientific source7e51b2a4 retains the exact pre-dispatch protocol bytes bound
+in its plan; this navigation update does not modify that frozen run.
+
+At declaration this was a finite prospective design, not a dispatched/completed
+experiment or publication readiness. It follows the earlier six-slot free-system
+search and normally closed terminal-cost controls. Their known outcomes motivate
+this design; it is not a blind hypothesis. No historical result, selection or
+objective is changed. The exact driver/source/budget plan and public native
+software proof below were prerequisites, not scientific outcome evidence.
 
 ## Scientific question, not another endpoint demonstration
 

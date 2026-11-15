@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="99.312" timestamp="2026-11-16T05:54:56.476244+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_native_consumer_source_public_v1" name="test_matched_source_visibility_native_worlds_and_paired_original_cold" time="97.364"><failure message="utopia.optimization.native_bounded_staged_designer.CompletionUnknown: staged HTTP completion unknown; no following dispatch">tmp_path = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-comparison-v1/outputs/native-consumer-comparison-public-v1-a2/checks/test_matched_source_visibility0')
+fixed_corpus = None
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x123d5b690&gt;
+
+    @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_CONSUMER_PUBLIC_QA') != '1',
+                       reason='explicit clean-source hardware window, no real inference active')
+    def test_matched_source_visibility_native_worlds_and_paired_original_cold(tmp_path,fixed_corpus,monkeypatch):
+        monkeypatch.setattr(shared,'driver',driver)
+        monkeypatch.setattr(shared,'auditor',auditor)
+&gt;       shared.test_actual_bounded_editor_feedback_native_objectives_and_double_cold(
+            tmp_path,fixed_corpus,monkeypatch,matched=True)
+
+tests/reports/test_native_consumer_source_public_v1.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_topic_free_public_path_v1.py:155: in test_actual_bounded_editor_feedback_native_objectives_and_double_cold
+    driver.run(root)
+scripts/run_native_consumer_source_comparison_v1.py:214: in run
+    record = c.advance(simulation_factory=scientist_factory(directory / 'worlds', p, root),
+utopia/optimization/native_adaptive_search.py:648: in advance
+    definition = generators[identity](clone(record['request']))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/run_native_consumer_source_comparison_v1.py:212: in generate
+    return free.base.generation_definition(author.execute(req, purpose='proposal', certificate=certificate))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+utopia/optimization/native_workflow_staged_designer_v1.py:158: in execute
+    value = bounded.execute(session, kind=purpose, request=request, provider=self.provider,
+utopia/optimization/native_bounded_staged_designer.py:152: in execute
+    return replay(root)
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+directory = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-comparison-v1/outputs/native-consumer-...ly/content-utility/authoring/proposal-ce87aec4da82e36f9e6c8f25befd65fa7922405f61bbc8d93b6d68c38ee2d120/editor-session')
+
+    def replay(directory):
+        root=Path(directory);intent=checked(json.loads((root/'intent.json').read_text()))
+        result=checked(json.loads((root/'result.json').read_text()))
+        if intent['runtime']!=runtime_binding() or result['intent_sha256']!=intent['content_sha256']:
+            raise ValueError('bounded editor runtime/intent mismatch')
+        actual={str(p.relative_to(root)):file_sha256(p) for p in sorted(root.rglob('*.json')) if p!=root/'result.json'}
+        if actual!=result['files']:raise ValueError('bounded editor has changed or unaccounted JSON journals')
+        for relative,identity in result['files'].items():
+            if file_sha256(root/relative)!=identity:raise ValueError('bounded editor raw journal changed')
+        if result['execution']['timed_out'] or not result['worker_result_exists']:
+            raise CompletionUnknown('bounded editor worker ended without a known terminal response; no redispatch')
+        response=checked(json.loads((root/'worker-result.json').read_text()))
+        if response['intent_sha256']!=intent['content_sha256']:raise ValueError('worker intent mismatch')
+&gt;       if response.get('completion_unknown'):raise CompletionUnknown(response['error'])
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       utopia.optimization.native_bounded_staged_designer.CompletionUnknown: staged HTTP completion unknown; no following dispatch
+
+utopia/optimization/native_bounded_staged_designer.py:168: CompletionUnknown</failure></testcase></testsuite></testsuites>

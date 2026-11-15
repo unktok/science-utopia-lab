@@ -13,8 +13,12 @@ This page is navigation, not a chronological experiment transcript.
   optimization. [Implementation log](logbook/2026-11-16-native-consumer-evidence.md)
   preserves the failed fixture and narrower proof scope. [Matched runner,
   auditor and all-slot readout](logbook/2026-11-16-native-consumer-comparison-implementation.md)
-  are implemented; final public-native integration and real readiness/dispatch remain pending. No
-  scientific inference or waiting continuation is currently live for this work.
+  are implemented. [Final public-native software proof and19 targeted/saved-reader
+  checks pass](results/native-consumer-source-comparison-software-v1.json).
+  [Actual pinned local-model dispatch](results/native-consumer-source-comparison-dispatch-v1.json)
+  starts06:23JST: original15471/PID11821 begins real readiness, with separate
+  audit/cost46051 and readout79215 continuations waiting. Three references/eight
+  own outcomes are not complete; no new actual gain or publication readiness.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

@@ -60,10 +60,45 @@ JUnit is retained, not counted. Corrected commands at sources `4958d8d8` and
 `f49d2208` each pass18 checks and skip the saved-closure check. The new
 continuation explicitly uses the existing `costs-1.json`/`costs-2.json` filenames.
 
-Final matched full-path proof and real dispatch are pending as of this entry.
-No new real-model gain or publication readiness is claimed here. Raw attempts
-remain in their original ignored `outputs/` directories; compact receipts will
-record final identities after the original checking processes exit.
+The [final matched full-path proof](../results/native-consumer-source-comparison-software-v1.json)
+passes at source `7e51b2a48cbe2fedae3f4f39a5a51209386c3411`: original69200
+exits0 in641.98s. All eleven study worlds/eight own slots,48 proposal POSTs,
+284 calibration POSTs,16 fixed-scientist institutional work calls and two
+matching original audits/costs are checked. Four unchanged generation0 paths
+have identical full scientist payload sequences. This is SCRIPTED software
+evidence, not actual optimization or deadline supervision.
+
+Original20738 then exits0 with19 tests/no skips in15.74s, including two
+byte-matching saved-closure JSON/CSV/manifest exports, all construction journals,
+full scientist request classes and native effect/ledger traces. This saved-data
+test adds no world, model or generated-code execution. Compact copies of all
+JUnit attempts and the final public verification are retained under
+[data](../data/native-consumer-source-comparison-v1/README.md); raw attempts stay
+in their original ignored `outputs/` directories.
+
+## Actual dispatch, November16 06:23:07JST
+
+The [actual run](../results/native-consumer-source-comparison-dispatch-v1.json)
+starts from immutable7e51b2a4, original15471/PID11821. Initial real local35B
+readiness is active at dispatch. The three references/eight own slots have not
+yet completed and no new actual gain is claimed. Original46051/PID11949 waits
+to run the two original-source audits/costs; original79215/PID11967 waits to
+export the literal readout twice. Neither continuation introduces inference.
+
+Host-wide CPU/process observation and local backend GETs occur after all
+independent heavy QA exits. Approved model digests and Ollama0.33.3 match; no
+loaded model or separate Python/MLX/llama/vLLM inference process is observed
+before dispatch. This is a bounded observation, not an exclusive hardware lease.
+The active coding tool remains; no unrelated process is stopped.
+
+Disk free space is initially about2GiB. Four newly created, unused, clean
+analysis/readout checkouts with no outputs are removed using `git worktree
+remove`, restoring about1.2GiB. Their committed code is recoverable from Git;
+no failed check, model output or scientific record is deleted. Original unused
+a1/a2 scientific prepares contain only their plans and made no model POSTs.
+The new a3 root is the actual once-dispatched experiment, not a refill.
+The measured dispatch observation records3,413,663,744 free bytes; future shared
+disk usage remains a practical concern. No heavy QA/PDF/video overlaps inference.
 
 ## Relation to the publication goal
 
