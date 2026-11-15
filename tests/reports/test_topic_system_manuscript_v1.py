@@ -49,7 +49,7 @@ def test_prospective_objective_and_execution_are_not_retroactive_or_completed_re
     for phrase in ('L_C=-U+0.1K=L_U+0.1K','fixed before these free proposals',
         'never substituted into historical','Missing cost or outcome remains unknown',
         'Unchanged-parent submissions','two each for original throughput',
-        'own proposal sessions have not begun at that observation',
+        'no own proposal has yet been submitted',
         'reports no completed free-study comparison or gain',
         'not main-track readiness','original native research, production, funding and resource effects remain'):
         assert phrase in text
