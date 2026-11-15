@@ -1,7 +1,18 @@
 {
   "applied_to_closed_real_study": false,
-  "content_sha256": "251ab4919e733e0e259cacaf12a7158c8e9bb3bf10f6806068e693a3dfad095a",
+  "content_sha256": "bc6cbc80e8aaf78d1dd260e289d27c94b69c86ada2616295ab0a96e039d4309f",
   "exit_code": 0,
+  "frozen_interpretation_source": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-terminal-cost-interpretation-v1-a1",
+  "full_derived_data_checks": {
+    "exit_code": 0,
+    "junit": "research/data/native-terminal-cost-interpretation-v1/derive-junit.xml",
+    "junit_sha256": "e94a61e558b5abd320d26b52f55d8788625931cc596e618d4003fc69faec4243",
+    "original_session": 13947,
+    "passed": 17,
+    "pytest_reported_seconds": 0.84,
+    "scope": "Pure SCRIPTED cost/loss arithmetic, unknown-data handling, source/scope rejection and annual plot-data preparation only. No figure rendered, no real closed-study interpretation yet.",
+    "tested_source_commit": "658f79ee578a139db7be0186a8f26f067dc7ed3d"
+  },
   "junit": "research/data/native-terminal-cost-interpretation-v1/junit.xml",
   "junit_sha256": "774e5304a4515db52b3334453d0c8907d00ba726c9cf35c2a49262244e1f9e6e",
   "loss_or_selection_changed": false,

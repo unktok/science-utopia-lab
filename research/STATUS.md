@@ -31,6 +31,12 @@ unpaid expense and attrition will be reported without hidden vetoes. No
 independent heavy QA or PDF work overlaps inference. The98-page manuscript
 below predates this new run; the publication-ready goal remains active.
 
+Read-only [interpretation preparation](results/native-terminal-cost-interpretation-preparation-v1.json)
+also preserves C_collected and reports D_requested=L_U+0.1(K+unpaid) solely as
+an accounting diagnostic, not a replacement loss or promotion rule. Its17
+light SCRIPTED arithmetic/plot-data checks pass; no figure is rendered and no
+real two-world interpretation is claimed before the original paired closure.
+
 ## Latest manuscript integration — November16
 
 The [98-page reviewed working paper](../paper/README.md) now includes the complete

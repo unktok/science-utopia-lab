@@ -15,6 +15,11 @@ This page is navigation, not a chronological experiment transcript.
   independent optimizer replication, real efficiency or publication readiness.
   [Prepared ledger/content/input readouts](results/native-terminal-cost-readout-preparation-v1.json)
   wait on that exact paired closure; they do not add model calls or worlds.
+  [Interpretation plan and primary-source check](publication/native-terminal-cost-interpretation-plan-v1.md)
+  and [pure accounting/plot-data preparation](results/native-terminal-cost-interpretation-preparation-v1.json)
+  distinguish collected-cost improvement from requested expense without changing
+  the objective or adding an unpaid-cost veto. No real interpretation/figure is
+  completed yet.
 
 - [Next free-system optimization protocol](protocols/campaigns/native-topic-free-optimization-v1.md)
   runs three declared losses with strong visible same-authority parents and free
