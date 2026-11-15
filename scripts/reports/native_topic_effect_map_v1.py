@@ -177,7 +177,7 @@ def render_print(value,readout,out):
             path=readout['loss_paths'][objective];xs=[r['generation']for r in path]
             for row in path:
                 if row['observed_loss']is None:
-                    ax.text(row['generation'],.04,'runtime null'if row['status']=='failed'else'generation null',
+                    ax.text(row['generation'],.14,'runtime null'if row['status']=='failed'else'generation null',
                         transform=ax.get_xaxis_transform(),ha='center',fontsize=7,color='#a33b48')
                 else:ax.scatter(row['generation'],row['observed_loss'],color='#087f8c',s=24,zorder=4)
             ax.plot(xs,[math.nan if r['best_own_loss']is None else r['best_own_loss']for r in path],
@@ -201,7 +201,7 @@ def render_print(value,readout,out):
         wrapped=[['\n'.join(fill(line,width)for line in cell.splitlines())for cell,width in zip(row,widths)]for row in cells]
         table=ax.table(cellText=wrapped,colLabels=['Original slot','Submitted change','Full native input path','Assigned loss'],
             colWidths=[.18,.28,.34,.20],cellLoc='left',bbox=(0,.18,1,.74))
-        table.auto_set_font_size(False);table.set_fontsize(6.5)
+        table.auto_set_font_size(False);table.set_fontsize(7)
         for (i,j),cell in table.get_celld().items():
             cell.set_edgecolor('#d8e0e7');cell.set_linewidth(.5)
             if i==0:cell.set_facecolor('#e6eef3')
