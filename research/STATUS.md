@@ -1,5 +1,29 @@
 # Current research status
 
+## Latest real study closed — November16 05:05:33JST
+
+The [two-control terminal-cost study](results/native-terminal-cost-pilot-closed-v1.json)
+is normally closed. Original writer92265, audit/cost26893 and readout61786 all
+exit0; neither inference nor a waiting continuation remains for this study.
+Two original audits/cost projections and both three-file readouts match.
+Both worlds retain179 identical full scientist inputs/literal choices and36
+common accepted records. T=-36 and U-loss=-28.666666666666668 in each world.
+The source-only hand rule improves declared C from-8.6667 to-12.6667, with
+collected K200→160, unpaid0→40, unchanged requested expense200 and final
+active researchers5→1. This is an actual declared-loss gain, not autonomous
+invention, reduced requested work, better science or post-horizon evidence.
+No unpaid/activity/fairness veto or replacement objective is added.
+
+[Exact programs, closure and readout records](data/native-terminal-cost-pilot-v1/README.md)
+and two matching five-file accounting/figure exports are retained. Initial
+legend overlap is preserved in its old exports; later source reserves annotation
+space and the new PNG is inspected. This analysis makes no further model calls.
+The integrated source now includes the result; a new PDF build/review is pending.
+The98-page artifact below remains the latest actually reviewed PDF until that
+separate work completes. R2/R3/R5/R6 remain open and the whole goal is active.
+
+Older stage entries below retain their original observation times.
+
 ## Active native opportunity control — November16 04:31:42JST
 
 The [finite terminal-cost protocol](protocols/campaigns/native-terminal-cost-opportunity-v1.md)

@@ -1,0 +1,3 @@
+condition,reported_content_loss,reported_C_loss,collected_activity_cost,uncollected_activity_cost,requested_activity_cost,requested_cost_score_diagnostic_not_optimized,weighted_unpaid_cost
+strong-related-reference,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,-8.666666666666668,0.0
+terminal-consolidation,-28.666666666666668,-12.666666666666668,160.0,40.0,200.0,-8.666666666666668,4.0

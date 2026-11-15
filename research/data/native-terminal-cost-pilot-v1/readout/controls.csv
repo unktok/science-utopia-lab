@@ -1,0 +1,3 @@
+condition,seed,throughput,content-utility,resource-aware-content,resource_cost,uncollected_activity_cost,requested_activity_cost,final_active_authors,final_resources
+strong-related-reference,61001,-36.0,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,5,30.0
+terminal-consolidation,61001,-36.0,-28.666666666666668,-12.666666666666668,160.0,40.0,200.0,1,70.0

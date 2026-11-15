@@ -1,0 +1,28 @@
+{
+  "audit_file_sha256": "d3b1528b147e904c55effda343a7c2ce7b804899360b62022cd37f40ec7a615a",
+  "cost_file_sha256": "e40a64517d3068570a7007f11fa2bf376d787909191fa94f91ea9b256947841e",
+  "ended_utc": "2026-11-15T20:05:10.391228+00:00",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false,
+  "remaining": "Retain both hand controls, actual T/U/C, collected versus unpaid original costs, transfers, participation and complete model-input paths. No automatic invention or welfare claim.",
+  "status": "closed",
+  "steps": [
+    {
+      "exit_code": 0,
+      "stage": "audit-1"
+    },
+    {
+      "exit_code": 0,
+      "stage": "audit-2"
+    },
+    {
+      "exit_code": 0,
+      "stage": "costs-1"
+    },
+    {
+      "exit_code": 0,
+      "stage": "costs-2"
+    }
+  ]
+}

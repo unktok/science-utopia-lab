@@ -10,16 +10,19 @@ This page is navigation, not a chronological experiment transcript.
   and [software/source-binding proof](results/native-terminal-cost-pilot-software-retention-v1.json):
   two fresh same-authority original-world hand controls, fixed scientists,
   source-only final-year transfer change and the already declared C loss.
-  Actual inference is active; outcomes/paired closure remain pending. A positive
-  hand contrast would show objective opportunity, not automatic invention,
+  [Actual inference and paired closure complete](results/native-terminal-cost-pilot-closed-v1.json):
+  C improves by4 through collection avoidance while T/U and requested expense
+  stay unchanged. Both complete paths have179 identical scientist inputs/choices.
+  This hand contrast shows objective opportunity, not automatic invention,
   independent optimizer replication, real efficiency or publication readiness.
   [Prepared ledger/content/input readouts](results/native-terminal-cost-readout-preparation-v1.json)
-  wait on that exact paired closure; they do not add model calls or worlds.
+  now close with matching paired exports; they add no model calls or worlds.
   [Interpretation plan and primary-source check](publication/native-terminal-cost-interpretation-plan-v1.md)
   and [pure accounting/plot-data preparation](results/native-terminal-cost-interpretation-preparation-v1.json)
   distinguish collected-cost improvement from requested expense without changing
-  the objective or adding an unpaid-cost veto. No real interpretation/figure is
-  completed yet.
+  the objective or adding an unpaid-cost veto. [Literal interpreted records and
+  programs](data/native-terminal-cost-pilot-v1/README.md) and a reviewed figure
+  are retained. Current source includes the result; updated PDF review is pending.
 
 - [Next free-system optimization protocol](protocols/campaigns/native-topic-free-optimization-v1.md)
   runs three declared losses with strong visible same-authority parents and free
