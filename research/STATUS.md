@@ -1,5 +1,26 @@
 # Current research status
 
+## Latest recorded execution stage — November16 01:35:43JST
+
+Original free-system writer14919 is rechecked live at16:41UTC/01:41JST, with
+audit15136/readout22876 waiting. Both fresh references and1/6 own slots are
+complete. First throughput own ties its strong parent, including179 full
+scientist inputs/choices; content-utility g0 is now authoring source, with a
+recorded write to the topic-agenda code. That prefix is not a final submission
+or native outcome. See the [current bounded evidence note](logbook/2026-11-15-fixed-record-support-and-utility-authoring.md).
+The experiment/source/losses/budgets stay unchanged. This dated snapshot is
+not a continuing heartbeat; the later detailed entries retain older stages.
+
+Separate fixed-record analysis of the closed developer pilot finds all56
+centered content contributions nonnegative. Selecting a subset of those fixed
+pools cannot improve retained U; this does not prove world-level optimality or
+replace native feedback. [Exact data](results/native-topic-fixed-record-support-v1.json)
+and [light source/JUnit verification](results/native-topic-fixed-record-support-verification-v1.json)
+retain original float losses, with no new ratings, model, world or rendering.
+At fixed native K, C ranks like U-loss; K is not the auxiliary memory_cost name.
+Original full study closure/readouts, interpretation, independent evidence and
+current verified manuscript remain pending. Publication readiness is not established.
+
 ## Resumed by explicit user instruction — November15 12:57UTC /21:57JST
 
 The user explicitly requested continuation and reactivated the original goal.

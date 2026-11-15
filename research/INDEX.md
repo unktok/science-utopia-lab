@@ -6,28 +6,21 @@ This page is navigation, not a chronological experiment transcript.
 ## Current study and publication goal
 
 - [Next free-system optimization protocol](protocols/campaigns/native-topic-free-optimization-v1.md)
-  and [separate implementation preparation](logbook/2026-11-15-topic-free-preparation.md):
-  three explicit objectives, strong visible same-authority parents, free source/nodes/wires;
-  [actual complete public software path](results/native-topic-free-public-software-retention-v1.json)
-  now verifies8 new worlds, bounded author/next feedback,24 institutional-work calls
-  and matching cold/costs with SCRIPTED providers.
-  [Actual real35B dispatch](results/native-topic-free-optimization-dispatch-v1.json)
-  starts00:11JST November16; [actual initial28-control readiness](results/native-topic-free-initial-readiness-v1.json)
-  passes00:17JST and fresh reference evaluation starts. Own proposals follow;
-  the finite closure chain is waiting, not completed.
-  [Three-objective readouts](components/native-topic-free-readouts-v1.md) and
-  [their light software verification](results/native-topic-free-readouts-preparation-v1.json)
-  are prepared separately; actual closed-study exports/figure review remain pending.
-  [Both fresh references now complete](results/native-topic-free-reference-prefix-v1.json),
-  first own-session readiness starts00:56JST. The [current unbuilt manuscript update](logbook/2026-11-15-topic-manuscript-source-update.md)
-  distinguishes the old completed hand contrast from the new running free search.
-  [First actual own submission](results/native-topic-free-first-own-submission-v1.json)
-  completes14 editor steps and changes tensor parameters only; native evaluation
-  is executing. [Conditional original-calendar headroom](components/native-topic-calendar-envelope-v1.md)
-  reaches20/36 slots for the two hand rules, not a certified global or U/K/C bound.
-  [First own native result now complete](results/native-topic-free-first-own-outcome-v1.json):
-  all three losses and179 full scientist inputs/choices match its strong parent;
-  original writer proceeds to content-utility g0. Whole-study paired audit remains pending.
+  runs three declared losses with strong visible same-authority parents and free
+  source/node/wiring/process authoring. [Actual pinned dispatch](results/native-topic-free-optimization-dispatch-v1.json)
+  uses local35B designer/fixed8B researchers; both [fresh references](results/native-topic-free-reference-prefix-v1.json)
+  and [first own native result](results/native-topic-free-first-own-outcome-v1.json)
+  complete. Own1/6 ties its strong parent on all three losses and179 full scientist
+  inputs/choices. [Content-utility g0 now authors source](logbook/2026-11-15-fixed-record-support-and-utility-authoring.md);
+  remaining slots are not completed or improved. Exact [first author trace](results/native-topic-free-first-own-submission-v1.json)
+  and [SCRIPTED full public software proof](results/native-topic-free-public-software-retention-v1.json)
+  stay separate. [Prepared three-objective readouts](components/native-topic-free-readouts-v1.md)
+  wait for original paired audit/cost closure; figures/review remain pending.
+  [Current unbuilt manuscript](logbook/2026-11-15-topic-manuscript-source-update.md)
+  predates these own outcomes; the reviewed91-page PDF is older still.
+  [Calendar capacity](components/native-topic-calendar-envelope-v1.md) and
+  [fixed-record headroom/evidence decision](publication/native-topic-objective-headroom-and-next-evidence-v1.md)
+  are conditional diagnostics, not a replacement world or global optimum.
 
 - [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):

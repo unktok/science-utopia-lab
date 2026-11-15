@@ -1,0 +1,16 @@
+{
+  "schema": "scienceutopia.native-topic-fixed-record-support-verification.v1",
+  "tested_source_commit": "0f60f24f26d9a6da388a361f7ce98c7e8936b995",
+  "original_session": 76280,
+  "exit_code": 0,
+  "tests_passed": 2,
+  "pytest_reported_seconds": 0.86,
+  "junit": "research/data/native-topic-fixed-record-support-v1/junit.xml",
+  "junit_sha256": "1527174920da9145d66df2b14297b16dabd060022804884ba5fa3393fa9a6ddf",
+  "scope": "Literal retained three-position ratings for all56 accepted occurrences, exact rational diagnostic histograms, original floating losses unchanged, and conditional fixed-record tie-set arithmetic. No new critic ratings, native world, generated-code execution, cold audit, render or claim of a feasible alternative institution.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "historical_loss_or_selection_changed": false,
+  "active_experiment_changed": false,
+  "publication_ready": false
+}
