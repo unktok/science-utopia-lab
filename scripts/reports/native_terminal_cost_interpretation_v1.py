@@ -62,7 +62,7 @@ def render(report, output):
             maximum = max(maximum, *[a + b for a, b in zip(collected, unpaid)])
         axes[0].set(title='A  Original requested charges: collected + unpaid',
             xlabel='Native year', ylabel='Native resource units', xticks=[1, 2, 3, 4],
-            ylim=(0, max(1, maximum) * 1.23))
+            ylim=(0, max(1, maximum) * 1.55))
         axes[0].legend(handles=[Patch(color=colors[0], label='Reference collected'),
             Patch(color=colors[1], label='Control collected'),
             Patch(facecolor='white', edgecolor='#59636d', hatch='////', label='Unpaid component')],
