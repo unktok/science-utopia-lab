@@ -58,3 +58,14 @@ def test_reference_classes_do_not_join_different_native_seeds():
     raw=report();raw['behavior_evidence']['world_request_sequences'][2]['seed']=43
     row=mapper.derive(raw)['rows'][0]
     assert row['matching_reference_inputs']==[]and row['matching_reference_choices']==[]
+
+
+def test_native_width_print_labels_keep_null_and_literal_id_legend_without_rendering():
+    value=mapper.derive(report(null='runtime'));cells,legend=mapper.print_cells(value)
+    assert len(cells)==6 and cells[0][-1]=='Unknown\nRetained null'
+    assert 'No complete trace' in cells[0][2]
+    assert all('Delta' in row[-1]for row in cells[1:])
+    assert legend==[]  # This SCRIPTED case changes metadata, not mechanism IDs.
+    value['rows'][1]['submitted_change']['source_nodes']=['SCRIPTED-original-id']
+    cells,legend=mapper.print_cells(value)
+    assert 'Source: m1' in cells[1][1]and legend==['m1 = SCRIPTED-original-id']

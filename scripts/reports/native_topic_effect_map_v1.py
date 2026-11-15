@@ -131,6 +131,93 @@ def render(value,out):
         plt.close(fig)
 
 
+def print_cells(value):
+    """Compact labels for native5.5-inch print, with a literal ID legend."""
+    identities=sorted({name for row in value['rows']if row['submitted_change']is not None
+        for key in ('source_nodes','changed_existing_nodes','added_nodes','removed_nodes')
+        for name in row['submitted_change'][key]})
+    tags={name:'m'+str(i+1)for i,name in enumerate(identities)};cells=[]
+    for row in value['rows']:
+        change=row['submitted_change'];delta=row['delta_from_best_visible_reference']
+        if change is None:edited='No submitted system'
+        elif row['literal_system_changed']is False:edited='Exact parent retained'
+        else:
+            names=change['source_nodes']or change['changed_existing_nodes']
+            edited=('Source: 'if change['source_nodes']else'Parameters: ')+', '.join(tags[n]for n in names)
+            if not names:edited='Graph / system fields'
+            edited+='\nNodes +'+str(len(change['added_nodes']))+'/-'+str(len(change['removed_nodes']))
+            edited+='; edges +'+str(change['added_connections'])+'/-'+str(change['removed_connections'])
+            edited+='\nSchedule changes: '+str(sum(len(change[k])for k in ('phase_updates','added_schedules','removed_schedules')))
+        if row['complete_input_trace']:
+            matched=', '.join(row['matching_reference_inputs'])or'no reference match'
+            choices=', '.join(row['matching_reference_choices'])or'no reference match'
+            inputs='Inputs: '+matched+'\nChoices: '+choices+'\n'+str(row['recorded_requests'])+' complete requests'
+        else:inputs='No complete trace\nRecorded requests: '+str(row['recorded_requests'])
+        loss='Unknown\nRetained null'if delta is None else f"{row['loss']:.6g}\nDelta {delta:+.6g}\n"+(
+            'Tie'if delta==0 else'Lower loss'if delta<0 else'Higher loss')
+        cells.append([row['objective']+'\ng'+str(row['generation'])+' / '+row['status'],edited,inputs,loss])
+    return cells,[tag+' = '+name for name,tag in tags.items()]
+
+
+def render_print(value,readout,out):
+    """Native-width paper figures, not shrinking a wide8pt chart into3pt text."""
+    import math
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from textwrap import fill
+    cells,legend=print_cells(value)
+    with plt.rc_context({'font.size':8,'svg.hashsalt':SCHEMA+'.print',
+            'axes.spines.top':False,'axes.spines.right':False}):
+        fig,axes=plt.subplots(3,1,figsize=(5.5,7.1))
+        handles=[];labels=[]
+        for ax,objective in zip(axes,OBJECTIVES):
+            for reference,color in zip(readout['references'],('#64748b','#b07934')):
+                ax.axhline(reference['cross_scores'][objective],color=color,ls='--',lw=1,label=reference['label'])
+            path=readout['loss_paths'][objective];xs=[r['generation']for r in path]
+            for row in path:
+                if row['observed_loss']is None:
+                    ax.text(row['generation'],.04,'runtime null'if row['status']=='failed'else'generation null',
+                        transform=ax.get_xaxis_transform(),ha='center',fontsize=7,color='#a33b48')
+                else:ax.scatter(row['generation'],row['observed_loss'],color='#087f8c',s=24,zorder=4)
+            ax.plot(xs,[math.nan if r['best_own_loss']is None else r['best_own_loss']for r in path],
+                color='#087f8c',label='Best own submission',lw=1.5)
+            ax.plot(xs,[r['best_known_loss_including_visible_references']for r in path],
+                color='#6555a1',ls=':',label='Best known including references',lw=1.5)
+            ax.set(title=objective,ylabel='Assigned loss',xticks=xs,xlim=(-.2,max(xs)+.2))
+            ax.grid(axis='y',color='#e7ebee')
+            if not handles:handles,labels=ax.get_legend_handles_labels()
+        axes[-1].set_xlabel('Own proposal generation')
+        fig.suptitle('Own progress versus already known performance',fontsize=11,y=.995)
+        fig.legend(handles,labels,loc='upper center',bbox_to_anchor=(.5,.965),ncol=2,fontsize=7,frameon=False)
+        fig.text(.02,.012,'All six slots, one reused development condition. Lower loss is better.\n'
+            'A null is not zero. Coincident paths do not establish independent replications.',fontsize=7)
+        fig.tight_layout(rect=(0,.055,1,.91))
+        for ext in ('png','svg'):fig.savefig(out/('objective-loss-paths-print.'+ext),dpi=250,
+            metadata={'Date':None}if ext=='svg'else None)
+        plt.close(fig)
+        fig,ax=plt.subplots(figsize=(5.5,6.8));ax.axis('off')
+        widths=(18,25,30,16)
+        wrapped=[['\n'.join(fill(line,width)for line in cell.splitlines())for cell,width in zip(row,widths)]for row in cells]
+        table=ax.table(cellText=wrapped,colLabels=['Original slot','Submitted change','Full native input path','Assigned loss'],
+            colWidths=[.18,.28,.34,.20],cellLoc='left',bbox=(0,.18,1,.74))
+        table.auto_set_font_size(False);table.set_fontsize(6.5)
+        for (i,j),cell in table.get_celld().items():
+            cell.set_edgecolor('#d8e0e7');cell.set_linewidth(.5)
+            if i==0:cell.set_facecolor('#e6eef3')
+            elif value['rows'][i-1]['status']!='complete':cell.set_facecolor('#f7e8e9')
+        fig.suptitle('Submitted edits are not observed effects',fontsize=11,y=.98)
+        fig.text(.02,.13,'; '.join(legend),fontsize=6.5,wrap=True)
+        fig.text(.02,.025,'All six original slots. Delta is versus the strongest visible reference.\n'
+            'Source and graph counts describe literal submissions, not native causation.\n'
+            'Equal input/choice paths are observed trajectories, not program equivalence.\n'
+            'No loss, policy selection or failure status is changed by this figure.',fontsize=7)
+        fig.tight_layout(rect=(0,.02,1,.95))
+        for ext in ('png','svg'):fig.savefig(out/('edit-input-objective-map-print.'+ext),dpi=250,
+            metadata={'Date':None}if ext=='svg'else None)
+        plt.close(fig)
+
+
 def export(args):
     root,one,two,out=(getattr(args,k).resolve()for k in ('run','readout_one','readout_two','output'))
     source=pinned_revision(ROOT)
@@ -148,7 +235,7 @@ def export(args):
         for name,sha in manifest['inputs'].items():
             if file_sha256(name)!=sha:raise ValueError('upstream original input differs')
     value=derive(report);value['analysis_source_commit']=source
-    out.mkdir(parents=True);save(out/'report.json',value);render(value,out)
+    out.mkdir(parents=True);save(out/'report.json',value);render(value,out);render_print(value,report,out)
     with (out/'slots.csv').open('x',newline='')as stream:
         writer=csv.DictWriter(stream,fieldnames=list(value['rows'][0]),lineterminator='\n');writer.writeheader()
         for row in value['rows']:writer.writerow({k:json.dumps(v,sort_keys=True)if isinstance(v,(dict,list))else v for k,v in row.items()})
