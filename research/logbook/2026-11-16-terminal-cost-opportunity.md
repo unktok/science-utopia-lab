@@ -71,3 +71,29 @@ and active limits stay unchanged; no independent heavy QA/PDF rendering runs
 beside real inference. Actual closure, gain or content/participation effects
 are pending. The existing98-page paper is not silently relabelled as including
 this new run.
+
+## Readout preparation while inference continues
+
+No heavy independent QA runs beside actual inference. The read-only reader
+adds complete annual resource categories/reconciled actors, requested cost as
+collected+uncollected (not a substituted loss), actual conserving transfer
+receipts, final participation/resources, accepted-content overlap, full input
+hashes and the first literal input difference. Wire records independently
+contain year but not native phase, so unobserved phase stays unknown.
+C deltas must reconcile as deltaU-loss +0.1*deltaK. No forecast/gain/participation
+criterion vetoes an otherwise complete readout.
+
+Two light saved-fixture checks27577 exit0 in2.02s from40395481. After adding
+the continuation, original58475 exits0 with3 checks in2.23s from23e31d1e.
+These read existing closed SCRIPTED states, no new native world, Docker run,
+LLM call or authored-source execution. Explicit copied cost aliases are unit
+inputs, not new independent cost analyses; the original public test already
+computed/compared both cost projections but retained one. All three literal
+export files agree across two reader invocations, and fresh-destination/
+distinct-input guards are exercised. JUnit and exact reader binding are retained.
+
+Frozen reader23e31d1e now runs original61786/PID78792. It waits on original
+26893's paired closure, then exports twice from the actual distinct original
+audit and cost files. This scientific readout has not completed yet. Original
+writer77164 remains live, and the strong reference has saved year3; no real
+loss or terminal outcome is inferred from that checkpoint alone.

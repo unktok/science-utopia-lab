@@ -13,6 +13,8 @@ This page is navigation, not a chronological experiment transcript.
   Actual inference is active; outcomes/paired closure remain pending. A positive
   hand contrast would show objective opportunity, not automatic invention,
   independent optimizer replication, real efficiency or publication readiness.
+  [Prepared ledger/content/input readouts](results/native-terminal-cost-readout-preparation-v1.json)
+  wait on that exact paired closure; they do not add model calls or worlds.
 
 - [Next free-system optimization protocol](protocols/campaigns/native-topic-free-optimization-v1.md)
   runs three declared losses with strong visible same-authority parents and free

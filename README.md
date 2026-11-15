@@ -25,6 +25,13 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
+A [separate two-control native opportunity study](research/results/native-terminal-cost-pilot-dispatch-v1.json)
+is now running from fixed source9af325ff: strong related-topic rule versus
+source-only final-year resource consolidation. It tests the already declared
+C objective, with requested/collected/unpaid costs and participation reported
+separately. Its hand policies are not automatic invention; real outcomes and
+paired closure remain pending. The reviewed PDF below predates this new run.
+
 The [latest reviewed integrated manuscript](paper/README.md) is 98 pages,
 with 50 figures, 46 tables and 29 references. Two actual cached builds match in
 text/logs and all 98 page images; all layouts and new-result details are reviewed.

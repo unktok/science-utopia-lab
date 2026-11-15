@@ -10,6 +10,11 @@ consolidation control. Exactly two fresh native worlds are scheduled; there
 are no local designer generations, failed-slot refills or held-out claims.
 The original paired-audit/cost continuation26893/PID77320 is waiting for this
 exact writer. Normal closure and real C/T/U outcomes are not yet established.
+The [read-only export continuation](results/native-terminal-cost-readout-preparation-v1.json)
+61786/PID78792 is also live, waiting on the same audit/cost chain from frozen
+reader23e31d1e. It will export twice and compare all report/CSV/manifest bytes.
+Its three light checks read only saved SCRIPTED software states; no new worlds,
+models, generated-source execution or heavy independent QA occur.
 
 The [software proof](results/native-terminal-cost-pilot-software-retention-v1.json)
 passes19 tests, including actual Docker/native/SDK/cold/cost execution with

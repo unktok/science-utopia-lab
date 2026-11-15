@@ -1,0 +1,44 @@
+{
+  "content_sha256": "6730c0d1e2d02a192c666f41bfb884807eb522edac5effe02bcfd4df5d6e01ea",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "original_readout_pid": 78792,
+  "original_readout_session": 61786,
+  "output": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-terminal-cost-analysis-v1-a2/outputs/native-terminal-cost-readouts-v1-a1",
+  "publication_ready": false,
+  "reader_source_commit": "23e31d1ed2681e9d8ac42ac92e4893055c1d4f66",
+  "readout_status_at_recording": "await-audit-and-cost-closure",
+  "real_scientific_readouts_complete": false,
+  "schema": "scienceutopia.native-terminal-cost-readout-preparation.v1",
+  "scientific_source_commit": "9af325fff6ee0ff48fc64ed63efd1d53c25c0317",
+  "software_checks": {
+    "exit_code": 0,
+    "junit": "research/data/native-terminal-cost-readout-v1/junit.xml",
+    "junit_sha256": "feb1138b5bf8c7fed9aeb87da86632f07971f720dbd749622febeb23bd61834b",
+    "original_session": 58475,
+    "passed": 3,
+    "pytest_reported_seconds": 2.23,
+    "scope": "Read-only reconstruction of already closed SCRIPTED software states, exact duplicate exports, input-pair/fresh-output guards, and continuation arguments. The original native software test computed and compared both costs but saved one; copied cost aliases here are explicit unit inputs, not two new independent cost exports. No new native world, model or authored-source execution."
+  },
+  "started": {
+    "analysis_source_commit": "23e31d1ed2681e9d8ac42ac92e4893055c1d4f66",
+    "content_sha256": "782bc88631b9997facee365ce6018f898313978743f991bb4352dd132c76985f",
+    "maximum_wait_seconds": 86400,
+    "new_inference_allowed": false,
+    "plan_file_sha256": "61468923daae7f7d9a8c078e60f5ad148f0ff1fdaed218ed2d1b6e93829baa24",
+    "preceding_analysis": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-terminal-cost-analysis-v1-a2/outputs/native-terminal-cost-closure-v1-a2",
+    "report_extra_arguments": [
+      "--frozen-source",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-terminal-cost-pilot-v1-a2",
+      "--cost-one",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-terminal-cost-analysis-v1-a2/outputs/native-terminal-cost-closure-v1-a2/costs-1.json",
+      "--cost-two",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-terminal-cost-analysis-v1-a2/outputs/native-terminal-cost-closure-v1-a2/costs-2.json"
+    ],
+    "report_module": "scripts.reports.native_terminal_cost_pilot_v1",
+    "retry_failed_stages": false,
+    "schema": "scienceutopia.native-terminal-cost-readout.v1.finish",
+    "scientific_source_commit": "9af325fff6ee0ff48fc64ed63efd1d53c25c0317",
+    "started_utc": "2026-11-15T19:39:08.037059+00:00"
+  }
+}
