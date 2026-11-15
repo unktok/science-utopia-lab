@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="7" time="1.332" timestamp="2026-11-16T02:22:48.488562+09:00" hostname="flower-man.local"><testcase classname="tests.system.test_native_terminal_cost_controls_v1" name="test_literal_source_only_control_remains_in_original_effect_scope" time="0.082" /><testcase classname="tests.system.test_native_terminal_cost_controls_v1" name="test_no_implicit_terminal_horizon_or_invalid_year[True]" time="0.070" /><testcase classname="tests.system.test_native_terminal_cost_controls_v1" name="test_no_implicit_terminal_horizon_or_invalid_year[0]" time="0.104" /><testcase classname="tests.system.test_native_terminal_cost_controls_v1" name="test_no_implicit_terminal_horizon_or_invalid_year[-1]" time="0.070" /><testcase classname="tests.system.test_native_terminal_cost_controls_v1" name="test_no_implicit_terminal_horizon_or_invalid_year[4.0]" time="0.069" /><testcase classname="tests.system.test_native_terminal_cost_controls_v1" name="test_actual_transfer_clipping_ledger_primitives_expose_collected_vs_uncollected_cost" time="0.000"><failure message="ValueError: Audit requires opening balances from year 1">def test_actual_transfer_clipping_ledger_primitives_expose_collected_vs_uncollected_cost():
+&gt;       actors,ledger,kernel=handoff(); before=sum(a.resources for a in actors.values())
+                             ^^^^^^^^^
+
+tests/system/test_native_terminal_cost_controls_v1.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/system/test_native_terminal_cost_controls_v1.py:66: in handoff
+    ledger=ResourceLedger(); ledger.start_year(4,actors)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;utopia.funding.accounting.ResourceLedger object at 0x120e85210&gt;
+year = 4
+population = {'institution_0000_researcher_0': &lt;test_native_terminal_cost_controls_v1.Actor object at 0x10a94b710&gt;, 'institution_00...x10a94bd90&gt;, 'institution_0003_researcher_0': &lt;test_native_terminal_cost_controls_v1.Actor object at 0x120e87f90&gt;, ...}
+
+    def start_year(self, year, population):
+        agents = self.researchers(population)
+        self.attach(population)
+        if str(year) in self.years:
+            if set(self.years[str(year)]) != set(agents):
+                raise ValueError("Researcher roster changed within an accounting year")
+            return
+        if self.years:
+            previous = max(int(y) for y in self.years)
+            if year != previous + 1:
+                raise ValueError("Resource ledger years must be consecutive")
+            self.reconcile(previous, population, require_closed=True)
+        elif year != 1:
+&gt;           raise ValueError("Audit requires opening balances from year 1")
+E           ValueError: Audit requires opening balances from year 1
+
+utopia/funding/accounting.py:198: ValueError</failure></testcase><testcase classname="tests.system.test_native_terminal_cost_controls_v1" name="test_same_isolated_handoff_without_transfer_collects_all_five_charges" time="0.000"><failure message="ValueError: Audit requires opening balances from year 1">def test_same_isolated_handoff_without_transfer_collects_all_five_charges():
+&gt;       actors,ledger,_=handoff(); rows=charge_and_close(actors,ledger)
+                        ^^^^^^^^^
+
+tests/system/test_native_terminal_cost_controls_v1.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/system/test_native_terminal_cost_controls_v1.py:66: in handoff
+    ledger=ResourceLedger(); ledger.start_year(4,actors)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;utopia.funding.accounting.ResourceLedger object at 0x120e227d0&gt;
+year = 4
+population = {'institution_0000_researcher_0': &lt;test_native_terminal_cost_controls_v1.Actor object at 0x120e21010&gt;, 'institution_00...x120e23b10&gt;, 'institution_0003_researcher_0': &lt;test_native_terminal_cost_controls_v1.Actor object at 0x120e21e90&gt;, ...}
+
+    def start_year(self, year, population):
+        agents = self.researchers(population)
+        self.attach(population)
+        if str(year) in self.years:
+            if set(self.years[str(year)]) != set(agents):
+                raise ValueError("Researcher roster changed within an accounting year")
+            return
+        if self.years:
+            previous = max(int(y) for y in self.years)
+            if year != previous + 1:
+                raise ValueError("Resource ledger years must be consecutive")
+            self.reconcile(previous, population, require_closed=True)
+        elif year != 1:
+&gt;           raise ValueError("Audit requires opening balances from year 1")
+E           ValueError: Audit requires opening balances from year 1
+
+utopia/funding/accounting.py:198: ValueError</failure></testcase></testsuite></testsuites>

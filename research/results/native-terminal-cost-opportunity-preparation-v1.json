@@ -1,0 +1,51 @@
+{
+  "schema": "scienceutopia.native-terminal-cost-opportunity-preparation.v1",
+  "status": "source-and-isolated-native-primitives-verified-not-dispatched",
+  "authorship": "Interactive Codex developer control, not local35B automatic invention",
+  "first_source_commit": "d9e2762843df8aecd359541d89f8fe60066815d0",
+  "tested_corrected_source_commit": "041af1244a46e7b393d1a941ec12361058c6cbde",
+  "original_failed_check": {
+    "session": 24745,
+    "exit_code": 1,
+    "passed": 5,
+    "failed": 2,
+    "pytest_reported_seconds": 1.33,
+    "junit": "research/data/native-terminal-cost-opportunity-v1/failed-fixture-junit.xml",
+    "junit_sha256": "fe145f1e2a9970c3da3f8bd65e2203e51b284f15a39bcac5db6acf2aa3cf2917",
+    "cause": "A fresh component ResourceLedger was incorrectly opened at year4. The original audit correctly requires opening balances from year1."
+  },
+  "corrected_check": {
+    "session": 76289,
+    "original_session_handle_after_context_boundary": "unavailable; retained completed JUnit independently inspected",
+    "passed": 7,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "junit_suite_seconds": 4.743,
+    "process_exit_code": null,
+    "process_exit_code_scope": "No original completion envelope remains available; do not infer a shell exit code from JUnit alone.",
+    "junit": "research/data/native-terminal-cost-opportunity-v1/junit.xml",
+    "junit_sha256": "7da573f683577a7bd060320c8cf01195034984125b4928e54e6e48fe52aa24cd",
+    "fix": "Only the standalone fixture ledger/commands use component year1 with the measured year4 balance vector. Candidate terminal_year4 and native accounting guards stay unchanged."
+  },
+  "source_files": {
+    "utopia/system/native_terminal_cost_controls_v1.py": "acb8ede97cfb0bece5228b0acb4efc91200fe5dbe4759bd2a87b606b0ba244c2",
+    "tests/system/test_native_terminal_cost_controls_v1.py": "abf92fdf85b5d7ea45002fc1200700909e09e3be75d317d3963f739cc6c37eea",
+    "research/publication/native-terminal-cost-opportunity-proposal-v1.md": "62c3977841ace32fbfdd164bd43381f884464873f53337cb082b9412094a5ba1"
+  },
+  "verified_scope": "Static source-only construction, AST parsing, explicit v6 conformance, original conserving transfer/agent-update/ledger methods on SCRIPTED literal commands in an isolated handoff. No host execution of institutional source.",
+  "conditional_forecast": {
+    "native_collected_cost": 160,
+    "uncollected_cost": 40,
+    "C_gain_if_T_U_and_earlier_trajectory_unchanged": 4,
+    "observed_native_world_improvement": false,
+    "interpretation": "Potential collected-cost avoidance and finite-horizon incentive, not real scientific-resource efficiency or improved science."
+  },
+  "timing": "Prepared after T0/U0 and old developer diagnostics, before inspecting C0 source/outcome; not before C0 actually executed and not blind preregistration.",
+  "pending": ["sandbox execution", "full public native cost-phase verification", "finite separately declared real comparison after current study closure and interpretation", "paired original-source cold/cost reconstruction"],
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "active_six_slot_study_changed": false,
+  "objective_or_selection_changed": false,
+  "publication_ready": false
+}
