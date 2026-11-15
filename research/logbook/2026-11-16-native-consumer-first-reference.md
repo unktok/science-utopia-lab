@@ -27,3 +27,31 @@ budgets, reference visibility and own selection rules remain unchanged. Whole
 original paired audit/cost/readout closure is still pending. Prefix hashes are
 retained without claiming that an interim observation replaces those audits.
 The full publication-ready goal remains active.
+
+## Both visible references complete,07:12:45JST
+
+The following goal turn is a **verified wait followed by retained original
+evidence**, not a source change or a new experiment. Bounded read-only monitors
+re-poll original15471 while the second reference progresses through its annual
+checkpoints. Writer11821 and both original continuations remain live. No timeout
+is interpreted as termination and no model request is restarted.
+
+After year4, a pure read of the two saved checkpoints reconstructs60 required
+content-evaluation keys for core-only and108 for core-plus-related,168 in their
+union. At that observation129 result files are present and39 remain; later153,
+166 and then all required results arrive. These prefix file counts are not
+final charged-model/cost totals or substitutes for the full original audit.
+The diagnostic introduces no model, world or generated-code execution.
+
+[Both visible-reference records](../results/native-consumer-source-visible-reference-prefix-v1.json)
+are now retained from the original loop. Core-plus-related completes with36
+accepted decisions, U-loss=-28.666666666666668 and C-loss=-8.666666666666668;
+collected cost200/unpaid0. The writer advances to comparison-only
+terminal-consolidation at22:12:45.618750UTC November15 (07:12:45JST November16).
+
+Both optimizer-visible baselines are available, but they are developer hand
+rules, not generated institutions. The third reference remains withheld from
+both authors. All eight own slots, final selection and whole original paired
+audit/cost/readout closure remain pending. Source/model/loss/budget/visibility
+rules are unchanged; no result is treated as an independent optimizer replication
+or held-out evidence. The full publication-ready goal remains active.

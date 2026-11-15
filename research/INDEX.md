@@ -26,6 +26,8 @@ This page is navigation, not a chronological experiment transcript.
   [First fresh reference completes](results/native-consumer-source-first-reference-prefix-v1.json)
   at06:51JST; the second is active. Its T/U/C baseline values await whole original
   paired closure and are not a generated gain or held-out result.
+  At07:12JST [both visible baselines complete](results/native-consumer-source-visible-reference-prefix-v1.json)
+  and the comparison-only terminal reference starts; all eight own slots remain.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

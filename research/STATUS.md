@@ -59,6 +59,13 @@ prefix, not an own gain, final selection or whole-study original cold closure.
 the original writer/continuation checks. Two references and all eight own slots
 remain; original source/loss/model/budget/visibility rules are unchanged.
 
+At07:12:45JST, [both fresh visible references are complete](results/native-consumer-source-visible-reference-prefix-v1.json).
+Core-plus-related has T=-36, U=-28.666666666666668, C=-8.666666666666668,
+collected cost200/unpaid0. The comparison-only terminal reference is now active;
+it remains withheld from both authors. All eight own slots, final selection and
+whole original paired closure are still pending. These hand baselines are not
+newly generated institutions or independent optimizer replications.
+
 ## Latest real study closed — November16 05:05:33JST
 
 The [two-control terminal-cost study](results/native-terminal-cost-pilot-closed-v1.json)
