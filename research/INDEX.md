@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- Five of12 own outcomes complete at01:01:54UTC; first own-feedback T1 still
+  ties R7 on both losses and loses to the hand. Original82259 proceeds to scalar
+  U1 readiness without source/objective/budget changes. [Actual first revision](logbook/2026-11-15-first-own-feedback-wire.md)
+  separates sent feedback, submitted edits and completed native losses. No
+  later-world input equality or whole-study effect is inferred from those ties.
+
 - [First actual own-feedback wire](logbook/2026-11-15-first-own-feedback-wire.md):
   fifth slot passes29 readiness cases and enters free authoring; its actual
   first frame has only declared R7/own T0 observations and exact history

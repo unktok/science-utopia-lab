@@ -99,3 +99,28 @@ Original native cell
 starts and generates its original scientist traffic. Four of12 own outcomes
 are still complete; the fifth loss and whole-study audit remain pending.
 No running source, objective, budget, model, selection or failed step changes.
+
+## First own-feedback native outcome completes, without a gain
+
+At01:01:54.048846UTC the original writer advances to scalar U1 readiness after
+T1 completes all four years and measurement. Five of12 own outcomes are now
+complete. T1 has no generation error or technical world failures, T=-18 and
+unchanged cross-evaluator U=-13.333333333333332. It ties R7 and loses to the
+hand by2 on each loss. Source/graph identity differences and a valid feedback
+loop have not produced improvement in this first revision.
+
+Original record digest
+`c95a6f0208aa15ec2afa990eb7e75d8135ff06f31fe7ef1b8017760c53e2ed80`,
+observation digest
+`9e3e0b6d91816bd047cd01cd013850485dc304c9cdbbbbac1b575d6f0d91244b`.
+Scores are recomputed with the original two declared LossSpecs on its original
+measurements, without new critic/model/world calls. No complete scientist-
+input/choice equality for this T1 is inferred from equal scores; the full
+original-source readouts remain pending. The existing g0 equality result is
+not extended to this later world without checking its raw inputs/replies.
+
+The remaining seven own slots continue under the unchanged protocol. No
+failed-slot refill, new metric, hidden novelty/improvement gate, data exposure
+change, policy reselection or scale-up is added. The coupled first history's
+two flat outcomes do not prove no better policy exists or settle the complete
+information comparison, independent replication or main-track importance.

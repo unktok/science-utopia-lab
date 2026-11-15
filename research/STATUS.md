@@ -7,6 +7,14 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Latest01:01:54UTC/10:01:54JST: five of12 own outcomes complete, all tying R7
+at T=-18/U=-13.333333333333332 and worse than the hand by2 on both losses.
+First feedback-bearing T1 completes without generation/world technical errors,
+but no gain. Original82259 advances to scalar U1 actual-request readiness.
+The g0 full-input equality is not assumed for T1 from its equal scores; all
+whole-study cold/cost/readouts and frozen unused evaluation remain pending.
+[First revision's actual completed outcome](logbook/2026-11-15-first-own-feedback-wire.md).
+
 Fifth T1 explicitly submits at00:49:46UTC after14 charged steps/eight component
 returns and starts its original native world. Final changes are selection
 source only, not the agenda change named in its plan. No root/wire/schedule
