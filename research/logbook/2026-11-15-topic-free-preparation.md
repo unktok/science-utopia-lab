@@ -59,3 +59,18 @@ Original read-only scientific readout59951 exits0 using original frozen
 checkpoint/response decoders and current clean582049bf reader. It finds10/18
 actual project assignments. Its paired copy and retained scientific summary
 remain to be completed; this is not a fresh world or designer proposal.
+
+Clean466566f2 original90115 exits1 in33.43s. The2 upstream native software
+worlds, double cold/cost and paired literal assignment readouts pass. The new
+study then correctly stops at initial readiness: its SCRIPTED Session detected
+calibration only by an editor-system-header substring. The bounded *planner*
+control instead places the exact instructed target in its user message. The
+fixture mistook that17th calibration request for a proposal and raised; the
+durable transport retained completion-unknown and prevented any next dispatch.
+This is a fixture dispatch error, not a real provider failure. Read the actual
+trusted worker kind and exact target across original messages; change no
+production calibration/transport guard. Preserve a2 and use fresh a3.
+
+Original69985 exits0 from a separate clean582049bf reader export; its full
+real-pilot report matches original59951 byte-for-byte. The reader/source/inputs
+stay fixed for this pair, rather than relabelling later-code output as earlier.

@@ -89,10 +89,23 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
                 return Response({'model':payload['model'],'done':True,'done_reason':'load',
                     'response':'','eval_count':0,'prompt_eval_count':0})
             assert url.endswith('/chat')
-            if 'TRUSTED INTERFACE CALIBRATION TASK' in payload['messages'][0]['content']:
+            if current['kind']=='calibration':
                 calibration.append(payload)
-                body=super().post(url,**kw).json(); body['model']=provider['model']
-                return Response(body)
+                # Bounded planning controls place their exact target after
+                # planning data in the USER message, not in the system header.
+                marker='nothing is executed or adopted.\n'
+                text=next(m['content'] for m in reversed(payload['messages']) if marker in m['content'])
+                target=text.rsplit(marker,1)[1]
+                from utopia.optimization.native_designer_preflight import CONTROL_JSON_BEGIN,CONTROL_JSON_END
+                if target.startswith(CONTROL_JSON_BEGIN):
+                    target=target.removeprefix(CONTROL_JSON_BEGIN).split(CONTROL_JSON_END,1)[0]
+                action,_=json.JSONDecoder().raw_decode(target.lstrip())
+                if set(action)=={'name','arguments'}:
+                    action={'tool':action['name'],**action['arguments']}
+                return Response({'model':provider['model'],'done':True,'done_reason':'stop',
+                    'prompt_eval_count':120,'eval_count':12,
+                    'message':{'role':'assistant','content':json.dumps(function_data(action)),
+                        **({'thinking':'SCRIPTED calibration reasoning'} if payload['think'] else {})}})
             req=current['request']; assert current['kind']=='proposal'
             key=digest(req); i=session_counts.get(key,0); session_counts[key]=i+1
             original=next(n['parameters']['code_artifact']['source'] for n in req['parent_system']['mechanisms']
