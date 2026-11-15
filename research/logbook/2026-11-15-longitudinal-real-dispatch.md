@@ -850,3 +850,90 @@ Scientific run:
 Inventory:
 `science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-longitudinal-unused-inventory-v1-a1`.
 All are under `/Users/shiro/unktok/dev/`; raw/model bodies remain outside Git.
+
+## Normal development closure and complete paired readouts
+
+The original session82259 exits0. Its terminal at03:49:55.686654UTC records
+all12 consumed slots,14 observations, closed status and no retry. Final
+parent-trajectory T2 completes with T=-18/U=-12.333333333333332: its assigned
+throughput loss ties R7, but its utility cross-score is worse by1. The other
+nine valid own outcomes retain R7's T=-18/U=-13.333333333333332. Seventh and
+ninth slots remain native-consumer runtime nulls. No failed slot is refilled.
+
+Two original-source audits and costs match byte for byte and close by
+03:56:38UTC. All five paired readout file/hash maps match by03:58:26UTC;
+paired allocation follows at03:58:41UTC. Original continuation sessions96847,
+93735 and97668 have exited0; they are not still waiting/running.
+[Closed interpretation](../results/native-longitudinal-closed-v1.md) retains
+the exact original terminal/selection/audit/cost checksums and the differences
+between assigned loss, cross-score, actual behavior and technical validity.
+
+The completed full-input comparison establishes observed-path equality for
+R7 and nine valid own worlds, including literal response choices but not every
+provider envelope. The last valid own candidate is different; the hand control
+is a third class. A read-only trace finds the first changed scientist payload
+at index70, year4 round intention. Four delivered dossier score fields and two
+native past-paper renderings change0 to1, and no other prompt characters differ.
+The [initial partial trace](../results/native-longitudinal-first-score-input-divergence-v1.json)
+retains its false dossier-only-substitution result; the
+[complete decomposition](../results/native-longitudinal-first-score-input-divergence-v2.json)
+adds the native past-paper route, without rewriting the first record.
+Consumer source bytes match originala5be8d31. This does not isolate the two
+parallel information routes or an average causal effect.
+
+The [compact retention manifest](../results/native-longitudinal-development-retention-v1.json)
+binds19 exact report artifacts plus a derived cost summary,3295519 bytes.
+Paired originals were verified before copying. No raw scientist/designer
+cache is added to Git; original3321-file inventory remains outside Git.
+
+## Fixed unused evaluation: preparation and actual start
+
+Fresh preparation inventories close04:12:27--04:12:36UTC across main outputs,
+broad worktrees and broad experiments. All report valid, no errors and no
+prior matching production usage under the explicit72-file fixture policy.
+Preparation closes04:12:37.546932UTC with zero model calls. Four own-only
+minima/earliest ties select their original G0 systems; no hand fallback or
+unused-data reselection. Six logical labels share five literal-identity jobs.
+The fixed source is a separate cleana5be8d31 worktree. The plan content is
+`9c8a6bd32b05f5f125f77e3fd2a93adefe0402bfbc2bd7cf320237c25257c5f3`.
+
+Operational start attempts remain separate from scientific execution:
+
+- Resource wrapper a1 stops before observations because a newly constructed
+  allowance dictionary was not content-sealed before the existing checker.
+  This wrapper error is saved; it makes no model call or scientific dispatch.
+- A2 observes the exact rrs stdin coordinator above its old256MiB bound and
+  rejects. A fresh read-only cwd/text-file review finds rrs/uv Python/dyld;
+  source remains unknown. A separate exact-PID/start512MiB observational
+  allowance is declared, not a proof of recovered source or future inactivity.
+- A3's second observation finds new unclassified reflexive-science CPU tests
+  and rejects before dispatch. These other projects are neither stopped nor
+  modified; no broad test-directory exemption is introduced.
+- A4 freshly binds the fully inspected URS R064 finite CPU Z3 coordinator and
+  solver sources. Both30-second-spaced observations pass: totalCPU328.2% then
+  233.1% (Darwin100% is one core), free+inactive46.02 then46.17GiB, no loaded
+  Ollama models and no unclassified Python/model process. This is a shared-host
+  observational profile, not an exclusive resource lease or future-activity guarantee.
+
+All four raw operational attempts are retained under feature
+`outputs/native-longitudinal-fixed-resource-dispatch-v1-a{1,2,3,4}`. The old
+capacity-only certificate is not reused or relabeled scientific authorization.
+A4 invokes the original fixed public runner once, which repeats the broad seed
+inventories itself before starting. Actual scientific start is
+04:36:07.853387UTC/13:36:07JST, PID21817, original session54645. Output confirms
+evaluation-000 and real Qwen scientist responses; this is no longer just a plan
+or state-file intention. No completed fixed result is claimed at this observation.
+Zero new designer-generation POSTs are allowed in this fixed evaluation.
+
+## Lightweight interpretation/source integration during fixed inference
+
+INDEX, STATUS, the program map and R2/R4 now distinguish completed development
+from running fixed evaluation. The editable integrated manuscript adds all12
+slots, actual-input classes, technical nulls, score-consumer routes, costs and
+selection limits. It does not turn tied/adverse development outcomes into
+improvement. The reviewed85-page PDF and its receipts remain unchanged;
+new PDF build/render/visual checks wait until real inference ends.
+Nine focused retained-evidence/navigation tests pass in0.84s, and the default
+documentation checker passes25 documents/415 local links/six old snapshots.
+These lightweight checks make no model, world, container or embedding call;
+they are not independent scientific replications or a publication-ready verdict.

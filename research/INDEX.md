@@ -6,7 +6,10 @@ This page is navigation, not a chronological experiment transcript.
 ## Current study and publication goal
 
 - [Current status and remaining work](STATUS.md): the original12-slot native
-  longitudinal comparison is in progress; publication readiness is not established.
+  longitudinal comparison is closed; fixed unused evaluation has started.
+  Publication readiness is not established.
+- [Completed twelve-slot comparison](results/native-longitudinal-closed-v1.md):
+  all candidates, two runtime nulls, tied assigned losses and actual-input equivalence.
 - [Actual dispatch and observations](logbook/2026-11-15-longitudinal-real-dispatch.md):
   exact requests, submitted systems, measured losses and technical nulls.
 - [Prospective scientific decision](publication/native-staged-next-evidence-decision-v1.md)
@@ -25,7 +28,7 @@ This page is navigation, not a chronological experiment transcript.
   A reviewed working paper is not main-track readiness or fresh inference replication.
 - [Completed previous six-slot staged study](results/native-open-staged-institution-closed-v1.md)
   and [its fixed unused evaluation](results/native-open-staged-fixed-closed-v1.json).
-  Keep these distinct from the currently running12-slot comparison.
+  Keep these distinct from the completed12-slot comparison.
 - [Generation-zero full scientist inputs/choices](results/native-longitudinal-generation-zero-requests-v1.json):
   observed-path equality in the first four own worlds, not global program equivalence.
 - [First actual own-feedback wire](logbook/2026-11-15-first-own-feedback-wire.md):

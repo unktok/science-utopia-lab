@@ -1,0 +1,13 @@
+slot_index,arm,objective,generation,status,physical_job,loss,completed_steps,probe_attempts,returned,raised,terminal_response_missing
+0,scalar,throughput,0,complete,native-adaptive-23cb2be8479e6447b6ee3e5c,-18.0,14,8,8,0,False
+1,parent-trajectory,content-utility,0,complete,native-adaptive-4f9e9def8d3f3f653dc88499,-13.333333333333332,14,8,8,0,False
+2,scalar,content-utility,0,complete,native-adaptive-bf73378c3c25622950f36629,-13.333333333333332,14,0,0,0,False
+3,parent-trajectory,throughput,0,complete,native-adaptive-c416fad20f60f879fef446aa,-18.0,14,12,12,0,False
+4,parent-trajectory,throughput,1,complete,native-adaptive-8936df2412c955102e1ad357,-18.0,14,8,8,0,False
+5,scalar,content-utility,1,complete,native-adaptive-17794759d9213cb4bda8b052,-13.333333333333332,14,0,0,0,False
+6,parent-trajectory,content-utility,1,failed,native-adaptive-2ff42eabacafede1b6c036c4,,14,12,12,0,False
+7,scalar,throughput,1,complete,native-adaptive-d7855b150bb0d4d7fe1db1ef,-18.0,14,12,12,0,False
+8,scalar,throughput,2,failed,native-adaptive-8bd032a83bb51a37b10bc12c,,14,4,4,0,False
+9,parent-trajectory,content-utility,2,complete,native-adaptive-db20a22676e6af61cd36ba8e,-13.333333333333332,14,16,16,0,False
+10,scalar,content-utility,2,complete,native-adaptive-fd3ec7b444a9df3331910080,-13.333333333333332,14,16,16,0,False
+11,parent-trajectory,throughput,2,complete,native-adaptive-34e921359289076c7360efb8,-18.0,14,12,12,0,False

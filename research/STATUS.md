@@ -10,32 +10,37 @@ manuscript. Publication readiness is **not established**; acceptance is not prom
 
 ## Current experiment: November15
 
-Latest completed-slot boundary03:22UTC/12:22JST. This is a dated observation,
-not a live heartbeat.
+Development closed November15 at03:49:55UTC/12:49:55JST. Paired closure,
+costs and all five readouts closed by03:58:26UTC; allocation followed at03:58:41UTC.
+These are completed records, not live heartbeats. See the
+[full closed-study interpretation](results/native-longitudinal-closed-v1.md).
 
 | Item | Verified state |
 | --- | --- |
 | Scientific source | Clean, fixed `a5be8d3103854368a4bc6ba4c13eff7552e9dd15`; not this later documentation checkout |
 | Design | Two losses (throughput T/content utility U), two information conditions, three own proposals per history:12 slots total |
-| Own slots processed | Eleven: nine valid native outcomes and two known runtime failures |
-| Current slot | Twelfth/final, parent-trajectory T2, submitted and running its native world; no completed twelfth loss yet |
-| Valid outcomes | All nine T=-18/U=-13.333333333333332; tie original R7 and lose to the hand by2 on each loss |
+| Own slots processed | All twelve: ten valid native outcomes and two known runtime failures |
+| Current slot | None; development is normally closed, without failed-slot replacement |
+| Valid outcomes | All ten tie R7 on their assigned loss. Nine have T=-18/U=-13.333333333333332. Final parent-trajectory T2 has T=-18/U=-12.333333333333332: cross-objective utility is worse by1 |
 | Seventh slot | Parent-trajectory U1 returns a scored empty-year marker; actual native consumer rejects it. Loss unknown, not zero or a measured bad loss |
 | Ninth slot | Scalar T2 double-wraps decision payloads; actual consumer rejects the empty-year batch. Loss unknown, no host unwrapping/repair |
-| Original runner | Session82259 confirmed live; no restart, source/guard/loss change, repair or failed-slot refill |
-| Analysis | Three source-frozen continuation handles confirmed live waiting for their declared predecessor closure; no completed full-study analysis yet |
-| Fixed unused evaluation | Not prepared/dispatched; reserved seed676047151 requires fresh usage inventory before dispatch |
+| Original runner | Session82259 exited0; no restart, source/guard/loss change, repair or failed-slot refill |
+| Analysis | Two original-source audits and cost reports match; all five paired readout file sets and paired allocation match. Their original continuation sessions exited0 |
+| Fixed unused evaluation | Started at04:36:07UTC/13:36:07JST, original session54645, runner PID21817; latest verified output starts evaluation-000. Four own-only frozen selections and two references share five physical jobs on reserved seed676047151, with zero designer POSTs. No completed fixed loss yet at this observation |
 
 The[actual dispatch log](logbook/2026-11-15-longitudinal-real-dispatch.md) retains
 exact submitted identities, complete journal-prefix counts and observed failures.
 The[first four own worlds' full inputs/choices](results/native-longitudinal-generation-zero-requests-v1.json)
-match R7 on the observed paths. Do not extend that equality to later worlds
-without checking them, or interpret a changed source/fingerprint as a causal effect.
+match R7 on the observed paths. The completed full-study request reader now
+establishes exact full request-sequence and literal response-choice equality
+for nine valid own worlds and R7, under this one reused development condition.
+Full provider envelopes are not all equal. This is not global program equivalence
+or independent replication; a changed source/fingerprint alone is not a causal effect.
 No improvement, useful new wiring or information-condition advantage is established.
-The eighth, tenth and eleventh slots also match R7's ten collected metrics, accepted content
-IDs and annual author accounting rows. This is not full-input equality or a causal
-equivalence proof. Their final-active count2/resources40 also occur in R7, not an
-identified effect of this source edit or an added loss/eligibility constraint.
+The final valid candidate changes the observed input path and four accepted
+content occurrences, but ties its throughput target and worsens utility.
+Its final-active count2/resources40 and annual author accounting match R7;
+these are not an added loss/eligibility constraint or evidence of improvement.
 
 ## Implemented versus demonstrated
 
@@ -55,21 +60,24 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
 
 ## Remaining publication work
 
-1. Close the original twelve-slot comparison without retries for favorable results.
-2. Complete paired original-source audits, costs and readouts; interpret all paths,
-   literal changes, actual consumers, full scientist inputs, failures and costs.
-3. Freeze the original own minima/chronological ties, verify the reserved seed is
-   unused, then run the declared fixed evaluation. Share only literal-identical
-   policies; no held-out reselection or comparison-policy substitution.
-4. Decide what important question the evidence actually answers. If tied/inferior,
+1. Execute and cold-audit the already prepared fixed evaluation. Original own
+   minima/chronological ties are frozen, and fresh preparation inventories found
+   no prior reserved-seed use in the declared roots. Recheck before inference.
+   Share only literal-identical policies; no held-out reselection or substitution.
+2. Integrate the closed paired development analyses and all costs into the
+   manuscript. The final candidate's first different scientist input is the
+   71st request (index70), year4 round intention: delivered publication-history
+   and native past-paper scores change0.0 to1.0. Retain this trace and distinguish observed-path
+   equivalence from global policy equivalence.
+3. Decide what important question the evidence actually answers. If tied/inferior,
    do not automatically add seeds, enlarge search or claim a new mechanism.
-5. Integrate evidence and primary-source positioning into the full working paper,
+4. Integrate evidence and primary-source positioning into the full working paper,
    build/render/review after real inference ends, and produce a focused main-paper
    account with appropriate supporting material and a critical readiness decision.
 
 R2 (importance), R3 (adequate independent evidence), R5 (current focused manuscript)
 and R6 (final readiness) remain open. Earlier R1/R4 implementation and completed
-study evidence do not establish full completion of the running study. The
+study evidence do not establish full completion of the current evaluation. The
 [R1--R6 requirements](publication/publication-ready-v3.md) retain dated historical
 updates; numerical QA counts are not scientific replications.
 
@@ -78,8 +86,9 @@ updates; numerical QA counts are not scientific replications.
 The latest reviewed artifact is the85-page working PDF with44 figures/38 tables/
 28 references, including the earlier six-slot staged study and its unused evaluation.
 The[paper entry point](../paper/README.md) links its exact receipt and71-file local
-reconstruction. Editable sources are newer (29 citations); they are not a newly
-built/reviewed PDF and do not yet contain the completed current12-slot study.
+reconstruction. Editable sources are newer (29 citations) and now contain the
+completed12-slot development study, but are not a newly built/reviewed PDF.
+The ongoing fixed evaluation has no completed-result claim in that source.
 
 The previous[3,185-line status](status-history-2026-11-15-longitudinal-prefix.md)
 and[1,140-line index](index-history-2026-11-15-longitudinal-prefix.md) are retained

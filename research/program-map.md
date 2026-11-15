@@ -15,7 +15,8 @@
 
 ## 最新の実行区切り
 
-現在は固定a5be8d31の12枠longitudinal比較を実行中。
+固定a5be8d31の12枠longitudinal比較と二回監査・費用・各readoutは閉鎖した。
+[完了結果](results/native-longitudinal-closed-v1.md)を保持し、選択固定の未使用評価へ進む。
 [時点付きの進捗](STATUS.md)と[元の実dispatchログ](logbook/2026-11-15-longitudinal-real-dispatch.md)
 を正本とし、ここへliveカウントを複製しない。二目的・二情報条件でも作用権限は同じで、
 元の研究者世界を保持する。全候補、失敗、全作用と入力を分析し、選択を固定してから

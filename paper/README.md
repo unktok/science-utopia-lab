@@ -17,8 +17,10 @@ bytes differ. This is not a clean-machine build or independent inference rerun.
 The editable [integrated.tex](integrated.tex) and its included sources are newer
 than that reviewed artifact. They currently cite29 records, adding SciMARS and
 clarifying the contribution boundary. Those source changes have passed source/
-citation checks, not a new PDF build or visual review. The ongoing12-slot
-longitudinal comparison and its final fixed evaluation are not yet integrated
+citation checks, not a new PDF build or visual review. The12-slot longitudinal
+comparison is now closed and included in the editable source section
+[native-longitudinal-comparison.tex](integrated/native-longitudinal-comparison.tex).
+Its final fixed evaluation is running; those outcomes are not yet integrated
 as completed results. See [current status](../research/STATUS.md) and the
 [source-only update](../research/logbook/2026-11-15-manuscript-positioning-source-update.md).
 Do not attribute the old PDF's page count, hash or review receipt to current
