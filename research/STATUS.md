@@ -10,21 +10,39 @@ manuscript. Publication readiness is **not established**; acceptance is not prom
 
 ## Current experiment: November15
 
-The next [three-control original-choice pilot](results/native-legacy-choice-pilot-dispatch-v1.json)
-actually starts at06:39:11UTC/15:39:11JST from clean frozen566f2c91.
-Original session90768/PID43791 completes the first `core-assignment` control
-and enters `native-choice` at06:51:31UTC. The first native observation has
-T=-20/U=-15.333333333333332; original-source cold confirmation still waits for
-whole-study closure. The [literal prefix and continuation bindings](results/native-legacy-choice-pilot-prefix-v1.json)
-retain that observation and all four downstream chains. No complete-study
-or optimizer-improvement result is claimed from this first control.
-Subsequently `native-choice` completes at T=-14/U=-10, and the writer enters
-`native-choice-advice` at07:02:22UTC. Two controls are measured; only the advice
-outcome remains pending, and the complete original-source audit is not yet closed.
-It compares direct core assignment, original native choice and code-authored
-advice with unchanged T/U, four-year world and Qwen3-8B scientists. This is a
-reused-development-seed hand-control feasibility study, not optimization,
-automatic invention or unused evaluation. The complete comparison is not yet available.
+The [three-control original-choice pilot](results/native-legacy-choice-pilot-closed-v1.json)
+normally closes at07:13:48UTC/16:13:48JST from clean frozen566f2c91.
+Original90768 exits0. Original46397 completes two matching source/physical/
+critic/transport audits and matching costs; choices19744, requests12071 and
+effects75635 also exit0 with every paired file matching by07:14:55UTC.
+No scientific inference or pending continuation remains from this pilot.
+
+| Developer control | Throughput loss T | Content-opinion loss U |
+| --- | ---: | ---: |
+| Direct core assignment | -20 | -15.333333333333332 |
+| Original native choice | -14 | -10 |
+| Original native choice plus code-defined advice | -16 | -12 |
+
+Lower loss is better. Advice improves both recorded losses by2 versus unadvised
+choice here, but still loses to the direct-assignment control. All three start
+from the same cold-verified physical society, retain the original four-year
+world and fixed Qwen3-8B scientists, and have distinct full input sequences.
+Both original-choice conditions execute10 native direction requests, without
+host project assignments. All10 advised inputs contain current-year advice,
+but exact recommended-topic matches are0/10 and minimum-duration matches2/10.
+No one-year topic is selected in either unforced condition. Every submitted
+topic schema is an unrestricted string, not a topic enum; this observation
+does not prove absence of all possible restrictions or a cause of choices.
+The advice/native content contrast shares6 year/paper/content occurrences,
+with8 native-only and10 advice-only occurrences: it is not merely two extra
+papers. Existing fixed opinions give an exact utility difference2, not truth.
+
+Elapsed time is34m37.04s on the shared host, not a dedicated benchmark. Costs
+retain386 scientist responses,120 separate observer POSTs and3 scientist-load
+attempts, with zero designer generation. This is a reused-seed hand-control
+feasibility study, not automatic invention, optimization or unused evaluation.
+The direct control dominates this three-point T/U set; no objective preference
+reversal, global optimum or stable expected advantage is established.
 The [actual public-path software proof](results/native-legacy-choice-pilot-software-retention-v1.json)
 binds three original SOFTWARE worlds, installed SDK/HTTPX900/zero-retry headers,
 two cold audits and two matching cost projections. Historical setup/permission
@@ -88,17 +106,21 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
 1. The [fixed evaluation and paired reconstruction](results/native-longitudinal-fixed-closed-v1.json)
    are closed and retained, now integrated in the reviewed88-page PDF.
    Do not call this an independent optimizer replication.
-2. The original native-choice pilot's public operator path and exact900-second
-   profile now have actual SCRIPTED through-run/cold/cost evidence; real dispatch
-   has started. Finish the three declared controls and original-source paired
-   reconstruction, preserving technical nulls without refill and complete unfavorable
-   losses without an improvement gate. Software proof is not real-Qwen feasibility.
+2. The three-control pilot and all original-source paired analyses are now
+   complete. Integrate its actual outcomes, choice/period traces, content
+   differences and costs into figures and the manuscript; the reviewed88-page
+   PDF predates this pilot. Do not promote the hand advice contrast to autonomous
+   invention or infer literal obedience from message presence.
    The final development candidate's first different scientist input is the
    71st request (index70), year4 round intention: delivered publication-history
    and native past-paper scores change0.0 to1.0. Retain this trace and distinguish observed-path
    equivalence from global policy equivalence.
-3. Decide what important question the evidence actually answers. If tied/inferior,
-   do not automatically add seeds, enlarge search or claim a new mechanism.
+3. Decide the next objective-conditioned free-system research question using
+   these complete controls. Native choice is exercised, but broader nominal
+   support and advice alone do not yield the strongest observed system. Both
+   original losses prefer the same recorded control here. Do not automatically
+   add seeds, repeat the same search, force different objective winners, substitute
+   new losses for old ones or claim a global optimum or a new invented mechanism.
 4. Produce a focused main-paper account with appropriate supporting material
    and a critical readiness decision. A complete broad working paper is not
    itself the focused, adequately substantiated conference contribution.

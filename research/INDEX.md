@@ -7,7 +7,10 @@ This page is navigation, not a chronological experiment transcript.
 
 - [Original-choice pilot actual dispatch](results/native-legacy-choice-pilot-dispatch-v1.json)
   and [public operator/SDK900/cold software proof](results/native-legacy-choice-pilot-software-retention-v1.json):
-  three hand controls in the original world; real outcomes not yet complete.
+  three hand controls in the original world, now normally closed.
+- [Complete original-choice outcomes and paired readouts](results/native-legacy-choice-pilot-closed-v1.json)
+  and [exact content decomposition](results/native-legacy-choice-pilot-content-delta-v1.json):
+  advice beats unadvised choice here but not direct assignment; not automatic invention.
 - [Current status and remaining work](STATUS.md): the original12-slot native
   longitudinal comparison and fixed unused evaluation are normally closed.
   Publication readiness is not established.

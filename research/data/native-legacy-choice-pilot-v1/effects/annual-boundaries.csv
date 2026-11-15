@@ -1,0 +1,13 @@
+world,role,status,seed,year,active_founders,total_founder_resources,minimum_founder_resources,transferred_units
+legacy-choice-core-assignment,developer-legacy-choice-control,complete,61001,1,5,120.0,11.0,6.0
+legacy-choice-core-assignment,developer-legacy-choice-control,complete,61001,2,5,90.0,11.0,10.0
+legacy-choice-core-assignment,developer-legacy-choice-control,complete,61001,3,5,60.0,11.0,17.0
+legacy-choice-core-assignment,developer-legacy-choice-control,complete,61001,4,5,30.0,1.0,8.0
+legacy-choice-native-choice,developer-legacy-choice-control,complete,61001,1,5,120.0,11.0,6.0
+legacy-choice-native-choice,developer-legacy-choice-control,complete,61001,2,5,90.0,11.0,10.0
+legacy-choice-native-choice,developer-legacy-choice-control,complete,61001,3,5,60.0,11.0,17.0
+legacy-choice-native-choice,developer-legacy-choice-control,complete,61001,4,5,30.0,1.0,5.0
+legacy-choice-native-choice-advice,developer-legacy-choice-control,complete,61001,1,5,120.0,11.0,6.0
+legacy-choice-native-choice-advice,developer-legacy-choice-control,complete,61001,2,5,90.0,14.0,0.0
+legacy-choice-native-choice-advice,developer-legacy-choice-control,complete,61001,3,5,60.0,11.0,8.0
+legacy-choice-native-choice-advice,developer-legacy-choice-control,complete,61001,4,5,30.0,1.0,5.0

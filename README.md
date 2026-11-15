@@ -39,7 +39,12 @@ hand control on one reserved unused condition. Actual input/choice equivalence,
 one operative history-score path, content differences and costs are retained.
 The next native-choice feasibility pilot has actual public operator/SDK900/cold
 software proof and starts its real-Qwen three-world run at06:39:11UTC November15.
-Its outcomes are not complete. Stable strong-rule advantage,
+It [normally closes at07:13:48UTC](research/results/native-legacy-choice-pilot-closed-v1.json),
+followed by all paired audits/costs/readouts. Direct assignment has T=-20/U=-15.33,
+unadvised native choice-14/-10, and advised choice-16/-12. Advice improves on
+unadvised choice here but not the strong direct control; exact recommended
+topic matches are0/10. These developer controls are not automatic invention.
+The current88-page reviewed PDF predates this pilot. Stable strong-rule advantage,
 useful automatic structural invention and main-track readiness remain unproven.
 
 ### Earlier November13--14 observations (historical, not live state)

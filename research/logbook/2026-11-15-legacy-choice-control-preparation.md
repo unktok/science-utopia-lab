@@ -191,3 +191,69 @@ needed, and the new direct-control run is not a substitute for a failed slot.
 The [sealed prefix record](../results/native-legacy-choice-pilot-prefix-v1.json)
 retains original observation/score hashes, continuation starts and literal
 progress. Its snapshots are not permanent liveness guarantees.
+
+## Normally closed actual pilot and complete paired reconstruction
+
+Original90768 exits0, normally closed07:13:48.773819UTC. All three declared
+worlds complete without restart, source change, repair, failed-slot replacement
+or new designer generation. T/U are direct core assignment-20/-15.333333333333332,
+native choice-14/-10 and native choice plus advice-16/-12. The source-bound
+shared-host elapsed time is2077.037361 seconds (34m37.04s), not a dedicated
+inference benchmark or total project cost. All three cold initial physical
+identities equal`b789257dc0d559e14c7d298c765b443dc28e6190d56ebbb977e85e2e0ba3c129`.
+
+Original46397 exits0 after two byte-identical source/physical/critic/transport
+audits and two matching cost exports. Audit content
+`a96c786e8ab3d8c23b658713f8a60dc3db54678ece2576b16c1fb8b43a3ecfd8`
+binds459 raw files/inventory
+`7d9df148cf94e848b19e6efa9520f03480cdb9b79723a1100f492a906bfd1b6e`.
+Original choices19744, requests12071 and effects75635 all exit0 by07:14:55UTC;
+their four/two/three exported files match independently repeated reads exactly.
+Those9 files are retained byte-for-byte under
+`research/data/native-legacy-choice-pilot-v1/`, with costs kept separately.
+The [closed receipt](../results/native-legacy-choice-pilot-closed-v1.json) binds
+all inputs/copies and the original terminal. No plot or PDF review is claimed.
+
+The actual direct control applies10 catalog projects and has no native direction
+requests. Both unforced controls have10 original direction requests and no
+catalog project assignments. Advice contributes10 stored recipient messages
+and appears in all10 current-year direction inputs. Every request has a unique
+match to an original saved direction memory. Exact recommended-topic matches
+are0/10, whereas selected duration equals the recommendation's minimum2/10.
+Both unforced conditions choose only two-/three-year topics from the displayed
+table, never a one-year topic. All20 literal direction schemas specify a string
+topic without an enum, so a topic-enum explanation is not supported by those
+actual wires. This does not identify a global behavioral cause or prove model
+understanding, rationality, obedience or universal accessibility.
+
+The unadvised duration attempts are six3-year/four2-year; advised are four3-year/
+six2-year. One founder's first observed choice changes from formal_methods3 to
+performance_analysis2; its later project calendar also differs. Those repeated
+within-world attempts are not independent samples or a pure duration intervention.
+Advice improves recorded T/U by2 relative to unadvised choice but remains worse
+than direct assignment by4 and10/3 respectively. Every control has a different
+complete scientist input path; singleton equality flags are not replications.
+
+The [existing-content decomposition](../results/native-legacy-choice-pilot-content-delta-v1.json)
+has6 common year/paper/content occurrences,8 native-only and10 advice-only,
+giving exact advice-minus-native opinion utility2. Direct/native share3
+occurrences and direct/advice share4. These are fixed-record multiset differences,
+not causal extra/missing papers, scientific truth or new model critiques.
+The direct control dominates this finite three-point T/U set. Changing nonnegative
+weights cannot create a preference reversal within these recorded points;
+that does not establish a global/expected frontier or make objectives irrelevant.
+
+Costs retain386 completed scientist responses (127/127/132), no wire-only reply
+gap,120 physical common-observer POSTs with known terminal attempts and3 empty
+scientist-load attempts. Reported scientist usage is467,505 prompt+40,304
+completion=507,809 tokens;97,796 cached-prompt tokens are a subset, not additions.
+No designer generation is called. Ratings, responses, actor attempts and loads
+are separate operational units, not independent scientific repetitions.
+Twenty-seven lightweight retained-result/choice-parser/earlier-closure checks
+pass in0.66s. All original sources/readouts remain frozen and unmodified.
+
+Next, integrate the actual three-control findings visually and in the manuscript,
+then decide the next purpose-conditioned free-system study from the complete
+evidence. Do not reflexively enlarge this pilot, force different winners, assume
+the proposed36-record arithmetic feasible, or relabel a developer advice contrast
+as reliable autonomous invention. R2/R3/R5/R6 remain open.

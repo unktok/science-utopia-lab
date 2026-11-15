@@ -1,0 +1,4 @@
+condition,seed,throughput,content-utility,direction_request_attempts,stored_advice_recipient_records,assessable_current_advice_completed_direction_attempts,selected_current_recommendation_attempts,physical_wire_requests,committed_responses,wire_without_committed_reply
+core-assignment,61001,-20.0,-15.333333333333332,0,0,0,0,127,127,0
+native-choice,61001,-14.0,-10.0,10,0,0,0,127,127,0
+native-choice-advice,61001,-16.0,-12.0,10,10,10,0,132,132,0
