@@ -7,6 +7,15 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Latest01:29:37UTC/10:29:37JST: six of12 own outcomes complete. Scalar U1
+explicitly retains R7 after14 charged steps (three applied/nine rejected reads,
+no edits/probes) and completes its original four-year world without generation/
+technical failures. T=-18/U=-13.333333333333332: all six tie R7 and lose to the
+hand by2 on both losses. Original82259 continues to parent-trajectory U1
+readiness; whole-study closure/selection, paired audits/readouts and frozen
+unused evaluation are incomplete. No improvement or later-world input equality
+is inferred. [Retained submission, inspected wire tasks and actual outcome](logbook/2026-11-15-longitudinal-real-dispatch.md).
+
 Subsequent01:12:17UTC: sixth slot scalar U1 begins free authoring after its
 actual-request readiness. Five own native outcomes remain complete, all ties
 to R7. The separately retained [choice-support screen](publication/native-actionable-choice-support-v1.md)

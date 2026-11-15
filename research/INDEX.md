@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- Six of12 own outcomes complete at01:29:37UTC, all ties to R7 and worse than
+  the hand. Scalar U1 explicitly submits an unchanged parent, not new invention
+  or host fallback. Original82259 continues to parent-trajectory U1 readiness.
+  [Exact submitted identity, inspected task/body wires and completed losses](logbook/2026-11-15-longitudinal-real-dispatch.md).
+  The whole-study comparison, paired closure/readouts and frozen unused
+  evaluation remain open; no stable optimizer/information benefit is shown.
+
 - [Native choice-support screen](publication/native-actionable-choice-support-v1.md):
   source/checkpoint inspection distinguishes core-only direct assignment from
   legacy core-plus-related choices. Four founders have one-year related options;

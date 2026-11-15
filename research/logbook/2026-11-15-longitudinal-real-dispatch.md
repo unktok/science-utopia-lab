@@ -397,6 +397,46 @@ every internal state, a causal information comparison or license to skip
 future worlds. Paired original-source full closure and frozen evaluation are
 still required. No new native/model/code-execution experiment occurs here.
 
+## Sixth slot explicitly retains R7 and completes; seven begins readiness
+
+Scalar U1 request
+`02c06b402bbf2f691d649fcec62c4103603f14efc051cbfcee90f452a972e0af`
+finishes at01:19:14.514108UTC with14 charged steps: one plan, three applied
+reads, nine rejected reads and explicit finish. No write/edit or component
+probe is attempted/applied. The final complete SystemSpec is literally R7,
+fingerprint`afbe6626fbad76ff65cf0a6a8875d6e68cc1853378d3d41f1d87c6f0c7bce8d2`.
+This is the model's explicit unchanged submission, not automatic host fallback,
+new institutional invention, code repair or replacement of a failed slot.
+Response content
+`72a9b2928203fbae23fbc347498537600af3be1d1f342a70fd9958764d4b8d6b`,
+fileSHA`f33600b4b0499f68899702813ddf107733203741435d4391698f8719422f5cc5`.
+
+Direct actual-wire inspection at rejected steps4/8 confirms both the source-
+owned implementation phase and its explicit implementation-or-finish task
+are present. The literal current document hashes match the wire's current
+system digest and original transition-before digest. Their wire SHAs are
+`34ab307fb483176404f3f4d4fdd089cd3e8aeac1d16f10b24bd8515f7e17116e`
+and`1c5fa1e9ab8cf8f1ce35107cc0af0722e8ead42fef26eb1ca1749b3bfeab339f`.
+Submission step13 also has matching complete document and submit phase, wire
+SHA`251ec5805e269c69f70ecce3e5ab66d908f2a06c9d02f7e12d35d5a83e6c26cf`.
+Thus absent phase instructions/editor source do not explain those inspected
+rejections; no absence of every possible bug or model-level causal explanation
+is claimed. Keep all rejected actions and costs rather than silently fixing
+the model's choice or calling them successful reads.
+
+Original cell
+`search/scalar/content-utility/worlds/native-adaptive-17794759d9213cb4bda8b052-s61001`
+runs all four years. At01:29:37.867157UTC the same original writer advances to
+parent-trajectory U1 readiness. Six of12 own outcomes now complete. No
+generation error or technical world failure; assigned U=-13.333333333333332,
+cross-score T=-18 on original measurements. It ties R7 and loses to the hand
+by2 on each loss. Record digest
+`43c48435f7e5fd0125402aac5d3a0469499707f34ca5635e025a59ea3d2a8fe7`,
+observation`95edabd6e5256956f831fd56851be6587be868729c2e9f8b7d1aee71f66aa307`.
+Source/literal identity or equal losses alone are not a fresh complete-input
+comparison for this world. The full paired cold/readout chain remains pending;
+all remaining slots, frozen selections and unused evaluation are unchanged.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,
