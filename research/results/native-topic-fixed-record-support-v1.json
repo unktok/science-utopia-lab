@@ -1,0 +1,50 @@
+{
+  "schema": "scienceutopia.native-topic-fixed-record-support.v1",
+  "scientific_source_commit": "2f70147a801b9a3a549cca1a24b8fa38bb9525a4",
+  "input_report": "research/data/native-legacy-topic-pilot-v1/report.json",
+  "input_report_file_sha256": "55bfe6680f905c1aadf20b6cb828cecf5182f354c799c6f947edbdf2c12760db",
+  "input_report_content_sha256": "7c2cd35bf25be97bb5e9121442d9313a32a11ee9defe3dec7ea64f4c67bf6aae",
+  "derivation": "For each original accepted occurrence, use its three retained integer critic ratings. Rational diagnostic contribution is (sum(ratings)-9)/3. Keep original mean-score-minus3 floating arithmetic and original recorded losses unchanged. Fixed-pool U maximization includes every positive contribution, excludes every negative contribution, and leaves each zero arbitrary.",
+  "rows": [
+    {
+      "condition": "core-only",
+      "accepted_occurrences": 20,
+      "positive": 15,
+      "zero": 5,
+      "negative": 0,
+      "rational_contribution_histogram": {"0": 5, "1": 14, "4/3": 1},
+      "rational_utility_sum_diagnostic": {"numerator": 46, "denominator": 3},
+      "original_recorded_utility_loss": -15.333333333333332,
+      "original_mean_score_utility_sum": 15.333333333333332,
+      "fixed_record_utility_can_improve_by_rejecting_only": false,
+      "fixed_record_count_optimal_acceptance_masks": 1,
+      "fixed_record_utility_optimal_acceptance_masks": 32,
+      "collected_resource_cost_observed": 200.0
+    },
+    {
+      "condition": "core-plus-related",
+      "accepted_occurrences": 36,
+      "positive": 30,
+      "zero": 6,
+      "negative": 0,
+      "rational_contribution_histogram": {"0": 6, "1": 28, "1/3": 2},
+      "rational_utility_sum_diagnostic": {"numerator": 86, "denominator": 3},
+      "original_recorded_utility_loss": -28.666666666666668,
+      "original_mean_score_utility_sum": 28.666666666666668,
+      "fixed_record_utility_can_improve_by_rejecting_only": false,
+      "fixed_record_count_optimal_acceptance_masks": 1,
+      "fixed_record_utility_optimal_acceptance_masks": 64,
+      "collected_resource_cost_observed": 200.0
+    }
+  ],
+  "fixed_record_scope": "Only the already accepted original year/paper/content occurrences and their retained ratings. Masks are combinatorial subsets of fixed records, not simulated policies, valid institutions, independent samples or access to future critic scores. Changing acceptance in a native world can change publication histories, funding, resources, later content and participation; these trajectories are not held fixed by a real intervention.",
+  "conditional_resource_preference_fact": "At fixed K, prospective C=L_U+0.1K has the same ordering as L_U; a change to a name called memory_cost is not a measured change in collected native K. This algebra does not retrospectively adopt C for the old pilot or show that K is constant across all possible institutions.",
+  "world_level_utility_optimality_proved": false,
+  "world_level_resource_optimality_proved": false,
+  "critic_opinions_are_scientific_truth": false,
+  "native_world_replaced_by_arithmetic": false,
+  "historical_losses_or_selections_changed": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false
+}
