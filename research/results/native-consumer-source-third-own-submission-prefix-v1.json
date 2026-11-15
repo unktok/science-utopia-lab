@@ -1,0 +1,182 @@
+{
+  "schema": "scienceutopia.native-consumer-source-third-own-submission-prefix.v1",
+  "recorded_utc": "2026-11-15T23:38:54.717342+00:00",
+  "classification": "actual-original-authored-submission-and-native-wire-prefix-not-completed-outcome",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "original_writer_handle": 15471,
+  "writer_pid": 11821,
+  "arm": "interface-only",
+  "objective": "resource-aware-content",
+  "generation": 0,
+  "request_sha256": "3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c",
+  "suggestion_id": "native-adaptive-4cad5bce2111e3de30f4846d",
+  "generated": true,
+  "compiled": true,
+  "generation_error": null,
+  "candidate_sha256": "a20915e0bf40418c43c26573ba86e915e688571b9785cdd5ae1317b6e59730ba",
+  "candidate_matches_installed_system": true,
+  "installed_system_file_sha256": "2f23383c535b654903edbe732d58f40ddd574ec533e25b1511b56294a2949bff",
+  "steps": [
+    {
+      "step": 0,
+      "status": "applied",
+      "tool": "plan",
+      "filename": null,
+      "errors": [],
+      "original_file_sha256": "880c9ad30da50194958268c8df4f587660168b1dd8a2ca0ef9d0c5e55b6556af"
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "6fb687e17b89bf3a2a7efc00b5eeffe4c590eb4630e92f79fe5cc83e8889bce9"
+    },
+    {
+      "step": 2,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "6a16778a86f4ff0ad15ff809bacbb72a8bd22b8bd42e7490288e6c5087d74a18"
+    },
+    {
+      "step": 3,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "dfa301e793be234c36a54ea31fb87baad521139f763f4d189c74df9c43d6d42c"
+    },
+    {
+      "step": 4,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "ad1b4c51d2ade91d300198a125332e6e965555fd24332d0b5d1fd1c27353d7ad"
+    },
+    {
+      "step": 5,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "9cfb0f74085cd486dc888e71e17705e6bc7cb301eba7c19e9ec05a0891504395"
+    },
+    {
+      "step": 6,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "8a3df8d4cfbfecacb8a8f76dd41c6200ab26d5dde9bc66052a91dfdd48eaa715"
+    },
+    {
+      "step": 7,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "10c4f2166faa282bd024cc27ee692133900bb6cecbe71832a04be933f786e58d"
+    },
+    {
+      "step": 8,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "6f1cb43ce9809de1c97f7319511230192384d6ae35b41e53b407a882d4e5245e"
+    },
+    {
+      "step": 9,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "afdffeddc3e85fbbe2b750e74933bcb9c613a2ab4b174ab690ed542a372052d2"
+    },
+    {
+      "step": 10,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "5e527716885ed49bb980699fb63f3d5d011f361847a7b496ae52c74feed553a1"
+    },
+    {
+      "step": 11,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "3643e7f5dcab3a3b508ebac7ac2a249880004d727938238ce5551ba94e84452b"
+    },
+    {
+      "step": 12,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/world.selection.py",
+      "errors": [],
+      "original_file_sha256": "25d74334460ba74d6295df3d9331e1958a6c93beec7b639d187db4487ece8ada"
+    },
+    {
+      "step": 13,
+      "status": "finished",
+      "tool": "finish",
+      "filename": null,
+      "errors": [],
+      "original_file_sha256": "6b0b2fea71446120c8299b4c417b7cb4ffaba848904afb9bfa6dccc63802f8d5"
+    }
+  ],
+  "chronological_completed_author_steps": 14,
+  "step_count_is_physical_POST_total": false,
+  "all_retained_step_errors_empty": true,
+  "graph_from_parent": {
+    "phase_updates": {},
+    "removed_connections": [],
+    "added_connections": [],
+    "source_parameters_nodes_unchanged": false,
+    "added_nodes": {},
+    "removed_nodes": {},
+    "changed_mechanisms": {
+      "world.selection": {
+        "before_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+        "after_sha256": "648cf2c966f145a0406b180589f4d28e5783fe5abb117adb2519e521fa4df750",
+        "changed_fields": [
+          "parameters"
+        ]
+      }
+    },
+    "source_edits": {
+      "world.selection": {
+        "before_source_utf8_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6",
+        "after_source_utf8_sha256": "c39bf3a4a8bd4f7c881e0d9a91e7dd2026386078f15aa20c20a67f9999d07b00"
+      }
+    },
+    "changed_system_fields": {},
+    "added_schedules": {},
+    "removed_schedules": {}
+  },
+  "changed_sources_AST_diagnostic": {
+    "world.selection": {
+      "source_bytes_equal": false,
+      "parsed_AST_equal_without_attributes": true
+    }
+  },
+  "scientist_wire_requests_at_snapshot": 67,
+  "wire_count_scope": "Literal observed request prefix; not total responses or final charged calls",
+  "checkpoint_filenames_at_snapshot": [
+    "portable_checkpoint_year_0.json.gz",
+    "portable_checkpoint_year_1.json.gz"
+  ],
+  "assigned_loss_at_snapshot": null,
+  "outcome_status_at_snapshot": "pending",
+  "whole_study_closed": false,
+  "new_model_calls_by_observation": 0,
+  "new_generated_code_executions_by_observation": 0,
+  "settings_changed": false,
+  "scope": "A submitted/compiled candidate has an identical installed SystemSpec and actual native scientist requests. This is not an operative-effect, loss-improvement, completed world or original cold-audit claim."
+}

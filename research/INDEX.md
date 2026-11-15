@@ -13,8 +13,8 @@ This page is navigation, not a chronological experiment transcript.
   hand comparator stays withheld. [First own U outcome](results/native-consumer-source-first-own-outcome-prefix-v1.json)
   and [second own C outcome](results/native-consumer-source-second-own-outcome-prefix-v1.json)
   complete and tie the strong parent;2/8 own slots complete, with no own gain
-  or whole-study closure yet. The next original interface-only/C slot passes readiness
-  and enters optimization. [Their complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
+  or whole-study closure yet. The [third original slot submits and reaches native scientist requests](results/native-consumer-source-third-own-submission-prefix-v1.json),
+  with its outcome pending. [The first two complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
   distinguish ordinary early finish and baseline recovery from an observed editor error.
   [Public software proof and19 checks](results/native-consumer-source-comparison-software-v1.json)
   are separate SCRIPTED evidence. [Prepared figure data](components/native-consumer-source-figures-v1.md)
@@ -117,6 +117,11 @@ This page is navigation, not a chronological experiment transcript.
   Dated snapshots there retain their observation times; use STATUS for current counts.
 
 ## Manuscript and evidence
+
+- [Search-method primary-source check and next-comparison boundary](publication/native-search-method-controls-source-review-v1.md):
+  FunSearch/AlphaEvolve/ShinkaEvolve are prior art for evaluated program search.
+  Parent sampling is distinct from retaining history or exposing consumer source;
+  no new method study, novelty veto or completed manuscript build is claimed.
 
 - [Paper entry point](../paper/README.md): latest reviewed100-page working PDF,
   source-bound receipt and all-page visual review. Its source-only subset rebuild

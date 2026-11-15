@@ -14,7 +14,7 @@ is development-informed, not a blind independent method comparison.
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
 | Own-system optimization | [Interface-only / U / g0 completes](results/native-consumer-source-first-own-outcome-prefix-v1.json) at-28.6667; [literal-consumers / C / g0 completes](results/native-consumer-source-second-own-outcome-prefix-v1.json) at-8.6667. Both tie their strong parent;2/8 own slots complete |
-| Next original slot | Interface-only / C / g0 passes readiness and enters optimization at23:26:03UTC November15 (08:26:03JST November16); not another dispatched study |
+| Next original slot | [Interface-only / C / g0 submits](results/native-consumer-source-third-own-submission-prefix-v1.json) after14 steps, compiles and enters an actual native scientist world; its outcome is pending |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -48,6 +48,17 @@ are untrusted author statements, not proof of optimum. Reported prompt maxima
 are38,437/45,935 with stop termination, not evidence that future frames fit or
 that the model understands every consumer. This localizes the observed lack of
 change without proving the editor bug-free or identifying a causal reason.
+
+The third candidate changes world.selection source with a matching parsed AST;
+the installed SystemSpec equals its submitted candidate. Scientist requests
+are actually observed, not inferred from an empty job directory. This prefix
+does not establish its final loss or a global behavioral equivalence.
+
+A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
+and integrated related-work/bibliography amendment distinguish evaluated-history
+retention from program-pool parent sampling. This is unbuilt manuscript source
+and a prospective comparison boundary, not a newly dispatched method study.
+The reviewed100-page PDF and its receipt remain unchanged.
 
 [Low-disk archive](results/native-consumer-closed-checkout-archive-v1.json):
 after an observation near260MiB free,16 completed clean code copies are

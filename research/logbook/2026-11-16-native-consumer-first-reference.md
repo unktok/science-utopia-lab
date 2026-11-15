@@ -202,3 +202,37 @@ extra candidate, revised prompt or changed objective follows from this prefix.
 The third original slot passes its exact-request readiness and progress enters
 optimization at23:26:03.886797UTC November15 (08:26:03JST November16). The finite
 original loop, paired-audit/cost wait and readout wait continue unchanged.
+
+## Third actual submission and lightweight prior-method review
+
+The [third submission prefix](../results/native-consumer-source-third-own-submission-prefix-v1.json)
+retains14 chronological completed steps, ordinary finish, generated/compiled
+definition and the identical installed SystemSpec. The only final source edit
+is world.selection; its parsed AST matches the parent. No node, wire, schedule
+or phase changes. The native cell has67 actual scientist requests at retention
+and saved year0/year1 checkpoints, rather than merely an empty directory. This
+is a prefix, not67 completed/charged calls, a final outcome or a gain. Original
+writer11821 and audit/cost11949/readout11967 are confirmed live; frozen scientific
+source remains clean. The first two outcomes are still the only complete own
+records at this observation. No candidate is repaired/refilled or rejected for
+being unchanged.
+
+While inference continues, a [primary-source method check](../publication/native-search-method-controls-source-review-v1.md)
+inspects versioned AlphaEvolve/ShinkaEvolve methods and FunSearch's accessible
+author description/repository. Nature's landing-page access failure is recorded,
+not described as full-text inspection. The integrated discussion and bibliography
+now acknowledge evaluated program pools, archive/parent sampling and novelty
+rejection as prior art. None is installed, benchmarked or silently imported as
+a novelty veto. A prospective method comparison is a distinct question from
+the current information package and needs a separate finite, immutable design
+after this original pilot closes. The present amendment supplies no superiority
+claim, new experiment or causal explanation of the first two author's choices.
+
+Light source checks resolve all3 added citation keys, find39 unique bibliography
+entries and31 discussion citation keys, and check literal bibliography brace
+balance. This is not a TeX/BibTeX build or visual verification. The documentation
+checker passes25 documents/585 local links/6 snapshots before the final new
+prefix links; the final navigation check is run again before commit. No model,
+native world, generated code, Docker QA, PDF build or render is invoked by
+these source checks. The reviewed100-page PDF and frozen receipt remain unchanged;
+its29-reference count must not be relabelled as containing the3 new citations.
