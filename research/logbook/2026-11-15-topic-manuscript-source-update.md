@@ -38,3 +38,11 @@ not edited. After actual free-study closure, finish paired readouts, interpret
 all six proposals/nulls and actual behaviors, then integrate those results
 and build/inspect the current working paper. R2/R3/R5/R6 remain open; a new
 unbuilt section and source tests do not complete publication readiness.
+
+At16:03:16UTC the original writer advances to throughput g0 optimization.
+Its actual fresh certificate passes28 controls (content4fd01e1a), completed
+epoch1794758592.526788. The [first actual own provider dispatch](../results/native-topic-free-first-own-dispatch-v1.json)
+records16:03:24UTC/01:03:24JST, with literal10/900-second transport allowance
+and zero retries. This is actual free authoring after the two fresh references,
+not merely another directed calibration. No received own submission, native
+outcome or loss gain is claimed at dispatch; the original writer continues.

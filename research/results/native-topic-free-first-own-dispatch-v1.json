@@ -1,0 +1,27 @@
+{
+  "schema": "scienceutopia.native-topic-free-first-own-dispatch.v1",
+  "scientific_source_commit": "48e1d268c49960d1387e5d54362b38d1a180127d",
+  "original_writer_session": 94527,
+  "original_writer_pid": 14919,
+  "objective": "throughput",
+  "generation": 0,
+  "request_sha256": "50853a47265a5941d209ef2f882567be9c2024d172d299c7f85174b27cdecbdc",
+  "fresh_certificate": {
+    "schema": "scienceutopia.designer-interface-certificate.v16",
+    "content_sha256": "4fd01e1a041d4d1c4ac61116b2e1f428f16e003842e32d557493eb7f4a808623",
+    "all_controls_passed": true,
+    "records": 28,
+    "completed_epoch": 1794758592.526788
+  },
+  "actual_first_own_provider_wire_intent": {
+    "schema": "scienceutopia.bounded-staged-designer.v1.wire-intent",
+    "content_sha256": "0ac2124fec2db837d878e436e3f3d150ee810971ecae9d0974045429a915a1f1",
+    "started_utc": "2026-11-15T16:03:24.121456+00:00",
+    "timeout_seconds": [10, 900],
+    "retries": 0
+  },
+  "scope": "The original fixed-source writer passes fresh request-bound directed readiness and records its actual first own author provider dispatch. Not a received proposal, native execution, measured loss, whole-study closure or demonstration of free-design capacity/useful invention. No source, conditions, losses or finite slot budget changed.",
+  "study_closed": false,
+  "own_native_outcome_demonstrated": false,
+  "publication_ready": false
+}

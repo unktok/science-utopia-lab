@@ -112,6 +112,12 @@ passes9 checks in4.79s; the earlier incorrectly nested-environment test failure
 is preserved. No TeX build, PDF render or visual review is claimed; the reviewed
 91-page artifact and all old receipts retain their original bytes.
 
+At16:03:16UTC the original writer enters throughput g0 optimization after
+passing a new28-control request-bound certificate. Its [actual first own
+provider wire dispatch](results/native-topic-free-first-own-dispatch-v1.json)
+starts16:03:24UTC/01:03:24JST with10/900-second allowance and zero retries.
+This is free authoring, not a completed proposal/native outcome or loss gain.
+
 ### Normally closed same-authority developer controls (v5)
 
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)
