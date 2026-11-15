@@ -41,7 +41,7 @@ def test_new_hand_control_table_matches_retained_real_results_not_free_invention
     assert 'sixteen\none-year and two two-year projects' in text
     assert '40/3' in text and 'No designer generates a policy.' in text
     assert 'not an automatically invented institution' in text
-    assert 'first full scientist request already differs at index0' in text
+    assert 'first full scientist request already differs at index 0' in text
 
 
 def test_declared_objective_and_closed_execution_are_not_retroactive_or_ready_claims():
@@ -86,8 +86,8 @@ def test_complete_study_frozen_selection_role_costs_and_real_figures_match_reten
     text=' '.join((ROOT/SECTION).read_text().split())
     assert r['consumed_own_slots']==6 and r['complete_own_worlds']==5 and r['runtime_nulls']==1
     assert not r['baseline_fallback']and not r['held_out_evaluation']
-    for phrase in ('T0 (also tied with T1), U1 and C1','81 actual charged proposal POSTs,199 readiness POSTs',
-        '19 applied file writes and56 component probes','3h19m28.15s','2,124 raw files',
+    for phrase in ('T0 (also tied with T1), U1 and C1','81 actual charged proposal POSTs, 199 readiness POSTs',
+        '19 applied file writes and 56 component probes','3h19m28.15s','2,124 raw files',
         'No new unused condition has been evaluated','conditional incompatibility, not a failed observed world',
         'reference-inclusive incumbent is flat'):
         assert phrase in text
@@ -105,9 +105,9 @@ def test_conditional_diagnostics_and_prepared_control_are_not_new_scientific_run
     assert [(v['positive'],v['zero'],v['negative'])for v in r['rows']]==[(15,5,0),(30,6,0)]
     assert not r['world_level_utility_optimality_proved']
     for phrase in ('B_{\\mathrm{calendar}}','(2,2,2,2,2)','(1,1,2,1,1)',
-        'not a global bound','not32 or64 native worlds','46/3','86/3',
+        'not a global bound','not 32 or 64 native worlds','46/3','86/3',
         'conditional forecast','K=160'):
         assert phrase in text
     prep=json.loads((ROOT/'research/results/native-terminal-cost-opportunity-preparation-v1.json').read_text())
     assert prep['new_native_worlds']==0 and not prep['conditional_forecast']['observed_native_world_improvement']
-    assert 'collection avoidance' in text and 'not automatic local35B invention' in text
+    assert 'collection avoidance' in text and 'not automatic local 35B invention' in text
