@@ -182,6 +182,10 @@ def build_active_prompt(request, state, steps, *, image_id, binding_sha256, sett
             'scope':'Common declared developer evidence, not an extra objective or automatic parent selection.'}
     if 'design_space' in request:
         view['declared_benchmark_design_space'] = clone(request['design_space'])
+    from .native_consumer_evidence_v1 import in_request
+    consumer_evidence = in_request(request, conversation_profile=settings['conversation_profile'])
+    if consumer_evidence is not None:
+        view['literal_native_consumer_source_evidence'] = consumer_evidence
     from .native_post_edit_feedback_v1 import OPTION, persistent_diagnostics
     if OPTION in request.get('strategy_provenance',{}):
         # The single previous-action pane can otherwise hide the last code

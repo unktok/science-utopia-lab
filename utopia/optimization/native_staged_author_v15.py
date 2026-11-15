@@ -429,6 +429,7 @@ def protocol_binding():
         'recovery_source_sha256': hashlib.sha256(Path(native_authoring_recovery_v44.__file__).read_bytes()).hexdigest(),
         'bounded_context_source_sha256': hashlib.sha256(Path(native_bounded_author_context_v45.__file__).read_bytes()).hexdigest(),
         'parent_evidence_source_sha256': hashlib.sha256(Path(native_parent_evidence_v46.__file__).read_bytes()).hexdigest(),
+        'consumer_evidence_source_sha256': hashlib.sha256(Path(__file__).with_name('native_consumer_evidence_v1.py').read_bytes()).hexdigest(),
         'post_edit_feedback_source_sha256': hashlib.sha256(Path(__file__).with_name('native_post_edit_feedback_v1.py').read_bytes()).hexdigest(),
         'component_lab_source_sha256': hashlib.sha256(Path(__file__).with_name('native_component_lab_v1.py').read_bytes()).hexdigest(),
         'initial_evidence_source_sha256': hashlib.sha256(Path(native_initial_evidence.__file__).read_bytes()).hexdigest(),
@@ -1468,6 +1469,8 @@ class StagedVocabularyGenerator:
             raise ValueError('staged author protocol source/schema changed after construction')
         from .native_parent_evidence_v46 import enabled
         enabled(request, conversation_profile=self.conversation_profile)
+        from .native_consumer_evidence_v1 import in_request
+        in_request(request, conversation_profile=self.conversation_profile)
         provenance=request.get('strategy_provenance') or {}
         declared=provenance.get('post_edit_component_contract') if isinstance(provenance,dict) else None
         configured=self.settings.get('post_edit_component_tests')

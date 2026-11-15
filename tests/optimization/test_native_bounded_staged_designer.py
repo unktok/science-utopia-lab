@@ -202,7 +202,7 @@ def test_actual_calibration_worker_declares_feedback_without_executing_component
 @pytest.mark.parametrize('outer_boundary',[False,True])
 @pytest.mark.parametrize('tensor_delivery',[False,True])
 @pytest.mark.parametrize('project_delivery',[False,True])
-def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch,extended,outer_boundary,tensor_delivery,project_delivery):
+def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch,extended,outer_boundary,tensor_delivery,project_delivery,consumer_evidence=False):
     # No mocked certificate summary or model class: actual role/factory/transport
     # implementations, with an explicitly scripted HTTP server and executor.
     from tests.optimization.test_native_post_edit_feedback_v1 import fixture,source_action,BAD,GOOD,finish
@@ -215,6 +215,14 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
     options={'extended':True,'reference':'resource-30-connected','maximum_probes':64} if extended else {}
     gen,unused,body,probes=fixture(tmp_path/'fixture',[finish()],tensor_delivery=tensor_delivery,
         project_delivery=project_delivery,**options)
+    if consumer_evidence:
+        from utopia.optimization.native_consumer_evidence_v1 import material, ROOT, OPTION
+        # Metadata/runtime pin is explicitly SCRIPTED in this generic worker
+        # fixture. The separate evidence test uses a real Git commit and drift.
+        pack={**material(ROOT),'source_commit':'c'*40}
+        pack['content_sha256']=module.digest(pack)
+        body['strategy_provenance'][OPTION]=pack
+        body.setdefault('world_binding',{})['source_commit']='c'*40
     if extended:
         body['developer_reference_context']={'summary':[{'reference':'SCRIPTED common strong reference','loss':-17.25}]}
     binding=designer_binding();binding['image_id']=gen.image_id
@@ -285,3 +293,13 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
     assert replay_staged_generation(directory)==result
     if outer_boundary:assert module.replay(tmp_path/'outer-proposal')==result
     assert len(Session.production)==expected_calls and len(probes)==expected_probes
+    if consumer_evidence:
+        assert all('literal_native_consumer_source_evidence' in json.dumps(payload) for payload in Session.production)
+        assert all(pack['cards'][0]['literal_source'] not in payload['messages'][0]['content'] for payload in Session.production)
+        assert any('literal_native_consumer_source_evidence' in json.dumps(payload) for payload in Session.calls)
+
+
+def test_native_consumer_evidence_survives_actual_calibration_worker_role_feedback_and_outer_replay(tmp_path,monkeypatch):
+    test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(
+        tmp_path,monkeypatch,extended=True,outer_boundary=True,tensor_delivery=False,
+        project_delivery=False,consumer_evidence=True)
