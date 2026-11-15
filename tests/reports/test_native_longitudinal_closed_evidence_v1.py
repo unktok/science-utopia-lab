@@ -97,3 +97,31 @@ def test_observed_loss_frontier_is_finite_support_not_a_global_optimum():
     assert all(rows == [hand] for rows in value['per_objective_measured_minima'].values())
     assert not value['loss_or_selection_changed']
     assert value['new_model_calls'] == value['new_code_executions'] == 0
+
+
+def test_actual_first_planning_frames_advertise_more_than_selection_without_proving_model_understanding():
+    value = read(ROOT / 'research/results/native-longitudinal-first-frame-scope-v1.json')
+    assert value['first_planning_frames'] == len(value['sessions']) == 12
+    assert value['literal_system_prompt_classes'] == 1
+    for field in ('system_prompt', 'user_footer'):
+        body = (ROOT / value[field + '_file']).read_bytes()
+        assert hashlib.sha256(body).hexdigest() == value[field + '_file_sha256']
+    assert {r['generation'] for r in value['sessions']} == {0, 1, 2}
+    assert len({r['history_directory'] for r in value['sessions']}) == 4
+    assert all(r['declared_space_equals_original_plan'] and r['new_node_append_advertised']
+        and r['whole_draft_and_wiring_files_advertised'] for r in value['sessions'])
+    assert all(len(r['fixture_node_counts']) == 5 and set(r['fixture_node_counts'].values()) == {4}
+        and not r['auto_fixture_failure_veto'] for r in value['sessions'])
+    assert value['first_planning_call_only']
+    assert not value['fixture_support_is_selection_only']
+    assert not value['causal_reason_for_edit_concentration_proved'] and not value['model_understanding_proved']
+    assert not value['old_prompt_or_loss_changed']
+    assert value['new_model_calls'] == value['new_code_executions'] == 0
+
+
+def test_future_generic_author_capabilities_defer_to_the_actual_study_contract():
+    from utopia.optimization.native_staged_author_v15 import FILE_EDITOR_INSTRUCTIONS
+    assert 'Within the supplied design-space contract' in FILE_EDITOR_INSTRUCTIONS
+    assert 'Generic capabilities do not override that contract' in FILE_EDITOR_INSTRUCTIONS
+    assert 'editable wherever the contract permits' in FILE_EDITOR_INSTRUCTIONS
+    assert 'There is no additional fairness, novelty, quality or adoption objective' in FILE_EDITOR_INSTRUCTIONS

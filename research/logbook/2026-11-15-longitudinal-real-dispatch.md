@@ -1010,3 +1010,41 @@ Twelve lightweight retained-evidence/navigation checks pass in0.75s; the
 documentation checker passes25 documents/416 links/six historical snapshots.
 No PDF render, independent heavy QA, new scientific measurement or new model
 call is performed by these analyses while fixed inference remains active.
+
+## Later read-only inspection of actual first planning frames
+
+During the separate original-choice pilot, the completed twelve-slot run is
+read without changing its raw files. All12 original first planning wire records
+contain the same11,193-character system prompt, SHA256
+`6c20858d558da6c83222cfe804de47b1a5343c9fda3d80fafc5c091cc193b5dd`.
+Every supplied declared design space equals the original plan and advertises
+code-and-graph edits, whole-system/connection/schedule draft files and complete
+new-node appends. Actual workspace indexes also expose catalog, liquidity,
+information-office and selection sources. Component testing is not limited to
+selection: all12 frames advertise five node suites with four recorded years
+each. This does not support the hypothesis that an initial selection-only
+instruction or selection-only fixtures forced the observed edit concentration.
+It does not prove later-turn permissions, model understanding or its cause.
+
+The [sealed first-frame record](../results/native-longitudinal-first-frame-scope-v1.json)
+binds all12 literal intent/wire files, frame scopes, indexes and fixture counts.
+The exact shared system text and user footer are retained as inert data under
+`research/data/native-longitudinal-first-frame-scope-v1/`. The user frame consists
+of a JSON value followed by a literal task footer; the initial full-string JSON
+inspection rejected that extra footer before raw_decode explicitly separated
+both recorded portions. No scientific JSON, prompt or response is repaired.
+
+One real wording ambiguity remains: the generic capability sentence advertises
+initial-state editing, while the actual native study's supplied design-space
+contract fixes initial state/effects. The future generic editor instructions
+now explicitly defer to the supplied contract. This adds no runtime restriction,
+loss term, scientific-merit veto or host repair, and does not narrow unrestricted
+contracts. Neither historical prompts nor sourcea5be8d31, the active pilot566f2c91,
+its analysis0f098a40 or waiting readers4f34b81d is modified. New wording needs
+fresh prospective source/frame/calibration binding before another real author
+study; old certificates are not relabeled. It is not a demonstrated explanation
+for the past nulls or a measured improvement of the inventor.
+
+Thirteen lightweight closed-evidence/file-editor checks pass in1.75s, including
+exact retained prompt/footer identities and scoped-author wording. No full
+native QA or real designer call accompanies the active scientist inference.

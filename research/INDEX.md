@@ -38,6 +38,9 @@ This page is navigation, not a chronological experiment transcript.
   observed-path equality in the first four own worlds, not global program equivalence.
 - [First actual own-feedback wire](logbook/2026-11-15-first-own-feedback-wire.md):
   sent evidence, submitted edits and native outcomes are different claims.
+- [Actual first planning-frame scope](results/native-longitudinal-first-frame-scope-v1.json):
+  all12 initial instructions advertise broader code/graph edits and five fixture
+  suites; not proof of model understanding or a causal explanation of edit concentration.
 - [Native choice-support screen](publication/native-actionable-choice-support-v1.md):
   direct assignment versus legacy topic choices; duration arithmetic is not a feasible policy.
 - [Primary-source manuscript update](logbook/2026-11-15-manuscript-positioning-source-update.md):

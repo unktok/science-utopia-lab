@@ -327,8 +327,12 @@ ABI_CONTRACT = (CODE_CONTRACT_LAYOUT + '\n\n' + STAGE_PARAMETER_RULE
     .rsplit('Read the actual parent', 1)[0])
 
 FILE_EDITOR_INSTRUCTIONS = """Design the scientific SYSTEM to minimize loss_arithmetic.
-Researcher weights stay fixed. You may author arbitrary Python, institutions,
+Researcher weights stay fixed. Within the supplied design-space contract,
+you may author arbitrary Python, institutions,
 parameters, protocols, nodes, wiring, schedules, initial state and processes.
+Generic capabilities do not override that contract: when an experiment fixes
+initial state or native effect contracts, preserve them. Other institutional
+code, nodes, wiring and schedules remain editable wherever the contract permits.
 There is no additional fairness, novelty, quality or adoption objective.
 Keeping the parent explicitly is legal, not a new institutional invention.
 Never fabricate a measured result or claim that static validity measures loss.

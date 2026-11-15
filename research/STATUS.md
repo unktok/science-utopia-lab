@@ -18,10 +18,13 @@ T=-20/U=-15.333333333333332; original-source cold confirmation still waits for
 whole-study closure. The [literal prefix and continuation bindings](results/native-legacy-choice-pilot-prefix-v1.json)
 retain that observation and all four downstream chains. No complete-study
 or optimizer-improvement result is claimed from this first control.
+Subsequently `native-choice` completes at T=-14/U=-10, and the writer enters
+`native-choice-advice` at07:02:22UTC. Two controls are measured; only the advice
+outcome remains pending, and the complete original-source audit is not yet closed.
 It compares direct core assignment, original native choice and code-authored
 advice with unchanged T/U, four-year world and Qwen3-8B scientists. This is a
 reused-development-seed hand-control feasibility study, not optimization,
-automatic invention or unused evaluation. The other two outcomes are not complete.
+automatic invention or unused evaluation. The complete comparison is not yet available.
 The [actual public-path software proof](results/native-legacy-choice-pilot-software-retention-v1.json)
 binds three original SOFTWARE worlds, installed SDK/HTTPX900/zero-retry headers,
 two cold audits and two matching cost projections. Historical setup/permission
