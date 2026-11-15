@@ -118,7 +118,7 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
                 assert ('literal_native_consumer_source_evidence' in data)==has_source
                 if has_source:
                     assert data['literal_native_consumer_source_evidence']==req['strategy_provenance'][OPTION]
-                assert [v['suggestion']['suggestion_id'] for v in req['developer_reference_context']['pairs']]==[
+                assert [v['reference'] for v in req['developer_reference_context']['summary']]==[
                     'workflow-reference-core-only','workflow-reference-core-plus-related']
                 assert 'terminal-consolidation' not in json.dumps(req)
             original=next(n['parameters']['code_artifact']['source'] for n in req['parent_system']['mechanisms']
