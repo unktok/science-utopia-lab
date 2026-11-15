@@ -12,8 +12,10 @@ This page is navigation, not a chronological experiment transcript.
   and two own native results complete. [Throughput g0](results/native-topic-free-first-own-outcome-v1.json)
   ties its strong parent on all three losses and179 full scientist inputs/choices.
   [Content-utility g0](results/native-topic-free-first-utility-outcome-v1.json) changes source
-  but reproduces the weaker core-only127-request path and losses. Own2/6 are
-  complete; resource-aware content g0 readiness starts01:55JST. Remaining slots
+  but reproduces the weaker core-only127-request path and losses. [Resource-aware
+  g0 fails on ineligible two-hop topics; g1 ties its strong parent](results/native-topic-free-first-resource-outcomes-v1.json).
+  At02:38JST4/6 own slots are consumed:3 complete native outcomes and1 runtime
+  null. Content-utility g1 readiness starts; remaining slots
   are not completed or improved. Exact [first author trace](results/native-topic-free-first-own-submission-v1.json)
   and [SCRIPTED full public software proof](results/native-topic-free-public-software-retention-v1.json)
   stay separate. [Prepared three-objective readouts](components/native-topic-free-readouts-v1.md)
@@ -23,6 +25,10 @@ This page is navigation, not a chronological experiment transcript.
   [Calendar capacity](components/native-topic-calendar-envelope-v1.md) and
   [fixed-record headroom/evidence decision](publication/native-topic-objective-headroom-and-next-evidence-v1.md)
   are conditional diagnostics, not a replacement world or global optimum.
+  [Optional project-field feedback](components/native-project-delivery-feedback-v1.md)
+  and [terminal-cost opportunity preparation](publication/native-terminal-cost-opportunity-proposal-v1.md)
+  are separate prospective software/control preparation, not new active conditions
+  or observed scientific improvements.
 
 - [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):

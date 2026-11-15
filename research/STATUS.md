@@ -1,5 +1,26 @@
 # Current research status
 
+## Latest recorded execution stage — November16 02:38:13JST
+
+The original writer consumes4/6 own slots:3 complete native outcomes and1
+runtime null. [Resource-aware C0/C1](results/native-topic-free-first-resource-outcomes-v1.json)
+respectively fail on two-hop topic support and tie the strong parent on all
+three losses/K200. The failure is not changed canonical content/duration;
+four actual first-year assignments are outside original actor one-hop support.
+C1 source differs only in continuation indentation, with an equal AST, not
+a useful new rule. The original proceeds to content-utility g1 readiness.
+Whole-study paired cold/cost/readout closure is pending. No active condition
+is changed, failure replaced or gain established. Older snapshots below retain
+their observation times rather than current heartbeats.
+
+Separate [optional field feedback](components/native-project-delivery-feedback-v1.md)
+has55 light SCRIPTED/pure-validator tests, but its full public path and real
+usefulness are pending. [A developer terminal-cost control](publication/native-terminal-cost-opportunity-proposal-v1.md)
+has static/isolated-native-primitive checks only; forecasted collected-cost
+avoidance is not a new native-world improvement. Neither is injected into
+current science. Independent evidence, current verified manuscript and honest
+submission decision remain open; publication readiness is not established.
+
 ## Latest recorded execution stage — November16 01:55:37JST
 
 Original free-system writer14919 is rechecked live at16:56UTC/01:56JST, with
