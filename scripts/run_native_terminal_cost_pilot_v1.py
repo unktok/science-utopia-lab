@@ -28,10 +28,18 @@ read, save, utc = topic.read, topic.save, topic.utc
 additional_from_checkpoints = topic.additional_from_checkpoints
 
 
-def native_sources(original):
+def native_sources(original, *, source_root=None):
     # Exact versioned adapters already present in the original-topic free study;
     # original scientist/effect files outside them remain byte-identical.
-    return free.native_sources(original, pinned_revision(ROOT))
+    source = pinned_revision(ROOT)
+    adapters = {path: {'source_commit': topic.ADAPTER_SOURCE, 'role': role}
+                for path, role in topic.ADAPTERS.items()}
+    adapters.update({path: {'source_commit': source, 'role': role}
+                     for path, role in free.AUTHOR_ADAPTERS.items()})
+    adapters['utopia/optimization/native_post_edit_feedback_v1.py'] = {
+        'source_commit': source,
+        'role': 'Later optional project-field diagnostic; no designer or component bank in this hand-control study'}
+    return topic.base.workflow.native_sources(original, adapters=adapters, source_root=source_root)
 
 
 def build_plan(original, audit, fixed, *, source, origin, observer_backend, original_sources):

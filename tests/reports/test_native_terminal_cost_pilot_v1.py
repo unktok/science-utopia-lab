@@ -47,3 +47,26 @@ def test_matching_explicit_interval_and_finite_original_finish_chain(monkeypatch
     assert captured['writer_command'] == 'scripts.run_native_terminal_cost_pilot_v1 run'
     with pytest.raises(ValueError, match='reused development'):
         driver.interval({}, None, [], 42)
+
+
+def test_real_original_source_binding_includes_later_optional_diagnostic_without_changing_native_laws(tmp_path):
+    import subprocess
+    # Actual immutable Git source, not the SCRIPTED upstream substitute used by
+    # public software worlds. No institution source is executed here.
+    source = driver.pinned_revision(driver.ROOT)
+    archive = subprocess.check_output(['git', 'archive', source, 'utopia',
+        'scripts/run_native_objective_instrument_loop_v1.py',
+        'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'], cwd=driver.ROOT)
+    subprocess.run(['tar', '-xf', '-', '-C', str(tmp_path)], input=archive, check=True)
+    original = 'a5be8d3103854368a4bc6ba4c13eff7552e9dd15'
+    r = driver.native_sources(original, source_root=tmp_path)
+    assert not r['global_semantic_equivalence_claimed']
+    diagnostic = r['explicit_native_adapters']['utopia/optimization/native_post_edit_feedback_v1.py']
+    assert diagnostic['source_commit'] == source
+    assert 'utopia/simulation.py' in r['literal_files']
+    assert 'utopia/agents/base_agent.py' in r['literal_files']
+    # Explicit adapter registration is not a blanket acceptance of changed laws.
+    target = tmp_path / 'utopia/simulation.py'
+    target.write_text(target.read_text() + '\n# SCRIPTED unauthorized native-law byte change\n')
+    with pytest.raises(ValueError, match='original scientist/effect source differs: utopia/simulation.py'):
+        driver.native_sources(original, source_root=tmp_path)

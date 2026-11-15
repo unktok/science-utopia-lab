@@ -61,6 +61,9 @@ be redispatched. Use a clean pinned scientific worktree and separate reader
 source. Explicit versioned source adapters bind the existing new action/domain/
 author-interface files; all other original native scientist/effect files remain
 literal. No old directed certificate is relabelled as a new designer pass.
+The later optional project-field-feedback module is explicitly source-bound
+too; this hand study instantiates no designer or component bank and does not
+enable that diagnostic. Its registration does not allow changed native laws.
 
 Before real dispatch exercise public prepare/run, actual SDK timeout/body,
 sandboxed authored source, original native transfers/costs/ledgers, v5 witnesses,
