@@ -7,6 +7,14 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Subsequent00:02:50UTC observation: fourth parent-trajectory T0 request readiness
+passes and original82259 advances to free authoring. Three own outcomes remain
+complete, all tying R7. The next manuscript source now cites SciMARS and narrows
+priority/comparison claims;12 lightweight source checks pass, with all29 cited
+identities in a new chain preserving old audit hashes. No new PDF is built or
+reviewed; the latest verified85-page artifact remains unchanged.
+[Source-only update and boundary](logbook/2026-11-15-manuscript-positioning-source-update.md).
+
 Latest observed prefix at23:54UTC: three of12 own slots complete. Scalar U0
 returns T=-18/U=-13.333333333333332 with no technical world failures. Its
 submitted system is literally the R7 parent, after14 charged steps, zero probes,

@@ -1,0 +1,54 @@
+{
+  "schema": "scienceutopia.manuscript-bibliographic-identity-audit.v3",
+  "checked_date_JST": "2026-11-15",
+  "scope": "Extend the preserved v1/v2 identity chain with three primary identities; targeted SciMARS method reading is not a complete re-audit or independent reproduction of cited studies",
+  "prior_audit": "research/results/manuscript-bibliographic-identity-audit-v2.json",
+  "prior_audit_file_sha256": "3a9bd6e04c8cc7b6358dcefc34892a545d8884fce66fbdb279c691e676c543a8",
+  "bibliography_file_sha256": {
+    "paper/references.bib": "bdf8dadece57d657ad84ce0d5f677a1aec5b13aee834cc4db0938f70bd9dc0b3",
+    "paper/submission-sources.bib": "8f1997fd76623e8f36c82b17e9e02324ddbc26c3de2b524c9b0fb53e598b3884"
+  },
+  "additional_primary_records": {
+    "narayanaswami2022programmatic": "https://ala2022.github.io/papers/ALA2022_paper_30.pdf",
+    "el2025inefficiencies": "https://arxiv.org/abs/2510.06711v1",
+    "wu2026scimars": "https://arxiv.org/abs/2611.12552v1"
+  },
+  "checked_fields": ["exact title", "all listed authors", "original preprint or workshop year", "version or official workshop PDF"],
+  "identity_details": {
+    "narayanaswami2022programmatic": {
+      "title": "Automating Mechanism Design with Program Synthesis",
+      "authors": ["Sai Kiran Narayanaswami", "Swarat Chaudhuri", "Moshe Vardi", "Peter Stone"],
+      "year": 2022,
+      "venue": "Adaptive and Learning Agents Workshop (ALA) at AAMAS, not the AAMAS main track",
+      "checked_location": "official PDF first page title, author block and workshop footer"
+    },
+    "el2025inefficiencies": {
+      "title": "Inefficiencies of Meta Agents for Agent Design",
+      "authors": ["Batu El", "Mert Yuksekgonul", "James Zou"],
+      "year": 2025,
+      "checked_location": "official arXiv v1 abstract record; submitted October8, 2025"
+    },
+    "wu2026scimars": {
+      "title": "SciMARS: Multi-Agent Recursive Self-Improvement for Closed-Loop Scientific Discovery",
+      "authors": ["Weimin Wu", "Han Liu"],
+      "year": 2026,
+      "checked_location": "official arXiv abstract and v1 HTML; submitted November9, 2026"
+    }
+  },
+  "targeted_method_reading": {
+    "url": "https://arxiv.org/html/2611.12552v1",
+    "sections": ["3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "4.2"],
+    "note": "research/publication/native-staged-next-evidence-decision-v1.md",
+    "manuscript_changes": ["paper/integrated/problem-method.tex", "paper/integrated/discussion.tex"],
+    "boundary": "Related scientific harness adaptation, not our matched baseline or reproduction; controller and memory semantics are not inferred from the title alone"
+  },
+  "prior_coverage_gap": "The two already-cited Narayanaswami/El entries were absent from the older v2 exact-coverage list. Their identities are checked now; old audit hashes and build receipts remain unchanged, not backdated or reclassified.",
+  "current_source_citation_count": 29,
+  "latest_reviewed_pdf_citation_count": 28,
+  "new_pdf_built_or_reviewed": false,
+  "all_cited_methods_independently_reproduced": false,
+  "all_related_work_claims_fully_reaudited": false,
+  "new_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "publication_ready": false
+}

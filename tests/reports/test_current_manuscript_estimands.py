@@ -20,13 +20,22 @@ def bodies():
 
 
 def test_current_citations_have_explicit_primary_identity_checks_not_invented_reproduction():
-    audit = json.loads((ROOT/'research/results/manuscript-bibliographic-identity-audit-v2.json').read_text())
-    prior_path = ROOT / audit['prior_audit']
-    assert hashlib.sha256(prior_path.read_bytes()).hexdigest() == audit['prior_audit_file_sha256']
-    prior = json.loads(prior_path.read_text())
+    audit = json.loads((ROOT/'research/results/manuscript-bibliographic-identity-audit-v3.json').read_text())
+    current = audit; records = {}; visited = set()
+    while True:
+        for key,url in current.get('primary_records',current.get('additional_primary_records',{})).items():
+            assert key not in records, 'duplicate identity in audit chain'
+            records[key] = url
+        if 'prior_audit' not in current:
+            break
+        prior_path = (ROOT / current['prior_audit']).resolve()
+        assert prior_path.is_relative_to(ROOT) and prior_path not in visited
+        visited.add(prior_path)
+        assert hashlib.sha256(prior_path.read_bytes()).hexdigest() == current['prior_audit_file_sha256']
+        current = json.loads(prior_path.read_text())
     cited = {k.strip() for t in bodies().values()
         for g in re.findall(r'\\cite\w*\{([^}]+)\}',t) for k in g.split(',')}
-    assert cited == set(prior['primary_records']) | set(audit['additional_primary_records'])
+    assert cited == set(records) and len(cited) == audit['current_source_citation_count']
     for name, digest in audit['bibliography_file_sha256'].items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest() == digest
     assert not audit['all_cited_methods_independently_reproduced']

@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Primary-source positioning, manuscript source only](logbook/2026-11-15-manuscript-positioning-source-update.md):
+  SciMARS is added without a generic harness-revision priority claim or a
+  matched reproduction claim. A v3 identity chain covers all29 current citations;
+  twelve source tests pass. The reviewed85-page/28-citation PDF is unchanged,
+  not a newly built/reviewed manuscript. The running fourth own slot passes
+  request readiness and begins free authoring at00:02:50UTC.
+
 - Latest checked progress: three of12 own slots complete, all tie R7; scalar U0
   explicitly retains its literal parent after charged invalid/rejected actions.
   The fourth slot is in request readiness. [Actual dispatch log](logbook/2026-11-15-longitudinal-real-dispatch.md)

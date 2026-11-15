@@ -86,3 +86,15 @@ def test_reference_absence_correction_is_explicit_and_old_receipt_preserved():
     assert 'AMD-LLM already appears' in note and 'earlier statement' in note
     assert 'both `.bib` files' in note
     assert (ROOT/'paper/integrated-open-institutions-build-v1.json').is_file()
+
+
+def test_scientific_harness_precedent_does_not_become_a_reproduction_or_priority_claim():
+    sources = [(ROOT/'paper'/name).read_text() for name in ('references.bib','submission-sources.bib')]
+    assert sum(body.count('{wu2026scimars,') for body in sources) == 1
+    body = (ROOT/'paper/integrated/discussion.tex').read_text()
+    assert r'\citep{wu2026scimars}' in body
+    assert 'task-local and the outer optimizer remains fixed' in body
+    assert 'neither a reproduction nor a matched' in body
+    assert "not the researchers' memory service" in body
+    assert 'not reported here before the frozen analysis closes' in body
+    assert 'that setting alone does not establish an important empirical answer' in body
