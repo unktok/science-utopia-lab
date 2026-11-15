@@ -9,7 +9,7 @@ This page is navigation, not a chronological experiment transcript.
   and [optional literal native-consumer interface](components/native-consumer-source-evidence-v1.md):
   same free design authority, U/C losses and output budgets; compare current
   interface evidence with six exact fixed-consumer source cards. The public
-  SCRIPTED editor/calibration/role/feedback/cold path passes, not real-model
+  [74 SCRIPTED/source/editor/calibration/role/feedback/cold checks pass](results/native-consumer-source-preparation-v1.json), not real-model
   optimization. [Implementation log](logbook/2026-11-16-native-consumer-evidence.md)
   preserves the failed fixture and narrower proof scope. New scientific driver,
   public-native integration and real readiness/dispatch remain pending. No

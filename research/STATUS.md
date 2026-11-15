@@ -5,8 +5,9 @@
 An [optional source-evidence interface](components/native-consumer-source-evidence-v1.md)
 now presents six exact fixed-native-consumer/measurement code cards to the
 bounded author as USER data. It does not supply an institution, repair code,
-change the world/loss or introduce a new eligibility gate. Initial exact-source,
-wire and public-worker tests are recorded with their SCRIPTED scope; real35B
+change the world/loss or introduce a new eligibility gate.
+The [complete74-test check](results/native-consumer-source-preparation-v1.json)
+passes with exact-source, wire and SCRIPTED public-worker scopes; real35B
 capacity and scientific usefulness remain unmeasured. The original one failing
 negative test is a mismatched model-profile fixture and remains preserved.
 

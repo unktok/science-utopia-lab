@@ -65,9 +65,32 @@ types, but explicitly SCRIPTED HTTP, executor, child supervision and commit/mode
 metadata; it is not the scientific driver's public-native proof or real-model
 readiness. Preserve original failed and corrected XML separately.
 
-Host observation briefly sees separate approved-user Python CPU processes92561
-and93710;92561's handle is absent on follow-up. This is not proof of host
-exclusivity or a diagnosis of any timeout. No other project is stopped/modified
+Host observation briefly sees user-Python CPU processes92561 and93710;
+92561's handle is absent on follow-up. Executable names alone do not establish
+ownership; these observations may include our own QA. They are not proof of
+other-project contention, exclusivity or a timeout cause. No project is stopped/modified
 and no new scientific inference is dispatched. Re-read three primary sources
 for contribution limits; code evolution, fixed boilerplate and context curation
 are precedents, not new claims established by these tests.
+
+## Final closed software checks and prospective status
+
+Committed source f1e4623071e25766db0a967fe6732906553c9a23. Original69917 exits0:
+74 tests in70.32s, the complete original four-file check with the corrected
+test fixture. All three original XML files are copied only after their original
+processes exit. Active-document checker passes25 documents545 local links and
+six preserved snapshots with zero errors before the final proof pointer is added.
+
+An additional pure constructed-frame read uses the complete exact retained
+native strong hand-control SystemSpec, current source package, original output
+reservation and actual wire serializer. Package bytes32,314; active prompt bytes
+123,291; actual wire bytes145,922 against200,000. Source-bound package content
+SHA256736981b8665da3c03f96928e9df7c5192ecc99a2ec9c5b322af7d76aa5f94668.
+No POST is sent. Backend prompt tokens and actual output-reservation fit remain
+unknown, not inferred from those byte counts. This is a capacity-shape check,
+not another optimizer/scientist observation.
+
+The compact proof records exact boundaries: scientific driver not yet implemented,
+new-driver public-native proof not done, real calibration not passed and new
+scientific dispatch not started. Current source/fixtures/interface are ready
+for the next finite driver implementation; the whole goal remains unchanged.
