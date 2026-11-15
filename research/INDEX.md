@@ -5,6 +5,16 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Next matched source-evidence pilot](protocols/campaigns/native-consumer-source-comparison-v1.md)
+  and [optional literal native-consumer interface](components/native-consumer-source-evidence-v1.md):
+  same free design authority, U/C losses and output budgets; compare current
+  interface evidence with six exact fixed-consumer source cards. The public
+  SCRIPTED editor/calibration/role/feedback/cold path passes, not real-model
+  optimization. [Implementation log](logbook/2026-11-16-native-consumer-evidence.md)
+  preserves the failed fixture and narrower proof scope. New scientific driver,
+  public-native integration and real readiness/dispatch remain pending. No
+  scientific inference or waiting continuation is currently live for this work.
+
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)
   and [software/source-binding proof](results/native-terminal-cost-pilot-software-retention-v1.json):
@@ -41,7 +51,7 @@ This page is navigation, not a chronological experiment transcript.
   and [SCRIPTED full public software proof](results/native-topic-free-public-software-retention-v1.json)
   stay separate. [Prepared three-objective readouts](components/native-topic-free-readouts-v1.md)
   have completed original paired closure and export. The
-  [98-page reviewed manuscript](../paper/README.md) now includes all six slots,
+  [preceding98-page reviewed manuscript](../paper/integrated-topic-systems-build-v1.json) includes all six slots,
   fixed selection, costs, figures and conditional analyses. The
   [earlier four-slot source note](logbook/2026-11-15-topic-manuscript-prefix-analysis.md)
   remains historical, not current source or visual evidence.

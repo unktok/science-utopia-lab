@@ -1,5 +1,23 @@
 # Current research status
 
+## Next matched source-evidence study — preparation, not inference
+
+An [optional source-evidence interface](components/native-consumer-source-evidence-v1.md)
+now presents six exact fixed-native-consumer/measurement code cards to the
+bounded author as USER data. It does not supply an institution, repair code,
+change the world/loss or introduce a new eligibility gate. Initial exact-source,
+wire and public-worker tests are recorded with their SCRIPTED scope; real35B
+capacity and scientific usefulness remain unmeasured. The original one failing
+negative test is a mismatched model-profile fixture and remains preserved.
+
+The [prospective pilot](protocols/campaigns/native-consumer-source-comparison-v1.md)
+plans interface-only versus literal-consumers at U/C with equal design authority,
+models, visible parent bank and output/probe budgets. Eight own slots/three
+fresh references are a declared finite pilot, not independent method-superiority
+evidence. New scientific driver/full public-native proof and actual real-model
+readiness/dispatch are pending. No model experiment or waiting continuation is
+live for this work. The full publication-ready goal remains active.
+
 ## Latest real study closed — November16 05:05:33JST
 
 The [two-control terminal-cost study](results/native-terminal-cost-pilot-closed-v1.json)
