@@ -660,6 +660,27 @@ prior-error delivery does not explain this inspected input. Nine slots remain
 processed (seven valid ties/two technical nulls); the tenth result is pending.
 No live setting, source, feedback rule, failed observation or loss is changed.
 
+### Tenth explicit submission, native execution in progress
+
+At02:42:56.794715UTC U2 explicitly finishes14 charged actions: one plan,
+eight reads, four writes and one finish, all applied/finished with no rejected
+or malformed action. All16 component probe terminals return, not16 whole-world
+evaluations. Only selection source changes among24 nodes, no root/node/wire/
+schedule changes. Candidate`native-adaptive-db20a22676e6af61cd36ba8e` has
+fingerprint`81e2f84a0ec88efd8adce717dee6233d124d9b38ebff77988dbbfb6c2a05fb27`.
+Response content`da15df60141477f09603f46122f7f20d74a57e65e42bcd142152a2d71a592ff5`,
+file SHA`c225aedfef5bd64ad639367eb3d3dbafa8fb3ca1c87cd1373920a549a251230e`.
+
+The submitted function accepts real papers, writes mean original reviews
+(zero if absent), and uses the valid unscored empty marker. The actual world
+passes year1 and proceeds to year2 submissions. No completed native loss or
+improvement is established. The original R7 parent already has a valid empty
+marker, so not repeating failed U1's error is not an isolated feedback-learning
+effect or an improvement of the inventor. Its source comment connecting
+unreviewed acceptance to common utility does not change the fixed common-content
+consumer or prove monotonicity for arbitrary accepted content. No new host
+policy is supplied to turn that prose into an operative measurement rule.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,
