@@ -38,10 +38,15 @@ def test_public_operator_actual_sdk_profile_three_worlds_and_double_cold(tmp_pat
     public_operator_path(tmp_path, monkeypatch)
 
 
-def public_operator_path(tmp_path, monkeypatch, *, topic=False):
+def public_operator_path(tmp_path, monkeypatch, *, topic=False, terminal=False):
     base = driver
     operator, cold_reader = driver, auditor
-    if topic:
+    if topic and terminal:
+        raise ValueError('one explicitly named public pilot per software check')
+    if terminal:
+        from scripts import run_native_terminal_cost_pilot_v1 as operator
+        from scripts import audit_native_terminal_cost_pilot_v1 as cold_reader
+    elif topic:
         from scripts import run_native_legacy_topic_pilot_v1 as operator
         from scripts import audit_native_legacy_topic_pilot_v1 as cold_reader
     declared = os.environ.get('SCIENCE_UTOPIA_WORKFLOW_PLAN')
@@ -116,7 +121,7 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
     origin = tmp_path / 'SCRIPTED-origin'; origin.mkdir(); (origin / 'writer.lock').touch()
     for i in (1, 2): driver.save(origin / f'audit-{i}.json', {k: v for k, v in upstream.items() if k != 'content_sha256'})
     monkeypatch.setattr(driver, 'preceding_evidence', lambda value: (original, upstream, fixed))
-    source_owner = operator if topic else driver.workflow
+    source_owner = operator if topic or terminal else driver.workflow
     monkeypatch.setattr(source_owner, 'native_sources', lambda source: {'original_source': source,
         'SCRIPTED': 'upstream evidence only, actual execution source checked by cold reader'})
     monkeypatch.setattr(driver, 'backend_binding', lambda provider: clone(backend))
@@ -125,7 +130,7 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
         audit_one=origin / 'audit-1.json', audit_two=origin / 'audit-2.json'))
     operator.run(root)
     p = operator.require_plan(root); end = driver.read(root / 'terminal.json')
-    count = 2 if topic else 3
+    count = 2 if topic or terminal else 3
     assert end['status'] == 'closed' and end['completed_jobs'] == count
     assert not end['held_out_world_seeds'] and not end['automatic_invention']
     assert sent and all(v['timeout'] == p['scientist_transport']['http_timeout_seconds'] for v in sent)
@@ -139,7 +144,7 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
         requests = [w for w in wires if w['payload'].get('response_format', {}).get('json_schema', {}).get(
             'name') == 'research_direction_selection']
         directions.append(len(requests)); advice.append(sum(ADVICE in json.dumps(w['payload']) for w in requests))
-        if topic:
+        if topic or terminal:
             assert not requests
         elif job['condition'] == 'core-assignment': assert not requests
         elif job['condition'] == 'native-choice': assert requests and not advice[-1]
@@ -158,15 +163,17 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
         assert len({digest(w['physical_proof']['initial_identity']) for w in audits[0]['worlds']}) == 1
         assert all(not audits[0][k] for k in ('held_out_world_seeds', 'automatic_invention', 'policy_selection'))
         assert 'fixed_selection' not in audits[0]
-        if topic:
+        if topic or terminal:
             from utopia.optimization.native_resource_cost import METRIC, UNCOLLECTED_METRIC
             from utopia.runtime.checkpointing import read_portable_checkpoint
             from utopia.system.native_legacy_topic_planning import EVENT
             outside = []
-            for world in audits[0]['worlds']:
+            for index, world in enumerate(audits[0]['worlds']):
                 measurement, = world['measurements']
-                assert measurement['metrics'][METRIC] == {'status': 'measured', 'value': 200.0}
-                assert measurement['metrics'][UNCOLLECTED_METRIC] == {'status': 'measured', 'value': 0.0}
+                expected_cost = 160.0 if terminal and index == 1 else 200.0
+                expected_unpaid = 40.0 if terminal and index == 1 else 0.0
+                assert measurement['metrics'][METRIC] == {'status': 'measured', 'value': expected_cost}
+                assert measurement['metrics'][UNCOLLECTED_METRIC] == {'status': 'measured', 'value': expected_unpaid}
                 assert measurement['native_workflow_interval']['effect_witnesses'] == 48
                 assignments = world['physical_proof']['native_counts']['project_assignments_verified']
                 assert assignments
@@ -176,14 +183,28 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
                 assert len(events) == len(assignments)
                 outside.append(sum(e['assignment']['direction']['topic'] not in e['eligible_actor_before']['expertise']
                                    for e in events))
-            assert outside[0] == 0 and outside[1] > 0
+                if terminal:
+                    actors = [a for a in state['ecosystem_data']['agents'] if a['can_author']]
+                    assert sum(a['is_active'] for a in actors) == (1 if index else 5)
+                    assert sum(a['resources'] for a in actors) == (70 if index else 30)
+                    scores = world['scores']
+                    assert scores['resource-aware-content'] == scores['content-utility'] + 0.1 * expected_cost
+            if terminal:
+                assert all(v > 0 for v in outside)
+                left, right = [world['scores'] for world in audits[0]['worlds']]
+                assert left['throughput'] == right['throughput']
+                assert left['content-utility'] == right['content-utility']
+                assert left['resource-aware-content'] - right['resource-aware-content'] == pytest.approx(4)
+            else:
+                assert outside[0] == 0 and outside[1] > 0
         driver.save(tmp_path / 'audit-retained.json', {k: v for k, v in audits[0].items() if k != 'content_sha256'})
-        if topic:
+        if topic or terminal:
             driver.save(tmp_path / 'audit-retained-2.json', {k: v for k, v in audits[1].items() if k != 'content_sha256'})
         driver.save(tmp_path / 'cost-retained.json', {k: v for k, v in cost_pair[0].items() if k != 'content_sha256'})
     with pytest.raises(ValueError, match='no redispatch'): operator.run(root)
     write_json_atomic(tmp_path / 'verification.json', {
-        'schema': ('scienceutopia.native-legacy-topic-pilot-software.v1' if topic
+        'schema': ('scienceutopia.native-terminal-cost-pilot-software.v1' if terminal else
+                   'scienceutopia.native-legacy-topic-pilot-software.v1' if topic
                    else 'scienceutopia.native-legacy-choice-pilot-software.v1'),
         'classification': 'SCRIPTED-HTTP-corpus-critics-upstream-not-scientific-feasibility',
         'source_commit': probe.source_commit, 'original_plan_file_sha256': file_sha256(declared),
@@ -191,7 +212,7 @@ def public_operator_path(tmp_path, monkeypatch, *, topic=False):
         'scientist_httpx_requests': len(sent), 'all_scientist_read_headers': ['900'],
         'all_scientist_retry_headers': ['0'], 'scientific_request_body_timeout_fields': 0,
         'native_direction_requests': directions, 'advice_delivered_in_direction_prompts': advice,
-        **({'outside_core_project_effects': outside} if topic else {}),
+        **({'outside_core_project_effects': outside} if topic or terminal else {}),
         'paired_audit_content_sha256': audits[0]['content_sha256'],
         'paired_cost_content_sha256': cost_pair[0]['content_sha256'],
         'new_real_model_calls': 0, 'scientific_feasibility_or_gain_claimed': False,
