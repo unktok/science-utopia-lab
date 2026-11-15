@@ -175,3 +175,30 @@ in the [recovery instructions](../../docs/research-workflow.md). No old evidence
 is rewritten to claim it originated in the archive. The previous v1 receipt's
 skipped tmp-layout observation remains historical; v2 separately records its
 later classified preservation. The full publication-ready goal remains active.
+
+## Why the first two did not improve: observed trace, not a universal cause
+
+A [passive complete-journal projection](../results/native-consumer-source-first-two-author-traces-v1.json)
+retains all11/6 chronological editor steps, exact source-file hashes, plan and
+finish values, read targets, write-content identities and backend capacity
+observations. Both finish before the16-step cap with empty recorded error lists;
+these step counts are not cumulative physical designer POST totals. Maximum
+reported prompt counts are38,437 and45,935, with stop signals and reported room
+for the8,192-token output reservation in the65,536 context. That observation
+does not establish later-frame capacity or prove why the model chose its edits.
+
+The second author plan aims to replicate core-plus-related, which is already
+the selected parent's policy. Its finish says the successful baseline suffices;
+the first author similarly treats the known36-paper configuration as stable.
+These model-authored statements are preserved as data, not adopted as a global
+optimality claim. The known withheld C hand comparator already demonstrates
+that the second candidate is not globally optimal within the declared authority.
+In these two sessions the observed failure to improve is an inert/retained
+proposal reaching ordinary finish, not a submission blocked by an observed
+editor error. This does not prove absence of all software defects or identify
+the causal reason for the model's choice. No mid-study repair, forced novelty,
+extra candidate, revised prompt or changed objective follows from this prefix.
+
+The third original slot passes its exact-request readiness and progress enters
+optimization at23:26:03.886797UTC November15 (08:26:03JST November16). The finite
+original loop, paired-audit/cost wait and readout wait continue unchanged.

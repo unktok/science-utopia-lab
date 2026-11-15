@@ -13,7 +13,9 @@ This page is navigation, not a chronological experiment transcript.
   hand comparator stays withheld. [First own U outcome](results/native-consumer-source-first-own-outcome-prefix-v1.json)
   and [second own C outcome](results/native-consumer-source-second-own-outcome-prefix-v1.json)
   complete and tie the strong parent;2/8 own slots complete, with no own gain
-  or whole-study closure yet. The next original interface-only/C slot is in readiness.
+  or whole-study closure yet. The next original interface-only/C slot passes readiness
+  and enters optimization. [Their complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
+  distinguish ordinary early finish and baseline recovery from an observed editor error.
   [Public software proof and19 checks](results/native-consumer-source-comparison-software-v1.json)
   are separate SCRIPTED evidence. [Prepared figure data](components/native-consumer-source-figures-v1.md)
   passes11 light checks, not visual review. Original15471 runs;46051/79215 wait

@@ -14,7 +14,7 @@ is development-informed, not a blind independent method comparison.
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
 | Own-system optimization | [Interface-only / U / g0 completes](results/native-consumer-source-first-own-outcome-prefix-v1.json) at-28.6667; [literal-consumers / C / g0 completes](results/native-consumer-source-second-own-outcome-prefix-v1.json) at-8.6667. Both tie their strong parent;2/8 own slots complete |
-| Next original slot | Interface-only / C / g0 enters exact-request readiness at23:19:37UTC November15 (08:19:37JST November16); not another dispatched study |
+| Next original slot | Interface-only / C / g0 passes readiness and enters optimization at23:26:03UTC November15 (08:26:03JST November16); not another dispatched study |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -39,6 +39,15 @@ changes only agenda-source formatting, with matching parsed AST. Both execute
 and are scored: no exact-copy, novelty or merit gate rejects them. Neither adds
 a node, wire or schedule. These two differently assigned slots do not identify
 an isolated information-condition effect or establish whole-program equivalence.
+
+[Complete first-two author journals](results/native-consumer-source-first-two-author-traces-v1.json)
+show ordinary finish after11/6 of16 allowed steps, with empty retained error
+lists. The second plan proposes core-plus-related even though that parent policy
+is already installed; its finish treats the known baseline as sufficient. These
+are untrusted author statements, not proof of optimum. Reported prompt maxima
+are38,437/45,935 with stop termination, not evidence that future frames fit or
+that the model understands every consumer. This localizes the observed lack of
+change without proving the editor bug-free or identifying a causal reason.
 
 [Low-disk archive](results/native-consumer-closed-checkout-archive-v1.json):
 after an observation near260MiB free,16 completed clean code copies are
