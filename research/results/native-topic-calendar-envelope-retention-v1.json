@@ -14,6 +14,16 @@
   "original_light_test_session": 46250,
   "tests_passed": 8,
   "pytest_reported_seconds": 0.65,
+  "final_light_retention_check": {
+    "source_commit": "0e9c65d5c80ef308053f07d181f07f03181d086a",
+    "original_session": 88837,
+    "exit_code": 0,
+    "tests_passed": 9,
+    "pytest_reported_seconds": 1.08,
+    "junit": "research/data/native-topic-calendar-envelope-v1/final-junit.xml",
+    "junit_sha256": "c5bc8ab64a03439a710fb288b11b82a2bc79b0b3a33c1786b4eb60ad799ba2e1",
+    "scope": "Includes retained-file hashes/source identities/claim limits and a precise GraphRuntimeError assertion. Does not rerun models, worlds, cold audits or rendering."
+  },
   "conditional_new_paper_slots": [20, 36],
   "observed_accepted_decisions": [20, 36],
   "scope": "Two source-bound read-only exports of an explicitly conditional original-calendar relaxation using the retained normally closed real developer pilot and its original plan/catalog. Eight primitive files match original Git bytes; old cold audits are not reexecuted or counted anew. Not a new native world, optimizer, full v6/global optimality proof, utility/resource bound or duration-only causal effect.",

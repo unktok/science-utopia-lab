@@ -47,3 +47,13 @@ open-memory-router, so this single static observation does not prove whole-world
 inertness or equal scientist requests. The actual native world is running;
 there is no completed own loss or improvement claim yet. Keep its eventual
 outcome, even if unchanged, adverse or technically failed.
+
+Original88837 then exits0 from clean0e9c65d5:9 lightweight cases in1.08s,
+including the exact retained export hashes/claim boundaries and a more precise
+catalog-error type assertion. The final JUnit is retained separately, not
+substituted for the earlier8-case result. A read-only original48e1d268
+component_trace call validates all14 step seals, chronological prefix and
+zero-probe terminal totals against the actual submitted system; the terminal
+itself contains14 steps as well. It executes no probe or institution. Original
+writer94527 remains live and its observed output has reached native year3;
+audit15136/readout22876 are still waiting, not completed.
