@@ -32,3 +32,18 @@ heavy CPU/Docker QA is run while the real scientist model is active. The new
 operator and public bounded calibration/editor/probe/next-feedback/native/cold
 test are unverified implementation, not a completed experiment, actual model
 compatibility certificate, deadline-supervision proof or publication result.
+
+## First completed current-source checks
+
+Actual original scientific64339 and closure14705 both exit0 before new heavy
+QA begins. The real pilot closes14:35:12UTC, paired audit/cost closure14:36:05UTC.
+At the subsequent host-wide observation a separate open-inquiry Node program
+is active (not modified); no active local inference is observed. Shared-host
+timing is not a dedicated benchmark or an exclusive resource lease.
+
+Clean ce141d16 original unit session66570 exits1:88 passed and1 failed in16.91s.
+The new null-selection *fixture* omitted the plan checksum that the public
+prepare API writes. The production selection reader correctly required it.
+Seal that explicitly SCRIPTED fixture; do not weaken the production reader or
+count this as a scientific failure. Preserve the original a1 JUnit/raw tree.
+Public full-path execution is still unverified at this observation.

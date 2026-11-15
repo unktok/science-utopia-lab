@@ -5,7 +5,7 @@ import pytest
 from scripts import run_native_topic_free_optimization_v1 as driver
 from tests.reports.test_native_legacy_choice_pilot_v1 import inputs
 from tests.optimization.test_native_post_edit_feedback_v1 import fixture, finish
-from utopia.system.design_patch import clone
+from utopia.system.design_patch import clone, digest
 
 
 def plan(tmp_path,monkeypatch):
@@ -14,9 +14,10 @@ def plan(tmp_path,monkeypatch):
         observer_backend=original['observer_contract']['backend'],original_sources={'original_source':original['source_commit']})
     p['content_sha256']='SCRIPTED-original-plan-not-physical-closure'
     gen,_,_,_=fixture(tmp_path/'bank',[finish()],reference='core-only',extended=True,maximum_probes=64)
-    return driver.build_plan(p,{'content_sha256':'SCRIPTED-not-closure'},source=original['source_commit'],
+    result=driver.build_plan(p,{'content_sha256':'SCRIPTED-not-closure'},source=original['source_commit'],
         origin={'SCRIPTED':True},backend=original['backend'],observer_backend=original['observer_contract']['backend'],
-        bank=gen.edit_feedback.bank,evidence={'SCRIPTED':True},sources={'SCRIPTED':True}),p
+        bank=gen.edit_feedback.bank,evidence={'SCRIPTED':True},sources={'SCRIPTED':True})
+    return {**result,'content_sha256':digest(result)},p
 
 
 def test_finite_whole_system_three_objectives_keep_original_world_and_visible_strong_parents(tmp_path,monkeypatch):
