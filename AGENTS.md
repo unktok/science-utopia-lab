@@ -19,6 +19,11 @@
   and verify the basetemp/JUnit targets are unused. JUnit may create that parent
   only after tmp_path setup has already failed. Preserve such setup failures;
   do not silently overwrite an earlier output or count them as scientific runs.
+- Read-only report/figure exporters can require outputs outside both scientific
+  and reader checkouts. A pytest `tmp_path` under a source-local `--basetemp`
+  violates that contract. Use an external `TemporaryDirectory` for successful
+  export fixtures and test source-local rejection separately; do not weaken the
+  production guard or assume that a directory named temporary is outside source.
 - Worktree isolation is not hardware isolation. Do not start independent heavy
   CPU/Docker full-path QA, bulk embeddings or video encoding while real model
   inference is active, unless that concurrent resource profile is explicitly

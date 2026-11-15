@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 from types import SimpleNamespace
+import tempfile
 
 import pytest
 
@@ -94,13 +95,28 @@ def test_no_render_export_is_deterministic_without_matplotlib_or_model_calls(tmp
     root = tmp_path / 'pair'; root.mkdir(); saved_pair(root)
     monkeypatch.setattr(figures, 'pinned_revision', lambda p: 'SCRIPTED-reader')
     monkeypatch.setattr(figures, 'render', lambda *a: pytest.fail('pure export must not render'))
-    for i in (1, 2):
-        figures.export(SimpleNamespace(readouts=root, frozen_reader=tmp_path / 'frozen',
-            output=tmp_path / ('export-' + str(i)), render=False))
-    names = ('report.json', 'outcomes.csv', 'manifest.json')
-    assert sorted(p.name for p in (tmp_path / 'export-1').iterdir()) == sorted(names)
-    for name in names:
-        assert (tmp_path / 'export-1' / name).read_bytes() == (tmp_path / 'export-2' / name).read_bytes()
-    value = json.loads((tmp_path / 'export-1/report.json').read_text())
+    # The declared pytest basetemp is under the reader checkout. Production
+    # exporters deliberately reject outputs there; use a genuinely external
+    # temporary directory rather than weakening that guard for a test.
+    with tempfile.TemporaryDirectory(prefix='consumer-figure-software-export-') as external:
+        outputs = [Path(external) / ('export-' + str(i)) for i in (1, 2)]
+        for output in outputs:
+            figures.export(SimpleNamespace(readouts=root, frozen_reader=tmp_path / 'frozen',
+                output=output, render=False))
+        names = ('report.json', 'outcomes.csv', 'manifest.json')
+        assert sorted(p.name for p in outputs[0].iterdir()) == sorted(names)
+        for name in names:
+            assert (outputs[0] / name).read_bytes() == (outputs[1] / name).read_bytes()
+        value = json.loads((outputs[0] / 'report.json').read_text())
     assert value['new_model_calls'] == value['new_code_executions'] == value['new_native_worlds'] == 0
     assert not value['publication_ready']
+
+
+def test_export_inside_reader_checkout_is_rejected_before_reading_or_writing(tmp_path, monkeypatch):
+    monkeypatch.setattr(figures, 'pinned_revision', lambda p: 'SCRIPTED-reader')
+    output = figures.ROOT / 'outputs/forbidden-figure-export-test'
+    assert not output.exists()
+    with pytest.raises(ValueError, match='outside original readouts and both sources'):
+        figures.export(SimpleNamespace(readouts=tmp_path / 'missing-input', frozen_reader=tmp_path / 'frozen',
+            output=output, render=False))
+    assert not output.exists()
