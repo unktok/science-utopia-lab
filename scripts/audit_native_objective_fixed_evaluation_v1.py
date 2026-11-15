@@ -9,6 +9,7 @@ import sys
 
 
 def worker(root,output,*,study='count-content-v1'):
+    pilot = study == 'legacy-choice-v1'
     if study=='count-content-v1':
         from scripts import run_native_objective_fixed_evaluation_v1 as driver
         audit_schema='scienceutopia.native-objective-fixed-evaluation-audit.v1'
@@ -46,7 +47,16 @@ def worker(root,output,*,study='count-content-v1'):
             'scripts/audit_native_longitudinal_fixed_evaluation_v1.py',
             'scripts/audit_native_objective_fixed_evaluation_v1.py',
             'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
-    else:raise ValueError('explicit known fixed-evaluation study required')
+    elif pilot:
+        from scripts import run_native_legacy_choice_pilot_v1 as driver
+        audit_schema='scienceutopia.native-legacy-choice-pilot-audit.v1'
+        source_scripts=['scripts/run_native_legacy_choice_pilot_v1.py',
+            'scripts/audit_native_legacy_choice_pilot_v1.py',
+            'scripts/audit_native_objective_fixed_evaluation_v1.py',
+            'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+    else:raise ValueError('explicit known fixed-evaluation study or legacy-choice pilot required')
+    group = 'controls' if pilot else 'evaluation'
+    role = driver.ROLE if pilot else 'selection-fixed-evaluation'
     from scripts.analyze_native_open_v7 import _inventory
     from scripts.analyze_native_design_benchmark import loaded
     from scripts.native_benchmark_physical import physical_proof
@@ -70,7 +80,7 @@ def worker(root,output,*,study='count-content-v1'):
                 or start['plan_sha256']!=p['content_sha256'] or end['status']!='closed'
                 or end['completed_jobs']!=len(p['jobs']) or epoch(end['ended_utc'])<epoch(start['started_utc'])):
             raise ValueError('normal fixed-evaluation closure required')
-        for i in range(len(p['evaluation']['seed_usage'])):
+        for i in range(0 if pilot else len(p['evaluation']['seed_usage'])):
             prepared=read(root/f'seed-usage-{i:02d}.json');dispatched=read(root/f'pre-dispatch-seed-usage-{i:02d}.json')
             if (prepared['content_sha256']!=p['evaluation']['seed_usage'][i]
                     or not dispatched['valid'] or dispatched['errors'] or dispatched['prior_matching_runs']
@@ -85,16 +95,17 @@ def worker(root,output,*,study='count-content-v1'):
         if study in ('workflow-v1','longitudinal-v1') and 'seed_software_exclusions' in p:
             source_scripts.append('scripts/native_benchmark_seed_usage.py')
             resources.append(p['seed_inventory_protocol']['path'])
-        if study in ('workflow-v1','longitudinal-v1') and 'operational_protocol' in p:
+        if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1') and 'operational_protocol' in p:
             resources.append(p['operational_protocol']['path'])
         source=source_proofs(driver.ROOT,p['source_commit'],scripts=source_scripts,resources=resources)
         observer=ColdObserver(root/'observer',p['observer_contract']);observer_audit=observer.audit()
         if observer_audit!=read(root/'observer-audit.json'):raise ValueError('literal observer audit differs')
         cells=set();caches=set();keys=set();worlds=[]
         for job in p['jobs']:
-            directory=root/'evaluation'/job['identity'];dispatched=read(directory/'started.json')
-            suggestion=Suggestion(job['identity'],job['system'],0,'selection-fixed-evaluation')
-            if (any(dispatched[k]!=v for k,v in job.items()) or dispatched['suggestion']!=suggestion.to_dict()
+            directory=root/group/job['identity'];dispatched=read(directory/'started.json')
+            suggestion=Suggestion(job['identity'],job['system'],0,role)
+            actual_job = dispatched['job'] if pilot else dispatched
+            if (any(actual_job[k]!=v for k,v in job.items()) or dispatched['suggestion']!=suggestion.to_dict()
                     or not epoch(start['started_utc'])<=epoch(dispatched['started_utc'])<=epoch(end['ended_utc'])):
                 raise ValueError('literal frozen evaluation dispatch differs')
             spec=SystemSpec.from_dict(job['system']);o=read(directory/'observation.json');m=o['metadata']
@@ -103,7 +114,7 @@ def worker(root,output,*,study='count-content-v1'):
                     or m['loss_spec_sha256']!=loss_spec_sha256(p['losses']['throughput'])):
                 raise ValueError('fixed native observation identity/loss differs')
             cell=directory/'worlds'/(job['identity']+'-s'+str(job['seed']));cells.add(cell)
-            if study in ('workflow-v1','longitudinal-v1'):
+            if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1'):
                 from utopia.optimization.native_scientist_transport_v1 import require_cell_transport
                 require_cell_transport(cell,p,spec,seed=job['seed'],failed=o['status']=='failed')
             cache=cell/'replies/responses.sqlite'
@@ -117,7 +128,7 @@ def worker(root,output,*,study='count-content-v1'):
                 state=read_portable_checkpoint(runs[0]['checkpoint_path']);keys.update(accepted_request_keys(state,p['observer_contract']))
                 if measurements:
                     rebuilt=reconstruct_measurement(state,proof['measurement'],observer)
-                    if study in ('workflow-v1','longitudinal-v1'):
+                    if study in ('workflow-v1','longitudinal-v1','legacy-choice-v1'):
                         rebuilt={**rebuilt,'native_workflow_interval':driver.interval(
                             p,spec,state['native_system']['events'],job['seed'])}
                     if measurements!=[rebuilt] or m['technical_failures']:raise ValueError('literal additional measurement differs')
@@ -132,12 +143,12 @@ def worker(root,output,*,study='count-content-v1'):
                     or (o['status']=='complete')!=(scores['throughput']['status']=='complete')
                     or read(directory/'cross-scores.json')!={**scores,'content_sha256':digest(scores)}):
                 raise ValueError('literal cross-score/status differs')
-            worlds.append({**job,'role':'selection-fixed-evaluation','status':o['status'],
+            worlds.append({**job,'role':role,'status':o['status'],
                 'scores':{k:v['loss'] for k,v in scores.items()},'measurements':measurements,
                 'physical_proof':proof,'loaded':gate})
         if (cells!={v.resolve() for v in root.glob('**/worlds/*') if v.is_dir()}
                 or caches!={v.resolve() for v in root.rglob('responses.sqlite')}
-                or {v.name for v in (root/'evaluation').iterdir()}!={j['identity'] for j in p['jobs']}
+                or {v.name for v in (root/group).iterdir()}!={j['identity'] for j in p['jobs']}
                 or not {r['key'] for r in observer_audit['rows']}<=keys
                 or list(root.rglob('dispatch-*.intent.json'))):raise ValueError('unaccounted fixed world/critic/designer dispatch')
         progress=json.loads((root/'progress.json').read_text())
@@ -145,10 +156,18 @@ def worker(root,output,*,study='count-content-v1'):
         if before!=_inventory(root):raise ValueError('raw evaluation changed during cold proof')
         result={'schema':audit_schema,'source_commit':p['source_commit'],
             'plan_sha256':p['content_sha256'],'source_proof':source,'closure':{'started':start,'terminal':end},
-            'origin_audit_content_sha256':p['origin_audit_content_sha256'],'fixed_selection':p['fixed_selection'],
+            'origin_audit_content_sha256':p['origin_audit_content_sha256'],
             'worlds':worlds,'observer':observer_audit,'raw_inventory_sha256':digest(before),'raw_files':len(before),
             'analysis_adapter_sha256':file_sha256(Path(__file__)),'new_model_calls':0,'new_code_executions':0,
-            'held_out_world_seeds':True,'independent_optimizer_replications':False,'publication_ready':False}
+            'held_out_world_seeds':not pilot,'independent_optimizer_replications':False,'publication_ready':False}
+        if pilot:
+            result.update(development_seed_reused=True, policy_selection=False, automatic_invention=False)
+            if (len(worlds) != 3 or any(w['status'] != 'complete' for w in worlds)
+                    or len({digest(w['physical_proof']['initial_identity']) for w in worlds}) != 1
+                    or end['held_out_world_seeds'] or end['policy_selection'] or end['automatic_invention']):
+                raise ValueError('three complete same-initial-society controls without selection required')
+        else:
+            result['fixed_selection']=p['fixed_selection']
         result['content_sha256']=digest(result);write_json_atomic(output,result,sort_keys=True,allow_nan=False)
         print(json.dumps({'audit':str(output),'worlds':len(worlds),'content_sha256':result['content_sha256']}))
 

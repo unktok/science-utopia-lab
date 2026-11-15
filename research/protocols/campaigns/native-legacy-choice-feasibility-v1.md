@@ -5,6 +5,10 @@ This does not change that experiment or dispatch a new world. All earlier
 development outcomes and two partial unused control outcomes are already
 known; this is not a blind pre-result hypothesis or a new held-out test.
 
+Execution implementation follows its normal closure and paired reconstruction.
+The completed fixed outcomes are now known and retained unchanged. No claim of
+blind pre-result planning or independent optimizer replication is made.
+
 ## Question and scope
 
 Does removing the inherited core-only direct assignment expose the original
@@ -48,6 +52,10 @@ Keep original T/U definitions and the same common-content observer. Maximum
 1024 scientist HTTP attempts/world,7200 safe-point wall seconds/world,3000
 observer POSTs for the pilot; preserve the original900-second scientist read
 profile and zero SDK retries. No new external service or model is introduced.
+Execute the three declared conditions in the listed order. A technical failure
+retains its consumed job, draft observation and unknown loss and stops later
+dispatch; it is not refilled. A tied or unfavorable complete loss does not stop
+the remaining controls and is never an eligibility/adoption gate.
 
 Start only after the current scientific writer and paired postprocessing end,
 fresh host-wide observations, and a committed-source SCRIPTED full path through

@@ -38,7 +38,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-workflow-objective-loop-audit.v1',
         'scienceutopia.native-workflow-fixed-evaluation-audit.v1',
         'scienceutopia.native-longitudinal-comparison-audit.v1',
-        'scienceutopia.native-longitudinal-fixed-evaluation-audit.v1')
+        'scienceutopia.native-longitudinal-fixed-evaluation-audit.v1',
+        'scienceutopia.native-legacy-choice-pilot-audit.v1')
 
 
 def classify_numeric(relative):
