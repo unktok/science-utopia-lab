@@ -1,0 +1,25 @@
+{
+  "schema": "scienceutopia.native-project-feedback-outer.v1",
+  "tested_source_commit": "dec939d94b6b3edd5c527742fe60b595c8ce1fd3",
+  "original_session": 13646,
+  "exit_code": 0,
+  "passed": 30,
+  "pytest_reported_seconds": 58.28,
+  "junit": "research/data/native-project-feedback-outer-v1/junit.xml",
+  "junit_sha256": "2f74e24f1f08701e019ed74d18816dee40286dd051dc359552378c9fd5bdb38a",
+  "scope": "Actual generic bounded execute/worker/replay, actual calibration return/certificate, actual role factory/staged generator/persistent prompt, cold replay and finite probe options. HTTP, executor, source pin, role load and child supervision are explicitly SCRIPTED. No native world, actual container, real-model capacity, deadline supervision or original campaign fixture attribution is certified.",
+  "project_option_matrix": {
+    "enabled_or_disabled": [false, true],
+    "legacy_or_extended_probe_budget": [false, true],
+    "direct_or_outer_bounded_boundary": [false, true],
+    "tensor_diagnostic_enabled_or_disabled": [false, true],
+    "matrix_cases": 16,
+    "generic_fixture_project_context": "absent; explicit not-assessed preserved rather than native acceptance inferred"
+  },
+  "actual_project_field_and_next_prompt_checks": "research/results/native-project-delivery-feedback-preparation-v1.json",
+  "pending": ["real container/whole-native-path integration if deployed", "new explicit audited fixture-attribution scope for any future campaign using this option", "fresh actual model readiness before real dispatch", "scientific usefulness"],
+  "new_real_model_calls": 0,
+  "new_native_worlds": 0,
+  "active_study_changed": false,
+  "publication_ready": false
+}

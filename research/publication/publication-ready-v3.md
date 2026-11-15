@@ -351,13 +351,16 @@ November12 05:47JST更新：新しいT（論文数）／U（固定内容評価�
 
 ## 完了に必要なもの
 
+以下の必要成果は変更しない。現状欄をNovember16の確認済み証拠へ更新する。
+過去の時点付き本文・実験・原稿receiptはそのまま保持し、各証拠を独立反復へ合算しない。
+
 | 段階 | 必要な成果 | 現状 |
 | --- | --- | --- |
-| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 実行可能。61a1753は全8提案・13物理試行を正常閉鎖、二回監査／費用一致。6完走は強い参照と同点、2null。固定選択＋対照の641xx評価も18物理worldで正常閉鎖。研究上の重要性はR2で別判断 |
-| R2 | 重要で識別可能な研究上の答えと対照 | 未達。[新12枠の完了結果](../results/native-longitudinal-closed-v1.md)は10有効・2実行null。有効候補の自己目的は全てR7と同点で手設計対照より劣る。9候補は全研究者入力列とliteral応答もR7と一致。最後のT候補は年4の履歴スコア入力を変えるがT同点／交差U悪化。新制度・改善を候補の必須条件にせず、単一の結合条件から情報条件の因果効果や重要性を主張しない |
+| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 実装と複数の旧有限研究・選択固定評価は閉鎖済み。[元世界の新三目的自由探索](../protocols/campaigns/native-topic-free-optimization-v1.md)は同権限の強い可視対照から実行中で、全枠・監査・新選択後評価は未完。旧成功を新scopeの完了へ流用せず、研究上の重要性はR2で別判断 |
+| R2 | 重要で識別可能な研究上の答えと対照 | 未達。旧12枠・未使用評価を保持。新4枠prefixは同点2・弱い既知ルール再現1・実行null1。[実consumerと全入力](../results/native-topic-free-first-own-outcome-v1.json)、[source変更](../results/native-topic-free-first-utility-outcome-v1.json)、[topic support違反](../results/native-topic-free-first-resource-outcomes-v1.json)を区別する。条件付きcalendar/content解析は空間全体の最適性や探索法の原因を証明しない。新制度・改善は候補vetoにしない |
 | R3 | 精度と範囲を支える独立反復・追加条件 | 未達。pilotの変動と意味のある差から有限予算を定める |
-| R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 先行staged6枠・固定評価を保持。新12枠は正常閉鎖し、二回元監査／費用と5readout・探索配分の全file/hash比較が一致。[完了解釈](../results/native-longitudinal-closed-v1.md)に全枠、作用、入力同値、技術null、費用と選択を記録。新結果のコンパクトな資料保持・原稿図表統合、実行中の未使用評価の閉鎖と監査は残る。prefix、部品probe、独立worldを同じ標本数にしない |
-| R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [最新確認済み85ページ稿](../../paper/integrated-staged-actual-build-v1.json)と[71-file実再構築](../results/integrated-staged-actual-rebuild-subset-verification-v1.json)を保持。staged実6枠と固定評価を含み、全頁本文／画像は一致、binary PDF同一とはしない。新12枠比較と最近の先行研究確認は未反映。中心結果に基づく投稿本文も未達。過去の全artifactを保持し、旧PDFの検証を新sourceへ流用しない |
+| R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 旧12枠と固定評価、choice3対照、topic2対照は元source監査／費用／readoutを閉鎖。新自由探索の全枠・二回監査／費用／図表exportは待機中。各prefixはcompact hashesと実記録へ照合済み。設計者の上流revision／変換手順は未特定で、installed digestを上流再現性と呼ばない。prefix・部品probe・critic・独立worldを同じ標本数にしない |
+| R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [最新確認済み91ページ稿](../../paper/integrated-choice-resource-build-v1.json)と[77-file実再構築](../results/integrated-choice-resource-rebuild-subset-verification-v1.json)を保持。その後の[現原稿source](../../paper/integrated/native-topic-system-search.tex)にはtopic2対照・新4枠prefix・条件付き解析を追加し、[17件のsource検証](../results/native-topic-manuscript-outcomes-source-v1.json)を保持。新build／目視、全自由探索の統合と焦点ある投稿本文は未達。旧PDFの検証を新sourceへ流用しない |
 | R6 | 技術・重要性・先行研究・再現性を批判的に点検した最終ready判定 | 未達。肯定／否定いずれも重要な答えが必要 |
 
 seed数やQA数だけを増やしてR2を閉じない。単発の改善、意図した新nodeの生成、

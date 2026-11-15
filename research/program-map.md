@@ -1,6 +1,6 @@
 # 全体のゴールと証拠の対応
 
-2026-11-15更新。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
+2026-11-16更新。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
 [研究目的](../RESEARCH.md) · [直近状態](STATUS.md) · [優先順位](roadmap.md)
 
 以前の[スケールアップ前の終了条件](pre-scale-completion.md)は有限パッケージとして閉じた。
@@ -15,13 +15,16 @@
 
 ## 最新の実行区切り
 
-固定a5be8d31の12枠longitudinal比較と二回監査・費用・各readoutは閉鎖した。
-[完了結果](results/native-longitudinal-closed-v1.md)を保持し、選択固定の未使用評価へ進む。
+固定a5be8d31の12枠longitudinal比較に加え、[選択固定の未使用評価](results/native-longitudinal-fixed-closed-v1.json)
+も閉鎖済み。その後、元の選択3対照と同権限topic2対照を完了し、三つの明示目的による
+[自由制度6枠の探索](protocols/campaigns/native-topic-free-optimization-v1.md)を別source48e1d268で実行している。
+最新の日付付きprefixは4枠消費・3完走・1runtime nullで、強い対照への改善は未確認。
+この数は時点付きsnapshotであり、継続的な生存確認ではない。
 [時点付きの進捗](STATUS.md)と[元の実dispatchログ](logbook/2026-11-15-longitudinal-real-dispatch.md)
 を正本とし、ここへliveカウントを複製しない。二目的・二情報条件でも作用権限は同じで、
 元の研究者世界を保持する。全候補、失敗、全作用と入力を分析し、選択を固定してから
 未使用条件へ進む。生成や校正の成功は有効な制度発明や損失改善の証明ではない。
-この見出しに以前置かれていたcompiler-feedback実験の稼働記述は過去のsnapshotであり、
+この見出しに以前置かれていたcompiler-feedback/longitudinal実験の稼働記述は過去のsnapshotであり、
 [完全な旧STATUS](status-history-2026-11-15-longitudinal-prefix.md)に各時点の記録を保持する。
 
 ## 一本の研究経路
@@ -81,7 +84,7 @@
 
 ## いま動いているもの
 
-この見出しの最新状態は冒頭のlongitudinal比較と[STATUS](STATUS.md)を参照。
+この見出しの最新状態は冒頭の三目的自由制度探索と[STATUS](STATUS.md)を参照。
 以下は、それ以前に終了した別研究の内訳であり、全研究の推論が停止中という意味ではない。
 
 V1、V45、V2、M比較、T/E、旧T/Uとその固定評価、T/P探索、計画3対照は終了済み。
