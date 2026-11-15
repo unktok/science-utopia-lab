@@ -14,8 +14,9 @@ This page is navigation, not a chronological experiment transcript.
   [Content-utility g0](results/native-topic-free-first-utility-outcome-v1.json) changes source
   but reproduces the weaker core-only127-request path and losses. [Resource-aware
   g0 fails on ineligible two-hop topics; g1 ties its strong parent](results/native-topic-free-first-resource-outcomes-v1.json).
-  At02:38JST4/6 own slots are consumed:3 complete native outcomes and1 runtime
-  null. Content-utility g1 readiness starts; remaining slots
+  [Content-utility g1 retains its parent and ties179 full inputs/choices](results/native-topic-free-utility-g1-outcome-v1.json).
+  At03:05JST5/6 own slots are consumed:4 complete native outcomes and1 runtime
+  null. Final throughput g1 readiness starts; remaining slots
   are not completed or improved. Exact [first author trace](results/native-topic-free-first-own-submission-v1.json)
   and [SCRIPTED full public software proof](results/native-topic-free-public-software-retention-v1.json)
   stay separate. [Prepared three-objective readouts](components/native-topic-free-readouts-v1.md)

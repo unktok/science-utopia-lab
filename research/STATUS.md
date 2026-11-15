@@ -1,5 +1,26 @@
 # Current research status
 
+## Latest recorded execution stage — November16 03:05:25JST
+
+[Content-utility g1 completes](results/native-topic-free-utility-g1-outcome-v1.json)
+as a literal unchanged-parent submission. All179 full scientist inputs and
+literal response choices match the strong reference; T=-36,
+U-loss=-28.666666666666668, C=-8.666666666666668, K200/unpaid0.
+Five own slots are consumed:4 complete native outcomes and1 runtime null,
+with no gain over the strong parent. The original writer enters final
+throughput g1 readiness. Whole-study paired cold/cost/readouts and selection
+remain pending. Later implementation results do not change active science.
+
+The [actual author/wire trace](results/native-topic-free-utility-g1-submission-v1.json)
+retains three successful reads, nine implementation-checkpoint read rejections
+and explicit finish, no edits. Full exact parent is supplied in all14 actual
+proposal wires; all14 provider envelopes end normally, not at length. This
+does not identify the cause of non-implementation or checkpoint effectiveness.
+[Generic diagnostic public-worker coverage](results/native-project-feedback-outer-v1.json)
+now passes30 SCRIPTED tests, separate from the earlier concrete project-field
+checks and real scientific evidence. R2/R3/R5/R6 remain open. Older snapshots
+below retain their original observation times, not live heartbeats.
+
 ## Latest recorded execution stage — November16 02:38:13JST
 
 The original writer consumes4/6 own slots:3 complete native outcomes and1

@@ -29,3 +29,18 @@ preserves the distinction between author intent, an actual source edit,
 explicit retention and eventual native performance. Calibration and other
 roles are excluded from this session's wire totals. No current setting,
 candidate or result is changed; whole-study paired closure remains pending.
+
+## Later native completion at18:05:25UTC /November16 03:05:25JST
+
+The [actual U1 outcome](../results/native-topic-free-utility-g1-outcome-v1.json)
+now completes: T=-36, U-loss=-28.666666666666668, C=-8.666666666666668,
+K200/unpaid0, five active authors and resources30. All179 full scientist inputs
+and literal response choices equal the strong parent on this condition; full
+provider bodies differ, with no cause asserted. Original48 sequence decoding,
+literal dictionaries and read-only SQLite match; all four input files remain
+unchanged. This is a completed individual cell, not the whole-study audit.
+
+The original writer enters final throughput g1 readiness. Five own slots are
+consumed, four native outcomes complete and one is a runtime null; there is
+no strong-parent gain. The previous still-running observation is preserved
+above and in the separate submission record, not relabelled retrospectively.
