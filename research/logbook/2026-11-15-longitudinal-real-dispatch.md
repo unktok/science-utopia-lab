@@ -523,6 +523,47 @@ must not be retrofitted into this finite running comparison. Original82259
 passes scalar T1 readiness and begins its free authoring at01:56:36.954936UTC;
 seven slots remain processed, six with valid losses and one technical null.
 
+## Eighth slot: scalar T1 completes, still tied to R7
+
+Request`5f88ab1dc3ac982eaa6f20aa030f59d8c9da474031c3aa13b551cd0d8e8d67fa`
+explicitly finishes at02:03:13.629938UTC. Its complete14-step journal has one
+plan, nine reads, three writes and one finish;13 applied actions and one finish,
+no rejected/invalid actions. All12 component probe terminals return. Only the
+selection source changes among24 nodes; no node/root/wire/schedule changes.
+The submitted function uses mean original reviews (zero when absent), accepts
+all real submitted papers and retains the valid empty-year marker. Returning
+normally does not establish a useful mechanism or method-level advantage.
+
+Suggestion`native-adaptive-d7855b150bb0d4d7fe1db1ef` has candidate fingerprint
+`faadd74f9231adf86e3f1c1385d9638ad7c8d7618b1eaea1ccf90f0eb022287d`.
+Response content digest
+`623954efc8cb6260537b431ea58f11176899edb3528cc8a3230f5b4bf8ae62b0`,
+file SHA`28decccc7585b91b14ddefa39c170ef4aa6a58679fe753df5ce482c0f4e2bd90`.
+It completes all four original native years with no technical failure or
+generation error. Direct evaluation of both unchanged, hash-checked plan loss
+specifications on the retained measurements yields T=-18 and
+U=-13.333333333333332, each with one valid run. No improvement over R7; worse
+than the hand by2 on both losses. Record digest
+`9c1f057f403258eb5d172b9ad9f3ac89011030e49a6be95cbc059fc466ea01e9`,
+observation digest
+`e61fd727867d4ccde64813a5ef321f7e12ad6127364d35efd4447f58da7f98c5`.
+
+The actual year4 accounting has final-active authors2 and final author
+resources40. Comparing the actual fresh R7 observation shows those exact
+same values, all ten collected metrics equal, the ordered accepted(year,ID)
+list equal, and all four annual author accounting-row lists equal. Thus the
+inference log's funding exits alone are not evidence of a new institution's
+resource effect. Whole columnar records differ (including policy/event
+identities); no full scientist-input equality, global equivalence, isolated
+causal mechanism or full cold audit is inferred from these projections.
+Activity/resources remain outside these assigned losses, not an added veto.
+
+At02:12:56.637423UTC original82259 advances to scalar T2 readiness. Eight
+own slots are processed: seven valid losses, all tied to R7, and the retained
+known technical null. The final four slots, whole-study analysis/selection and
+frozen unused evaluation remain open. No source/guard/objective/budget change,
+host repair, failed-slot refill, new penalty or stronger-policy substitution.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,

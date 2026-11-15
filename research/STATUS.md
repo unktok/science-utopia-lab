@@ -10,15 +10,15 @@ manuscript. Publication readiness is **not established**; acceptance is not prom
 
 ## Current experiment: November15
 
-Last checked02:03UTC/11:03JST. This is a dated observation, not a live heartbeat.
+Last checked02:14UTC/11:14JST. This is a dated observation, not a live heartbeat.
 
 | Item | Verified state |
 | --- | --- |
 | Scientific source | Clean, fixed `a5be8d3103854368a4bc6ba4c13eff7552e9dd15`; not this later documentation checkout |
 | Design | Two losses (throughput T/content utility U), two information conditions, three own proposals per history:12 slots total |
-| Own slots processed | Seven: six valid native outcomes and one known runtime failure |
-| Current slot | Eighth, scalar T1, processing after actual readiness; not yet a completed outcome |
-| Valid outcomes | All six T=-18/U=-13.333333333333332; tie original R7 and lose to the hand by2 on each loss |
+| Own slots processed | Eight: seven valid native outcomes and one known runtime failure |
+| Current slot | Ninth, scalar T2, in actual-request readiness; not yet a completed outcome |
+| Valid outcomes | All seven T=-18/U=-13.333333333333332; tie original R7 and lose to the hand by2 on each loss |
 | Seventh slot | Parent-trajectory U1 returns a scored empty-year marker; actual native consumer rejects it. Loss unknown, not zero or a measured bad loss |
 | Original runner | Session82259 confirmed live; no restart, source/guard/loss change, repair or failed-slot refill |
 | Analysis | Three source-frozen continuation handles confirmed live waiting for their declared predecessor closure; no completed full-study analysis yet |
@@ -30,6 +30,10 @@ The[first four own worlds' full inputs/choices](results/native-longitudinal-gene
 match R7 on the observed paths. Do not extend that equality to later worlds
 without checking them, or interpret a changed source/fingerprint as a causal effect.
 No improvement, useful new wiring or information-condition advantage is established.
+The eighth slot also matches R7's ten collected metrics, accepted content IDs
+and annual author accounting rows. This is not full-input equality or a causal
+equivalence proof. Its final-active count2/resources40 also occur in R7, not an
+identified effect of this source edit or an added loss/eligibility constraint.
 
 ## Implemented versus demonstrated
 
