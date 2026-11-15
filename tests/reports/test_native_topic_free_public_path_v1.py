@@ -169,7 +169,7 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
         c=driver.campaign(root,p,key,driver.read(root/'developer-reference-context.json'))
         assert len(c.state['records'])==2 and not c.state['pending']
         for r in c.state['records']:
-            assert r['request']['design_space']['world_law_scope']==driver.SCOPE
+            assert r['request']['design_space']['world_law_scope']=='fixed-native-effects-institution-workflow-v6'
             assert len(r['request']['developer_reference_context']['summary'])==2
             for observation in r['observations']:
                 assert observation['status']=='complete'
