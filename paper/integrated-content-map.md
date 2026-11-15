@@ -5,7 +5,16 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
-Latest November15 reviewed artifact: the88-page longitudinal manuscript includes
+Latest November15 reviewed artifact: the91-page choice/resource manuscript adds
+all three original-choice controls, actual advice delivery/topic/duration traces,
+content differences, per-role costs and passive original-ledger resource use.
+Its [actual source/build/visual receipt](integrated-choice-resource-build-v1.json)
+and [77-file reconstruction](../research/results/integrated-choice-resource-rebuild-subset-verification-v1.json)
+bind matching text/all91 page images,48 figures,43 tables and29 references.
+Neither hand gains nor retrospective loss algebra is promoted to autonomous
+invention. Focused main-track readiness and adequate independent evidence remain open.
+
+Historical November15 artifact: the88-page longitudinal manuscript includes
 the full twelve-slot comparison, two runtime nulls, five physical frozen unused
 worlds, complete assigned-loss paths, exact observed input/choice classes, the
 operative score-history route, shared/content-only utility decomposition and

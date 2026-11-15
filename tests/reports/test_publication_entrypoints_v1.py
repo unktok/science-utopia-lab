@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[2]
 def test_first_integrated_pdf_pointer_matches_the_latest_closed_receipt():
     text=(ROOT/'paper/README.md').read_text()
     paths=re.findall(r'\]\((\.\./output/pdf/[^)]+\.pdf)\)',text)
-    receipt=json.loads((ROOT/'paper/integrated-longitudinal-build-v1.json').read_text())
+    receipt=json.loads((ROOT/'paper/integrated-choice-resource-build-v1.json').read_text())
     first=(ROOT/'paper'/paths[0]).resolve()
     assert first==ROOT/receipt['output']
     assert hashlib.sha256(first.read_bytes()).hexdigest()==receipt['pdf_sha256']
@@ -18,9 +18,10 @@ def test_first_integrated_pdf_pointer_matches_the_latest_closed_receipt():
     assert f"with{receipt['figures']} figures,{receipt['tables']} tables" in text
     assert not receipt['publication_ready']
     assert receipt['scientific_scope']['new_scientific_model_calls_by_manuscript_work']==0
-    assert receipt['scientific_scope']['own_slots']==12
+    assert receipt['scientific_scope']['previous_receipt_scope']['own_slots']==12
     current=text.split('## Earlier reviewed snapshots',1)[0]
-    assert 'all five\nphysical unused-evaluation worlds are now included' in current
+    assert 'five physical frozen\nevaluation worlds remain' in current
+    assert 'all three original-choice controls' in current
     assert 'not a focused main-track-ready' in current
     assert receipt['source_commit'] in current and receipt['pdf_sha256'] in current
 
@@ -33,7 +34,8 @@ def test_earlier_resource_pdf_keeps_its_own_literal_identity():
     assert not receipt['scientific_scope']['new_objective_actual_model_optimization_claimed']
 
 
-def test_current_longitudinal_document_proof_preserves_the_old_reviewed_artifact():
+def test_historical_longitudinal_document_proof_preserves_its_own_reviewed_artifact():
+    import subprocess
     from scripts.reports.paper_rebuild_bundle import integrated_expected, literal_dependencies
     from utopia.optimization.native_numeric_designer import checked
     receipt=checked(json.loads((ROOT/'paper/integrated-longitudinal-build-v1.json').read_text()))
@@ -56,10 +58,12 @@ def test_current_longitudinal_document_proof_preserves_the_old_reviewed_artifact
     assert proof['input_files']==len(policy['files'])==74
     assert proof['literal_dependencies']==71
     expected=integrated_expected(ROOT,receipt,policy['entrypoint'])
+    historical = lambda name: ((ROOT/name).read_bytes() if name in (receipt['output'],policy['receipt'],'LICENSE')
+        else subprocess.check_output(['git','show',receipt['source_commit']+':'+name],cwd=ROOT))
     for name in policy['files']:
         if name not in ('LICENSE',policy['receipt']):
-            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==expected[name]
-    bodies={n:(ROOT/n).read_bytes() for n in policy['files']}
+            assert hashlib.sha256(historical(name)).hexdigest()==expected[name]
+    bodies={n:historical(n) for n in policy['files']}
     assert literal_dependencies(bodies,policy['entrypoint'],repository_parent_inputs=True)==receipt['literal_dependencies']
     assert hashlib.sha256((ROOT/old['output']).read_bytes()).hexdigest()==old['pdf_sha256']
     assert receipt['preserved_files'][old['output']]==old['pdf_sha256']
@@ -69,7 +73,7 @@ def test_navigation_separates_historical_heartbeats_from_current_orientation():
     text=(ROOT/'research/INDEX.md').read_text()
     active,old=text.split('## Records and historical navigation',1)
     assert 'native-longitudinal-postprocessing-v1.md' in active
-    assert 'reviewed88-page working PDF' in active
+    assert 'reviewed91-page working PDF' in active
     assert 'index-history-2026-11-15-longitudinal-prefix.md' in old
     assert 'not current heartbeats' in old
     assert 'Latest54-page integrated manuscript' not in active

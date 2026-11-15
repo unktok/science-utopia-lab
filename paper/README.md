@@ -1,6 +1,34 @@
 # Objective-conditioned institution paper
 
 The latest reviewed working artifact is the
+[91-page integrated draft](../output/pdf/science-utopia-lab-integrated-choice-resource-working-paper.pdf),
+with48 figures,43 tables and29 references. Its
+[source/build/visual receipt](integrated-choice-resource-build-v1.json) binds source
+`2940086de58eb4d50e890b8e23b37d90b11debb0` and reviewed PDF SHA256
+`3d3fddd0736f4d880ca78ef8944f5c15f11bfcedf75f555e8c664c6f14aed2cc`.
+Two cached builds have identical layout text/logs and all91 rendered page images.
+All layouts and150dpi first/concept/new-result details are inspected. Earlier
+meaningful tracks, the twelve-slot comparison and its five physical frozen
+evaluation worlds remain, alongside all three original-choice controls and
+the new original-ledger resource readout. Hand advice gains and retrospective
+cost algebra are not promoted to autonomous invention or another optimization.
+The [77-file allowlist](../research/publication/paper-rebuild-allowlist-integrated-choice-resource-v1.json)
+and [actual local reconstruction](../research/results/integrated-choice-resource-rebuild-subset-verification-v1.json)
+rebuild matching text and all91 page images with the existing cache. Binary
+PDF bytes differ. A premature dependent-process setup error is retained; the
+original staging completed without restarting it or changing manuscript inputs.
+This is not clean-machine setup, independent inference or release clearance.
+The broad working paper is not a focused main-track-ready paper; importance,
+adequate independent evidence and the final readiness decision remain open.
+
+The canonical source is [integrated.tex](integrated.tex), including the new
+[choice/resource section](integrated/native-choice-resource.tex). Reconstruct a
+reviewed snapshot using its exact inputs, not arbitrary later HEAD bytes.
+See [current research status](../research/STATUS.md).
+
+## Earlier reviewed snapshots
+
+The preceding reviewed working artifact is the
 [88-page integrated draft](../output/pdf/science-utopia-lab-integrated-longitudinal-working-paper.pdf),
 with46 figures,40 tables and29 references. Its
 [source/build/visual receipt](integrated-longitudinal-build-v1.json) binds source
@@ -24,8 +52,6 @@ The canonical whole-program source is [integrated.tex](integrated.tex). Its
 included [longitudinal section](integrated/native-longitudinal-comparison.tex)
 contains both closed studies. Reconstruct a reviewed snapshot with its own exact
 source/allowlist, not arbitrary later HEAD bytes. See [current status](../research/STATUS.md).
-
-## Earlier reviewed snapshots
 
 The preceding reviewed working artifact is the
 [85-page integrated draft](../output/pdf/science-utopia-lab-integrated-staged-actual-working-paper.pdf),

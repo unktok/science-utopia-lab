@@ -1,6 +1,31 @@
 # Local manuscript rebuild subsets
 
-## Latest reviewed artifact:88-page longitudinal working manuscript
+## Latest reviewed artifact:91-page choice/resource working manuscript
+
+The [reviewed current receipt](../paper/integrated-choice-resource-build-v1.json)
+binds91 pages,48 figures,43 tables and29 references to source
+`2940086de58eb4d50e890b8e23b37d90b11debb0`. Both full-checkout cached builds
+match in text/logs/all page images. All layouts and150dpi first/concept/new-result
+details are inspected. The original-choice controls and retrospective resource
+readout join the earlier meaningful studies without being called new optimization.
+The [explicit77-file subset](../research/publication/paper-rebuild-allowlist-integrated-choice-resource-v1.json)
+contains74 literal dependencies plus LICENSE, PDF and receipt. Its
+[actual reconstruction](../research/results/integrated-choice-resource-rebuild-subset-verification-v1.json)
+matches text and all91 page images; binary PDF bytes differ. The earlier
+dependent-process setup failure remains recorded, without a staging restart.
+
+```text
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-choice-resource-v1.json \
+  --output <fresh-local-staging-directory>
+```
+
+Wait for staging to finish before invoking the next command. Follow REBUILD.md
+with a fresh absolute Tectonic output directory. This uses an existing local
+cache and is not a clean-machine build, independent inference reproduction,
+anonymous submission, release clearance or main-track readiness.
+
+## Preserved88-page longitudinal working manuscript
 
 The [reviewed current artifact](../paper/integrated-longitudinal-build-v1.json)
 contains46 figures,40 tables and29 references at source

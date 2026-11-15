@@ -4,19 +4,20 @@
 
 The user explicitly requested continuation and reactivated the original goal.
 The pause below is historical. The passive resource instrument and its actual
-original-source readouts are now complete in the feature branch; no old
+original-source readouts are now implemented and retained; no old
 scientific experiment was restarted. No new objective has yet been adopted
 and publication readiness remains unestablished.
 
 ## Historical pause — November15 07:51UTC
 
 The user instructed, through the coordinating chat, that this old autonomous
-research line be paused pending a newly designed main line. The thread goal is
+research line be paused pending a newly designed main line. The thread goal
 was then set to `paused`, not complete. Automatic restart was prohibited;
 the explicit new request above now revokes that pause.
 See [the pause handoff](continuation-paused-2026-11-15.md) for exact current
-state, unfinished local changes and restart instructions. No push was made for
-this pause handoff; existing scientific evidence and conditions are preserved.
+state, unfinished local changes and restart instructions. No push was made at
+the pause; its handoff was later retained on explicit resumption. Existing
+scientific evidence and conditions are preserved.
 
 ## Active publication-ready goal (not achieved)
 
@@ -49,8 +50,8 @@ no value oflambda or new campaign is adopted. The two plotted study sets are
 not pooled or treated as independent optimizer replications. No new model call,
 native scientific world or institutional code execution is performed.
 
-The reviewed88-page PDF remains unchanged and does not yet include this readout
-or the three-choice pilot. The [resumption log](logbook/2026-11-15-resource-instrument-resumption.md)
+The new reviewed91-page PDF includes this readout and the three-choice pilot;
+the earlier88-page PDF remains unchanged. The [resumption log](logbook/2026-11-15-resource-instrument-resumption.md)
 records the completed software checks and exact terminal reader sessions.
 
 ## Current experiment: November15
@@ -149,12 +150,13 @@ revision/conversion recipe remains unresolved. Local hashes do not prove that pr
 ## Remaining publication work
 
 1. The [fixed evaluation and paired reconstruction](results/native-longitudinal-fixed-closed-v1.json)
-   are closed and retained, now integrated in the reviewed88-page PDF.
+   are closed and retained, now included in both the88- and91-page PDFs.
    Do not call this an independent optimizer replication.
-2. The three-control pilot and all original-source paired analyses are now
-   complete. Integrate its actual outcomes, choice/period traces, content
-   differences and costs into figures and the manuscript; the reviewed88-page
-   PDF predates this pilot. Do not promote the hand advice contrast to autonomous
+2. The three-control pilot, resource readout and their actual analyses are now
+   integrated in the reviewed91-page PDF, with48 figures/43 tables/29 references.
+   Two builds and the actual77-file subset match in text/all91 page images;
+   all layouts and150dpi first/concept/new-result pages are inspected.
+   Do not promote the hand advice contrast to autonomous
    invention or infer literal obedience from message presence.
    The final development candidate's first different scientist input is the
    71st request (index70), year4 round intention: delivered publication-history
@@ -178,14 +180,15 @@ updates; numerical QA counts are not scientific replications.
 
 ## Manuscript and historical records
 
-The latest reviewed artifact is the88-page working PDF with46 figures/40 tables/
-29 references, including both the earlier studies and the completed12-slot
-development/five-world unused evaluation. Two cached builds have identical
-text/logs/all88 page images; all layouts and150dpi new-result details are reviewed.
-The[paper entry point](../paper/README.md) links its exact receipt and actual74-file
+The latest reviewed artifact is the91-page working PDF with48 figures/43 tables/
+29 references, including the earlier studies, completed12-slot comparison,
+five-world unused evaluation, all3 choice controls and passive resource readout.
+Two cached builds have identical text/logs/all91 page images; all layouts and
+150dpi first/concept/new-result details are reviewed. The
+[paper entry point](../paper/README.md) links its exact receipt and actual77-file
 local reconstruction, which also matches text and every page image. Binary PDF
 bytes differ. This is not clean-machine reproduction, independent inference or
-main-track readiness; the older85-page artifact and receipts are unchanged.
+main-track readiness; older88-/85-page artifacts and receipts are unchanged.
 
 The previous[3,185-line status](status-history-2026-11-15-longitudinal-prefix.md)
 and[1,140-line index](index-history-2026-11-15-longitudinal-prefix.md) are retained

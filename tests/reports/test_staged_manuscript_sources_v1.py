@@ -31,7 +31,10 @@ def test_actual_staged_results_remain_distinct_from_software_and_unused_scores()
     entry = (ROOT/'paper/integrated.tex').read_text()
     body = (ROOT/'paper/integrated/native-staged-construction.tex').read_text()
     assert r'\input{integrated/native-staged-construction}' in entry
-    assert 'all six proposals: five' in entry
+    # The integrated abstract now summarizes the later closed studies together;
+    # retain the actual six-slot/five-tie boundary in its substantive section.
+    assert 'Later staged and twelve-slot feedback-history studies retain their nulls' in entry
+    assert 'Five own\noutcomes tie R7 and U1 worsens content utility' in body
     assert 'All six proposals and eight native worlds complete' in body
     assert 'for 84 total' in body and 'The 64 probe returns' in body
     assert 'No new mechanism or connection is' in body
@@ -102,7 +105,7 @@ def test_scientific_harness_precedent_does_not_become_a_reproduction_or_priority
 
 def test_paper_navigation_names_latest_reviewed_snapshot_not_current_source_as_reviewed():
     import json
-    receipt = json.loads((ROOT/'paper/integrated-longitudinal-build-v1.json').read_text())
+    receipt = json.loads((ROOT/'paper/integrated-choice-resource-build-v1.json').read_text())
     readme = (ROOT/'paper/README.md').read_text()
     latest = readme.split('## Earlier reviewed snapshots',1)[0]
     assert str(receipt['pages'])+'-page integrated draft' in latest

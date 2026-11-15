@@ -11,13 +11,13 @@
 さらに簡単な数値世界へ置き換える理由でもない。
 
 現在の実行状態・達成範囲は[STATUS](research/STATUS.md)を参照する。
-最新の確認済み統合PDFは[88ページの原稿記録](paper/integrated-longitudinal-build-v1.json)
-と[PDF](output/pdf/science-utopia-lab-integrated-longitudinal-working-paper.pdf)。
+最新の確認済み統合PDFは[91ページの原稿記録](paper/integrated-choice-resource-build-v1.json)
+と[PDF](output/pdf/science-utopia-lab-integrated-choice-resource-working-paper.pdf)。
 以前の研究に加え、実12候補と選択固定の未使用評価の結果・図表・費用を含む。
-2回のcached buildの本文・log・全88ページの画像が一致し、全紙面と新結果の拡大表示を確認した。
-必要な74ファイルだけの[実再構築](research/results/integrated-longitudinal-rebuild-subset-verification-v1.json)
-でも本文と全88ページの画像が一致した（PDFバイナリ自体は異なる）。
-最新の3条件choice対照と資源消費readoutは、このPDFにはまだ反映されていない。
+2回のcached buildの本文・log・全91ページの画像が一致し、全紙面と新結果の拡大表示を確認した。
+必要な77ファイルだけの[実再構築](research/results/integrated-choice-resource-rebuild-subset-verification-v1.json)
+でも本文と全91ページの画像が一致した（PDFバイナリ自体は異なる）。
+最新の3条件choice対照と資源消費readoutも、このPDFに反映済み。
 原稿再構築は研究結果の独立再現ではなく、主会議readyの根拠の代わりではない。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 
