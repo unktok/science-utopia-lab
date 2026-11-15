@@ -705,6 +705,41 @@ proposals; scalar U and parent-trajectory T each have their final slot remaining
 There is no refill, proposal repair, best-reference substitution, hidden penalty,
 objective/source/budget change or early selection from the remaining outcomes.
 
+## Eleventh explicit submission, no native outcome yet
+
+Scalar U2 request
+`93489863a9eda03ef5523f3cabe1244688a72e7022155458f2a6783595e245b9`
+begins authoring at03:01:12.073717UTC and explicitly finishes at
+03:11:02.211123UTC. Its complete14-step journal has one plan, eight reads,
+four writes and one finish, all applied/finished, with16 returned component
+probes. All four writes target `code/world.selection.py`; no other node/root/
+wire/schedule changes occur among the24-node system. Response content digest
+`332c22087335426fe300feadf89ffe8d241005916fb064909a6b6f3d327e0830`,
+file SHA`8eacb4b1add584298eb5fb42f14c35db68c61d223465ac25fd679c136a56a89d`.
+Candidate`native-adaptive-fd3ec7b444a9df3331910080` has fingerprint
+`398aa4fe967511c0e0b87dc13bbf034fed533bbf1deffb215b47c9812b6fe0a9`.
+It accepts real submitted papers, writes mean original reviews/zero if absent,
+and retains the valid unscored empty marker. The native world starts; no
+eleventh completed loss, improvement or whole-study closure is established.
+
+A read-only source check compares the actual selection programs from scalar
+T1 (eighth slot), parent-trajectory U2 (tenth) and scalar U2 (eleventh):
+
+| Program | Literal source SHA-256 |
+| --- | --- |
+| Scalar T1 | `84c9f92146b9773c06220f555b62640a2cfff4611143d6f089025e217b616692` |
+| Parent-trajectory U2 | `e2b38a05c039fe679d7d568d07398e672e2124418126674720ce53b4e43dfbdc` |
+| Scalar U2 | `f82ebe4f07693847caa107fddc579ac8f7a7a8ae1463d2e12e96cfed4c1570a8` |
+
+All three share Python3.11.15 `ast.dump(ast.parse(source), include_attributes=False)`
+SHA`b06325a97c28b249f788d9747354386e8985c3e4dab58070dae5b64c31f9dee4`.
+This parses but never executes authored code. Distinct literal source/fingerprints
+therefore do not establish three different selection algorithms. It is not a
+proof of whole-world/LLM-input equivalence, improved discovery or authority to
+share evaluations by AST: the prospective fixed protocol still shares only
+literal-identical complete systems. Ten slots remain processed, eight valid
+ties/two technical nulls; this eleventh native outcome remains pending.
+
 ## Read-only scope check: new mechanisms are not forbidden by the file API
 
 While scalar U2 readiness continues, inspect the existing virtual workspace
