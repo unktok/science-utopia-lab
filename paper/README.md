@@ -1,5 +1,12 @@
 # Objective-conditioned institution paper
 
+The current unbuilt source additionally includes
+[same-authority original-topic controls and the prospective free-system study](integrated/native-topic-system-search.tex).
+The former is a normally closed developer contrast, not automatic invention;
+the latter is executing, not a completed result. The91-page reviewed PDF below
+is unchanged and predates this section. No new build/page count or visual
+verification is claimed while real inference runs.
+
 The latest reviewed working artifact is the
 [91-page integrated draft](../output/pdf/science-utopia-lab-integrated-choice-resource-working-paper.pdf),
 with48 figures,43 tables and29 references. Its

@@ -5,6 +5,13 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
+November16 unbuilt source adds the normally closed same-authority original-topic
+pilot (T=-20/-36, U=-15.33/-28.67, equal K200), actual calendar/content/resource
+paths and per-role costs. A separate subsection specifies the prospective
+three-objective free study as running, not completed or improved. No old body
+track, PDF or receipt is removed. This source revision has not been compiled
+or visually reviewed during the real inference run.
+
 Latest November15 reviewed artifact: the91-page choice/resource manuscript adds
 all three original-choice controls, actual advice delivery/topic/duration traces,
 content differences, per-role costs and passive original-ledger resource use.

@@ -51,10 +51,14 @@ def test_actual77_file_reconstruction_and_every_page_match_are_not_inference():
     assert not p['clean_machine_build'] and not p['independent_inference_rerun']
     assert not p['publication_ready'] and not p['original_bytes_transformed']
     expected = integrated_expected(ROOT, r, policy['entrypoint'])
-    for name in policy['files']:
+    # The reviewed91-page receipt binds its historical source, not a later
+    # explicitly unbuilt manuscript. Keep its exact bytes/hash/dependency checks.
+    bodies = {name: ((ROOT/name).read_bytes() if name in
+        ('LICENSE',policy['receipt'],r['output']) else subprocess.check_output(
+            ['git','show',r['source_commit']+':'+name],cwd=ROOT)) for name in policy['files']}
+    for name,body in bodies.items():
         if name not in ('LICENSE', policy['receipt']):
-            assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == expected[name]
-    bodies = {name: (ROOT / name).read_bytes() for name in policy['files']}
+            assert hashlib.sha256(body).hexdigest() == expected[name]
     assert literal_dependencies(bodies, policy['entrypoint'], repository_parent_inputs=True) == r['literal_dependencies']
 
 
