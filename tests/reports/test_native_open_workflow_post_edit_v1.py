@@ -28,10 +28,9 @@ def read(path):
     return checked(json.loads(Path(path).read_text()))
 
 
-def transparent_office(request):
+def transparent_office(request, *, identity='scripted-transparent-observation-office'):
     """Prescribed new literal node and two wires, not autonomous discovery."""
     parent = request['parent_system']
-    identity = 'scripted-transparent-observation-office'
     assert all(n['mechanism_id'] != identity for n in parent['mechanisms'])
     edge = next(e for e in parent['connections'] if e['target_mechanism'] == 'world.selection'
         and e['target_port'] == 'observations')

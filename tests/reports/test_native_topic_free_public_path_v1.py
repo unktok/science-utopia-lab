@@ -84,9 +84,13 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
                  'content':"def step(context):\n    return SCRIPTED_undefined_name\n"},
                 {'tool':'read_file','filename':'archive/steps/01.json','limit':30000},
                 {'tool':'write_file','filename':'code/world.selection.py','content':original},
-                transparent_office(req),{'tool':'finish','rationale':'SCRIPTED submitted system, not optimization evidence'}]
+                transparent_office(req,identity='scripted-feedback-office-'+str(req['generation'])),
+                {'tool':'finish','rationale':'SCRIPTED submitted system, not optimization evidence'}]
             action=actions[i]; production.append(payload)
-            if i==2: feedback.append('SCRIPTED_undefined_name' in json.dumps(payload))
+            if i==2:
+                # The bad name also occurs in literal source. Require the actual
+                # error type, not merely an echo of that source string.
+                feedback.append('NameError' in json.dumps(payload))
             return Response({'model':provider['model'],'done':True,'done_reason':'stop',
                 'prompt_eval_count':120,'eval_count':12,
                 'message':{'role':'assistant','content':json.dumps(function_data(action)),
