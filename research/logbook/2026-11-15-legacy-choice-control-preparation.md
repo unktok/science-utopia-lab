@@ -50,3 +50,16 @@ prototype as a completed result or run its independent heavy checks during the
 current inference. The original scientific and analysis sources stay frozen.
 The old20/36 arithmetic and newly observed unused losses do not become an
 achieved objective or a requirement to produce a favorable pilot.
+
+The opt-in `tests/reports/test_native_legacy_choice_native_v1.py` now prepares
+the next construction check: all three literal controls through the original
+five-founder/four-year factory, pinned Docker execution and recorded original
+scientist wire/cache/checkpoints. It checks actual advice delivery into native
+direction-selection prompts, absence of direct catalog-project applications in
+the unforced conditions, original T/U aggregation with explicitly SCRIPTED
+critics, and two read-only physical/observer reconstructions after cache closure.
+HTTP/corpus/retrieval/critics and the software seed42 are fixtures; there is no
+claimed real scientist compliance or scientific gain. This check also does not
+pretend to verify a not-yet-implemented pilot operator runner or its900-second
+profile binding. Existing native transport evidence is separate.
+The opt-in heavy check is prepared, not run during the active fixed inference.
