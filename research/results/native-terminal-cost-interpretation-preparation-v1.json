@@ -1,0 +1,17 @@
+{
+  "applied_to_closed_real_study": false,
+  "content_sha256": "251ab4919e733e0e259cacaf12a7158c8e9bb3bf10f6806068e693a3dfad095a",
+  "exit_code": 0,
+  "junit": "research/data/native-terminal-cost-interpretation-v1/junit.xml",
+  "junit_sha256": "774e5304a4515db52b3334453d0c8907d00ba726c9cf35c2a49262244e1f9e6e",
+  "loss_or_selection_changed": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "original_cell_chunk": "9ea52b",
+  "passed": 11,
+  "publication_ready": false,
+  "pytest_reported_seconds": 0.04,
+  "schema": "scienceutopia.native-terminal-cost-interpretation-preparation.v1",
+  "scope": "Pure arithmetic on explicit SCRIPTED inputs only. Original C remains collected-cost based; requested-cost score is report-only, not a new loss or veto. Null/unknown costs are not zero, and worsening/no-op outcomes are not filtered.",
+  "tested_source_commit": "759b5dc5b6ccf6db3cadb753da4214c60e512cf5"
+}

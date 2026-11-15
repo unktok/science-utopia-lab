@@ -7,6 +7,14 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November16の更新：[98頁の全体稿](../../paper/integrated-topic-systems-build-v1.json)は全6枠・
+図・費用まで統合され、全頁目視と80-file実再構築が完了した。ただしこれはR2/R3/R5/R6の
+代用ではない。[別の2条件native対照](../results/native-terminal-cost-pilot-dispatch-v1.json)を
+固定9af325ffで実行中。既知制度と最終年の資金移転コードだけを変えた制度を比べ、
+既存C目的の実行可能な改善余地を確かめる。手設計対照であり、自動発明とはしない。
+[解釈方針](native-terminal-cost-interpretation-plan-v1.md)は徴収／未払いの区別と限界を
+残す。過去のT/U・選択・目的や隠れた制約は変更しない。以下は日付付きの以前のsnapshot。
+
 November16 03:35JST時点では、[新三目的自由探索の全6枠](../results/native-topic-free-optimization-closed-v1.json)
 と二重元監査／費用／readoutが閉鎖済み。5自己world完走・1実行nullで、全選択は強い
 可視対照と同点。新しい配線／機構や追加scientist workは生成されていない。全8仕様・

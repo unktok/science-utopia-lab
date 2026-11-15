@@ -84,3 +84,31 @@ This note schedules no additional inference or automatic retries. Before that
 next dispatch, identify what would be an important result beyond trivial proxy
 incentives and what evidence would falsify the proposed explanation. The current
 finite study completes unchanged regardless of the answer.
+
+## Focused primary-source check during this wait
+
+Re-inspected the following primary HTML sources on November16. This is a scoped
+comparison, not an exhaustive priority search or a new experimental finding.
+
+[AMD-LLM, sections3.1 and5.3](https://arxiv.org/html/2502.12203v1)
+already generates/evolves mechanism code, uses problem-specific fixing for
+declared design requirements, and compares generated heuristics with other
+methods. Code-defined institutions and a propose/evaluate/revise loop are
+therefore not our standalone novelty claim. Our preservation of literal failed
+programs differs in protocol but does not itself prove a better search method.
+
+[Inefficiencies of Meta Agents for Agent Design, sections3--4](https://arxiv.org/html/2510.06711v1)
+already studies history/context curation, behavioral redundancy and design cost,
+including repeated searches. Simply finding low diversity or expensive local
+revision in our native world would not establish a new general phenomenon.
+Observed literal input/choice classes are useful measurements, not a uniquely
+identified cause of this designer's behavior.
+
+[SciMARS, sections3.2--3.7 and4.2](https://arxiv.org/html/2611.12552v1)
+already adapts roles/coordination and, in its memory variant, evidence policy,
+using candidate probes, composition and selection in scientific/interactive
+tasks. An evidence-routing intervention cannot be called new merely because
+it supplies feedback or changes an executable harness. The candidate distinction
+here is optimizing the organizing system of persistent researchers under
+declared institutional losses; that scope still needs an important supported
+answer, not just a different setting or a novelty assertion.
