@@ -636,6 +636,30 @@ actual input type `DeliveredValue`, rather than weakening the consumer or
 calling that fixture error a scientific failure. All9 consumer cases then pass
 in0.77s; this is a stub-state check, not native replay or improved invention.
 
+## Tenth slot: prior own runtime failure is actually delivered
+
+Original82259 starts parent-trajectory U2 authoring at02:34:40.180960UTC,
+request`fc896ce822a984316ff06a2b09a0f367523dfeeac2f012265e6c7e1154e1438e`.
+The first completed actual frame at02:35:12.113858UTC contains three inline
+observation summaries: R7 and own U0 both U=-13.333333333333332, then own U1
+`status: failed`, `loss: null`, no measured losses. The latter's actual
+`technical_failures` field includes `GraphRuntimeError` and the literal
+`empty native cycle requires an explicit empty decision batch`, with original
+run/seed identity. It is present in the actual user frame, not just in a
+host-side archive or inferred from implementation-source intent. Scalar T2's
+separate failure is not this history's own feedback.
+
+Checked step digest
+`6736ce222d47ef1245366017273ea61fb062cda9bbca1fab9ff5ee3e95e601db`,
+actual wire SHA`b68163c5dec73c814184d9132c95df38bdc9979084c4000ddc8ac7be47914eda`.
+Raw UTF-8 hash and parsed payload agree. Backend28,060 input/393 output tokens,
+complete `done: true`/`done_reason: stop` under the same65,536/8,192 limits.
+This verifies delivery/completion for that frame, not understanding, repair,
+source correctness, a whole-world loss or an information advantage. Missing
+prior-error delivery does not explain this inspected input. Nine slots remain
+processed (seven valid ties/two technical nulls); the tenth result is pending.
+No live setting, source, feedback rule, failed observation or loss is changed.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,
