@@ -740,6 +740,26 @@ share evaluations by AST: the prospective fixed protocol still shares only
 literal-identical complete systems. Ten slots remain processed, eight valid
 ties/two technical nulls; this eleventh native outcome remains pending.
 
+### Eleventh native outcome completes, final original slot starts
+
+At03:22:36.258070UTC original82259 advances to parent-trajectory T2 readiness.
+Scalar U2 completes all four years and measurement without generation error or
+technical failure. Evaluating both unchanged hash-checked original plan losses
+on its retained measurements gives T=-18/U=-13.333333333333332, one valid run
+each. It ties R7 and loses to the hand by2 on each loss. Record digest
+`910681a6aa13ebdc376ea973d7de8ad0b7efc0ef849f56379e60562216b694de`,
+observation`48cbca9b2b48efeca3cdc4b93236cadf17b29d166e97f22f00cdf839bb5ae032`.
+All ten collected metrics, accepted(year,ID) pairs and four annual author
+accounting-row lists equal R7; full scientist-input equality and global program
+equivalence remain unproved for this world by these projections alone.
+
+Eleven slots are processed: nine valid ties and two known technical nulls.
+Three histories have completed their original three proposals; only parent-
+trajectory T's last slot remains. Whole-study closure/selection, paired original
+audits/readouts, fixed unused evaluation and final research interpretation are
+still open. No refill, host repair, new penalty, loss/source/budget change or
+early stopping of the final slot is introduced because earlier results tied.
+
 ## Read-only scope check: new mechanisms are not forbidden by the file API
 
 While scalar U2 readiness continues, inspect the existing virtual workspace

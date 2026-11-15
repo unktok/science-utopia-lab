@@ -10,16 +10,16 @@ manuscript. Publication readiness is **not established**; acceptance is not prom
 
 ## Current experiment: November15
 
-Latest completed-slot boundary02:52UTC/11:52JST. This is a dated observation,
+Latest completed-slot boundary03:22UTC/12:22JST. This is a dated observation,
 not a live heartbeat.
 
 | Item | Verified state |
 | --- | --- |
 | Scientific source | Clean, fixed `a5be8d3103854368a4bc6ba4c13eff7552e9dd15`; not this later documentation checkout |
 | Design | Two losses (throughput T/content utility U), two information conditions, three own proposals per history:12 slots total |
-| Own slots processed | Ten: eight valid native outcomes and two known runtime failures |
-| Current slot | Eleventh, scalar U2, submitted and running its original native world; no completed eleventh loss yet |
-| Valid outcomes | All eight T=-18/U=-13.333333333333332; tie original R7 and lose to the hand by2 on each loss |
+| Own slots processed | Eleven: nine valid native outcomes and two known runtime failures |
+| Current slot | Twelfth/final, parent-trajectory T2, in actual-request readiness; no completed twelfth loss yet |
+| Valid outcomes | All nine T=-18/U=-13.333333333333332; tie original R7 and lose to the hand by2 on each loss |
 | Seventh slot | Parent-trajectory U1 returns a scored empty-year marker; actual native consumer rejects it. Loss unknown, not zero or a measured bad loss |
 | Ninth slot | Scalar T2 double-wraps decision payloads; actual consumer rejects the empty-year batch. Loss unknown, no host unwrapping/repair |
 | Original runner | Session82259 confirmed live; no restart, source/guard/loss change, repair or failed-slot refill |
@@ -32,7 +32,7 @@ The[first four own worlds' full inputs/choices](results/native-longitudinal-gene
 match R7 on the observed paths. Do not extend that equality to later worlds
 without checking them, or interpret a changed source/fingerprint as a causal effect.
 No improvement, useful new wiring or information-condition advantage is established.
-The eighth and tenth slots also match R7's ten collected metrics, accepted content
+The eighth, tenth and eleventh slots also match R7's ten collected metrics, accepted content
 IDs and annual author accounting rows. This is not full-input equality or a causal
 equivalence proof. Their final-active count2/resources40 also occur in R7, not an
 identified effect of this source edit or an added loss/eligibility constraint.
