@@ -20,8 +20,11 @@ Calendar/fixed-content analyses, full-input/choice matches, two-hop failure,
 read-loop/empty-cycle diagnoses, two print figures and per-role costs are
 included. Exact submitted programs are retained separately in the repository.
 Optional feedback and the terminal-cost forecast are preparation, not observed
-scientific gains. The new minimal paper rebuild is pending; the old 77-file
-rebuild remains evidence only for its older snapshot.
+scientific gains. The [explicit 80-file subset](../research/publication/paper-rebuild-allowlist-integrated-topic-systems-v1.json)
+has now [actually rebuilt](../research/results/integrated-topic-systems-rebuild-subset-verification-v1.json)
+matching extracted text and all 98 page images with the existing local cache.
+Binary PDF bytes differ; this is not a clean-machine build or inference rerun.
+The old 77-file rebuild remains evidence only for its older snapshot.
 
 The broad working paper is not a focused main-track-ready paper. Important
 supported findings, appropriate independent evidence and final readiness remain

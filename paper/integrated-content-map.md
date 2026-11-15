@@ -21,8 +21,9 @@ track, PDF or receipt is removed. The
 [actual build/visual receipt](integrated-topic-systems-build-v1.json) binds two
 cached builds, matching text/logs and all 98 page images, with 50 figures,
 46 tables and 29 references. All layouts and first/concept/new-result details
-are reviewed. The new minimal reconstruction is pending; this is not new
-inference or main-track readiness.
+are reviewed. An [actual 80-file reconstruction](../research/results/integrated-topic-systems-rebuild-subset-verification-v1.json)
+matches extracted text and every page image using the existing cache. This is
+not clean-machine setup, new inference or main-track readiness.
 
 Historical November15 reviewed artifact: the91-page choice/resource manuscript adds
 all three original-choice controls, actual advice delivery/topic/duration traces,

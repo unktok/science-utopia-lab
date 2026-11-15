@@ -74,3 +74,20 @@ pending at this note's creation. This is local cache-backed paper reconstruction
 not clean-machine setup, independent optimizer/scientist inference, anonymous
 submission or release clearance. Important scientific findings and appropriate
 independent evidence still require a separately designed next study.
+
+### Actual reconstruction and follow-up tests
+
+Committed retention/staging source f900d268. Original staging97448 exits0 and
+copies exactly80 allowlisted files (manifest content SHA256
+644d80dc1486e063cc6cc240e81aaabfac4a69335a946def13c027202a98135b).
+Only after that original process exits, create the subset's fresh build/render
+directories. Cache-only build10104 and complete90dpi render55552 exit0.
+The public subset verifier exits0 and saves the sealed reconstruction proof:
+all98 page images and extracted text match; binary PDF bytes differ. No original
+input is transformed, no downloads or model calls occur. The80-file policy
+does not redistribute raw worlds, prompts, corpus or weights.
+
+The updated entry-point/historical-artifact/source/rebuild tests80712 exit0:
+86 pass in33.54s, exact JUnit retained separately. This resolves the obsolete
+abstract-string assertion, not a scientific runtime bug. The broader old PDFs'
+source-bound identity and scientific limits remain tested, not silently replaced.

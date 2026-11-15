@@ -30,8 +30,10 @@ with 50 figures, 46 tables and 29 references. Two actual cached builds match in
 text/logs and all 98 page images; all layouts and new-result details are reviewed.
 It includes the closed six-slot three-objective system search and its failures,
 exact input classes and costs. All selected systems tie the strong reference;
-no new wiring is generated. The new minimal rebuild is pending; the older
-77-file reconstruction remains proof only for its own 91-page snapshot.
+no new wiring is generated. An exact 80-file subset actually rebuilds matching
+text and all 98 page images using the local cache, not a clean-machine setup
+or independent inference rerun. The older 77-file reconstruction remains proof
+only for its own 91-page snapshot.
 The original studies and older PDFs remain intact, without an artificial page
 cap. Document reconstruction and paper length are not publication readiness.
 

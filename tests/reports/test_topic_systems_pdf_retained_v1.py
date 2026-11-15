@@ -64,3 +64,18 @@ def test_explicit_80_file_policy_binds_exact_historical_inputs_not_arbitrary_lat
         if name not in ('LICENSE', RECEIPT):
             assert hashlib.sha256(raw).hexdigest() == expected[name]
     assert literal_dependencies(bodies, policy['entrypoint'], repository_parent_inputs=True) == r['literal_dependencies']
+
+
+def test_actual_subset_reconstruction_matches_every_reviewed_page_without_inference():
+    r = receipt()
+    proof = checked(json.loads((ROOT / 'research/results/integrated-topic-systems-rebuild-subset-verification-v1.json').read_text()))
+    assert proof['original_receipt_content_sha256'] == r['content_sha256']
+    assert proof['input_files'] == 80 and proof['literal_dependencies'] == 77 and proof['pages'] == 98
+    assert proof['all_staged_input_bytes_unchanged']
+    assert proof['cache_only_untrusted_actual_build_exit_code'] == 0
+    assert proof['all_rendered_page_pixels_match_reviewed_original']
+    assert proof['page_png_sha256'] == r['visual_review']['page_png_sha256']
+    assert proof['rebuilt_default_pdftotext_sha256'] == r['build']['text_sha256']
+    assert proof['new_downloads'] == proof['new_model_calls'] == 0
+    assert not proof['independent_inference_rerun'] and not proof['clean_machine_build_claimed']
+    assert not proof['anonymous_or_release_clearance'] and not proof['publication_ready']

@@ -9,8 +9,10 @@ costs. All meaningful earlier tracks remain. Its
 [receipt](../paper/integrated-topic-systems-build-v1.json) binds committed source
 cb2fca8a, two actual cached builds with matching text/logs and all 98 page images,
 50 figures, 46 tables and 29 references. All page layouts and first/concept/new
-details are inspected. The new minimal rebuild is pending; old PDF/receipts
-remain unchanged and apply to their own earlier snapshots.
+details are inspected. The [80-file subset actually rebuilds](results/integrated-topic-systems-rebuild-subset-verification-v1.json)
+matching extracted text and all 98 page images using the existing local cache;
+binary PDF bytes differ. This is not clean-machine setup or independent inference.
+Old PDF/receipts remain unchanged and apply to their own earlier snapshots.
 
 This is manuscript integration, not new inference, automatic institutional gain
 or publication readiness. Important supported findings, appropriate independent
