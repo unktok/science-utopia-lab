@@ -5,29 +5,20 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
-- [Next matched source-evidence pilot](protocols/campaigns/native-consumer-source-comparison-v1.md)
-  and [optional literal native-consumer interface](components/native-consumer-source-evidence-v1.md):
-  same free design authority, U/C losses and output budgets; compare current
-  interface evidence with six exact fixed-consumer source cards. The public
-  [74 SCRIPTED/source/editor/calibration/role/feedback/cold checks pass](results/native-consumer-source-preparation-v1.json), not real-model
-  optimization. [Implementation log](logbook/2026-11-16-native-consumer-evidence.md)
-  preserves the failed fixture and narrower proof scope. [Matched runner,
-  auditor and all-slot readout](logbook/2026-11-16-native-consumer-comparison-implementation.md)
-  are implemented. [Final public-native software proof and19 targeted/saved-reader
-  checks pass](results/native-consumer-source-comparison-software-v1.json).
-  [Actual pinned local-model dispatch](results/native-consumer-source-comparison-dispatch-v1.json)
-  starts06:23JST: original15471/PID11821 begins real readiness, with separate
-  audit/cost46051 and readout79215 continuations waiting. Three references/eight
-  own outcomes are not complete; no new actual gain or publication readiness.
-  [Prepared path/accounting figure data](components/native-consumer-source-figures-v1.md)
-  adds11 light SCRIPTED checks, not rendered/visually verified figures or new worlds.
-  [Entrypoint reconciliation and preparation log](logbook/2026-11-16-native-consumer-figure-preparation.md)
-  records both actual initial-readiness passes and the first native reference start.
-  [First fresh reference completes](results/native-consumer-source-first-reference-prefix-v1.json)
-  at06:51JST; the second is active. Its T/U/C baseline values await whole original
-  paired closure and are not a generated gain or held-out result.
-  At07:12JST [both visible baselines complete](results/native-consumer-source-visible-reference-prefix-v1.json)
-  and the comparison-only terminal reference starts; all eight own slots remain.
+- [Matched free-institution source-evidence pilot](protocols/campaigns/native-consumer-source-comparison-v1.md):
+  [actual pinned dispatch](results/native-consumer-source-comparison-dispatch-v1.json)
+  keeps the native world, fixed scientists, free v6 authority and U/C losses.
+  Both initial real readiness conditions pass and [all3 fresh references complete](results/native-consumer-source-reference-bank-prefix-v1.json).
+  Only the core/related baselines reach either optimizer; the known terminal
+  hand comparator stays withheld. [First own submission](results/native-consumer-source-first-own-submission-v1.json)
+  reaches finish and native evaluation; no own outcome/gain or whole-study closure yet.
+  [Public software proof and19 checks](results/native-consumer-source-comparison-software-v1.json)
+  are separate SCRIPTED evidence. [Prepared figure data](components/native-consumer-source-figures-v1.md)
+  passes11 light checks, not visual review. Original15471 runs;46051/79215 wait
+  for paired audit/cost/readout closure. [Observation log](logbook/2026-11-16-native-consumer-first-reference.md)
+  and [preserved stage snapshots](status-history-2026-11-16-consumer-reference-prefix.md)
+  retain the chronology. [Closed-checkout archive](results/native-consumer-closed-checkout-archive-v1.json)
+  preserves all raw records while reclaiming only recoverable code copies.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

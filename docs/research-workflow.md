@@ -112,6 +112,33 @@ is not a completed audit, and a stopped writer must not become normal closure.
 The authoritative research taxonomy and historical mapping are in
 [`research/INDEX.md`](../research/INDEX.md).
 
+### Recoverable closed-checkout archives
+
+Under disk pressure, completed clean feature checkouts can be archived without
+deleting their raw records. The [November16 archive receipt](../research/results/native-consumer-closed-checkout-archive-v1.json)
+maps16 original paths/source commits to main's ignored
+`outputs/native-consumer-closed-checkout-archives-v1/` directories. `outputs`
+and `.pytest_cache` are moved by same-volume rename with their directory inodes
+preserved. Only redundant tracked checkout contents are removed; all recorded
+commits remain in main history and branches are not deleted.
+
+These paths are not active scientific checkouts. Before cleanup, require clean
+tracked/untracked status, known ignored roots, no active-plan reference, no
+observed process cwd and no other live collaborating agent. Skip ambiguous data
+layouts; do not apply this procedure to an active writer/reader or unrelated
+project. No raw result, model reply, checkpoint or failed check is discarded.
+
+For an old raw replay, consult the receipt rather than treating a missing old
+feature path as missing evidence. First verify that its original path is absent
+and unused. Recreate that exact source checkout with `git worktree add --detach`
+at the recorded commit, then restore each archived ignored directory beneath
+its original path, without overwriting an existing directory. Verify the raw
+archive's own hashes before auditing. A historical source-bound check can require
+its **own** recorded source commit rather than a later feature-checkout HEAD.
+The old records/absolute paths are not rewritten to pretend that they were
+created in the archive. Restoring or copying a directory is not a new scientific
+run, independent reproduction or renewed calibration.
+
 ## Reproduction tiers for the submission package
 
 These are different tasks, not interchangeable evidence of reproducibility.

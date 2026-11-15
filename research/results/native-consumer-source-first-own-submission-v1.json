@@ -1,0 +1,164 @@
+{
+  "schema": "scienceutopia.native-consumer-source-first-own-submission.v1",
+  "recorded_utc": "2026-11-15T22:43:06.525776+00:00",
+  "classification": "actual-local-designer-submission-and-native-evaluation-prefix-not-complete-outcome",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "original_writer_handle": 15471,
+  "writer_pid": 11821,
+  "arm": "interface-only",
+  "objective": "content-utility",
+  "generation": 0,
+  "request_sha256": "a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22",
+  "suggestion_id": "native-adaptive-1fa017149d8dc7ab8097d20a",
+  "parent_system_sha256": "67e71aaecc1c5350cb343bb9a0c5b16879aa14fb9041f319f18e99f0b28eb3dd",
+  "submitted_system_sha256": "3b490baa4ce93d447d1694f0d9b536af7f76602b8e4307178c7e735884fb433d",
+  "graph_change_from_actual_parent": {
+    "phase_updates": {},
+    "removed_connections": [],
+    "added_connections": [],
+    "source_parameters_nodes_unchanged": false,
+    "added_nodes": {},
+    "removed_nodes": {},
+    "changed_mechanisms": {
+      "addressed-selection": {
+        "before_sha256": "88a56c52673691294b83adbd82027fde767fda6812691cd5167bc458678153c2",
+        "after_sha256": "b56695a7129225b3f8238a46929915fdd63c90e4aa916f42ec44e6789e29907a",
+        "changed_fields": [
+          "parameters"
+        ]
+      },
+      "world.selection": {
+        "before_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+        "after_sha256": "fb7162bc896b813e02ef00f4ef426aaf41945e46ebd544efee6b450f2823b509",
+        "changed_fields": [
+          "parameters"
+        ]
+      }
+    },
+    "source_edits": {
+      "world.selection": {
+        "before_source_utf8_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6",
+        "after_source_utf8_sha256": "8b3d69c7623528eec090708e2fb42338571cd2a072f0abeabf0cabb291dbf044"
+      }
+    },
+    "changed_system_fields": {},
+    "added_schedules": {},
+    "removed_schedules": {}
+  },
+  "original_author_status": "generated",
+  "component_testing": {
+    "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+    "new_model_calls_from_tests": 0,
+    "new_native_worlds": 0,
+    "probe_attempts": 4,
+    "raised": 0,
+    "returned": 4,
+    "veto_on_finish": false
+  },
+  "complete_original_author_steps": [
+    {
+      "step": 0,
+      "status": "applied",
+      "tool": "plan",
+      "ok": true
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "tool": "read_file",
+      "ok": true
+    },
+    {
+      "step": 2,
+      "status": "applied",
+      "tool": "write_file",
+      "ok": true
+    },
+    {
+      "step": 3,
+      "status": "applied",
+      "tool": "read_file",
+      "ok": true
+    },
+    {
+      "step": 4,
+      "status": "applied",
+      "tool": "read_file",
+      "ok": true
+    },
+    {
+      "step": 5,
+      "status": "applied",
+      "tool": "read_file",
+      "ok": true
+    },
+    {
+      "step": 6,
+      "status": "applied",
+      "tool": "write_file",
+      "ok": true
+    },
+    {
+      "step": 7,
+      "status": "applied",
+      "tool": "read_file",
+      "ok": true
+    },
+    {
+      "step": 8,
+      "status": "applied",
+      "tool": "read_file",
+      "ok": true
+    },
+    {
+      "step": 9,
+      "status": "applied",
+      "tool": "read_file",
+      "ok": true
+    },
+    {
+      "step": 10,
+      "status": "finished",
+      "tool": "finish",
+      "ok": true
+    }
+  ],
+  "steps_are_not_total_charged_model_POSTs": true,
+  "literal_optimizer_visible_reference_ids": [
+    "workflow-reference-core-only",
+    "workflow-reference-core-plus-related"
+  ],
+  "consumer_source_package_visible": false,
+  "source_files_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/binding.json": "68c3c7149b6d3f184e2b2590aac375419a4e59e1197594f87478379ec1e42e73",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/result.json": "2e3a3a57a2aa57ff961f8e4609b37cc4f5dbc32d06effa08e49d44d6b601465f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/response.json": "ef9968c9d787b8fb0df6a49e87dc8e57b438b1a8f7b082389ab3753ad1059f7e",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-00.completed.json": "455a0b9e9cea4f6a9ee7f05e26b11f5fd24493008d113f05e9be9f445058b554",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-01.completed.json": "326e423e0023268412ea4c438b7d906aae39e9a57cfac9df6f2c26e29c06d141",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-02.completed.json": "d501c352e2d2e5af00d1982185b72caf8483ec9c6c8c7ea85df84b1169c4b5cb",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-03.completed.json": "ee45db9883365fa93d6e345bb64b0b12fdb87c8768b8fb2cd0b61697d8921758",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-04.completed.json": "adc3e3585455d4c08c57115142dc35eb045ec549911bbcdabed00cbbfd65ed3f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-05.completed.json": "05311f7a8f5553ee32ea90b229c062d84b76887eb5eb87f5f6701e61b85920ce",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-06.completed.json": "c44a67ac7745fe814a2b2792ac045eefe4c132800eaca91225ed6df2eae3e6f2",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-07.completed.json": "e43b6d4197cffd7336c2929a52e387ce8435706f662af01e855da0d0028f9836",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-08.completed.json": "4950f7aac5958eb142515e44e2f2257970d8fad39ea7505dafe5fc6d5f07cfd6",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-09.completed.json": "1475a63e3c59c6232cea68c1d1936f4031778cf8ca1445ebbcd6027aa131a269",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-10.completed.json": "f12a68460b374b048e82d0e52bf1734a56f72f9fffac33f6ca5661319f6b0d1a"
+  },
+  "campaign_state_file_sha256_at_snapshot": "ca288cf33d267dd5580a25a6e7a2c1f318369d28ac27d33c20fbd830c26536b7",
+  "native_world": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/worlds/native-adaptive-1fa017149d8dc7ab8097d20a-s61001",
+  "scientist_wire_inputs_in_saved_prefix": 44,
+  "wire_prefix_count_is_not_valid_completion_count": true,
+  "assigned_loss": null,
+  "outcome": "pending-native-evaluation",
+  "whole_study_closed": false,
+  "paired_original_audit_cost_readout_closed": false,
+  "institution_improved": false,
+  "independent_optimizer_replication": false,
+  "held_out_evaluation": false,
+  "publication_ready": false,
+  "new_model_calls_by_observation": 0,
+  "new_generated_code_executions_by_observation": 0,
+  "scope": "One exact original local35B submission reaches finish and compiles, with native scientist inputs now observed. Applied source/graph edits and returned component probes do not prove native effects or loss gain. Evaluation remains pending; no host repair, failed-slot refill, changed loss, baseline fallback or source/visibility change is performed."
+}

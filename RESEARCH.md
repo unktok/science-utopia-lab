@@ -74,8 +74,10 @@
 
 その後、同じ自由制度権限・U/C損失の下で、設計者に元世界の実際の処理sourceを見せるかどうかを
 比較する[実モデル実験を起動](research/results/native-consumer-source-comparison-dispatch-v1.json)した。
-通しsoftware検証と19件の保存データ／単体確認は通過済みだが、実モデルは初期校正から開始した段階で、
-比較制度3件・自己候補8枠の新しい実結果や改善はまだない。実行位置は[STATUS](research/STATUS.md)を正本とする。
+通しsoftware検証と19件の保存データ／単体確認、両情報条件の初期実モデル校正は通過済みで、
+[比較制度3件が完了](research/results/native-consumer-source-reference-bank-prefix-v1.json)した。
+[最初の自己案](research/results/native-consumer-source-first-own-submission-v1.json)は正式提出から元世界での評価へ進んだが、
+自己候補8枠の損失結果・改善や全体監査はまだ未完了。実行位置は[STATUS](research/STATUS.md)を正本とする。
 重要で差別化された主張、十分な独立証拠、選択固定の未使用評価、焦点を持つ主稿と最終投稿判断が残る。
 
 以下は日付付きの過去の到達点であり、現在の稼働状態を重ねて宣言するものではない。

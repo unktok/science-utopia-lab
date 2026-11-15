@@ -1,70 +1,50 @@
 # Current research status
 
-## Matched source-evidence study — actually dispatched November16 06:23JST
+## Current matched study: references3/3 complete; first own slot active
 
-An [optional source-evidence interface](components/native-consumer-source-evidence-v1.md)
-now presents six exact fixed-native-consumer/measurement code cards to the
-bounded author as USER data. It does not supply an institution, repair code,
-change the world/loss or introduce a new eligibility gate.
-The [complete74-test check](results/native-consumer-source-preparation-v1.json)
-passes with exact-source, wire and SCRIPTED public-worker scopes; real35B
-capacity and scientific usefulness remain unmeasured. The original one failing
-negative test is a mismatched model-profile fixture and remains preserved.
+The [once-dispatched local-model study](results/native-consumer-source-comparison-dispatch-v1.json)
+runs from immutable7e51b2a4: fixed8B researchers, local35B designer, unchanged
+native world and free workflow-v6 institution authority. Two U/C losses and
+two source-information conditions have isolated histories and eight own slots.
+The [protocol](protocols/campaigns/native-consumer-source-comparison-v1.md)
+is development-informed, not a blind independent method comparison.
 
-The [prospective pilot](protocols/campaigns/native-consumer-source-comparison-v1.md)
-plans interface-only versus literal-consumers at U/C with equal design authority,
-models, visible parent bank and output/probe budgets. Eight own slots/three
-fresh references are a declared finite pilot, not independent method-superiority
-evidence. The [driver, auditor, cost/readout continuations and literal all-slot
-analysis are implemented](logbook/2026-11-16-native-consumer-comparison-implementation.md).
-The [final actual public-native software path and19 targeted/saved-reader checks
-pass](results/native-consumer-source-comparison-software-v1.json), including paired
-cold/cost outputs and matching read-only reports. Failed/skipped earlier checks
-remain preserved; SCRIPTED software outcomes are not real-model gains.
+| Stage | Verified state |
+| --- | --- |
+| Initial real readiness | Both information conditions pass;28 controls each |
+| Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
+| Own-system optimization | [First interface-only / content-utility / g0 submits](results/native-consumer-source-first-own-submission-v1.json) and enters native evaluation;0/8 own slots complete at observation |
+| Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
+| Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
-The [actual local-model study starts](results/native-consumer-source-comparison-dispatch-v1.json)
-from immutable7e51b2a4, original15471/PID11821. Initial designer readiness is
-active at dispatch; references/own outcomes are not yet complete. Separate
-original46051/PID11949 and79215/PID11967 wait for paired audit/cost closure and
-two matching readouts respectively. No independent heavy QA/PDF/video overlaps
-inference. Host observations do not establish exclusive resources. Unused clean
-checkouts, not experiment records, are removed to restore about1.2GiB; dispatch
-disk free space is about3.2GiB. Scientific gains, independent evidence, unused
-evaluation and publication readiness remain unestablished. The full goal is active.
+Original15471/PID11821 remains live, with audit/cost11949 and readout11967
+waiting. No runtime/source/loss/model/budget/selection/visibility setting changes
+during this run; no independent heavy QA/PDF/video overlaps inference.
+[Public software proof and19 targeted/saved-reader checks](results/native-consumer-source-comparison-software-v1.json)
+pass, but SCRIPTED success is not actual institutional gain or later-context
+capacity assurance.
 
-Both initial readiness conditions pass; the literal-consumers certificate has
-content hash6807e7862fffd9d62b6612867cf11413a1a7117e99a5fc54af5641cceacc5b83
-and the interface-only certificate06bfdf5c76295afe51689406e5fab41aec5ac5be7d10d6bafe3111d5ab67e9a6.
-Each records28 controls with `all_controls_passed=true`. The original writer
-advances to the core-only native reference at06:36:44JST. These technical passes
-are not autonomous invention or later-history capacity guarantees.
-[Light figure-data preparation](components/native-consumer-source-figures-v1.md)
-passes11 SCRIPTED checks with no rendering/model/world/code execution. The new
-path/outcome figures are not rendered or visually reviewed yet. The
-[preparation log](logbook/2026-11-16-native-consumer-figure-preparation.md) also
-reconciles the research-purpose page with the existing100-page reviewed PDF.
-Later disk free space falls to about1.1GiB. [Two unused a1/a2 preparations are
-archived and only their recoverable code copies removed](results/native-consumer-low-disk-cleanup-v1.json);
-plan hashes/inodes are unchanged and no scientific/QA raw record is deleted.
-The following free-space observation is about2.7GiB, not a continuous guarantee.
-The user is asked asynchronously for a larger available local/external path;
-the original experiment continues without waiting or changing its settings.
+The fresh visible strong reference has T=-36/U=-28.6667/C=-8.6667.
+The known withheld terminal rule has the same179 full scientist inputs/literal
+choices and T/U, with collected K200→160/unpaid0→40 and C gain4. This is hand
+headroom, not automatic invention, reduced requested work or better science.
+Whole original cold closure remains pending. The third hand policy is not in
+either optimizer's reference context or selection pool.
 
-At06:51:05JST the original writer completes the
-[first fresh reference](results/native-consumer-source-first-reference-prefix-v1.json)
-and advances to core-plus-related. Core-only has T=-20, U=-15.333333333333332,
-C=4.666666666666668, collected cost200/unpaid0. This is a literal baseline
-prefix, not an own gain, final selection or whole-study original cold closure.
-[Observation log](logbook/2026-11-16-native-consumer-first-reference.md) preserves
-the original writer/continuation checks. Two references and all eight own slots
-remain; original source/loss/model/budget/visibility rules are unchanged.
+[Low-disk archive](results/native-consumer-closed-checkout-archive-v1.json):
+after an observation near260MiB free,16 completed clean code copies are
+removed only after their outputs/pytest caches move intact to main's ignored
+archive. Directory identities and main-history source commits are checked.
+No scientific/QA raw record is deleted; original paths can be restored.
+The following free-space observation is about6GiB, not a continuous guarantee.
+Active frozen sources and unrelated projects/processes are untouched.
 
-At07:12:45JST, [both fresh visible references are complete](results/native-consumer-source-visible-reference-prefix-v1.json).
-Core-plus-related has T=-36, U=-28.666666666666668, C=-8.666666666666668,
-collected cost200/unpaid0. The comparison-only terminal reference is now active;
-it remains withheld from both authors. All eight own slots, final selection and
-whole original paired closure are still pending. These hand baselines are not
-newly generated institutions or independent optimizer replications.
+The [reference/own transition log](logbook/2026-11-16-native-consumer-first-reference.md)
+and [preserved previous top section](status-history-2026-11-16-consumer-reference-prefix.md)
+retain intermediate times without treating old stages as current.
+Important differentiated results, appropriate independent evidence, future
+frozen unused evaluation, focused manuscript and final readiness remain open
+(R2/R3/R5/R6). The full publication-ready goal is active.
 
 ## Latest real study closed — November16 05:05:33JST
 

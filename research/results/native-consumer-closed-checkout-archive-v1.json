@@ -1,0 +1,527 @@
+{
+  "schema": "scienceutopia.native-consumer-closed-checkout-archive.v1",
+  "observed_utc": "2026-11-15T22:34:34.924050+00:00",
+  "archives": [
+    {
+      "name": "native-consumer-evidence-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-consumer-evidence-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52559211
+        },
+        {
+          "name": "outputs",
+          "inode": 52555909
+        }
+      ]
+    },
+    {
+      "name": "native-consumer-readouts-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-consumer-readouts-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52616888
+        },
+        {
+          "name": "outputs",
+          "inode": 52588782
+        }
+      ]
+    },
+    {
+      "name": "native-consumer-report-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-consumer-report-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52597347
+        },
+        {
+          "name": "outputs",
+          "inode": 52597331
+        }
+      ]
+    },
+    {
+      "name": "native-terminal-cost-closed-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-terminal-cost-closed-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52544661
+        },
+        {
+          "name": "outputs",
+          "inode": 52544649
+        }
+      ]
+    },
+    {
+      "name": "native-terminal-cost-interpretation-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-terminal-cost-interpretation-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52528977
+        },
+        {
+          "name": "outputs",
+          "inode": 52528928
+        }
+      ]
+    },
+    {
+      "name": "native-terminal-cost-pilot-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-terminal-cost-pilot-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52500189
+        },
+        {
+          "name": "outputs",
+          "inode": 52499616
+        }
+      ]
+    },
+    {
+      "name": "native-terminal-cost-probe-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-terminal-cost-probe-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52437010
+        },
+        {
+          "name": "outputs",
+          "inode": 52437002
+        }
+      ]
+    },
+    {
+      "name": "native-topic-calendar-analysis-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-calendar-analysis-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52412341
+        },
+        {
+          "name": "outputs",
+          "inode": 52412326
+        }
+      ]
+    },
+    {
+      "name": "native-topic-control-results-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-control-results-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52342627
+        }
+      ]
+    },
+    {
+      "name": "native-topic-effect-map-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-effect-map-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52476320
+        },
+        {
+          "name": "outputs",
+          "inode": 52476308
+        }
+      ]
+    },
+    {
+      "name": "native-topic-free-readouts-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-free-readouts-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52392132
+        },
+        {
+          "name": "outputs",
+          "inode": 52392117
+        }
+      ]
+    },
+    {
+      "name": "native-topic-free-search-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-free-search-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52325836
+        },
+        {
+          "name": "outputs",
+          "inode": 52324961
+        }
+      ]
+    },
+    {
+      "name": "native-topic-manuscript-outcomes-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-manuscript-outcomes-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52451844
+        },
+        {
+          "name": "outputs",
+          "inode": 52451818
+        }
+      ]
+    },
+    {
+      "name": "native-topic-manuscript-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-manuscript-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52401941
+        },
+        {
+          "name": "outputs",
+          "inode": 52401932
+        }
+      ]
+    },
+    {
+      "name": "native-topic-objective-headroom-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-objective-headroom-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52422386
+        },
+        {
+          "name": "outputs",
+          "inode": 52422379
+        }
+      ]
+    },
+    {
+      "name": "native-topic-readloop-evidence-v1",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v1/native-topic-readloop-evidence-v1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52464592
+        },
+        {
+          "name": "outputs",
+          "inode": 52464568
+        }
+      ]
+    }
+  ],
+  "disk_free_bytes": 6439682048,
+  "swap_observation": "vm.swapusage: total = 8192.00M  used = 6575.19M  free = 1616.81M  (encrypted)",
+  "original_checkouts": [
+    {
+      "name": "native-consumer-evidence-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-evidence-v1",
+      "source_commit": "d8325ca92abf0bac72c374e96dc339a7d4c96da4",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52559211
+        },
+        {
+          "name": "outputs",
+          "inode": 52555909
+        }
+      ]
+    },
+    {
+      "name": "native-consumer-readouts-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-readouts-v1",
+      "source_commit": "4d81ed0600f7243cdfa60d67fcc00fbb9077adac",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52616888
+        },
+        {
+          "name": "outputs",
+          "inode": 52588782
+        }
+      ]
+    },
+    {
+      "name": "native-consumer-report-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-report-v1",
+      "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52597347
+        },
+        {
+          "name": "outputs",
+          "inode": 52597331
+        }
+      ]
+    },
+    {
+      "name": "native-terminal-cost-closed-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-terminal-cost-closed-v1",
+      "source_commit": "487f8c208c1f5ee4f9ad3ce63d0fcbbd61a232b1",
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52544661
+        },
+        {
+          "name": "outputs",
+          "inode": 52544649
+        }
+      ]
+    },
+    {
+      "name": "native-terminal-cost-interpretation-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-terminal-cost-interpretation-v1",
+      "source_commit": "5c4597070fc9b1b48fb386afbed0769b9afd06aa",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52528977
+        },
+        {
+          "name": "outputs",
+          "inode": 52528928
+        }
+      ]
+    },
+    {
+      "name": "native-terminal-cost-pilot-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-terminal-cost-pilot-v1",
+      "source_commit": "9443417240cbb805205495f1dee464738b4385e4",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52500189
+        },
+        {
+          "name": "outputs",
+          "inode": 52499616
+        }
+      ]
+    },
+    {
+      "name": "native-terminal-cost-probe-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-terminal-cost-probe-v1",
+      "source_commit": "6e6d93e0d880b1f7f985a4e84bbf9088507972b4",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52437010
+        },
+        {
+          "name": "outputs",
+          "inode": 52437002
+        }
+      ]
+    },
+    {
+      "name": "native-topic-calendar-analysis-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-calendar-analysis-v1",
+      "source_commit": "4542fbebc08dd0f74fe7c7e18b78d7d1d90f7a87",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52412341
+        },
+        {
+          "name": "outputs",
+          "inode": 52412326
+        }
+      ]
+    },
+    {
+      "name": "native-topic-control-results-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-control-results-v1",
+      "source_commit": "4b6f45a9eeaf3eb623cc4c22a375fa48508a564d",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52342627
+        }
+      ]
+    },
+    {
+      "name": "native-topic-effect-map-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-effect-map-v1",
+      "source_commit": "89b4d59286ba658280a8eaa6b486f6cb4b423c70",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52476320
+        },
+        {
+          "name": "outputs",
+          "inode": 52476308
+        }
+      ]
+    },
+    {
+      "name": "native-topic-free-readouts-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-free-readouts-v1",
+      "source_commit": "5620b7628fd859cf7674d7079ba856e2b8041335",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52392132
+        },
+        {
+          "name": "outputs",
+          "inode": 52392117
+        }
+      ]
+    },
+    {
+      "name": "native-topic-free-search-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-free-search-v1",
+      "source_commit": "09564fea531e4cc0af23e9c7c54ac4e78f0c4516",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52325836
+        },
+        {
+          "name": "outputs",
+          "inode": 52324961
+        }
+      ]
+    },
+    {
+      "name": "native-topic-manuscript-outcomes-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-manuscript-outcomes-v1",
+      "source_commit": "b69838c3393453b7a86ab429239111bc1f8c2b2e",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52451844
+        },
+        {
+          "name": "outputs",
+          "inode": 52451818
+        }
+      ]
+    },
+    {
+      "name": "native-topic-manuscript-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-manuscript-v1",
+      "source_commit": "282af10fecf6a5e6d1926d037606e3c3bd448747",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52401941
+        },
+        {
+          "name": "outputs",
+          "inode": 52401932
+        }
+      ]
+    },
+    {
+      "name": "native-topic-objective-headroom-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-objective-headroom-v1",
+      "source_commit": "b2d9712a61be4209cdcb92a96b5876546e52d5a7",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52422386
+        },
+        {
+          "name": "outputs",
+          "inode": 52422379
+        }
+      ]
+    },
+    {
+      "name": "native-topic-readloop-evidence-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-readloop-evidence-v1",
+      "source_commit": "46d80e30b42f6471a27535db2b2138c55d39bea6",
+      "integrated_into_main": true,
+      "skip_reasons": [],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52464592
+        },
+        {
+          "name": "outputs",
+          "inode": 52464568
+        }
+      ]
+    }
+  ],
+  "clean_integrated_tracked_checkouts_removed": 16,
+  "raw_model_or_QA_records_deleted": 0,
+  "scientific_results_deleted": 0,
+  "archive_operation": "Same-volume directory rename; outputs and pytest caches retain their exact directory inodes. Git removes only redundant clean tracked checkout contents; branches and commits remain.",
+  "active_sources_untouched": [
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-analysis-v1-a3",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-readouts-v1-a3"
+  ],
+  "preflight": "No tracked/untracked changes, only known ignored outputs/pytest-cache roots, sources absent from the active plan, no observed process cwd or other live collaboration agent; sources retained in main ancestry. A mixed tmp-directory candidate is skipped.",
+  "skipped": [
+    {
+      "name": "native-topic-closed-paper-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-topic-closed-paper-v1",
+      "source_commit": "52e02b62f6c711856ee99c00f250248191383380",
+      "integrated_into_main": true,
+      "skip_reasons": [
+        "mixed-ignored-directories"
+      ],
+      "ignored_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52485879
+        },
+        {
+          "name": "outputs",
+          "inode": 52488284
+        },
+        {
+          "name": "tmp",
+          "inode": 52485865
+        }
+      ]
+    }
+  ],
+  "recovery": "Recreate original_worktree with git worktree add --detach and source_commit, then move each preserved ignored directory from its archive back under its original worktree. For a historical source-bound replay, use that check's own bound source commit rather than a later feature checkout HEAD. Do not overwrite an existing live checkout.",
+  "resource_scope": "After the scientific references close and designer readiness begins, disk free space is observed near260MiB and swap at9472MiB allocated/9280MiB used. This does not prove the sole disk-growth cause or exclusive resource contention. Later free-space/swap values are observations, not all attributed to cleanup. No model setting, active original source, unrelated project/process or raw record is changed. No heavy compression/new model call is performed."
+}

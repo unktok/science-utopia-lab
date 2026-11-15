@@ -27,10 +27,11 @@ not substitutes for scientific evidence.
 
 A [new matched native-source comparison](research/results/native-consumer-source-comparison-dispatch-v1.json)
 is actually running from immutable7e51b2a4. Both initial local35B readiness
-conditions pass and the first Qwen3-8B reference world starts06:36:44JST
-November16. Three references and eight own slots compare literal fixed-consumer
-source evidence with the same free editor/authority at U/C; actual outcomes
-and original paired closure are not yet complete. Source information is a
+conditions pass and [all3 fresh references complete](research/results/native-consumer-source-reference-bank-prefix-v1.json).
+The [first own submission](research/results/native-consumer-source-first-own-submission-v1.json)
+is now in native evaluation; no own outcome or whole original paired closure
+is established yet. Eight own slots compare literal fixed-consumer source
+evidence with the same free editor/authority at U/C. Source information is a
 package, not isolated comprehension or equal measured compute. See
 [current status](research/STATUS.md), not historical process snapshots below.
 
