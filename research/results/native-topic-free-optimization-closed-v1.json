@@ -62,6 +62,11 @@
     "GPU_FLOPs_energy_or_money_measured": false},
   "interpretation": "U own loss improves from the weaker core-only reconstruction to explicit strong-parent retention, while reference-inclusive incumbents remain flat. No selected own system beats its known strong reference. All complete own paths reproduce one of the two recorded reference input/choice classes. This does not prove global optimality, causal checkpoint effects, intrinsic limits of code/graph search or general failure of LLM designers.",
   "independent_optimizer_replications": false, "held_out_evaluation": false,
+  "retention_verification": {"tested_source_commit": "cd0a52025cc7d82eb647889adbc0508e66918f61",
+    "original_session": 94790, "exit_code": 0, "passed": 22, "pytest_reported_seconds": 1.08,
+    "junit": "research/data/native-topic-free-optimization-v1/retention-junit.xml",
+    "junit_sha256": "86ecbf157faad990344b83ff3ff79c77c1746be74750d75677a7e1526a252a02",
+    "scope": "Exact retained eight SystemSpecs and selection bytes, all CSV losses/nulls, used figure/report hashes, pure joins and repository navigation. Not another original audit, model, sandbox, native world or independent reproduction."},
   "new_inference_from_analysis": 0,
   "publication_ready": false
 }
