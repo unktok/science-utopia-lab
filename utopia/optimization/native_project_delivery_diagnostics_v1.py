@@ -7,7 +7,7 @@ from pathlib import Path
 
 from utopia.system.design_patch import digest
 from utopia.system.native_catalog_planning import validate_catalog_assignment
-from utopia.system.native_legacy_topic_planning import validate_legacy_topic_assignment
+from utopia.system.native_legacy_topic_planning import eligible_topics,validate_legacy_topic_assignment
 
 SCOPE='recorded-direct-native-project-fields-v1'
 BANK_OPTION='post_edit_project_delivery_scope'
@@ -92,9 +92,19 @@ def diagnose(document,producer_id,result,context,*,limit=16):
             try:
                 assignment=command['payload']['assignment'];identity=assignment['actor_id']
                 row['assigned_actor_id']=identity
+                actor=actors[identity];direction=assignment['direction'];topic=direction.get('topic')
+                eligible=(eligible_topics(actor,catalog=catalog) if command['action']=='native.legacy-topic-project.v1'
+                          else actor['expertise'])
+                actual={d['topic']:d for d in catalog['directions']}
+                row['field_checks']={
+                    'topic_eligible_for_recorded_actor':isinstance(topic,str) and topic in eligible,
+                    'canonical_catalog_content_equal':isinstance(topic,str) and direction==actual.get(topic),
+                    'native_start_and_duration_equal':type(direction.get('years')) is int
+                        and direction['years']>=1 and assignment.get('project_start_year')==year
+                        and assignment.get('project_end_year')==year+direction['years']-1}
                 validators[command['action']](assignment,actors[identity],year=year,catalog=catalog)
                 row['status']='compatible-recorded-project-fields'
-            except (KeyError,TypeError,ValueError,RuntimeError) as error:
+            except (KeyError,TypeError,ValueError,RuntimeError,AttributeError) as error:
                 row.update(status='incompatible-recorded-project-fields',
                     error_type=type(error).__name__,error_excerpt=str(error)[:256],
                     error_excerpt_is_partial=len(str(error))>256)

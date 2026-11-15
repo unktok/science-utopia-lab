@@ -40,6 +40,8 @@ def test_canonical_duration_does_not_make_two_hop_topic_eligible_and_inputs_stay
     doc,ctx,out=case();before=deepcopy((doc,ctx,out));r=diagnose(doc,PRODUCER,out,ctx);row,=r['rows']
     assert row['status']=='incompatible-recorded-project-fields'
     assert row['error_type']=='GraphRuntimeError' and 'native duration' in row['error_excerpt']
+    assert row['field_checks']=={'topic_eligible_for_recorded_actor':False,
+        'canonical_catalog_content_equal':True,'native_start_and_duration_equal':True}
     assert r['recorded_context_sha256']==digest(ctx) and r['document_sha256']==digest(doc)
     assert (doc,ctx,out)==before and not r['changes_validity']
     assert r['new_source_executions']==r['new_native_worlds']==r['new_model_calls']==0
@@ -77,6 +79,14 @@ def test_unassessed_conditions_never_gain_a_fields_pass(change):
 def test_bounded_return_reports_omitted_commands_not_sample_as_complete():
     doc,ctx,out=case();out['outputs']['commands']*=20;r=diagnose(doc,PRODUCER,out,ctx,limit=2)
     assert len(r['rows'])==2 and r['omitted_rows']==18
+
+
+@pytest.mark.parametrize('assignment',[None,[],{}, {'actor_id':[]},
+    {'actor_id':'SCRIPTED-native-author','direction':None}])
+def test_malformed_untrusted_assignment_is_diagnostic_not_a_prompt_build_exception(assignment):
+    doc,ctx,out=case();out['outputs']['commands'][0]['payload']['payload']['assignment']=assignment
+    row,=diagnose(doc,PRODUCER,out,ctx)['rows']
+    assert row['status']=='incompatible-recorded-project-fields'
 
 
 def test_optional_feedback_survives_reads_finish_and_cold_replay_without_repair(tmp_path):
