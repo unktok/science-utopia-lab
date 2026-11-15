@@ -20,6 +20,7 @@ from scripts.reports.pre_scale_costs_v1 import analyze as costs
 from tests.reports.test_native_legacy_choice_pilot_native_v1 import public_operator_path
 from tests.reports.test_native_legacy_choice_native_v1 import ScriptedCritic
 from tests.reports.test_native_open_workflow_post_edit_v1 import transparent_office
+from tests.reports.native_topic_work_fixture_v1 import work_edit
 from tests.optimization.test_native_designer_contract_v16 import ScriptedSession, Response
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 from utopia.optimization import native_bounded_staged_designer as bounded
@@ -45,6 +46,24 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
         assert [w['outside_core_assignments'] for w in summary['worlds']]==[0,16]
         assert summary['new_model_calls']==0 and not summary['automatic_invention']
     monkeypatch.setattr(OpenAI,'__init__',sdk_init)
+    from utopia.models import models
+    from openai.types.chat import ChatCompletion
+    old_model=models.VLLMServerModel; work_payloads=[]
+    def model(name,**kw):
+        value=old_model(name,**kw); old_reply=value.reply
+        def reply(**payload):
+            if payload.get('response_format',{}).get('json_schema',{}).get('name')!='native_researcher_work_v15':
+                return old_reply(**payload)
+            work_payloads.append(payload)
+            value.context=value.contexts.get(payload['seed'],getattr(value,'context',None))
+            value.requests.append((value.context,payload))
+            return ChatCompletion.model_validate({'id':'SCRIPTED-work','object':'chat.completion','created':0,
+                'model':name,'choices':[{'index':0,'message':{'role':'assistant',
+                'content':json.dumps({'note':'SCRIPTED fixed-scientist institutional response'})},'finish_reason':'stop'}],
+                'usage':{'prompt_tokens':5,'completion_tokens':3,'total_tokens':8}})
+        value.reply=reply
+        return value
+    monkeypatch.setattr(models,'VLLMServerModel',model)
     monkeypatch.setattr(driver,'SEED',42)
     monkeypatch.setattr(driver,'LocalObserverBackend',lambda **kw:ScriptedCritic())
     monkeypatch.setattr(driver,'native_sources',lambda old,source:{'original_source':old,
@@ -85,6 +104,7 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
                 {'tool':'read_file','filename':'archive/steps/01.json','limit':30000},
                 {'tool':'write_file','filename':'code/world.selection.py','content':original},
                 transparent_office(req,identity='scripted-feedback-office-'+str(req['generation'])),
+                work_edit(req),
                 {'tool':'finish','rationale':'SCRIPTED submitted system, not optimization evidence'}]
             action=actions[i]; production.append(payload)
             if i==2:
@@ -107,8 +127,9 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
     driver.run(root)
     p=driver.require_plan(root); end=driver.read(root/'terminal.json')
     assert end['status']=='closed' and end['consumed_slots']==6 and end['observations']==8
-    assert len(session_counts)==6 and set(session_counts.values())=={6}
-    assert feedback==[True]*6 and len(production)==36 and calibration
+    assert len(session_counts)==6 and set(session_counts.values())=={7}
+    assert feedback==[True]*6 and len(production)==42 and calibration
+    assert len(work_payloads)>=24
     assert p['losses']['throughput']==old['losses']['throughput']
     assert p['losses']['content-utility']==old['losses']['content-utility']
     assert set(p['losses'])==set(driver.OBJECTIVES)
@@ -123,6 +144,7 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
             for observation in r['observations']:
                 assert observation['status']=='complete'
                 assert observation['metadata']['measurements'][0]['metrics'][METRIC]['status']=='measured'
+                assert observation['metadata']['measurements'][0]['native_workflow_interval']['institutional_work_events']>=4
                 assert len(observation['candidate']['mechanisms'])>len(r['request']['parent_system']['mechanisms'])
     for client in upstream['clients']: client.close()
     monkeypatch.setattr(OpenAI,'__init__',lambda *a,**kw:pytest.fail('cold reader cannot construct SDK'))
@@ -146,6 +168,7 @@ def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_pa
         'native_worlds':8,'upstream_software_worlds':2,'own_slots':6,'objectives':p['objectives'],
         'scripted_proposal_POSTs':len(production),'scripted_calibration_POSTs':len(calibration),
         'every_actual_next_feedback_prompt_contains_error':all(feedback),
+        'actual_fixed_scientist_institutional_work_requests':len(work_payloads),
         'scientist_installed_sdk_requests_including_upstream':len(upstream['scientist_requests']),
         'audit_content_sha256':audits[0]['content_sha256'],'cost_content_sha256':pair[0]['content_sha256'],
         'new_real_model_calls':0,'deadline_supervision_tested':False,

@@ -61,7 +61,7 @@ def reference_context(plan, pairs):
     return build_context(selected, world=plan['world'], seeds=[SEED], loss_spec=plan['losses']['throughput'])
 
 
-def native_sources(source, *, adapters=None):
+def native_sources(source, *, adapters=None, source_root=None):
     import hashlib
     import io
     import subprocess
@@ -77,6 +77,7 @@ def native_sources(source, *, adapters=None):
         input=''.join(source + ':' + n + '\n' for n in names).encode(),
         stdout=subprocess.PIPE, check=True).stdout
     stream = io.BytesIO(batch); files = {}; adapted = {}
+    physical_root = ROOT if source_root is None else Path(source_root).resolve()
     adapters = {} if adapters is None else adapters
     for name in names:
         header = stream.readline().split()
@@ -85,7 +86,7 @@ def native_sources(source, *, adapters=None):
         size = int(header[2]); raw = stream.read(size)
         if len(raw) != size or stream.read(1) != b'\n':
             raise ValueError('original source Git batch framing differs')
-        path = ROOT / name
+        path = physical_root / name
         if path.is_symlink() or not path.is_file():
             raise ValueError('original scientist/effect source differs: ' + name)
         current = path.read_bytes()

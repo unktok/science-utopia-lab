@@ -28,8 +28,15 @@ def test_exact_two_controls_same_world_transport_losses_and_explicit_resource_di
     assert not p['automatic_invention'] and not p['held_out_evaluation'] and not p['publication_ready']
 
 
-def test_exact_source_adapter_binds_native_science_without_a_global_equivalence_claim():
-    r = driver.native_sources('a5be8d3103854368a4bc6ba4c13eff7552e9dd15')
+def test_exact_source_adapter_binds_native_science_without_a_global_equivalence_claim(tmp_path):
+    import subprocess
+    # Historical adapter bytes are an immutable Git export, not whichever
+    # later author/domain extension happens to be in this live checkout.
+    paths=['utopia','scripts/run_native_objective_instrument_loop_v1.py',
+           'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+    archive=subprocess.check_output(['git','archive',driver.ADAPTER_SOURCE,*paths],cwd=driver.ROOT)
+    subprocess.run(['tar','-xf','-','-C',str(tmp_path)],input=archive,check=True)
+    r = driver.native_sources('a5be8d3103854368a4bc6ba4c13eff7552e9dd15',source_root=tmp_path)
     assert set(r['explicit_native_adapters']) == set(driver.ADAPTERS)
     assert all(v['source_commit'] == driver.ADAPTER_SOURCE for v in r['explicit_native_adapters'].values())
     assert not r['global_semantic_equivalence_claimed']

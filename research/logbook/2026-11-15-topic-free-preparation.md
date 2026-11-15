@@ -15,8 +15,15 @@ C=-U+0.1K; the coefficient is not a measured welfare price or selected to force
 a new winner. Both strong same-authority controls will be visible parents.
 The new arithmetic is not applied to historical selection or the running pilot.
 
-Whole source, nodes, wiring and schedules remain editable within explicit v5;
-old v4 keeps its old rejection. No minimum novelty, activity, fairness or
+Whole source, nodes, wiring and schedules remain editable. Preparation then
+identifies a consequential *study-scope* limitation: historical v4/v5 reject
+all native.researcher.work.v15 nodes, even though this existing trusted handler
+only returns typed original-scientist responses/receipts, not additional native
+paper production. The new prospective institution-workflow-v6 explicitly
+permits that work under the same total scientist HTTP budget. No existing
+scope or running experiment is silently widened; v4/v5 keep their rejection.
+The new public software fixture must exercise actual additional fixed-scientist
+work requests and their native receipts, not just static admission. No minimum novelty, activity, fairness or
 improvement is imposed. Own missing results have no reference fallback. Fresh
 actual calibration and original all-outcome records remain prerequisites.
 

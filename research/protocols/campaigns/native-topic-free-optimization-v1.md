@@ -42,12 +42,21 @@ Keep the original four-year, five-founder, seed61001 development society,
 resource consumers, Qwen3-8B scientist digest and three-position observer.
 No scientist weight learning, invented topic/duration, fictitious review score,
 extra production, arbitrary ongoing-project overwrite or grant minting.
-The explicit workflow-v5 domain permits original core-plus-related project
+The explicit institution-workflow-v6 domain permits original core-plus-related project
 assignments and arbitrary authored institutional source, parameters, new nodes,
 ports, protocols, wires and schedules under actual causal/ledger prerequisites.
 Its once-per-year outer-node invocation is a study scope, not the general engine's
-limit. Existing bounded processes remain usable inside nodes. Historical v4
-requests do not gain the new privilege.
+limit. Existing bounded processes remain usable inside nodes. Unlike historical
+fixed-effect v4/v5, this prospective scope also permits
+`native.researcher.work.v15`: an authored institution can ask existing original
+fixed-model researchers arbitrary typed tasks and route their response artifacts
+through its own code/processes. The existing work handler records exact persona,
+memory, task, model response and canonical receipts; it cannot by itself publish
+papers, overwrite projects, assign review scores, mint resources or change weights.
+All such work calls count against the same1024 total scientist HTTP attempts per
+world, with native per-node/process bounds. This does not grant extra native
+research production. Historical v4/v5 requests retain their explicit prohibition;
+the running topic pilot stays v5 and unchanged.
 
 Use two fresh same-authority developer references, core-only and core-plus-related,
 with the exact literal systems from the normally closed pilot. Their full

@@ -30,9 +30,10 @@ ADAPTERS = {
 read, save, utc = base.read, base.save, base.utc
 
 
-def native_sources(original):
+def native_sources(original, *, source_root=None):
     return base.workflow.native_sources(original, adapters={
-        path: {'source_commit': ADAPTER_SOURCE, 'role': role} for path, role in ADAPTERS.items()})
+        path: {'source_commit': ADAPTER_SOURCE, 'role': role} for path, role in ADAPTERS.items()},
+        source_root=source_root)
 
 
 def build_plan(original, audit, fixed, *, source, origin, observer_backend, original_sources):

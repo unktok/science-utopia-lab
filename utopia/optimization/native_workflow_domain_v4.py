@@ -67,7 +67,7 @@ def require_workflow_candidate(anchor, candidate, *, structure_only=False):
 
 
 def _require_workflow_candidate(anchor, candidate, *, structure_only=False,
-                                allowed_extra_project_actions=()):
+                                allowed_extra_project_actions=(), allow_institutional_work=False):
     """Check literal candidate; never synthesize a corrected graph or source.
 
     Native production, paper identities, costs, grants and effect bridges retain
@@ -100,7 +100,7 @@ def _require_workflow_candidate(anchor, candidate, *, structure_only=False,
     images = {n.parameters['runtime_image_id'] for n in native_execution_nodes(anchor)
         if n.implementation == 'code.python.v1'}
     for node in actual:
-        if node.implementation == 'native.researcher.work.v15':
+        if node.implementation == 'native.researcher.work.v15' and not allow_institutional_work:
             raise ValueError('extra research production is outside fixed-effect workflow-v4')
         grants = node.parameters.get('capabilities')
         if grants is not None:

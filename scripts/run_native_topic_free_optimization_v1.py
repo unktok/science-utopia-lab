@@ -19,9 +19,9 @@ from utopia.optimization.native_jobs import pinned_revision
 from utopia.optimization.native_parent_evidence_v46 import OPTION as PARENT_OPTION, MODE as PARENT_MODE
 from utopia.optimization.native_resource_cost import measure as resource_measure
 from utopia.optimization.native_topic_objectives_v1 import objective_specs, OBJECTIVES
-from utopia.optimization.native_workflow_domain_v5 import (
-    SCOPE, legacy_topic_workflow_design_space, require_legacy_topic_workflow_candidate,
-    verify_legacy_topic_workflow_interval)
+from utopia.optimization.native_institution_workflow_domain_v6 import (
+    SCOPE, institution_workflow_design_space, require_institution_workflow_candidate,
+    verify_institution_workflow_interval)
 from utopia.system import SystemSpec
 from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import file_sha256
@@ -33,10 +33,11 @@ PROTOCOL = 'research/protocols/campaigns/native-topic-free-optimization-v1.md'
 AUDIT_SCRIPTS = ['scripts/run_native_topic_free_optimization_v1.py',
                  'scripts/audit_native_topic_free_optimization_v1.py']
 AUTHOR_ADAPTERS = {
-    'utopia/optimization/native_open_workflow_submission_v1.py': 'Explicit v5 author compiler; historical v4 unchanged',
+    'utopia/optimization/native_open_workflow_submission_v1.py': 'Explicit v5/v6 author compiler; historical v4/v5 authority unchanged',
     'utopia/optimization/native_workflow_staged_designer_v1.py': 'Explicit new developer component evidence scope',
     'utopia/system/native_capability_catalog.py': 'Author-facing original-topic action semantics and validator identities',
     'utopia/optimization/native_objective_view.py': 'Author-facing passive resource metric definitions; no world/loss change',
+    'utopia/optimization/native_workflow_domain_v4.py': 'Explicit private opt-in institution-work authority; historical v4/v5 rejection unchanged',
 }
 read, save, utc = base.read, base.save, base.utc
 scientist_factory, designer_for = base.scientist_factory, base.designer_for
@@ -55,10 +56,10 @@ def open_institutions(p):
 def require_candidate(anchor, candidate, *, structure_only=False):
     if structure_only:
         raise ValueError('this study is whole-system, not a structure-only comparator')
-    return require_legacy_topic_workflow_candidate(anchor, candidate)
+    return require_institution_workflow_candidate(anchor, candidate)
 
 
-verify_interval = verify_legacy_topic_workflow_interval
+verify_interval = verify_institution_workflow_interval
 
 
 def preceding_evidence(origin):
@@ -120,7 +121,7 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, ba
         'backend': clone(backend), 'observer_contract': observer, 'experiment': experiment,
         'world': {**clone(original['world']), 'source_commit': source, 'experiment': experiment,
             'classification': 'actual-native-topic-free-optimization-v1', 'measurement_adapter_contract': observer},
-        'initial_system': anchor.to_dict(), 'design_space': legacy_topic_workflow_design_space(anchor),
+        'initial_system': anchor.to_dict(), 'design_space': institution_workflow_design_space(anchor),
         'losses': objective_specs(original['losses']), 'objectives': list(OBJECTIVES),
         'reference_systems': refs, 'reference_order': list(pilot.LABELS),
         'optimizer_reference_labels': list(pilot.LABELS), 'generations': 2, 'optimizer_seed': 68011,

@@ -11,6 +11,7 @@ from .native_design_space import require_candidate_in_space
 from .native_objective_view import loss_arithmetic
 from .native_workflow_domain_v4 import SCOPE, require_workflow_candidate
 from .native_workflow_domain_v5 import SCOPE as TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
 from .native_designer_wire import wire_record
 from utopia.system import SystemSpec
 from utopia.system.design_patch import clone, digest
@@ -42,10 +43,10 @@ def domain_validator(request):
     """Explicit request-scoped authority; historical v4 does not gain grants."""
     contract = request.get('design_space')
     if (not isinstance(contract, dict) or contract.get('kind') != 'code-and-graph'
-            or contract.get('world_law_scope') not in (SCOPE, TOPIC_SCOPE)):
-        raise ValueError('explicit original native workflow-v4 or legacy-topic workflow-v5 code-and-graph domain required')
-    return (require_workflow_candidate if contract['world_law_scope'] == SCOPE
-            else require_legacy_topic_workflow_candidate)
+            or contract.get('world_law_scope') not in (SCOPE, TOPIC_SCOPE, INSTITUTION_SCOPE)):
+        raise ValueError('explicit original native workflow-v4, legacy-topic workflow-v5 or institution workflow-v6 code-and-graph domain required')
+    return {SCOPE:require_workflow_candidate,TOPIC_SCOPE:require_legacy_topic_workflow_candidate,
+            INSTITUTION_SCOPE:require_institution_workflow_candidate}[contract['world_law_scope']]
 
 
 def bound_systems(request):

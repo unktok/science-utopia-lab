@@ -61,3 +61,18 @@ def test_author_catalog_exposes_actual_new_action_and_its_validator_without_poli
     assert ACTION in card['action_payload_schemas']
     assert any(ACTION in text and 'no shortest-topic' in text for text in card['semantic_constraints'])
     assert any(s['callable']=='validate_legacy_topic_assignment' for s in card['validators'])
+
+
+def test_v6_allows_fixed_scientist_response_work_without_silently_widening_v4_or_v5(tmp_path):
+    from tests.reports.native_topic_work_fixture_v1 import work_system
+    from utopia.optimization.native_institution_workflow_domain_v6 import institution_workflow_design_space
+    from utopia.optimization.native_workflow_domain_v5 import require_legacy_topic_workflow_candidate
+    req=request(tmp_path/'c')
+    anchor=legacy_topic_control(post_funding_cost_control(SystemSpec.from_dict(req['parent_system'])),candidate_policy='core-only')
+    changed=work_system(anchor)
+    driver.require_candidate(anchor,changed)
+    with pytest.raises(ValueError,match='extra research production'):
+        require_legacy_topic_workflow_candidate(anchor,changed)
+    req.update(parent_system=changed.to_dict(),design_space_anchor=anchor.to_dict(),
+               design_space=institution_workflow_design_space(anchor))
+    assert ir.bound_systems(req)[1]==changed
