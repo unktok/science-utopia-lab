@@ -24,6 +24,19 @@ def test_request_position_preserves_unknown_phase_and_empty_tail():
     assert result['native_phase'] is None
 
 
+def test_paired_readout_continuation_binds_same_cost_pair_and_original_scientific_source(tmp_path, monkeypatch):
+    from scripts import finish_native_terminal_cost_readouts_v1 as finish
+    called = {}
+    monkeypatch.setattr(finish, 'finish', lambda args, **kwargs: called.update(kwargs))
+    args = SimpleNamespace(analysis=tmp_path / 'closed-audits', frozen_source=tmp_path / 'scientific-source')
+    finish.run(args)
+    assert called['plan_schema'] == 'scienceutopia.native-terminal-cost-pilot.v1.plan'
+    assert called['preceding_schema'] == 'scienceutopia.native-terminal-cost-pilot-finish.v1'
+    assert called['report_module'] == 'scripts.reports.native_terminal_cost_pilot_v1'
+    assert called['report_extra_arguments'] == ('--frozen-source', str(args.frozen_source),
+        '--cost-one', str(args.analysis / 'costs-1.json'), '--cost-two', str(args.analysis / 'costs-2.json'))
+
+
 @pytest.mark.skipif(not os.environ.get('SCIENCE_UTOPIA_TERMINAL_READOUT_SOFTWARE_ROOT'),
                    reason='explicit existing closed SCRIPTED software input required')
 def test_two_literal_readouts_preserve_cost_loophole_content_and_no_gain_gate():
