@@ -147,3 +147,30 @@ offline103,107-paper corpus, four-year horizon, three fixed controls and budget
 remain unchanged; scientist transport is900 seconds with zero SDK retries.
 No complete loss or improvement is claimed. This is a development feasibility
 pilot with known seed61001, not unused evaluation or automatic institution invention.
+
+## Readout preparation while only the original scientific writer runs
+
+The original90768 remains live and reaches year4 in its first control. Its
+source566f2c91 and plan are unchanged. The independent original-source
+audit/cost chain46397 waits at fixed analysis0f098a40; it cannot dispatch models.
+
+The feature worktree adds three explicit post-closure readers using the existing
+paired-export mechanism: full scientist input/choice classes, source/consumer/
+resource effects, and literal direction/advice/project/control outcomes. The
+choice adapter separates current effective-year advice from retained stale
+messages, decodes only the source-defined model-facing context JSON and keeps
+malformed/conflicting messages and ambiguous actor-memory joins explicit.
+A marker substring alone is not a compliance observation. A selected related
+topic absent from the core duration table is not declared invalid. Topic
+matches, completed replies, annual project state and assigned losses are
+different units; no advice-obedience, pure mediation or independent-sample claim
+is introduced. All three fixed control outcomes stay, including unfavorable ties.
+
+Thirty-eight lightweight parser/common-reader checks pass in2.39s. An added
+actual export-interface test uses explicitly SCRIPTED checkpoints and upstream
+audits, exports all three conditions twice and checks four byte-identical
+report/CSV/manifest files without raw mutation. Together39 checks pass in2.68s.
+These fixtures are not a physical/source attestation or new real-world effect.
+No full native QA, embeddings, model loading, plot/PDF rendering or video work
+runs alongside scientific inference. The real closed-data readouts still must
+wait for the original writer and matching original-source audits/costs.
