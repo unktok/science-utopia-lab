@@ -27,7 +27,7 @@ evaluation. Produce an important supported answer, strong controls, mechanism
 analysis, selection-fixed unused evaluation, reproducible records and a verified
 manuscript. Publication readiness is **not established**; acceptance is not promised.
 
-## Next study implementation: original-topic authority, not new science results
+## Original-topic authority and normally closed real control comparison
 
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)
 identifies an actual mismatch: original non-strict researchers can choose core
@@ -61,15 +61,48 @@ three-control public path.
 
 The [real two-control pilot dispatch](results/native-legacy-topic-pilot-dispatch-v1.json)
 starts November15 at14:03:59UTC/23:03:59JST from clean pinned2f70147a.
-Original session64339/PID92888 is executing the first core-only control at
-this observation; no completed outcome is claimed. Same Qwen3-8B digest and
+The original dispatch observation was first-control execution. It is now
+[normally closed with retained paired readouts](results/native-legacy-topic-pilot-closed-v1.json).
+Original64339 exits0 at14:35:12UTC/23:35:12JST after31m13.34s on the shared host.
+Original14705 also exits0: two frozen-source audits and two cost projections
+match, closing14:36:05UTC. Original readers59951/69985 exit0 with all three
+readout files identical from clean582049bf and original scientific decoders.
+Same Qwen3-8B digest and
 Ollama0.33.3, original corpus and T/U bind literally. Both controls receive
 the same broad action permission; only their candidate-membership rule differs.
-Original continuation14705 waits on the exact writer, then runs two frozen-source
-cold audits and two cost readouts without inference or retry. Host-wide process
+The finite continuation performed no new inference or retry. Host-wide process
 inspection and empty loaded-model list are retained before dispatch; neither
 establishes an exclusive hardware lease. This is still a developer feasibility
 comparison, not new objective-conditioned optimization or automatic invention.
+
+| Same-authority developer rule | Throughput loss T | Content-opinion loss U | Collected cost K |
+| --- | ---: | ---: | ---: |
+| Core-only candidate set | -20 | -15.333333333333332 | 200 |
+| Core plus directly related candidate set | -36 | -28.666666666666668 | 200 |
+
+Both start from the same cold-verified physical society. Actual assignments
+are10 two-year projects versus18 projects (16 one-year/two two-year), with0/18
+outside core. Original durations are not shortened. All48 original effect
+witnesses per world verify. Collected K is50 per year, entirely original annual
+research cost here; production/submission/resubmission/application costs and
+uncollected activity costs are all0. Equal K is not equality of money, compute,
+energy, welfare or scientific effort beyond this model.
+
+The accepted year/paper/content multisets share0 records; each has20/36 own
+records. Exact utility difference is40/3, not merely16 extra identical papers.
+The first full scientist input differs at wire index0/year1. This is a whole-rule
+contrast on one reused condition, not independent samples or causal mediation.
+Costs retain306 scientist responses (127/179),168 critic POSTs and2 role loads;
+zero designer-generation POSTs. Scientist provider totals are458048 tokens,
+with68876 cached prompt tokens a subset, not extra usage. Load usage remains
+unknown. A separate project Node process was later observed; neither the
+snapshot nor these timings proves an exclusive machine or a timeout cause.
+
+The related-topic hand rule improves both T/U on this observed condition at
+equal native K. No global optimum, stable expected advantage, objective-specific
+winner reversal or automatically invented system is established. It is a
+stronger same-authority parent/control for the separately declared free search,
+not completion of the research's optimization or publication goal.
 The reviewed91-page
 PDF predates this new implementation and remains unchanged.
 

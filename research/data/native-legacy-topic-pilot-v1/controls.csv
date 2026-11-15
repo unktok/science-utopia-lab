@@ -1,0 +1,3 @@
+condition,seed,throughput,content-utility,resource_cost,uncollected_activity_cost,project_assignments,outside_core_assignments,scientist_requests
+core-only,61001,-20.0,-15.333333333333332,200.0,0.0,10,0,127
+core-plus-related,61001,-36.0,-28.666666666666668,200.0,0.0,18,18,179
