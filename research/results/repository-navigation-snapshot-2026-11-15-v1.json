@@ -1,0 +1,26 @@
+{
+  "schema": "scienceutopia.repository-docs-reset.v1",
+  "source_commit": "5e28da5b4a4341084ccfbee8823262474ab83fbe",
+  "snapshots": [
+    {
+      "original": "research/INDEX.md",
+      "snapshot": "research/index-history-2026-11-15-longitudinal-prefix.md",
+      "sha256": "7a99ab35a60a29a7e575ddffb70721b08043b30fe54054f68ff4392d4b32610b",
+      "lines": 1140,
+      "bytes": 85088
+    },
+    {
+      "original": "research/STATUS.md",
+      "snapshot": "research/status-history-2026-11-15-longitudinal-prefix.md",
+      "sha256": "0b5b5a1bd5296ad229e9e68be2d41dff9078a4600d37a9abed0c09d0ecd68f09",
+      "lines": 3185,
+      "bytes": 223196
+    }
+  ],
+  "deleted_worktrees": 0,
+  "deleted_raw_artifacts": 0,
+  "deleted_branches": 0,
+  "new_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "scope": "Byte-identical navigation archives at unchanged relative depth, not a new scientific result, PDF build, current process heartbeat or publication-readiness judgment. Original six-snapshot manifest remains unchanged."
+}

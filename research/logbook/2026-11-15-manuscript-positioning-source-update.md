@@ -53,3 +53,35 @@ Historical PDFs/receipts must not be overwritten. The actual85-page PDF hash
 still matches its receipt; all75 local README links resolve. Thirteen source/
 editorial checks pass in1.99s. No PDF build/render or native experiment is added
 by this correction, and it does not close the focused-paper or importance gap.
+
+## Navigation compaction while the original scientific writer continues
+
+At source5e28da5b the research INDEX had1,140 lines and STATUS3,185. Both are
+now preserved byte-for-byte at unchanged relative depth under
+`index-history-2026-11-15-longitudinal-prefix.md` and
+`status-history-2026-11-15-longitudinal-prefix.md`.
+The[archive manifest](../results/repository-navigation-snapshot-2026-11-15-v1.json)
+binds original Git blobs, hashes, byte counts and line counts. New front doors
+have65/88 lines, with current progress, the whole-program scope, remaining
+publication work and evidence links. The parameter-study compatibility anchor
+remains. No raw artifact, frozen worktree, branch or historical result is deleted.
+The program map no longer claims the old compiler-feedback study is live.
+
+Before changes, the two navigation-test modules retain10 passes/two failures:
+they still require the54-page resource PDF to be latest. Their original JUnit
+file SHA is`6d4f5bcee8897242cd00dc7f9e109efb07435bf4d4d8d1c2de7bdc3c2a70baea`.
+Tests now bind the actual85-page receipt and distinguish it from newer unbuilt
+sources; the old resource PDF's own hash/receipt is still checked. New checks
+reconstruct both navigation archives from their original Git source and verify
+portable archive links and the retained compatibility anchor. Fourteen checks
+pass in0.51s; with the choice-support and empty-cycle consumer modules, all24
+pass in1.36s. Final JUnit SHA
+`1260f01294864eb7151a99624b5d4e628c80d73c182e7e7d2f8ed31837a89351`.
+Raw before/after/final results remain in the feature worktree's
+`outputs/navigation-compaction-v1-a1/`; none is overwritten or counted as a
+scientific replication. The default link checker passes25 documents/409 local
+targets and the original six snapshots; the new pair is checked separately.
+
+Original82259 continues eighth-slot native processing. This work does not
+altera5be8d31, any author input, loss, selection or model call allowance; it
+does not build a PDF or claim completion of R2/R3/R5/R6.

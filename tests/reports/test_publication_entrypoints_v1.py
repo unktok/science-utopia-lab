@@ -10,24 +10,62 @@ ROOT=Path(__file__).resolve().parents[2]
 def test_first_integrated_pdf_pointer_matches_the_latest_closed_receipt():
     text=(ROOT/'paper/README.md').read_text()
     paths=re.findall(r'\]\((\.\./output/pdf/[^)]+\.pdf)\)',text)
-    receipt=json.loads((ROOT/'paper/integrated-native-resource-build-v1.json').read_text())
+    receipt=json.loads((ROOT/'paper/integrated-staged-actual-build-v1.json').read_text())
     first=(ROOT/'paper'/paths[0]).resolve()
     assert first==ROOT/receipt['output']
     assert hashlib.sha256(first.read_bytes()).hexdigest()==receipt['pdf_sha256']
     assert f"{receipt['pages']}-page integrated draft" in text
-    assert f"with{receipt['figures']} figures and{receipt['tables']} tables" in text
+    assert f"with{receipt['figures']} figures,{receipt['tables']} tables" in text
+    assert not receipt['publication_ready']
+    assert receipt['scientific_scope']['new_scientific_model_calls_by_manuscript_work']==0
+    assert receipt['scientific_scope']['own_slots']==6
+    current=text.split('## Earlier reviewed snapshots',1)[0]
+    assert 'not yet integrated\nas completed results' in current
+    assert 'not a new PDF build or visual review' in current
+    assert receipt['source_commit'] in current and receipt['pdf_sha256'] in current
+
+
+def test_earlier_resource_pdf_keeps_its_own_literal_identity():
+    # Updating the latest-pointer assertion must not discard the old artifact
+    # or make its source-bound receipt a certificate for the newer PDF.
+    receipt=json.loads((ROOT/'paper/integrated-native-resource-build-v1.json').read_text())
+    assert hashlib.sha256((ROOT/receipt['output']).read_bytes()).hexdigest()==receipt['pdf_sha256']
     assert not receipt['scientific_scope']['new_objective_actual_model_optimization_claimed']
-    assert 'not\ncompleted evidence in this PDF' in text
-    assert 'running experiment' not in text
 
 
 def test_navigation_separates_historical_heartbeats_from_current_orientation():
     text=(ROOT/'research/INDEX.md').read_text()
-    active,old=text.split('## Earlier checkpoints and retained studies',1)
-    assert 'native-objective-instrument-loop-v1.md' in active
-    assert 'Latest54-page integrated manuscript' in active
+    active,old=text.split('## Records and historical navigation',1)
+    assert 'native-longitudinal-postprocessing-v1.md' in active
+    assert 'reviewed85-page working PDF' in active
+    assert 'index-history-2026-11-15-longitudinal-prefix.md' in old
+    assert 'not current heartbeats' in old
+    assert 'Latest54-page integrated manuscript' not in active
+    archived=(ROOT/'research/index-history-2026-11-15-longitudinal-prefix.md').read_text()
+    _,old=archived.split('## Earlier checkpoints and retained studies',1)
     assert 'Earlier live four-world resource assay' in old
     assert 'historical checkpoint' in old
+
+
+def test_navigation_snapshot_preserves_original_bytes_links_and_compatibility_anchor():
+    import subprocess
+    from scripts.check_repository_docs import check
+    manifest='research/results/repository-navigation-snapshot-2026-11-15-v1.json'
+    data=json.loads((ROOT/manifest).read_text())
+    snapshots=tuple(row['snapshot'] for row in data['snapshots'])
+    result=check(ROOT,documents=snapshots,manifest=manifest)
+    assert result['status']=='passed',result['errors']
+    assert result['snapshots']==2
+    for row in data['snapshots']:
+        old=subprocess.check_output(['git','show',data['source_commit']+':'+row['original']],cwd=ROOT)
+        retained=(ROOT/row['snapshot']).read_bytes()
+        assert retained==old
+        assert len(retained)==row['bytes'] and len(retained.splitlines())==row['lines']
+    assert all(data[k]==0 for k in ('deleted_worktrees','deleted_raw_artifacts',
+        'deleted_branches','new_model_calls','new_scientific_worlds'))
+    status=(ROOT/'research/STATUS.md').read_text()
+    assert '## Metric-conditioned study execution snapshot' in status
+    assert 'status-history-through-v45.md#metric-conditioned-study-execution-snapshot' in status
 
 
 def test_current_reader_links_exist_and_readiness_is_not_claimed_by_finished_qa():

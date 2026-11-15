@@ -1,6 +1,6 @@
 # 全体のゴールと証拠の対応
 
-2026-11-14更新。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
+2026-11-15更新。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
 [研究目的](../RESEARCH.md) · [直近状態](STATUS.md) · [優先順位](roadmap.md)
 
 以前の[スケールアップ前の終了条件](pre-scale-completion.md)は有限パッケージとして閉じた。
@@ -9,19 +9,19 @@
 当時の44ページ稿・全紙面／再構築検証も終え、[九項目監査](results/pre-scale-completion-final-audit-v1.md)が閉じた。
 現在は[主会議への投稿準備](publication/publication-ready-v3.md)を進めている。
 旧T/Uの選択固定評価、助言・資源・計画対照、自由計画全14世界、数値比較全6世界、
-手設計workflow対照と75ページ統合稿を加えたが、
+手設計workflow対照と、その後の[統合稿](../paper/README.md)を加えたが、
 研究上の重要な答え・独立反復・最終ready判断は未完了である。
 能力の実装と、研究上の優位性・一般性の実証は別である。
 
 ## 最新の実行区切り
 
-[compiler-feedback実験](results/native-workflow-compiler-feedback-dispatch-v2.json)が
-固定7f1fc61fで実際に稼働している。設計者の初期校正は通過し、元の研究者世界で
-対照を実行中。上限は対照2件＋自己提案6枠で、まだ自己提案の損失・最終選択はない。
-失敗理由を次の提案へ返す接続は9世界のSCRIPTED検証を通過したが、
-それを実LLMの発明・改善と数えない。正常終了時だけ監査・費用・レポートへ進む。
-[未使用条件の計画](protocols/campaigns/native-workflow-feedback-fixed-evaluation-v2.md)は
-結果前に固定したが、seed未使用確認と実行は未了。独立optimizer反復とは別である。
+現在は固定a5be8d31の12枠longitudinal比較を実行中。
+[時点付きの進捗](STATUS.md)と[元の実dispatchログ](logbook/2026-11-15-longitudinal-real-dispatch.md)
+を正本とし、ここへliveカウントを複製しない。二目的・二情報条件でも作用権限は同じで、
+元の研究者世界を保持する。全候補、失敗、全作用と入力を分析し、選択を固定してから
+未使用条件へ進む。生成や校正の成功は有効な制度発明や損失改善の証明ではない。
+この見出しに以前置かれていたcompiler-feedback実験の稼働記述は過去のsnapshotであり、
+[完全な旧STATUS](status-history-2026-11-15-longitudinal-prefix.md)に各時点の記録を保持する。
 
 ## 一本の研究経路
 
@@ -80,7 +80,7 @@
 
 ## いま動いているもの
 
-この見出しの最新状態は冒頭のcompiler-feedback実験と[STATUS](STATUS.md)を参照。
+この見出しの最新状態は冒頭のlongitudinal比較と[STATUS](STATUS.md)を参照。
 以下は、それ以前に終了した別研究の内訳であり、全研究の推論が停止中という意味ではない。
 
 V1、V45、V2、M比較、T/E、旧T/Uとその固定評価、T/P探索、計画3対照は終了済み。
