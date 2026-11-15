@@ -78,3 +78,25 @@ docs25/460 local links/six unchanged snapshots pass. A fresh committed-source
 native check must cover this new actual interval path before future dispatch;
 the retained2ee51f7e construction remains literal, not a certificate for later
 changed source.
+
+The separate second opt-in construction starts only after committing14c1caab
+and checking fresh a2 basetemp/JUnit paths. Original9901 exits0, one test in
+16.10s, with source/HEAD unchanged while live. It traverses the actual v5
+workflow verifier as well as project actuation, original phases, resources and
+double cold physical proof. Each world retains48 exactly-once native effect
+witnesses (12 per year). Effects/fixture calls remain14/20 and300, not new real
+scientific observations. V2 data/receipt bind the new source and preserve the
+original2ee51f7e receipt byte-for-byte. No scientific hypothesis is rerun or
+failed candidate refilled, and no real scientist/designer/critic is invoked.
+
+Original75536:100 selected checks pass in6.93s, covering both retained native
+constructions, new authority, historical guards, same-authority comparator
+identity, current resource receipts and original-world exact-instance/payload
+containment. Documentation25/460links/six snapshots passes. These checks are
+not100 scientific replications or proof that a real researcher follows advice.
+A separate read-only initial-state reconstruction uses the exact14c1caab
+helper on the two original software checkpoints: both physical identities are
+667f577ff47fc0621c3c7eaf9cd195e7bc58796526e6da4d91c8d90f17a4b8cf.
+Their raw checkpoint hashes differ, as expected from operational system binding.
+The supplementary sealed identity record binds both and the prior receipt;
+it does not normalize or replace either checkpoint or claim real-model evidence.

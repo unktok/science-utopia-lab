@@ -42,9 +42,11 @@ consumers, while keeping whole-system source/node/wiring/schedule freedom. The
 old core-only action stays core-only, and old domains reject new action grants.
 No shortest-topic rule, objective, novelty/fairness or improvement veto is added.
 
-[Actual two-world software construction](results/native-legacy-topic-software-retention-v1.json)
-completes from clean2ee51f7e with real pinned Docker, original four-year phases,
-ledger/checkpoints and two matching cold physical proofs per world. Scripted
+[Actual two-world software construction](results/native-legacy-topic-software-retention-v2.json)
+completes from clean14c1caab with real pinned Docker, original four-year phases,
+48 actual v5 workflow effect witnesses per world, ledger/checkpoints and two
+matching cold physical proofs per world. The earlier2ee51f7e construction is
+retained separately, not relabelled as later-source evidence. Scripted
 HTTP/corpus give300 fixture calls:14 core-only project effects and20 broad-rule
 effects,16 of them outside core. Four corrupted witness shapes per world are
 rejected. Both append measured resource cost200. These are software events,
