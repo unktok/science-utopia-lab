@@ -80,6 +80,11 @@ def persistent_diagnostics(document,steps):
                             if value['tensor_delivery_diagnostic']['document_sha256']==digest(document)
                             else 'different-document-not-current-consumer-proof')}
                         if 'tensor_delivery_diagnostic' in value else {})
+                    | ({'project_delivery_diagnostic':clone(value['project_delivery_diagnostic']),
+                        'project_diagnostic_document_applicability':('same-current-document'
+                            if value['project_delivery_diagnostic']['document_sha256']==digest(document)
+                            else 'different-document-not-current-consumer-proof')}
+                        if 'project_delivery_diagnostic' in value else {})
                     for value in test['results']]}
             latest[node]=entry
             if test['status']=='tested':
@@ -115,6 +120,12 @@ class NativePostEditFeedback:
             raise ValueError('explicit actual developer fixture reference required')
         self.bank=clone(bank);self.executor=executor;self.source_commit=source_commit
         self.tensor_delivery_scope=None
+        self.project_delivery_scope=None
+        if 'post_edit_project_delivery_scope' in bank:
+            from .native_project_delivery_diagnostics_v1 import SCOPE
+            if bank['post_edit_project_delivery_scope']!=SCOPE:
+                raise ValueError('unknown explicit project-delivery diagnostic scope')
+            self.project_delivery_scope=SCOPE
         if 'post_edit_tensor_delivery_scope' in bank:
             from .native_tensor_delivery_diagnostics_v1 import SCOPE
             if bank['post_edit_tensor_delivery_scope']!=SCOPE:
@@ -143,6 +154,11 @@ class NativePostEditFeedback:
             self.contract['tensor_delivery_diagnostics']={'scope':self.tensor_delivery_scope,
                 'source_sha256':source_hashes(),'note':DELIVERY_NOTE,'veto_on_finish':False,
                 'new_model_calls':0,'new_native_worlds':0,'new_tensor_body_executions':0}
+        if self.project_delivery_scope is not None:
+            from .native_project_delivery_diagnostics_v1 import source_hashes,NOTE as PROJECT_NOTE
+            self.contract['project_delivery_diagnostics']={'scope':self.project_delivery_scope,
+                'source_sha256':source_hashes(),'note':PROJECT_NOTE,'veto_on_finish':False,
+                'new_model_calls':0,'new_native_worlds':0,'new_source_executions':0}
 
     def declare_request(self,request):
         result=clone(request)
@@ -235,6 +251,10 @@ class BoundFeedback:
                 if self.owner.tensor_delivery_scope is not None and reply['status']=='returned':
                     from .native_tensor_delivery_diagnostics_v1 import diagnose
                     entry['results'][-1]['tensor_delivery_diagnostic']=diagnose(after['document'],node,reply['result'])
+                if self.owner.project_delivery_scope is not None and reply['status']=='returned':
+                    from .native_project_delivery_diagnostics_v1 import diagnose
+                    entry['results'][-1]['project_delivery_diagnostic']=diagnose(
+                        after['document'],node,reply['result'],self.lab.fixtures[fixture]['context'])
                 cursor+=1
         result=clone(receipt)
         result['result']['component_feedback']={'schema':SCHEMA,'probe_offset':offset,
