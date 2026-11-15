@@ -63,3 +63,32 @@ claimed real scientist compliance or scientific gain. This check also does not
 pretend to verify a not-yet-implemented pilot operator runner or its900-second
 profile binding. Existing native transport evidence is separate.
 The opt-in heavy check is prepared, not run during the active fixed inference.
+
+## Subsequent native construction execution after real inference ended
+
+The original fixed scientific writer closes normally at05:45:43UTC and its
+actual session exits0. Host-wide observation confirms writer21817 absent,
+totalCPU219.9% and no new Python/MLX inference task; the previous Ollama server
+remains resident atCPU0. This is an observation, not an exclusive host lease.
+Only then is the opt-in test run from clean fixed2d50c3732b22b4f4027090a3918b4736e15cd8f3.
+Original85002 exits0: one test passes in25.43s. No source/HEAD changes occur
+during that test, and no real model inference is dispatched by it.
+
+[Verification bytes](../results/native-legacy-choice-construction-verification-v1.json)
+and the [source/JUnit retention receipt](../results/native-legacy-choice-construction-software-v1.json)
+bind three original five-founder/four-year SOFTWARE worlds,12 annual boundaries,
+76 recorded code-context rows and two cold physical reconstructions per world.
+All three start from the same independently reconstructed physical society.
+The unforced conditions have16 original native direction requests each, versus
+zero under direct core assignment. Advice generates16 actual addressed
+deliveries, and the native direction payloads contain that protocol. Native
+catalog-project application events remain absent in both unforced conditions.
+Two common-observer audits agree. Pytest's current-directory symlink is an
+alias of the same invocation, not another test or another three worlds.
+
+HTTP/corpus/retrieval/critics remain explicit fixtures. Do not report these
+software losses as real-Qwen gains or treat message arrival as real-model
+compliance. The prospective pilot operator runner/900-second binding and real
+feasibility measurements remain unverified; their separate checks still precede
+any actual three-world dispatch. The construction helper itself now has actual
+original-native/Docker/consumer/cold coverage, not only graph parsing.

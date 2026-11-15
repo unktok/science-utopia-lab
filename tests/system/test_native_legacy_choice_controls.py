@@ -56,3 +56,25 @@ def test_advice_has_actual_pre_research_context_wiring_not_direct_project_assign
 def test_default_pre_funding_seed_is_not_silently_reordered():
     with pytest.raises(ValueError, match='post-funding'):
         controls(anchor())
+
+
+def test_retained_native_construction_proof_is_not_a_real_model_gain_claim():
+    import hashlib
+    import subprocess
+    from utopia.optimization.native_numeric_designer import checked
+    receipt = checked(json.loads((ROOT / 'research/results/native-legacy-choice-construction-software-v1.json').read_text()))
+    raw = (ROOT / receipt['verification_file']).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == receipt['verification_file_sha256']
+    value = json.loads(raw)
+    assert value['source_commit'] == receipt['source_commit']
+    for name, sha in receipt['source_files'].items():
+        old = subprocess.check_output(['git', 'show', receipt['source_commit'] + ':' + name], cwd=ROOT)
+        assert hashlib.sha256(old).hexdigest() == sha
+    assert receipt['software_worlds'] == 3 and receipt['annual_boundaries'] == 12
+    assert sum(receipt['recorded_code_context_rows'].values()) == 76
+    assert receipt['native_direction_requests'] == [0, 16, 16]
+    assert receipt['advice_deliveries'] == [0, 0, 16]
+    assert value['same_initial_physical_society_verified']
+    assert not receipt['scientific_feasibility_or_improvement_claimed']
+    assert not receipt['pilot_operator_runner_and_scientist900_profile_verified']
+    assert not receipt['publication_ready'] and receipt['new_real_model_calls'] == 0
