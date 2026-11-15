@@ -9,13 +9,16 @@ November16 unbuilt source adds the normally closed same-authority original-topic
 pilot (T=-20/-36, U=-15.33/-28.67, equal K200), actual calendar/content/resource
 paths and per-role costs. The same section adds conditional calendar saturation
 and fixed-record content support, with their assumptions rather than a global
-optimality claim. Its three-objective free study has a dated4/6 consumed-slot
-prefix:3 complete outcomes and1 runtime null, no strong-parent gain. Source/
-consumer and exact input findings, the two-hop failure, prospective non-veto
+optimality claim. Its three-objective free study has all6 own slots closed:
+5 complete outcomes and1 runtime null, no strong-parent gain, paired original
+audits/costs/readouts, frozen selection and exact programs. Two readable print
+figures, all role costs, source/consumer and exact input findings, the two-hop
+failure, retention/read loops and the conditional empty sentinel are included.
+Prospective non-veto
 diagnostics and a developer cost-collection hypothesis remain distinguished
-from complete-study, automatic-invention or new-world evidence. No old body
+from automatic-invention or new-world evidence. No old body
 track, PDF or receipt is removed. This source revision has not been compiled
-or visually reviewed during the real inference run.
+or visually reviewed at this source-update point; real inference is now closed.
 
 Latest November15 reviewed artifact: the91-page choice/resource manuscript adds
 all three original-choice controls, actual advice delivery/topic/duration traces,

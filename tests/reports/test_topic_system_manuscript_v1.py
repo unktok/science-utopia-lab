@@ -44,13 +44,12 @@ def test_new_hand_control_table_matches_retained_real_results_not_free_invention
     assert 'first full scientist request already differs at index0' in text
 
 
-def test_prospective_objective_and_execution_are_not_retroactive_or_completed_results():
+def test_declared_objective_and_closed_execution_are_not_retroactive_or_ready_claims():
     text=(ROOT/SECTION).read_text()
     for phrase in ('L_C=-U+0.1K=L_U+0.1K','fixed before these free proposals',
         'never substituted into historical','Missing cost or outcome remains unknown',
         'Unchanged-parent submissions','two each for original throughput',
-        'not a normally closed all-slot audit',
-        'three own native worlds complete',
+        'five own native worlds complete',
         'not main-track readiness','original native research, production, funding and resource effects remain'):
         assert phrase in text
     entry=(ROOT/'paper/README.md').read_text()
@@ -58,7 +57,7 @@ def test_prospective_objective_and_execution_are_not_retroactive_or_completed_re
     assert 'unchanged and predates this section' in entry
 
 
-def test_partial_own_table_and_failure_diagnosis_match_retained_original_prefix():
+def test_complete_own_table_and_failure_diagnosis_preserve_retained_original_prefix():
     r=json.loads((ROOT/'research/results/native-topic-free-first-resource-outcomes-v1.json').read_text())
     text=(ROOT/SECTION).read_text()
     assert r['consumed_own_slots_at_stage_entry']==4
@@ -73,11 +72,31 @@ def test_partial_own_table_and_failure_diagnosis_match_retained_original_prefix(
     for row in ('Throughput & 0 & $-36$ & $-28.67$ & $-8.67$',
         'Content utility & 0 & $-20$ & $-15.33$ & $4.67$',
         'Resource-aware content & 0 & --- & --- & --- & Runtime null',
-        'Resource-aware content & 1 & $-36$ & $-28.67$ & $-8.67$'):
+        'Resource-aware content & 1 & $-36$ & $-28.67$ & $-8.67$',
+        'Content utility & 1 & $-36$ & $-28.67$ & $-8.67$',
+        'Throughput & 1 & $-36$ & $-28.67$ & $-8.67$'):
         assert row in text
     for phrase in ('not a refill','returned is not accepted','missing cost is not zero',
-        'not installed into this running study','None of these four slots demonstrates'):
+        'not installed into this closed study','None of the six slots demonstrates'):
+        assert phrase in ' '.join(text.split())
+
+
+def test_complete_study_frozen_selection_role_costs_and_real_figures_match_retention():
+    r=json.loads((ROOT/'research/results/native-topic-free-optimization-closed-v1.json').read_text())
+    text=' '.join((ROOT/SECTION).read_text().split())
+    assert r['consumed_own_slots']==6 and r['complete_own_worlds']==5 and r['runtime_nulls']==1
+    assert not r['baseline_fallback']and not r['held_out_evaluation']
+    for phrase in ('T0 (also tied with T1), U1 and C1','81 actual charged proposal POSTs,199 readiness POSTs',
+        '19 applied file writes and56 component probes','3h19m28.15s','2,124 raw files',
+        'No new unused condition has been evaluated','conditional incompatibility, not a failed observed world',
+        'reference-inclusive incumbent is flat'):
         assert phrase in text
+    for path in ('objective-loss-paths-print.png','edit-input-objective-map-print.png'):
+        assert 'figures/native-topic-free-v1/'+path in text
+        assert (ROOT/'paper/figures/native-topic-free-v1'/path).is_file()
+    assert '1,149 & 1,663,354 & 106,971' in text
+    assert '199 & 4,056,056 & 9,541' in text
+    assert '81 & 2,857,825 & 20,966' in text
 
 
 def test_conditional_diagnostics_and_prepared_control_are_not_new_scientific_runs():
