@@ -13,7 +13,8 @@ from utopia.optimization.native_world import measure_native_world
 from utopia.optimization.native_resource_cost import measure, METRIC
 from utopia.optimization.native_design_space import require_candidate_in_space
 from utopia.optimization.native_workflow_domain_v4 import post_funding_cost_control
-from utopia.optimization.native_workflow_domain_v5 import legacy_topic_workflow_design_space
+from utopia.optimization.native_workflow_domain_v5 import (
+    legacy_topic_workflow_design_space, verify_legacy_topic_workflow_interval)
 from utopia.runtime.checkpointing import read_portable_checkpoint
 from utopia.system.native_legacy_topic_controls import legacy_topic_control
 from utopia.system.native_legacy_topic_planning import ACTION, EVENT, eligible_topics
@@ -43,6 +44,9 @@ def test_original_topic_actuation_two_native_worlds_and_cold_reconstruction(tmp_
         sim = factory(spec, 42, identity); sim.llm.sim = sim
         try:
             sim.run()
+            interval = verify_legacy_topic_workflow_interval(core, spec, sim.native_system.events, years=4)
+            assert interval['scope'] == 'fixed-native-effects-legacy-topic-workflow-v5'
+            assert interval['native_effects_per_year'] == 12 and interval['effect_witnesses'] == 48
             measurement = measure_native_world(sim, run_id=identity)
             augmented = measure(sim, measurement)
             checkpoint = Path(sim.output_dir) / 'portable_checkpoint_year_4.json.gz'
@@ -82,6 +86,7 @@ def test_original_topic_actuation_two_native_worlds_and_cold_reconstruction(tmp_
             summaries.append({'policy': policy, 'source_commit': factory.source_commit,
                 'checkpoint_sha256': file_sha256(checkpoint), 'effects': len(events),
                 'outside_core_effects': len(outside), 'resource_metric': augmented['metrics'][METRIC],
+                'actual_workflow_interval': interval,
                 'double_physical_proof_equal': True})
         finally:
             sim.llm.response_cache.close()

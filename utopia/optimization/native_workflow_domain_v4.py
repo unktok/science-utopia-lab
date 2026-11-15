@@ -206,6 +206,11 @@ def post_funding_cost_control(anchor):
 
 
 def verify_workflow_interval(anchor, candidate, events, *, years):
+    require_workflow_candidate(anchor, candidate)
+    return _verify_workflow_witnesses(anchor, candidate, events, years=years)
+
+
+def _verify_workflow_witnesses(anchor, candidate, events, *, years):
     """Check exactly-once original effect witnesses, not just graph parsing.
 
     The runner supplies owner provenance after an implementation returns; a
@@ -213,7 +218,6 @@ def verify_workflow_interval(anchor, candidate, events, *, years):
     event name. This reader assumes retained events are independently bound to
     the actual native checkpoint/stream; it is not a substitute for cold audit.
     """
-    require_workflow_candidate(anchor, candidate)
     if type(years) is not int or years < 1:
         raise ValueError('positive completed native interval required')
     nodes = _protected(anchor)

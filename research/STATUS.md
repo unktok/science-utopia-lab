@@ -27,6 +27,31 @@ evaluation. Produce an important supported answer, strong controls, mechanism
 analysis, selection-fixed unused evaluation, reproducible records and a verified
 manuscript. Publication readiness is **not established**; acceptance is not promised.
 
+## Next study implementation: original-topic authority, not new science results
+
+The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)
+identifies an actual mismatch: original non-strict researchers can choose core
+plus directly related topics, while the historical typed direct-assignment API
+only permits core expertise. General native.project already has broader power,
+but historical fixed-effect domains exclude arbitrary project modifications.
+This is not a claim of global inexpressivity or a proven cause of old nulls.
+
+New explicit `native.legacy-topic-project.v1` and workflow-v5 expose the original
+eligible union with exact original content/duration and actual native project
+consumers, while keeping whole-system source/node/wiring/schedule freedom. The
+old core-only action stays core-only, and old domains reject new action grants.
+No shortest-topic rule, objective, novelty/fairness or improvement veto is added.
+
+[Actual two-world software construction](results/native-legacy-topic-software-retention-v1.json)
+completes from clean2ee51f7e with real pinned Docker, original four-year phases,
+ledger/checkpoints and two matching cold physical proofs per world. Scripted
+HTTP/corpus give300 fixture calls:14 core-only project effects and20 broad-rule
+effects,16 of them outside core. Four corrupted witness shapes per world are
+rejected. Both append measured resource cost200. These are software events,
+not real-Qwen feasibility, scientific loss gains or automatic discoveries.
+No real model call or new optimization study has begun. The reviewed91-page
+PDF predates this new implementation and remains unchanged.
+
 ## New development-only resource readout (after explicit resumption)
 
 The [passive original-world instrument](components/native-collected-resource-instrument-v1.md)

@@ -2,7 +2,7 @@
 
 No old fixed-production/workflow scope gains this capability implicitly.
 """
-from .native_workflow_domain_v4 import _require_workflow_candidate
+from .native_workflow_domain_v4 import _require_workflow_candidate, _verify_workflow_witnesses
 from utopia.system.native_legacy_topic_planning import ACTION
 
 SCOPE = 'fixed-native-effects-legacy-topic-workflow-v5'
@@ -10,6 +10,13 @@ SCOPE = 'fixed-native-effects-legacy-topic-workflow-v5'
 
 def require_legacy_topic_workflow_candidate(anchor, candidate):
     return _require_workflow_candidate(anchor, candidate, allowed_extra_project_actions=(ACTION,))
+
+
+def verify_legacy_topic_workflow_interval(anchor, candidate, events, *, years):
+    """Actual fixed-effect witnesses under the explicit new authority, not v4."""
+    require_legacy_topic_workflow_candidate(anchor, candidate)
+    result = _verify_workflow_witnesses(anchor, candidate, events, years=years)
+    return {**result, 'schema': 'scienceutopia.native-workflow-interval.v5', 'scope': SCOPE}
 
 
 def legacy_topic_workflow_design_space(anchor, *, kind='code-and-graph'):

@@ -12,7 +12,8 @@ from utopia.optimization.native_fixed_production_domain import (
     SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE, require_fixed_production)
 from utopia.optimization.native_workflow_domain_v4 import require_workflow_candidate
 from utopia.optimization.native_workflow_domain_v5 import (
-    legacy_topic_workflow_design_space, require_legacy_topic_workflow_candidate)
+    legacy_topic_workflow_design_space, require_legacy_topic_workflow_candidate,
+    verify_legacy_topic_workflow_interval)
 from utopia.system import SystemSpec
 from utopia.system.native_catalog_planning import ACTION as CORE_ACTION, catalog_contract, validate_catalog_assignment
 from utopia.system.native_legacy_topic_planning import (
@@ -64,6 +65,21 @@ def test_historical_core_action_does_not_silently_gain_related_topic_authority()
     with pytest.raises(GraphRuntimeError, match='displayed topic'):
         run_commands(kernel, ctx, command('old', CORE_ACTION, {'assignment': assignment}, BOOTSTRAP))
     assert actors['a'].newest_direction is None
+
+
+def test_developer_comparators_have_literal_same_source_permissions_and_wiring():
+    from utopia.system.native_legacy_topic_controls import legacy_topic_control, SOURCE
+    from utopia.system.native_planning_controls import planning_controls
+    anchor = planning_controls(IMAGE, seed=42)['assignment-reserve21-no-review-all']
+    core, related = [legacy_topic_control(anchor, candidate_policy=p).to_dict()
+                     for p in ('core-only', 'core-plus-related')]
+    for body in (core, related):
+        node = next(n for n in body['mechanisms'] if n['mechanism_id'] == 'developer-catalog-agenda')
+        assert node['parameters']['code_artifact']['source'] == SOURCE
+        node['parameters']['candidate_policy'] = 'same-for-comparison'
+        grants = next(n for n in body['mechanisms'] if n['mechanism_id'] == 'developer-catalog-effects')['parameters']['capabilities']
+        assert ACTION in grants['bootstrap'] and CORE_ACTION not in grants['bootstrap']
+    assert core == related  # no hidden phase, source, grant or graph contrast
 
 
 def test_pure_union_is_one_hop_and_all_eligible_nonshortest_choices_are_legal():
@@ -128,6 +144,16 @@ def test_new_authority_requires_explicit_v5_and_keeps_code_graph_and_workflow_fr
     node = next(n for n in raw['mechanisms'] if n['mechanism_id'] == 'developer-catalog-effects')
     node['parameters']['capabilities']['bootstrap'].append(ACTION)
     candidate = SystemSpec.from_dict(raw)
+    from tests.optimization.test_native_workflow_domain_v4 import witness_fixture
+    from utopia.optimization.native_workflow_domain_v4 import verify_workflow_interval
+    events = witness_fixture(candidate)
+    proof = verify_legacy_topic_workflow_interval(anchor, candidate, events, years=2)
+    assert proof['schema'] == 'scienceutopia.native-workflow-interval.v5'
+    assert proof['effect_witnesses'] == 24 and not proof['cold_audit_replaced']
+    with pytest.raises(ValueError, match='workflow-v5'):
+        verify_workflow_interval(anchor, candidate, events, years=2)
+    with pytest.raises(ValueError, match='missing or duplicated'):
+        verify_legacy_topic_workflow_interval(anchor, candidate, events[:-1], years=2)
     for scope in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
         with pytest.raises(ValueError): require_fixed_production(anchor, candidate, scope=scope)
     with pytest.raises(ValueError, match='workflow-v5'): require_workflow_candidate(anchor, candidate)

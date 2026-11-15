@@ -36,3 +36,45 @@ c5cd0ef1703e. This is not an exclusive resource lease. No unrelated job is stopp
 The full native construction check is opt-in and must run only after committing
 the implementation, from a clean source with fresh output locations. No real
 scientist/designer/critic call or new scientific campaign has started here.
+
+## Actual full native construction
+
+Commits source2ee51f7eadca085457456bc27f2e908c3e8da2d1 before the opt-in native
+check; creates its exact ignored output parent and verifies basetemp/JUnit are
+unused. Source/HEAD stay unchanged while original20671 runs. It exits0 with
+one full-path test in16.43s. Both original four-year worlds use the pinned
+Docker image, scripted corpus/scientist HTTP, actual native phases and ledger,
+portable checkpoints and two matching cold physical proofs per world.
+
+There are300 fixture scientist calls. Core-only produces14 validated project
+effects, zero outside core; the same-authority broad rule produces20 effects,
+16 outside core. Both measure collected resource cost200. These counts belong
+to the SCRIPTED world, not seed61001 scientific feasibility or a loss gain.
+Four malformed cold witnesses per world (catalog/eligible union/core expertise/
+duration) are rejected without repairing their originals. No model request is
+made during proof reconstruction. Exact verification/JUnit are retained with
+source/raw hashes in the separately sealed software-retention receipt.
+
+Read-only local model inventory also confirms approved qwen3:8b digest500a1f06
+and the approved64k designer alias remain installed. Other listed new models
+are not selected, prompted, downloaded or substituted. No scientist, designer
+or critic real-generation call is launched in this continuation.
+
+Initial artifact retention inventories the whole pytest output tree, which
+contains pytest's normal `test_*_current` bookkeeping symlink. The unchanged
+raw-inventory helper rejects it. No receipt is emitted, and selected82107
+therefore has86 passes/one missing-receipt failure in6.58s. Do not weaken the
+no-symlink guard or delete the bookkeeping link. Instead inventory the exact
+real test directory, validate/record its separate current link, and bind JUnit
+separately. The original test is not rerun to replace outcomes. Corrected
+retention followed by original18710 gives87 passes in6.65s, including the
+original-world exact-instance/payload-containment check.
+
+Adds the explicit v5 actual workflow-interval witness entry point. It shares
+the effect-witness core, but performs new-scope validation rather than passing
+new grants to the historical v4 entry point. Old v4 still rejects v5 grants;
+both reject missing/duplicated effects. Selected35459:48 passes in4.14s;
+docs25/460 local links/six unchanged snapshots pass. A fresh committed-source
+native check must cover this new actual interval path before future dispatch;
+the retained2ee51f7e construction remains literal, not a certificate for later
+changed source.

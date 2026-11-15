@@ -5,6 +5,11 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Next reachable-action study design](publication/native-legacy-topic-next-study-v1.md)
+  and [actual native/Docker/cold software construction](results/native-legacy-topic-software-retention-v1.json):
+  explicit original core-plus-related action/workflow-v5, not new real-model
+  feasibility or automatic invention. Historical domains remain unchanged.
+
 - [Collected original activity-resource instrument](components/native-collected-resource-instrument-v1.md),
   [actual paired cold retention](results/native-resource-cost-development-retention-v1.json)
   and [separate-study support](results/native-resource-cost-development-summary-v1.json):
