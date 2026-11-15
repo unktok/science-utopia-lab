@@ -174,3 +174,20 @@ These fixtures are not a physical/source attestation or new real-world effect.
 No full native QA, embeddings, model loading, plot/PDF rendering or video work
 runs alongside scientific inference. The real closed-data readouts still must
 wait for the original writer and matching original-source audits/costs.
+
+All three actual readout continuations are now waiting from separate clean
+fixed4f34b81d: choices19744, requests12071 and effects75635. Their original
+started records bind the scientific plan/source and original analysis0f098a40;
+no model calls are allowed. They run only after the scientific writer exits and
+the two original audits/cost reports match. Neither frozen source is edited.
+
+At06:51:31UTC the original writer enters `native-choice` after the first direct
+core-assignment control returns complete T=-20/U=-15.333333333333332 (20 accepted
+decision occurrences and content-opinion utility15.333333333333332). Sixty
+physical common-observer result files are present at observation. This is a
+native measured control outcome, not automatic invention, an optimizer gain or
+an independently cold-confirmed complete study. All three outcomes are still
+needed, and the new direct-control run is not a substitute for a failed slot.
+The [sealed prefix record](../results/native-legacy-choice-pilot-prefix-v1.json)
+retains original observation/score hashes, continuation starts and literal
+progress. Its snapshots are not permanent liveness guarantees.

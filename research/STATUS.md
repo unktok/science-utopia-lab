@@ -12,11 +12,16 @@ manuscript. Publication readiness is **not established**; acceptance is not prom
 
 The next [three-control original-choice pilot](results/native-legacy-choice-pilot-dispatch-v1.json)
 actually starts at06:39:11UTC/15:39:11JST from clean frozen566f2c91.
-Original session90768/PID43791 enters `legacy-choice-core-assignment`.
+Original session90768/PID43791 completes the first `core-assignment` control
+and enters `native-choice` at06:51:31UTC. The first native observation has
+T=-20/U=-15.333333333333332; original-source cold confirmation still waits for
+whole-study closure. The [literal prefix and continuation bindings](results/native-legacy-choice-pilot-prefix-v1.json)
+retain that observation and all four downstream chains. No complete-study
+or optimizer-improvement result is claimed from this first control.
 It compares direct core assignment, original native choice and code-authored
 advice with unchanged T/U, four-year world and Qwen3-8B scientists. This is a
 reused-development-seed hand-control feasibility study, not optimization,
-automatic invention or unused evaluation. No complete outcome is claimed here.
+automatic invention or unused evaluation. The other two outcomes are not complete.
 The [actual public-path software proof](results/native-legacy-choice-pilot-software-retention-v1.json)
 binds three original SOFTWARE worlds, installed SDK/HTTPX900/zero-retry headers,
 two cold audits and two matching cost projections. Historical setup/permission
