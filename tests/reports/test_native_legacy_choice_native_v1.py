@@ -111,13 +111,16 @@ def test_three_original_world_controls_code_delivery_measurement_and_double_cold
         assert len(proofs[0]['annual_checkpoints']) == 4
         records.append({'label': label, 'system_fingerprint': system.fingerprint,
             'scores': scores, 'direction_requests': len(directions), 'advice_deliveries': len(deliveries),
+            'initial_physical_identity': proofs[0]['initial_identity'],
             'cold_proof_sha256': digest(proofs[0])})
+    assert len({r['initial_physical_identity'] for r in records}) == 1
     audits = [observer.audit() for _ in range(2)]
     assert audits[0] == audits[1]
     write_json_atomic(tmp_path / 'verification.json', {
         'schema': 'scienceutopia.native-legacy-choice-construction-software.v1',
         'classification': 'SCRIPTED-HTTP-corpus-retrieval-and-critics-not-scientific-feasibility',
         'source_commit': factory.source_commit, 'software_worlds': records,
+        'same_initial_physical_society_verified': True,
         'original_plan_file_sha256': file_sha256(declared),
         'observer_audit_content_sha256': audits[0]['content_sha256'],
         'new_real_model_calls': 0, 'policy_execution_on_host': False,
