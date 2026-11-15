@@ -22,7 +22,8 @@ This page is navigation, not a chronological experiment transcript.
   distinguish collected-cost improvement from requested expense without changing
   the objective or adding an unpaid-cost veto. [Literal interpreted records and
   programs](data/native-terminal-cost-pilot-v1/README.md) and a reviewed figure
-  are retained. Current source includes the result; updated PDF review is pending.
+  are retained. The [new100-page manuscript](../paper/README.md) includes the
+  measured result with two matching builds and all100 inspected page layouts.
 
 - [Next free-system optimization protocol](protocols/campaigns/native-topic-free-optimization-v1.md)
   runs three declared losses with strong visible same-authority parents and free
@@ -96,10 +97,10 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Manuscript and evidence
 
-- [Paper entry point](../paper/README.md): latest reviewed 98-page working PDF,
-  source-bound receipt, all-page visual review and actual 80-file reconstruction
-  with matching text and every page image. The earlier 77-file reconstruction
-  applies only to its 91-page snapshot.
+- [Paper entry point](../paper/README.md): latest reviewed100-page working PDF,
+  source-bound receipt and all-page visual review. Its source-only subset rebuild
+  is not yet verified. The earlier80-file reconstruction applies to the98-page
+  snapshot and77-file reconstruction to the91-page snapshot only.
   A reviewed working paper is not main-track readiness or fresh inference replication.
 - [Completed previous six-slot staged study](results/native-open-staged-institution-closed-v1.md)
   and [its fixed unused evaluation](results/native-open-staged-fixed-closed-v1.json).

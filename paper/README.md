@@ -1,6 +1,35 @@
 # Objective-conditioned institution paper
 
 The latest reviewed working artifact is the
+[100-page integrated draft](../output/pdf/science-utopia-lab-integrated-terminal-cost-working-paper.pdf),
+with51 figures,47 tables and29 references. Its
+[source/build/visual receipt](integrated-terminal-cost-build-v1.json) binds source
+`382be46d` and reviewed PDF SHA256
+`3085879ffd974c0c08977990fafb027302929730e042d3fe939e381de2adb0c7`.
+Two actual cache-only builds have identical extracted text/logs and all100
+rendered page images. All layouts and150dpi first/concept/new-result details
+are inspected. No overfull/underfull/undefined-reference diagnostics or off-page
+text words are found; the two inherited h-to-ht notices remain.
+
+The [new section](integrated/native-terminal-cost.tex) adds the normally closed
+two-control original-world study, actual source-only transfers, all179 equal
+scientist inputs/choices, unchanged36 accepted records, per-role costs and an
+accounting figure. Declared C improves by4 because collected cost falls200→160
+and unpaid charges rise0→40; requested expense stays200. No objective or
+selection is changed and no hidden attrition/unpaid veto is added. This is an
+actual hand-control gain, not automatic invention, lower requested work or
+better science. The earlier forecast is preserved as historical preparation.
+All meaningful prior research tracks remain without a conference page cap.
+
+The broad working paper is not a focused main-track-ready paper. Important
+supported findings, appropriate independent evidence and final readiness remain
+open. A minimal source-only rebuild specific to this100-page snapshot has not
+yet been verified. Earlier reconstruction proofs apply to their own snapshots,
+not arbitrary current HEAD. See [current research status](../research/STATUS.md).
+
+## Earlier reviewed snapshots
+
+The latest reviewed working artifact is the
 [98-page integrated draft](../output/pdf/science-utopia-lab-integrated-topic-systems-working-paper.pdf),
 with 50 figures, 46 tables and 29 references. Its
 [source/build/visual receipt](integrated-topic-systems-build-v1.json) binds source
@@ -31,8 +60,6 @@ supported findings, appropriate independent evidence and final readiness remain
 open. Source-bound reconstruction is not independent inference or release clearance.
 Reconstruct this reviewed snapshot from its exact inputs, not arbitrary later HEAD bytes.
 See [current research status](../research/STATUS.md).
-
-## Earlier reviewed snapshots
 
 The preceding reviewed working artifact is the
 [91-page integrated draft](../output/pdf/science-utopia-lab-integrated-choice-resource-working-paper.pdf),

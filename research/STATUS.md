@@ -18,9 +18,12 @@ No unpaid/activity/fairness veto or replacement objective is added.
 and two matching five-file accounting/figure exports are retained. Initial
 legend overlap is preserved in its old exports; later source reserves annotation
 space and the new PNG is inspected. This analysis makes no further model calls.
-The integrated source now includes the result; a new PDF build/review is pending.
-The98-page artifact below remains the latest actually reviewed PDF until that
-separate work completes. R2/R3/R5/R6 remain open and the whole goal is active.
+The [new100-page paper](../paper/README.md) now includes the result, one measured
+table and one accounting figure. Its source-bound receipt records two matching
+actual builds and all100 matching/reviewed page images, with51 figures47 tables
+and29 references. The98-page artifact/reconstruction below remain historical.
+A minimal source-only reconstruction of the new100-page snapshot is not yet
+verified. R2/R3/R5/R6 remain open and the whole goal is active.
 
 Older stage entries below retain their original observation times.
 

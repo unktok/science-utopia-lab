@@ -66,3 +66,29 @@ scientists/effects. A matched information intervention must preserve authority,
 models, initial bank and budgets and distinguish independent searches from
 world seeds. No new novelty gate, host-inserted terminal solution, automatic
 favorable resampling or guarantee of a positive finding is authorized here.
+
+## Actual manuscript build and review
+
+Source382be46d is committed before both cache-only Tectonic builds. Original
+30862 and91843 exit0; all10090dpi page PNGs, extracted layout text and logs
+match. Poppler accounts for45,467word tags, zero off-page. There are no
+overfull/underfull/undefined-reference diagnostics and no unresolved?? pairs;
+two inherited h-to-ht notices and ignored-UTF8-inputenc notice remain.
+All100 page layouts are reviewed in nine labelled sheets. Detail pages1/4/
+78/79/80/81/82 are viewed at150dpi. Retainer52527 exits0 and saves the fresh
+100-page PDF and sealed receipt, with51 figures47 tables29 references and
+PDF SHA2563085879ffd974c0c08977990fafb027302929730e042d3fe939e381de2adb0c7.
+Old PDFs/receipts remain byte-identical. No independent numerical reproduction
+or source-only subset rebuild of this new snapshot is claimed yet.
+
+The corrected read-only retention, accounting, source, citation and current
+manuscript checks exit0:33 tests in0.66s (original e51fa2 output). Both initial
+failed and final passing XML files are retained. These checks add no inference,
+native worlds or generated-code execution. The pair of actual original-world
+audits remains the source/physical evidence, not these test totals.
+
+Final follow-up97639 exits0:75 tests in20.64s, including historical exact
+paper-subset staging regressions and the actual new PDF/receipt/preserved-file
+identities. Final XML is retained. These historical staging tests do not verify
+a new100-page minimal rebuild. Active-document checker passes25 documents,
+540 local links and six preserved navigation snapshots with zero errors.

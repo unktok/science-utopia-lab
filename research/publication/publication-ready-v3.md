@@ -7,7 +7,13 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
-November16の更新：[98頁の全体稿](../../paper/integrated-topic-systems-build-v1.json)は全6枠・
+November16 05:20JST更新：[2条件対照の正常閉鎖](../results/native-terminal-cost-pilot-closed-v1.json)
+と[100頁の原稿](../../paper/integrated-terminal-cost-build-v1.json)を確認した。全179 scientist
+入力／選択と36成果が同一のままCは4改善し、徴収200→160／未払い0→40／請求200不変。
+自動発明・実効率改善とはしない。二重build・全100頁目視は完了したが、新snapshotの
+最小再構築は未検証。R2/R3/R5/R6は未達。以下は以前の時点のsnapshotである。
+
+November16の以前の更新：[98頁の全体稿](../../paper/integrated-topic-systems-build-v1.json)は全6枠・
 図・費用まで統合され、全頁目視と80-file実再構築が完了した。ただしこれはR2/R3/R5/R6の
 代用ではない。[別の2条件native対照](../results/native-terminal-cost-pilot-dispatch-v1.json)を
 固定9af325ffで実行中。既知制度と最終年の資金移転コードだけを変えた制度を比べ、

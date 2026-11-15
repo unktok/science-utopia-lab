@@ -101,3 +101,30 @@ def test_manuscript_preserves_declared_loss_gain_without_invention_or_efficiency
     assert 'Reference & $-36$ & $-28.67$ & $-8.67$ & 200 & 0 & 200 & 5 & 30' in text
     assert 'Consolidation & $-36$ & $-28.67$ & $-12.67$ & 160 & 40 & 200 & 1 & 70' in text
     assert '\\input{integrated/native-terminal-cost}' in (ROOT / 'paper/integrated.tex').read_text()
+
+
+def test_actual_reviewed_pdf_is_source_bound_and_does_not_overwrite_earlier_snapshot():
+    receipt = read(ROOT / 'paper/integrated-terminal-cost-build-v1.json')
+    assert (receipt['pages'], receipt['figures'], receipt['tables'], receipt['cited_references']) == (100, 51, 47, 29)
+    assert sha(ROOT / receipt['output']) == receipt['pdf_sha256']
+    assert receipt['build']['exit_codes'] == [0, 0]
+    assert receipt['build']['rendered_page_identity_verified'] and receipt['build']['off_page_text_words'] == 0
+    assert len(receipt['visual_review']['page_png_sha256']) == 100
+    assert receipt['visual_review']['all_final_pages_reviewed']
+    assert receipt['visual_review']['detail_pages_reviewed'] == [1, 4, 78, 79, 80, 81, 82]
+    assert receipt['scientific_scope']['declared_C_gain'] == 4
+    assert receipt['scientific_scope']['requested_expense_reduction'] == 0
+    assert not receipt['scientific_scope']['automatic_invention'] and not receipt['publication_ready']
+    assert not receipt['new_paper_rebuild_subset_verified']
+    assert all(sha(ROOT / name) == digest for name, digest in receipt['preserved_files'].items())
+    assert len(receipt['literal_dependencies']) == 79
+
+
+def test_current_navigation_keeps_new_measured_result_separate_from_older_forecast():
+    entry = (ROOT / 'paper/README.md').read_text()
+    assert entry.index('100-page integrated draft') < entry.index('98-page integrated draft')
+    assert 'not automatic invention' in entry
+    assert 'not\nyet been verified' in entry
+    status = (ROOT / 'research/STATUS.md').read_text()
+    assert status.index('Latest real study closed') < status.index('Active native opportunity control')
+    assert 'neither inference nor a waiting continuation remains' in status
