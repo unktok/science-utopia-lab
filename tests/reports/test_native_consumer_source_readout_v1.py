@@ -2,6 +2,7 @@
 import json
 import os
 from pathlib import Path
+import tempfile
 from types import SimpleNamespace
 
 import pytest
@@ -122,12 +123,14 @@ def test_two_readonly_exports_from_original_saved_scripted_closure(tmp_path, mon
     audit_two.write_bytes(audit.read_bytes()); cost_two.write_bytes(cost.read_bytes())
     from openai import OpenAI
     monkeypatch.setattr(OpenAI, '__init__', lambda *a, **k: pytest.fail('read-only reader cannot construct model SDK'))
-    for i in (1, 2):
-        reader.export(SimpleNamespace(run=run, frozen_source=frozen, audit_one=audit, audit_two=audit_two,
-            cost_one=cost, cost_two=cost_two, output=tmp_path / ('export-' + str(i))))
-    for name in ('report.json', 'slots.csv', 'manifest.json'):
-        assert (tmp_path / 'export-1' / name).read_bytes() == (tmp_path / 'export-2' / name).read_bytes()
-    report = json.loads((tmp_path / 'export-1/report.json').read_text())
+    with tempfile.TemporaryDirectory(prefix='consumer-saved-software-readout-') as external:
+        outputs = [Path(external) / ('export-' + str(i)) for i in (1, 2)]
+        for output in outputs:
+            reader.export(SimpleNamespace(run=run, frozen_source=frozen, audit_one=audit, audit_two=audit_two,
+                cost_one=cost, cost_two=cost_two, output=output))
+        for name in ('report.json', 'slots.csv', 'manifest.json'):
+            assert (outputs[0] / name).read_bytes() == (outputs[1] / name).read_bytes()
+        report = json.loads((outputs[0] / 'report.json').read_text())
     assert report['scientific_source_commit'] == plan['source_commit']
     assert len(report['slots']) == 8 and report['physical_worlds'] == 11
     assert len(report['behavior_evidence']['construction']) == 8
