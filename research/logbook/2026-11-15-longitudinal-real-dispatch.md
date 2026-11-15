@@ -705,6 +705,29 @@ proposals; scalar U and parent-trajectory T each have their final slot remaining
 There is no refill, proposal repair, best-reference substitution, hidden penalty,
 objective/source/budget change or early selection from the remaining outcomes.
 
+## Read-only scope check: new mechanisms are not forbidden by the file API
+
+While scalar U2 readiness continues, inspect the existing virtual workspace
+rather than assume every write is restricted to an existing source file.
+Originala5be8d31 `native_file_workspace_v35.py` (also byte-identical in the
+feature checkout), SHA`a31cb36bebaa7ebaacdc50a901a68648da19dc206a29fc9bf3cf3fe6b8c14906`,
+supports explicit `new/<URL-encoded-exact-mechanism-id>.json`: a complete
+author-supplied node is appended, with no policy, missing ABI or source invented
+by the host. Whole-root/system JSON edits can also replace wiring and schedules.
+Planning targets explicitly permit proposed components, not only known filenames.
+
+The already retained actual scalar T2 first wire includes this new-node
+instruction and the workspace's literal write-semantics description. Thus this
+inspected input is not evidence that a missing add-node operation made structural
+invention impossible. It does not establish ergonomic sufficiency, understanding,
+useful invention or successful native execution of an arbitrary new graph.
+Seven selected existing SCRIPTED file-operation checks pass in2.57s (18 not
+selected): node append/ID encoding, whole-system literal replacement and static
+draft validation/finish handling. These do not execute authored source, a new
+native world or arbitrary replacement wiring; no new feature is implemented or
+enabled here. Whole-study construction/effect readouts remain authoritative for
+what the real author actually proposed and operated.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,
