@@ -34,6 +34,16 @@ from utopia.utils.data_utils import write_json_atomic
 def test_actual_bounded_editor_feedback_native_objectives_and_double_cold(tmp_path,fixed_corpus,monkeypatch):
     sdk_init=OpenAI.__init__
     upstream=public_operator_path(tmp_path/'SCRIPTED-upstream',monkeypatch,topic=True)
+    from scripts.reports import native_legacy_topic_pilot_v1 as readout
+    with tempfile.TemporaryDirectory(prefix='topic-control-software-readout-') as external:
+        outputs=[Path(external)/f'readout-{i}' for i in (1,2)]
+        for output in outputs:
+            readout.export(SimpleNamespace(run=upstream['run'],frozen_source=driver.ROOT,
+                audit_one=upstream['audit_one'],audit_two=upstream['audit_two'],output=output))
+        assert (outputs[0]/'report.json').read_bytes()==(outputs[1]/'report.json').read_bytes()
+        summary=driver.read(outputs[0]/'report.json')
+        assert [w['outside_core_assignments'] for w in summary['worlds']]==[0,16]
+        assert summary['new_model_calls']==0 and not summary['automatic_invention']
     monkeypatch.setattr(OpenAI,'__init__',sdk_init)
     monkeypatch.setattr(driver,'SEED',42)
     monkeypatch.setattr(driver,'LocalObserverBackend',lambda **kw:ScriptedCritic())
