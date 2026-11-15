@@ -23,6 +23,9 @@ This page is navigation, not a chronological experiment transcript.
   adds11 light SCRIPTED checks, not rendered/visually verified figures or new worlds.
   [Entrypoint reconciliation and preparation log](logbook/2026-11-16-native-consumer-figure-preparation.md)
   records both actual initial-readiness passes and the first native reference start.
+  [First fresh reference completes](results/native-consumer-source-first-reference-prefix-v1.json)
+  at06:51JST; the second is active. Its T/U/C baseline values await whole original
+  paired closure and are not a generated gain or held-out result.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

@@ -50,6 +50,15 @@ The following free-space observation is about2.7GiB, not a continuous guarantee.
 The user is asked asynchronously for a larger available local/external path;
 the original experiment continues without waiting or changing its settings.
 
+At06:51:05JST the original writer completes the
+[first fresh reference](results/native-consumer-source-first-reference-prefix-v1.json)
+and advances to core-plus-related. Core-only has T=-20, U=-15.333333333333332,
+C=4.666666666666668, collected cost200/unpaid0. This is a literal baseline
+prefix, not an own gain, final selection or whole-study original cold closure.
+[Observation log](logbook/2026-11-16-native-consumer-first-reference.md) preserves
+the original writer/continuation checks. Two references and all eight own slots
+remain; original source/loss/model/budget/visibility rules are unchanged.
+
 ## Latest real study closed — November16 05:05:33JST
 
 The [two-control terminal-cost study](results/native-terminal-cost-pilot-closed-v1.json)
