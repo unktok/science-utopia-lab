@@ -596,6 +596,46 @@ frames. These checks do not establish capacity/attention for every later frame,
 the model's internal reason for the rejection, whole-framework correctness,
 or scientific benefit. The original source, budgets and feedback are unchanged.
 
+### Ninth submission: double-wrapped decisions fail, loss remains unknown
+
+At02:27:25.779568UTC scalar T2 explicitly finishes its original14-step session.
+The complete prefix has one applied plan, four applied/five rejected reads,
+one applied/two rejected edits and one finish. Four component probes return;
+this is not a downstream-consumer pass. Only the selection source changes
+among24 nodes, with no root/node/wire/schedule additions or removals.
+Response content`e7616de82456b42acfb354cf04d8946fbef8059f498a39a0da65e29b806165ee`,
+file SHA`80756b7ff8ed64d68713b84537faf75fbe0e24ad48ad081cfdf5545b5ed0ab62`.
+
+Suggestion`native-adaptive-8bd032a83bb51a37b10bc12c` has fingerprint
+`4aedfbc9cb43fd7f6664b3f687bdffa58bf299f2f3ed4011b346a910bf3d4677`.
+Its authored source builds entries that already have `payload`, then wraps
+each entry in another `payload` at return. The actual year1 result is exactly
+`[{'payload': {'payload': {'empty_cycle': True}}}]`; context journal file SHA
+`c76679c6f4d107070346dd4d439486fb1d2df09c26cca703a123b71c82382c5d`.
+The native consumer therefore receives `[{'payload': {'empty_cycle': True}}]`,
+not its exact empty-cycle marker, and raises the recorded
+`GraphRuntimeError: empty native cycle requires an explicit empty decision batch`.
+Nonempty decisions in that source are double-wrapped as well; no host flattening
+or repair is permitted. A transport or document-capacity defect is not established.
+
+The original known technical failure has no measurements or scientific loss;
+it consumes its original slot without a numeric penalty/refill. Record digest
+`3c4cf1d61ff166be82e3ad43f255ed197f0e185acccdeb19029c673135bcbc68`,
+observation`dcdf1f35974530f1ae28a38dabd574c0f945c89815538c26d342bd58f1726322`.
+At02:27:55.474190UTC original82259 advances to parent-trajectory U2 readiness.
+Nine slots are processed: seven valid ties to R7, two technical nulls. None is
+silently repaired, discarded or reported as improvement. The unchanged original
+study has three slots left; full closure/selection, paired analysis and frozen
+unused evaluation remain incomplete. Separate lightweight consumer tests now
+include the literal nested empty marker and a nested real-paper decision,
+without executing authored source or changing the active kernel.
+The first extended unit run retains8 passes/one fixture failure: the older
+empty-only helper used producer `MechanismValue`, lacking `source_mechanism`
+when the new nonempty case reaches provenance checks. It now constructs the
+actual input type `DeliveredValue`, rather than weakening the consumer or
+calling that fixture error a scientific failure. All9 consumer cases then pass
+in0.77s; this is a stub-state check, not native replay or improved invention.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,
