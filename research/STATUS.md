@@ -27,7 +27,9 @@ evaluation. Produce an important supported answer, strong controls, mechanism
 analysis, selection-fixed unused evaluation, reproducible records and a verified
 manuscript. Publication readiness is **not established**; acceptance is not promised.
 
-## Original-topic authority and normally closed real control comparison
+## Active free-system study and completed original-topic controls
+
+### Active free-system optimization (explicit v6 scope)
 
 The [next prospective free-system study](protocols/campaigns/native-topic-free-optimization-v1.md)
 now has an [actual completed public-path software construction](results/native-topic-free-public-software-retention-v1.json).
@@ -47,9 +49,30 @@ bounds. Historical v4/v5 retain their ban; no old scope or running study is
 silently widened. Both strong hand controls are visible parents. T/U remain
 literal; a separately declared development C=-U+0.1K is introduced prospectively,
 not retroactively applied to old selection. Its developer coefficient is not a
-measured social value. New real35B calibration/search has not begun at this
-observation; the reviewed91-page PDF predates this implementation and the
-normally closed two-control result below.
+measured social value.
+
+The [new actual real35B dispatch](results/native-topic-free-optimization-dispatch-v1.json)
+starts15:11:31UTC November15 /00:11:31JST November16 from clean frozen
+48e1d268. Actual preparation71879 exits0, reconstructing the completed real
+pilot and20 actual uniquely attributed developer component inputs from source
+2f70147a, not the SOFTWARE bank. Original writer94527/PID14919 begins initial
+fresh model/backend/request/source-bound readiness; no passed certificate,
+completed new reference or own proposal is claimed at this dispatch observation.
+Scientists remain fixed Qwen3-8B and the designer fixed approved local35B;
+both exact installed digests and backend0.33.3 recheck before dispatch.
+
+Original continuation98474 from separate clean48e1d268 waits on that writer,
+then runs paired frozen-source cold audits/costs without new inference or retry.
+Host-wide CPU/inference inspection, empty loaded-model list, pinned runtime and
+absence of test-facade environment flags are retained. Another project's Node
+program is observed, not modified; no exclusive lease or dedicated speed claim.
+All six slots/no-refill and three literal objectives remain fixed. A failed,
+stale or unknown readiness/transport stops further inference. This is actual
+study execution, not evidence yet of automatic invention, improvement or
+objective-specific winners. The reviewed91-page PDF predates this implementation
+and the normally closed two-control result below; publication readiness remains open.
+
+### Normally closed same-authority developer controls (v5)
 
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)
 identifies an actual mismatch: original non-strict researchers can choose core

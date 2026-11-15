@@ -10,7 +10,9 @@ This page is navigation, not a chronological experiment transcript.
   three explicit objectives, strong visible same-authority parents, free source/nodes/wires;
   [actual complete public software path](results/native-topic-free-public-software-retention-v1.json)
   now verifies8 new worlds, bounded author/next feedback,24 institutional-work calls
-  and matching cold/costs with SCRIPTED providers. Real designer dispatch is separate.
+  and matching cold/costs with SCRIPTED providers.
+  [Actual real35B dispatch](results/native-topic-free-optimization-dispatch-v1.json)
+  starts00:11JST November16, with initial real readiness and finite closure chain.
 
 - [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):

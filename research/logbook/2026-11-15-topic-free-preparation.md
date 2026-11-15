@@ -113,3 +113,33 @@ failed-check records. Do not relabel the a4 six nulls as successful. No actual
 35B free search has run. Only after original75531 exits is current main's
 completed real-control retention merged into this feature worktree; no tested
 source/HEAD changes during the original software process.
+
+Clean48e1d268 original37773 then exits0:133 selected tests pass in29.46s,
+including actual original-source adapters, old v4/v5 rejection, new v6 typed
+work admission, exact loss/unknown-cost arithmetic, retained real/software
+records, staged author profile, missing-global checks and resource ledgers.
+Docs check25 documents/472 local links/6 snapshots with no errors. These are
+software/record checks, not independent scientific replications. Freeze
+separate experiment/analysis copies at48e1d268 before any actual new dispatch.
+
+## Actual real-backend study dispatch (UTC November15 /JST November16)
+
+Original prepare71879 exits0 from clean48e1d268 after actual original-source
+pilot/audit reconstruction and staging20 uniquely native-attributed developer
+inputs from frozen2f70147a. The software fixture bank is not used. Actual
+backend0.33.3, both approved model digests, pinned image and empty loaded-model
+list recheck. Host-wide processes show the separate open-inquiry Node program;
+it is not modified. No Python/MLX/other active local-model inference is observed
+in that snapshot, which is not an exclusive lease or future contention guarantee.
+No SCRIPTED provider/QA environment is present.
+
+Original94527/PID14919 starts15:11:31.112614UTC /00:11:31.112614JST November16
+at source48e1d268c49960d1387e5d54362b38d1a180127d. It first performs fresh actual
+35B readiness, then (only if passed) two fresh strong references and six own
+objective-conditioned slots. Original98474 in a separate clean48e1d268 analysis
+worktree waits on this exact writer and then runs paired frozen-source audits/
+costs. No code/source/HEAD/budget/objective change in either active worktree,
+repair, refill, concurrent heavy QA or independent new inference. The
+[dispatch receipt](../results/native-topic-free-optimization-dispatch-v1.json)
+binds exact plan/source/process/host/component bank and finite continuation.
+Dispatch is not completion, a passed certificate or a useful invented system.
