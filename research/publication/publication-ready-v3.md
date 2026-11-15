@@ -7,6 +7,13 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November16 06:36JST更新：[source提示の新比較](../results/native-consumer-source-comparison-dispatch-v1.json)
+は固定7e51b2a4から実際に起動し、両情報条件の初期実モデル校正が通過、最初のnative参照が実行中。
+比較制度3件・自己候補8枠の新結果は未完了。既知のterminal手制度は両設計者へ非提示の比較専用とする。
+[通しsoftware証拠](../results/native-consumer-source-comparison-software-v1.json)と
+[図表データの軽量準備](../components/native-consumer-source-figures-v1.md)は、実探索の改善の代用ではない。
+100頁稿の入口と下記R5を現証拠へ整合させた。重いbuild／renderは推論と並走しない。
+
 November16 05:20JST更新：[2条件対照の正常閉鎖](../results/native-terminal-cost-pilot-closed-v1.json)
 と[100頁の原稿](../../paper/integrated-terminal-cost-build-v1.json)を確認した。全179 scientist
 入力／選択と36成果が同一のままCは4改善し、徴収200→160／未払い0→40／請求200不変。
@@ -377,11 +384,11 @@ November12 05:47JST更新：新しいT（論文数）／U（固定内容評価�
 
 | 段階 | 必要な成果 | 現状 |
 | --- | --- | --- |
-| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 実装と複数の旧有限研究・選択固定評価は閉鎖済み。[新三目的自由探索](../results/native-topic-free-optimization-closed-v1.json)も全枠・元監査／費用／readout・own選択固定を完了した。この新研究の未使用評価はまだない。旧評価を新scopeの証拠へ流用せず、重要性はR2で別判断 |
-| R2 | 重要で識別可能な研究上の答えと対照 | 未達。新6枠は同点4・弱い既知ルール再現1・実行null1で、全選択は強い参照と同点。完全な実入力列・実consumer・source・条件付き非互換性を区別する。U自己bestは改善しても既知incumbentは平坦。条件付きcalendar/content解析は空間全体の最適性や探索法の原因を証明しない。新制度・改善は候補vetoにしない |
+| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 実装と複数の旧有限研究・選択固定評価は閉鎖済み。[三目的自由探索](../results/native-topic-free-optimization-closed-v1.json)も全枠・元監査／費用／readout・own選択固定を完了した。その研究の未使用評価はまだない。[新source提示比較](../results/native-consumer-source-comparison-dispatch-v1.json)は起動済み・両初期校正通過で、実結果は未完了。旧評価を新scopeの証拠へ流用せず、重要性はR2で別判断 |
+| R2 | 重要で識別可能な研究上の答えと対照 | 未達。閉鎖6枠は同点4・弱い既知ルール再現1・実行null1で、全選択は強い参照と同点。U自己bestは改善しても既知incumbentは平坦。後続の[手設計対照](../results/native-terminal-cost-pilot-closed-v1.json)のC改善4は回収／未回収の会計上の差で、自動発明や実効率改善ではない。新source提示pilotは情報packageを比較し、理解の単独効果や重要性を先取りしない。条件付きcalendar/content解析を大域最適性へ拡大せず、新規性・改善の候補vetoも追加しない |
 | R3 | 精度と範囲を支える独立反復・追加条件 | 未達。pilotの変動と意味のある差から有限予算を定める |
 | R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 旧研究と新自由探索の全枠・二重元監査／費用／readoutが閉鎖。新2124 raw filesを元sourceで照合し、[全8実行仕様・選択](../data/native-topic-free-optimization-v1/README.md)を保存。独立二回の印刷図exportとPNG目視も完了。設計者の上流revision／変換手順は未特定で、installed digestを上流再現性と呼ばない。prefix・部品probe・critic・独立worldを同じ標本数にしない |
-| R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [最新確認済み91ページ稿](../../paper/integrated-choice-resource-build-v1.json)と[77-file実再構築](../results/integrated-choice-resource-rebuild-subset-verification-v1.json)を保持。その後の[現原稿source](../../paper/integrated/native-topic-system-search.tex)にはtopic2対照・新4枠prefix・条件付き解析を追加し、[17件のsource検証](../results/native-topic-manuscript-outcomes-source-v1.json)を保持。新build／目視、全自由探索の統合と焦点ある投稿本文は未達。旧PDFの検証を新sourceへ流用しない |
+| R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [最新100頁稿](../../paper/integrated-terminal-cost-build-v1.json)は閉鎖6枠・手設計費用対照・以前の意味ある全trackを統合し、二重cached buildと全頁画像一致／目視まで完了。51図・47表・29文献を含むが、焦点ある主会議本文は未完成。新100頁snapshot固有の最小再構築は未検証で、旧98頁／80-file証拠を流用しない。現在のlive比較の実結果・新図はまだ含まれない |
 | R6 | 技術・重要性・先行研究・再現性を批判的に点検した最終ready判定 | 未達。肯定／否定いずれも重要な答えが必要 |
 
 seed数やQA数だけを増やしてR2を閉じない。単発の改善、意図した新nodeの生成、

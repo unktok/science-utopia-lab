@@ -1,0 +1,47 @@
+{
+  "schema": "scienceutopia.native-consumer-source-figure-preparation.v1",
+  "software_checks_source_commit": "4972c61c5347f120808330ce9c358fa367f8d8ab",
+  "classification": "pure-SCRIPTED-data-closure-and-no-render-export-not-scientific-evidence",
+  "initial": {
+    "original_handle": 72743,
+    "exit_code": 1,
+    "passed": 9,
+    "failed": 1,
+    "elapsed_seconds": 1.38,
+    "cause": "Successful-export fixture incorrectly placed output inside source-local pytest basetemp; production guard correctly rejects it."
+  },
+  "final": {
+    "original_handle": 44390,
+    "exit_code": 0,
+    "passed": 11,
+    "failed": 0,
+    "elapsed_seconds": 1.19
+  },
+  "files": {
+    "research/data/native-consumer-source-figures-v1/final-pure-junit.xml": "60ee3e3f9ca7adf0f09a9f5c6deeb2e9de0e2ae5b879a2a76c30cda52b0c41ca",
+    "research/data/native-consumer-source-figures-v1/initial-failed-junit.xml": "70aeb3eaa5af7465ef5c62e14f286a9412fe7e820cacfad0cefae0e72d48bc00"
+  },
+  "module_file_sha256": "64b2c0ca35978af3fcbf1d8e1eeed83951004311e82b627b19f455271871bc53",
+  "prepared_outputs": [
+    "declared U/C loss paths for both arms",
+    "all three references and eight own slots",
+    "T/U/C and collected/unpaid/requested accounting"
+  ],
+  "paired_no_render_export_bytes_match": [
+    "report.json",
+    "outcomes.csv",
+    "manifest.json"
+  ],
+  "original_closed_readout_verified": false,
+  "actual_source_guard_tested": false,
+  "rendered": false,
+  "visual_review_complete": false,
+  "manuscript_rebuilt": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "new_Docker_runs": 0,
+  "loss_or_selection_changed": false,
+  "publication_ready": false,
+  "scope": "Only pure/scripted projection, synthetic paired-closure hash rejection and no-render export. Source binding in the synthetic closure fixture is a labeled stub, not original cold proof. Actual original matched readouts, double rendered exports and image/layout review remain pending. Independent heavy QA/PDF/video does not overlap actual model inference."
+}

@@ -1,8 +1,32 @@
 # Local manuscript rebuild subsets
 
-## Latest reviewed artifact:91-page choice/resource working manuscript
+## Latest reviewed artifact:100-page terminal-cost working manuscript
 
-The [reviewed current receipt](../paper/integrated-choice-resource-build-v1.json)
+The [current reviewed receipt](../paper/integrated-terminal-cost-build-v1.json)
+binds100 pages,51 figures,47 tables and29 references to source382be46d.
+Both full-checkout cached builds match in text/logs/all100 page images and
+their layouts are reviewed. This snapshot includes the closed six-slot search
+and terminal-cost hand controls, not results from the currently live comparison.
+Its PDF hash is checked against the existing file; no new rebuild or layout
+review is performed during current model inference.
+
+A minimal source-only rebuild specific to this100-page snapshot is not yet
+verified. Do not apply an older allowlist to changed TeX or promote an older
+reconstruction receipt into proof for this snapshot. See the
+[manuscript overview](../paper/README.md) and [current status](../research/STATUS.md).
+
+## Preserved98-page topic-systems working manuscript
+
+The [preceding reviewed receipt](../paper/integrated-topic-systems-build-v1.json)
+binds98 pages to sourcecb2fca8a. Its
+[explicit80-file subset](../research/publication/paper-rebuild-allowlist-integrated-topic-systems-v1.json)
+[actually rebuilds](../research/results/integrated-topic-systems-rebuild-subset-verification-v1.json)
+matching text and all98 page images with the existing cache. Binary PDF bytes
+differ. Use that exact snapshot/policy, not arbitrary later HEAD inputs.
+
+## Preserved91-page choice/resource working manuscript
+
+The [reviewed historical receipt](../paper/integrated-choice-resource-build-v1.json)
 binds91 pages,48 figures,43 tables and29 references to source
 `2940086de58eb4d50e890b8e23b37d90b11debb0`. Both full-checkout cached builds
 match in text/logs/all page images. All layouts and150dpi first/concept/new-result

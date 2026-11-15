@@ -25,26 +25,37 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-A [separate two-control native opportunity study](research/results/native-terminal-cost-pilot-dispatch-v1.json)
-is now running from fixed source9af325ff: strong related-topic rule versus
-source-only final-year resource consolidation. It tests the already declared
-C objective, with requested/collected/unpaid costs and participation reported
-separately. Its hand policies are not automatic invention; real outcomes and
-paired closure remain pending. The reviewed PDF below predates this new run.
+A [new matched native-source comparison](research/results/native-consumer-source-comparison-dispatch-v1.json)
+is actually running from immutable7e51b2a4. Both initial local35B readiness
+conditions pass and the first Qwen3-8B reference world starts06:36:44JST
+November16. Three references and eight own slots compare literal fixed-consumer
+source evidence with the same free editor/authority at U/C; actual outcomes
+and original paired closure are not yet complete. Source information is a
+package, not isolated comprehension or equal measured compute. See
+[current status](research/STATUS.md), not historical process snapshots below.
 
-The [latest reviewed integrated manuscript](paper/README.md) is 98 pages,
-with 50 figures, 46 tables and 29 references. Two actual cached builds match in
-text/logs and all 98 page images; all layouts and new-result details are reviewed.
-It includes the closed six-slot three-objective system search and its failures,
-exact input classes and costs. All selected systems tie the strong reference;
-no new wiring is generated. An exact 80-file subset actually rebuilds matching
-text and all 98 page images using the local cache, not a clean-machine setup
-or independent inference rerun. The older 77-file reconstruction remains proof
-only for its own 91-page snapshot.
+The [closed two-control opportunity study](research/results/native-terminal-cost-pilot-closed-v1.json)
+shows an actual declared C gain of4 under a source-only final-year hand rule.
+T/U and179 full scientist inputs/choices stay equal. Collected cost falls200→160,
+unpaid cost rises0→40 and requested expense stays200. This is not automatic
+invention, less requested work or better science; no unpaid/activity veto is added.
+
+The [latest reviewed integrated manuscript](paper/README.md) is100 pages,
+with51 figures,47 tables and29 references. Two actual cached builds match in
+text/logs and all100 page images; all layouts and new-result details are reviewed.
+It includes the closed six-slot system search and terminal-cost controls,
+their failures, actual input classes, figures and costs. Generated selections
+tie the strong reference; no new wiring is generated in that search.
+The current live comparison is not yet an included measured result.
+A minimal rebuild specific to this100-page snapshot is not yet verified.
+The earlier80-file reconstruction is proof only for its own98-page snapshot,
+not the new manuscript or independent inference reproducibility.
 The original studies and older PDFs remain intact, without an artificial page
 cap. Document reconstruction and paper length are not publication readiness.
 
-The latest twelve-slot native comparison and selection-fixed unused evaluation
+### Other closed studies (earlier, not active jobs)
+
+The preceding twelve-slot native comparison and selection-fixed unused evaluation
 are closed: ten measured proposals tie their assigned reference loss, two have
 runtime-null losses, and all four frozen own selections tie R7 and lose to the
 hand control on one reserved unused condition. Actual input/choice equivalence,

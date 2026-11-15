@@ -32,6 +32,18 @@ checkouts, not experiment records, are removed to restore about1.2GiB; dispatch
 disk free space is about3.2GiB. Scientific gains, independent evidence, unused
 evaluation and publication readiness remain unestablished. The full goal is active.
 
+Both initial readiness conditions pass; the literal-consumers certificate has
+content hash6807e7862fffd9d62b6612867cf11413a1a7117e99a5fc54af5641cceacc5b83
+and the interface-only certificate06bfdf5c76295afe51689406e5fab41aec5ac5be7d10d6bafe3111d5ab67e9a6.
+Each records28 controls with `all_controls_passed=true`. The original writer
+advances to the core-only native reference at06:36:44JST. These technical passes
+are not autonomous invention or later-history capacity guarantees.
+[Light figure-data preparation](components/native-consumer-source-figures-v1.md)
+passes11 SCRIPTED checks with no rendering/model/world/code execution. The new
+path/outcome figures are not rendered or visually reviewed yet. The
+[preparation log](logbook/2026-11-16-native-consumer-figure-preparation.md) also
+reconciles the research-purpose page with the existing100-page reviewed PDF.
+
 ## Latest real study closed — November16 05:05:33JST
 
 The [two-control terminal-cost study](results/native-terminal-cost-pilot-closed-v1.json)

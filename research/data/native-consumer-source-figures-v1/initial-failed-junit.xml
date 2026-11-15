@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="10" time="1.378" timestamp="2026-11-16T06:34:21.144684+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_all_slots_and_references_are_literal_and_input_is_not_mutated" time="0.004" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_generation_null_stays_visible_and_never_becomes_a_zero_point_or_charge" time="0.003" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_plotting_does_not_reselect_leak_hidden_control_impute_or_rewrite_scope[path]" time="0.003" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_plotting_does_not_reselect_leak_hidden_control_impute_or_rewrite_scope[selection]" time="0.003" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_plotting_does_not_reselect_leak_hidden_control_impute_or_rewrite_scope[visibility]" time="0.003" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_plotting_does_not_reselect_leak_hidden_control_impute_or_rewrite_scope[cost]" time="0.003" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_plotting_does_not_reselect_leak_hidden_control_impute_or_rewrite_scope[independence]" time="0.003" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_plotting_does_not_reselect_leak_hidden_control_impute_or_rewrite_scope[missing]" time="0.003" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_saved_pair_scope_and_hashes_reject_changed_second_export" time="0.007" /><testcase classname="tests.reports.test_native_consumer_source_figures_v1" name="test_no_render_export_is_deterministic_without_matplotlib_or_model_calls" time="0.006"><failure message="ValueError: fresh interpretation outside original readouts and both sources required">tmp_path = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-comparison-v1/outputs/native-consumer-figure-data-v1-a1/checks/test_no_render_export_is_deter0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x123dc6210&gt;
+
+    def test_no_render_export_is_deterministic_without_matplotlib_or_model_calls(tmp_path, monkeypatch):
+        root = tmp_path / 'pair'; root.mkdir(); saved_pair(root)
+        monkeypatch.setattr(figures, 'pinned_revision', lambda p: 'SCRIPTED-reader')
+        monkeypatch.setattr(figures, 'render', lambda *a: pytest.fail('pure export must not render'))
+        for i in (1, 2):
+&gt;           figures.export(SimpleNamespace(readouts=root, frozen_reader=tmp_path / 'frozen',
+                output=tmp_path / ('export-' + str(i)), render=False))
+
+tests/reports/test_native_consumer_source_figures_v1.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = namespace(readouts=PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-consumer-comparison-v1/outpu...omparison-v1/outputs/native-consumer-figure-data-v1-a1/checks/test_no_render_export_is_deter0/export-1'), render=False)
+
+    def export(args):
+        readouts, frozen, out = args.readouts.resolve(), args.frozen_reader.resolve(), args.output.resolve()
+        source = pinned_revision(ROOT)
+        if out.exists() or any(out.is_relative_to(p) for p in (ROOT, frozen, readouts)):
+&gt;           raise ValueError('fresh interpretation outside original readouts and both sources required')
+E           ValueError: fresh interpretation outside original readouts and both sources required
+
+scripts/reports/native_consumer_source_figures_v1.py:200: ValueError</failure></testcase></testsuite></testsuites>
