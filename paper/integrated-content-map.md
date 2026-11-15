@@ -7,8 +7,13 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 November16 unbuilt source adds the normally closed same-authority original-topic
 pilot (T=-20/-36, U=-15.33/-28.67, equal K200), actual calendar/content/resource
-paths and per-role costs. A separate subsection specifies the prospective
-three-objective free study as running, not completed or improved. No old body
+paths and per-role costs. The same section adds conditional calendar saturation
+and fixed-record content support, with their assumptions rather than a global
+optimality claim. Its three-objective free study has a dated4/6 consumed-slot
+prefix:3 complete outcomes and1 runtime null, no strong-parent gain. Source/
+consumer and exact input findings, the two-hop failure, prospective non-veto
+diagnostics and a developer cost-collection hypothesis remain distinguished
+from complete-study, automatic-invention or new-world evidence. No old body
 track, PDF or receipt is removed. This source revision has not been compiled
 or visually reviewed during the real inference run.
 

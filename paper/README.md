@@ -2,8 +2,12 @@
 
 The current unbuilt source additionally includes
 [same-authority original-topic controls and the prospective free-system study](integrated/native-topic-system-search.tex).
-The former is a normally closed developer contrast, not automatic invention;
-the latter is executing, not a completed result. The91-page reviewed PDF below
+The former is a normally closed developer contrast, not automatic invention.
+The latter now has a dated4/6-slot prefix:3 completed native outcomes and1
+runtime null, no gain over the strong parent. Calendar/fixed-content analyses,
+the exact two-hop failure and prospective feedback/cost-control limits are
+included; remaining slots and whole-study closure are pending.
+The91-page reviewed PDF below
 is unchanged and predates this section. No new build/page count or visual
 verification is claimed while real inference runs.
 
