@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="8" time="1.677" timestamp="2026-11-16T00:55:55.791108+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_topic_system_manuscript_v1" name="test_all_current_tracks_inputs_and_crossreferences_survive_source_update" time="0.004"><failure message="AssertionError: assert ['table', 'ta...', 'equation'] == ['tabular', '...', 'equation']&#10;  &#10;  At index 0 diff: 'table' != 'tabular'&#10;  Use -v to get more diff">def test_all_current_tracks_inputs_and_crossreferences_survive_source_update():
+        current=bodies(); body='\n'.join(current.values())
+        assert SECTION in current
+        for label in ('sec:problem','sec:design','sec:search','sec:parameter','sec:structural',
+            'sec:nested','sec:gradient-evidence','sec:matched','sec:observatory',
+            'sec:native-longitudinal-comparison','sec:native-choice-resource',
+            'sec:native-topic-system-search','app:reproduction'):
+            assert '\\label{'+label+'}' in body
+        labels=re.findall(r'\\label\{([^}]+)\}',body)
+        assert len(labels)==len(set(labels))
+        assert set(re.findall(r'\\(?:eqref|ref)\{([^}]+)\}',body))&lt;=set(labels)
+        section=current[SECTION]
+        assert section.count('{')==section.count('}')
+&gt;       assert re.findall(r'\\begin\{([^}]+)\}',section)==re.findall(r'\\end\{([^}]+)\}',section)
+E       AssertionError: assert ['table', 'ta...', 'equation'] == ['tabular', '...', 'equation']
+E         
+E         At index 0 diff: 'table' != 'tabular'
+E         Use -v to get more diff
+
+tests/reports/test_topic_system_manuscript_v1.py:26: AssertionError</failure></testcase><testcase classname="tests.reports.test_topic_system_manuscript_v1" name="test_new_hand_control_table_matches_retained_real_results_not_free_invention" time="0.001" /><testcase classname="tests.reports.test_topic_system_manuscript_v1" name="test_prospective_objective_and_execution_are_not_retroactive_or_completed_results" time="0.000" /><testcase classname="tests.reports.test_current_manuscript_estimands" name="test_current_citations_have_explicit_primary_identity_checks_not_invented_reproduction" time="0.002" /><testcase classname="tests.reports.test_current_manuscript_estimands" name="test_publication_updates_keep_stable_keys_but_actual_published_years" time="0.001" /><testcase classname="tests.reports.test_current_manuscript_estimands" name="test_finite_estimands_retain_ties_nulls_selection_units_and_original_world" time="0.000" /><testcase classname="tests.reports.test_current_manuscript_estimands" name="test_bibliographic_accent_is_not_printed_as_a_literal_quote" time="0.000" /><testcase classname="tests.reports.test_native_legacy_topic_closed_v1" name="test_actual_paired_control_readout_is_bound_without_invention_or_optimization_claim" time="0.001" /></testsuite></testsuites>

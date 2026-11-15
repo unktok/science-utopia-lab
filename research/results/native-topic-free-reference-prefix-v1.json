@@ -1,0 +1,35 @@
+{
+  "schema": "scienceutopia.native-topic-free-reference-prefix.v1",
+  "scientific_source_commit": "48e1d268c49960d1387e5d54362b38d1a180127d",
+  "plan_file_sha256": "0c33322eb2d1c7fc82ad3be340d0d7e43475cde36bc9e2d5e6148f26763bcb99",
+  "original_writer_session": 94527,
+  "original_writer_pid": 14919,
+  "next_original_stage": {"active": "throughput:g0", "observed_utc": "2026-11-15T15:56:18.592191+00:00", "stage": "readiness"},
+  "references": [
+    {
+      "label": "core-only",
+      "status": "complete",
+      "throughput_loss": -20.0,
+      "content_utility_loss": -15.333333333333332,
+      "resource_aware_content_loss": 4.666666666666668,
+      "collected_resource_cost": 200.0,
+      "observation_file_sha256": "eecc363572d86f202b6a06c547ec43340db8adc59e844c5439f90150905af5a2",
+      "cross_scores_file_sha256": "4acb57c0d610621a7f90d01dfaadf611044410dd37e8e7f8a360cdb4e1b94b04"
+    },
+    {
+      "label": "core-plus-related",
+      "status": "complete",
+      "throughput_loss": -36.0,
+      "content_utility_loss": -28.666666666666668,
+      "resource_aware_content_loss": -8.666666666666668,
+      "collected_resource_cost": 200.0,
+      "observation_file_sha256": "2d6e1daa3cae64df6b28adf6a075c7549ec43c532012833eb382f02900b88639",
+      "cross_scores_file_sha256": "100f56a1a5bf564632088a3765f7a279c54c018b049bd202d69bd3766e901711"
+    }
+  ],
+  "scope": "Literal fresh reference observations and cross-scores from the active new study. Not a normally closed whole-study audit, own proposal, automatic invention, independent optimizer replication or new held-out evaluation. Original writer continues; no restart, source/budget/loss change or forced objective-specific winner.",
+  "whole_study_closed": false,
+  "paired_cold_reconstruction_complete": false,
+  "own_proposal_submitted_at_stage_entry": false,
+  "publication_ready": false
+}

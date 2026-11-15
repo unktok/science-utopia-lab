@@ -1,0 +1,31 @@
+{
+  "schema": "scienceutopia.native-topic-manuscript-source-verification.v1",
+  "tested_source_commit": "83d0272f79a2811048cb438dea06bdad470bcabf",
+  "original_test_session": 92659,
+  "exit_code": 0,
+  "tests_passed": 9,
+  "pytest_reported_seconds": 4.79,
+  "junit": "research/data/native-topic-manuscript-source-v1/junit.xml",
+  "junit_sha256": "896dd6ad3a0afc7e11906e56dcea5e12353d2b05705be32019e2059df9d25ca4",
+  "source_files_sha256": {
+    "paper/integrated/native-topic-system-search.tex": "d575dea29742f25dbbf2073d8160706b92aea403735fcca610eb5e6ba59700a1",
+    "paper/integrated.tex": "c70e7a40027e5b13a7106143e9991bf82b04c636eff0db0181d8389b6a6584ab"
+  },
+  "prior_check": {"session": 96923, "exit_code": 0, "tests_passed": 1, "seconds": 4.22},
+  "preserved_failure": {
+    "session": 64255,
+    "exit_code": 1,
+    "passed": 7,
+    "failed": 1,
+    "junit": "research/data/native-topic-manuscript-source-v1/failed-nested-environment-test.xml",
+    "junit_sha256": "cbe53ba9e789870f653af66a46120c406aaa651681b3237b21ddb423e1fc3162",
+    "cause": "New static test compared begin/end sequences in identical order and falsely rejected correctly nested table/tabular. Replaced by a matching stack; no scientific source or manuscript result changed to pass."
+  },
+  "scope": "Read-only source/input/citation/cross-reference/declared-boundary checks and original retained hand-control facts. The historical91-page reconstruction test now reads its literal original Git source, retaining every prior checksum/dependency check rather than treating newer unbuilt source as the reviewed PDF. No TeX compilation, PDF rendering, new cold-source export, model or world.",
+  "pdf_built": false,
+  "visual_review_complete": false,
+  "old_reviewed_pdfs_changed": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false
+}

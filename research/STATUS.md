@@ -97,6 +97,21 @@ starts8526/PID22876 from clean frozen7d3a9c2e, waiting on original paired
 audit/cost closure. It will export twice and require identical files, with no
 model calls or retry; it has not yet exported or visually reviewed any figure.
 
+At15:56:18UTC/00:56:18JST both fresh references are complete and the original
+writer enters readiness for throughput g0. The [literal reference prefix](results/native-topic-free-reference-prefix-v1.json)
+retains T=-20/-36, U-loss=-15.333333333333332/-28.666666666666668, K200/200,
+and prospective C=4.666666666666668/-8.666666666666668. No own proposal is
+submitted at this stage entry. These are partial active-study observations,
+not a whole-study paired cold result or independent optimizer replication.
+
+The [new unbuilt manuscript section](../paper/integrated/native-topic-system-search.tex)
+now includes the old normally closed two-control result and the prospective
+free-system design/execution boundary, with abstract/discussion updates and no
+old body-track deletion. [Original light source verification92659](results/native-topic-manuscript-source-verification-v1.json)
+passes9 checks in4.79s; the earlier incorrectly nested-environment test failure
+is preserved. No TeX build, PDF render or visual review is claimed; the reviewed
+91-page artifact and all old receipts retain their original bytes.
+
 ### Normally closed same-authority developer controls (v5)
 
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)
