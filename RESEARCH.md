@@ -11,13 +11,14 @@
 さらに簡単な数値世界へ置き換える理由でもない。
 
 現在の実行状態・達成範囲は[STATUS](research/STATUS.md)を参照する。
-最新の確認済み統合PDFは[91ページの原稿記録](paper/integrated-choice-resource-build-v1.json)
-と[PDF](output/pdf/science-utopia-lab-integrated-choice-resource-working-paper.pdf)。
-以前の研究に加え、実12候補と選択固定の未使用評価の結果・図表・費用を含む。
-2回のcached buildの本文・log・全91ページの画像が一致し、全紙面と新結果の拡大表示を確認した。
-必要な77ファイルだけの[実再構築](research/results/integrated-choice-resource-rebuild-subset-verification-v1.json)
-でも本文と全91ページの画像が一致した（PDFバイナリ自体は異なる）。
-最新の3条件choice対照と資源消費readoutも、このPDFに反映済み。
+最新の確認済み統合PDFは[100ページの原稿記録](paper/integrated-terminal-cost-build-v1.json)
+と[PDF](output/pdf/science-utopia-lab-integrated-terminal-cost-working-paper.pdf)。
+以前の意味ある研究を保持し、自由制度6候補の探索と、元世界での手設計制度による
+回収費用の対照を追加している。2回のcached buildの本文・log・全100ページの画像が一致し、
+全紙面と新結果の拡大表示を確認した。51図・47表・29文献を含むが、主会議readyではない。
+この100ページsnapshot固有の最小source再構築は未検証であり、以前の
+[98ページ／80ファイルの実再構築](research/results/integrated-topic-systems-rebuild-subset-verification-v1.json)
+を新しい稿の証明に流用しない。最新の実モデル比較はまだこのPDFの結果に含まれていない。
 原稿再構築は研究結果の独立再現ではなく、主会議readyの根拠の代わりではない。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 
@@ -64,6 +65,20 @@
 世界全体での最適値も区別する。
 
 ## 現在の到達点
+
+2026年11月16日：先行する自由制度6枠の探索は、全枠・二重監査・費用・解析まで閉鎖し、
+強い参照への自己案の改善はなかった。別の手設計対照は、同じ内容効用のまま回収費用を
+200→160に減らし、宣言済みC損失を4改善した。ただし未回収費用は0→40、要求費用は200のままで、
+自動発明・実作業量削減・科学の改善を示したものではない。損失に追加vetoは課さない。
+[閉鎖した対照](research/results/native-terminal-cost-pilot-closed-v1.json)を参照。
+
+その後、同じ自由制度権限・U/C損失の下で、設計者に元世界の実際の処理sourceを見せるかどうかを
+比較する[実モデル実験を起動](research/results/native-consumer-source-comparison-dispatch-v1.json)した。
+通しsoftware検証と19件の保存データ／単体確認は通過済みだが、実モデルは初期校正から開始した段階で、
+比較制度3件・自己候補8枠の新しい実結果や改善はまだない。実行位置は[STATUS](research/STATUS.md)を正本とする。
+重要で差別化された主張、十分な独立証拠、選択固定の未使用評価、焦点を持つ主稿と最終投稿判断が残る。
+
+以下は日付付きの過去の到達点であり、現在の稼働状態を重ねて宣言するものではない。
 
 2026年11月15日の再開後：12候補の探索、選択を固定した未使用評価、追加3条件対照、
 それぞれの解析は完了している。自動設計した制度の強い単純対照に対する優位性は未実証。

@@ -29,7 +29,7 @@ not arbitrary current HEAD. See [current research status](../research/STATUS.md)
 
 ## Earlier reviewed snapshots
 
-The latest reviewed working artifact is the
+The preceding reviewed working artifact is the
 [98-page integrated draft](../output/pdf/science-utopia-lab-integrated-topic-systems-working-paper.pdf),
 with 50 figures, 46 tables and 29 references. Its
 [source/build/visual receipt](integrated-topic-systems-build-v1.json) binds source
