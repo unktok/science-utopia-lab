@@ -43,3 +43,21 @@ binds exact verification/JUnit copies, source closure and original raw records.
 After retention, original29263 exits0:28 retained-evidence/resource checks pass
 in6.35s, and active documentation checks25 documents/463 local links/6 original
 snapshots with no errors. These are software checks, not extra scientific runs.
+
+## Actual real dispatch, not completion
+
+Preparation80726 exits0 from clean frozen2f70147a with exactly2 declared
+worlds and0 designer-generation POSTs. The actual original12-slot/fixed closure
+inventories and paired original-source audits reconstruct before preparation.
+Before dispatch, a host-wide ps snapshot, backend0.33.3, empty loaded-model
+list, exact approved Qwen3-8B digest and pinned Docker image are retained.
+No competing model process is observed in the inspected snapshot; this is not
+an exclusive hardware lease or proof against later contention.
+
+Original session64339/PID92888 starts14:03:59UTC/23:03:59JST, source
+`2f70147a801b9a3a549cca1a24b8fa38bb9525a4`. Original continuation14705 from
+a separate clean analysis worktree waits on this exact writer, then invokes
+paired frozen-source audits and costs. No ongoing source/HEAD/settings edit,
+redispatch, scientific repair, refill or new objective is authorized by this
+observation. The [dispatch record](../results/native-legacy-topic-pilot-dispatch-v1.json)
+binds actual paths, plan, source, process, budgets and pre-dispatch record.

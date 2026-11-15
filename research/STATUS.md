@@ -57,8 +57,20 @@ requests with SCRIPTED HTTP, matching double cold audits/costs and equal initial
 physical societies. All48 original effect witnesses across four years per world
 and passive K200 reconcile;0/16 actual assignments are outside core. Original
 sessions1756/71020 exit0; the latter passes59 regressions, including the old
-three-control public path. No real model call or new optimization study has
-begun at this observation. The reviewed91-page
+three-control public path.
+
+The [real two-control pilot dispatch](results/native-legacy-topic-pilot-dispatch-v1.json)
+starts November15 at14:03:59UTC/23:03:59JST from clean pinned2f70147a.
+Original session64339/PID92888 is executing the first core-only control at
+this observation; no completed outcome is claimed. Same Qwen3-8B digest and
+Ollama0.33.3, original corpus and T/U bind literally. Both controls receive
+the same broad action permission; only their candidate-membership rule differs.
+Original continuation14705 waits on the exact writer, then runs two frozen-source
+cold audits and two cost readouts without inference or retry. Host-wide process
+inspection and empty loaded-model list are retained before dispatch; neither
+establishes an exclusive hardware lease. This is still a developer feasibility
+comparison, not new objective-conditioned optimization or automatic invention.
+The reviewed91-page
 PDF predates this new implementation and remains unchanged.
 
 ## New development-only resource readout (after explicit resumption)
