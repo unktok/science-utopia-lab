@@ -34,6 +34,17 @@ All ten completed **assigned** losses tie original R7. The withheld-from-designe
 hand comparison, post-funding-cost, achieves T=-20/U=-15.333333333333332;
 no own proposal beats it on its assigned objective.
 
+An [exact finite-matrix analysis](native-longitudinal-observed-loss-support-v1.json)
+has three distinct measured vectors: R7 plus nine own worlds, the hand, and
+final parent-trajectory T2. The hand is the sole measured Pareto-front row:
+it strictly improves both recorded objectives over all other measured rows.
+Consequently, nonzero nonnegative linear weights on these two recorded losses
+cannot demonstrate a preference reversal within this finite matrix. This is
+not a global/expected frontier or permission to expose the withheld hand to
+the historical author. Unknown losses remain excluded without imputed penalties.
+The result does not show that objectives never matter; this search did not
+produce a measured output/utility tradeoff on which to study that question.
+
 Nine valid own candidates have the same T/U vector as R7:
 T=-18/U=-13.333333333333332. Final parent-trajectory T2 instead has
 T=-18/U=-12.333333333333332. Thus it ties its throughput target while worsening

@@ -959,3 +959,54 @@ references. Only its data-series logic is tested during inference; actual
 public rendering and image inspection remain pending until inference ends.
 The original immutable readout figures stay unchanged. The expanded retained
 evidence/navigation suite passes11 tests in0.74s, with no new model/world call.
+
+## Fixed evaluation progress and original-source automatic closure
+
+Original session54645 remains live. Evaluation-001 starts04:54:38.479799UTC,
+after evaluation-000 completes. The completed shared R7/scalar-U world measures
+T=-34/U=-25.666666666666668. Evaluation-002 starts05:08:27.505849UTC after
+the hand comparison completes with T=-36/U=-30. Two of five physical jobs are
+therefore complete at this verified boundary; the other selected policies have
+no completed outcome yet. These are partial fixed observations, not the final
+paired comparison or new optimizer feedback.
+
+The existing finite generic closure engine is invoked with explicit
+longitudinal-fixed plan/audit/writer/schema parameters in the separate clean
+38ea9d385af91df0f8a55f84457c4901e33d1465 analysis worktree. Original97825 waits
+for exact writer21817 to disappear after normal closure, then invokes the
+originala5be8d31 longitudinal-fixed auditor and cost reader twice. Original4958
+waits for those paired audit/cost outputs, then invokes the actual fixed
+readout twice and compares files. Both handles are confirmed live, not complete.
+Outputs are `native-longitudinal-fixed-closure-v1-a1` and
+`native-longitudinal-fixed-readout-v1-a1` under that analysis root's outputs.
+Neither continuation can dispatch, repair, refill or restart science. Source
+and HEAD of both frozen roots remain unchanged. This uses existing parameterized
+engines rather than adding another scientific runner or wrapper source file.
+
+## Observed objective support and the next research question
+
+The [finite development loss matrix](../results/native-longitudinal-observed-loss-support-v1.json)
+contains12 measured rows and two separate unknown own slots. It has three
+distinct vectors. The hand is the sole measured Pareto-front row and minimizes
+both original objectives, so nonnegative linear reweighting cannot produce a
+preference reversal within this recorded set. This is not a global or expected
+frontier, a metric change, an optimal-policy claim or a reason to reveal the
+historically withheld control to the original author.
+
+The new manuscript paragraph and current publication plan distinguish a
+functioning optimization interface from the still unresolved scientific question:
+objective-dependent choice needs actual differing consequences to study, not
+just more code fingerprints or more seeds of the same recorded systems.
+Any subsequent feasibility/strong-control/objective/search study must be a
+separately declared finite design after the current comparison closes, using
+the existing original-world legal routes first. No new dispatch or changed
+loss is introduced by this decision. Because partial unused results are already
+visible, it is explicitly not described as a blind pre-result hypothesis.
+
+The paper also clarifies that R7 is the developer-authored seed institution,
+not the published simulator's unmodified institutional baseline. Native
+researcher execution and mutable institutional configuration are different.
+Twelve lightweight retained-evidence/navigation checks pass in0.75s; the
+documentation checker passes25 documents/416 links/six historical snapshots.
+No PDF render, independent heavy QA, new scientific measurement or new model
+call is performed by these analyses while fixed inference remains active.

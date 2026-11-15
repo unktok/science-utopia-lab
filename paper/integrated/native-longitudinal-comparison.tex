@@ -12,6 +12,9 @@ three proposal slots, for twelve total. Seed61001 is reused across this
 development comparison; neither candidates nor feedback steps are independent
 optimizer replications. The original reference is optimizer-visible; the
 developer-authored post-funding-cost comparison is withheld from the designer.
+Here R7 is the developer-authored seed institution, not the published
+simulator's unmodified default institutional configuration; the original native
+researcher engine is retained while the organizing institution is editable.
 Losses, technical validity and held-out evaluation remain separate concepts.
 
 \begin{table}[t]
@@ -45,6 +48,15 @@ hand comparison by2. Nine own candidates share the original cross-score vector,
 $L_T=-18$, $L_U=-13.333333333333332$. Final parent-trajectory T2 instead has
 $L_T=-18$, $L_U=-12.333333333333332$: matching its assigned throughput target
 does not mean unchanged cross-objective behavior or improved utility.
+
+The finite measured matrix contains only three distinct T/U vectors: the
+reference plus nine own worlds, the hand, and final parent-trajectory T2.
+The hand strictly dominates every other measured row in both recorded losses.
+Any nonzero nonnegative linear weighting of these two losses therefore keeps
+it best within this measured set. This does not identify a global or expected
+Pareto frontier. Nor does the absence of a preference reversal establish that
+objectives do not matter: the search has not generated a measured tradeoff
+on which to test objective-conditioned institutional choice.
 
 \paragraph{Source diversity is not behavioral diversity.}
 The complete journals contain168 charged author steps and108 component probes;

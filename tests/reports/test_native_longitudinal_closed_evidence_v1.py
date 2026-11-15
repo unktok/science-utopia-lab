@@ -86,3 +86,14 @@ def test_paper_path_series_keeps_unknown_losses_separate_from_best_own():
     u = series(value, 'parent-trajectory', 'content-utility')
     assert [r['null'] for r in u] == [False, True, False]
     assert u[1]['observed'] is None
+
+
+def test_observed_loss_frontier_is_finite_support_not_a_global_optimum():
+    value = read(ROOT / 'research/results/native-longitudinal-observed-loss-support-v1.json')
+    assert len(value['measured_rows']) == 12 and value['unknown_own_slots'] == 2
+    assert len(value['unique_measured_vectors']) == 3
+    hand = 'workflow-reference-post-funding-cost'
+    assert value['observed_measured_pareto_frontier'] == [hand]
+    assert all(rows == [hand] for rows in value['per_objective_measured_minima'].values())
+    assert not value['loss_or_selection_changed']
+    assert value['new_model_calls'] == value['new_code_executions'] == 0

@@ -26,7 +26,8 @@ These are completed records, not live heartbeats. See the
 | Ninth slot | Scalar T2 double-wraps decision payloads; actual consumer rejects the empty-year batch. Loss unknown, no host unwrapping/repair |
 | Original runner | Session82259 exited0; no restart, source/guard/loss change, repair or failed-slot refill |
 | Analysis | Two original-source audits and cost reports match; all five paired readout file sets and paired allocation match. Their original continuation sessions exited0 |
-| Fixed unused evaluation | Started at04:36:07UTC/13:36:07JST, original session54645, runner PID21817; latest verified output starts evaluation-000. Four own-only frozen selections and two references share five physical jobs on reserved seed676047151, with zero designer POSTs. No completed fixed loss yet at this observation |
+| Fixed unused evaluation | Started at04:36:07UTC/13:36:07JST, original session54645, runner PID21817. Two of five physical jobs complete; evaluation-002 starts05:08:27UTC. R7/scalar-U shared job has T=-34/U=-25.666666666666668; the hand has T=-36/U=-30. Remaining selections are not yet measured; zero designer-generation POSTs |
+| Fixed postprocessing | Original-source audit/cost continuation97825 and subsequent paired-readout continuation4958 are confirmed live in clean frozen38ea9d38 analysis source. They wait for normal scientific closure; no audit/report completion is claimed yet |
 
 The[actual dispatch log](logbook/2026-11-15-longitudinal-real-dispatch.md) retains
 exact submitted identities, complete journal-prefix counts and observed failures.
@@ -37,6 +38,10 @@ for nine valid own worlds and R7, under this one reused development condition.
 Full provider envelopes are not all equal. This is not global program equivalence
 or independent replication; a changed source/fingerprint alone is not a causal effect.
 No improvement, useful new wiring or information-condition advantage is established.
+The [finite measured loss matrix](results/native-longitudinal-observed-loss-support-v1.json)
+has three distinct vectors, with the hand dominating every other measured row
+on both objectives. This is a development-only support analysis, not a global
+or expected Pareto frontier and not a change to objective/selection rules.
 The final valid candidate changes the observed input path and four accepted
 content occurrences, but ties its throughput target and worsens utility.
 Its final-active count2/resources40 and annual author accounting match R7;
