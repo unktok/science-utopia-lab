@@ -143,3 +143,13 @@ repair, refill, concurrent heavy QA or independent new inference. The
 [dispatch receipt](../results/native-topic-free-optimization-dispatch-v1.json)
 binds exact plan/source/process/host/component bank and finite continuation.
 Dispatch is not completion, a passed certificate or a useful invented system.
+
+Actual initial directed calibration completes15:17:43UTC/00:17:43JST, all28
+controls passed. The public staged/bounded inner/outer cold certificate checks
+return and original writer advances to first fresh core-only reference at
+15:17:47UTC. The [retained progress](../results/native-topic-free-initial-readiness-v1.json)
+binds actual certificate/source/model/backend and measured backend prompt counts.
+This is the initial directed interface, not free-design/history-bearing capacity,
+model understanding, useful invention or an own optimization outcome. No
+failure, source repair, budget/loss/model change or undisclosed retry occurs in
+this actual initial readiness. The finite original writer/closure remain active.

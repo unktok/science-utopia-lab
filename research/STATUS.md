@@ -72,6 +72,14 @@ study execution, not evidence yet of automatic invention, improvement or
 objective-specific winners. The reviewed91-page PDF predates this implementation
 and the normally closed two-control result below; publication readiness remains open.
 
+At15:17:43UTC /00:17:43JST the
+[actual initial readiness](results/native-topic-free-initial-readiness-v1.json)
+passes all28 directed controls with public inner/outer cold replay. The original
+writer moves to first fresh core-only reference at15:17:47UTC. This is actual
+local35B compatibility at the initial request, not free-design capacity or useful
+invention; own proposal slots are still unstarted at this observation. No model,
+source, budget or objective was changed after dispatch.
+
 ### Normally closed same-authority developer controls (v5)
 
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)

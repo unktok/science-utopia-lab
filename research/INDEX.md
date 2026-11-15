@@ -12,7 +12,9 @@ This page is navigation, not a chronological experiment transcript.
   now verifies8 new worlds, bounded author/next feedback,24 institutional-work calls
   and matching cold/costs with SCRIPTED providers.
   [Actual real35B dispatch](results/native-topic-free-optimization-dispatch-v1.json)
-  starts00:11JST November16, with initial real readiness and finite closure chain.
+  starts00:11JST November16; [actual initial28-control readiness](results/native-topic-free-initial-readiness-v1.json)
+  passes00:17JST and fresh reference evaluation starts. Own proposals follow;
+  the finite closure chain is waiting, not completed.
 
 - [Two-control prospective real-Qwen protocol](protocols/campaigns/native-legacy-topic-feasibility-v1.md)
   and [actual public prepare/run/SDK/cold/cost software proof](results/native-legacy-topic-pilot-software-retention-v1.json):
