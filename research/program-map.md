@@ -18,8 +18,8 @@
 固定a5be8d31の12枠longitudinal比較に加え、[選択固定の未使用評価](results/native-longitudinal-fixed-closed-v1.json)
 も閉鎖済み。その後、元の選択3対照と同権限topic2対照を完了し、三つの明示目的による
 [自由制度6枠の探索](protocols/campaigns/native-topic-free-optimization-v1.md)を別source48e1d268で実行している。
-最新の日付付きprefixは4枠消費・3完走・1runtime nullで、強い対照への改善は未確認。
-この数は時点付きsnapshotであり、継続的な生存確認ではない。
+全枠の完了・強い対照への改善・主会議readyはまだ主張しない。
+個別の完了数と日付付きの実行位置は[STATUS](STATUS.md)に置き、ここへliveカウントを複製しない。
 [時点付きの進捗](STATUS.md)と[元の実dispatchログ](logbook/2026-11-15-longitudinal-real-dispatch.md)
 を正本とし、ここへliveカウントを複製しない。二目的・二情報条件でも作用権限は同じで、
 元の研究者世界を保持する。全候補、失敗、全作用と入力を分析し、選択を固定してから

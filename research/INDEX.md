@@ -21,8 +21,9 @@ This page is navigation, not a chronological experiment transcript.
   and [SCRIPTED full public software proof](results/native-topic-free-public-software-retention-v1.json)
   stay separate. [Prepared three-objective readouts](components/native-topic-free-readouts-v1.md)
   wait for original paired audit/cost closure; figures/review remain pending.
-  [Current unbuilt manuscript](logbook/2026-11-15-topic-manuscript-source-update.md)
-  predates these own outcomes; the reviewed91-page PDF is older still.
+  [Current unbuilt manuscript](logbook/2026-11-15-topic-manuscript-prefix-analysis.md)
+  includes the first four own slots and conditional analyses; the fifth
+  completion is not yet included. The reviewed91-page PDF predates both.
   [Calendar capacity](components/native-topic-calendar-envelope-v1.md) and
   [fixed-record headroom/evidence decision](publication/native-topic-objective-headroom-and-next-evidence-v1.md)
   are conditional diagnostics, not a replacement world or global optimum.
