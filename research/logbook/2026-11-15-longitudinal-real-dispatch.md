@@ -361,6 +361,42 @@ budgets unchanged. No new independent heavy QA, external model or duplicate
 scientific writer is dispatched. Previous completed-prefix evidence remains
 limited to those complete leaves, not this fourth incomplete world.
 
+## All four g0 outcomes complete; original own-feedback revision begins
+
+At00:27:41.513065UTC, original82259 advances to parent-trajectory::throughput:g1
+readiness after finishing the fourth own world. The completed original record
+digest is`c37d43fdf4cda0eba34ce7419f96a21a850237acba1e43ca874d066131b77261`,
+observation`09dc7837622ea941efaca4d17cff01a99a1756b4f12b5e56df8138f10cdd5e5d`.
+Generation_error is null, world technical failures empty, T=-18 and unchanged
+cross-evaluator U=-13.333333333333332. Four of12 own slots now complete, all
+tying R7 and worse than the hand by2 on each loss. No completed whole study,
+effective change, gain, expected information effect or publication readiness.
+All sources/objectives/budgets stay unchanged; no refill, host repair, new seed
+or cross-arm own outcome enters the author. The next proposal can use this
+history's own original measured outcome under the already-declared protocol.
+
+Read-only original58584 actually exits0. It binds the unchanged earlier
+three-own diagnostic, rechecks all its listed original hashes, and directly
+compares the now-complete fourth leaf to R7 using the same sourceA5 `sequence`
+projector. Both caches are opened read-only/immutable, no WAL/SHM/journal,
+year4 checkpoints present and selected record/file/source hashes unchanged.
+Each has115 complete inputs/replies and no unmatched input. Full parsed
+payloads compare directly equal; the ordered payload and literal choice
+digests are the same40fb533c/f7e95617 recorded above. Fourth full provider-body
+sequence is`8b5b488fed8759e868efbad0d82f76e4b6f1e0feb61fbb4c42b988c9006c2cd4`,
+not equal to R7's provider envelope sequence.
+
+[Extended compact diagnostic](../results/native-longitudinal-generation-zero-requests-v1.json)
+is byte-identical to feature runtime
+`outputs/native-longitudinal-generation-zero-requests-v1-a1.json`, contentSHA
+`25c92562a8df38508e5245e301c6d071cb8bbfa292e5c75b27053f3fb572dfb3`.
+The first four generated/retained systems therefore share R7's observed
+scientist path, not just final losses. This is five completed leaf worlds on
+one seed, not five independent optimizer runs, global equivalence, equality of
+every internal state, a causal information comparison or license to skip
+future worlds. Paired original-source full closure and frozen evaluation are
+still required. No new native/model/code-execution experiment occurs here.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,

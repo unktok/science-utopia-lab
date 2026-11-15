@@ -7,6 +7,25 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Current prefix at00:27:41UTC/09:27:41JST: four of12 own slots complete, all
+T=-18/U=-13.333333333333332 with no technical world failures. All tie fresh R7
+and lose to the hand by2 on each loss. First proposals in all four histories
+are now measured; original82259 proceeds to parent-trajectory::throughput:g1
+readiness using that history's own retained outcome, not another arm's feedback.
+The full comparison/selection, paired audits/costs/readouts and reserved unused
+evaluation remain incomplete. No information benefit, optimization gain,
+independent optimizer replication or main-track readiness is established.
+
+Read-only58584 exits0: fourth own world also has115 full ordered scientist
+payloads and literal response choices equal to R7. The hash-bound prior
+three-own diagnostic extends to all four g0 outcomes; five complete leaf
+worlds, including R7, share one observed input/choice path, while full provider
+bodies differ. Listed original inputs remain unchanged; no model/world call,
+scrubbing, whole-study cold proof, global equivalence or future deduplication.
+[Complete generation-zero prefix diagnostic](results/native-longitudinal-generation-zero-requests-v1.json).
+
+#### Earlier dispatch observations (retained, not current process checks)
+
 Fourth parent-trajectory T0 explicitly submits at00:16:09UTC and starts its
 native world, with year1 checkpoint now saved. Its full14-step journal retains
 one invalid response, eight applied reads, three selection-source writes and

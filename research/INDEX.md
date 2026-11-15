@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- Four of12 own slots now complete: all g0 histories tie R7 and lose to the
+  hand on both losses. Original82259 advances to parent-trajectory T1 readiness
+  at00:27:41UTC, with own feedback only. [Full generation-zero input/choice diagnostic](results/native-longitudinal-generation-zero-requests-v1.json)
+  extends the hash-bound earlier prefix: all five complete leaf worlds have115
+  ordered literal scientist payloads/choices equal, not a whole-study audit,
+  expected information effect or global program equivalence. The remaining
+  original eight slots, closure/readouts and frozen unused evaluation remain open.
+
 - [Three completed own worlds: full observed scientist inputs/choices](results/native-longitudinal-three-own-request-prefix-v1.json):
   original86329 exits0,115 literal ordered payloads/choices per complete world
   match R7, while full provider envelopes differ. No new model/world call,
@@ -20,7 +28,7 @@ Historical documents retain their paths and source identities.
   not a newly built/reviewed manuscript. The running fourth own slot passes
   request readiness and begins free authoring at00:02:50UTC.
 
-- Latest checked progress: three of12 own slots complete, all tie R7; scalar U0
+- Earlier checked progress: three of12 own slots complete, all tie R7; scalar U0
   explicitly retains its literal parent after charged invalid/rejected actions.
   The fourth slot is in request readiness. [Actual dispatch log](logbook/2026-11-15-longitudinal-real-dispatch.md)
   and [current status](STATUS.md) distinguish this from the older snapshots below.
