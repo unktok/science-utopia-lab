@@ -79,7 +79,9 @@ histories' own outcomes. Every new proposal is submitted before its evaluation;
 post-hoc rescoring alone is not objective-conditioned optimization.
 
 The approved local35B designer keeps64k context,8192 output tokens and bounded
-16-call editing sessions. Its exact upstream revision/conversion provenance is
+16-call editing sessions and source-owned designer connect/read timeouts10/900
+seconds with no network retries. Each actual request records those allowances
+before dispatch, including transport failure. Its exact upstream revision/conversion provenance is
 still unknown. Fresh actual source/model/backend/request-bound execution-readiness
 calibration is required before reference dispatch and before each proposal;
 old certificates are never relabelled. Exact-copy equality is diagnostic,

@@ -93,3 +93,23 @@ Correct the *literal prescribed fixture source* to emit only payload/actor_ids/
 artifact_ids, never weaken the runtime ABI or repair a scientific candidate.
 Preserve all six nulls and original a4. Add a cheap stdlib missing-global
 diagnostic alongside the real public path; it is not a proof of bug freedom.
+
+## Actual complete current software path
+
+Clean a491da069e6a00ed11fb003f323a0859f2d9e6e0 original75531 exits0:
+1 passed in457.77s. All eight new worlds complete, all six own submissions
+execute, every next error-bearing prompt contains the actual NameError, and
+24 extra fixed-scientist institutional-work requests execute through the
+installed SDK. Calibration199/proposal42 POSTs are SCRIPTED; they are not
+actual local-model inference or context-capacity evidence. The2 preceding
+software controls also execute, so10 SOFTWARE worlds total,1602 installed-SDK
+scientist requests including those upstream worlds. Two cold audits and costs
+match;341 source-closure files bind actual runtime. Bounded execute/inner/outer
+replay are real, but process supervision is a synchronous fixture, not tested.
+
+The [actual retention](../results/native-topic-free-public-software-retention-v1.json)
+binds verification/JUnit, raw inventory, source closure and all five preserved
+failed-check records. Do not relabel the a4 six nulls as successful. No actual
+35B free search has run. Only after original75531 exits is current main's
+completed real-control retention merged into this feature worktree; no tested
+source/HEAD changes during the original software process.

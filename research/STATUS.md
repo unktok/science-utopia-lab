@@ -29,6 +29,28 @@ manuscript. Publication readiness is **not established**; acceptance is not prom
 
 ## Original-topic authority and normally closed real control comparison
 
+The [next prospective free-system study](protocols/campaigns/native-topic-free-optimization-v1.md)
+now has an [actual completed public-path software construction](results/native-topic-free-public-software-retention-v1.json).
+Clean a491da06 original75531 exits0 after457.77s:2 upstream software controls
+plus8 new four-year native worlds, six explicit own slots over three objectives,
+199 SCRIPTED calibration POSTs/42 proposal POSTs, installed-SDK scientist requests,
+actual Docker code/probes, next-prompt error feedback and two matching cold audits/
+cost projections. All8 new worlds are complete, unlike the preserved a4's six
+runtime nulls. There are24 actual institution-authored fixed-scientist work
+requests; HTTP/corpus/critics and child supervision remain SCRIPTED. This is
+not real-model capacity, deadline-supervision verification or automatic invention.
+
+The new explicit institution-workflow-v6 permits arbitrary typed tasks to
+existing original fixed-model researchers as response artifacts, while retaining
+original native research/production/resource effects and total scientist-call
+bounds. Historical v4/v5 retain their ban; no old scope or running study is
+silently widened. Both strong hand controls are visible parents. T/U remain
+literal; a separately declared development C=-U+0.1K is introduced prospectively,
+not retroactively applied to old selection. Its developer coefficient is not a
+measured social value. New real35B calibration/search has not begun at this
+observation; the reviewed91-page PDF predates this implementation and the
+normally closed two-control result below.
+
 The [prospective next-study decision](publication/native-legacy-topic-next-study-v1.md)
 identifies an actual mismatch: original non-strict researchers can choose core
 plus directly related topics, while the historical typed direct-assignment API
