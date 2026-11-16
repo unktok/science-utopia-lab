@@ -142,8 +142,10 @@ The active V45 renderer supplies the whole compact JSON document when it
 fits 65,536 UTF-8 bytes. Its inherited V44 phase function independently uses
 spaced JSON against the same cap. V45 then replaces only the displayed
 visibility flag, after phase selection. A fully supplied document can therefore
-remain in the general tool phase after three successful inspections rather
-than reaching the declared implementation checkpoint.
+remain in the general tool phase after three inspection attempts rather
+than reaching the declared implementation checkpoint. The counter records
+attempts, not only successful reads; the three initial boundary inspections
+in these examples all succeed.
 
 \begin{table}[t]
 \centering\small

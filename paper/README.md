@@ -8,6 +8,13 @@ It retains all15 complete observations at10:32UTC, not a selected subset or the
 final24-slot comparison, and separates literal edits, observed effects and gains.
 The abstract/discussion report the interface confound and prospective repair's
 unproved real-model/native scope. Earlier meaningful tracks remain included.
+The introduction now adds an evidence-to-claim reading map, a study-local loss
+notation clarification and a separately dated20-slot prefix at12:19UTC.
+The older15-slot detailed table is deliberately retained as its own snapshot.
+The evidence-family table also includes later topic/resource and free-design
+studies; it no longer describes V2 as the latest matched study. No new result,
+pooled replication, important main-track finding or corrected-model benefit is
+created by this editorial synthesis.
 
 **These amendments have not been built or visually reviewed.** The104-page
 artifact and its source-bound receipt below remain unchanged; they do not prove
