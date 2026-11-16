@@ -72,6 +72,21 @@ reference. It has the same aggregate cross-scores as the preceding adaptive
 proposal but184 versus182 full researcher input/choice sequences, not identical
 behavior. The prefix is21 complete/10 ties/11 worse/0 better. The final free
 author slot is active; two numeric U slots follow it. No final selection yet.
+At13:07UTC/22:07JST that final author has finished generation with13 actions:
+one rejected plan,9 successful reads,2 successful agenda-source writes and
+explicit finish. All8 generation sessions are complete:102 committed proposal
+steps,45 serializer-phase mismatches,0 different loss views. The earlier7-session
+hashes and all220 journal files are rechecked. This is not all8 native outcomes
+or the final joined export; the last candidate is compiled but still unscored.
+[Exact generation/optional rank-control preparation](results/native-topic-rank-space-preparation-and-eight-author-generation-v1.json).
+
+[Optional rank-local priority control](components/native-topic-rank-space-v1.md)
+is implemented but not adopted/dispatched. It preserves the exact numeric
+anchor/initial samples and unchanged source/graph/durations, then proposes
+adjacent rank swaps; rank distance is not native behavior/loss distance.
+57 component/state cases pass, including no fabricated reference measurement
+and an actual retained founder's consumed topic change. This is not a new
+optimizer theory, native campaign or evidence of an optimization advantage.
 
 ## Purpose and present answer
 

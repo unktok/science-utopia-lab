@@ -60,6 +60,23 @@ The new test retains the explicit template path/hash in its artifacts.
 
 ## Activation command (not run yet)
 
+The [actual corrected-source staging](../results/native-priority-corrected-public-qa-staging-v1.json)
+now prepares a complete separate checkout atadfd6b947aa6cb5f151faf144d2e708bdb27dea6:
+`/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-corrected-public-qa-v1-a1`.
+All required files exist, the checkout is clean, the real Python import resolves
+inside it and the literal original template hash still matches. Original39778
+collects the one target test, exit0 in5.67s, without executing its body. No
+public/native proof or real-model readiness is established. The output parent
+exists; targets and external destination below are absent at staging time.
+
+After the actual inference/host-wide conditions hold, run from that unchanged
+checkout with `SCIENCE_UTOPIA_PRIORITY_FIXED_QA_EXTERNAL` set to
+`/Users/shiro/unktok/dev/science-utopia-lab/outputs/priority-corrected-public-v1-a1`,
+basetemp `outputs/priority-corrected-public-v1-a1` and JUnit
+`outputs/priority-corrected-public-v1-a1-junit.xml`, rechecking absence first.
+Keep the original workflow-plan binding and opt-in/environment settings in the
+example below. The earlier suffix remains an example, not an executed attempt.
+
 From the verified separate QA checkout, after the conditions above hold, choose
 fresh suffixes and verify every target first. The external path shown is outside
 a separate experiments/worktrees QA checkout; it would **not** be acceptable

@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Prospective rank-local native priority adapter](components/native-topic-rank-space-v1.md)
+  keeps the literal anchor/initial samples but defines local moves in ordering
+  rather than coordinate radius.57 light cases pass; no new campaign or method
+  advantage is claimed. [The same retention](results/native-topic-rank-space-preparation-and-eight-author-generation-v1.json)
+  verifies the final original author has generated/compiled: all8 sessions/
+  102 proposal steps/45 serializer mismatches/0 different loss views. Its native
+  loss remains unknown, so this is not all8 outcome closure or the final join.
+
 - [Public author checkpoint canary preparation](components/native-priority-public-author-workflow-v1.md)
   closes a coverage gap before future native QA: the same prescribed public
   actions/checker now exercise3 inspections before and after a real code/wiring

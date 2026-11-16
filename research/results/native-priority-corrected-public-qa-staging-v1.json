@@ -1,0 +1,42 @@
+{
+  "schema": "scienceutopia.native-priority-corrected-public-qa-staging.v1",
+  "observed_utc": "2026-11-16T13:14:36.915817+00:00",
+  "QA_source": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-corrected-public-qa-v1-a1",
+  "source_commit": "adfd6b947aa6cb5f151faf144d2e708bdb27dea6",
+  "actual_worktree_creation": {
+    "original_handle": 28486,
+    "actual_exit_code": 0,
+    "required_files_present": true,
+    "source_clean": true
+  },
+  "actual_import_path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-corrected-public-qa-v1-a1/utopia/__init__.py",
+  "template": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-comparison-64k-v1-a1/outputs/native-longitudinal-comparison-64k-v1-a1/plan.json",
+  "template_file_sha256": "f2a12bf41b8cd0ff790f441c2db2cdb2b2082828210c86c1ac9808f860a13d3e",
+  "external_output": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/priority-corrected-public-v1-a1",
+  "basetemp": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-corrected-public-qa-v1-a1/outputs/priority-corrected-public-v1-a1",
+  "JUnit_target": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-corrected-public-qa-v1-a1/outputs/priority-corrected-public-v1-a1-junit.xml",
+  "all_actual_output_targets_absent": true,
+  "outputs_parent_precreated_and_empty": true,
+  "collection": {
+    "original_handle": 39778,
+    "actual_exit_code": 0,
+    "mode": "--collect-only -q -p no:cacheprovider tests/reports/test_native_priority_fixed_public_v1.py",
+    "collected_test": "test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_readouts",
+    "test_count": 1,
+    "reported_seconds": 5.67,
+    "test_bodies_executed": 0
+  },
+  "software_condition_seeds": [
+    43003,
+    43011
+  ],
+  "real_prospective_scientific_seeds_consumed": false,
+  "heavy_test_started": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "original_scientific_run_changed": false,
+  "publication_ready": false,
+  "next_condition": "Do not dispatch heavy QA until the actual original writer/supervisor and inference have ended and host-wide resources are rechecked, including other projects. Leave the pinned QA source unchanged. Original closure/readouts/all8 author continuation and actual visibility exports stay separate prerequisites/evidence. This stage is not public/native/model proof.",
+  "content_sha256": "d3be0967775f6eb9e9db5036303819c5ac2ec07d04b302c42ec445a672fd7171"
+}
