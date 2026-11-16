@@ -52,8 +52,8 @@ already frozen all-slot original-source readout, observed native input/choice
 classes, assigned losses/reference contrasts and full costs. Keep these layers
 separate: edits can be inert or harmful, and an unchanged parent can be legal.
 Never drop nulls, select only apparent improvements or call repeated observed
-paths independent populations. The present helper does not implement that
-entire post-closure join or claim that it already ran.
+paths independent populations. A [companion post-closure exporter](native-priority-author-outcomes-v1.md)
+is now implemented/software-tested; the actual all8-session analysis has not run.
 
 [Sealed software/actual-session retention and seventh original outcome](../results/native-author-step-summary-retention-v1.json),
 [first free C full-provider-request trace](../results/native-priority-sixth-own-outcome-and-read-loop-prefix-v1.json),

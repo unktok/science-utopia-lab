@@ -18,7 +18,12 @@ This page is navigation, not a chronological experiment transcript.
   edit, with exact next-request receipts preserved.
   [Seventh original outcome and complete author-prefix reader](results/native-author-step-summary-retention-v1.json)
   retain a tied numeric draw and actual first2 free-session totals;22 light
-  tests are not full native/CLI proof or causal diagnosis. This is a
+  tests are not full native/CLI proof or causal diagnosis.
+  [Outcome8 and current study's first edited submission](results/native-priority-author-outcomes-preparation-and-first-edit-v1.json)
+  preserve a paired numeric tie and one literal extractor-source write. Year1
+  features change but native decision identities do not; final edited loss is
+  still unknown. [All8-author/outcome join preparation](components/native-priority-author-outcomes-v1.md)
+  passes48 light checks, not actual full-study analysis. This is a
   prefix, not the completed24-slot comparison. See [STATUS](STATUS.md) for the
   active slot/source/processes and [first free journal](results/native-priority-first-free-submission-prefix-v1.json)
   for the five applied/finished actions, without an invented institution claim.

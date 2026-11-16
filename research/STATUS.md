@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at07:54UTC/16:54JST.
+Last scientific snapshot: November16,2026 at08:22UTC/17:22JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -31,11 +31,12 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | Seven complete observations so far, not final24-slot closure. No completed own improvement over its assigned strong parent yet |
-| Current stage | Adaptive priorities/history1/U/g0 at the snapshot |
+| Own outcomes | Eight complete observations so far, not final24-slot closure. No completed own improvement over its assigned strong parent yet |
+| Current stage | Free code/graph/history1/U/g0 native world at the snapshot; its final loss is still unknown |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
+| First edited proposal in this study | Free/history1/U:14 actions, one literal extractor-source write, submitted/executing; no new node/wire/schedule |
 | Selection | Final own-only earliest-tie selections are not yet frozen; no reference fallback, adverse-slot refill or hidden merit/fairness/activity veto |
 | Independence | Two optimizer seeds are not independent scientist populations; initial numeric proposals are deliberately paired, not independent policy samples |
 
@@ -52,6 +53,15 @@ plus [seventh outcome and complete author summaries](results/native-author-step-
 | Adaptive/0/0 | C | -9.6667 | Same paired initial C proposal; no adaptation result yet |
 | Free code/graph/0/0 | C | -12.6667 | Literal unchanged terminal parent, same179 observed inputs/choices |
 | Uniform/1/0 | U | -28.6667 | Different priorities, same179 observed inputs/choices as zero reference; ties it |
+| Adaptive/1/0 | U | -28.6667 | Same paired initial proposal/inputs/choices as uniform; no exploitation step yet |
+
+[Outcome8 and the next actual edited submission](results/native-priority-author-outcomes-preparation-and-first-edit-v1.json)
+retain all original feedback and the first literal source write in this study.
+Saved year1 features change0→1 for the same8 paper records; tensor acceptance
+and native decision identities/final scores stay unchanged. Complete paper
+records differ in submission_time; no full-record/world equality is claimed.
+The unchanged native selection code uses its accept-all control, not that
+internal feature as the fixed external observer. Whole-horizon loss is unknown.
 
 The U numeric proposal changes two founders' actual topics while preserving
 original durations/deadlines; its186 complete scientist inputs/replies differ
@@ -75,6 +85,11 @@ passes22 pure metadata checks and runs on both actual completed free sessions:
 19 actions/15 reads/12 duplicate unchanged reads, no edit attempts. These are
 author-step totals, not total role/calibration/probe POSTs, all8 free proposals,
 native cold replay or evidence of a causal model deficit.
+
+The [all8-author/outcome join](components/native-priority-author-outcomes-v1.md)
+is implemented and passes48 light checks, including matching three-file
+SCRIPTED-provenance exports. Real all8-session analysis still waits for normal
+paired closure; no outer CLI/native proof or new model experiment is claimed.
 
 All3 references have36 accepted decisions/U28.6667 and179 matching complete
 scientist input/choice sequences. The known terminal rule changes K200→160/
