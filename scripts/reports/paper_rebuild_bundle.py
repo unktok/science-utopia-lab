@@ -140,7 +140,8 @@ def stage(root, policy, output, *, source_commit):
                                          'scienceutopia.integrated-longitudinal-manuscript.v1',
                                          'scienceutopia.integrated-choice-resource-manuscript.v1',
                                          'scienceutopia.integrated-topic-systems-manuscript.v1',
-                                         'scienceutopia.integrated-terminal-cost-manuscript.v1')
+                                         'scienceutopia.integrated-terminal-cost-manuscript.v1',
+                                         'scienceutopia.integrated-consumer-source-manuscript.v1')
     if receipt.get('schema') not in ('scienceutopia.working-paper-build.v2',
                                      'scienceutopia.working-paper-build.v3') and not integrated:
         raise ValueError('bound working-paper build receipt required')
