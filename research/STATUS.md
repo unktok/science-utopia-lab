@@ -1,6 +1,21 @@
 # Current research status
 
-## Latest verified state: November16,2026 at17:22UTC / November17 02:22JST
+## Latest verified state: November16,2026 at17:33UTC / November17 02:33JST
+
+[The first fresh `priority-zero` reference is complete](results/native-corrected-choice-first-reference-v1.json):
+U28.666666666666668/K200, L_U-28.666666666666668/L_C-8.666666666666668,
+T36/uncollected0. These assigned losses are reprojected from the checked actual
+measurement; the observation's native default loss-36 is throughput, not L_U.
+This is the first measured baseline, not own invention/gain or final cold proof.
+Original42803 advances to the second `terminal-priority-zero` reference.
+
+[New four-step all8 author/outcome and visibility readers](components/native-corrected-choice-author-readers-v1.md)
+and waiting continuations are implemented on the separate feature source.
+Light new/old checks pass114/53 overlapping cases after retaining/fixing one
+CLI compatibility regression. The actual whole-study/all8 analysis remains
+outstanding; no active scientific source, metric or outcome is changed.
+
+## Earlier running snapshot:17:22UTC / 02:22JST
 
 Original42803 still owns live supervisor29982/writer30048. The first fresh
 reference has179 actual scientist-request lines; no reference observation,

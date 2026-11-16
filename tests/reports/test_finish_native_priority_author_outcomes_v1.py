@@ -10,16 +10,17 @@ from utopia.optimization.native_numeric_designer import save
 from utopia.utils.data_utils import write_json_atomic
 
 
-def fixture(tmp_path, monkeypatch, *, closed=True):
+def fixture(tmp_path, monkeypatch, *, closed=True, corrected=False):
     roots = {k: tmp_path / k for k in ('run', 'source', 'analysis', 'readouts', 'reader', 'preceding')}
     for p in roots.values(): p.mkdir()
     monkeypatch.setattr(r, 'ROOT', roots['reader'])
     binding = {roots['reader'].resolve(): 'b' * 40, roots['source'].resolve(): 'a' * 40,
         roots['preceding'].resolve(): 'c' * 40}
     monkeypatch.setattr(r, 'git_binding', lambda p: binding[p.resolve()])
-    save(roots['run'] / 'plan.json', {'schema': 'scienceutopia.native-priority-method-comparison.v1.plan',
+    study = 'scienceutopia.native-corrected-choice-search.v1' if corrected else 'scienceutopia.native-priority-method-comparison.v1'
+    save(roots['run'] / 'plan.json', {'schema': study + '.plan',
         'source_commit': 'a' * 40})
-    save(roots['readouts'] / 'started.json', {'schema': r.PRECEDING,
+    save(roots['readouts'] / 'started.json', {'schema': study + '.readout.finish' if corrected else r.PRECEDING,
         'scientific_source_commit': 'a' * 40, 'analysis_source_commit': 'c' * 40,
         'plan_file_sha256': r.sha(roots['run'] / 'plan.json'), 'preceding_analysis': str(roots['analysis'].resolve())})
     if closed:

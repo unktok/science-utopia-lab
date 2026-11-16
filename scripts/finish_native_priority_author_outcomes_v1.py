@@ -25,7 +25,7 @@ def read(path):
     return checked(decode_json(Path(path).read_text(), strict=True, finite_floats=True))
 
 
-def wait_readouts(directory, *, maximum_seconds=86400, poll_seconds=10):
+def wait_readouts(directory, *, maximum_seconds=86400, poll_seconds=10, report_files=REPORT_FILES):
     deadline = time.monotonic() + maximum_seconds
     while True:
         ended = directory / 'ended.json'
@@ -34,14 +34,23 @@ def wait_readouts(directory, *, maximum_seconds=86400, poll_seconds=10):
             if (result['status'] != 'closed' or result['new_model_calls'] or result['new_native_worlds']):
                 raise ValueError('normal original readout closure required; no automatic retry')
             files = same_files(directory / 'report-1', directory / 'report-2')
-            if set(files) != REPORT_FILES or files != result['report_files']:
+            if set(files) != report_files or files != result['report_files']:
                 raise ValueError('all three matching original readout files required')
             return result
         if time.monotonic() >= deadline: raise TimeoutError('finite original readout wait expired')
         time.sleep(min(poll_seconds, max(0., deadline - time.monotonic())))
 
 
-def run(args):
+def run(args, *, profile='priority-v1'):
+    if profile == 'priority-v1':
+        study, preceding_schema, schema, report_module = ('scienceutopia.native-priority-method-comparison.v1',
+            PRECEDING, SCHEMA, 'scripts.reports.native_priority_author_outcomes_v1')
+    elif profile == 'corrected-choice-v1':
+        study = 'scienceutopia.native-corrected-choice-search.v1'
+        preceding_schema = study + '.readout.finish'
+        schema = 'scienceutopia.native-corrected-choice-author-outcomes-finish.v1'
+        report_module = 'scripts.reports.native_corrected_choice_author_outcomes_v1'
+    else: raise ValueError('explicit legacy or corrected four-step author continuation required')
     paths = {k: getattr(args, 'origin_' + k).resolve() for k in ('run', 'source', 'analysis', 'readouts')}
     preceding_source = args.preceding_source.resolve(); out = args.output.resolve()
     roots = (ROOT.resolve(), preceding_source, *paths.values())
@@ -52,13 +61,13 @@ def run(args):
     source = git_binding(ROOT); scientific = git_binding(paths['source']); preceding = git_binding(preceding_source)
     plan = read(paths['run'] / 'plan.json'); start = read(paths['readouts'] / 'started.json')
     plan_hash = sha(paths['run'] / 'plan.json'); start_hash = sha(paths['readouts'] / 'started.json')
-    if (plan['schema'] != 'scienceutopia.native-priority-method-comparison.v1.plan'
-            or plan['source_commit'] != scientific or start['schema'] != PRECEDING
+    if (plan['schema'] != study + '.plan'
+            or plan['source_commit'] != scientific or start['schema'] != preceding_schema
             or start['scientific_source_commit'] != scientific or start['analysis_source_commit'] != preceding
             or start['plan_file_sha256'] != plan_hash or start['preceding_analysis'] != str(paths['analysis'])):
         raise ValueError('exact original scientific/readout source and preceding closure paths required')
     out.mkdir(parents=True)
-    save(out / 'started.json', {'schema': SCHEMA, 'analysis_source_commit': source,
+    save(out / 'started.json', {'schema': schema, 'analysis_source_commit': source,
         'scientific_source_commit': scientific, 'preceding_readout_source_commit': preceding,
         'preceding_source': str(preceding_source), 'origin': {k: str(v) for k, v in paths.items()},
         'plan_file_sha256': plan_hash, 'preceding_started_file_sha256': start_hash,
@@ -75,7 +84,7 @@ def run(args):
             'report_files': closed['report_files'], 'new_model_calls': 0})
         for i in (1, 2):
             stage = 'report-' + str(i)
-            command = [sys.executable, '-B', '-m', 'scripts.reports.native_priority_author_outcomes_v1',
+            command = [sys.executable, '-B', '-m', report_module,
                 *[value for k, p in paths.items() for value in ('--origin-' + k, str(p))],
                 '--output', str(out / stage)]
             save(out / (stage + '.started.json'), {'command': command})
@@ -106,12 +115,12 @@ def run(args):
         'manuscript_updated': False, 'visual_review_complete': False, 'publication_ready': False})
 
 
-def main():
+def main(*, profile='priority-v1'):
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('run', 'source', 'analysis', 'readouts'):
         parser.add_argument('--origin-' + key, type=Path, required=True)
     for key in ('preceding-source', 'output'): parser.add_argument('--' + key, type=Path, required=True)
-    run(parser.parse_args())
+    run(parser.parse_args(), **({} if profile == 'priority-v1' else {'profile': profile}))
 
 
 if __name__ == '__main__': main()

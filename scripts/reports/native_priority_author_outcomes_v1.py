@@ -22,16 +22,24 @@ ROOT = Path(__file__).resolve().parents[2]
 SCHEMA = 'scienceutopia.native-priority-author-outcomes.v1'
 
 
+def profile_contract(profile):
+    if profile == 'priority-v1': return ORIGINAL, SCHEMA
+    if profile == 'corrected-choice-v1':
+        from scripts.reports.native_priority_method_readout_v1 import CORRECTED_SCHEMA
+        return CORRECTED_SCHEMA, 'scienceutopia.native-corrected-choice-author-outcomes.v1'
+    raise ValueError('explicit legacy or corrected four-step author outcome profile required')
+
+
 def read(path, sealed=True):
     value = decode_json(Path(path).read_text(), strict=True, finite_floats=True)
     return checked(value) if sealed else value
 
 
-def join(report, authors):
+def join(report, authors, *, profile='priority-v1'):
     """Pure diagnostic projection; synthetic inputs are not provenance proof."""
-    checked(report)
+    checked(report); original, schema = profile_contract(profile)
     slots = [r for r in report['slots'] if r['method'] == METHODS[2]]
-    if (report['schema'] != ORIGINAL or len(report['slots']) != 24 or len(slots) != 8
+    if (report['schema'] != original or len(report['slots']) != 24 or len(slots) != 8
             or len(authors) != 8 or [r['cell_id'] for r in authors] != [r['cell_id'] for r in slots]
             or len({r['cell_id'] for r in slots}) != 8):
         raise ValueError('all eight ordered compound free-author cells required, including nulls')
@@ -86,7 +94,7 @@ def join(report, authors):
             'known_session_edit_attempts': sum(s['attempted_edit_steps'] for s in known),
             'known_session_document_changes': sum(s['successful_document_changes'] for s in known),
             'known_session_duplicate_reads': sum(s['duplicate_unchanged_read_observations'] for s in known)}
-    return {'schema': SCHEMA, 'scientific_source_commit': report['scientific_source_commit'],
+    return {'schema': schema, 'scientific_source_commit': report['scientific_source_commit'],
         'original_report_content_sha256': report['content_sha256'], 'rows': rows, 'by_objective': totals,
         'scope': 'All eight free-author cells, no favorable filtering. Action, literal program, '
             'observed native inputs and measured gain are separate layers. Same-input paths are '
@@ -153,7 +161,9 @@ def collect(root, plan, report):
     return authors, inputs
 
 
-def export(args):
+def export(args, *, profile='priority-v1'):
+    profile_contract(profile)
+    options = {} if profile == 'priority-v1' else {'profile': profile}
     origin = {k: str(getattr(args, 'origin_' + k).resolve()) for k in ('run', 'source', 'analysis', 'readouts')}
     out = args.output.resolve()
     if out.exists() or any(out.is_relative_to(p) for p in [ROOT.resolve(), *map(Path, origin.values())]):
@@ -163,9 +173,9 @@ def export(args):
     origin['input_files'] = {str(p): file_sha256(p) for p in evidence_files(origin)}
     with (raw / 'writer.lock').open('r') as owner:
         fcntl.flock(owner, fcntl.LOCK_SH | fcntl.LOCK_NB)
-        plan, _, _ = origin_evidence(origin); before = _inventory(raw)
+        plan, _, _ = origin_evidence(origin, **options); before = _inventory(raw)
         report = read(Path(origin['readouts']) / 'report-1/report.json')
-        authors, inputs = collect(raw, plan, report); result = join(report, authors)
+        authors, inputs = collect(raw, plan, report); result = join(report, authors, **options)
         inputs.update(origin['input_files'])
         if before != _inventory(raw) or any(file_sha256(p) != h for p, h in inputs.items()):
             raise ValueError('original records changed during joined analysis')
@@ -185,7 +195,7 @@ def export(args):
             for row in result['rows']:
                 session = row['session'] or {}
                 writer.writerow({k: row[k] if k in row else session.get(k) for k in fields})
-        save(out / 'manifest.json', {'schema': SCHEMA + '.export', 'analysis_source_commit': reader,
+        save(out / 'manifest.json', {'schema': result['schema'] + '.export', 'analysis_source_commit': reader,
             'scientific_source_commit': plan['source_commit'], 'input_files': inputs,
             'files': {p.name: file_sha256(p) for p in sorted(out.iterdir())},
             'new_model_calls': 0, 'new_code_executions': 0})
@@ -194,11 +204,12 @@ def export(args):
             raise ValueError('reader/scientific source or original records changed during export')
 
 
-def main():
+def main(*, profile='priority-v1'):
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('run', 'source', 'analysis', 'readouts'):
         parser.add_argument('--origin-' + key, type=Path, required=True)
-    parser.add_argument('--output', type=Path, required=True); export(parser.parse_args())
+    parser.add_argument('--output', type=Path, required=True)
+    export(parser.parse_args(), **({} if profile == 'priority-v1' else {'profile': profile}))
 
 
 if __name__ == '__main__': main()

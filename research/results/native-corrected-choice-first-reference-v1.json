@@ -1,0 +1,38 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-first-reference.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T17:33:09+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "writer_pid": 30048,
+  "supervisor_pid": 29982,
+  "reference_label": "priority-zero",
+  "observation_id": "observation-workflow-reference-priority-zero",
+  "observation_path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-choice-search-v1-a1/outputs/native-corrected-choice-search-v1-a1/references/priority-zero/observation.json",
+  "observation_file_sha256": "9eb27a036a9a1f2085ef683d2f6b2d2482fe3ee55240c7f8ef77a1845dc97490",
+  "observation_content_sha256": "3333d82196defd4a4625c0b7e9df097ebe12d5baaaf4ec7b14450126ced8e6cd",
+  "status": "complete",
+  "development_world_seed": 61001,
+  "metrics": {
+    "native.accepted_decisions": 36,
+    "native.common_content_utility_sum": 28.666666666666668,
+    "native.collected_activity_resource_cost": 200.0,
+    "native.uncollected_activity_resource_cost": 0.0,
+    "native.final_active_authors": 5
+  },
+  "measurement_derived_cross_losses": {
+    "content-utility": -28.666666666666668,
+    "resource-aware-content": -8.666666666666668,
+    "throughput": -36.0
+  },
+  "separately_observed_whole_observer_prefix_file_counts": {"intent": 108, "http": 108, "result": 108},
+  "reference_worlds_complete_at_snapshot": 1,
+  "own_slots_measured_at_snapshot": 0,
+  "next_progress": {"stage": "references", "active": "terminal-priority-zero", "observed_utc": "2026-11-16T17:31:30.563135+00:00"},
+  "final_source_bound_cold_audit_complete": false,
+  "gain_over_reference_measured": false,
+  "new_institution_discovery_claimed": false,
+  "unused_condition_evidence": false,
+  "publication_ready": false,
+  "scope": "Checked sealed original first-reference observation and literal evaluate_loss reprojection, not full-study closure. U is fixed abstract content opinion, K collected activity cost, not scientific truth or compute. The observation's native default loss is throughput, not L_U; assigned U/C losses are explicitly reprojected."
+}

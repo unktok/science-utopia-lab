@@ -29,15 +29,17 @@ def forbid_new_science(monkeypatch):
     monkeypatch.setattr('utopia.system.code_mechanisms.DockerCodeExecutor.execute', forbidden)
 
 
-def fixture(tmp_path, monkeypatch, *, missing=False):
+def fixture(tmp_path, monkeypatch, *, missing=False, corrected=False):
     roots = {k: tmp_path / k for k in ('reader', 'author_source', 'science', 'raw', 'authors', 'closure', 'readouts')}
     for p in roots.values(): p.mkdir()
     monkeypatch.setattr(e, 'ROOT', roots['reader'])
     heads = {roots['reader']: READER, roots['author_source']: AUTHOR, roots['science']: SCIENCE}
     monkeypatch.setattr(e, 'pinned_revision', lambda p: heads[Path(p)])
     schedule = [{'method': 'free-code-graph', 'replication': h, 'objective': o, 'generation': g}
-        for g in (0, 1) for h in (0, 1) for o in ('content-utility', 'resource-aware-content')]
-    p = save(roots['raw'] / 'plan.json', {'schema': 'scienceutopia.native-priority-method-comparison.v1.plan',
+        for g in (range(4) if corrected else (0, 1)) for h in ((0,) if corrected else (0, 1))
+        for o in ('content-utility', 'resource-aware-content')]
+    p = save(roots['raw'] / 'plan.json', {'schema': ('scienceutopia.native-corrected-choice-search.v1.plan' if corrected
+            else 'scienceutopia.native-priority-method-comparison.v1.plan'),
         'source_commit': SCIENCE, 'schedule': schedule,
         'losses': {o: loss_spec() for o in ('content-utility', 'resource-aware-content')}})
     (roots['raw'] / 'writer.lock').touch()
@@ -56,7 +58,8 @@ def fixture(tmp_path, monkeypatch, *, missing=False):
             'status': 'generation-null' if session is None else 'complete',
             'loss': None if session is None else float(i), 'request_sha256': sha, 'session': session})
     audit = {'raw_inventory_sha256': digest(e._inventory(roots['raw']))}
-    report = {'schema': 'scienceutopia.native-priority-author-outcomes.v1', 'rows': rows,
+    report = {'schema': ('scienceutopia.native-corrected-choice-author-outcomes.v1' if corrected
+            else 'scienceutopia.native-priority-author-outcomes.v1'), 'rows': rows,
         'scientific_source_commit': SCIENCE, 'analysis_source_commit': AUTHOR,
         'original_raw_inventory_sha256': audit['raw_inventory_sha256'],
         'new_model_calls': 0, 'new_code_executions': 0, 'selection_changed': False}
@@ -66,7 +69,8 @@ def fixture(tmp_path, monkeypatch, *, missing=False):
         'new_model_calls': 0, 'new_code_executions': 0, 'input_files': original_inputs,
         'files': {p.name: file_sha256(p) for p in one.iterdir()}})
     shutil.copytree(one, roots['authors'] / 'report-2')
-    save(roots['authors'] / 'started.json', {'schema': e.PRECEDING,
+    save(roots['authors'] / 'started.json', {'schema': ('scienceutopia.native-corrected-choice-author-outcomes-finish.v1'
+            if corrected else e.PRECEDING),
         'analysis_source_commit': AUTHOR, 'scientific_source_commit': SCIENCE,
         'new_inference_allowed': False, 'retry_failed_stages': False,
         'plan_file_sha256': file_sha256(roots['raw'] / 'plan.json'), 'origin': {
@@ -78,9 +82,10 @@ def fixture(tmp_path, monkeypatch, *, missing=False):
         'report_files': {p.name: file_sha256(p) for p in one.iterdir()}})
     monkeypatch.setattr(e, 'evidence_files', lambda origin: [roots['raw'] / 'plan.json'])
     origins = []
-    def origin(origin):
+    def origin(origin, **kwargs):
         # Actual API shape; only provenance upstream is SCRIPTED here.
         assert origin['input_files'] == {str(roots['raw'] / 'plan.json'): file_sha256(roots['raw'] / 'plan.json')}
+        assert kwargs == ({'profile': 'corrected-choice-v1'} if corrected else {})
         origins.append(origin)
         return p, audit, {'SCRIPTED': 'no new candidate bank or world'}
     monkeypatch.setattr(e, 'origin_evidence', origin)

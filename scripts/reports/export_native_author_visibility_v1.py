@@ -34,7 +34,13 @@ def external(out, roots):
         raise ValueError('fresh output outside reader/all original sources and evidence required')
 
 
-def export(args):
+def export(args, *, profile='priority-v1'):
+    if profile == 'priority-v1': preceding, schema, options = PRECEDING, SCHEMA, {}
+    elif profile == 'corrected-choice-v1':
+        preceding = 'scienceutopia.native-corrected-choice-author-outcomes-finish.v1'
+        schema = 'scienceutopia.native-corrected-choice-author-visibility-export.v1'
+        options = {'profile': profile}
+    else: raise ValueError('explicit legacy or corrected four-step visibility export required')
     raw, author, author_source, science = (getattr(args, k).resolve()
         for k in ('run', 'author_outcomes', 'author_source', 'scientific_source'))
     out = args.output.resolve()
@@ -52,7 +58,7 @@ def export(args):
         raise ValueError('exact original origin paths required')
     origin = {k: str(Path(v).resolve()) for k, v in start['origin'].items()}
     external(out, tuple(Path(v) for v in origin.values()))
-    if (start['schema'] != PRECEDING or start['analysis_source_commit'] != author_head
+    if (start['schema'] != preceding or start['analysis_source_commit'] != author_head
             or start['scientific_source_commit'] != scientific
             or origin['run'] != str(raw) or origin['source'] != str(science)
             or start['new_inference_allowed'] or start['retry_failed_stages']
@@ -85,7 +91,7 @@ def export(args):
         raise ValueError('original joined manifest must bind the complete scientific closure')
     with (raw / 'writer.lock').open('r') as owner:
         fcntl.flock(owner, fcntl.LOCK_SH | fcntl.LOCK_NB)
-        plan, audit, _ = origin_evidence(origin)
+        plan, audit, _ = origin_evidence(origin, **options)
         if (file_sha256(raw / 'plan.json') != start['plan_file_sha256']
                 or plan['source_commit'] != scientific
                 or report['original_raw_inventory_sha256'] != audit['raw_inventory_sha256']):
@@ -110,7 +116,7 @@ def export(args):
                         or request_binding['request']['loss_spec'] != plan['losses'][slot['objective']]):
                     raise ValueError('visibility request must match its actual scheduled generation/objective')
             extras.append({'cell_id': row['cell_id'], 'visibility': value})
-        result = join_visibility(report, extras)
+        result = join_visibility(report, extras, **options)
         result.update(analysis_source_commit=reader, original_author_source_commit=author_head,
             original_plan_content_sha256=plan['content_sha256'],
             original_raw_inventory_sha256=audit['raw_inventory_sha256'],
@@ -142,18 +148,18 @@ def export(args):
                 for step in steps:
                     writer.writerow({**base, 'row_kind': 'recorded-intent',
                         **{k: step[k] for k in fields if k in step}})
-        save(out / 'manifest.json', {'schema': SCHEMA, 'analysis_source_commit': reader,
+        save(out / 'manifest.json', {'schema': schema, 'analysis_source_commit': reader,
             'scientific_source_commit': scientific, 'original_author_source_commit': author_head,
             'input_files': inputs, 'files': {p.name: file_sha256(p) for p in sorted(out.iterdir())},
             'new_model_calls': 0, 'new_generated_code_executions': 0, 'scientific_losses_rewritten': False})
         unchanged()
 
 
-def main():
+def main(*, profile='priority-v1'):
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('run', 'author-outcomes', 'author-source', 'scientific-source', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
-    export(parser.parse_args())
+    export(parser.parse_args(), **({} if profile == 'priority-v1' else {'profile': profile}))
 
 
 if __name__ == '__main__': main()

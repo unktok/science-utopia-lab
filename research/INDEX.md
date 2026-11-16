@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First corrected fresh reference is measured](results/native-corrected-choice-first-reference-v1.json):
+  U28.6667/K200 gives L_U-28.6667/L_C-8.6667; T36 is a separate diagnostic.
+  The real writer advances to the second reference. No own result/gain or full
+  cold closure yet. [Corrected all8 author/outcome and visibility readers](components/native-corrected-choice-author-readers-v1.md)
+  now preserve the four-step profile, all nulls and actual request/loss evidence.
+  Light checks pass114/53 overlapping cases after preserving/fixing one legacy
+  CLI forwarding regression; actual all8 scientific exports remain outstanding.
+
 - [Both corrected endpoint scopes: fixed native evaluation preparation](components/native-corrected-choice-fixed-evaluation-v1.md)
   implements the new named runner/cold/readout/supervision/waiting continuations
   without changing the active scientific source. Three light invocations pass

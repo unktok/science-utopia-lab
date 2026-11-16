@@ -109,10 +109,16 @@ def read_visibility(directory):
             'diagnosis, source repair, new objective/veto or altered native loss is inferred.'}
 
 
-def join_visibility(author_report, visibility):
+def join_visibility(author_report, visibility, *, profile='priority-v1'):
     """Pure all8 final-cell join; caller must establish original export provenance."""
     checked(author_report)
-    if (author_report['schema'] != 'scienceutopia.native-priority-author-outcomes.v1'
+    if profile == 'priority-v1':
+        author_schema, schema = 'scienceutopia.native-priority-author-outcomes.v1', SCHEMA + '.all8-join'
+    elif profile == 'corrected-choice-v1':
+        author_schema = 'scienceutopia.native-corrected-choice-author-outcomes.v1'
+        schema = 'scienceutopia.native-corrected-choice-author-visibility.v1.all8-join'
+    else: raise ValueError('explicit legacy or corrected four-step author visibility profile required')
+    if (author_report['schema'] != author_schema
             or len(author_report['rows']) != 8 or len(visibility) != 8
             or len({r['cell_id'] for r in author_report['rows']}) != 8
             or [r['cell_id'] for r in visibility] != [r['cell_id'] for r in author_report['rows']]):
@@ -134,7 +140,7 @@ def join_visibility(author_report, visibility):
             'loss': original['loss'], 'original_author_row_sha256': digest(original),
             'visibility_evidence_status': 'unavailable-not-zero' if actual is None else 'recorded',
             'visibility': clone(actual)})
-    return {'schema': SCHEMA + '.all8-join',
+    return {'schema': schema,
         'original_author_report_content_sha256': author_report['content_sha256'],
         'scientific_source_commit': author_report['scientific_source_commit'], 'rows': rows,
         'recorded_sessions': sum(r['visibility'] is not None for r in rows),
