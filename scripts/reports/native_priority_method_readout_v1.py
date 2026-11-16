@@ -24,6 +24,8 @@ from utopia.utils.data_utils import file_sha256
 ROOT = Path(__file__).resolve().parents[2]
 SCHEMA = 'scienceutopia.native-priority-method-readout.v1'
 STUDY = 'scienceutopia.native-priority-method-comparison.v1'
+CORRECTED_STUDY = 'scienceutopia.native-corrected-choice-search.v1'
+CORRECTED_SCHEMA = 'scienceutopia.native-corrected-choice-readout.v1'
 METHODS = ('uniform-priority', 'adaptive-priority', 'free-code-graph')
 OBJECTIVES = ('content-utility', 'resource-aware-content')
 METRICS = ('native.accepted_decisions', 'native.common_content_utility_sum',
@@ -47,12 +49,12 @@ def cell_id(slot):
                      'generation-' + str(slot['generation'])))
 
 
-def world_key(world):
+def world_key(world, *, histories=2):
     if world['role'] == 'developer-reference':
         return ('reference', world['identity'])
     if (world['role'] not in ('numeric-own-proposal', 'workflow-own-proposal')
             or world['method'] not in METHODS or type(world['optimizer_history']) is not int
-            or world['optimizer_history'] not in range(2) or world['objective'] not in OBJECTIVES
+            or world['optimizer_history'] not in range(histories) or world['objective'] not in OBJECTIVES
             or (world['role'] == 'workflow-own-proposal') != (world['method'] == METHODS[2])):
         raise ValueError('declared compound native world identity required')
     return world['method'], world['optimizer_history'], world['objective'], world['identity']
@@ -75,9 +77,12 @@ def graph_delta(parent, candidate):
 def analyze(plan, audit, slots, references):
     """Pure all-slot projection. Synthetically supplied audits are not provenance."""
     checked(plan); checked(audit)
-    if (plan['schema'] != STUDY + '.plan' or audit['schema'] != STUDY + '.audit'
+    corrected = plan['schema'] == CORRECTED_STUDY + '.plan'
+    study, schema = (CORRECTED_STUDY, CORRECTED_SCHEMA) if corrected else (STUDY, SCHEMA)
+    histories, generations = (1, 4) if corrected else (2, 2)
+    if (plan['schema'] != study + '.plan' or audit['schema'] != study + '.audit'
             or plan['methods'] != list(METHODS) or plan['objectives'] != list(OBJECTIVES)
-            or len(plan['replication_seeds']) != 2 or plan['generations'] != 2
+            or len(plan['replication_seeds']) != histories or plan['generations'] != generations
             or audit['source_commit'] != plan['source_commit'] or audit['plan_sha256'] != plan['content_sha256']
             or audit['source_proof']['status'] != 'verified-exact-source-closure'
             or audit['closure']['terminal']['status'] != 'closed'
@@ -86,7 +91,10 @@ def analyze(plan, audit, slots, references):
             or audit['held_out_evaluation'] or audit['selection']['baseline_fallback']
             or audit['selection']['held_out_evaluation']):
         raise ValueError('exact normally closed original-source mixed-method audit required')
-    expected = {(m, r, o, g) for m in METHODS for r in range(2) for o in OBJECTIVES for g in range(2)}
+    if corrected and (plan.get('protocol') != 'research/protocols/campaigns/native-corrected-choice-search-v1.md'
+            or audit['selection'].get('primary_is_measured_best_known_not_own_discovery') is not True):
+        raise ValueError('explicit corrected profile and primary/own-only selection semantics required')
+    expected = {(m, r, o, g) for m in METHODS for r in range(histories) for o in OBJECTIVES for g in range(generations)}
     actual = [(s['method'], s['replication'], s['objective'], s['generation']) for s in plan['schedule']]
     if (len(actual) != 24 or set(actual) != expected or len(slots) != 24
             or [s['slot'] for s in slots] != plan['schedule']
@@ -95,7 +103,7 @@ def analyze(plan, audit, slots, references):
         raise ValueError('all exact ordered slots/references required, including technical nulls')
     worlds = {}
     for w in audit['worlds']:
-        key = world_key(w)
+        key = world_key(w, histories=histories)
         if key in worlds: raise ValueError('duplicate compound native world identity')
         worlds[key] = w
     used = set()
@@ -148,9 +156,9 @@ def analyze(plan, audit, slots, references):
         rows.append(row)
     if used != set(worlds) or audit['closure']['terminal']['observations'] != len(worlds):
         raise ValueError('every physical audited world must be accounted for exactly once')
-    paths, selected = {}, []
+    paths, selected, own_only_selected = {}, [], []
     for method in METHODS:
-        for rep in range(2):
+        for rep in range(histories):
             for objective in OBJECTIVES:
                 history = [r for r in rows if history_key(r) == (method, rep, objective)]
                 history.sort(key=lambda r: r['generation'])
@@ -168,18 +176,43 @@ def analyze(plan, audit, slots, references):
                     'all_tied_ids': [r['suggestion_id'] for r in ties],
                     'selected_id': chosen['suggestion_id'] if chosen else None,
                     'system': candidates[chosen['cell_id']] if chosen else None, 'reference_loss': reference}
-                if audit['selection']['selected'][method][str(rep)][objective] != expected_selection:
+                if corrected: expected_selection['selected_origin'] = 'own' if chosen else None
+                own_bank = audit['selection']['own_only_selected' if corrected else 'selected']
+                if own_bank[method][str(rep)][objective] != expected_selection:
                     raise ValueError('frozen own-only selection differs; no reselection or reference fallback')
-                selected.append({'method': method, 'replication': rep, 'objective': objective, 'loss': best,
+                own_endpoint = {'method': method, 'replication': rep, 'objective': objective, 'loss': best,
                     'completed_submissions': len(pool), 'all_tied_ids': expected_selection['all_tied_ids'],
                     'cell_id': chosen['cell_id'] if chosen else None, 'suggestion_id': expected_selection['selected_id'],
                     'literal_system_sha256': chosen['literal_system_sha256'] if chosen else None,
                     'cross_scores': chosen['cross_scores'] if chosen else {k: None for k in plan['losses']},
-                    'reference_loss': reference, 'own_minus_reference': None if best is None else best - reference})
+                    'reference_loss': reference, 'own_minus_reference': None if best is None else best - reference}
+                if not corrected:
+                    selected.append(own_endpoint)
+                    continue
+                own_only_selected.append(own_endpoint)
+                ordered = [{'origin':'reference', 'row':r, 'system':references[r['label']]['candidate'],
+                    'loss':r['cross_scores'][objective]} for r in visible]
+                ordered += [{'origin':'own', 'row':r, 'system':candidates[r['cell_id']], 'loss':r['loss']} for r in pool]
+                best_known = min(v['loss'] for v in ordered)
+                best_ties = [v for v in ordered if v['loss'] == best_known]; returned = best_ties[0]
+                expected_primary = {'loss':best_known, 'completed_submissions':len(pool),
+                    'all_tied_ids':[v['row']['suggestion_id'] for v in best_ties],
+                    'selected_id':returned['row']['suggestion_id'], 'system':returned['system'],
+                    'reference_loss':reference, 'selected_origin':returned['origin']}
+                if audit['selection']['selected'][method][str(rep)][objective] != expected_primary:
+                    raise ValueError('frozen best-known primary selection differs; no hidden own/reference relabeling')
+                selected.append({'method':method,'replication':rep,'objective':objective,
+                    'loss':best_known,'completed_submissions':len(pool),
+                    'all_tied_ids':expected_primary['all_tied_ids'], 'cell_id':returned['row'].get('cell_id'),
+                    'suggestion_id':expected_primary['selected_id'],'selected_origin':returned['origin'],
+                    'literal_system_sha256':returned['row']['literal_system_sha256'],
+                    'cross_scores':returned['row']['cross_scores'],'reference_loss':reference,
+                    'returned_minus_reference':best_known-reference})
     duplicates = Counter(w['identity'] for w in audit['worlds'])
-    return {'schema': SCHEMA, 'scientific_source_commit': plan['source_commit'], 'plan_content_sha256': plan['content_sha256'],
+    return {'schema': schema, 'scientific_source_commit': plan['source_commit'], 'plan_content_sha256': plan['content_sha256'],
         'input_audit_content_sha256': audit['content_sha256'], 'frozen_selection_content_sha256': audit['selection']['content_sha256'],
         'references': refs, 'slots': rows, 'paths': paths, 'selected': selected,
+        **({'own_only_selected':own_only_selected,'method_kernel_descriptions':clone(plan['numeric_kernels'])} if corrected else {}),
         'coverage': {'declared_own_slots': 24, 'complete_own_slots': sum(r['status'] == 'complete' for r in rows),
             'generation_nulls': sum(r['status'] == 'generation-null' for r in rows),
             'execution_or_measurement_nulls': sum(r['status'] not in ('complete', 'generation-null') for r in rows),
@@ -187,7 +220,9 @@ def analyze(plan, audit, slots, references):
         'nonunique_suggestion_ids_across_compound_cells': {k: n for k, n in sorted(duplicates.items()) if n > 1},
         'interpretation': 'One reused researcher-world condition. U is fixed abstract opinion, K is collected native cost. '
             'Different objectives need not select different systems. Literal edits are not effects; exact input classes '
-            'are not semantic equivalence. Two seeded histories are not independent populations or sufficient method evidence.',
+            'are not semantic equivalence. ' + ('One four-step optimizer history per cell is not independent replication '
+                'or sufficient general method evidence. Primary returned references remain labeled, not own invention.' if corrected
+                else 'Two seeded histories are not independent populations or sufficient method evidence.'),
         'new_model_calls': 0, 'new_code_executions': 0, 'selection_changed': False,
         'held_out_evaluation': False, 'method_superiority_claimed': False, 'publication_ready': False}
 
@@ -201,7 +236,7 @@ def collect(root, plan):
         if method != METHODS[2]:
             target = directory / ('generation-' + str(g)); started = read(target / 'started.json')
             parent_id = started['suggestion']['based_on_observation_id']
-            before = read(directory / ('initial-state.json' if g == 0 else 'generation-0/optimizer-after-tell.json'))
+            before = read(directory / ('initial-state.json' if g == 0 else f'generation-{g-1}/optimizer-after-tell.json'))
             own_parents = before['optimizer']['observations']
             parent = next((r['candidate'] for r in own_parents if r['observation_id'] == parent_id), None)
             if parent_id is not None and parent is None:
@@ -303,7 +338,7 @@ def export(args):
         writer = csv.DictWriter(stream, fieldnames=fields); writer.writeheader()
         writer.writerows({**{k: r[k] for k in fields if k in r}, **r['cross_scores'],
             **{k: r['metrics'][k]['value'] for k in METRICS}} for r in result['slots'])
-    save(out / 'manifest.json', {'schema': SCHEMA + '.export', 'inputs': hashes,
+    save(out / 'manifest.json', {'schema': result['schema'] + '.export', 'inputs': hashes,
         'analysis_source_commit': reader_source, 'scientific_source_commit': scientific,
         'adapter_file_sha256': file_sha256(Path(__file__)),
         'files': {p.name: file_sha256(p) for p in sorted(out.iterdir())}, 'new_model_calls': 0, 'new_code_executions': 0})
