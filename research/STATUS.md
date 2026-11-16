@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at12:46UTC/21:46JST.
+Last scientific snapshot: November16,2026 at13:30UTC/22:30JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -79,6 +79,19 @@ steps,45 serializer-phase mismatches,0 different loss views. The earlier7-sessio
 hashes and all220 journal files are rechecked. This is not all8 native outcomes
 or the final joined export; the last candidate is compiled but still unscored.
 [Exact generation/optional rank-control preparation](results/native-topic-rank-space-preparation-and-eight-author-generation-v1.json).
+The [subsequent twenty-second outcome](results/native-priority-twenty-second-own-outcome-v1.json)
+is now complete: final free/history0/U/g1 ties U-28.6667, with the same179
+researcher inputs/literal choices as the zero reference. Its final source runs
+at all4 annual producer calls and emits18 commands with exactly matching
+direction values, although its own agenda/state counters say0. Those counters
+are not actual effect/participation measurements. Source edits were executed,
+not lost; changed internal output is not observed improvement. The native
+prefix is22 complete/11 ties/11 worse/0 better;2 numeric U slots remain.
+
+[The reviewed104-page minimal source subset is actually staged](results/integrated-consumer-rebuild-subset-preparation-v1.json):
+84 exact files/81 literal dependencies at clean c1b12a5e, with a retained/pushed
+proof branch.29 source-only checks pass with20 explicit deselections. No actual
+subset Tectonic build, new page renders or current-amendment PDF is claimed.
 
 [Optional rank-local priority control](components/native-topic-rank-space-v1.md)
 is implemented but not adopted/dispatched. It preserves the exact numeric
@@ -122,8 +135,8 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | First21 own observations complete:10 ties/11 worse/0 better than visible reference. Not final24-slot closure |
-| Current stage | Free code/graph/history0/U/g1, still old context-v1; then two remaining numeric U slots |
+| Own outcomes | First22 own observations complete:11 ties/11 worse/0 better than visible reference. Not final24-slot closure |
+| Current stage | Adaptive priority/history0/U/g1, still old context-v1; then final uniform priority/history0/U/g1 |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |

@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Actual104-page source-only subset preparation](results/integrated-consumer-rebuild-subset-preparation-v1.json)
+  stages84 exact reviewed files/81 dependencies from clean c1b12a5e on a pushed
+  proof branch.29 source checks pass,20 older cases are explicitly deselected.
+  This is not the PDF rebuild or later manuscript amendments. [Outcome22](results/native-priority-twenty-second-own-outcome-v1.json)
+  now closes the final free native world: edited source runs4 times and emits18
+  same-direction commands, with179 same researcher inputs/choices and tied U.
+  Prefix22 is11 ties/11 worse/0 better; original2 numeric slots/full closure remain.
+
 - [Prospective rank-local native priority adapter](components/native-topic-rank-space-v1.md)
   keeps the literal anchor/initial samples but defines local moves in ordering
   rather than coordinate radius.57 light cases pass; no new campaign or method

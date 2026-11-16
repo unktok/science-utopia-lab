@@ -24,6 +24,9 @@
 以前の[100ページ稿の実再構築](research/results/integrated-terminal-rebuild-subset-verification-v1.json)
 を新しい稿の証明に流用しない。現在稼働する手法比較の結果はまだこのPDFに含まれない。
 原稿再構築は研究結果の独立再現ではなく、主会議readyの根拠の代わりではない。
+この104頁版固有の[84ファイル／81依存のsource-only subset](research/results/integrated-consumer-rebuild-subset-preparation-v1.json)
+は当時のGitから取り出して一致まで確認し、専用proof branchもpush済み。
+29件のsource検査が通ったが、subsetからのPDF再build／renderはまだ実行していない。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 
 ## 最初からやりたかったこと

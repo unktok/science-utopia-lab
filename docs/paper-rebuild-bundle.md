@@ -7,9 +7,18 @@ binds104 pages,52 figures,49 tables and32 references to source2d19cc96. Both
 full-checkout cache-only builds match text/logs and every90dpi page image; all
 layouts and150dpi key details are inspected. This includes all8 closed own
 slots and the added program-search related work. It is not a scientific rerun.
-This snapshot does not yet have a separately verified minimal subset. Do not
-reuse an older subset policy or treat local cached reconstruction as a
-clean-machine build, independent inference, release clearance or readiness.
+Its [specific84-file policy](../research/publication/paper-rebuild-allowlist-integrated-consumer-source-v1.json)
+now has [actual clean-source staging](../research/results/integrated-consumer-rebuild-subset-preparation-v1.json):
+29 source-only checks pass,20 older cases are explicitly deselected. The actual
+CLI at `c1b12a5e1b8954785fa57c456cc4ec7277374e21`, retained/pushed as
+`proof/integrated-consumer-subset-v1`, stages84 exact files/81 literal dependencies
+to `outputs/integrated-consumer-rebuild-subset-v1-a1/` on the main side.
+No subset Tectonic build or new page rendering has run. This stages the reviewed
+2d19cc96 snapshot, not the later priority/synthesis amendments. Follow its
+REBUILD.md in a verified quiet hardware window, then compare actual text and
+all104 rendered pages and inspect the result. Do not reuse the older100-page
+proof or treat copied files as a rebuilt PDF, clean-machine build, independent
+inference, release clearance or readiness.
 
 ## Preserved100-page terminal-cost working manuscript
 

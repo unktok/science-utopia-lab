@@ -1,0 +1,464 @@
+{
+  "schema": "scienceutopia.native-priority-twenty-second-own-outcome.v1",
+  "observed_utc": "2026-11-16T13:30:01.073857+00:00",
+  "analysis_source_commit": "d1739310e8774eedb4bf12c5a7116dfcdb440360",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "previous_twenty_first_outcome_content_sha256": "ea247da4e8ece462287ea55035ad8ec9b50247fdbf0cc33de20656c3fc0b0b4f",
+  "slot_index": 21,
+  "slot": {
+    "generation": 1,
+    "method": "free-code-graph",
+    "objective": "content-utility",
+    "replication": 0
+  },
+  "status": "complete",
+  "suggestion_id": "native-adaptive-76efdedcceeaac38dbb55f4f",
+  "program_sha256": "9538cfef912131b67ad9ebbace468b526d52397e74e075debf240d17a8ca29b8",
+  "request_sha256": "1213cf33864cbf4cb17279eb10fa2d24991d56f5e906120e7807b67143ccf9e7",
+  "record_sha256": "2de8424a830dabca664f667856acf29624823c14d60bf481acdc5002d247f9f0",
+  "observation_value_sha256": "d85a5e5b86912809b53b7e1005e7f6c9dce8b50b96ad17409c30bfa53aa7ffe5",
+  "cross_scores": {
+    "content-utility": -28.666666666666668,
+    "resource-aware-content": -8.666666666666668,
+    "throughput": -36.0
+  },
+  "assigned_loss_minus_reference": 0.0,
+  "final_agenda_source_utf8_sha256": "c998057314ead5dbaaa3eab32bd98fb87e9859b39dca9e37ed8ccb25e5e49715",
+  "actual_recorded_producer_outputs": {
+    "own": [
+      {
+        "year": 1,
+        "reported_agenda_assignments": 0,
+        "reported_eligible_authors": 0,
+        "produced_commands": 5,
+        "directions": [
+          {
+            "actor_id": "institution_0000_researcher_0",
+            "direction": {
+              "topic": "neural_symbolic_ai",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "bc0b1aa519e6392d95a4e1a0f696191ecb3faa86edde51e43166594c07bb763e"
+          },
+          {
+            "actor_id": "institution_0001_researcher_0",
+            "direction": {
+              "topic": "artificial_intelligence",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "972e10c9716cadb8e8e70a6457d07f5515752a63e3256a5b8888356b08c4e5ac"
+          },
+          {
+            "actor_id": "institution_0002_researcher_0",
+            "direction": {
+              "topic": "computational_science",
+              "years": 2
+            },
+            "full_literal_direction_sha256": "692998a52f2981fbde6477d7d883aba4fb295528de966a4f7005607b40eed3be"
+          },
+          {
+            "actor_id": "institution_0003_researcher_0",
+            "direction": {
+              "topic": "deep_learning",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "625ca7d059c984adc17cc90a040107e5aaf4dff31a5629732481f5707db89bf5"
+          },
+          {
+            "actor_id": "institution_0004_researcher_0",
+            "direction": {
+              "topic": "information_retrieval",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "d589769e50b1594cced35df6523c554e321969f553c5e24a0a69c71264b066a2"
+          }
+        ],
+        "artifact_sha256": "53cbe929775c9db6f256c4630a6706d6560d3164fed0ce2573fb1b1f51ee1a25",
+        "context_sha256": "d45951202628bffeb1d0cb072fc247f78d7de1760e5673a9fe2c082d467110fa",
+        "result_sha256": "5e90c30bfc3d6c29079b9bb30bcad91871e8389d0db064f0cc200f7cc092aa5c"
+      },
+      {
+        "year": 2,
+        "reported_agenda_assignments": 0,
+        "reported_eligible_authors": 0,
+        "produced_commands": 4,
+        "directions": [
+          {
+            "actor_id": "institution_0000_researcher_0",
+            "direction": {
+              "topic": "neural_symbolic_ai",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "bc0b1aa519e6392d95a4e1a0f696191ecb3faa86edde51e43166594c07bb763e"
+          },
+          {
+            "actor_id": "institution_0001_researcher_0",
+            "direction": {
+              "topic": "artificial_intelligence",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "972e10c9716cadb8e8e70a6457d07f5515752a63e3256a5b8888356b08c4e5ac"
+          },
+          {
+            "actor_id": "institution_0003_researcher_0",
+            "direction": {
+              "topic": "deep_learning",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "625ca7d059c984adc17cc90a040107e5aaf4dff31a5629732481f5707db89bf5"
+          },
+          {
+            "actor_id": "institution_0004_researcher_0",
+            "direction": {
+              "topic": "information_retrieval",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "d589769e50b1594cced35df6523c554e321969f553c5e24a0a69c71264b066a2"
+          }
+        ],
+        "artifact_sha256": "53cbe929775c9db6f256c4630a6706d6560d3164fed0ce2573fb1b1f51ee1a25",
+        "context_sha256": "16ed03aa5e976fc9c9bb10998585c54b66084f8fc88bdfb27276b14b78840d9f",
+        "result_sha256": "7bd429efa7fa63b0453483c636aa9c81e88a909a5e6806bf33f6e7aa4684e332"
+      },
+      {
+        "year": 3,
+        "reported_agenda_assignments": 0,
+        "reported_eligible_authors": 0,
+        "produced_commands": 5,
+        "directions": [
+          {
+            "actor_id": "institution_0000_researcher_0",
+            "direction": {
+              "topic": "neural_symbolic_ai",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "bc0b1aa519e6392d95a4e1a0f696191ecb3faa86edde51e43166594c07bb763e"
+          },
+          {
+            "actor_id": "institution_0001_researcher_0",
+            "direction": {
+              "topic": "artificial_intelligence",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "972e10c9716cadb8e8e70a6457d07f5515752a63e3256a5b8888356b08c4e5ac"
+          },
+          {
+            "actor_id": "institution_0002_researcher_0",
+            "direction": {
+              "topic": "computational_science",
+              "years": 2
+            },
+            "full_literal_direction_sha256": "692998a52f2981fbde6477d7d883aba4fb295528de966a4f7005607b40eed3be"
+          },
+          {
+            "actor_id": "institution_0003_researcher_0",
+            "direction": {
+              "topic": "deep_learning",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "625ca7d059c984adc17cc90a040107e5aaf4dff31a5629732481f5707db89bf5"
+          },
+          {
+            "actor_id": "institution_0004_researcher_0",
+            "direction": {
+              "topic": "information_retrieval",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "d589769e50b1594cced35df6523c554e321969f553c5e24a0a69c71264b066a2"
+          }
+        ],
+        "artifact_sha256": "53cbe929775c9db6f256c4630a6706d6560d3164fed0ce2573fb1b1f51ee1a25",
+        "context_sha256": "346c80acc2476a27a51107430d74556e7ad78adc725921bbf75812d81346cb6f",
+        "result_sha256": "8759e994766e5e5110246a91dec7226a85592cd13e239d85d0f5ca47be17e184"
+      },
+      {
+        "year": 4,
+        "reported_agenda_assignments": 0,
+        "reported_eligible_authors": 0,
+        "produced_commands": 4,
+        "directions": [
+          {
+            "actor_id": "institution_0000_researcher_0",
+            "direction": {
+              "topic": "neural_symbolic_ai",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "bc0b1aa519e6392d95a4e1a0f696191ecb3faa86edde51e43166594c07bb763e"
+          },
+          {
+            "actor_id": "institution_0001_researcher_0",
+            "direction": {
+              "topic": "artificial_intelligence",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "972e10c9716cadb8e8e70a6457d07f5515752a63e3256a5b8888356b08c4e5ac"
+          },
+          {
+            "actor_id": "institution_0003_researcher_0",
+            "direction": {
+              "topic": "deep_learning",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "625ca7d059c984adc17cc90a040107e5aaf4dff31a5629732481f5707db89bf5"
+          },
+          {
+            "actor_id": "institution_0004_researcher_0",
+            "direction": {
+              "topic": "information_retrieval",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "d589769e50b1594cced35df6523c554e321969f553c5e24a0a69c71264b066a2"
+          }
+        ],
+        "artifact_sha256": "53cbe929775c9db6f256c4630a6706d6560d3164fed0ce2573fb1b1f51ee1a25",
+        "context_sha256": "b00728d1377b3fdc1343fc3ff647b9b11ea0e61bfc903e39829685b22e9f0b24",
+        "result_sha256": "9a937de0577a61d77982a8adc39b04af485c73990dd3d6fa964c2d61d81fde1f"
+      }
+    ],
+    "reference": [
+      {
+        "year": 1,
+        "reported_agenda_assignments": 5,
+        "reported_eligible_authors": 5,
+        "produced_commands": 5,
+        "directions": [
+          {
+            "actor_id": "institution_0000_researcher_0",
+            "direction": {
+              "topic": "neural_symbolic_ai",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "bc0b1aa519e6392d95a4e1a0f696191ecb3faa86edde51e43166594c07bb763e"
+          },
+          {
+            "actor_id": "institution_0001_researcher_0",
+            "direction": {
+              "topic": "artificial_intelligence",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "972e10c9716cadb8e8e70a6457d07f5515752a63e3256a5b8888356b08c4e5ac"
+          },
+          {
+            "actor_id": "institution_0002_researcher_0",
+            "direction": {
+              "topic": "computational_science",
+              "years": 2
+            },
+            "full_literal_direction_sha256": "692998a52f2981fbde6477d7d883aba4fb295528de966a4f7005607b40eed3be"
+          },
+          {
+            "actor_id": "institution_0003_researcher_0",
+            "direction": {
+              "topic": "deep_learning",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "625ca7d059c984adc17cc90a040107e5aaf4dff31a5629732481f5707db89bf5"
+          },
+          {
+            "actor_id": "institution_0004_researcher_0",
+            "direction": {
+              "topic": "information_retrieval",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "d589769e50b1594cced35df6523c554e321969f553c5e24a0a69c71264b066a2"
+          }
+        ],
+        "artifact_sha256": "028642c5f94ca069df46c07e29a958fa0ad11b1bbb186db28a63e0814c9074cc",
+        "context_sha256": "d45951202628bffeb1d0cb072fc247f78d7de1760e5673a9fe2c082d467110fa",
+        "result_sha256": "e535d2eeb33a696725feea46ae353c964f32d7a946e8326e2e554485bcbb7965"
+      },
+      {
+        "year": 2,
+        "reported_agenda_assignments": 4,
+        "reported_eligible_authors": 4,
+        "produced_commands": 4,
+        "directions": [
+          {
+            "actor_id": "institution_0000_researcher_0",
+            "direction": {
+              "topic": "neural_symbolic_ai",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "bc0b1aa519e6392d95a4e1a0f696191ecb3faa86edde51e43166594c07bb763e"
+          },
+          {
+            "actor_id": "institution_0001_researcher_0",
+            "direction": {
+              "topic": "artificial_intelligence",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "972e10c9716cadb8e8e70a6457d07f5515752a63e3256a5b8888356b08c4e5ac"
+          },
+          {
+            "actor_id": "institution_0003_researcher_0",
+            "direction": {
+              "topic": "deep_learning",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "625ca7d059c984adc17cc90a040107e5aaf4dff31a5629732481f5707db89bf5"
+          },
+          {
+            "actor_id": "institution_0004_researcher_0",
+            "direction": {
+              "topic": "information_retrieval",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "d589769e50b1594cced35df6523c554e321969f553c5e24a0a69c71264b066a2"
+          }
+        ],
+        "artifact_sha256": "028642c5f94ca069df46c07e29a958fa0ad11b1bbb186db28a63e0814c9074cc",
+        "context_sha256": "8f36f5ae06abd36522d9c08be723039e349d595bd3d4a50bfa64ddda39f05cdd",
+        "result_sha256": "987068b8dae6e358ebba516e44b575ebec88a9fa6334f62983693f37b6b6fe3c"
+      },
+      {
+        "year": 3,
+        "reported_agenda_assignments": 5,
+        "reported_eligible_authors": 5,
+        "produced_commands": 5,
+        "directions": [
+          {
+            "actor_id": "institution_0000_researcher_0",
+            "direction": {
+              "topic": "neural_symbolic_ai",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "bc0b1aa519e6392d95a4e1a0f696191ecb3faa86edde51e43166594c07bb763e"
+          },
+          {
+            "actor_id": "institution_0001_researcher_0",
+            "direction": {
+              "topic": "artificial_intelligence",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "972e10c9716cadb8e8e70a6457d07f5515752a63e3256a5b8888356b08c4e5ac"
+          },
+          {
+            "actor_id": "institution_0002_researcher_0",
+            "direction": {
+              "topic": "computational_science",
+              "years": 2
+            },
+            "full_literal_direction_sha256": "692998a52f2981fbde6477d7d883aba4fb295528de966a4f7005607b40eed3be"
+          },
+          {
+            "actor_id": "institution_0003_researcher_0",
+            "direction": {
+              "topic": "deep_learning",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "625ca7d059c984adc17cc90a040107e5aaf4dff31a5629732481f5707db89bf5"
+          },
+          {
+            "actor_id": "institution_0004_researcher_0",
+            "direction": {
+              "topic": "information_retrieval",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "d589769e50b1594cced35df6523c554e321969f553c5e24a0a69c71264b066a2"
+          }
+        ],
+        "artifact_sha256": "028642c5f94ca069df46c07e29a958fa0ad11b1bbb186db28a63e0814c9074cc",
+        "context_sha256": "71cb923c613c8d769b29e14df691396a55bb75cc1ad21b9bb0e7450db9644f34",
+        "result_sha256": "eec8ae88ebcf35e20c3215c0ca3254df847f17a0f9510d528469b5b803119c9f"
+      },
+      {
+        "year": 4,
+        "reported_agenda_assignments": 4,
+        "reported_eligible_authors": 4,
+        "produced_commands": 4,
+        "directions": [
+          {
+            "actor_id": "institution_0000_researcher_0",
+            "direction": {
+              "topic": "neural_symbolic_ai",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "bc0b1aa519e6392d95a4e1a0f696191ecb3faa86edde51e43166594c07bb763e"
+          },
+          {
+            "actor_id": "institution_0001_researcher_0",
+            "direction": {
+              "topic": "artificial_intelligence",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "972e10c9716cadb8e8e70a6457d07f5515752a63e3256a5b8888356b08c4e5ac"
+          },
+          {
+            "actor_id": "institution_0003_researcher_0",
+            "direction": {
+              "topic": "deep_learning",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "625ca7d059c984adc17cc90a040107e5aaf4dff31a5629732481f5707db89bf5"
+          },
+          {
+            "actor_id": "institution_0004_researcher_0",
+            "direction": {
+              "topic": "information_retrieval",
+              "years": 1
+            },
+            "full_literal_direction_sha256": "d589769e50b1594cced35df6523c554e321969f553c5e24a0a69c71264b066a2"
+          }
+        ],
+        "artifact_sha256": "028642c5f94ca069df46c07e29a958fa0ad11b1bbb186db28a63e0814c9074cc",
+        "context_sha256": "ded6e59f14d6126d929ecfa56f167cddd37ca63e1d70c3ca5acc5d8bad226b6e",
+        "result_sha256": "ea66f362e6d050aff10d15e16e218ea068647eb1f3cb2dca0ab4dd4e74226566"
+      }
+    ]
+  },
+  "same_produced_command_directions_as_reference": true,
+  "scope_of_producer_counts": "Code execution outputs, not independent worlds or a newly repeated full native receiver cold audit. Empty self-reported agenda/state is not zero produced commands or a failure of the observed complete world.",
+  "scientist_observed_traces": {
+    "own": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "3dbab678940bd6e46905e06de17d350684bc11bc6b996378d4c0635907662139"
+    },
+    "reference": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "cca4ba583662d76bcf678c74d6e6bd223dc85633a88506ca2ea42331dd427103"
+    }
+  },
+  "immutable_original_input_files": {
+    "search/free-code-graph/history-0/content-utility/worlds/native-adaptive-76efdedcceeaac38dbb55f4f-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "search/free-code-graph/history-0/content-utility/worlds/native-adaptive-76efdedcceeaac38dbb55f4f-s61001/replies/responses.sqlite": "8a91b36aca6a7b4134517befa44087fdb55fd21493a5e6de9e8d1d5946b70639",
+    "search/free-code-graph/history-0/content-utility/worlds/native-adaptive-76efdedcceeaac38dbb55f4f-s61001/system.json": "01477996607d17172daa9e1308b137bca56b5a84f844a39c8f799351106c1542",
+    "search/free-code-graph/history-0/content-utility/worlds/native-adaptive-76efdedcceeaac38dbb55f4f-s61001/code-contexts.jsonl": "f38cdb244d4186543762a8c1df603d738df6d44cda6f4eb62263507292d15ebe",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/replies/responses.sqlite": "2d9838b9702829ddba3bd88df9b28ff06ae34b3cde77dfce7a470f8b270c90db",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/system.json": "9df190475fee82e08bf222947d9f415a180aa1fedb03824146766a2bd3187276",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/code-contexts.jsonl": "4476cf83848893cd9e5641962b07924ec1cddbf2cfe17de128c89ce41630e00c"
+  },
+  "prefix_counts_against_visible_reference": {
+    "complete": 22,
+    "tie": 11,
+    "worse": 11,
+    "better": 0
+  },
+  "all8_generation_evidence_receipt": "research/results/native-topic-rank-space-preparation-and-eight-author-generation-v1.json",
+  "all8_native_outcomes_recorded": true,
+  "final_own_selection_frozen": false,
+  "whole_campaign_closed": false,
+  "current_progress_snapshot": {
+    "active": "adaptive-priority/0/content-utility:g1",
+    "observed_utc": "2026-11-16T13:23:46.670449+00:00",
+    "stage": "optimization"
+  },
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "loss_or_selection_changed": false,
+  "publication_ready": false,
+  "remaining": "The original final2 numeric U slots, normal paired closure/cost/readouts, all8 original joined outcomes and paired visibility export. No useful invention, corrected-source method advantage or full-world equivalence is established by changed code and same observed inputs.",
+  "content_sha256": "d70fb2cce015213429ed39e84954250726deb1b3468e60f3a7b4f6dbe3aa8965"
+}

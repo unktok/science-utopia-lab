@@ -421,10 +421,10 @@ November12 05:47JST更新：新しいT（論文数）／U（固定内容評価�
 
 | 段階 | 必要な成果 | 現状 |
 | --- | --- | --- |
-| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 実装と複数の旧有限研究・選択固定評価は閉鎖済み。[三目的自由探索](../results/native-topic-free-optimization-closed-v1.json)と[後続source提示比較](../results/native-consumer-source-comparison-closed-v1.json)は全枠・元監査／費用／readout・own選択固定まで完了したが、それぞれの未使用評価はない。[新手法比較の12:19UTC時点の20/24件](../results/native-priority-twentieth-own-outcome-and-prefix-v1.json)は未閉鎖。旧評価を新scopeへ流用せず、修正版authorの実モデル／native証明も未達 |
-| R2 | 重要で識別可能な研究上の答えと対照 | 未達。閉鎖6枠は同点4・弱い既知ルール再現1・実行null1、後続source提示8枠は7完走／1nullで全4自己選択が強い参照と同点。現在の20件も10同点／10悪化／参照超え0だが、[実際の可視性・作業フェーズ不整合](../components/native-author-workflow-visibility-correction-v1.md)により旧pipelineから純粋な目的・手法差を因果的に結論しない。[手設計対照](../results/native-terminal-cost-pilot-closed-v1.json)のC改善4は回収／未回収の会計上の差で、自動発明や実効率改善ではない。条件付き解析を大域最適性へ拡大せず、修正の効果やモデル理解を先取りせず、新規性・改善vetoも追加しない |
+| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 実装と複数の旧有限研究・選択固定評価は閉鎖済み。[三目的自由探索](../results/native-topic-free-optimization-closed-v1.json)と[後続source提示比較](../results/native-consumer-source-comparison-closed-v1.json)は全枠・元監査／費用／readout・own選択固定まで完了したが、それぞれの未使用評価はない。[新手法比較の13:30UTC時点の22/24件](../results/native-priority-twenty-second-own-outcome-v1.json)は未閉鎖。旧評価を新scopeへ流用せず、修正版authorの実モデル／native証明も未達 |
+| R2 | 重要で識別可能な研究上の答えと対照 | 未達。閉鎖6枠は同点4・弱い既知ルール再現1・実行null1、後続source提示8枠は7完走／1nullで全4自己選択が強い参照と同点。現在の22件も11同点／11悪化／参照超え0だが、[実際の可視性・作業フェーズ不整合](../components/native-author-workflow-visibility-correction-v1.md)により旧pipelineから純粋な目的・手法差を因果的に結論しない。最後の自由設計は実sourceが4年次で動き、18同方向command／179同一入力・選択で同点。[手設計対照](../results/native-terminal-cost-pilot-closed-v1.json)のC改善4は回収／未回収の会計上の差で、自動発明や実効率改善ではない。条件付き解析を大域最適性へ拡大せず、修正の効果やモデル理解を先取りせず、新規性・改善vetoも追加しない |
 | R3 | 精度と範囲を支える独立反復・追加条件 | 未達。pilotの変動と意味のある差から有限予算を定める |
-| R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 閉鎖6枠と後続source提示8枠は全枠・二重元監査／費用／readout、実行仕様・固定選択・図・費用まで保持。source提示の当初の出力先エラーも保存。現在の手法比較は20件prefixと7生成session／89操作を保持するが、全24件閉鎖・全8session・総費用は未完了。最終照合CLIの73軽量検査は実閉鎖の代用ではない。設計者の上流revision／変換手順は未特定。prefix・部品probe・critic・独立worldを同じ標本数にしない |
+| R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 閉鎖6枠と後続source提示8枠は全枠・二重元監査／費用／readout、実行仕様・固定選択・図・費用まで保持。source提示の当初の出力先エラーも保存。現在の手法比較は22件prefixと全8生成session／102操作を保持し、8自由設計のnative観測も記録済み。ただし全24件閉鎖・all8結合集計・総費用は未完了。最終照合CLIの73軽量検査は実閉鎖の代用ではない。設計者の上流revision／変換手順は未特定。prefix・部品probe・critic・独立worldを同じ標本数にしない |
 | R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [確認済み104頁稿](../../paper/integrated-consumer-source-build-v1.json)は閉鎖source提示8枠まで含み、二重cached build・全頁画像一致／目視を完了。52図・49表・32文献。現在sourceは15件詳細表・欠陥診断・20件の別時点summary・主張と証拠の対応表を追加したが未build／未目視で、新ページ数は未確認。以前の意味ある全trackは保持。104頁版固有の最小再構築と焦点ある主会議稿は未完成。旧100頁の82-file再構築を104頁の証明へ流用しない |
 | R6 | 技術・重要性・先行研究・再現性を批判的に点検した最終ready判定 | 未達。肯定／否定いずれも重要な答えが必要 |
 

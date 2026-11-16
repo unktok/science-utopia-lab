@@ -53,6 +53,12 @@ evaluation remain open. The104-page snapshot has two full-checkout cached
 builds, not a separately verified minimal subset or clean-machine build.
 See [current research status](../research/STATUS.md).
 
+The [104-page source-only subset preparation](../research/results/integrated-consumer-rebuild-subset-preparation-v1.json)
+now stages84 exact reviewed files/81 literal dependencies from a clean retained
+Git source.29 source checks pass with20 explicit deselections. The subset has
+not yet built/rendered a PDF, and it deliberately excludes all later priority
+and synthesis amendments. This does not change the source/PDF distinction above.
+
 ## Earlier reviewed snapshots
 
 The preceding
