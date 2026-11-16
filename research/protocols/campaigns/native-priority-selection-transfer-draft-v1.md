@@ -2,6 +2,13 @@
 
 This is not an execution-ready plan, verified unused-seed declaration, real
 evaluation or authorization to overlap a new model job with the active study.
+November16 implementation update: the [separate implementation protocol](native-priority-fixed-evaluation-v1.md)
+and [preparation receipt](../../results/native-priority-fixed-evaluation-preparation-v1.json)
+now cover prepare/run/cold/cost code, and the
+[all-label readout receipt](../../results/native-priority-fixed-readout-preparation-v1.json)
+covers projection/export code. Neither substitutes for full native public-path
+verification, actual unused coverage or dispatch. Earlier implementation-boundary
+statements below are retained as dated preparation context.
 Keep the scientific source705b5259, original27-world finite run and its read-only
 closure/readout sources unchanged. This draft cannot amend their selection.
 

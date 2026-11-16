@@ -1,0 +1,117 @@
+{
+  "schema": "scienceutopia.native-priority-first-own-outcome-prefix.v1",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "first_dispatch_utc": "2026-11-16T05:33:03.751479+00:00",
+  "next_stage_observed_utc": "2026-11-16T05:50:48.145019+00:00",
+  "slot": {
+    "generation": 0,
+    "method": "uniform-priority",
+    "objective": "content-utility",
+    "replication": 0
+  },
+  "suggestion_id": "scbd86c6da048c335",
+  "observation_content_sha256": "603ef7d58f4304832abc455e71ccd6f0021e2572eae084a71e7030c55040ac14",
+  "status": "complete",
+  "cross_scores": {
+    "content-utility": -27.666666666666668,
+    "resource-aware-content": -7.666666666666668,
+    "throughput": -36.0
+  },
+  "metrics": {
+    "native.accepted_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.accepted_peer_score_sum": {
+      "status": "measured",
+      "value": 0.0
+    },
+    "native.accepted_unreviewed_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.collected_activity_resource_cost": {
+      "status": "measured",
+      "value": 200.0
+    },
+    "native.common_content_score_sum": {
+      "status": "measured",
+      "value": 135.66666666666666
+    },
+    "native.common_content_utility_sum": {
+      "status": "measured",
+      "value": 27.666666666666668
+    },
+    "native.final_active_authors": {
+      "status": "measured",
+      "value": 5
+    },
+    "native.final_author_resources": {
+      "status": "measured",
+      "value": 30.0
+    },
+    "native.institutional_context_deliveries": {
+      "status": "measured",
+      "value": 20
+    },
+    "native.rejected_decisions": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.review_records": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.uncollected_activity_resource_cost": {
+      "status": "measured",
+      "value": 0.0
+    }
+  },
+  "assigned_loss_minus_initial_reference": 1.0,
+  "optimizer_after_tell": {
+    "content_sha256": "177d5c1586e6ce41381bdd4c9b290c4fc616625f2bb7cef3f9fcd498127b2e78",
+    "observations_including_warm_reference": 2,
+    "pending_suggestions": 0,
+    "incumbent_observation_id": "developer-reference-rescore-755d09900248810ccb07682f6faf2ee8cd24b2ce9364abe80f7ae5f106df69f3",
+    "incumbent_loss": -28.666666666666668,
+    "own_result_received_literally": true
+  },
+  "observed_scientist_path": {
+    "wire_requests": 186,
+    "completed_responses": 186,
+    "wire_inputs_without_committed_reply": 0,
+    "ordered_full_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+    "ordered_completed_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+    "ordered_literal_response_choices_sha256": "7b79919f643959ebb67b33745531c3ef1356137d4526fcf9f7d35a49efdd55c9",
+    "ordered_full_provider_body_hashes_sha256": "54c6a2129b48c8f4e4cf7a1ef342ad3a5f7c1d44c0bbd8b0691966e62bff3e37"
+  },
+  "first_year_native_effects_receipt": "research/results/native-priority-first-own-year1-actuation-prefix-v1.json",
+  "selector_geometry_diagnostic": {
+    "positive_affine_example": {
+      "a": 0.5,
+      "b": 0.2,
+      "all_values_inside_declared_bounds": true,
+      "all53_catalog_total_order_equal": true,
+      "literal_order_sha256": "41f6c6c689edd51d3a328390978891fa41fb8c4f2500ea01273033db4dcd0bfb"
+    },
+    "scope": "Ordering of the intended shortest-duration/priority selector only, not full-world/request/loss equivalence. Positive affine scaling preserves ideal ordering; conditional isotropic perturbations around an all-zero incumbent can be rank-global despite small scalar radius. No adaptive outcome or second-generation draw has been inferred or changed."
+  },
+  "bound_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/started.json": "95a0d265f82ffe6f3f9199116afc6dbfc2f763772d3f0f708cde0315c4e74e0b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/observation.json": "ee39bb52e82bb6cb64283db693d798927c63e5c5bcfaae9506d9413dfdbbf09a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/cross-scores.json": "4a7be1d81fbd96facf6d9cb1690e39a08a715a6a80da1e58f7c133e5e7d3871d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "d8fe4a28b7aa58aa0050d49badf467bb806b0cc0d89b46855ea46595a0caa099",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/worlds/scbd86c6da048c335-s61001/wire-requests.jsonl": "40c0a6e6e904576eddbf47b0bfee20663c481e88d10431639e8d9c1ce77fe3ca",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/worlds/scbd86c6da048c335-s61001/replies/responses.sqlite": "e6c0077b93ad2befaab5e9ec067180bc6a2aa246c4cc1a0ad0139d93e88c0425"
+  },
+  "whole_cold_audit_complete": false,
+  "selection_frozen": false,
+  "next_active_slot": "adaptive-priority/0/content-utility:g0",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "scope": "First actually evaluated own uniform-priority proposal, loss1 worse than visible U parent. Native topic actuation is observed, not useful invention. First measured loss has been told to the existing optimizer without repair/refill; final own-only selection and whole study remain pending.",
+  "publication_ready": false,
+  "content_sha256": "f4cad8747a0594825c008f70d6dee534bf880097af5fe13114dfe56d7e39f8a4"
+}

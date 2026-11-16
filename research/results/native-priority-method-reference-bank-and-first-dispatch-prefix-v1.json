@@ -1,0 +1,185 @@
+{
+  "schema": "scienceutopia.native-priority-method-reference-bank-and-first-dispatch-prefix.v1",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "bank_content_sha256": "45b1006c57aae18c3950fd82677ff6ef73b4c79cdbd02b0e8b1a69c90b414d70",
+  "references": [
+    {
+      "label": "priority-zero",
+      "optimizer_visible": true,
+      "observation_content_sha256": "107ffab82ec34cd780356f628ba8cf16927451c990a18cc1026c35689202e5e1",
+      "program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200.0
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0.0
+        }
+      },
+      "observed_scientist_path": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "cca4ba583662d76bcf678c74d6e6bd223dc85633a88506ca2ea42331dd427103"
+      }
+    },
+    {
+      "label": "terminal-priority-zero",
+      "optimizer_visible": true,
+      "observation_content_sha256": "8f60906ee7ab781c179d3c3f6f801d3f5ba93192e8be704fd989b9ebcd16ee16",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 160.0
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 40.0
+        }
+      },
+      "observed_scientist_path": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "4db3daac1ea8a8c7a885d50cb8ddd77c5b3d0a6e59f67499044ad63501954963"
+      }
+    },
+    {
+      "label": "literal-related",
+      "optimizer_visible": false,
+      "observation_content_sha256": "96d971c94e9cb4502485c6a8fcee5401c0ab8ff8b252f2c7c1a8c5b1120eb184",
+      "program_sha256": "67e71aaecc1c5350cb343bb9a0c5b16879aa14fb9041f319f18e99f0b28eb3dd",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200.0
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0.0
+        }
+      },
+      "observed_scientist_path": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "4d3b103482f8356c1018d11174caa2ed71174039ebaa2865d36a0e64f613af72"
+      }
+    }
+  ],
+  "observed_input_classes": [
+    {
+      "seed": 61001,
+      "full_request_sequence_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "physical_ids": [
+        "literal-related",
+        "priority-zero",
+        "terminal-priority-zero"
+      ],
+      "all_literal_response_choices_equal": true,
+      "all_full_provider_bodies_equal": false
+    }
+  ],
+  "actual_objective_parent_projection": {
+    "content-utility": {
+      "suggestion_id": "workflow-reference-priority-zero",
+      "loss": -28.666666666666668
+    },
+    "resource-aware-content": {
+      "suggestion_id": "workflow-reference-terminal-priority-zero",
+      "loss": -12.666666666666668
+    }
+  },
+  "first_own_dispatch": {
+    "started_utc": "2026-11-16T05:33:03.751479+00:00",
+    "slot": {
+      "generation": 0,
+      "method": "uniform-priority",
+      "objective": "content-utility",
+      "replication": 0
+    },
+    "suggestion_id": "scbd86c6da048c335",
+    "phase": "initial",
+    "based_on_observation_id": null,
+    "candidate_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+    "scope": "Uniform initial draw: no feedback-selected generation parent; anchor bound in original optimizer state. No own loss claimed in this prefix."
+  },
+  "bound_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/observation.json": "a24e4a0eb6bafdde1f24d2be09684d8b42140ef8b70a8f874fcb12504770e41f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/cross-scores.json": "c95de24f6525b7ef3ed3c28b75dd41236816f668a7077819260e01b7ae7174b5",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/replies/responses.sqlite": "2d9838b9702829ddba3bd88df9b28ff06ae34b3cde77dfce7a470f8b270c90db",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/observation.json": "422d8364c91454a183ee0e90719407467b07e8009d8d92d7a7671a2e265cfa3f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/cross-scores.json": "e8d5709d48d0a0f77bf4e9c54814574ac1a97b3dbcf05ee18b70e2724586c020",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/replies/responses.sqlite": "3d5464998a5092a03fbe06b9b23daf74979e515a1e01f96f79f917bffe819c50",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/literal-related/observation.json": "bdd58da50f16356e37678a7090a686b8fd3413b84c6f6d3823d5e67f89e0dda0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/literal-related/cross-scores.json": "8e60f9c97cf5a1d0b0dfc28c58a8ab98c6cdc39c1fb81d89e479749f3f08398f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/literal-related/worlds/workflow-reference-literal-related-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/literal-related/worlds/workflow-reference-literal-related-s61001/replies/responses.sqlite": "882924136d32542a52a6e4a5c2a20f487aed2163f6bfb1b893f21df1cbf856a9",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/started.json": "95a0d265f82ffe6f3f9199116afc6dbfc2f763772d3f0f708cde0315c4e74e0b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/developer-reference-context.json": "88ab1c89b08ff005f7eef553dd6cc4db5268cb14f2dfb7793f567bd05ccacb70"
+  },
+  "whole_cold_audit_complete": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "scope": "Complete actual fresh reference bank and first exact own dispatch, not normally closed whole study, useful autonomous invention or independent search replication. Common visible parents differ by declared loss; generated edits must not receive credit for inherited known accounting headroom.",
+  "publication_ready": false,
+  "content_sha256": "9fd77d721f64bcdaf6a7b2be5e829bdfec1562efc333276bf116c77cbc92451e"
+}

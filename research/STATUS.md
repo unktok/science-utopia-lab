@@ -1,6 +1,39 @@
 # Current research status
 
-## New finite method comparison: real readiness passed; references running
+## New finite method comparison: first own loss returned; adaptive first world running
+
+At05:50:48UTC/14:50JST the [first actual own outcome](results/native-priority-first-own-outcome-prefix-v1.json)
+completes and is told literally to the uniform optimizer: U=-27.6667, one worse
+than its visible parent's-28.6667; T=-36/C=-7.6667, collected K200/unpaid0.
+It has186 complete recorded scientist requests/replies versus the parent's179;
+these usage counts are not independent samples or a new loss/adoption veto.
+One of24 own slots has a complete score, with all3 fresh references complete.
+The optimizer keeps its better warm reference as the known incumbent; final
+own-only selection is not yet frozen. No adverse slot is repaired or refilled.
+The original writer advances to adaptive-priority/history0/U/g0. Its first
+suggestion is literally identical to uniform's by the declared common seed/
+initial-sampling design, not a new feedback adaptation or independent sample.
+Compound method/history/objective identities keep the physical worlds separate.
+
+[Saved first-year native actuation](results/native-priority-first-own-year1-actuation-prefix-v1.json)
+confirms the53 priority weights change two of five founders' topics, matching
+original validation/application events and saved author fields. Their assigned
+deadlines remain equal to the reference's original durations. This is real
+parameter actuation, not merely renamed fields, but not useful improvement.
+[The complete fresh reference bank/first dispatch](results/native-priority-method-reference-bank-and-first-dispatch-prefix-v1.json)
+binds the actual common visible parent projection and observed input classes.
+No whole-study cold closure, free-author result or general method ranking yet.
+
+[All-label evaluation readout preparation](results/native-priority-fixed-readout-preparation-v1.json)
+now adds30 logical rows, all54 fixed control/method/objective contrast definitions
+and108 paired rows, native metrics/resources/intervals, original parent annotations,
+nulls and physical sharing. Four-file exports are deterministic in SCRIPTED
+metadata tests; source/physical provenance there is mocked, not new native proof.
+Latest34 pure readout/bank tests and42 metadata/boundary regressions pass. The
+initial32-pass/1-fail macOS source-alias fixture is retained and corrected by
+resolving every source root. U/C/T column order is explicit after sorted-JSON
+roundtrips. Full public native/Docker/SDK/cold/cost/readout verification, actual
+unused coverage/evaluation, scientific interpretation and figures remain open.
 
 At05:17:42UTC/14:17JST the [second common visible reference completes](results/native-priority-method-visible-reference-prefix-v1.json).
 Both controls have36 accepted decisions/U28.6667 and179 identical full scientist
@@ -18,8 +51,9 @@ binding, strict all-path seed inventory, v6/resource/transport-aware cold branch
 and cost schema under a separate [implementation protocol](protocols/campaigns/native-priority-fixed-evaluation-v1.md).
 Latest27 light boundary/graph checks and84 cost/reader regressions pass. These
 do not run native worlds/Docker or prove original-source physical closure.
-The actual evaluation all-label readout and public full-path proof remain
-unfinished; no real unused inventory, evaluation plan preparation or extra
+At that preparation snapshot the all-label readout and public full-path proof
+were unfinished; the readout is now implemented above, not full-path proven.
+No real unused inventory, evaluation plan preparation or extra
 scientific dispatch occurs while the development experiment is running.
 Default historical inventory behavior and all original outcomes stay unchanged;
 the future route explicitly requires v4 strict coverage, not filename-based

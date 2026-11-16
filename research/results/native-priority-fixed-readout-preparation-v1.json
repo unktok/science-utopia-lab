@@ -1,0 +1,109 @@
+{
+  "schema": "scienceutopia.native-priority-fixed-readout-preparation.v1",
+  "qa": [
+    {
+      "implementation_source_commit": "feeab1bb298d213ceb0b4d2d994f6c2a151d2117",
+      "original_tool_handle": 88050,
+      "exit_code": 1,
+      "junit_file": "research/data/native-priority-fixed-readout-preparation-v1/priority-fixed-readout-v1-a1-junit.xml",
+      "junit_sha256": "4740d97b7d44c588eaddf2853e60ee0fc4b1482d569bcb9246be5d9d04cfd7b8",
+      "suite": {
+        "tests": "33",
+        "errors": "0",
+        "failures": "1",
+        "skipped": "0",
+        "time": "1.336"
+      },
+      "scope": "Pure SCRIPTED projection/path/export and metadata boundary tests. Mock pinned-source/inventory/provenance where stated; no actual native/Docker/SDK/original-source physical proof or rendering."
+    },
+    {
+      "implementation_source_commit": "74b5f4e1c88bd642f9facabf5c1eb6a0eefea110",
+      "original_tool_handle": 9041,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-readout-preparation-v1/priority-fixed-readout-v1-a2-junit.xml",
+      "junit_sha256": "5d3b6ede0fe99728b1384da32e49aecbb3996484d02d57b0f106b41c3f74ff7b",
+      "suite": {
+        "tests": "33",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "1.455"
+      },
+      "scope": "Pure SCRIPTED projection/path/export and metadata boundary tests. Mock pinned-source/inventory/provenance where stated; no actual native/Docker/SDK/original-source physical proof or rendering."
+    },
+    {
+      "implementation_source_commit": "74b5f4e1c88bd642f9facabf5c1eb6a0eefea110",
+      "original_tool_handle": 56329,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-readout-preparation-v1/priority-fixed-readout-boundary-regression-v1-a1-junit.xml",
+      "junit_sha256": "ae5a43190289429260f0067f13aee5f7669e3f85ee2556f003df4989ffb3f142",
+      "suite": {
+        "tests": "42",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "47.519"
+      },
+      "scope": "Pure SCRIPTED projection/path/export and metadata boundary tests. Mock pinned-source/inventory/provenance where stated; no actual native/Docker/SDK/original-source physical proof or rendering."
+    },
+    {
+      "implementation_source_commit": "ff77ac4239b0df37a2cd175640a12540c69b73b7",
+      "original_tool_handle": 65357,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-readout-preparation-v1/priority-fixed-readout-v1-a3-junit.xml",
+      "junit_sha256": "356936b805fc0ac19ed378cfd49aedc604b7f77ffa82125d37992229855e79c7",
+      "suite": {
+        "tests": "34",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "1.267"
+      },
+      "scope": "Pure SCRIPTED projection/path/export and metadata boundary tests. Mock pinned-source/inventory/provenance where stated; no actual native/Docker/SDK/original-source physical proof or rendering."
+    }
+  ],
+  "implemented": [
+    "all15 frozen labels x2 audited conditions, physical sharing and unavailable selections",
+    "all54 predeclared control/method/objective contrasts x2 conditions =108 paired rows",
+    "all U/C/T cross-scores, original metrics/annual resources/v6 intervals and descriptive missing-pair summaries",
+    "development initial-parent/cross-score annotations kept distinct from generated-edit effects",
+    "complete observed physical input classes without equating absent caches to zero cost or semantic equivalence",
+    "paired audit/cost/raw binding, fresh resolved external output guards, no inference/execution/reselection",
+    "four-file JSON/CSV/manifest export, exact paired serialization, explicit U/C/T column order independent of JSON object order"
+  ],
+  "preserved_initial_failure": {
+    "original_tool_handle": 88050,
+    "exit_code": 1,
+    "passed": 32,
+    "failed": 1,
+    "cause": "A SCRIPTED guard test supplied reader ROOT with macOS /var spelling while output.resolve used /private/var. Production ROOT is already canonical, but the guard now resolves every source root explicitly. The failed test created only ephemeral fixture output; no experiment/native raw changed."
+  },
+  "first_native_prefix": "research/results/native-priority-method-reference-bank-and-first-dispatch-prefix-v1.json",
+  "actual_first_year_effect": "research/results/native-priority-first-own-year1-actuation-prefix-v1.json",
+  "actual_first_own_loss": "research/results/native-priority-first-own-outcome-prefix-v1.json",
+  "diagnostic_reader_corrections": {
+    "scope": "Separate read-only exploratory commands, not simulation or source-bound test failures",
+    "wrong_event_key": "period returned zero filtered events; actual events use year",
+    "failed_nested_projection": {
+      "tool_chunk_id": "33fff7",
+      "exit_code": 1,
+      "error": "KeyError topic; native newest_direction stores direction as a nested string",
+      "result_file_created": false
+    },
+    "corrected_projection_retains_all_five_events": true
+  },
+  "new_real_evaluation_dispatched": false,
+  "real_unused_seed_inventory_performed": false,
+  "new_native_Docker_cold_public_proof_performed": false,
+  "remaining": [
+    "opt-in full public preparation/run/native/Docker/SDK/cold/cost/readout proof after actual inference is idle",
+    "actual normal development closure and paired original audits/costs/readouts",
+    "explicit real root/archive coverage, pinned evaluation plan and pre-dispatch unused check",
+    "research-value decision and separate evaluation dispatch",
+    "actual evaluation figures/visual review and current manuscript/final submission judgment"
+  ],
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false,
+  "content_sha256": "aadd3c2671b2e75a0d52d3bce08f2c1728aed193ce44e6d2f652362c3c9c5b6c"
+}

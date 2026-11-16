@@ -13,8 +13,13 @@ This page is navigation, not a chronological experiment transcript.
   now passes28 controls; the [first reference completes](results/native-priority-method-first-reference-prefix-v1.json)
   at U28.6667/K200; [the second now completes](results/native-priority-method-visible-reference-prefix-v1.json)
   with equal full scientist inputs/choices and known K160/C gain4. The third
-  reference is running, not a completed own-method
-  comparison. [All-slot readout preparation](results/native-priority-method-readout-preparation-v1.json)
+  [also completes and the first own proposal is dispatched](results/native-priority-method-reference-bank-and-first-dispatch-prefix-v1.json).
+  [Its first own loss](results/native-priority-first-own-outcome-prefix-v1.json)
+  is U=-27.6667, one worse than its strong parent, and is told without repair.
+  [Actual year1 topics change for two founders](results/native-priority-first-own-year1-actuation-prefix-v1.json)
+  while original deadlines remain. Adaptive's initial world is now running;
+  this is not a completed own-method comparison.
+  [All-slot readout preparation](results/native-priority-method-readout-preparation-v1.json)
   adds compound identities, all12 paths/frozen selections and an actual separate
   paired-export waiter, with56 light tests. The renderer is prepared but not yet
   rendered or visually reviewed; no own-method gain is claimed.
@@ -26,6 +31,10 @@ This page is navigation, not a chronological experiment transcript.
   adds strict inventories/public prepare/run/v6 cold/cost adapters with27 latest
   light checks and84 reader regressions. Full native/Docker/cold/readout proof
   and real unused-condition evaluation are still open.
+  [All-label evaluation readout](results/native-priority-fixed-readout-preparation-v1.json)
+  now implements all30 logical rows/54 contrast definitions/108 paired rows,
+  with34 latest pure tests and42 boundary regressions. An original path-fixture
+  failure remains retained. This is not actual native/cold or unused evidence.
   [Actual27-world SOFTWARE proof](results/native-priority-method-public-software-retention-v1.json)
   closes with matching paired cold/cost records; SCRIPTED success is not a real
   gain. The separate actual read-only continuation waits for writer and supervisor

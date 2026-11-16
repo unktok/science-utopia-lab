@@ -1,0 +1,274 @@
+{
+  "schema": "scienceutopia.native-priority-first-own-year1-actuation-prefix.v1",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "slot": {
+    "generation": 0,
+    "method": "uniform-priority",
+    "objective": "content-utility",
+    "replication": 0
+  },
+  "suggestion_id": "scbd86c6da048c335",
+  "dispatch_started_utc": "2026-11-16T05:33:03.751479+00:00",
+  "started_file_sha256": "95a0d265f82ffe6f3f9199116afc6dbfc2f763772d3f0f708cde0315c4e74e0b",
+  "reference": {
+    "system_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+    "checkpoint_file_sha256": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz": "cc4fb804f01889891ab44f7e69036c4b2c186227886d39f9516d1499186ca594",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz": "245de793e6c8bd1ddf82d70527e3ce774498e9dd23dd6fd150fac19d26efe7c2"
+    },
+    "initial_named_author_projection": [
+      {
+        "id": "institution_0000_researcher_0",
+        "resources": 40.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0001_researcher_0",
+        "resources": 40.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0002_researcher_0",
+        "resources": 15.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0003_researcher_0",
+        "resources": 15.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0004_researcher_0",
+        "resources": 40.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      }
+    ],
+    "year1_assignments": [
+      {
+        "actor_id": "institution_0000_researcher_0",
+        "topic": "neural_symbolic_ai",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "saved_topic": "neural_symbolic_ai",
+        "saved_start_year": 1,
+        "saved_end_year": 1,
+        "validated_event_sha256": "9fbc33fa6a8072085b134a46ad569929d2e395b20e6ec6fdd708cae7cceae9bf",
+        "applied_event_sha256": "41b45810b20165a7208dbe0410f46dd9719f9387118ff11c6389a27f63c11c2e",
+        "priority_sort_matches": true
+      },
+      {
+        "actor_id": "institution_0001_researcher_0",
+        "topic": "artificial_intelligence",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "saved_topic": "artificial_intelligence",
+        "saved_start_year": 1,
+        "saved_end_year": 1,
+        "validated_event_sha256": "7a9d289767fc4d4f40640511fb16fba454f7310dc9c6282cf49650dcd164fc6f",
+        "applied_event_sha256": "db52e7b317162eb65de8038af8bc422cac51490cfaf08b072e3429248804957c",
+        "priority_sort_matches": true
+      },
+      {
+        "actor_id": "institution_0002_researcher_0",
+        "topic": "computational_science",
+        "catalog_years": 2,
+        "assigned_start_year": 1,
+        "assigned_end_year": 2,
+        "saved_topic": "computational_science",
+        "saved_start_year": 1,
+        "saved_end_year": 2,
+        "validated_event_sha256": "a452679ae3b964247ced958791407f930907c9d55d53598f45d3590a48c5ae49",
+        "applied_event_sha256": "6fbafcc6a0cae480dab6e75568712c1675e467761169684420653761c2fd7935",
+        "priority_sort_matches": true
+      },
+      {
+        "actor_id": "institution_0003_researcher_0",
+        "topic": "deep_learning",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "saved_topic": "deep_learning",
+        "saved_start_year": 1,
+        "saved_end_year": 1,
+        "validated_event_sha256": "8f4605d79cc3413ad0531be81cfc85fcb96ebb39402feaa274765be3c38ffb24",
+        "applied_event_sha256": "bfb842f351829c859e4e2e500d18fe295e96254278383eb48cb6336c12ed03a6",
+        "priority_sort_matches": true
+      },
+      {
+        "actor_id": "institution_0004_researcher_0",
+        "topic": "information_retrieval",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "saved_topic": "information_retrieval",
+        "saved_start_year": 1,
+        "saved_end_year": 1,
+        "validated_event_sha256": "4b4c9002b7f3f68816d582ab628c85a3958d0e00e17fb75967d0c2429ae4f09d",
+        "applied_event_sha256": "a91fc70c660dd3bc09dd3946c5fc61a26b8fff1c8b149382af1eeeacd2aa9065",
+        "priority_sort_matches": true
+      }
+    ],
+    "nonzero_declared_priorities": 0,
+    "declared_topic_priorities": 53
+  },
+  "own": {
+    "system_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+    "checkpoint_file_sha256": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/worlds/scbd86c6da048c335-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz": "1ab5c6d105d3f1c1d8548eb591900f55b9c249c3ca1a957fed0e886ac4ab06d3",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/worlds/scbd86c6da048c335-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz": "8def480338997625ab7d89b1025d3bb971aeb3a41741f2dacbe1d49fc87e4285"
+    },
+    "initial_named_author_projection": [
+      {
+        "id": "institution_0000_researcher_0",
+        "resources": 40.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0001_researcher_0",
+        "resources": 40.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0002_researcher_0",
+        "resources": 15.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0003_researcher_0",
+        "resources": 15.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0004_researcher_0",
+        "resources": 40.0,
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      }
+    ],
+    "year1_assignments": [
+      {
+        "actor_id": "institution_0000_researcher_0",
+        "topic": "neural_symbolic_ai",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "saved_topic": "neural_symbolic_ai",
+        "saved_start_year": 1,
+        "saved_end_year": 1,
+        "validated_event_sha256": "47de86c7b606bb33f255e16ac03a9b3354e66a28d2ae031b7bf93aacc7a2b288",
+        "applied_event_sha256": "ccc6b4c04081a04583942e85d50a35081ede1b4124f3bdcbd9d510f4214751aa",
+        "priority_sort_matches": true
+      },
+      {
+        "actor_id": "institution_0001_researcher_0",
+        "topic": "neural_symbolic_ai",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "saved_topic": "neural_symbolic_ai",
+        "saved_start_year": 1,
+        "saved_end_year": 1,
+        "validated_event_sha256": "f1d4511909b0f571105bd162254dc3598875272ef92c7f3419af2d7afcb9aa14",
+        "applied_event_sha256": "d246bc9e2af8c526447e5b59664500dbfd0fd2d87bdc923251e2abd9713f6df0",
+        "priority_sort_matches": true
+      },
+      {
+        "actor_id": "institution_0002_researcher_0",
+        "topic": "software_engineering",
+        "catalog_years": 2,
+        "assigned_start_year": 1,
+        "assigned_end_year": 2,
+        "saved_topic": "software_engineering",
+        "saved_start_year": 1,
+        "saved_end_year": 2,
+        "validated_event_sha256": "f5b75c196c629978122780143c25eebe69923a57ab5feb1c25fa792757f53357",
+        "applied_event_sha256": "b514048e6b04832b1a089fb3da165dbf044e6860746c133be7da9acef51559b0",
+        "priority_sort_matches": true
+      },
+      {
+        "actor_id": "institution_0003_researcher_0",
+        "topic": "deep_learning",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "saved_topic": "deep_learning",
+        "saved_start_year": 1,
+        "saved_end_year": 1,
+        "validated_event_sha256": "bb81e6cc460707647f930171dde9af07586f08ea09958b79cad2ade0ce944e91",
+        "applied_event_sha256": "7089779868dc106d71b415e4befee6001ab38ddd001c86bc946ceb194769a8ef",
+        "priority_sort_matches": true
+      },
+      {
+        "actor_id": "institution_0004_researcher_0",
+        "topic": "information_retrieval",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "saved_topic": "information_retrieval",
+        "saved_start_year": 1,
+        "saved_end_year": 1,
+        "validated_event_sha256": "ae242d1413a90e021168888cea5243829fc434f87855aa7d8b61bd2416336472",
+        "applied_event_sha256": "3d85ce2ad6542873190ff1cdea287b22973377753410c8e2e003f50a941c1d41",
+        "priority_sort_matches": true
+      }
+    ],
+    "nonzero_declared_priorities": 53,
+    "declared_topic_priorities": 53
+  },
+  "initial_named_projection_equal": true,
+  "changed_topic_actor_ids": [
+    "institution_0001_researcher_0",
+    "institution_0002_researcher_0"
+  ],
+  "assigned_end_years_equal": true,
+  "graph_from_numeric_family_anchor": {
+    "nodes_added": [],
+    "nodes_removed": [],
+    "source_changed_nodes": [],
+    "parameter_changed_nodes": [
+      "developer-catalog-agenda"
+    ],
+    "wires_added": 0,
+    "wires_removed": 0,
+    "schedules_changed": false,
+    "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+  },
+  "scope": "Saved first-year native actuation prefix, not final loss, scientific improvement or whole-world cold closure. Earlier diagnostics used period instead of year, and top-level newest_direction.topic instead of nested newest_direction.direction (one KeyError/exit1); no raw data or simulation was changed. All five actual events are retained here. The shortest-duration/priority ordering is this restricted comparator family, not a new free-system veto.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "publication_ready": false,
+  "content_sha256": "dd9824233ff705b1a499a164215f6269d90943a7456d16e891c91e38f5d8d908"
+}
