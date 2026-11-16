@@ -58,6 +58,17 @@ def inspect_first_update(state, *, actual_started=None):
             or any(c['mechanism_id'] != 'developer-catalog-agenda' or c['integer']
                 or c['lower'] != -1 or c['upper'] != 1 for c in coordinates)):
         raise ValueError('literal zero-anchor equal-bound priority-only comparator required')
+    # Observe the actual public optimizer -> sampler call on this local object.
+    # Do not copy the optimizer's scale schedule into a second implementation.
+    mutation_calls = []
+    original_mutate = space.mutate
+
+    def observed_mutate(incumbent, *, seed, proposal_index, scale):
+        mutation_calls.append({'parent_sha256': digest(incumbent), 'seed': seed,
+            'proposal_index': proposal_index, 'scale': scale})
+        return original_mutate(incumbent, seed=seed, proposal_index=proposal_index, scale=scale)
+
+    space.mutate = observed_mutate
     suggestion, = restored.ask()
     after = restored.state_dict()
     if actual_started is not None:
@@ -73,8 +84,11 @@ def inspect_first_update(state, *, actual_started=None):
         parent = min(pool, key=lambda o: (float(o['loss']), o['observation_id']))
         if parent['observation_id'] != suggestion.based_on_observation_id:
             raise ValueError('actual incumbent differs from loss/observation-id tie rule')
-        count = max(0, suggestion.proposal_index - optimizer['config']['initial_random'])
-        scale = max(.02, optimizer['config']['mutation_scale'] / math.sqrt(1 + count))
+        if (not mutation_calls or mutation_calls[-1]['proposal_index'] != suggestion.proposal_index
+                or mutation_calls[-1]['parent_sha256'] != digest(parent['candidate'])
+                or mutation_calls[-1]['seed'] != optimizer['config']['seed']):
+            raise ValueError('original sampler did not receive the reconstructed adaptive parent')
+        scale = mutation_calls[-1]['scale']
         parent_node = next(n for n in parent['candidate']['mechanisms']
                            if n['mechanism_id'] == 'developer-catalog-agenda')
         center = parent_node['parameters']['topic_priorities']
@@ -102,6 +116,7 @@ def inspect_first_update(state, *, actual_started=None):
         'parent_program_sha256': None if parent is None else digest(parent['candidate']),
         'parent_topic_priorities': None if center is None else clone(center),
         'effective_mutation_scale': scale, 'coordinate_radius': radius,
+        'scale_observed_at_original_local_sampler_call': bool(mutation_calls),
         'mutation_intervals': intervals, 'all_parent_priorities_zero': zero,
         'common_zero_centered_unclipped_intervals': iid_centered,
         'proposed_topic_priorities': clone(proposed),
