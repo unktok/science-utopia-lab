@@ -20,7 +20,7 @@ def bodies():
 
 
 def test_current_citations_have_explicit_primary_identity_checks_not_invented_reproduction():
-    audit = json.loads((ROOT/'research/results/manuscript-bibliographic-identity-audit-v3.json').read_text())
+    audit = json.loads((ROOT/'research/results/manuscript-bibliographic-identity-audit-v4.json').read_text())
     current = audit; records = {}; visited = set()
     while True:
         for key,url in current.get('primary_records',current.get('additional_primary_records',{})).items():

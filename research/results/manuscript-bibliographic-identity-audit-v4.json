@@ -1,0 +1,54 @@
+{
+  "schema": "scienceutopia.manuscript-bibliographic-identity-audit.v4",
+  "checked_date_JST": "2026-11-16",
+  "scope": "Extend the preserved identity chain for the three program-search citations added in the earlier unbuilt related-work amendment; not independent method reproduction or a complete claim re-audit.",
+  "prior_audit": "research/results/manuscript-bibliographic-identity-audit-v3.json",
+  "prior_audit_file_sha256": "96ce96545de87c4f18a71b009ed3e5f874f4a2be1e494aa4f7c8be3813760cab",
+  "bibliography_file_sha256": {
+    "paper/references.bib": "bdf8dadece57d657ad84ce0d5f677a1aec5b13aee834cc4db0938f70bd9dc0b3",
+    "paper/submission-sources.bib": "9d342d51bffb85986d6aab1a89ac5fb2ab87b01af8fa3a5b8202ef7ab5255be5"
+  },
+  "additional_primary_records": {
+    "romeraparedes2023funsearch": "https://github.com/google-deepmind/funsearch",
+    "novikov2025alphaevolve": "https://arxiv.org/abs/2506.13131v1",
+    "lange2025shinkaevolve": "https://arxiv.org/abs/2509.19349v1"
+  },
+  "checked_fields": ["exact title", "author list", "original publication/preprint year", "DOI or versioned arXiv identity"],
+  "identity_details": {
+    "romeraparedes2023funsearch": {
+      "title": "Mathematical discoveries from program search with large language models",
+      "author_count": 12,
+      "year": 2023,
+      "doi": "10.1038/s41586-023-06924-6",
+      "checked_location": "Author repository README publication citation and supplied BibTeX; keeps the authors' 2023 online-publication year.",
+      "publisher_page": "https://www.nature.com/articles/s41586-023-06924-6",
+      "publisher_full_text_inspected": false,
+      "publisher_access_failure": "Reader redirects to inaccessible Nature identity service; no full-text claim inferred from that failure."
+    },
+    "novikov2025alphaevolve": {
+      "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+      "author_count": 18,
+      "year": 2025,
+      "original_submission": "2025-06-16",
+      "checked_location": "Official arXiv abstract record, full author list and v1 submission history.",
+      "bibliography_change": "Expand the earlier first-three-and-others entry to all18 listed authors; preserve the Ngân Vũ accents in BibTeX."
+    },
+    "lange2025shinkaevolve": {
+      "title": "ShinkaEvolve: Towards Open-Ended And Sample-Efficient Program Evolution",
+      "authors": ["Robert Tjarko Lange", "Yuki Imajuku", "Edoardo Cetin"],
+      "year": 2025,
+      "original_submission": "2025-09-17",
+      "checked_location": "Official arXiv abstract, authors and v1 submission history."
+    }
+  },
+  "earlier_targeted_method_reading": "research/publication/native-search-method-controls-source-review-v1.md",
+  "prior_coverage_gap": "Three newly cited keys were missing from the older v3 exact-coverage ledger. The first current source test retains17 passes/1 failure at original39907. This extension preserves old audits/build receipts rather than backdating them.",
+  "current_source_citation_count": 32,
+  "latest_reviewed_pdf_citation_count_at_check": 29,
+  "new_pdf_built_or_reviewed_at_check": false,
+  "all_cited_methods_independently_reproduced": false,
+  "all_related_work_claims_fully_reaudited": false,
+  "new_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "publication_ready": false
+}
