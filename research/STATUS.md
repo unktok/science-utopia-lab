@@ -60,6 +60,13 @@ differ from the reference179. Own-to-own recovery is not a method win.
 
 ## Purpose and present answer
 
+[An evidence-to-claim synthesis now leads the manuscript source](components/manuscript-claim-evidence-map-v1.md).
+It distinguishes completed matched/hand/source comparisons, their actual
+outcomes and unsupported causal/invention claims, clarifies study-local loss
+symbols, and adds the separately dated20-slot prefix without rewriting the
+15-slot detailed table.19 source/evidence checks pass. All prior tracks remain;
+no new PDF, scientific replication or publication-ready main finding is claimed.
+
 Optimize the scientific system itself under a declared loss, with fixed
 researcher weights. Parameters, executable rules, institutions, wiring and
 processes are design freedoms; available black-box/gradient methods are means.

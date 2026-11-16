@@ -1,0 +1,175 @@
+{
+  "schema": "scienceutopia.manuscript-claim-evidence-map-preparation.v1",
+  "observed_utc": "2026-11-16T12:33:37.023989+00:00",
+  "editorial_source_commit": "f773c436242bd39bbf56f8880b4c07718c39c69f",
+  "previous_main_commit": "b12acbe9f514cf9505d5c5449ecd871f1b4acc00",
+  "source_files": {
+    "paper/integrated/problem-method.tex": "8237ed055f2f75c51ca973cdec7bde7202b313c9a00812857b744a599893e91f",
+    "paper/integrated/studies.tex": "e5c0015a29506e2ea2a1f889dd8057762fe1aef57c76f5659a6c72c6e5242c39",
+    "paper/integrated/native-priority-method-snapshot.tex": "bb856605181b9cf0e78fbf7782ac2e576aa6d0b04e208cd72c17e0952ce4979e",
+    "paper/README.md": "9ffdc19af826a1f83998584758faf809383820a6508a3f8175075b5c2dd66625",
+    "tests/reports/test_manuscript_claim_evidence_map_v1.py": "f2fa0b089e9610632fd5cb5616bd07c5b0a0bb2778853ac58d05a55705c234ad"
+  },
+  "recursive_manuscript_source_files_including_entrypoint": {
+    "paper/../research/data/pre-scale-information-v1/table-tabular.tex": "1628cb0ece0139a3fadb0f6245b42be872e9eb3b065236feca69c7e0d3bcb677",
+    "paper/generated/native-design-v2/search-outcomes.tex": "0e9269b0df48b83e40f3cb18a647e0aed42bb8ab46d159ca431eeb050a4fbe05",
+    "paper/integrated.tex": "7f0c28ca2512a5b04cc9823ab7ab916179f7c27508c14e368b238e255fa68cc7",
+    "paper/integrated/appendices.tex": "da268006ccfeb3098b15fd72fa95acb97d42d7579a61ca9073085dbd42a4b0a1",
+    "paper/integrated/design-diagnostics.tex": "28627db85d8c1d7dd57528797589180a2e63b57353391b0635bee6b1f31a6ea7",
+    "paper/integrated/discussion.tex": "9cfbe3c5b51fb504f04b3d4f62a50161f0e685fc200fa1a8a1ef38c10e5a47ea",
+    "paper/integrated/matched-observatory.tex": "75de8cba4955a90166a09c2ffdfe2547e001969a587f892828b860309f70a00b",
+    "paper/integrated/native-advice.tex": "e7a2ab80593cf91e4bb3da287b31bf676ae5bd91b7f3e348368c6e9e6f347f52",
+    "paper/integrated/native-capacity.tex": "ae3215e0103c4af3d9906c3f754e1e390217f898052ec3e791cdd12b81345b1e",
+    "paper/integrated/native-catalog.tex": "b1496ff7c40c766db823cc5948a7119ec74c980646ef080d062a1f060f681401",
+    "paper/integrated/native-choice-resource.tex": "76b86209ea484140afae363fec071ad30f417d09a3b90d298716f00d50cef0d2",
+    "paper/integrated/native-consumer-source.tex": "28713da457034eb6caa4f20b8c148ba17c3d45e8371bb0b9c11581c01d341a61",
+    "paper/integrated/native-longitudinal-comparison.tex": "c08728c69281094d9ab8ec624c380762678f02054cc87f7c937b57533a4bdc02",
+    "paper/integrated/native-loop.tex": "d98b49a57044ebb64217890dd74c7952d6f63e6e2e3bda096cd645af10ae2063",
+    "paper/integrated/native-numeric-comparator.tex": "733987c507783ff473811f3efff881ae4a36493c6b95bf0240debc30a83e26c4",
+    "paper/integrated/native-planning-search.tex": "c090bc7c1d952c99ce59cb8b979091ce4b874da55c6137971d199f3388485213",
+    "paper/integrated/native-priority-method-snapshot.tex": "bb856605181b9cf0e78fbf7782ac2e576aa6d0b04e208cd72c17e0952ce4979e",
+    "paper/integrated/native-reserve-response.tex": "4cbc535049f8d80e6321b7080d3d4fc4fc9fefc87966d467282ef0695353efdf",
+    "paper/integrated/native-staged-construction.tex": "5496f4d318c357f5c8cd685e4e47c4a937504ed781f47c8c5f3b7d000a4d7897",
+    "paper/integrated/native-terminal-cost.tex": "6c65e110841f61cb711c9b057a70b1bcc77724298a103bb0b08c3c8afcf1a0af",
+    "paper/integrated/native-topic-system-search.tex": "3392df47fc15a0af6aefc7a9d30742470948865bb721436b834a1d4354cdb547",
+    "paper/integrated/native-workflow-controls.tex": "7170cf43d430e9a2032819516e927fe40295a54241fecc111af8d951a207ce6a",
+    "paper/integrated/native-workflow-feedback.tex": "f61318cb3c3956d6fb862d6782a708441ea07a78ee402590b6507ab31802a07d",
+    "paper/integrated/pre-scale-search.tex": "d2e47425d94791be6e8fa3cef84265bc9c79e6e19870ee3ea7b7bd5feccb5706",
+    "paper/integrated/pre-scale.tex": "b5797692bb211077b3e36314839dab5a86243329f75215951cd1ee78a56e1766",
+    "paper/integrated/problem-method.tex": "8237ed055f2f75c51ca973cdec7bde7202b313c9a00812857b744a599893e91f",
+    "paper/integrated/studies.tex": "e5c0015a29506e2ea2a1f889dd8057762fe1aef57c76f5659a6c72c6e5242c39"
+  },
+  "evidence_files": {
+    "research/results/native-design-freedom-v2-closed-analysis-v1.json": "9dbe4a1fba43a258ea884b657f665c93d95d375b73e3fa9ce00f8ddd2b3f67d6",
+    "research/data/native-design-v2/closed-report.json.gz": "e5763ba6f9bb606efe4338e6c130f326d9bba1090a83c2d13a32558c75cf305d",
+    "research/results/native-legacy-topic-pilot-closed-v1.json": "669a0dc920ee46a0505fb5cee8439e291f3e5e6e3da5dde0595ab8665db0d324",
+    "research/results/native-terminal-cost-pilot-closed-v1.json": "3bb6789e491c3c70c9ddf737b6f344b9b03a9aa34db7b5f9d281e8d631a1a79d",
+    "research/results/native-consumer-source-comparison-closed-v1.json": "93ff34c4b406f3320c41f7c7640c6abb4c829e45f5d9dd48c7147b63134f0bbf",
+    "research/results/native-priority-twentieth-own-outcome-and-prefix-v1.json": "480df5c199917f114c83d37c9ff385254dc0b31d371aa562b2a84a4307e5fc30",
+    "research/results/native-consumer-source-visibility-diagnostic-v1.json": "35c55aac8f98f42c31074a8de64b89a32dca9486bc8324ac7b2cd05fd75d2d85",
+    "paper/integrated-consumer-source-build-v1.json": "376d0cc5ee4483eca55a6bba41084fbd1d633c83e676ef6192927d27f89b63c3"
+  },
+  "actual_test": {
+    "original_handle": 39479,
+    "actual_exit_code": 0,
+    "JUnit": "research/data/manuscript-claim-evidence-map-v1/source-f773c436.xml",
+    "JUnit_file_sha256": "0c034f2283a79fceccac9dc98314356838fb8dd9ff086af5ef903e3cde97b753",
+    "suite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "19",
+      "time": "4.001",
+      "timestamp": "2026-11-16T21:30:12.808501+09:00",
+      "hostname": "flower-man.local"
+    },
+    "command": [
+      "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "tests/reports/test_manuscript_claim_evidence_map_v1.py",
+      "tests/reports/test_current_manuscript_estimands.py",
+      "tests/reports/test_priority_method_manuscript_snapshot_v1.py",
+      "--basetemp",
+      "/tmp/science-utopia-claim-map-v1.d9uctY/cases",
+      "--junitxml",
+      "/tmp/science-utopia-claim-map-v1.d9uctY/source-f773c436.xml"
+    ],
+    "scope": "8 new source/evidence transcription cases plus11 existing citation/estimand/method-snapshot cases. Actual retained observations, not independent scientific repeats or PDF layout/native/model proof."
+  },
+  "scientific_sources_clean_and_unchanged": {
+    "science": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+    "closure": "4b43a9a37b1a859772182a244dc419dcec86893e",
+    "readouts": "ee030eaa551365e1789a33998cf81ea095654250",
+    "authors": "5bf61d6e431fc391b821f0829deacd0d84619d8c"
+  },
+  "live_original_process_observation": [
+    "19200 19169 08:13:36 /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+    "20325 28573 08:07:43 /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+    "27909 28573 07:38:25 /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+    "86837 28573 03:57:09 /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python"
+  ],
+  "current_progress_snapshot": {
+    "active": "uniform-priority/0/resource-aware-content:g1",
+    "observed_utc": "2026-11-16T12:17:33.787387+00:00",
+    "stage": "optimization"
+  },
+  "completed_comparison_synthesis": {
+    "matched120_slots": {
+      "complete": 64,
+      "generation_null": 25,
+      "execution_null": 31,
+      "fixed_evaluation_physical_jobs": 90,
+      "exact_evaluated_policies": 15,
+      "throughput_code_technical_only_uniform_mean_accepted": 6.2,
+      "LLM_numeric_selected_seed_mean_accepted": 0.2,
+      "two_code_review_cost_mean_loss": 1.92,
+      "strong_review_free_reject_loss": 0.0
+    },
+    "same_authority_hand_topic_rules": {
+      "accepted_decisions": [
+        20,
+        36
+      ],
+      "collected_cost": [
+        200.0,
+        200.0
+      ],
+      "automatic_invention": false
+    },
+    "terminal_hand_rule": {
+      "declared_loss_gain": 4.0,
+      "collected_cost": [
+        200.0,
+        160.0
+      ],
+      "unpaid_cost": [
+        0.0,
+        40.0
+      ],
+      "requested_cost": [
+        200.0,
+        200.0
+      ],
+      "same_scientist_inputs_and_choices": 179,
+      "automatic_invention": false
+    },
+    "closed_source_information_pilot": {
+      "own_slots": 8,
+      "complete": 7,
+      "native_null": 1,
+      "own_selections_tied_to_strong_visible_rule": 4
+    },
+    "dated_twenty_slot_prefix": {
+      "complete": 20,
+      "tie": 10,
+      "worse": 10,
+      "better": 0,
+      "campaign_closed": false
+    }
+  },
+  "last_reviewed_PDF": {
+    "file": "output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf",
+    "source_commit": "2d19cc966790ff0c2402b6889485ba58f32a49cd",
+    "pages": 104,
+    "file_sha256": "cc5d2ca81f434023466184525e3555edc32ae63a1695033e263ab7cbab387af4",
+    "unchanged": true,
+    "contains_current_source_amendments": false
+  },
+  "new_PDF_builds": 0,
+  "new_PDF_page_renders": 0,
+  "current_source_page_count": null,
+  "current_source_visual_QA": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "scientific_losses_or_selection_changed": false,
+  "publication_ready": false,
+  "remaining": "Normal original finite24-slot closure and full all8 analysis; corrected-source public/native proof and fresh real-model readiness before dispatch; important differentiated claims, adequate independent evidence, justified frozen unused evaluation, current focused manuscript/PDF and critical main-track readiness. This source synthesis does not replace any requirement.",
+  "content_sha256": "dc697560d1edf48e9f717e170594159bf173f87c126f4794e97a1d360391fa9d"
+}

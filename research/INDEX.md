@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Manuscript evidence-to-claim synthesis](components/manuscript-claim-evidence-map-v1.md)
+  adds a reader-facing result/limit map without removing prior tracks or imposing
+  a page cap. Actual V2 evaluation is reprojected: code/control throughput means
+  6.2, but LLM numeric retains the0.2 seed; code C means1.92 still lose to the
+  strong0 reference.19 light source/evidence checks pass, not new science/PDF QA.
+  The R1--R6 publication table is updated without declaring R2/R3/R5/R6 achieved.
+
 - [Guarded all8 postclosure visibility export](components/native-author-visibility-export-v1.md)
   is implemented with73 light/component cases, including source/output guards,
   active writer locks, deterministic paired files and preserved adverse/nulls.
