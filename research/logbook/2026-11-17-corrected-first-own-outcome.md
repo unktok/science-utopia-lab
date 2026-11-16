@@ -123,3 +123,31 @@ checks pass in1.36s, with no new model or generated-code execution. These are
 light evidence checks, not the pending full-study cold or publication approval.
 The paper README now distinguishes this ongoing research from the unchanged
 reviewed111-page PDF; no heavy build/render runs during inference.
+
+At19:20:29UTC the original writer advances from uniform/C/g0 to adaptive/C/g0.
+The first own C outcome is valid at-9.6667 versus its measured-12.6667 parent,
+worse by3. U25.6667/T36/collected160/uncollected40 and183 complete hash-verified
+scientist responses are retained. Its own observation is exactly present once
+in optimizer-after-tell.optimizer.observations, with pending[],proposal_index1
+and one primed reference plus one own. Best known stays-12.6667; uniform's four
+initial samples do not become feedback-adaptive merely because tell occurred.
+[Exact original hashes, losses and next matched ask](../results/native-corrected-choice-first-cost-outcome-v1.json).
+
+Direct U/C initial-program comparison shows both warm-parent director code and
+actual topic_priorities differ. Full scientist payloads first differ at ordinal1.
+The observed U25.6667 versus27.6667 cannot be assigned to adding a cost term
+alone, nor do shared seed/method labels make the programs identical. The whole
+comparison remains a search-package comparison with different warm parents;
+this check does not diagnose why the kernels draw different values or justify
+changing them mid-study. The next adaptive/C initial program is literally
+matched to uniform/C, in a distinct physical dispatch, not an independent
+population. Four own slots complete/4worse/0better/0ties/0nulls is a prefix,
+not the final24 result or proof that future feedback cannot help. Original
+source/settings/slots are unchanged, and no hidden cost/fairness gate is added.
+
+Read-only verification matches the original sealed C observation/post-tell,
+assigned/cross-loss arithmetic, all183 response hashes and the next matched ask.
+Five publication-table transcription/link checks pass in0.89s. No inference,
+generated-code execution, full-study cold or publication approval is claimed
+from these light checks. The R1 table now links current actual status instead
+of freezing a transient initial-slot count into the general requirement.

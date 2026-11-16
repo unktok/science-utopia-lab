@@ -1,0 +1,62 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-first-cost-outcome.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T19:22:18+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "slot": {"generation": 0, "method": "uniform-priority", "objective": "resource-aware-content", "replication": 0},
+  "suggestion_id": "se803cd930f3f7af2",
+  "observation_id": "observation-se803cd930f3f7af2",
+  "status": "complete",
+  "candidate_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+  "observation_file_sha256": "94b453fce2505b581ec141a206645925d30b39fc6b8c8fd8323cc2958d190de4",
+  "observation_content_sha256": "187867b87bc1359af66d8a1dcd05efc63406844e85c860c6f809b194316e135d",
+  "optimizer_after_tell_file_sha256": "cb5c6b8065ae006337f7ddc7d9ade4d6c04a1d714c33a02618543a24a93b79e3",
+  "optimizer_after_tell_content_sha256": "590dcfd73f811ade529a88c7305b8cd896cfe7c12ccb85e792aa63118615f666",
+  "metrics": {"U": 25.666666666666668, "K_collected": 160.0, "K_uncollected": 40.0, "T": 36},
+  "cross_losses": {"content-utility": -25.666666666666668, "resource-aware-content": -9.666666666666668, "throughput": -36.0},
+  "assigned_reference_loss": -12.666666666666668,
+  "assigned_own_minus_reference": 3.0,
+  "prefix_best_own_loss_for_this_history": -9.666666666666668,
+  "prefix_best_known_loss_for_this_history": -12.666666666666668,
+  "optimizer_tell": {
+    "literal_own_observation_matches_original_once": true, "pending": [], "proposal_index": 1,
+    "observations_including_one_primed_reference": 2,
+    "primed_reference_observation_id": "developer-reference-rescore-f1a8b661284b9a292b80f64b9a1525b375aae612d22ed2ebb1858a3c65b1a665",
+    "uniform_initial_random": 4,
+    "feedback_adapted_next_uniform_draw_claimed": false
+  },
+  "observed_scientist_path": {
+    "wire_requests": 183, "completed_responses": 183, "wire_inputs_without_committed_reply": 0,
+    "ordered_full_request_payload_sha256": "a7217109b9cdd0681101201d35befbd8d361a66a435476006a60857ef374c397",
+    "ordered_completed_request_payload_sha256": "a7217109b9cdd0681101201d35befbd8d361a66a435476006a60857ef374c397",
+    "ordered_literal_response_choices_sha256": "6b8755f8274645e434695458b128c237d946255fa563e239836f1155b0e6803c",
+    "ordered_full_provider_body_hashes_sha256": "a9f501cb941e117627e7623e7bb034594ec51620f0029b463f07e45b67d8fbf0",
+    "all_response_cache_body_hashes_checked": true
+  },
+  "comparison_with_uniform_initial_U_program": {
+    "candidate_changed_top_fields": ["mechanisms"],
+    "changed_mechanism_ids": ["developer-liquidity-director", "developer-catalog-agenda"],
+    "director_changed_parameter_fields": ["code_artifact"],
+    "agenda_changed_parameter_fields": ["topic_priorities"],
+    "first_different_scientist_payload_zero_based_ordinal": 1,
+    "first_different_payload_fields": ["messages"],
+    "scope": "Different actual initial topic priorities as well as different objective-conditioned warm-parent cost code. The U difference between these two initial programs is not an isolated causal effect of adding the C term; neither a shared seed nor method label makes the programs identical. This comparison does not repair either program or identify why their proposal kernels draw different values."
+  },
+  "prefix_counts_against_assigned_reference": {"complete": 4, "better": 0, "tie": 0, "worse": 4, "technical_nulls": 0},
+  "next_actual_dispatch": {
+    "method": "adaptive-priority", "objective": "resource-aware-content", "generation": 0, "replication": 0,
+    "suggestion_id": "se803cd930f3f7af2",
+    "started_utc": "2026-11-16T19:20:29.968279+00:00",
+    "started_file_sha256": "7de054488d17f0873d77129eb8e5a6fabc7e07dcc64cfce15626440022f74a75",
+    "started_content_sha256": "a92131ad2189b8bec4d66049a556938435afb5b5832cdc18fa20153c891ca5fc",
+    "literal_initial_candidate_equals_this_uniform_C_program": true,
+    "independent_optimizer_replication": false
+  },
+  "final_selection_frozen": false,
+  "full_study_cold_audit_complete": false,
+  "useful_new_institution_demonstrated": false,
+  "method_superiority_claimed": false,
+  "publication_ready": false,
+  "scope": "First actual C-target own outcome, recorded exactly once in its original optimizer. It worsens C by3 against its measured warm reference; K160/uncollected40 is the already supplied accounting rule, not an invented efficiency gain. All four initial own outcomes are retained without loss rewriting, source/candidate repair, rejection or refill. No completed feedback-conditioned generation, objective/method ranking or independent population evidence is claimed."
+}

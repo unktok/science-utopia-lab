@@ -1,6 +1,24 @@
 # Current research status
 
-## Latest verified state: November16,2026 at19:05UTC / November17 04:05JST
+## Latest verified state: November16,2026 at19:22UTC / November17 04:22JST
+
+[First corrected C-target own outcome is complete](results/native-corrected-choice-first-cost-outcome-v1.json).
+Uniform/C/g0 has L_C-9.6667 versus its measured reference-12.6667, worse by3:
+U25.6667/T36/collected160/uncollected40. All183 actual scientist replies complete
+and their hashes verify. The exact observation is registered once in the original
+optimizer (pending[],proposal_index1,one primed reference+one own). Best known
+remains the better reference. The cost accounting behavior is supplied, not a
+new efficiency invention. Original42803 advances to matched adaptive/C/g0.
+
+Compared with the numeric U initial program, the C initial program also has
+different actual topic priorities, not only warm-parent cost code. Full model
+payloads first differ at ordinal1. Their U difference is not an isolated causal
+effect of the objective term. Four own slots are complete, all worse than their
+assigned reference, with0 ties/better/nulls; matched initial draws are not
+independent populations or full method comparisons. All24/four-step paths,
+final paired analyses/fixed evaluation and publication readiness remain open.
+
+## Earlier first free outcome:19:05UTC / 04:05JST
 
 [First corrected free/U/g0 loss and actual native effects](results/native-corrected-choice-first-free-outcome-v1.json).
 The submitted program completes at L_U-7.0 versus its measured parent's
