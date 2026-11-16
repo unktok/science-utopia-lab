@@ -1,0 +1,83 @@
+{
+  "actual_real_model_plan_prepared": {
+    "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+    "prepared_from_exact_original_native_evidence": true,
+    "scientific_started": false,
+    "source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4"
+  },
+  "audit_content_sha256": "204e8ba512de61a7cd47765ef6f57305fd4094a92d7cd5c94d0976c25aba1816",
+  "classification": "SCRIPTED-HTTP-corpus-critics-upstream-and-child-supervision-not-scientific-performance",
+  "content_sha256": "c9e38b483382d36375cc1e13bcfec0be0e7bfa9c39bec4609c3eb1e1ccdcae1e",
+  "cost_content_sha256": "f290c373204160887779c0ccabe5dc9727cb09ac352f41b448acdb6d35108ca7",
+  "exit_code": 0,
+  "independent_scientific_replication": false,
+  "new_real_model_calls": 0,
+  "original_handle": 28118,
+  "preserved_prior_attempts": [
+    {
+      "attempt": "a1",
+      "cause": "Intentionally SIGINTed own software test1964 after read-only inspection identified nonexistent fixture feedback fields, before generation1. Actual terminal records ValueError KeyboardInterrupt at free g0; not a spontaneous model/runtime failure. Five SCRIPTED native observations/three consumed slots remain.",
+      "source_commit": "01894aac"
+    },
+    {
+      "attempt": "a2",
+      "cause": "SCRIPTED probe chose uppercase mechanism identity; actual schema rejects finish. Next mock action exhausted its fixed list and is retained as unknown completion, no retry. Five SCRIPTED native observations/three consumed slots remain. Corrected prescribed probe identity to lowercase; production schema unchanged.",
+      "source_commit": "fcdf7931"
+    }
+  ],
+  "publication_ready": false,
+  "qa": [
+    {
+      "exit_code": 0,
+      "handle": 42656,
+      "junit_file": "research/data/native-priority-method-software-v1/priority-method-plan-v1-a1-junit.xml",
+      "junit_sha256": "d682baec99d23ad8b38db15366f1b6b7e4c742e1af5a4923bd96d273587bfd8e"
+    },
+    {
+      "exit_code": 1,
+      "handle": 75312,
+      "junit_file": "research/data/native-priority-method-software-v1/priority-method-public-v1-a1-junit.xml",
+      "junit_sha256": "9a45e15d3387fd6b5f376d2fa442daf800c0ab2a9cf252040998c249814c7a6d"
+    },
+    {
+      "exit_code": 1,
+      "handle": 92113,
+      "junit_file": "research/data/native-priority-method-software-v1/priority-method-public-v1-a2-junit.xml",
+      "junit_sha256": "58b0d4c20467f263fe09bd24bdae41e2d36c0bdbf1b481a43a524f583d720ccb"
+    },
+    {
+      "exit_code": 0,
+      "handle": 28118,
+      "junit_file": "research/data/native-priority-method-software-v1/priority-method-public-v1-a3-junit.xml",
+      "junit_sha256": "7ab8e3185ec64858b464a1790794e21b837101177943fe00b9ae99260c8d013c"
+    }
+  ],
+  "raw_files": 2361,
+  "raw_inventory_sha256": "ca3b4b8bfe37927668624ce520e4737debd70661757707e15d61b6d4602052b9",
+  "reported_seconds": 684.58,
+  "schema": "scienceutopia.native-priority-method-public-software-retention.v1",
+  "source_closure_files": 347,
+  "source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "verification": {
+    "audit_content_sha256": "204e8ba512de61a7cd47765ef6f57305fd4094a92d7cd5c94d0976c25aba1816",
+    "classification": "SCRIPTED-HTTP-corpus-critics-upstream-and-child-supervision-not-scientific-performance",
+    "cost_content_sha256": "f290c373204160887779c0ccabe5dc9727cb09ac352f41b448acdb6d35108ca7",
+    "deadline_supervision_tested": false,
+    "free_own_worlds": 8,
+    "native_worlds": 27,
+    "new_real_model_calls": 0,
+    "numeric_own_worlds": 16,
+    "own_slots": 24,
+    "public_prepare_run_and_double_cold": true,
+    "publication_ready": false,
+    "schema": "scienceutopia.native-priority-method-public-software.v1",
+    "scientific_improvement_demonstrated": false,
+    "scientist_SDK_POSTs_including_upstream": 4701,
+    "scripted_calibration_POSTs": 256,
+    "scripted_proposal_POSTs": 24,
+    "source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+    "upstream_native_software_worlds": 2
+  },
+  "verification_file": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-method-public-v1-a3/test_public_prepare_run_all_me0/verification.json",
+  "verification_file_sha256": "8494ebe86aadeeb44042b451dd1bab77212d4c4758ee5c846843e09e9f4064d2"
+}

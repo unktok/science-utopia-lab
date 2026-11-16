@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="155.565" timestamp="2026-11-16T12:59:23.848289+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_native_priority_method_public_v1" name="test_public_prepare_run_all_methods_and_paired_cold_without_new_models" time="153.820"><failure message="utopia.optimization.native_bounded_staged_designer.CompletionUnknown: staged HTTP completion unknown; no following dispatch">tmp_path = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-method-public-v1-a2/test_public_prepare_run_all_me0')
+fixed_corpus = None
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x127b9f2d0&gt;
+
+    @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_PRIORITY_METHOD_PUBLIC_QA') != '1',
+                       reason='explicit clean-source hardware window, no real inference active')
+    def test_public_prepare_run_all_methods_and_paired_cold_without_new_models(tmp_path, fixed_corpus, monkeypatch):
+        sdk_init = OpenAI.__init__
+        upstream = public_operator_path(tmp_path / 'SCRIPTED-upstream', monkeypatch, topic=True)
+        monkeypatch.setattr(OpenAI, '__init__', sdk_init)
+        monkeypatch.setattr(driver, 'SEED', 42); monkeypatch.setattr(driver.free, 'SEED', 42)
+        monkeypatch.setattr(driver, 'LocalObserverBackend', lambda **kw: ScriptedCritic())
+        monkeypatch.setattr(driver, 'native_sources', lambda old, source: {'original_source': old,
+            'SCRIPTED': 'upstream provenance only; actual current runtime source cold checked'})
+        old = driver.read(upstream['run'] / 'plan.json'); provider, scientist = old['designer'], old['scientist']
+        current = {'request': None, 'kind': None}; production, calibration, sessions = [], [], {}
+    
+        class Session(ScriptedSession):
+            calls = []
+    
+            def get(self, url, **kw):
+                if url.endswith('/version'): return Response({'version': 'SCRIPTED'})
+                if url.endswith('/ps'):
+                    return Response({'models': [{'name': p['model'], 'digest': p['model_digest'],
+                        'context_length': 65536 if p is provider else 40960} for p in (provider, scientist)]})
+                assert url.endswith('/tags')
+                return Response({'models': [{'name': p['model'], 'digest': p['model_digest']} for p in (provider, scientist)]})
+    
+            def post(self, url, **kw):
+                payload = json.loads(kw['data'])
+                if url.endswith('/generate'):
+                    assert payload['prompt'] == ''
+                    return Response({'model': payload['model'], 'done': True, 'done_reason': 'load',
+                        'response': '', 'eval_count': 0, 'prompt_eval_count': 0})
+                assert url.endswith('/chat')
+                if current['kind'] == 'calibration':
+                    calibration.append(payload); marker = 'nothing is executed or adopted.\n'
+                    text = next(m['content'] for m in reversed(payload['messages']) if marker in m['content'])
+                    target = text.rsplit(marker, 1)[1]
+                    from utopia.optimization.native_designer_preflight import CONTROL_JSON_BEGIN, CONTROL_JSON_END
+                    if target.startswith(CONTROL_JSON_BEGIN):
+                        target = target.removeprefix(CONTROL_JSON_BEGIN).split(CONTROL_JSON_END, 1)[0]
+                    action, _ = json.JSONDecoder().raw_decode(target.lstrip())
+                    if set(action) == {'name', 'arguments'}:
+                        action = {'tool': action['name'], **action['arguments']}
+                else:
+                    assert current['kind'] == 'proposal'; req = current['request']; key = digest(req)
+                    i = sessions.get(key, 0); sessions[key] = i + 1
+                    # Prescribed source/wiring probe, not an autonomously invented rule.
+                    actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED loss-aware interface test',
+                        'design_intent': 'Exercise new literal code and wiring, not scientific improvement'},
+                        transparent_office(req, identity='SCRIPTED-mixed-office-' + str(req['generation'])),
+                        {'tool': 'finish', 'rationale': 'SCRIPTED mixed-method software construction'}]
+                    action = actions[i]; production.append(payload)
+                    if req['generation'] == 1:
+                        assert len(req['history']) == 1 and req['observations']
+                        assert all(row['observation']['loss'] is not None for row in req['observations'])
+                        assert req['based_on_observation_id'] in {
+                            row['observation']['observation_id'] for row in req['observations']}
+                return Response({'model': provider['model'], 'done': True, 'done_reason': 'stop',
+                    'prompt_eval_count': 120, 'eval_count': 12,
+                    'message': {'role': 'assistant', 'content': json.dumps(function_data(action)),
+                        **({'thinking': 'SCRIPTED separate reasoning'} if payload['think'] else {})}})
+    
+        monkeypatch.setattr('requests.Session', Session)
+    
+        def child(argv, **kw):
+            intent = driver.read(Path(argv[-2])); current.update(request=intent['request'], kind=intent['kind'])
+            bounded.worker(argv[-2], argv[-1])
+            return {'timed_out': False, 'returncode': 0}
+    
+        monkeypatch.setattr(bounded, 'run_bounded', child)
+        root = tmp_path / 'mixed-study'
+        driver.prepare(SimpleNamespace(output=root, origin_run=upstream['run'], origin_source=driver.ROOT,
+            audit_one=upstream['audit_one'], audit_two=upstream['audit_two']))
+&gt;       driver.run(root); p = driver.require_plan(root); end = driver.read(root / 'terminal.json')
+        ^^^^^^^^^^^^^^^^
+
+tests/reports/test_native_priority_method_public_v1.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_native_priority_method_comparison_v1.py:271: in run
+    record = c.advance(simulation_factory=scientist_factory(directory / 'worlds', p, root),
+utopia/optimization/native_adaptive_search.py:648: in advance
+    definition = generators[identity](clone(record['request']))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/run_native_priority_method_comparison_v1.py:269: in generate
+    return free.base.generation_definition(author.execute(request, purpose='proposal', certificate=cert))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+utopia/optimization/native_workflow_staged_designer_v1.py:158: in execute
+    value = bounded.execute(session, kind=purpose, request=request, provider=self.provider,
+utopia/optimization/native_bounded_staged_designer.py:152: in execute
+    return replay(root)
+           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+directory = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-method-publ...-0/content-utility/authoring/proposal-a1d7ac4ca0fdfd1fe69a1b275315a6da5180884e310a6f1d1fa0507dfe095970/editor-session')
+
+    def replay(directory):
+        root=Path(directory);intent=checked(json.loads((root/'intent.json').read_text()))
+        result=checked(json.loads((root/'result.json').read_text()))
+        if intent['runtime']!=runtime_binding() or result['intent_sha256']!=intent['content_sha256']:
+            raise ValueError('bounded editor runtime/intent mismatch')
+        actual={str(p.relative_to(root)):file_sha256(p) for p in sorted(root.rglob('*.json')) if p!=root/'result.json'}
+        if actual!=result['files']:raise ValueError('bounded editor has changed or unaccounted JSON journals')
+        for relative,identity in result['files'].items():
+            if file_sha256(root/relative)!=identity:raise ValueError('bounded editor raw journal changed')
+        if result['execution']['timed_out'] or not result['worker_result_exists']:
+            raise CompletionUnknown('bounded editor worker ended without a known terminal response; no redispatch')
+        response=checked(json.loads((root/'worker-result.json').read_text()))
+        if response['intent_sha256']!=intent['content_sha256']:raise ValueError('worker intent mismatch')
+&gt;       if response.get('completion_unknown'):raise CompletionUnknown(response['error'])
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       utopia.optimization.native_bounded_staged_designer.CompletionUnknown: staged HTTP completion unknown; no following dispatch
+
+utopia/optimization/native_bounded_staged_designer.py:168: CompletionUnknown</failure></testcase></testsuite></testsuites>
