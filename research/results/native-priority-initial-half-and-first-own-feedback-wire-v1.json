@@ -1,0 +1,515 @@
+{
+  "schema": "scienceutopia.native-priority-initial-half-and-first-own-feedback-wire.v1",
+  "observed_utc": "2026-11-16T09:41:57.133273+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "first_12_own_slots": [
+    {
+      "slot_index": 0,
+      "cell_id": "uniform-priority/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "scbd86c6da048c335",
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "original_observation_sha256": "dbd14306f5ce72d95a60fce9e6feec12dea79720b4b1de251f6dd4bb41eb89d5",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 1.0,
+      "author_session_counts": null
+    },
+    {
+      "slot_index": 1,
+      "cell_id": "adaptive-priority/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "scbd86c6da048c335",
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "original_observation_sha256": "c9c0f17b7a72b5f1a70b8841912896bba2b386487aaec08029cb5761ffc754b7",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 1.0,
+      "author_session_counts": null
+    },
+    {
+      "slot_index": 2,
+      "cell_id": "free-code-graph/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "native-adaptive-c0cbd1982f59807194212235",
+      "program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "original_observation_sha256": "22c57307e42e7c0e04de2a17e650b0a5accca1494ce08703a3eb9bd05851f2bd",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 0.0,
+      "author_session_counts": {
+        "completed_steps": 5,
+        "attempted_tool_counts": {
+          "finish": 1,
+          "plan": 1,
+          "read_file": 3
+        },
+        "attempted_edit_steps": 0,
+        "successful_document_changes": 0,
+        "duplicate_unchanged_read_observations": 2,
+        "terminal_status": "generated",
+        "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d",
+        "reader_summary_sha256": "bb612e32ac8b7c9ba52a8caa055d27690a437d4f08adccdb4eab7eb0beb46fe6",
+        "session_files": {
+          "request.json": "2eb545e8ffee1cdedd789b2642aeda7be0d75beb0c14ed9b36adb1f0afda538c",
+          "step-00.started.json": "1b92742bb27ece4749f7605c7f734548a1fe4f5bb9c8e2832f96cf4fb8753763",
+          "step-00.completed.json": "3022970a44b03750a152ff7856871a513caafd2d583f521ccaa3ec3ee25c05ea",
+          "step-01.started.json": "ee33c7eba87963fe963e439a63d624b5c9a93016d8c1455bfa2245428308ba56",
+          "step-01.completed.json": "e417edcdb9815ee3d4d0c6ad6f308bf256de2d5ae9048375531ef819b210f650",
+          "step-02.started.json": "7b2b02dfdd80f0ee535b133811de5955d018fc8c9c0cb663e3094b9095238d82",
+          "step-02.completed.json": "d4adadbe9df78cf5ab7a058a06bf31130d1ed3b2fa287d9488ce2445810e049c",
+          "step-03.started.json": "f5483ef01106cd9488e16f735cdf91e1d6c6d479ae711f81bb375fdd1cc45e95",
+          "step-03.completed.json": "82f21f7aaf22c92bc3e94297fa806d416d9f0af57a01a62761e7ffd9581544bc",
+          "step-04.started.json": "10a26892e35099d92888c9512b6925970b65a7e55479faec78e57c8c11c14a7e",
+          "step-04.completed.json": "08bed32cd215053b33e9ab5e98d4fc6d4b53cac510b232c4b05d9173e0ded6d6",
+          "response.json": "1d60dab338f49efa2a1661d49bb8a440121479362c418e7fc931534035b63e6d"
+        }
+      }
+    },
+    {
+      "slot_index": 3,
+      "cell_id": "uniform-priority/history-0/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "suggestion_id": "se803cd930f3f7af2",
+      "program_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+      "original_observation_sha256": "50df13c0e8c4d9aa75fd35a4c0ce3e64bd6d61218de78688e3e7f8982c153066",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 3.0,
+      "author_session_counts": null
+    },
+    {
+      "slot_index": 4,
+      "cell_id": "adaptive-priority/history-0/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "suggestion_id": "se803cd930f3f7af2",
+      "program_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+      "original_observation_sha256": "97227a7ab118856ec81210381b393e7c00b479eefa8ffead195defab28ed7805",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 3.0,
+      "author_session_counts": null
+    },
+    {
+      "slot_index": 5,
+      "cell_id": "free-code-graph/history-0/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "suggestion_id": "native-adaptive-6f3e5b948760380187a6adea",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "original_observation_sha256": "10cab53f5526f958c3e0c09fd7201f8b9438f09cc9f877fcf59aa492136536a2",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 0.0,
+      "author_session_counts": {
+        "completed_steps": 14,
+        "attempted_tool_counts": {
+          "finish": 1,
+          "plan": 1,
+          "read_file": 12
+        },
+        "attempted_edit_steps": 0,
+        "successful_document_changes": 0,
+        "duplicate_unchanged_read_observations": 10,
+        "terminal_status": "generated",
+        "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e",
+        "reader_summary_sha256": "68636b3acfe9cf5588c6280c0b5e6fc2e7d135ef31adbba1df695c962ad950e8",
+        "session_files": {
+          "request.json": "9b2a905453df139d82e03b95560669cc765a9c0ea28225ecb4946e6bbb308184",
+          "step-00.started.json": "95057dd1cc3e4118ca4fe1f6fa0af041b9d43aff8fad85db54e8368b38ebf95d",
+          "step-00.completed.json": "ac54e8c811716a0107aafac9ca621cec6fb8127a0d6b469807e0167d3898b25b",
+          "step-01.started.json": "0b44ca8b914c23cdab9d7ca3f3903497200b747c505230734091242e222da90a",
+          "step-01.completed.json": "0eff1e6701a7bade1ac8f0c3bf4ea5972f439791ddaa275a0da9f84214b2d923",
+          "step-02.started.json": "c2d420badc9d1728c111e1e1f521edfe19a40cb4632e731118b1019eea9425d8",
+          "step-02.completed.json": "ff9f1657edf2c24b3b22d879b931b6d1fce655f9aeb3c38c536b16eb7338ce36",
+          "step-03.started.json": "ae70ffe7b04bf74fa8149e820a7bd45d0f9766568f5cfc79d073014521fad6d1",
+          "step-03.completed.json": "7a88aca18ccd924d3de06066d697ca0cd5bbbb169c399120e36cea93aaef86fe",
+          "step-04.started.json": "5045290389f84b8940d14010cc99de8140c23e724f8734b5e94767c990ef550a",
+          "step-04.completed.json": "461119a69e88a27e72dd297d20b988b5a3f3f33722779f20890251bf2dc88b9f",
+          "step-05.started.json": "c1055885e99453f7d455b876b164f970e1cf683095e57cdaeadf433482b42c4c",
+          "step-05.completed.json": "c3737d070c51723ad4099f42498cb2871eca3e9edb73463544f463ab0e888601",
+          "step-06.started.json": "edd2de0f651ae688f033ce1a9e6254b65c154b08de0afc3ce4317ba451fac706",
+          "step-06.completed.json": "13a078348bfa27913c6bb12cf168f573ab39f2a4665157d72cdce10d0b9158a7",
+          "step-07.started.json": "2c516e47f2fa76c7fb8a7786bcb4073740d7d688788d3763f5189298b1cbfff0",
+          "step-07.completed.json": "af4c0f94c25a0b193bbdf853b03db800bf69243c556fd934cefa68b34083bc36",
+          "step-08.started.json": "0073ed00661a933e271d72f294a94e3307602240529b78bfbd8e168f6ebe59aa",
+          "step-08.completed.json": "ea0c7a7098763709ff38851b51cb247afc0eda3559af0f12684189db1ee765b5",
+          "step-09.started.json": "83d8eae140c2613b16ee92d77202e574d9579b2d8b5c130f5f5e5098c37a17ca",
+          "step-09.completed.json": "d474fe8c6b8eb3528380022be3df7e9f80b357c55ea9d6942283bdd25f479609",
+          "step-10.started.json": "5a38974a83a6aca8b8c7f0435d2c01053c33a69d653f05cd1acb201f53dbe5da",
+          "step-10.completed.json": "ca62e7b13e721d65acfe1ffe478c470ccd46e4bf9d3f4b5a1f8baa0e3d4e0dbe",
+          "step-11.started.json": "72b26a28c3371050d93e3c150f17b32fb93f9ef9e5a15cc0d4b7555949b7a03e",
+          "step-11.completed.json": "32cd36c28d7b080a53c3d2aaddf5de8c8ab1d203ee4589452a0917c31178e2c1",
+          "step-12.started.json": "2897dd65cbdb9b65d022ce1bff011a615ac56f85533f068f7381c5577c07c4f6",
+          "step-12.completed.json": "e871cb5fd0d1b14e41051a1ca52e1858b2316d7de92fcd623303073b9cce4ed4",
+          "step-13.started.json": "65fce37b629709247ac8ddfdf90dd7faf5fab30b941dec6cbf2338e4708302f6",
+          "step-13.completed.json": "5d5c813b012067c3bd565b59b1a63a0effca4aed8c6c19be77f08dec56fba2c0",
+          "response.json": "3e82dfa49be9d5bef6869932f1acc61daae1668dd55f6541f23743b0eef52d06"
+        }
+      }
+    },
+    {
+      "slot_index": 6,
+      "cell_id": "uniform-priority/history-1/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "suggestion_id": "s439cf53bd46638ab",
+      "program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "original_observation_sha256": "678aefee620bd5bd60f25497689eedf698979f6d2c6d2b4726349ee68a0a5688",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 0.0,
+      "author_session_counts": null
+    },
+    {
+      "slot_index": 7,
+      "cell_id": "adaptive-priority/history-1/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "suggestion_id": "s439cf53bd46638ab",
+      "program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "original_observation_sha256": "72b8e3f7cd0415d3d53cdc19696aac9aba4ad9df29d877f106d2e349d61125d4",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 0.0,
+      "author_session_counts": null
+    },
+    {
+      "slot_index": 8,
+      "cell_id": "free-code-graph/history-1/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "suggestion_id": "native-adaptive-ada832b4da4e271303815783",
+      "program_sha256": "c61f9b554a916750e62db9328d5e9bc062309457e4936470d1e641d090e1d853",
+      "original_observation_sha256": "2f93a65267cd1ac38e907f888a38b484ee624c671044bdcfbd78406526a22470",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 0.0,
+      "author_session_counts": {
+        "completed_steps": 14,
+        "attempted_tool_counts": {
+          "finish": 1,
+          "plan": 1,
+          "read_file": 11,
+          "write_file": 1
+        },
+        "attempted_edit_steps": 1,
+        "successful_document_changes": 1,
+        "duplicate_unchanged_read_observations": 7,
+        "terminal_status": "generated",
+        "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/authoring/proposal-433491200e85160544613bcb82fa58e9805da041674698e6a385335d231b9f80/editor-session/authoring/generation-433491200e85160544613bcb82fa58e9805da041674698e6a385335d231b9f80",
+        "reader_summary_sha256": "f12895b219442dbd669ad86463d78f3a13bf48b4445d94fd1745685905a34284",
+        "session_files": {
+          "request.json": "acc07c909f909c0c74442cad170bb4c18af7273676b554f84a98581256be54e3",
+          "step-00.started.json": "f8d00a8afe494370fd746b7bef7f3130e46e559ded7952636450fbcfbdfefecb",
+          "step-00.completed.json": "1171791d41ce550a18d2de52627876dfa4f16d28e131c1a5dacaf8f7c57ce776",
+          "step-01.started.json": "ffca6410065574ddaeda7dd10cff7a05f7c4807cf17cb5412d4464c930438064",
+          "step-01.completed.json": "f4f02508cd0ea9afbe7e6c068160717097b8d6a985c4a156f737d83ae3765471",
+          "step-02.started.json": "a68341859243701e16fe1fcf26458ebba5f3f665882c3f175fcebb77c1475e3c",
+          "step-02.completed.json": "d55cd4c4a8e1bfa734c8432f5cc21634c99f38ac7d0fad54ee66c4835fb40f67",
+          "step-03.started.json": "36a5c08e294bef94082e4143a03d5ce873dbc7213320ca8e5c93ebb3a941c79d",
+          "step-03.completed.json": "7668d19ea053a0e28b8f4b2add1f22c730913c4a0974bb1cddda1d8b4797c899",
+          "step-04.started.json": "2ede39631ff48e870674e9535442f090357d958a6b485aa23f34f456813e87ad",
+          "step-04.completed.json": "18328f4bbf768caafae1286aecd8fe807c73c8144256247630c0bb3779c99c1e",
+          "step-05.started.json": "7771b5daef7ee9578fef2178b091ce1bc805b0ca60747927bf6e69858e6aacae",
+          "step-05.completed.json": "87947ee82e565c1fab9d1a637ede7e2605560191a7ddce6b64159d576b00b791",
+          "step-06.started.json": "e35894d73484b6b4b06b969c6530ee8acb684b2e27906c358357ebd40949f0a9",
+          "step-06.completed.json": "6d1777809cbd9758ad0e1bcb89ef28453c0e30fc2d8d821254613a38ca26cdb5",
+          "step-07.started.json": "083e6d79ea43053aa7366ae895e445c97c7f4d1ed85d4239db7a3d43195259db",
+          "step-07.completed.json": "e88b495fcdbc9411440407428d2e974fbd46c1adafd2d9811bdb1f19447362cf",
+          "step-08.started.json": "3e109d6eba496e005bf5f6c99273e7f4bf7b8e47faa138c205d4890b2017cc6a",
+          "step-08.completed.json": "90944f9b89614964b173678726bc9deed7a20161f00747e63cb29f506fbae2ca",
+          "step-09.started.json": "40e0d7cf7b9a39126c30ae3f0f82476381c298d852ee4ec22ae9a44f22470bde",
+          "step-09.completed.json": "00a46c4456405aac01ce739ed6d5a1871d2ffdc81ea4dbdbbd1c12cfa62543a2",
+          "step-10.started.json": "c8ccbb599b821709c203e3d1bccca4a1c031b47492df1a025e1e08bee46f5c8c",
+          "step-10.completed.json": "78b8d4a2fdabead4379f6ac824d19c55bc33ac94aca41ddb4d28612e0c9cdb50",
+          "step-11.started.json": "29372ab000444cc6335d636e9790ff3d4f49c23239a56537945265d0c82d0989",
+          "step-11.completed.json": "d94f03f4d6ad22c850ed892cc8d5308dce9dba46d3e8efce5c09a376149cc22c",
+          "step-12.started.json": "a42bd09993ec7e0ef382ad14e469541b80e7e4ce940ef39f4ec50361a7908806",
+          "step-12.completed.json": "a4489f4affa337ca0d68910fc6d60f253fc59e3809f7ed77532b72a86b2eae93",
+          "step-13.started.json": "6fb827e67bc5f013f298e4ca6cfce80128079f4115043cf470f989cfb30d41b5",
+          "step-13.completed.json": "4c7dd4aafbe7696a885c177722cb74c898d52275347dc85e5cab4e998411be8d",
+          "response.json": "625f74d351ebf5d076ab62e514b90be3591c7f9e887e5466d427e6bbd47e1541"
+        }
+      }
+    },
+    {
+      "slot_index": 9,
+      "cell_id": "uniform-priority/history-1/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "s4ea8e2cb523eecde",
+      "program_sha256": "34a9bfe9ee25338fc8cf1e8d34b897089fb3b2296cc81bb16b7d5ab47de69505",
+      "original_observation_sha256": "c50c79ced6e2c12b179c6a1510c036b4371427c23bee9ea8ca0678ae781b9ff3",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 3.0,
+      "author_session_counts": null
+    },
+    {
+      "slot_index": 10,
+      "cell_id": "adaptive-priority/history-1/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "s4ea8e2cb523eecde",
+      "program_sha256": "34a9bfe9ee25338fc8cf1e8d34b897089fb3b2296cc81bb16b7d5ab47de69505",
+      "original_observation_sha256": "0f1d6fb2d846e864f33fbfd13f2a8b64f7eee5dbaf5b393f58a0c44fce38d65b",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 3.0,
+      "author_session_counts": null
+    },
+    {
+      "slot_index": 11,
+      "cell_id": "free-code-graph/history-1/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "native-adaptive-50d7b177a3220913368b0bad",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "original_observation_sha256": "82d9aeee1cbd2af75e5b804b4676b17101b48e860b5958e699108a6473a15ab6",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 0.0,
+      "author_session_counts": {
+        "completed_steps": 14,
+        "attempted_tool_counts": {
+          "finish": 1,
+          "plan": 1,
+          "read_file": 12
+        },
+        "attempted_edit_steps": 0,
+        "successful_document_changes": 0,
+        "duplicate_unchanged_read_observations": 8,
+        "terminal_status": "generated",
+        "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/resource-aware-content/authoring/proposal-c89226c29fabcb10953a33955946ff1eab4e577961f66a985a50801ef0370f61/editor-session/authoring/generation-c89226c29fabcb10953a33955946ff1eab4e577961f66a985a50801ef0370f61",
+        "reader_summary_sha256": "d4a73f5b9476d5b7b6f13eadc9dd640136b65f45695a2dd60bc6796de562b5c6",
+        "session_files": {
+          "request.json": "b9728af23970d49dd9e46ae28a31f585d4881da45814c89ecfbf1d9c1ba8ed1a",
+          "step-00.started.json": "79dc6e059907f5831ee628a20aa6621418f7ef02a70a59a3c407e0fb9886d3e2",
+          "step-00.completed.json": "fc5db3bb31430cc9f3ecdac144f9c8ad3a4a39838ee4db4b078e84410492fb4e",
+          "step-01.started.json": "f77a83d88a072eae31c9ef0cbe822322119d912917e244b706bf6d4b5a183ee3",
+          "step-01.completed.json": "7485aaa3145dfeb356af00cf4dacd33960d4786be7d5ce668b2f0ff11c2546db",
+          "step-02.started.json": "c46dcaa743409f1ebf70c40a5b062daf90d9d03de082d715cddeeb186b4d4077",
+          "step-02.completed.json": "a0c8a8dd10986cf45a66064891ae04512884d38406df74dab4300957cc79cc24",
+          "step-03.started.json": "7e1f6f8b4943c66dd5e837173ca8e2a153d36de08c4267bd32527b5b856ead58",
+          "step-03.completed.json": "965350bc07b16b6d068d7f868a95e4851157c90caec8576bf642bdc8077fc5c2",
+          "step-04.started.json": "b3cd370de7a28a8e9db43c3a611d3c78c2c90c596f1a25319a859e4382e8f3e4",
+          "step-04.completed.json": "84606830561d587077506e2697add449b87ddb138614fb7c6de8ffbc227575fa",
+          "step-05.started.json": "296a9f02dfcde05e87dc96a465698fa82dc5dccd713bec59a73da98de2e27216",
+          "step-05.completed.json": "566f245e2625079c455386fa08420140cad6816199e4ec25ba3e6d6bc063e4ec",
+          "step-06.started.json": "86c435087c04de55d3f1393cdbadc9d92ca4c9e014f0fd9e9097e86e42afdc17",
+          "step-06.completed.json": "09a0462a84644e5125dc071bcf885932bb6dc59f24295d9943a5fda208bacb77",
+          "step-07.started.json": "e4a27f1a0087a249e0dd1464bae8736e1db3504a6cb73c2d3fd102c69090f16e",
+          "step-07.completed.json": "54500a5def5f213b71b8f7336efc3e2d47fce04992f68d2a2b791125b60779e1",
+          "step-08.started.json": "957b3588cf30419205504f2c73f8718e68d21970983444ca45c8e6d3b2bd602d",
+          "step-08.completed.json": "0cf5ac152e83a86eeea209512e084fceaca5d7abf3ccbc99d724f7a1e44302f4",
+          "step-09.started.json": "8f8cebbd6119d6f2da7df990fff88a1d91cb9281b896c14e78b4585883c86bd0",
+          "step-09.completed.json": "d45171c362fb1c6d057317336daf1b085899ce53d0ad4b537d80ebd8a1fe14ad",
+          "step-10.started.json": "3d3b38e0035faf95d2640ccd71640baa20f045295f4ea63a9036ef5d2908b141",
+          "step-10.completed.json": "8121735960fe3a75fddaf46d88666f292f621bb979129746b43dafd4307b8fed",
+          "step-11.started.json": "4d52a100d2fcb79eab0b2e3a16e06815176619ebfe2cac58120d145eaa319281",
+          "step-11.completed.json": "963fef516d4a3886def71f0ef657ebdd4e0ce80a370a2087a0a5a5ea0447382c",
+          "step-12.started.json": "296cf2c037c63234e9a2f9c2fc91175cc242634c33f8b479dd197679929920dc",
+          "step-12.completed.json": "fb97123a295d8b38be52d1f94d202bc95f4ee4f9e363de79feb96d19db84e817",
+          "step-13.started.json": "347abfb388d09e7f6373ab4a82186c0319364637a33da674d57cc2002889f240",
+          "step-13.completed.json": "f9ccd48e04555e4f0d55df396f74b95f549faef0ae0a208eee793b26494f256a",
+          "response.json": "8c474211dc13154cadb0022872146fa48dc1e33be9d694bd774d0171df0aa230"
+        }
+      }
+    }
+  ],
+  "assigned_loss_vs_visible_reference_counts": {
+    "better": 0,
+    "tied": 6,
+    "worse": 6
+  },
+  "first_next_generation_own_feedback_wire": {
+    "cell_id": "free-code-graph/history-1/resource-aware-content/generation-1",
+    "request_sha256": "a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136",
+    "source_context_revision_on_actual_wire": "matched-bounded-author-64k-v1",
+    "prior_own_observation_id": "observation-native-adaptive-50d7b177a3220913368b0bad",
+    "actual_own_loss_in_next_completed_model_request": -12.666666666666668,
+    "actual_own_status_in_next_completed_model_request": "complete",
+    "wire_sha256": "85fcb4a391c2e4c1a075f71934699a08b6b637dcac4ce9e848acc170515da953",
+    "model_call_done_reason": "stop",
+    "first_action": "plan",
+    "scope": "Original measured own scalar reaches a completed next-generation backend request; not model understanding, useful use, changed system or improved loss. The frozen old workflow/context is still in use."
+  },
+  "mutable_campaign_snapshot_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/campaign/native-adaptive-state.json": "0ac96d1ea7d53e146c60f29375e1bc7dcf56e40238fc0cdf7170013f689362c2",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/campaign/native-adaptive-state.json": "3aa321c9aa307572364fc98ce55c98ec7a0f33d48b6d62992d409546f24b91e0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/campaign/native-adaptive-state.json": "b459970d4798c5daa294c80ada1cb3a209b3433f091de0f5f8974186a1c7da77",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/resource-aware-content/campaign/native-adaptive-state.json": "8927cbae17a1db42e14a7bf6e94036e3ec835f1dda8fbffeeef6e8f304212e97"
+  },
+  "bound_original_immutable_files_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/plan.json": "91a63d5753f0f30b5470bdd725bd42365a610cb8f61a1a3002e3175b68d1925b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/observation.json": "a24e4a0eb6bafdde1f24d2be09684d8b42140ef8b70a8f874fcb12504770e41f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/observation.json": "422d8364c91454a183ee0e90719407467b07e8009d8d92d7a7671a2e265cfa3f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/000.json": "ecdbda5229d64c8237e01ef5217c27230d586c43d2d789d9aa604dba4d98cb83",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/started.json": "95a0d265f82ffe6f3f9199116afc6dbfc2f763772d3f0f708cde0315c4e74e0b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/observation.json": "ee39bb52e82bb6cb64283db693d798927c63e5c5bcfaae9506d9413dfdbbf09a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "d8fe4a28b7aa58aa0050d49badf467bb806b0cc0d89b46855ea46595a0caa099",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/001.json": "ef964e463932e5aaa6cd80cb379c3ad77c0f4cc986696576dddf732d7974d650",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/started.json": "37fa3c9339d1e3292a07e2a97bc7d37fa054f7671a22d6742cbad0fc8358c375",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/observation.json": "21cf1bab66854c71b024687f4c3c298587712743e33c3817ddb16c66521bf9f4",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "af66601d81b991acfb17ab0c8eb81a5e94f8d1f64766ff1b73e89a84a2ed9fdf",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/002.json": "bd7182afcf906de86d3a6bd5274379503ce1191e944ed159361273c23dd3437e",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/003.json": "485cba3f16e19ee2d95391ccab411d6e1ac60f60b70d06ac3f0e9fe535353910",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/resource-aware-content/generation-0/started.json": "f92a237ba6d37ef5f0d20f81b93f6fe411ea9e3d95304308bef897497c189492",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/resource-aware-content/generation-0/observation.json": "a5e046e5abe2e5b2d3b2d96d2b83d720881c162eb164aca983883aa95919ed8b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/resource-aware-content/generation-0/optimizer-after-tell.json": "0f69735cfbd96e009b313b3388996c8b0793c662853c36935bbdd1cccec8e6c0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/004.json": "5261786eb5a97f187798f7d789686db4d8a32b1f1cdc2e8af9ecf641c0bacc40",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/resource-aware-content/generation-0/started.json": "4c587b55310ec0c2edf2316440dd3c4fd50a8345bea66a4cb91484ed15d5942c",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/resource-aware-content/generation-0/observation.json": "b4d6ab0af6c2606ace5ec23c7798d2eccbc25c5ff48754fabee41cffa017c4b0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/resource-aware-content/generation-0/optimizer-after-tell.json": "e0e417a26ebfcda9db9a44b5b32c11c5b20ec0b9b2bfc5dbb8e835db568c47e7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/005.json": "4a548a39e593b854fb8e2960cf76878b91c0c2ef75cfc0347e5af320678930b9",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/006.json": "34b5346dc3e427916040724dab2f2811f6335ea8aff4e85a103c357778641c31",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/content-utility/generation-0/started.json": "d0dc742f68bc1ef7525ade6d8c6858419323862d744c883900ac17d14dd034e7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/content-utility/generation-0/observation.json": "220f1000c16f04e00efc8d4cdc9e76fff5d30588e5f9f207c6f8c7be1ac99939",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/content-utility/generation-0/optimizer-after-tell.json": "13655e365d95d4bbdd4af52f3e3f1f4552f33e7cd2953bbd9b977caa98b95422",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/007.json": "f474108b87eb3bd0b8ea27630cdd3ded1c4f0520e6a49f96691f8ef4f4d43a71",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/content-utility/generation-0/started.json": "22acb98894420e05251251c56646408359fb2125b9fd2fa4145f29b73952586e",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/content-utility/generation-0/observation.json": "f1e8a25b6561026ae68c9b35ce15f63ae939f3c5d8bef4d86406bc72d31dd99b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/content-utility/generation-0/optimizer-after-tell.json": "9b89b3fbd077fd89f5afa240c64ea59eb27e5bc71a7f10c5c44276c1452f71be",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/008.json": "acb5704e6a1304e6865a85f9837b88f8a4890de3f1368adbfb73f69d326af03d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/009.json": "ea4b5b93a88d593bc3a4731ffa01e68503e47a1749ccff46bc7638fb618af0d3",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/resource-aware-content/generation-0/started.json": "c9e68a0ca9e147ba4dcbb60125e55885bae72dbf9e05ecd1379ed2fda06058ea",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/resource-aware-content/generation-0/observation.json": "8ccda6cdf49ae0ff32316780f2218d061d0310ac3620a042f023517e75872904",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/resource-aware-content/generation-0/optimizer-after-tell.json": "119a0151c17d20c064dbb62790ae972b3cb69ae4d33dafbc2667e3c93262d918",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/010.json": "ba0d12eb480759390f02c3977187b5db7f055f0f145352d31043cd544302b425",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/resource-aware-content/generation-0/started.json": "8d6598f9ab6855b7b338701fe2c10b70142a6b114f0c28e2df8aec03274aa9c2",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/resource-aware-content/generation-0/observation.json": "2cd8b83302bb49057a17e37c238e47e8d0dfbacf915487a80adc07b1b7fa5d0d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/resource-aware-content/generation-0/optimizer-after-tell.json": "1879e67f33e30dc97d2f4df4a2ba8d04d13c39db6736a798c12f4a6609cd1afc",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/slots/011.json": "1cd04f457e78a388a211ea64f251811c9df4802743cb20d1db6e8778b689367d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-00.completed.json": "7a498d298b1c3c306ffaf7bdc33c5702008ca4fc8ac3dbadb0e0dc308bf84445",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-00.started.json": "ea3c92be564866debf0dba0d66454d89ebe1cb85b168413a953663e74c9aa90e"
+  },
+  "current_stage_snapshot": {
+    "active": "free-code-graph/1/resource-aware-content:g1",
+    "observed_utc": "2026-11-16T09:18:28.932619+00:00",
+    "stage": "optimization"
+  },
+  "whole_cold_audit_complete": false,
+  "final_selection_frozen": false,
+  "workflow_visibility_bug_diagnosed": true,
+  "scope": "Initial half of the declared24 own slots, not final selections or a closed comparison. All12 complete observations retained; paired initial numeric proposals are not independent samples or exploitation. The original author workflow visibility mismatch makes this a legacy source-specific exploratory pipeline, not a clean isolated objective/method-effect estimate. Valid native outcomes are not reclassified as nulls. Own scalar feedback reaching a model is not useful invention. No active source/settings or loss changed.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "publication_ready": false,
+  "content_sha256": "4d7831c35ffaa96a3cd734bb6bace56912591aa1af21f0888a5d2f9b7bb010bb"
+}

@@ -11,6 +11,10 @@
 さらに簡単な数値世界へ置き換える理由でもない。
 
 現在の実行状態・達成範囲は[STATUS](research/STATUS.md)を参照する。
+重要な修正：[設計者の文書可視性と作業フェーズの不整合](research/components/native-author-workflow-visibility-correction-v1.md)
+を実記録・完全な元世界データで再現し、次回ソース向けに修正した。進行中の旧ソースは変更せず、
+測定損失も消さないが、その旧比較からモデル固有能力や純粋な目的／手法差を因果的に結論しない。
+修正後の実モデル校正・native通し検証・有効性は未実証であり、87件の軽量検証の成功とは区別する。
 最新の確認済み統合PDFは[104ページの原稿記録](paper/integrated-consumer-source-build-v1.json)
 と[PDF](output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf)。
 以前の意味ある研究を保持し、自由制度探索、回収費用の対照、元世界の実装sourceを
@@ -103,6 +107,10 @@ C損失を4改善する対照であり、自動発明ではない。三つ目の
 [10件目](research/results/native-priority-tenth-own-outcome-prefix-v1.json)の数値C候補は親より3悪化。
 終了後の全8自由提案の結合集計は、別固定sourceの[実際の待機処理](research/components/native-priority-author-outcomes-continuation-v1.md)
 として稼働させた。69件の軽量検証とは別に、実データの結合集計完了はまだ未達である。
+[初期12件](research/results/native-priority-initial-half-and-first-own-feedback-wire-v1.json)は全て測定完了し、
+対照への6同点／6悪化／0改善。次世代の実際のモデル入力へ自己候補の損失が渡ったことも確認した。
+ただし[可視性不整合の診断・修正](research/results/native-author-workflow-visibility-correction-v1.json)により、
+旧pipelineの解釈にはインターフェース上の交絡を明記する。修正後に改善するとはまだ示していない。
 現状の実行位置は短い[進捗一覧](research/STATUS.md)を参照する。
 全24自己候補・最終選択・全体監査・実結果の可視化はまだ未完了。
 [全候補・探索経路の集計](research/results/native-priority-method-readout-preparation-v1.json)と、

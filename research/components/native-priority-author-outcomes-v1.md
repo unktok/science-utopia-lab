@@ -3,6 +3,11 @@
 [Exporter](../../scripts/reports/native_priority_author_outcomes_v1.py) is
 implemented for the normally closed24-slot study. The real all8-free-session
 join has **not run**: the original scientific writer is still active.
+The [later visibility/phase defect diagnosis](native-author-workflow-visibility-correction-v1.md)
+qualifies the old pipeline's interpretation. Its valid observations/actual
+action counts are retained, not nullified; the frozen5bf61d6e continuation is
+not changed to apply a prospective author fix. Inspect all8 original workflows
+after closure before inferring clean objective/method effects.
 
 All8 compound cells survive, including generation/execution nulls and missing
 session evidence. The reader joins full action counts and submitted program/

@@ -7,6 +7,16 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November16の重要な修正：[文書可視性と作業フェーズの不整合](../components/native-author-workflow-visibility-correction-v1.md)
+を実33要求・完全な元世界3状態で再現し、次回ソース向けに修正した。旧ソースの測定損失は正しい
+観測として残すが、親／編集後文書のサイズがallowed-tool scheduleにも作用していたため、
+現在の旧pipelineを純粋な目的・手法・モデル能力の比較とは呼べない。修正後の有効性も未実証。
+[初期12枠](../results/native-priority-initial-half-and-first-own-feedback-wire-v1.json)は6同点／6悪化／0改善で、
+自己損失が次世代の実モデル要求へ届いた。これは重要な差別化・一般化・改善の根拠の代用ではない。
+四つの稼働sourceは変更せず旧条件での閉鎖を保存する。87軽量check（1skip/1deselect）だけで
+新sourceのnative通し検証や実モデル校正を済ませたとせず、[是正後の研究判断](native-priority-visibility-correction-plan-v1.md)
+に従ってR2/R3/R5/R6を引き続き未達とする。過去の時刻付き記載は履歴である。
+
 November16 07:54UTC更新：元世界の[新手法比較](../results/native-priority-method-dispatch-v1.json)は
 実行中で、自己24枠中7枠が測定済み。対照より良い自己案はまだなく、最初の自由設計2件は
 各親をそのまま提出して同点。[全操作集計の実装・実ログ照合](../results/native-author-step-summary-retention-v1.json)

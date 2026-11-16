@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Critical author visibility/phase diagnosis and prospective repair](components/native-author-workflow-visibility-correction-v1.md):
+  real whole-document data reproduce2 pre-fix failures; fixed runtime195739f6
+  passes87 relevant/scripted author-wire/replay cases with1 optional skip/1
+  explicit deselection. Running sources remain old/pinned. Do not interpret
+  this legacy pipeline as an isolated clean method/objective comparison or
+  infer useful benefit from the fix. [All raw-wire/test/fixture bindings](results/native-author-workflow-visibility-correction-v1.json)
+  and [publication decision requirements](publication/native-priority-visibility-correction-plan-v1.md).
+
 - [New finite uniform/adaptive/free-method protocol](protocols/campaigns/native-priority-method-comparison-v1.md)
   and [actual pinned real dispatch](results/native-priority-method-dispatch-v1.json):
   two U/C losses, two optimizer histories/method/objective,24 own slots and3
@@ -28,7 +36,9 @@ This page is navigation, not a chronological experiment transcript.
   now show no gain/same179 researcher inputs across4 years. [Outcome10](results/native-priority-tenth-own-outcome-prefix-v1.json)
   worsens C by3. The [fourth pinned continuation](components/native-priority-author-outcomes-continuation-v1.md)
   actually waits for original paired readouts;69 light tests are not future real-export proof. This is a
-  prefix, not the completed24-slot comparison. See [STATUS](STATUS.md) for the
+  prefix. [Initial12/first actual own-feedback wire](results/native-priority-initial-half-and-first-own-feedback-wire-v1.json)
+  now records6 ties/6 worse/0 better and literal loss feedback reaching g1.
+  This is not the completed24-slot comparison. See [STATUS](STATUS.md) for the
   active slot/source/processes and [first free journal](results/native-priority-first-free-submission-prefix-v1.json)
   for the five applied/finished actions, without an invented institution claim.
   [Actual year1 effects](results/native-priority-first-own-year1-actuation-prefix-v1.json)

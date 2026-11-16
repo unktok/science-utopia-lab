@@ -1,8 +1,26 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at08:42UTC/17:42JST.
+Last scientific snapshot: November16,2026 at09:41UTC/18:41JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
+
+## Important author-interface correction, not an active-run patch
+
+[A real visibility/phase mismatch is diagnosed and prospectively fixed](components/native-author-workflow-visibility-correction-v1.md).
+V45 sends whole compact JSON under65536 bytes but inherited V44's spaced-JSON
+phase calculation. Three actual sessions/33 completed requests show14 calls
+that stayed general despite a full document and3+ inspections. Objective text
+was present/correct. Valid native losses are not corrupted/reclassified, but
+the old run is a legacy source-specific exploratory pipeline, not a clean
+isolated method/objective comparison: parent/edit byte size also changed tools.
+
+Fixed runtime195739f6 uses the actual inclusion decision and named context-v2;
+87 light/scripted author-wire/replay cases pass,1 optional V43 archive is skipped
+and1 historical case deselected. Three complete real-document fixtures are
+mandatory. No corrected real-model/native proof is claimed; fresh source-bound
+readiness/integration remain necessary. All four running sources stay unchanged
+on the old context-v1. Old records/certificates are not repaired or reused.
+See [publication implications/next steps](publication/native-priority-visibility-correction-plan-v1.md).
 
 ## Purpose and present answer
 
@@ -31,8 +49,8 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | Ten complete observations so far, not final24-slot closure. No completed own improvement over its assigned strong parent yet |
-| Current stage | Adaptive priorities/history1/C/g0 at the snapshot |
+| Own outcomes | Initial12 own observations complete:6 ties/6 worse/0 better than visible parent. Not final24-slot closure |
+| Current stage | Free code/graph/history1/C/g1; actual own scalar reaches a completed next-generation model request, still old context-v1 |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
@@ -56,6 +74,14 @@ plus [seventh outcome and complete author summaries](results/native-author-step-
 | Adaptive/1/0 | U | -28.6667 | Same paired initial proposal/inputs/choices as uniform; no exploitation step yet |
 | Free code/graph/1/0 | U | -28.6667 | Actual feature-source edit; same179 researcher inputs/choices and loss as parent |
 | Uniform/1/0 | C | -9.6667 | Three worse than visible terminal C parent; literal feedback retained |
+| Adaptive/1/0 | C | -9.6667 | Paired initial proposal, three worse than terminal parent |
+| Free code/graph/1/0 | C | -12.6667 | Parent retained/tied,14 actions and no edit attempt |
+
+[The initial12 and first next-generation own-feedback wire](results/native-priority-initial-half-and-first-own-feedback-wire-v1.json)
+retain all observations without favorable filtering. The prior own C loss-12.6667
+appears literally in the next completed planner request. This verifies feedback
+delivery, not model understanding/use, an adaptive advantage or improved loss.
+Paired numeric initial samples are not independent policies/exploitation.
 
 [Outcome8 and the next actual edited submission](results/native-priority-author-outcomes-preparation-and-first-edit-v1.json)
 retain all original feedback and the first literal source write in this study.
@@ -101,6 +127,8 @@ An [actual pinned continuation](components/native-priority-author-outcomes-conti
 now waits for the original paired readouts, then exports this join twice.
 Its real future exports have not run.69 light cases include SCRIPTED orchestration,
 not completion of the original study or publication readiness.
+That old5bf61d6e continuation stays unchanged by the prospective visibility fix;
+its eventual all8 action counts need the separately recorded interface caveat.
 
 All3 references have36 accepted decisions/U28.6667 and179 matching complete
 scientist input/choice sequences. The known terminal rule changes K200→160/

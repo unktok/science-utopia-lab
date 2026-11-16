@@ -1,5 +1,13 @@
 # Prepared public native evaluation proof: not yet executed
 
+New scope note: [the prospective author visibility fix](native-author-workflow-visibility-correction-v1.md)
+changes the author context contract. Earlier public/calibration receipts cannot
+prove that fixed author. Pin/reverify the exact chosen source before executing
+this prepared proof; never modify the running705b5259 study. A selection-fixed
+evaluation of its old submitted programs has zero designer generation calls
+and remains a separate question, not validation of the corrected inventor or
+a clean corrected method comparison. No guard/old receipt is weakened/reused.
+
 The opt-in test is
 tests/reports/test_native_priority_fixed_public_v1.py. It calls the public
 development prepare/run, two native cold audits/costs, paired development

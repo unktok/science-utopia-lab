@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="3" time="1.874" timestamp="2026-11-16T18:05:27.918461+09:00" hostname="flower-man.local"><testcase classname="tests.optimization.test_native_bounded_author_workflow_budget_v1" name="test_full_document_actually_supplied_must_enable_its_implementation_checkpoint[parent-zero-61892-65479]" time="0.130" /><testcase classname="tests.optimization.test_native_bounded_author_workflow_budget_v1" name="test_full_document_actually_supplied_must_enable_its_implementation_checkpoint[parent-terminal-62755-66342]" time="0.089"><failure message="AssertionError: assert 'general' == 'implementation'&#10;  &#10;  - implementation&#10;  + general">name = 'parent-terminal', compact_bytes = 62755, legacy_bytes = 66342
+
+    @pytest.mark.parametrize('name,compact_bytes,legacy_bytes', CASES)
+    def test_full_document_actually_supplied_must_enable_its_implementation_checkpoint(name, compact_bytes, legacy_bytes):
+        doc = json.loads((FIXTURES / (name + '.json')).read_text())
+        assert len(json.dumps(doc, ensure_ascii=False, sort_keys=True, allow_nan=False,
+            separators=(',', ':')).encode()) == compact_bytes
+        assert len(json.dumps(doc, ensure_ascii=False, allow_nan=False).encode()) == legacy_bytes
+        body = request(); body['parent_system'] = doc; state, steps = inspected(body)
+        prompt, _ = frame(body, state, steps); data = json.loads(prompt)
+        flow = data['000_current_turn']['authoring_workflow']
+        assert data['literal_current_system'] == doc and flow['literal_current_system_included']
+        assert flow['successful_inspections_since_last_document_change'] == 3
+&gt;       assert flow['phase'] == 'implementation'
+E       AssertionError: assert 'general' == 'implementation'
+E         
+E         - implementation
+E         + general
+
+tests/optimization/test_native_bounded_author_workflow_budget_v1.py:43: AssertionError</failure></testcase><testcase classname="tests.optimization.test_native_bounded_author_workflow_budget_v1" name="test_full_document_actually_supplied_must_enable_its_implementation_checkpoint[after-feature-write-62032-65619]" time="0.090"><failure message="AssertionError: assert 'general' == 'implementation'&#10;  &#10;  - implementation&#10;  + general">name = 'after-feature-write', compact_bytes = 62032, legacy_bytes = 65619
+
+    @pytest.mark.parametrize('name,compact_bytes,legacy_bytes', CASES)
+    def test_full_document_actually_supplied_must_enable_its_implementation_checkpoint(name, compact_bytes, legacy_bytes):
+        doc = json.loads((FIXTURES / (name + '.json')).read_text())
+        assert len(json.dumps(doc, ensure_ascii=False, sort_keys=True, allow_nan=False,
+            separators=(',', ':')).encode()) == compact_bytes
+        assert len(json.dumps(doc, ensure_ascii=False, allow_nan=False).encode()) == legacy_bytes
+        body = request(); body['parent_system'] = doc; state, steps = inspected(body)
+        prompt, _ = frame(body, state, steps); data = json.loads(prompt)
+        flow = data['000_current_turn']['authoring_workflow']
+        assert data['literal_current_system'] == doc and flow['literal_current_system_included']
+        assert flow['successful_inspections_since_last_document_change'] == 3
+&gt;       assert flow['phase'] == 'implementation'
+E       AssertionError: assert 'general' == 'implementation'
+E         
+E         - implementation
+E         + general
+
+tests/optimization/test_native_bounded_author_workflow_budget_v1.py:43: AssertionError</failure></testcase></testsuite></testsuites>
