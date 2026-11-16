@@ -151,3 +151,36 @@ Five publication-table transcription/link checks pass in0.89s. No inference,
 generated-code execution, full-study cold or publication approval is claimed
 from these light checks. The R1 table now links current actual status instead
 of freezing a transient initial-slot count into the general requirement.
+
+## Follow-up: objective-conditioned proposal RNG binding
+
+At19:31:17UTC, read-only reconstruction explains the different U/C initial
+topic priorities without changing either original draw. The actual frozen57
+`NativeParameterSpace._rng` derives its local RNG from the full space-binding
+hash, schema, integer seed, proposal index and purpose, not integer seed alone.
+The actual `numeric_optimizer` chooses a measured objective-specific parent;
+the full anchor, including the terminal-cost source, is part of that binding.
+Thus two different objective-selected anchors produce different RNG namespaces.
+
+Both first uniform draws use optimizer seed79011, proposal_index0, purpose
+sample and53 coordinates. Constructing the actual trusted NativeParameterSpace
+from each saved optimizer-after-ask binding and calling its deterministic
+sample reproduces **the already recorded complete candidate exactly**:
+
+- U space binding `2f67b9741b73a98a923cd5b4e785b7184dd51d28e40688910a402d9fb8ec15db`;
+  RNG-material digest `5f050f93e86bfe91f71d51c9b71d3123ac43728dc699033b3e1ffb2fa55a7555`;
+  candidate `8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b`.
+- C space binding `c258704fc0423bd68d5e4ab0118fe123f59fd4c4b5966bb865adf32e0bd110a7`;
+  RNG-material digest `c8b05570514bbfb40ce3901490e086a9dda7da853a324906f49c8a22ef4697e8`;
+  candidate `5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4`.
+
+This is deterministic namespace dependence, not observed global RNG drift,
+corrupted transport, a new scientific proposal or evidence of a faulty loss.
+It explains the initial priority difference, not the entire native U difference
+or expected objective effect. Shared integer seeds do not guarantee common
+proposal random numbers across different bound spaces. A future paired
+objective-only design would have to declare its common proposal coupling and
+warm-start policy prospectively, or use an identical frozen candidate bank
+for cross-scoring. That would identify a different contrast; no active method,
+source, reference, loss or draw is changed here. This does not establish a
+top-conference finding, and the whole current package comparison continues.

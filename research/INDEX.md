@@ -11,6 +11,9 @@ This page is navigation, not a chronological experiment transcript.
   Its original observation is registered exactly once; best known stays the
   warm parent. Actual topic priorities differ from the U initial program, so
   this pair is not a pure objective-term ablation. Next matched adaptive/C starts.
+  [A later read-only reconstruction](logbook/2026-11-17-corrected-first-own-outcome.md#follow-up-objective-conditioned-proposal-rng-binding)
+  reproduces both initial draws exactly: their shared integer seed is combined
+  with different full space/parent binding hashes, not a common RNG namespace.
 
 - [First corrected free native loss and project effects](results/native-corrected-choice-first-free-outcome-v1.json):
   valid L_U-7 versus parent-28.6667, worse by21.6667. U7/T10/K200 and91 complete

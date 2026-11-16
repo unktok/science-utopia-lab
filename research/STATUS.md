@@ -18,6 +18,14 @@ assigned reference, with0 ties/better/nulls; matched initial draws are not
 independent populations or full method comparisons. All24/four-step paths,
 final paired analyses/fixed evaluation and publication readiness remain open.
 
+Subsequent19:31UTC read-only reconstruction [explains the initial U/C priority
+difference](logbook/2026-11-17-corrected-first-own-outcome.md#follow-up-objective-conditioned-proposal-rng-binding):
+the actual RNG includes the full objective-selected parent/space binding hash,
+not only shared seed79011. Both53-coordinate initial draws reconstruct exactly
+from their original saved bindings. This is frozen implementation behavior,
+not observed RNG corruption or a pure common-random-number objective ablation.
+No experiment/source/candidate is changed; no new model/native call occurs.
+
 ## Earlier first free outcome:19:05UTC / 04:05JST
 
 [First corrected free/U/g0 loss and actual native effects](results/native-corrected-choice-first-free-outcome-v1.json).
