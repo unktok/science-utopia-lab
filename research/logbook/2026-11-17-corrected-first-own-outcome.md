@@ -276,3 +276,61 @@ explicitly accepts papers. Native invocations/effects/loss remain to be observed
 No host edits the source, fixes the typo/plan, modifies any loss or refills a slot.
 Five prior own outcomes remain measured and adverse; no C free loss is yet
 available at19:57:04UTC and the full four-step comparison remains active.
+
+## Initial six-slot generation completes and next request carries actual feedback
+
+At20:09:58UTC the original writer advances to free/C/g1. First free/C/g0 is
+complete at L_C-12.666666666666668: tied with its measured strong parent,
+U28.6667/T36/collected160/uncollected40. The complete initial generation is:
+
+| Method | Objective | Own loss | Own minus assigned reference |
+| --- | --- | ---: | ---: |
+| Uniform priorities | U | -27.6667 | +1 |
+| Adaptive priorities | U | -27.6667 | +1 |
+| Free code/graph | U | -7.0 | +21.6667 |
+| Uniform priorities | C | -9.6667 | +3 |
+| Adaptive priorities | C | -9.6667 | +3 |
+| Free code/graph | C | -12.6667 | 0 |
+
+This is6complete/5worse/1tie/0better/0nulls, not the final24 result or six
+independent populations. Matched numeric initial programs are not independent
+method discoveries. [Exact first-generation values, hashes and scopes](../results/native-corrected-choice-initial-generation-v1.json).
+
+Free C's179 full scientist inputs/literal choices match its measured parent;
+full provider bodies differ and every original cache body hash verifies.
+The final checkpoint/spec has18 native project assignments with the parent's
+one/two-year pattern. All24 original generated-code receipts validate; both
+changed source artifacts appear in four annual execution receipts each, joined
+bijectively to actual events and the submitted artifacts. Thus the edited code
+did execute; this is scoped observed-path preservation, not global semantic
+equivalence, a new benefit or a completed whole-study cold.
+
+At20:16UTC an exact1,523,466-byte external copy preserves the first completed C state
+before later generations extend the live file. The actual new request60c45587
+has generation1, three observations including the **exact original own result
+once**, and one compact history record. Its measured reference remains parent
+on the tie as declared; this is not omission of the own score. Compact history
+does not duplicate the old recursive request body. Fresh request-specific
+calibration is actually underway, but the next production feedback-bearing
+prompt is not yet verified. No source, settings, objective or original result
+is changed, and no slot is discarded/refilled. The remaining18 proposal slots,
+full paired analysis, frozen unused-condition evaluation and main-track-ready
+research interpretation remain open.
+
+At20:25UTC the next actual C/g1 production input and wire are verified. Its
+fresh history-bearing certificate has29 records/all passed, not the earlier
+28-record certificate. The exact saved staged prompt is present verbatim in
+the actual wire's user message, including own observation ID/loss-12.6667,
+U28.6667/T36/K160/uncollected40 and the unchanged C arithmetic. Large raw
+records are descriptors with on-demand retrieval; we do not claim their full
+bodies are transmitted or that the model understands them. The original HTTP
+receipt joins the wire intent and has done=true/done_reason=stop,33907 input/
+1074 output tokens. This is more than an HTTP200 or an unexecuted request.
+
+The first actual C/g1 action is rejected for missing required design_intent,
+not for incomplete transport or scientific loss. It remains charged/literal
+and the bounded session continues; no replacement plan or extra budget is
+supplied. This verifies the measured-loss feedback reaches the next actual
+designer input, not a successful next native program, improvement, convergence
+or a main-track-ready finding. The first-generation snapshot now retains these
+later technical bindings with its original six scientific outcomes unchanged.

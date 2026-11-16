@@ -9,6 +9,12 @@ reference by1, and the first real free-code proposal worsens U loss by21.6667
 (-7 versus-28.6667), with actual changed native project assignments and
 scientist paths. The adverse result is retained without repairing the program.
 [Exact first free outcome and scope](../research/results/native-corrected-choice-first-free-outcome-v1.json).
+The later [complete first-generation snapshot](../research/results/native-corrected-choice-initial-generation-v1.json)
+has six own completions:5 worse/1 tie/0 better/0 nulls. Free C's changed sources
+actually execute, but preserve the observed parent's input/choice path and
+metrics in this condition. Its own measured loss/metrics are verified in the
+next actual designer wire; this is functioning feedback, not a gain or final
+method ranking. The next-generation session remains in progress.
 The new study's full24-slot paths, final paired audits, selection-fixed unused
 evaluation and consequential interpretation remain open. No method ranking or
 useful invention follows from this partial initial history. Source/notes are

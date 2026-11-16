@@ -1,6 +1,27 @@
 # Current research status
 
-## Latest verified state: November16,2026 at19:57UTC / November17 04:57JST
+## Latest verified state: November16,2026 at20:25UTC / November17 05:25JST
+
+[All six first-generation own outcomes complete; actual next request carries feedback](results/native-corrected-choice-initial-generation-v1.json).
+Free/C/g0 ties its measured reference at-12.6667, U28.6667/T36/collected160/
+uncollected40. Its179 full inputs/literal choices match the parent, with
+different provider bodies. Both changed sources execute in four original
+annual receipts each, so source edits were not simply uncalled; this is scoped
+observed-path preservation, not global equivalence or new benefit.
+
+The initial six own slots are5worse/1tie/0better/0nulls. All remain recorded,
+with an exact external C state copy. The actual free/C/g1 request60c45587 has
+the exact own observation once, two measured references and one compact history.
+The reference stays parent on the tie. Fresh29-control readiness passes and
+the actual C/g1 production prompt is verified verbatim in its wire user message:
+own ID/loss/metrics and unchanged C arithmetic remain visible, with an
+intent-bound provider-final response. The first plan misses required design_intent
+and is rejected/retained; this is not a scientific loss or transport truncation.
+No next-generation native result/improvement is measured yet. Original42803
+continues unchanged. Full24/four-step closure, paired audits/analysis, fixed
+unused evaluation, independent evidence and publication readiness remain open.
+
+## Earlier free-C native start:19:57UTC / 04:57JST
 
 [First corrected free-C explicit submission reaches native evaluation](results/native-corrected-choice-first-free-cost-submission-v1.json).
 It finishes after14 actions (plan1/read10/write2/finish1); three original

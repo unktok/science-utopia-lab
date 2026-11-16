@@ -5,6 +5,16 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First corrected six-slot generation and actual next-request feedback](results/native-corrected-choice-initial-generation-v1.json):
+  free/C/g0 ties the reference; the initial six are5worse/1tie/0better/0nulls.
+  Both changed C sources execute, but all179 observed input/choice paths and
+  measurements match the parent in this condition. An exact external state
+  copy is retained. Actual C/g1 request60c45587 contains the exact own score
+  once plus measured references/history. Fresh29-control calibration passes;
+  own loss/metrics are actually present in the next production wire, with
+  final-response evidence. That first plan is rejected for a missing field;
+  the next native outcome and remaining18 slots are not yet complete.
+
 - [First corrected free-C submission and actual native start](results/native-corrected-choice-first-free-cost-submission-v1.json):
   explicit finish after14 actions, including three retained rejections. Two
   source edits in agenda/selection, no new wiring/nodes/schedule; actual returned
