@@ -7,6 +7,15 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November16の現在の更新：[情報比較の実8枠](../results/native-consumer-source-comparison-closed-v1.json)は
+7完走/1nullで正常閉鎖し、全4選択が強い既知対照と同点。新配線・有効な新制度の発明は未実証。
+[104頁原稿](../../paper/integrated-consumer-source-build-v1.json)に全結果・図・費用と先行研究を反映し、
+二重build/全頁画像一致/全紙面目視と23件のsource/retention checkを完了した。
+旧100頁版の82-file実再構築も本文と全頁画像が一致する。
+[数値priority対照のask/tell](../results/native-topic-priority-search-preparation-v1.json)は
+60軽量checkと4つのSCRIPTED native worldで通ったが、実LLMによる新しい比較は未開始。
+これはR2/R3/R5/R6の達成や投稿readyの代用ではない。以下の時刻付き記載は過去のsnapshot。
+
 November16 06:36JST更新：[source提示の新比較](../results/native-consumer-source-comparison-dispatch-v1.json)
 は固定7e51b2a4から実際に起動し、両情報条件の初期実モデル校正が通過、最初のnative参照が実行中。
 比較制度3件・自己候補8枠の新結果は未完了。既知のterminal手制度は両設計者へ非提示の比較専用とする。

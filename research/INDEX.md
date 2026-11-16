@@ -55,6 +55,11 @@ This page is navigation, not a chronological experiment transcript.
   [Restricted priority-control preparation](components/native-topic-priority-control-v1.md)
   passes68 light checks and [3 SCRIPTED native/Docker/SDK worlds with paired cold proof](results/native-topic-priority-native-software-retention-v1.json);
   no real native score, new optimizer or scientific dispatch.
+  [Priority-space ask/tell integration](results/native-topic-priority-search-preparation-v1.json)
+  additionally passes60 light checks and four actual SCRIPTED native worlds:
+  two proposals,652 mock SDK POSTs, measured loss feedback and paired cold proofs.
+  This connects the comparator to an existing optimizer, not a real-model study
+  or verification of an outer scientific CLI.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

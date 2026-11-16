@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="8" skipped="0" tests="60" time="6.565" timestamp="2026-11-16T12:31:55.808110+09:00" hostname="flower-man.local"><testcase classname="tests.optimization.test_native_topic_priority_space_v1" name="test_zero_anchor_and_samples_execute_the_actual_existing_priority_consumer" time="0.035"><failure message="ValueError: unknown explicit world-law scope">def test_zero_anchor_and_samples_execute_the_actual_existing_priority_consumer():
+&gt;       ref = reference(); before = ref.to_dict(); space = topic_priority_space(ref)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_topic_priority_space_v1.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_topic_priority_space_v1.py:34: in topic_priority_space
+    return NativeParameterSpace(anchor, parameter_domain(anchor, coordinates,
+utopia/optimization/native_parameter_space_v1.py:36: in parameter_domain
+    return validate_design_space(anchor, contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+anchor = SystemSpec(system_id='native-research-world', version=1, agent_types=(AgentTypeSpec(agent_type_id='researcher', roles=...ission': 80}, 'schema': 'scienceutopia.native-process.v1'}, 'world_adapter': 'scienceutopia.native-science-kernel.v1'})
+contract = {'anchor_sha256': '02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25', 'code_paths': ['/mechanisms/6/pa...0, 'mechanism_id': 'developer-catalog-agenda', 'path': '/parameters/topic_priorities/audio_computing', ...}, ...], ...}
+
+    def validate_design_space(anchor,contract):
+        fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+        allowed=(fields,fields|{'world_law_scope'})
+        if (not isinstance(contract,dict) or set(contract) not in allowed
+                or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
+                or contract['anchor_sha256']!=digest(anchor.to_dict())
+                or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
+                or not isinstance(contract['violation_policy'],str)
+                or contract['code_paths']!=source_paths(anchor.to_dict())):
+            raise ValueError('exact benchmark design-space/anchor contract required')
+        if 'world_law_scope' in contract:
+            from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+            from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+            from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+            from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
+            if contract['world_law_scope'] == WORKFLOW_SCOPE:
+                require_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+                require_legacy_topic_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == INSTITUTION_SCOPE:
+                require_institution_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+                require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+            else:
+&gt;               raise ValueError('unknown explicit world-law scope')
+E               ValueError: unknown explicit world-law scope
+
+utopia/optimization/native_design_space.py:94: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_topic_priority_space_v1" name="test_real_ask_tell_state_carries_objective_feedback_and_replays_without_world_calls" time="0.009"><failure message="ValueError: unknown explicit world-law scope">def test_real_ask_tell_state_carries_objective_feedback_and_replays_without_world_calls():
+&gt;       space = topic_priority_space(reference())
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_topic_priority_space_v1.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_topic_priority_space_v1.py:34: in topic_priority_space
+    return NativeParameterSpace(anchor, parameter_domain(anchor, coordinates,
+utopia/optimization/native_parameter_space_v1.py:36: in parameter_domain
+    return validate_design_space(anchor, contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+anchor = SystemSpec(system_id='native-research-world', version=1, agent_types=(AgentTypeSpec(agent_type_id='researcher', roles=...ission': 80}, 'schema': 'scienceutopia.native-process.v1'}, 'world_adapter': 'scienceutopia.native-science-kernel.v1'})
+contract = {'anchor_sha256': '02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25', 'code_paths': ['/mechanisms/6/pa...0, 'mechanism_id': 'developer-catalog-agenda', 'path': '/parameters/topic_priorities/audio_computing', ...}, ...], ...}
+
+    def validate_design_space(anchor,contract):
+        fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+        allowed=(fields,fields|{'world_law_scope'})
+        if (not isinstance(contract,dict) or set(contract) not in allowed
+                or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
+                or contract['anchor_sha256']!=digest(anchor.to_dict())
+                or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
+                or not isinstance(contract['violation_policy'],str)
+                or contract['code_paths']!=source_paths(anchor.to_dict())):
+            raise ValueError('exact benchmark design-space/anchor contract required')
+        if 'world_law_scope' in contract:
+            from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+            from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+            from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+            from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
+            if contract['world_law_scope'] == WORKFLOW_SCOPE:
+                require_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+                require_legacy_topic_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == INSTITUTION_SCOPE:
+                require_institution_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+                require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+            else:
+&gt;               raise ValueError('unknown explicit world-law scope')
+E               ValueError: unknown explicit world-law scope
+
+utopia/optimization/native_design_space.py:94: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_topic_priority_space_v1" name="test_restricted_family_cannot_silently_become_free_program_search[source]" time="0.009"><failure message="ValueError: unknown explicit world-law scope">edit = 'source'
+
+    @pytest.mark.parametrize('edit', ['source', 'wire', 'unknown-weight', 'duration'])
+    def test_restricted_family_cannot_silently_become_free_program_search(edit):
+&gt;       space = topic_priority_space(reference()); candidate = deepcopy(space.binding['anchor'])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_topic_priority_space_v1.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_topic_priority_space_v1.py:34: in topic_priority_space
+    return NativeParameterSpace(anchor, parameter_domain(anchor, coordinates,
+utopia/optimization/native_parameter_space_v1.py:36: in parameter_domain
+    return validate_design_space(anchor, contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+anchor = SystemSpec(system_id='native-research-world', version=1, agent_types=(AgentTypeSpec(agent_type_id='researcher', roles=...ission': 80}, 'schema': 'scienceutopia.native-process.v1'}, 'world_adapter': 'scienceutopia.native-science-kernel.v1'})
+contract = {'anchor_sha256': '02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25', 'code_paths': ['/mechanisms/6/pa...0, 'mechanism_id': 'developer-catalog-agenda', 'path': '/parameters/topic_priorities/audio_computing', ...}, ...], ...}
+
+    def validate_design_space(anchor,contract):
+        fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+        allowed=(fields,fields|{'world_law_scope'})
+        if (not isinstance(contract,dict) or set(contract) not in allowed
+                or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
+                or contract['anchor_sha256']!=digest(anchor.to_dict())
+                or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
+                or not isinstance(contract['violation_policy'],str)
+                or contract['code_paths']!=source_paths(anchor.to_dict())):
+            raise ValueError('exact benchmark design-space/anchor contract required')
+        if 'world_law_scope' in contract:
+            from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+            from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+            from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+            from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
+            if contract['world_law_scope'] == WORKFLOW_SCOPE:
+                require_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+                require_legacy_topic_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == INSTITUTION_SCOPE:
+                require_institution_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+                require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+            else:
+&gt;               raise ValueError('unknown explicit world-law scope')
+E               ValueError: unknown explicit world-law scope
+
+utopia/optimization/native_design_space.py:94: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_topic_priority_space_v1" name="test_restricted_family_cannot_silently_become_free_program_search[wire]" time="0.009"><failure message="ValueError: unknown explicit world-law scope">edit = 'wire'
+
+    @pytest.mark.parametrize('edit', ['source', 'wire', 'unknown-weight', 'duration'])
+    def test_restricted_family_cannot_silently_become_free_program_search(edit):
+&gt;       space = topic_priority_space(reference()); candidate = deepcopy(space.binding['anchor'])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_topic_priority_space_v1.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_topic_priority_space_v1.py:34: in topic_priority_space
+    return NativeParameterSpace(anchor, parameter_domain(anchor, coordinates,
+utopia/optimization/native_parameter_space_v1.py:36: in parameter_domain
+    return validate_design_space(anchor, contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+anchor = SystemSpec(system_id='native-research-world', version=1, agent_types=(AgentTypeSpec(agent_type_id='researcher', roles=...ission': 80}, 'schema': 'scienceutopia.native-process.v1'}, 'world_adapter': 'scienceutopia.native-science-kernel.v1'})
+contract = {'anchor_sha256': '02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25', 'code_paths': ['/mechanisms/6/pa...0, 'mechanism_id': 'developer-catalog-agenda', 'path': '/parameters/topic_priorities/audio_computing', ...}, ...], ...}
+
+    def validate_design_space(anchor,contract):
+        fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+        allowed=(fields,fields|{'world_law_scope'})
+        if (not isinstance(contract,dict) or set(contract) not in allowed
+                or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
+                or contract['anchor_sha256']!=digest(anchor.to_dict())
+                or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
+                or not isinstance(contract['violation_policy'],str)
+                or contract['code_paths']!=source_paths(anchor.to_dict())):
+            raise ValueError('exact benchmark design-space/anchor contract required')
+        if 'world_law_scope' in contract:
+            from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+            from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+            from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+            from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
+            if contract['world_law_scope'] == WORKFLOW_SCOPE:
+                require_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+                require_legacy_topic_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == INSTITUTION_SCOPE:
+                require_institution_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+                require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+            else:
+&gt;               raise ValueError('unknown explicit world-law scope')
+E               ValueError: unknown explicit world-law scope
+
+utopia/optimization/native_design_space.py:94: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_topic_priority_space_v1" name="test_restricted_family_cannot_silently_become_free_program_search[unknown-weight]" time="0.009"><failure message="ValueError: unknown explicit world-law scope">edit = 'unknown-weight'
+
+    @pytest.mark.parametrize('edit', ['source', 'wire', 'unknown-weight', 'duration'])
+    def test_restricted_family_cannot_silently_become_free_program_search(edit):
+&gt;       space = topic_priority_space(reference()); candidate = deepcopy(space.binding['anchor'])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_topic_priority_space_v1.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_topic_priority_space_v1.py:34: in topic_priority_space
+    return NativeParameterSpace(anchor, parameter_domain(anchor, coordinates,
+utopia/optimization/native_parameter_space_v1.py:36: in parameter_domain
+    return validate_design_space(anchor, contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+anchor = SystemSpec(system_id='native-research-world', version=1, agent_types=(AgentTypeSpec(agent_type_id='researcher', roles=...ission': 80}, 'schema': 'scienceutopia.native-process.v1'}, 'world_adapter': 'scienceutopia.native-science-kernel.v1'})
+contract = {'anchor_sha256': '02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25', 'code_paths': ['/mechanisms/6/pa...0, 'mechanism_id': 'developer-catalog-agenda', 'path': '/parameters/topic_priorities/audio_computing', ...}, ...], ...}
+
+    def validate_design_space(anchor,contract):
+        fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+        allowed=(fields,fields|{'world_law_scope'})
+        if (not isinstance(contract,dict) or set(contract) not in allowed
+                or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
+                or contract['anchor_sha256']!=digest(anchor.to_dict())
+                or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
+                or not isinstance(contract['violation_policy'],str)
+                or contract['code_paths']!=source_paths(anchor.to_dict())):
+            raise ValueError('exact benchmark design-space/anchor contract required')
+        if 'world_law_scope' in contract:
+            from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+            from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+            from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+            from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
+            if contract['world_law_scope'] == WORKFLOW_SCOPE:
+                require_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+                require_legacy_topic_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == INSTITUTION_SCOPE:
+                require_institution_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+                require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+            else:
+&gt;               raise ValueError('unknown explicit world-law scope')
+E               ValueError: unknown explicit world-law scope
+
+utopia/optimization/native_design_space.py:94: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_topic_priority_space_v1" name="test_restricted_family_cannot_silently_become_free_program_search[duration]" time="0.009"><failure message="ValueError: unknown explicit world-law scope">edit = 'duration'
+
+    @pytest.mark.parametrize('edit', ['source', 'wire', 'unknown-weight', 'duration'])
+    def test_restricted_family_cannot_silently_become_free_program_search(edit):
+&gt;       space = topic_priority_space(reference()); candidate = deepcopy(space.binding['anchor'])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_topic_priority_space_v1.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_topic_priority_space_v1.py:34: in topic_priority_space
+    return NativeParameterSpace(anchor, parameter_domain(anchor, coordinates,
+utopia/optimization/native_parameter_space_v1.py:36: in parameter_domain
+    return validate_design_space(anchor, contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+anchor = SystemSpec(system_id='native-research-world', version=1, agent_types=(AgentTypeSpec(agent_type_id='researcher', roles=...ission': 80}, 'schema': 'scienceutopia.native-process.v1'}, 'world_adapter': 'scienceutopia.native-science-kernel.v1'})
+contract = {'anchor_sha256': '02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25', 'code_paths': ['/mechanisms/6/pa...0, 'mechanism_id': 'developer-catalog-agenda', 'path': '/parameters/topic_priorities/audio_computing', ...}, ...], ...}
+
+    def validate_design_space(anchor,contract):
+        fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+        allowed=(fields,fields|{'world_law_scope'})
+        if (not isinstance(contract,dict) or set(contract) not in allowed
+                or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
+                or contract['anchor_sha256']!=digest(anchor.to_dict())
+                or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
+                or not isinstance(contract['violation_policy'],str)
+                or contract['code_paths']!=source_paths(anchor.to_dict())):
+            raise ValueError('exact benchmark design-space/anchor contract required')
+        if 'world_law_scope' in contract:
+            from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+            from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+            from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+            from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
+            if contract['world_law_scope'] == WORKFLOW_SCOPE:
+                require_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+                require_legacy_topic_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == INSTITUTION_SCOPE:
+                require_institution_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+                require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+            else:
+&gt;               raise ValueError('unknown explicit world-law scope')
+E               ValueError: unknown explicit world-law scope
+
+utopia/optimization/native_design_space.py:94: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_topic_priority_space_v1" name="test_literal_new_anchor_does_not_inherit_a_different_measured_reference" time="0.009"><failure message="ValueError: unknown explicit world-law scope">def test_literal_new_anchor_does_not_inherit_a_different_measured_reference():
+&gt;       ref = reference(); space = topic_priority_space(ref)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_topic_priority_space_v1.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_topic_priority_space_v1.py:34: in topic_priority_space
+    return NativeParameterSpace(anchor, parameter_domain(anchor, coordinates,
+utopia/optimization/native_parameter_space_v1.py:36: in parameter_domain
+    return validate_design_space(anchor, contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+anchor = SystemSpec(system_id='native-research-world', version=1, agent_types=(AgentTypeSpec(agent_type_id='researcher', roles=...ission': 80}, 'schema': 'scienceutopia.native-process.v1'}, 'world_adapter': 'scienceutopia.native-science-kernel.v1'})
+contract = {'anchor_sha256': '02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25', 'code_paths': ['/mechanisms/6/pa...0, 'mechanism_id': 'developer-catalog-agenda', 'path': '/parameters/topic_priorities/audio_computing', ...}, ...], ...}
+
+    def validate_design_space(anchor,contract):
+        fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+        allowed=(fields,fields|{'world_law_scope'})
+        if (not isinstance(contract,dict) or set(contract) not in allowed
+                or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
+                or contract['anchor_sha256']!=digest(anchor.to_dict())
+                or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
+                or not isinstance(contract['violation_policy'],str)
+                or contract['code_paths']!=source_paths(anchor.to_dict())):
+            raise ValueError('exact benchmark design-space/anchor contract required')
+        if 'world_law_scope' in contract:
+            from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+            from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+            from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+            from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
+            if contract['world_law_scope'] == WORKFLOW_SCOPE:
+                require_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+                require_legacy_topic_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == INSTITUTION_SCOPE:
+                require_institution_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+                require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+            else:
+&gt;               raise ValueError('unknown explicit world-law scope')
+E               ValueError: unknown explicit world-law scope
+
+utopia/optimization/native_design_space.py:94: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_topic_priority_space_v1" name="test_uniform_control_is_the_same_existing_sampler_with_no_adaptive_steps_inside_budget" time="0.009"><failure message="ValueError: unknown explicit world-law scope">def test_uniform_control_is_the_same_existing_sampler_with_no_adaptive_steps_inside_budget():
+&gt;       space = topic_priority_space(reference()); budget = 4
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_topic_priority_space_v1.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_topic_priority_space_v1.py:34: in topic_priority_space
+    return NativeParameterSpace(anchor, parameter_domain(anchor, coordinates,
+utopia/optimization/native_parameter_space_v1.py:36: in parameter_domain
+    return validate_design_space(anchor, contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+anchor = SystemSpec(system_id='native-research-world', version=1, agent_types=(AgentTypeSpec(agent_type_id='researcher', roles=...ission': 80}, 'schema': 'scienceutopia.native-process.v1'}, 'world_adapter': 'scienceutopia.native-science-kernel.v1'})
+contract = {'anchor_sha256': '02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25', 'code_paths': ['/mechanisms/6/pa...0, 'mechanism_id': 'developer-catalog-agenda', 'path': '/parameters/topic_priorities/audio_computing', ...}, ...], ...}
+
+    def validate_design_space(anchor,contract):
+        fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+        allowed=(fields,fields|{'world_law_scope'})
+        if (not isinstance(contract,dict) or set(contract) not in allowed
+                or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
+                or contract['anchor_sha256']!=digest(anchor.to_dict())
+                or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
+                or not isinstance(contract['violation_policy'],str)
+                or contract['code_paths']!=source_paths(anchor.to_dict())):
+            raise ValueError('exact benchmark design-space/anchor contract required')
+        if 'world_law_scope' in contract:
+            from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+            from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+            from .native_workflow_domain_v5 import SCOPE as LEGACY_TOPIC_SCOPE, require_legacy_topic_workflow_candidate
+            from .native_institution_workflow_domain_v6 import SCOPE as INSTITUTION_SCOPE, require_institution_workflow_candidate
+            if contract['world_law_scope'] == WORKFLOW_SCOPE:
+                require_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == LEGACY_TOPIC_SCOPE:
+                require_legacy_topic_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] == INSTITUTION_SCOPE:
+                require_institution_workflow_candidate(anchor,anchor)
+            elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+                require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+            else:
+&gt;               raise ValueError('unknown explicit world-law scope')
+E               ValueError: unknown explicit world-law scope
+
+utopia/optimization/native_design_space.py:94: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_actual_existing_consumer_numeric_field_is_mutable_without_changing_source_or_native_law" time="0.448" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_numeric_values_are_not_clamped_coerced_or_repaired[True]" time="0.077" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_numeric_values_are_not_clamped_coerced_or_repaired[21.0]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_numeric_values_are_not_clamped_coerced_or_repaired[0]" time="0.077" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_numeric_values_are_not_clamped_coerced_or_repaired[41]" time="0.077" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_numeric_values_are_not_clamped_coerced_or_repaired[nan]" time="0.101" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_numeric_values_are_not_clamped_coerced_or_repaired[inf]" time="0.077" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_numeric_values_are_not_clamped_coerced_or_repaired[21]" time="0.077" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_candidate_cannot_change_any_other_field[source]" time="0.087" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_candidate_cannot_change_any_other_field[seed]" time="0.086" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_candidate_cannot_change_any_other_field[schedule]" time="0.086" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_candidate_cannot_change_any_other_field[wire]" time="0.111" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_candidate_cannot_change_any_other_field[unlisted-parameter]" time="0.088" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_sampling_and_bounded_mutation_are_deterministic_and_leave_inputs_literal" time="1.844" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_existing_ask_tell_optimizer_consumes_scalar_feedback_and_restores_with_same_bound_space" time="0.208" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_invalid_mutation_scale_rejects_without_projection[True]" time="0.092" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_invalid_mutation_scale_rejects_without_projection[0]" time="0.089" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_invalid_mutation_scale_rejects_without_projection[-1]" time="0.112" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_invalid_mutation_scale_rejects_without_projection[1.1]" time="0.087" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_invalid_mutation_scale_rejects_without_projection[nan]" time="0.087" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_old_default_parameter_domain_is_not_silently_expanded" time="0.107" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_float_coordinates_and_bound_optimizer_restore_preserve_space_and_outer_checksum" time="0.296" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_sampling_seed_and_index_are_literal_integers[True-0]" time="0.077" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_sampling_seed_and_index_are_literal_integers[1-True]" time="0.077" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_sampling_seed_and_index_are_literal_integers[1--1]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_sampling_seed_and_index_are_literal_integers[1-0.5]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_bad_saved_state_shapes_do_not_become_implicit_initialization[None]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_bad_saved_state_shapes_do_not_become_implicit_initialization[state1]" time="0.100" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_bad_saved_state_shapes_do_not_become_implicit_initialization[1]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_bad_saved_state_shapes_do_not_become_implicit_initialization[state]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_optimizer_configuration_rejects_invalid_scale_before_any_proposal[True]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_optimizer_configuration_rejects_invalid_scale_before_any_proposal[None]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_optimizer_configuration_rejects_invalid_scale_before_any_proposal[0.2]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_optimizer_configuration_rejects_invalid_scale_before_any_proposal[0]" time="0.076" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_optimizer_configuration_rejects_invalid_scale_before_any_proposal[inf]" time="0.100" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_coordinate_must_already_exist_instead_of_installing_a_consumer" time="0.085" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_noncoordinate_fields_are_not_accepted_after_systemspec_normalization[float-version]" time="0.084" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_noncoordinate_fields_are_not_accepted_after_systemspec_normalization[missing-field]" time="0.078" /><testcase classname="tests.optimization.test_native_parameter_space_v1" name="test_noncoordinate_fields_are_not_accepted_after_systemspec_normalization[ignored-root-key]" time="0.078" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_zero_priorities_recover_full_literal_control_output_without_new_permissions" time="0.014" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_all24_initial_shortest_assignments_are_constructible_without_duration_change" time="0.077" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_priority_cannot_override_shortest_duration_or_add_a_topic" time="0.003" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_large_integer_is_finite_without_lossy_float_conversion" time="0.002" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_invalid_constructor_input_is_not_repaired_or_executed[None]" time="0.000" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_invalid_constructor_input_is_not_repaired_or_executed[priorities1]" time="0.000" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_invalid_constructor_input_is_not_repaired_or_executed[priorities2]" time="0.000" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_invalid_constructor_input_is_not_repaired_or_executed[priorities3]" time="0.000" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_invalid_constructor_input_is_not_repaired_or_executed[priorities4]" time="0.000" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_invalid_constructor_input_is_not_repaired_or_executed[priorities5]" time="0.000" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_invalid_constructor_input_is_not_repaired_or_executed[priorities6]" time="0.000" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_invalid_constructor_input_is_not_repaired_or_executed[priorities7]" time="0.000" /><testcase classname="tests.system.test_native_topic_priority_controls" name="test_helper_does_not_overwrite_arbitrary_authored_source" time="0.002" /></testsuite></testsuites>

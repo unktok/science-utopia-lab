@@ -72,6 +72,32 @@ project/input changes for the reversed tie policy. Raw graph-bound audit ids
 are retained, not equated or rewritten. Cold checks forbid SDK construction
 and generated-code execution. This is not the outer scientific study CLI.
 
+## Ask/tell connection after the completed pilot
+
+The [numeric-space adapter](../../utopia/optimization/native_topic_priority_space_v1.py)
+now exposes every displayed topic's actual priority field through the existing
+NativeParameterSpace/NativeParameterOptimizer. Priorities lie in[-1,1]; only
+their order breaks shortest-duration ties. All source, original topic duration,
+eligibility, graph and schedules stay fixed. This is a named restricted
+comparator, not the free institution editor's candidate space or a new optimizer.
+
+[60 light checks and an actual four-world SCRIPTED native proof](../results/native-topic-priority-search-preparation-v1.json)
+now pass. The exact explicit-zero anchor is measured before warm start; two
+actual proposals execute through native Docker/installed SDK, feed measured
+accepted-decision loss back to ask/tell and have paired cold proof. All652 SDK
+POSTs use mock responses. Zero priorities preserve full native inputs/choices;
+both proposals change full inputs while response choices and SCRIPTED losses
+remain tied. Objective-dependent parent selection and saved-state restoration
+are additionally tested with explicitly synthetic scalar values, not presented
+as real native performance. Uniform proposals use the existing initial sampler.
+
+The first light attempt fails on an unsupported world-law label; the corrected
+adapter uses the existing v6 scope/validator, without changing its acceptance
+rules. The first native attempt has a missing test import before dispatch.
+Both failed JUnit records remain beside the corrected evidence. The prospective
+outer scientific CLI, real model/critic runs, frozen finite comparison and
+unused-condition evaluation remain to be implemented/declared separately.
+
 The gating check skips it while real inference is active, as intended; that
 skip is not execution proof. After inference ends, run from a clean committed
 source with an unused basetemp/JUnit destination and the normal fixed Python/

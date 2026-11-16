@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.290" timestamp="2026-11-16T12:33:44.030044+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_native_topic_priority_native_v1" name="test_zero_priority_full_inputs_and_changed_priority_actuation_with_double_cold[ask-tell]" time="0.279"><failure message="NameError: name 'SystemSpec' is not defined">tmp_path = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/topic-priority-search-native-v1-a1/test_zero_priority_full_inputs0')
+fixed_corpus = None
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x125880950&gt;
+search_mode = True
+
+    @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_TOPIC_PRIORITY_NATIVE_QA') != '1',
+                       reason='explicit clean-source hardware window; no real inference active')
+    @pytest.mark.parametrize('search_mode', [False, True], ids=['constructor', 'ask-tell'])
+    def test_zero_priority_full_inputs_and_changed_priority_actuation_with_double_cold(
+            tmp_path, fixed_corpus, monkeypatch, search_mode):
+        calls = install_scripted_provider(tmp_path / 'provider', monkeypatch, 2)
+        from utopia.models import models
+        original_constructor = models.VLLMServerModel
+        sent, clients = [], []
+        transport_contract = contract(read_seconds=900)
+    
+        def model(name, **kwargs):
+            value = original_constructor(name, **kwargs)
+    
+            def transport(request):
+                payload = json.loads(request.content)
+                sent.append({'body': clone(payload), 'timeout': clone(request.extensions['timeout']),
+                             'retry_count': request.headers['x-stainless-retry-count']})
+                return httpx.Response(200, json=value.reply(**payload).model_dump())
+    
+            value.client = OpenAI(api_key='SCRIPTED-not-a-real-key', base_url='http://127.0.0.1:11434/v1',
+                max_retries=0, http_client=httpx.Client(transport=httpx.MockTransport(transport)))
+            configure_existing_client(value.client, transport_contract)
+            clients.append(value.client)
+            return value
+    
+        monkeypatch.setattr(models, 'VLLMServerModel', model)
+        conditions = capacity_conditions(papers_per_project=2)
+        experiment = {'protocol': 'SCRIPTED-native-topic-priority-software-v1'}
+        factory = LocalQwenNativeFactory(tmp_path / 'runs', tmp_path / 'cache', years=4, corpus_years=4,
+            record_wire=True, record_code=True, maximum_http_attempts=1024,
+            inference_lock=tmp_path / 'inference.lock', world_conditions=conditions, experiment_binding=experiment)
+        core = post_funding_cost_control(planning_controls(IMAGE, seed=42)['assignment-reserve21-no-review-all'])
+        reference = legacy_topic_control(core, candidate_policy='core-plus-related')
+        domain = institution_workflow_design_space(core)
+        priorities = {topic: i for i, topic in enumerate(sorted(
+            d['topic'] for d in catalog_contract()['directions']))}
+        systems = [('reference', reference),
+                   ('zero-priority', topic_priority_control(reference, priorities={})),
+                   ('reverse-tie-priority', topic_priority_control(reference, priorities=priorities))]
+        space = topic_priority_space(reference) if search_mode else None
+        optimizer = NativeParameterOptimizer(space, seed=17, initial_random=1) if search_mode else None
+        suggestions, search_trace = {}, []
+        if search_mode:
+            # No inherited reference loss: evaluate the exact dense-zero anchor first.
+&gt;           systems = [('reference', reference), ('zero-priority', SystemSpec.from_dict(space.binding['anchor']))]
+                                                                   ^^^^^^^^^^
+E           NameError: name 'SystemSpec' is not defined
+
+tests/reports/test_native_topic_priority_native_v1.py:87: NameError</failure></testcase></testsuite></testsuites>

@@ -134,6 +134,16 @@ exits, [3 native/Docker/installed-SDK SCRIPTED worlds and paired cold proofs pas
 The outer scientific CLI, a finite real study and actual scores remain pending;
 this control is not inserted into the matched pilot or its author contexts.
 
+[The actual priority-space/ask-tell connection](results/native-topic-priority-search-preparation-v1.json)
+now passes60 light checks and a new four-world native/Docker/installed-SDK
+SCRIPTED test with652 mock POSTs and paired cold proofs. The exact zero anchor
+is measured before warm start; two proposed systems change actual scientist
+inputs and measured SCRIPTED loss reaches the next ask. All mock choices/losses
+remain tied, so this is software closure, not real optimization gain. Both
+initial implementation/test failures remain recorded. The real outer study CLI
+and method comparison are not yet verified/dispatched. No real inference job
+is started by this preparation; publication readiness remains open.
+
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history
 retention from program-pool parent sampling. This is now included in the reviewed
