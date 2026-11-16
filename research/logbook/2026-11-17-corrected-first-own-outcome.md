@@ -334,3 +334,23 @@ supplied. This verifies the measured-loss feedback reaches the next actual
 designer input, not a successful next native program, improvement, convergence
 or a main-track-ready finding. The first-generation snapshot now retains these
 later technical bindings with its original six scientific outcomes unchanged.
+
+## First feedback-bearing next-generation candidate reaches native evaluation
+
+At20:30:33UTC actual free/C/g1 request60c45587 has explicitly finished after
+14 completed actions (plan1/read9/write3/finish1):12 applied,1 rejected,1 finished.
+All14 prompt/receipt steps are available, with planning1/general9/
+implementation3/submit1 and0 observed phase/loss-view mismatches. Its terminal
+content is `d6cf8c9ed306a58eb3af64266f131c48b558eece053f6862291c30171642d590`,
+file hash `dbf7aa33eb5947b911674010712bc1de8b46abe2c8fd1bcbb79381fe7e4b7a72`.
+
+One generated/compiled draw `native-adaptive-dd94ee6c9c4cc7b52ee49a30`, program
+`c6fdefe8e19385d824929a9a961623643c065cc7e832dc025d53e5550146e6fb`,
+starts actual native scientist requests (21 observed at that dated snapshot).
+Compared with the declared measured parent e5f1b654, only world.selection source/
+parameters change; no node, wiring or schedule change is recorded. There are
+no pending-draw observations yet. This is a concrete next candidate after
+verified own-loss feedback, not an isolated causal effect of that feedback,
+a changed admission outcome, useful invention, a measured gain or a new topology.
+The original source/budget/metric stay fixed and the completed g0 losses remain
+literal. The first six-slot snapshot does not become a frozen final selection.

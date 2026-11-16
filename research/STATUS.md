@@ -1,6 +1,6 @@
 # Current research status
 
-## Latest verified state: November16,2026 at20:25UTC / November17 05:25JST
+## Latest verified state: November16,2026 at20:30UTC / November17 05:30JST
 
 [All six first-generation own outcomes complete; actual next request carries feedback](results/native-corrected-choice-initial-generation-v1.json).
 Free/C/g0 ties its measured reference at-12.6667, U28.6667/T36/collected160/
@@ -20,6 +20,15 @@ and is rejected/retained; this is not a scientific loss or transport truncation.
 No next-generation native result/improvement is measured yet. Original42803
 continues unchanged. Full24/four-step closure, paired audits/analysis, fixed
 unused evaluation, independent evidence and publication readiness remain open.
+
+[Subsequent C/g1 submission](logbook/2026-11-17-corrected-first-own-outcome.md#first-feedback-bearing-next-generation-candidate-reaches-native-evaluation)
+explicitly finishes after14 actions and starts actual native scientist requests.
+Its only net source/parameter change versus the measured parent is world.selection,
+with no added node/wire/schedule. All14 prompt views have0 observed phase/loss
+mismatches. This verifies a concrete next candidate after measured feedback,
+not that feedback caused the particular edit or that the next loss improves.
+The g1 native outcome is not yet measured; six completed g0 outcomes remain
+5worse/1tie/0better and are not final selected institutions.
 
 ## Earlier free-C native start:19:57UTC / 04:57JST
 
