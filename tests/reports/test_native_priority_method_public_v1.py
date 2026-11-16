@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import tempfile
+from contextlib import nullcontext
 from types import SimpleNamespace
 
 from openai import OpenAI
@@ -32,7 +33,20 @@ from utopia.utils.data_utils import write_json_atomic
 @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_PRIORITY_METHOD_PUBLIC_QA') != '1',
                    reason='explicit clean-source hardware window, no real inference active')
 def test_public_prepare_run_all_methods_and_paired_cold_without_new_models(tmp_path, fixed_corpus, monkeypatch):
+    public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch)
+
+
+def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_output=None):
+    # Optional persistent external closure is for the follow-on public
+    # evaluation proof. Keep both actual cold outputs, never duplicate one
+    # retained audit and call those two new independent executions.
+    if closure_output is not None:
+        closure_output = Path(closure_output).resolve()
+        if (closure_output.exists() or closure_output.is_relative_to(driver.ROOT.resolve())
+                or closure_output.is_relative_to((tmp_path / 'mixed-study').resolve())):
+            raise ValueError('fresh persistent closure outside source/raw required before native QA')
     sdk_init = OpenAI.__init__
+    docker_execute = code_mechanisms.DockerCodeExecutor.execute
     upstream = public_operator_path(tmp_path / 'SCRIPTED-upstream', monkeypatch, topic=True)
     monkeypatch.setattr(OpenAI, '__init__', sdk_init)
     monkeypatch.setattr(driver, 'SEED', 42); monkeypatch.setattr(driver.free, 'SEED', 42)
@@ -124,7 +138,10 @@ def test_public_prepare_run_all_methods_and_paired_cold_without_new_models(tmp_p
     def forbidden(*a, **kw): pytest.fail('cold reader cannot construct a model/client or execute source')
     monkeypatch.setattr(OpenAI, '__init__', forbidden)
     monkeypatch.setattr(code_mechanisms.DockerCodeExecutor, 'execute', forbidden)
-    with tempfile.TemporaryDirectory(prefix='mixed-method-cold-') as external:
+    if closure_output is not None: closure_output.mkdir(parents=True)
+    closure_context = (tempfile.TemporaryDirectory(prefix='mixed-method-cold-') if closure_output is None
+        else nullcontext(str(closure_output)))
+    with closure_context as external:
         paths = [Path(external) / f'audit-{i}.json' for i in (1, 2)]
         for path in paths: auditor.worker(root, path)
         assert paths[0].read_bytes() == paths[1].read_bytes()
@@ -137,6 +154,10 @@ def test_public_prepare_run_all_methods_and_paired_cold_without_new_models(tmp_p
         assert len([w for w in proof['worlds'] if w['role'] == 'workflow-own-proposal']) == 8
         driver.save(tmp_path / 'audit-retained.json', driver.literal(proof))
         driver.save(tmp_path / 'cost-retained.json', driver.literal(pair[0]))
+        if closure_output is not None:
+            for i, value in enumerate(pair, 1):
+                saved = driver.save(closure_output / ('costs-' + str(i) + '.json'), driver.literal(value))
+                assert saved == value
     assert before == _inventory(root) and posts == (len(production), len(calibration), len(upstream['scientist_requests']))
     with pytest.raises(ValueError, match='no redispatch'): driver.run(root)
     write_json_atomic(tmp_path / 'verification.json', {
@@ -149,3 +170,10 @@ def test_public_prepare_run_all_methods_and_paired_cold_without_new_models(tmp_p
         'audit_content_sha256': proof['content_sha256'], 'cost_content_sha256': pair[0]['content_sha256'],
         'new_real_model_calls': 0, 'deadline_supervision_tested': False,
         'scientific_improvement_demonstrated': False, 'publication_ready': False}, sort_keys=True)
+    # The cold guards applied to the complete cold phase above. A caller may
+    # now start a distinct SCRIPTED native evaluation, not reuse forbidden
+    # constructors or silently keep a mocked source executor for that phase.
+    monkeypatch.setattr(OpenAI, '__init__', sdk_init)
+    monkeypatch.setattr(code_mechanisms.DockerCodeExecutor, 'execute', docker_execute)
+    return {'run': root, 'plan': p, 'closure': closure_output, 'upstream': upstream,
+        'sdk_init': sdk_init, 'docker_execute': docker_execute}
