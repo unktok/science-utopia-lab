@@ -47,12 +47,26 @@ def test_new_objective_does_not_mutate_old_losses_or_hide_unknown_resource_cost(
     assert not arithmetic['extra_eligibility_constraint']
 
 
-def test_real_original_source_adapter_lists_only_explicit_science_bridges_and_author_changes():
-    from utopia.optimization.native_jobs import pinned_revision
-    result=driver.native_sources('a5be8d3103854368a4bc6ba4c13eff7552e9dd15',pinned_revision(driver.ROOT))
+def test_real_original_source_adapter_lists_only_explicit_science_bridges_and_author_changes(tmp_path):
+    import subprocess
+    # This historical driver does not approve later method-specific adapters.
+    # Inspect its actual immutable implementation-era bytes, not the current
+    # checkout with a newer author workflow and feedback/catalog diagnostics.
+    source = 'ce141d1689835ea79184be980c175eded9ce58ff'
+    archive = subprocess.check_output(['git', 'archive', source, 'utopia',
+        'scripts/run_native_objective_instrument_loop_v1.py',
+        'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'], cwd=driver.ROOT)
+    subprocess.run(['tar', '-xf', '-', '-C', str(tmp_path)], input=archive, check=True)
+    result=driver.native_sources('a5be8d3103854368a4bc6ba4c13eff7552e9dd15',source,source_root=tmp_path)
     assert set(result['explicit_native_adapters'])==set(driver.pilot.ADAPTERS)|set(driver.AUTHOR_ADAPTERS)
     assert not result['global_semantic_equivalence_claimed']
     assert 'utopia/simulation.py' in result['literal_files']
+
+
+def test_historical_free_driver_does_not_silently_approve_new_method_author_adapter():
+    from utopia.optimization.native_jobs import pinned_revision
+    with pytest.raises(ValueError, match='source differs: utopia/optimization/native_authoring_recovery_v44.py'):
+        driver.native_sources('a5be8d3103854368a4bc6ba4c13eff7552e9dd15', pinned_revision(driver.ROOT))
 
 
 def test_author_catalog_exposes_actual_new_action_and_its_validator_without_policy_recipe():

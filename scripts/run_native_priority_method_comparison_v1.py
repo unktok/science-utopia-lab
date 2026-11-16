@@ -50,6 +50,9 @@ def native_sources(original, source):
     adapters = {path: {'source_commit': free.pilot.ADAPTER_SOURCE, 'role': role}
                 for path, role in free.pilot.ADAPTERS.items()}
     adapters.update({path: {'source_commit': source, 'role': role} for path, role in free.AUTHOR_ADAPTERS.items()})
+    adapters['utopia/optimization/native_authoring_recovery_v44.py'] = {
+        'source_commit': source,
+        'role': 'Designer-only workflow phase calculation bound to actual V45 document visibility; no native world/loss change'}
     adapters['utopia/optimization/native_post_edit_feedback_v1.py'] = {
         'source_commit': source, 'role': 'Staged feedback; no world-law change'}
     adapters['utopia/system/native_catalog_planning.py'] = {

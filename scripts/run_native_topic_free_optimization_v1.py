@@ -34,7 +34,6 @@ PROTOCOL = 'research/protocols/campaigns/native-topic-free-optimization-v1.md'
 AUDIT_SCRIPTS = ['scripts/run_native_topic_free_optimization_v1.py',
                  'scripts/audit_native_topic_free_optimization_v1.py']
 AUTHOR_ADAPTERS = {
-    'utopia/optimization/native_authoring_recovery_v44.py': 'Designer-only workflow phase calculation bound to actual V45 document visibility; no native world/loss change',
     'utopia/optimization/native_open_workflow_submission_v1.py': 'Explicit v5/v6 author compiler; historical v4/v5 authority unchanged',
     'utopia/optimization/native_workflow_staged_designer_v1.py': 'Explicit new developer component evidence scope',
     'utopia/system/native_capability_catalog.py': 'Author-facing original-topic action semantics and validator identities',
@@ -86,11 +85,11 @@ def preceding_evidence(origin):
     return p, audit
 
 
-def native_sources(original, source):
+def native_sources(original, source, *, source_root=None):
     adapters = {path: {'source_commit': pilot.ADAPTER_SOURCE, 'role': role}
                 for path, role in pilot.ADAPTERS.items()}
     adapters.update({path: {'source_commit': source, 'role': role} for path, role in AUTHOR_ADAPTERS.items()})
-    return base.native_sources(original, adapters=adapters)
+    return base.native_sources(original, adapters=adapters, source_root=source_root)
 
 
 def build_plan(original, audit, *, source, origin, backend, observer_backend, bank, evidence, sources):
