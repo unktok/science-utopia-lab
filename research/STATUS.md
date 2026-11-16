@@ -18,7 +18,7 @@ is development-informed, not a blind independent method comparison.
 | Last original slot | Interface/U/g1 completes at U=-28.6667, tying the strong reference. Original15471 exits0; no failed-slot refill |
 | Selection | All4 own-only selected systems tie their strong reference under assigned U/C losses; no reference fallback or withheld-rule recovery |
 | Whole audit/cost/readout | Both original audits/cost exports match. Original79215 stops at its source-local output guard; separate36879 uses the same frozen code with a fresh external output and closes with all3 paired files identical. Failure remains preserved; no science rerun |
-| Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
+| Figures and paper | [Two matching final seven-file figure exports and visual review](results/native-consumer-source-figure-retention-v1.json) complete. [All11 exact programs, outcomes and fixed paths](data/native-consumer-source-comparison-v1/README.md) are retained. Existing reviewed paper is100 pages, before this study; new chapter/PDF integration remains |
 
 Original15471 and46051 have exited0; original79215 exits1 at the export path
 guard. Corrected read-only36879 exits0, not a restarted scientific experiment.

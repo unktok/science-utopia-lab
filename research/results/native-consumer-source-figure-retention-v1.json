@@ -1,0 +1,55 @@
+{
+  "schema": "scienceutopia.native-consumer-source-figure-retention.v1",
+  "recorded_utc": "2026-11-16T02:45:20.290321+00:00",
+  "source_commit": "27aa0c57cde9d9849eb3ec8e937f2b6e0a717644",
+  "original_native_exec_sessions": [
+    40803,
+    88004
+  ],
+  "exit_codes": [
+    0,
+    0
+  ],
+  "fresh_exports": [
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-source-figures-v1-a3",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-source-figures-v1-a4"
+  ],
+  "files": {
+    "manifest.json": "907ffbbefeea4d5a1866bbad0540e4ca2c7cb4621de907b4289da8609e1d1b66",
+    "matched-loss-paths.png": "245e14a07a1a6b562e6f559e83068049595217d06823b11cd17edae61f600eb5",
+    "matched-loss-paths.svg": "1c1ae4a6e4f2491b29295369221f24b33c3773b62e3c2b34798e95a4ba802239",
+    "matched-outcomes.png": "1bdd20adf8472a427243f599981efb4aeda4fca0c111fd2effd3e6e062590398",
+    "matched-outcomes.svg": "251834abbca0604c1a31c2e45e9db3e15b48585bfad5541e904182d4e6edd748",
+    "outcomes.csv": "11cce7c9d13f66d00c4e3e427c8580ec3a039caf5329203bcd3bf529becce7c7",
+    "report.json": "1c4af1305245384b8f9ab912191eb1cf5f703781be81d156c4999a5bc47869d9"
+  },
+  "all_seven_final_files_identical": true,
+  "both_final_PNG_layouts_reviewed": true,
+  "observed_clipping_or_annotation_line_overlap": false,
+  "paper_path": "paper/figures/native-consumer-source-loss-paths-v1.png",
+  "paper_image_sha256": "245e14a07a1a6b562e6f559e83068049595217d06823b11cd17edae61f600eb5",
+  "initial_exports_preserved": [
+    "outputs/native-consumer-source-figures-v1-a1",
+    "outputs/native-consumer-source-figures-v1-a2"
+  ],
+  "initial_issue": "Null annotation overlapped the known-terminal reference line. Later source uses manuscript width, a clear annotation region and readable legend/footer. Numerical data and selection remain unchanged.",
+  "retained_data": "research/data/native-consumer-source-comparison-v1",
+  "exact_original_programs_copied": 11,
+  "program_copies_match_original_bytes": true,
+  "light_QA": {
+    "source_commit": "f4b2262bc268de6e7c84ee6a77e4d11c4c7e6e33",
+    "native_exec_session": 91145,
+    "exit_code": 0,
+    "passed": 22,
+    "skipped": 1,
+    "seconds": 1.08,
+    "junit": "research/data/native-consumer-source-comparison-v1/reader-figure-junit.xml",
+    "junit_sha256": "f310f42ddcd0c6a7d09c244de670b0b3575b3095b90ce7f16ca989a3ed58fd1c"
+  },
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "new_native_worlds": 0,
+  "loss_or_selection_changed": false,
+  "manuscript_integrated_or_PDF_rebuilt": false,
+  "publication_ready": false
+}

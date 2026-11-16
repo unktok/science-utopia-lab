@@ -1,0 +1,12 @@
+kind,label,physical_job,status,arm,objective,generation,optimizer_visible_reference,throughput,content-utility,resource-aware-content,collected_cost,unpaid_cost,requested_cost,institutional_work_events
+reference,core-only,workflow-reference-core-only,complete,,,,True,-20.0,-15.333333333333332,4.666666666666668,200.0,0.0,200.0,0
+reference,core-plus-related,workflow-reference-core-plus-related,complete,,,,True,-36.0,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,0
+reference,terminal-consolidation,workflow-reference-terminal-consolidation,complete,,,,False,-36.0,-28.666666666666668,-12.666666666666668,160.0,40.0,200.0,0
+own-slot,interface-only / content-utility / g0,native-adaptive-1fa017149d8dc7ab8097d20a,complete,interface-only,content-utility,0,,-36.0,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,0
+own-slot,literal-consumers / resource-aware-content / g0,native-adaptive-3435cdfa551f266e50faca5c,complete,literal-consumers,resource-aware-content,0,,-36.0,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,0
+own-slot,interface-only / resource-aware-content / g0,native-adaptive-4cad5bce2111e3de30f4846d,complete,interface-only,resource-aware-content,0,,-36.0,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,0
+own-slot,literal-consumers / content-utility / g0,native-adaptive-72efc298c5322e87007fc4e2,complete,literal-consumers,content-utility,0,,-10.0,-7.0,13.0,200.0,0.0,200.0,0
+own-slot,literal-consumers / content-utility / g1,native-adaptive-9180a08c032383e51a015f76,complete,literal-consumers,content-utility,1,,-36.0,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,0
+own-slot,interface-only / resource-aware-content / g1,native-adaptive-0a24958c3694dbcf343a2fb8,failed,interface-only,resource-aware-content,1,,,,,,,,
+own-slot,literal-consumers / resource-aware-content / g1,native-adaptive-1bd325a3ba8ab24f46c8240d,complete,literal-consumers,resource-aware-content,1,,-36.0,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,0
+own-slot,interface-only / content-utility / g1,native-adaptive-c2d18b6b9dca3f3ff3f9df0e,complete,interface-only,content-utility,1,,-36.0,-28.666666666666668,-8.666666666666668,200.0,0.0,200.0,0

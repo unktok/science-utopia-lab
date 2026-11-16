@@ -1,0 +1,75 @@
+{
+  "schema": "scienceutopia.native-consumer-source-exact-programs.v1",
+  "scientific_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "input_audit_content_sha256": "c00b6a439c51b5cf6af475f9ddcb0acd56bcc579ceb06e75078c8632e43a0cf6",
+  "programs": [
+    {
+      "identity": "workflow-reference-core-only",
+      "filename": "systems/workflow-reference-core-only.json",
+      "file_sha256": "3d66f957a9203ad5f1b52dfa83f3f5e5f739f3acc35bac9972c8ca4d05315b39",
+      "system_sha256": "51f1a4ec1152232c5f45b8a4823b383db9dd639e41e1384951d84664eaeeec17"
+    },
+    {
+      "identity": "workflow-reference-core-plus-related",
+      "filename": "systems/workflow-reference-core-plus-related.json",
+      "file_sha256": "e2180df35de70a014e3a7d0dd982d0f285a69d496a74357f50a7860e4b6b37a5",
+      "system_sha256": "67e71aaecc1c5350cb343bb9a0c5b16879aa14fb9041f319f18e99f0b28eb3dd"
+    },
+    {
+      "identity": "workflow-reference-terminal-consolidation",
+      "filename": "systems/workflow-reference-terminal-consolidation.json",
+      "file_sha256": "e39499fd743f1ab1f1c2a874e3683f1ed89ca75cb64bb3354577872f08c34bc3",
+      "system_sha256": "f9c75fdf460a93794494e69a2ca5ddbe988a4e321b4f5e9b00174c73ffb170f9"
+    },
+    {
+      "identity": "native-adaptive-1fa017149d8dc7ab8097d20a",
+      "filename": "systems/native-adaptive-1fa017149d8dc7ab8097d20a.json",
+      "file_sha256": "2128adb09225e4bbd46e99111c6566548cac9b41091678d186ac3ea302e88454",
+      "system_sha256": "3b490baa4ce93d447d1694f0d9b536af7f76602b8e4307178c7e735884fb433d"
+    },
+    {
+      "identity": "native-adaptive-3435cdfa551f266e50faca5c",
+      "filename": "systems/native-adaptive-3435cdfa551f266e50faca5c.json",
+      "file_sha256": "abf7667614d6189b3f74dc539f31ab0c54fb996abcc9bdd39944679ee79e5464",
+      "system_sha256": "8ae6563e8e5b16c622943a1a91ae9d1861f2fd9037595be77be02c555b145349"
+    },
+    {
+      "identity": "native-adaptive-4cad5bce2111e3de30f4846d",
+      "filename": "systems/native-adaptive-4cad5bce2111e3de30f4846d.json",
+      "file_sha256": "2f23383c535b654903edbe732d58f40ddd574ec533e25b1511b56294a2949bff",
+      "system_sha256": "a20915e0bf40418c43c26573ba86e915e688571b9785cdd5ae1317b6e59730ba"
+    },
+    {
+      "identity": "native-adaptive-72efc298c5322e87007fc4e2",
+      "filename": "systems/native-adaptive-72efc298c5322e87007fc4e2.json",
+      "file_sha256": "aa440d9b7361460304f9aee07b733e02d559322eb8ca9647e3983d043e889d6a",
+      "system_sha256": "d9a363125b4b9a5546d465cbd71e720318d0ec6db00ea9b2b633a289ae509f7d"
+    },
+    {
+      "identity": "native-adaptive-9180a08c032383e51a015f76",
+      "filename": "systems/native-adaptive-9180a08c032383e51a015f76.json",
+      "file_sha256": "26df0faca8f043104f492b057a422751b7967e258cfbdd37c51f54a83c0328c0",
+      "system_sha256": "df747dd7ccb1a78ae367fb6348e56b6a61877d1a4ad1a43396df287912970b21"
+    },
+    {
+      "identity": "native-adaptive-0a24958c3694dbcf343a2fb8",
+      "filename": "systems/native-adaptive-0a24958c3694dbcf343a2fb8.json",
+      "file_sha256": "994d7dc464225c690b54ee26e6ef699e5260c9417c6dd53e5b8da50077b23ffd",
+      "system_sha256": "9bf06e1b15b21498b0cc124ed41f1547e62fc8fd041759fe0daf6968b9841976"
+    },
+    {
+      "identity": "native-adaptive-1bd325a3ba8ab24f46c8240d",
+      "filename": "systems/native-adaptive-1bd325a3ba8ab24f46c8240d.json",
+      "file_sha256": "4736da1538fdfa80e54489985d3457e3caf9a6d48347116b6c7ea05c665fa286",
+      "system_sha256": "6f2b0c67fde1ed763c5f44c70ac0edbe83eae7ce94ca895a69acecd20862a481"
+    },
+    {
+      "identity": "native-adaptive-c2d18b6b9dca3f3ff3f9df0e",
+      "filename": "systems/native-adaptive-c2d18b6b9dca3f3ff3f9df0e.json",
+      "file_sha256": "7db411492a5c1a2179f691fa513eb4b907b5165438d9f4c723110683a75dc93d",
+      "system_sha256": "8876ab724c7e11a9315393fabac31ffcdd4842449e7369711150a0605880026b"
+    }
+  ],
+  "generated_sources_are_untrusted_data": true,
+  "new_code_executions": 0
+}

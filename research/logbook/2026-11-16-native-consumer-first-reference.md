@@ -644,3 +644,31 @@ code execution forbidden during cold reading. [Exact retention](../results/nativ
 and original JUnit remain. The outer study CLI, optimizer, real model scores,
 independent comparison and future frozen unused evaluation are not supplied by
 this software proof. No next scientific campaign is dispatched automatically.
+
+## Measured figures and literal programs retained; paper integration remains
+
+Committed-source91145 passes22 readout/figure-data checks, with1 opt-in saved-
+fixture test skipped, in1.08s atf4b2262b. The additional continuation checks
+reject reader/scientific-local and resolved-symlink outputs before waiting.
+This source-bound light check is separate from the actual7e51b2a4 exports.
+
+Initial rendered exports44513/96720 both exit0 and all7 files match. Visual
+inspection finds the null annotation on the known-terminal comparison line.
+Those exports remain. Renderer27aa0c57 changes layout only: manuscript width,
+readable typography/legend/footer and a distinct annotation region. Fresh
+40803/88004 both exit0; all7 final files match and both PNG layouts are checked.
+All numerical paths, outcomes, selection and comparisons equal the first exports.
+
+[Final figure retention](../results/native-consumer-source-figure-retention-v1.json)
+binds those bytes and inspections. [Data and all11 exact programs](../data/native-consumer-source-comparison-v1/README.md)
+are retained separately from prior SCRIPTED software evidence. Literal program
+copies match both original installed-file hashes and canonical audit systems;
+the failed candidate is unchanged. An initial attempted JSON transfer through
+tool output truncates before any data file is created. Retention instead copies
+the11 original system.json files byte-for-byte and records a small manifest;
+no scientific record or generated program is executed or repaired.
+
+The paper image is prepared but no new TeX chapter or PDF is yet built/reviewed.
+The reviewed100-page PDF remains its earlier source-bound artifact. Full analysis
+still needs local raw data; derived plots are not independent inference or
+publication readiness. The full goal and R2/R3/R5/R6 remain open.
