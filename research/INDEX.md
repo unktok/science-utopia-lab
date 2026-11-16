@@ -7,6 +7,14 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Third adaptive U outcome](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-u-outcome):
+  own best reaches-28.3333 but stays about1/3 worse than reference. Exact saved
+  ask/tell replay explains four internal duplicate-vector draws, not extra
+  native evaluations.14terminal/15started; free/U/g2 passes fresh29 controls,
+  with its failed lossNone/error verified in the actual first production wire.
+  No submission/gain is inferred. [Working methods source](results/native-corrected-choice-methods-source-preparation-v1.json)
+  has25 light checks and no new PDF/render/full-study claim.
+
 - [All six two-proposal prefixes](results/native-corrected-choice-two-proposal-prefix-v1.json):
   12terminal/13started,11complete/1execution-null,0better/3ties/8worse against
   reference. Uniform/U/g1 reaches-28.3333 (about1/3 worse than reference),

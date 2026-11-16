@@ -1,0 +1,41 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-methods-source-preparation.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T22:51:20+00:00",
+  "source_commit": "c585dc043b2ace6300c8886e3ee24a093dd917af",
+  "scientific_source_commit_unchanged": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "source_file_sha256": {
+    "paper/integrated.tex": "94dae653f33dc7edee26ec6f41134ef77ecab6c233109a96c0b0a07f07a16bd2",
+    "paper/integrated/native-corrected-choice-design.tex": "639f44041217cd9b036db9125697c3d2b6d56b43341239e5038ec80d1a789b89",
+    "paper/integrated-content-map.md": "09986c352098c1dcb328c5d753c26c3f329e15ce092ae665dd7ff5b01f6aec33",
+    "tests/reports/test_corrected_choice_manuscript_design_v1.py": "24aab4c9172dcd009666812f7821ad1c397afd6fe0d9f7a59ec37bd6f7ff0c3a"
+  },
+  "static_source_checks": {
+    "recursive_TeX_files": 28, "unique_labels": 153, "literal_reference_targets": 79,
+    "missing_literal_labels": [], "duplicate_labels": [], "cited_primary_identities": 32,
+    "new_method_tables": 1, "new_result_figures": 0
+  },
+  "initial_software_check": {
+    "original_handle": 40143, "exit_code": 1, "passed": 24, "failed": 1,
+    "cause": "The new text uses 'neither ... is an unused condition', while the new test expected the alternative literal phrase 'not an unused condition'. Corrected the test to its exact normalized sentence and actual seed. No scientific protocol, data or manuscript conclusion was relaxed."
+  },
+  "post_commit_software_check": {
+    "original_handle": 61847, "exit_code": 0, "passed": 25, "failed": 0, "seconds": 11.25,
+    "junit": "research/data/corrected-methods-source-v1/pytest.xml",
+    "junit_file_sha256": "eaa007db602ca411909b09488765adbcc6c157b544d0f1100a8e0d2d06cd1634",
+    "scope": "Working methods/actual dispatch numbers/technical boundaries/recursive labels/citation identities/current publication pointers and requirement transcription. Overlapping light source/document checks, not independent scientific samples, a full native audit or visual layout proof."
+  },
+  "preserved_reviewed_artifact": {
+    "receipt": "paper/integrated-priority-method-build-v1.json",
+    "source_commit": "09c2e6d1315b306bbbb4c7039321f1bd801a59a6",
+    "pdf": "output/pdf/science-utopia-lab-integrated-priority-method-working-paper.pdf",
+    "pdf_sha256": "c5f00446052bb2b30035a0275e1702e5cd0dabb8a0b47fb031f6435726ce526a",
+    "pages": 111, "pdf_bytes_unchanged": true,
+    "does_not_include_this_new_source_section": true
+  },
+  "PDF_skill_read_and_marker_run": true,
+  "new_PDF_created": false, "new_PDF_rendered": false, "new_visual_review_complete": false,
+  "new_model_calls_by_manuscript_work": 0, "new_native_worlds_by_manuscript_work": 0,
+  "full_corrected_study_results_integrated": false, "final_selection_frozen_by_this_work": false,
+  "publication_ready": false,
+  "scope": "Only frozen-method source is added to the working manuscript: same native world/budget, changed package, actual rank proposal, source/parameter/readiness boundaries, charged slots/internal draws and both endpoint estimands. Actual complete results/figures, a new source-bound PDF build/whole-page review and final claim/readiness judgment remain outstanding. No heavy authoring/render work competes with ongoing original42803 inference."
+}

@@ -650,3 +650,90 @@ at22:27:10UTC as s4fab2cdd9377ed80, phase adaptive, candidate
 The four-step study, final endpoints, paired closure/frozen unused evaluation
 and publication readiness are still open. Source/settings/objectives remain
 unchanged. No new model/native/generated-code work is launched by this check.
+
+## Third adaptive U outcome
+
+At22:43:11UTC adaptive/U/g2 completes at-28.3333, U28.3333/T36/K200/uncollected0.
+This improves the previous own proposal-25.6667 and previous own best-27.6667,
+but stays about1/3 worse than reference-28.6667. All182 full inputs/replies/body
+hashes verify. Equal loss with uniform/U/g1 is not equal complete input paths:
+that separate outcome has181 requests. No ranking or independent uncertainty
+is inferred. Fourteen terminal own slots are13complete/10worse/3ties/0better
+plus1execution-null; fifteen slots have started including free/U/g2 readiness.
+
+Observation file SHA256 is `c6f5af1deb0000f3c1c8d02bab12b3d1a135b5085235449c275f5cd99752b994`,
+content `e373637a2f434c5d52b26a87f436266fb046b82d9f1167d4221cc5edb16b0b88`.
+Post-tell file SHA256 is `617a048a5104e474bbac8d0c7cbf127a7cb85840830f733eb4520d0889887b61`,
+content `08ebb454aa1b9886cd3558f03422058e0470e653a9b9259152a5f3c7475e7f1e`.
+Full input sequence is `331900d57420f4b1acbbaf8668c345eae91173fe510e72e6239788346348646f`,
+choice sequence `7565542731208fa5ced6d6f89b07411e8eb4ff9754a66afb430a4b6ef7e06014`,
+provider-body sequence `43aab2d05e7f53aeabfd07faede1288381de2476f622f3360d56bd0806407cb0`.
+Exact observation occurs once; pending[],four observations including the
+reference, internal proposal_index7 and returned suggestion index6.
+
+An initial inspection incorrectly assumed sampler index equaled completed-own
+count3. A correct pure replay uses the actual frozen numeric_optimizer factory,
+not an already transformed priority anchor, and restores the actual g1 state.
+Internal indices2/3/4/5 each produce the same previously seen literal candidate
+924b9152 at scales0.141421/0.115470/0.1/0.089443. The existing exact-program
+uniqueness loop skips them before native dispatch. Index6 at0.081650 produces
+new6a40cba3; exact saved ask and post-tell states match after its original
+observation is supplied. No new world/model/generated-code execution occurs.
+The original cold reader already separates completed_slots from sampler index
+and replays ask, rather than requiring index==generation+1; no guard or source
+is changed. This is not a failure refund, scientific retry or semantic novelty
+filter. Distinct programs with repeated observed paths remain valid, as U/g2
+uniform demonstrated immediately before it. Full original cold proof is pending.
+
+The next actual free/U/g2 request is
+`cc3b3a859642a9b229e1adf829e99a308738668151592d1a19f04712331f9423`.
+Its two compact histories and four observations include two measured references,
+the adverse own U/g0 and the failed own U/g1 with lossNone and the literal
+native decision-coverage GraphRuntimeError. The saved request therefore does
+not replace failure with zero or erase its error. Fresh readiness is underway;
+no completed new certificate, production-wire inclusion, submission, native
+loss or evidence that the model understood/fixed the error is asserted here.
+
+## Corrected study methods added to unbuilt working TeX
+
+Committedc585dc04 adds a separate methods section/input and updates the content
+map. It distinguishes the old two-history/two-proposal pilot from the new
+one-history/four-proposal package, exact world/seed/budgets, initial-choice rank
+kernel, actual parameter-context overlay, technical readiness and downstream
+consumer boundaries, charged slots/internal draws and both endpoint estimands.
+No complete new results or figures are fabricated, and the body is not
+relabelled as a new built artifact. [Source/hash/check receipt](../results/native-corrected-choice-methods-source-preparation-v1.json).
+
+The PDF skill is read, its authoring marker succeeds once, and bundled runtime
+paths are located. Its visual-quality requirement means this source-only work
+is not delivered as a finished PDF: no build/render runs during inference.
+The old111-page PDF's exactc5f00446 hash/09c2e6d1 receipt remain unchanged.
+Static recursive source checks find28 TeX files,153 unique labels/79 literal
+reference targets with no missing labels and unchanged32 cited identities.
+An initial new test expected an alternative literal negation; its1fail/24pass
+is retained in the receipt. The exact normalized existing sentence is then
+tested; post-commit original61847 passes25 overlapping light cases in11.25s.
+These are source/evidence pointers, not layout proof, scientific closure,
+independent method evidence, a significant main-track claim or final readiness.
+
+## Prior failed outcome reaches the actual free U/g2 model wire
+
+By22:54UTC fresh requestcc3b3a85 passes29 controls, with certificate content
+`b6d52d81680ee8461c6b7e8a5bdcc47e1aca446edadffdb624a0fa3e698f3d0c`,
+file `8f39f14aabc250384224aebede94a0a9b7581f1e2ad597481e634772277ff0fe`.
+The original failed U/g1 observation is exactly equal to its raw campaign
+observation and appears once in the new saved request. Actual production
+has4 intents/3 completed steps (one applied plan/two applied reads), one unknown
+pending response and no terminal at the dated inspection. These are full
+journal-prefix counts, not a few recent actions or all-session evidence.
+
+The saved first prompt occurs verbatim in its actual wire user message. The
+own-observation projection contains exactly one failed U/g1 row, statusfailed,
+lossNone, and the literal native decision-coverage error. The wire content is
+`a4daad2af9b4d435dacdf94683d31f4e52556dd54e12d7c21f9d3ee94038c99e`,
+file `391e019b93e7fc195af9220c975b136b53e688b3376d64f90683738765ce7345`;
+prompt canonical string hash is `dd1e4b43bab44077b9ec567340e2060f9cd5c2520de3e320fa219e6adcea1cb7`.
+The first intent-bound provider response ends done/stop with33747 input and
+313 output tokens. This is actual error-feedback inclusion, not mere HTTP200,
+a completed proposal, model understanding, successful protocol correction,
+a measured gain or causal evidence that this feedback improves design.

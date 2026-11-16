@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November16,2026 at22:30UTC / November17 07:30JST.
+Verified November16,2026 at22:54UTC / November17 07:54JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -40,23 +40,33 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 | Method / target | Own g0 | Own g1 | g2 / g3 |
 | --- | ---: | ---: | --- |
 | Uniform / U | -27.6667 | -28.3333 | g2 -27.6667 / g3 not dispatched |
-| Adaptive / U | -27.6667 | -25.6667 | g2 running / g3 not dispatched |
-| Free code/graph / U | -7 | Execution null | Not dispatched |
+| Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 not dispatched |
+| Free code/graph / U | -7 | Execution null | g2 authoring / g3 not dispatched |
 | Uniform / C | -9.6667 | -10.3333 | Not dispatched |
 | Adaptive / C | -9.6667 | -12.6667 | Not dispatched |
 | Free code/graph / C | -12.6667 | -12.6667 | Not dispatched |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
-Thirteen own slots have terminal outcomes:12 complete (9 worse/3 tied/0 better
-than their assigned reference) and1 execution null. Fourteen slots have started,
-including the running adaptive/U/g2; the writer charges each at dispatch, not
+Fourteen own slots have terminal outcomes:13 complete (10 worse/3 tied/0 better
+than their assigned reference) and1 execution null. Fifteen slots have started,
+including free/U/g2 authoring; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
 programs; uniform g1 is another initial random sample, not an adaptive move.
 Primary best known may remain a labeled reference; own-only selection is a
 separate scope. Final endpoints are not frozen.
 
-[Latest uniform/U/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-u-outcome)
+[Latest adaptive/U/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-u-outcome)
+completes at-28.3333, a new own best but still about1/3 worse than reference.
+Its182 replies and exact tell verify. Four internal exact-duplicate draws
+precede the accepted parameter vector: replay matches saved ask/tell exactly,
+with no additional native/model evaluation. Free/U/g2's saved request retains
+the prior failed observation as lossNone with its actual consumer error.
+Fresh29-control readiness passes, and that failure/error is verified in the
+first actual production wire. The session is active, not a submitted/evaluated
+new program or proof that the model understood/corrected the protocol error.
+
+[Earlier uniform/U/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-u-outcome)
 completes at-27.6667, without improving own best-28.3333 or reference-28.6667.
 Its different literal priorities nevertheless reproduce the initial candidate's
 complete186 scientist input/choice path; provider bodies differ and verify.
@@ -79,7 +89,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 is evaluating adaptive/U/g2; source/plan/settings unchanged |
+| Real scientific search | Original42803 is running free/U/g2 authoring after fresh readiness; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |
@@ -104,7 +114,12 @@ is dated partial evidence, not a full24-slot result or global headroom bound.
 | Optimization | Numeric and free source/graph black-box loops; scoped tensor/relaxation and gradient-estimator tracks. No universal world autograd or general live-gradient advantage is established or required |
 | Automatic invention / feedback | Submitted code can change native plans and inputs; feedback is recorded. New useful institutional advantage and improvement of the inventor itself remain unproved |
 | Game interface | English pixel/cyberpunk event/replay interface exists; not a complete management game. No active UI-development worker is claimed |
-| Manuscript | Reviewed111-page integrated artifact/53 figures/52 tables/32 references exists. It predates this corrected experiment; current notes are not a newly built PDF |
+| Manuscript | Reviewed111-page integrated artifact/53 figures/52 tables/32 references exists. Working TeX now adds the corrected methods; it remains unbuilt/unrendered, not that unchanged PDF |
+
+[Methods-source preparation](results/native-corrected-choice-methods-source-preparation-v1.json)
+records28 recursive TeX files/153 unique labels/79 literal reference targets,
+no missing labels and25 light post-commit checks. These are not a new layout/
+PDF proof, full corrected-result integration or scientific/claim validation.
 
 Earlier meaningful parameter/structure/workflow/estimator/game studies remain
 in the index and manuscript. The [old24-slot native method pilot](results/native-priority-method-comparison-closed-v1.json)
