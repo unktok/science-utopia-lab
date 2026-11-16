@@ -1,6 +1,28 @@
 # Current research status
 
-## Latest verified state: November16,2026 at21:05UTC / November17 06:05JST
+## Latest verified state: November16,2026 at21:29UTC / November17 06:29JST
+
+[Nine own outcomes and accepted-content prefix](results/native-corrected-choice-nine-outcomes-content-prefix-v1.json).
+Uniform/C/g1 completes at-10.3333, recovering about0.6667 from its own initial
+sample but remaining about2.3333 worse than the measured reference. Its184
+scientist responses and exact optimizer tell verify. The own prefix is now
+9complete/6worse/3ties/0better/0nulls; final selection is not frozen.
+
+Across the three references and nine complete own worlds, all406 accepted
+occurrences (75 content identities) have nonnegative centered panel opinions:
+327 positive/79 zero. Removing items from these realized sets cannot directly
+raise their fixed-score U sum. This is conditional arithmetic, not a global
+optimum, a causal intervention, or absence of headroom through plans/resources/
+information/future effects. Repeated contents/worlds are not independent samples.
+
+Actual free/U/g1 request36033579 carries the exact previous adverse own
+observation once and passes a fresh29-control calibration. Its21:29 production
+prefix has3 completed steps and1 unknown pending response, no terminal/native
+result. Original42803 and all scientific conditions remain unchanged. Full24
+closure, paired analyses, fixed unused evaluation and publication readiness
+remain open. No new inference/code execution is performed by this analysis.
+
+## Earlier operative adaptive update:21:05UTC / 06:05JST
 
 [First adaptive numeric update has an actual effect and recovers own loss](results/native-corrected-choice-first-adaptive-update-v1.json).
 Adaptive/C/g1 completes at-12.6667, improving its own initial-9.6667 by3,

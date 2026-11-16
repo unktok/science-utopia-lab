@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Nine actual own outcomes and signed-content prefix](results/native-corrected-choice-nine-outcomes-content-prefix-v1.json):
+  uniform/C/g1 recovers0.6667 from its own initial sample but stays2.3333 worse
+  than the reference. All406 accepted occurrences in twelve completed worlds
+  have nonnegative centered scores; deleting records alone cannot raise their
+  fixed-score sum, not a global policy bound. Actual free/U/g1 receives its
+  adverse own history and passes fresh29-control readiness; production is
+  underway, not a completed next native outcome or a final method result.
+
 - [First operative adaptive numeric update](results/native-corrected-choice-first-adaptive-update-v1.json):
   its own C loss recovers3 (-9.6667→-12.6667), matching but not beating the
   strong reference. One actual initial topic assignment changes; full model

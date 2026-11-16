@@ -412,3 +412,50 @@ gains beyond a measured strong reference. The next actual uniform proposal is
 phase initial, as declared for its four initial samples, not a new adaptive
 mutation. Its evaluation continues under the same source, world and objectives;
 final selection, all24 slots and paired analysis/frozen evaluation remain open.
+
+## Ninth own outcome and conditional accepted-content arithmetic
+
+At21:18:29UTC the writer advances from uniform/C/g1 to free/U/g1. The completed
+uniform sample has U26.3333/T36/K160/uncollected40 and C-10.3333: about0.6667
+better than its own first sample but about2.3333 worse than the reference.
+All184 scientist replies and body hashes verify; the original observation is
+registered once, pending[],proposal_index2. It is the declared second initial
+random sample, not an adaptive update. The cumulative own prefix is now
+9complete/6worse/3ties/0better/0nulls. [Hashes, original tell and exact decomposition](../results/native-corrected-choice-nine-outcomes-content-prefix-v1.json).
+
+An additional read-only analysis checks all accepted records in the twelve
+completed physical worlds (three references plus nine own). Existing pure
+contribution/overlap functions validate the original three integer ratings,
+pooled means and literal U sums; exact rational signs use the unchanged
+center3. The406 accepted occurrences have75 distinct content identities,
+327 positive contributions,79 zero and none negative. They are dependent,
+repeated observations, not406 independent scientific discoveries. For the
+ninth outcome versus its reference,16 occurrences are common,20 are own-only
+and20 reference-only; the latter two contribute exact U13 and46/3, accounting
+for the7/3 deficit at equal count and collected resources.
+
+Consequently, deleting records from these realized accepted sets while fixing
+their ratings and every other consequence cannot raise the recorded U sum.
+This is only conditional arithmetic. Rejecting a paper in the real world can
+alter future prompts, production and resources; other content is unobserved,
+and new institutions may change plans/information/state. Neither an attainable
+subset counterfactual nor global optimality/no-headroom is demonstrated.
+No objective, rejected-content rating, candidate gate or scientific selection
+is modified. This analysis generates no new model/code/native executions and
+is not the pending full original-source cold audit.
+
+By21:29:47UTC actual free/U/g1 request36033579 includes the exact adverse own
+g0 observation once (-7 versus reference-28.6667), two measured references
+and one compact history. Its fresh request-bound calibration passes29 controls.
+Production has4 intents/3 completed steps (two applied reads/one rejected plan),
+one unknown pending response and no terminal/native result. These are complete
+journal-prefix counts, not a few recent actions. The initial flat inspection
+mistakenly looked for suggestion_id at the wrapper level; checking its actual
+observation member confirms exact-once feedback. No raw data or request changed.
+
+The author-only native resource endpoint restriction is also reconfirmed in
+the actual source and the existing v5 capability documentation. The integrated
+manuscript already distinguishes graph syntax from trusted native authority
+and describes this transfer guard. It is not a newly discovered harness bug,
+a loss constraint or evidence that an unimplemented treasury would improve
+the objective. No extension is slipped into this active study.

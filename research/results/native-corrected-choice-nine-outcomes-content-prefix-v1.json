@@ -1,0 +1,78 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-nine-outcomes-content-prefix.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T21:29:47+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "ninth_own_outcome": {
+    "method": "uniform-priority", "objective": "resource-aware-content", "generation": 1, "replication": 0,
+    "suggestion_id": "s1a57305fbff793b2", "phase": "initial",
+    "candidate_sha256": "cb55395e5eace05807bd97efa394ac991fd1b4fc9012291d2cea68468e823f69",
+    "status": "complete", "loss": -10.333333333333332,
+    "previous_own_loss": -9.666666666666668,
+    "assigned_reference_loss": -12.666666666666668,
+    "metrics": {"U": 26.333333333333332, "T": 36, "K_collected": 160.0, "K_uncollected": 40.0},
+    "observation_file_sha256": "4e56cf47147bd42427c568d651c953a1729eec4d793c70ea53b58227e494d424",
+    "observation_content_sha256": "5d96cd5868e3458e380ef32a8e23d58f084112ad8d5ae99de6fb67ec19598660",
+    "post_tell_file_sha256": "5066ead5a51458f5ad0f1b53c5fca7b46032473d7911db8c26334958afe9ae9c",
+    "post_tell_content_sha256": "6e6612ca8670c6f73ef65e04ea9139be85297b57a2ebb8682afeed868b1c3296",
+    "literal_own_observation_registered_exactly_once": true,
+    "optimizer_pending": [], "optimizer_proposal_index": 2,
+    "optimizer_observations_including_one_primed_reference": 3,
+    "observed_scientist_path": {
+      "wire_requests": 184, "completed_responses": 184, "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "58758e20c169afc2ab72931e854ada004fc5cf9232e0e5ac35fc5fded8dc1f49",
+      "ordered_literal_response_choices_sha256": "aadaf648a7a00726263da71b6469efe3daf8cb9ebbaa87e3fbcaca5811e6b6b1",
+      "ordered_full_provider_body_hashes_sha256": "ddfd2034671193a2fab8c435e410b8c0d233c5f0e0c4d79a08e5ca8c6cd1946c",
+      "all_response_cache_body_hashes_checked": true
+    },
+    "accepted_record_overlap_with_terminal_reference": {
+      "common_occurrences": 16, "common_exact_U": "40/3",
+      "own_only_occurrences": 20, "own_only_exact_U": "13",
+      "reference_only_occurrences": 20, "reference_only_exact_U": "46/3",
+      "own_minus_reference_exact_U": "-7/3",
+      "scope": "Multisets keyed by year, paper_id and content identity. This explains the recorded difference arithmetically, not causal mediation or independent discoveries."
+    }
+  },
+  "prefix_counts_against_assigned_reference": {"complete": 9, "better": 0, "tie": 3, "worse": 6, "technical_nulls": 0},
+  "accepted_content_prefix": {
+    "complete_physical_worlds": 12, "references": 3, "own_worlds": 9,
+    "accepted_occurrences": 406, "distinct_content_hashes": 75,
+    "positive_occurrences": 327, "zero_occurrences": 79, "negative_occurrences": 0,
+    "worlds": [
+      {"cell": "references/priority-zero", "observation_canonical_sha256": "3333d82196defd4a4625c0b7e9df097ebe12d5baaaf4ec7b14450126ced8e6cd", "T": 36, "exact_U": "86/3", "positive": 30, "zero": 6, "negative": 0},
+      {"cell": "references/terminal-priority-zero", "observation_canonical_sha256": "1c5007c5d452070c79146877a8a211ba162bcd60605a4ae2690e6ccbf7b65e42", "T": 36, "exact_U": "86/3", "positive": 30, "zero": 6, "negative": 0},
+      {"cell": "references/literal-related", "observation_canonical_sha256": "60070499756a2e6ffd335864fd0aa051631f71da545e11fb1ba0811aed5f3084", "T": 36, "exact_U": "86/3", "positive": 30, "zero": 6, "negative": 0},
+      {"cell": "uniform-priority/0/content-utility/g0", "observation_canonical_sha256": "94155c42d3ad2c611cb162ec0c906f6b2217125a9fbdc62191b9ceb1f8083e43", "T": 36, "exact_U": "83/3", "positive": 29, "zero": 7, "negative": 0},
+      {"cell": "adaptive-priority/0/content-utility/g0", "observation_canonical_sha256": "7350a3cc346b5bdb6403f74c1bd6a004b0fc299e6ee336b39a3f54e9a8a921e4", "T": 36, "exact_U": "83/3", "positive": 29, "zero": 7, "negative": 0},
+      {"cell": "free-code-graph/0/content-utility/g0", "observation_canonical_sha256": "1caf71cbbc10a3dbcc7026875b58e25ecef3cfd3e980ed5b24bdeb898de120d7", "T": 10, "exact_U": "7", "positive": 8, "zero": 2, "negative": 0},
+      {"cell": "uniform-priority/0/resource-aware-content/g0", "observation_canonical_sha256": "187867b87bc1359af66d8a1dcd05efc63406844e85c860c6f809b194316e135d", "T": 36, "exact_U": "77/3", "positive": 27, "zero": 9, "negative": 0},
+      {"cell": "adaptive-priority/0/resource-aware-content/g0", "observation_canonical_sha256": "5c6b9fb82905a32456468df1819b9be8095f17af9cc791b53645c2482c4a1f11", "T": 36, "exact_U": "77/3", "positive": 27, "zero": 9, "negative": 0},
+      {"cell": "free-code-graph/0/resource-aware-content/g0", "observation_canonical_sha256": "199a0ae46d0d0ede5c89d50a486bcf911b5061db73bdb6e7059bfe4592bd3d5c", "T": 36, "exact_U": "86/3", "positive": 30, "zero": 6, "negative": 0},
+      {"cell": "free-code-graph/0/resource-aware-content/g1", "observation_canonical_sha256": "0da12371f2725597a65ef2db850802177d67fcfa11538514be2a69a7030a14cc", "T": 36, "exact_U": "86/3", "positive": 30, "zero": 6, "negative": 0},
+      {"cell": "adaptive-priority/0/resource-aware-content/g1", "observation_canonical_sha256": "df17c75775ec7d52750af5dd015df52b36169617356e7806ac5913af43ee96e7", "T": 36, "exact_U": "86/3", "positive": 30, "zero": 6, "negative": 0},
+      {"cell": "uniform-priority/0/resource-aware-content/g1", "observation_canonical_sha256": "5d96cd5868e3458e380ef32a8e23d58f084112ad8d5ae99de6fb67ec19598660", "T": 36, "exact_U": "79/3", "positive": 27, "zero": 9, "negative": 0}
+    ],
+    "reader": "scripts.reports.native_planning_content_contributions_v1.contributions; rational signs from the three original integer ratings minus center3; original float utility sums also checked",
+    "scope": "Completed prefix only, not the full24-slot report or original cold audit. Repeated occurrences/content and matched policies are not independent samples. With these realized scores and all other consequences held fixed, removing accepted records cannot raise their summed U. This is not an attainable counterfactual, a global optimum, proof that selection has no future effects, a bound on unseen content, or proof that free institutional design has no headroom. Resource effects, research plans, information and future trajectories remain separate. No rejected/unproduced content was rerated and no objective was changed."
+  },
+  "next_actual_author_request": {
+    "method": "free-code-graph", "objective": "content-utility", "generation": 1,
+    "request_sha256": "36033579a1b2127fdc10e6cd3e0867d7be551775508215a3e960916ce851a39f",
+    "exact_previous_own_observation_occurs_once": true,
+    "previous_own_loss": -7.0, "reference_loss": -28.666666666666668,
+    "observations_including_two_visible_references": 3, "compact_history_records": 1,
+    "fresh_certificate_all_controls_passed": true, "fresh_certificate_records": 29,
+    "certificate_content_sha256": "0e0c4f8ce19e1c65b28ee74f7e86d31a5a19506612ba4c8c8a156123ea37e2c0",
+    "certificate_file_sha256": "52f844ee45446797b41736b174d3a0ece397e5b2128735407c4c07e7d1db72fb",
+    "production_started_calls": 4, "production_completed_steps": 3,
+    "completed_status_counts": {"applied": 2, "rejected": 1},
+    "uncommitted_responses": 1, "terminal_record_present": false,
+    "scope": "Original actual request and complete journal prefix. A pending response is unknown, not failed. No submitted U/g1 candidate, native U/g1 loss, improvement or full wire-feedback proof is asserted here."
+  },
+  "new_model_calls_by_this_analysis": 0, "new_native_worlds_by_this_analysis": 0,
+  "new_code_executions_by_this_analysis": 0,
+  "loss_changed": false, "candidate_reselection": false,
+  "full_study_cold_audit_complete": false, "final_selection_frozen": false,
+  "publication_ready": false
+}

@@ -21,6 +21,12 @@ The [first operative adaptive numeric update](../research/results/native-correct
 recovers3 units relative to its own initial loss, but only ties the strong
 reference. Its native topic and bibliography change at equal aggregate U/C;
 own-path recovery and gain beyond a known reference are distinct.
+The [nine-outcome prefix](../research/results/native-corrected-choice-nine-outcomes-content-prefix-v1.json)
+adds uniform/C/g1 at-10.3333 (still worse than its reference) and a signed
+decomposition of all406 accepted occurrences across twelve completed worlds:
+none has negative centered content opinion. This conditional set arithmetic
+is not a global optimum or a counterfactual policy evaluation. Actual free/U/g1
+starts after fresh readiness with its adverse own observation retained.
 The new study's full24-slot paths, final paired audits, selection-fixed unused
 evaluation and consequential interpretation remain open. No method ranking or
 useful invention follows from this partial initial history. Source/notes are
