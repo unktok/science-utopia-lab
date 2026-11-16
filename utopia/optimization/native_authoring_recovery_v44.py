@@ -47,9 +47,16 @@ def action_schema():
     return schema
 
 
-def workflow(state, steps, *, max_steps):
+def workflow(state, steps, *, max_steps, literal_document_included=None):
+    # None preserves V44's historical serializer/cap. A different source-owned
+    # renderer (V45's compact JSON) must pass whether it actually supplies the
+    # whole literal document, rather than applying V44's spaced byte count.
+    # This is caller-owned projection evidence, never a model/tool argument.
+    if literal_document_included is not None and type(literal_document_included) is not bool:
+        raise ValueError('literal document inclusion must be a source-owned boolean')
     remaining = max_steps - len(steps)
-    complete = bool(steps) and len(json.dumps(state['document'], ensure_ascii=False, allow_nan=False).encode()) <= MAX_FULL_DOCUMENT_BYTES
+    complete = bool(steps) and (len(json.dumps(state['document'], ensure_ascii=False, allow_nan=False).encode())
+        <= MAX_FULL_DOCUMENT_BYTES if literal_document_included is None else literal_document_included)
     inspections = successful = 0
     current = digest(state)
     for step in reversed(steps):
@@ -81,7 +88,8 @@ def workflow(state, steps, *, max_steps):
         'remaining_calls_including_this_one': remaining, 'submission_reserve': SUBMISSION_RESERVE,
         'inspection_attempts_since_last_draft_change': inspections,
         'successful_inspections_since_last_document_change': successful,
-        'literal_current_system_included': complete, 'literal_current_system_byte_cap': MAX_FULL_DOCUMENT_BYTES,
+        'literal_current_system_included': complete if literal_document_included is None else literal_document_included,
+        'literal_current_system_byte_cap': MAX_FULL_DOCUMENT_BYTES,
         'all_calls_charged': True, 'host_repair': False, 'host_auto_submit': False}
 
 

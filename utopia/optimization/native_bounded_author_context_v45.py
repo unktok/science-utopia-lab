@@ -113,7 +113,6 @@ def build_active_prompt(request, state, steps, *, image_id, binding_sha256, sett
     from .native_objective_view import loss_arithmetic
     from .native_file_workspace_v35 import file_catalog
     control = turn_control(state, steps, max_steps=settings['max_steps'])
-    control['authoring_workflow'] = workflow(state, steps, max_steps=settings['max_steps'])
     planning = not steps and settings['max_steps'] > 1
     from .native_parent_evidence_v46 import enabled, describe as describe_parent
     literal_planner = enabled(request, conversation_profile=settings['conversation_profile'])
@@ -123,9 +122,11 @@ def build_active_prompt(request, state, steps, *, image_id, binding_sha256, sett
         if len(compact(state['document']).encode()) > MAX_ACTIVE_DOCUMENT_BYTES:
             raise ValueError('literal planning-parent document exceeds declared active limit; no truncation or fallback')
     document_included = (not planning or literal_planner) and len(compact(state['document']).encode()) <= MAX_ACTIVE_DOCUMENT_BYTES
-    # Workflow promise must match the actually supplied body, including custom
-    # settings/drafts rather than assuming a historical document byte count.
-    control['authoring_workflow']['literal_current_system_included'] = document_included
+    # Both phase selection and its promise must use this actual projection.
+    # Merely overwriting the promise after V44's spaced-JSON phase calculation
+    # silently disabled implementation on compact-but-not-spaced fitting drafts.
+    control['authoring_workflow'] = workflow(state, steps, max_steps=settings['max_steps'],
+        literal_document_included=document_included)
     last_filename = f'archive/steps/{len(steps)-1:02d}.json'
     previous = None if not steps else {
         'step': steps[-1]['step'], 'status': steps[-1]['status'],
