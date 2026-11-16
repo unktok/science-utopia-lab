@@ -6,7 +6,7 @@ import pytest
 
 from tests.optimization.test_native_authoring_ir import request
 from tests.optimization.test_native_bounded_author_context_v45 import frame
-from utopia.optimization.native_staged_author_v15 import initial_draft, call_task
+from utopia.optimization.native_staged_author_v15 import initial_draft, call_task, StagedVocabularyGenerator, replay_staged_generation
 from utopia.optimization.native_authoring_recovery_v44 import workflow, IMPLEMENT_TASK
 from utopia.optimization.native_bounded_author_context_v45 import compact, MAX_ACTIVE_DOCUMENT_BYTES, context_contract
 from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
@@ -102,3 +102,42 @@ def test_submission_reserve_precedes_implementation_without_changing_budget(rema
     prompt, _ = frame(body, state, steps); flow = json.loads(prompt)['000_current_turn']['authoring_workflow']
     assert flow['phase'] == phase and flow['remaining_calls_including_this_one'] == remaining
     assert flow['submission_reserve'] == 3 and flow['all_calls_charged'] and not flow['host_auto_submit']
+
+
+@pytest.mark.parametrize('name,_,__', CASES)
+def test_real_native_boundary_document_reaches_scripted_generator_wire_and_cold_replay(tmp_path, monkeypatch, name, _, __):
+    from tests.optimization import test_native_json_history_v40 as dialogue
+    from tests.optimization.test_native_bounded_author_context_v45 import Model
+    from scripts.analyze_native_staged_search_v15 import _transport, CLASSIFICATION
+    doc = json.loads((FIXTURES / (name + '.json')).read_text()); body = request(); body['parent_system'] = doc
+    image = next(n['parameters']['runtime_image_id'] for n in doc['mechanisms']
+        if n['implementation'] == 'code.python.v1')
+    # The real document/image is preserved; only the already SCRIPTED dialogue
+    # fixture's provider binding is adapted. No model, image or code is loaded.
+    binding = {**dialogue.BINDING, 'image_id': image}
+    monkeypatch.setattr(dialogue, 'BINDING', binding)
+    actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED interface regression',
+        'design_intent': 'Explicitly retain the existing draft, not a scientific result.'}]
+    actions += [{'tool': 'read_file', 'filename': 'system.json'} for _ in range(3)]
+    actions += [{'tool': 'finish'}]
+    model = Model(actions)
+    generator = StagedVocabularyGenerator(model, tmp_path / 'author', image_id=image,
+        provider_binding=binding, max_steps=16, max_tokens=8192, conversation_profile=BOUNDED_AUTHORING)
+    result = generator(body)
+    assert 'generation_failure' not in result and len(model.calls) == 5
+    directory = next((tmp_path / 'author').glob('generation-*'))
+    last = json.loads((directory / 'step-04.completed.json').read_text())
+    messages = last['model_reply']['transport']['request_payload']['messages']
+    data_text = next(m['content'] for m in messages if m['role'] == 'user'
+        and m.get('content', '').startswith('BOUNDED ACTIVE SESSION DATA\n'))
+    view = json.JSONDecoder().raw_decode(data_text.split('\n', 1)[1])[0]
+    assert view['literal_current_system'] == doc
+    assert view['000_current_turn']['authoring_workflow']['phase'] == 'implementation'
+    before = {f.name: f.read_bytes() for f in directory.glob('*.json')}
+    assert replay_staged_generation(directory) == result and len(model.calls) == 5
+    assert before == {f.name: f.read_bytes() for f in directory.glob('*.json')}
+    saved_binding = json.loads((directory / 'request.json').read_text())
+    for i in range(5):
+        completed = json.loads((directory / f'step-{i:02d}.completed.json').read_text())
+        started = json.loads((directory / f'step-{i:02d}.started.json').read_text())
+        assert _transport(completed, started, saved_binding, CLASSIFICATION)['known_designer_response']
