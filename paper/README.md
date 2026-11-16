@@ -2,6 +2,10 @@
 
 ## Post-artifact research status: November17,2026
 
+Use the [current status/table/process map](../research/STATUS.md) for live
+counts. The prefix descriptions below are retained milestones, not current
+heartbeats; they do not change the identity of the reviewed PDF.
+
 The reviewed111-page PDF below remains the same artifact; it does not contain
 the ongoing corrected four-step study. That study now has three complete
 initial U outcomes: two matched numeric programs each worsen the strong

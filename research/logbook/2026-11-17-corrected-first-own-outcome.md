@@ -616,3 +616,37 @@ After committing646fc80f,61 overlapping light checks pass in11.27seconds;
 the prefix receipt retains the exact JUnit/source/hash. Full original cold/
 readout closure and final significance/independent-evidence obligations remain
 open, not certified by these documentary/software checks.
+
+## Third uniform U outcome
+
+At22:27:08UTC uniform/U/g2 completes at-27.6667, U27.6667/T36/K200/uncollected0.
+Its own incumbent remains g1-28.3333; best known remains reference-28.6667.
+The exact observation registers once in the original optimizer: pending[],
+proposal_index3,one primed reference plus three own observations. It is the
+third declared initial random sample, not an adaptive update.
+
+Observation file SHA256 is `9ee87b74287b4d6f3568825479a9ae4655562ded4b66f63977d4c5bd1a9c25f4`,
+content `ed5c7fceab9eae70e33d8512e87573fcd01982ae23651aac1befc77660088b20`.
+Post-tell file SHA256 is `b3363294beb57766ab7cfa99483cab7f6e3ad0d0f637846700bb7e192f902069`,
+content `68b70205a8c5cc725e19470629d5db904a97bd21ad88423a1af0d0c7d9a09529`.
+The original relative cell is search/uniform-priority/history-0/content-utility/
+generation-2, suggestion s8b344614571716af, candidate2c3d3be2.
+
+All186 scientist inputs/replies and body hashes verify. Their complete input
+sequence hash `8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e`
+and literal choice sequence `7b79919f643959ebb67b33745531c3ef1356137d4526fcf9f7d35a49efdd55c9`
+exactly match the original U/g0 candidate8a481b1a. Both actual caches are read
+and independently verified, not inferred equal from scalar losses. The new
+provider-body sequence is `926f91b48aa5b88ed3c439ab4c796de476b3a62956041545daa91c8e7dad6178`,
+different from initial `7ca0daaf4a5c5068596abdbb55445cdf9c50a2eda04aa0886e03adf68e1a5fea`.
+These are different literal programs/physical dispatches with the same observed
+scientific path, not a proof of global policy identity or independent samples.
+Repeats remain valid charged proposals, never a hidden novelty veto or refill.
+
+Thirteen terminal own slots now comprise12complete/9worse/3ties/0better and
+1execution-null. Fourteen dispatches have started. Actual adaptive/U/g2 begins
+at22:27:10UTC as s4fab2cdd9377ed80, phase adaptive, candidate
+`6a40cba3f54d9454fbf761049880d2c221af0219efa99ee84b1a291acc617780`.
+The four-step study, final endpoints, paired closure/frozen unused evaluation
+and publication readiness are still open. Source/settings/objectives remain
+unchanged. No new model/native/generated-code work is launched by this check.

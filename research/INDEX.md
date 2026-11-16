@@ -2,6 +2,8 @@
 
 Start with [the research purpose](../RESEARCH.md), then [current status](STATUS.md).
 This page is navigation, not a chronological experiment transcript.
+Study-prefix descriptions below are retained milestones, not current process
+heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 

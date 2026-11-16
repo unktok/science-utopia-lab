@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November16,2026 at22:12UTC / November17 07:12JST.
+Verified November16,2026 at22:30UTC / November17 07:30JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -39,22 +39,29 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 
 | Method / target | Own g0 | Own g1 | g2 / g3 |
 | --- | ---: | ---: | --- |
-| Uniform / U | -27.6667 | -28.3333 | g2 running / g3 not dispatched |
-| Adaptive / U | -27.6667 | -25.6667 | Not dispatched |
+| Uniform / U | -27.6667 | -28.3333 | g2 -27.6667 / g3 not dispatched |
+| Adaptive / U | -27.6667 | -25.6667 | g2 running / g3 not dispatched |
 | Free code/graph / U | -7 | Execution null | Not dispatched |
 | Uniform / C | -9.6667 | -10.3333 | Not dispatched |
 | Adaptive / C | -9.6667 | -12.6667 | Not dispatched |
 | Free code/graph / C | -12.6667 | -12.6667 | Not dispatched |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
-Twelve own slots have terminal outcomes:11 complete (8 worse/3 tied/0 better
-than their assigned reference) and1 execution null. Thirteen slots have started,
-including the running uniform/U/g2; the writer charges each at dispatch, not
+Thirteen own slots have terminal outcomes:12 complete (9 worse/3 tied/0 better
+than their assigned reference) and1 execution null. Fourteen slots have started,
+including the running adaptive/U/g2; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
 programs; uniform g1 is another initial random sample, not an adaptive move.
 Primary best known may remain a labeled reference; own-only selection is a
 separate scope. Final endpoints are not frozen.
+
+[Latest uniform/U/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-u-outcome)
+completes at-27.6667, without improving own best-28.3333 or reference-28.6667.
+Its different literal priorities nevertheless reproduce the initial candidate's
+complete186 scientist input/choice path; provider bodies differ and verify.
+This valid observed repeat is not a global policy-equivalence proof, a new
+independent population or a reason to discard/refill the slot.
 
 [All six two-proposal paths](results/native-corrected-choice-two-proposal-prefix-v1.json)
 are now recorded, not final four-step results. Uniform/U/g1 recovers about2/3
@@ -72,7 +79,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 is evaluating uniform/U/g2; source/plan/settings unchanged |
+| Real scientific search | Original42803 is evaluating adaptive/U/g2; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |
