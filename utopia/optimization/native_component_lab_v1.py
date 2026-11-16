@@ -48,7 +48,7 @@ def validate_probe_budget(maximum_probes,scope=LEGACY_PROBE_SCOPE):
 
 class NativeComponentLab:
     def __init__(self, directory, *, records, provenance, executor, source_commit, maximum_probes=8,
-                 budget_scope=LEGACY_PROBE_SCOPE):
+                 budget_scope=LEGACY_PROBE_SCOPE, parameter_context_scope=None):
         if (not isinstance(source_commit, str) or len(source_commit) != 40
                 or any(c not in '0123456789abcdef' for c in source_commit)):
             raise ValueError('full component-lab source required')
@@ -67,6 +67,10 @@ class NativeComponentLab:
             'source_execution_on_host':False, 'new_native_worlds':0, 'new_model_calls':0,
             'scope':'single component on literal developer fixtures; no scientific loss or golden-output gate'}
         if budget_scope!=LEGACY_PROBE_SCOPE:core['budget_scope']=budget_scope
+        if parameter_context_scope is not None:
+            from .native_component_parameter_context_v1 import SCOPE
+            if parameter_context_scope != SCOPE: raise ValueError('unknown parameter context scope')
+            core['parameter_context_scope'] = SCOPE
         path = self.directory/'contract.json'
         if path.exists():
             self.contract = checked(json.loads(path.read_text()))
@@ -75,7 +79,18 @@ class NativeComponentLab:
         else:
             self.contract = save(path, core)
 
-    def probe(self, artifact, fixture_id):
+    def context_for(self, intent):
+        original = self.fixtures[intent['fixture_id']]['context']
+        if 'parameter_context_scope' not in self.contract:
+            if 'parameter_context' in intent: raise ValueError('legacy probe cannot rebind parameters')
+            return clone(original)
+        from .native_component_parameter_context_v1 import project
+        context = project(original, intent.get('parameter_context'))
+        if sha(context) != intent.get('derived_context_sha256'):
+            raise ValueError('counterfactual probe context differs from literal projection')
+        return context
+
+    def probe(self, artifact, fixture_id, *, parameter_context=None):
         with (self.directory/'writer.lock').open('a') as owner:
             fcntl.flock(owner, fcntl.LOCK_EX | fcntl.LOCK_NB)
             previous = self.replay()
@@ -88,14 +103,25 @@ class NativeComponentLab:
             if index >= self.contract['maximum_probes']:
                 raise ValueError('finite component budget exhausted')
             name = self.directory/f'probe-{index:03d}'
+            extra = {}
+            if 'parameter_context_scope' in self.contract:
+                from .native_component_parameter_context_v1 import project
+                # Unknown/malformed arguments still consume the declared slot,
+                # just like legacy invalid fixtures. Nothing executes on host.
+                extra['parameter_context'] = clone(parameter_context)
+                if fixture_id in self.fixtures:
+                    try: extra['derived_context_sha256'] = sha(project(self.fixtures[fixture_id]['context'], parameter_context))
+                    except ValueError: pass
+            elif parameter_context is not None:
+                raise ValueError('legacy probe cannot acquire parameter rebinding authority')
             intent = save(name.with_suffix('.intent.json'), {'schema':SCHEMA+'.intent',
                 'contract_sha256':self.contract['content_sha256'], 'artifact':clone(artifact),
-                'fixture_id':fixture_id})
+                'fixture_id':fixture_id, **extra})
             terminal = {'schema':SCHEMA+'.result', 'intent_sha256':intent['content_sha256'],
                 'new_native_worlds':0, 'new_model_calls':0}
             try:
                 if fixture_id not in self.fixtures: raise ValueError('unknown explicit component fixture')
-                context = self.fixtures[fixture_id]['context']
+                context = self.context_for(intent)
                 validate_code_artifact(artifact); validate_context(artifact, context)
                 execution = self.executor.execute(clone(artifact), clone(context))
                 validate_code_result(artifact, execution.result)
@@ -126,7 +152,7 @@ class NativeComponentLab:
                         or terminal['new_native_worlds'] != 0 or terminal['new_model_calls'] != 0):
                     raise ValueError('component probe terminal differs from intent')
                 if terminal['status'] == 'returned':
-                    artifact = intent['artifact']; context = self.fixtures[intent['fixture_id']]['context']
+                    artifact = intent['artifact']; context = self.context_for(intent)
                     validate_code_artifact(artifact); validate_context(artifact, context)
                     validate_code_result(artifact, terminal['result'])
                     expected_receipt = {'image_id':self.contract['image_id'], 'artifact_sha256':sha(artifact),

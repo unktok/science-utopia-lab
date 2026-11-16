@@ -13,6 +13,8 @@ from utopia.optimization.native_component_lab_v1 import (NativeComponentLab,Comp
 from utopia.optimization.native_numeric_designer import checked,save
 from utopia.system.code_mechanisms import sha,validate_code_artifact
 from utopia.system.design_patch import clone,digest
+from .native_component_parameter_context_v1 import (SCOPE as PARAMETER_SCOPE,
+    OPTION as PARAMETER_OPTION, parameters as component_parameters, binding as parameter_binding)
 
 SCHEMA='scienceutopia.native-post-edit-feedback.v1'
 OPTION='post_edit_component_contract'
@@ -86,16 +88,28 @@ def persistent_diagnostics(document,steps):
                             else 'different-document-not-current-consumer-proof')}
                         if 'project_delivery_diagnostic' in value else {})
                     for value in test['results']]}
+            parameter_context = test.get('parameter_context')
+            if parameter_context is not None:
+                # Full current values are already in the document and exact
+                # step/probe archive. Do not duplicate a full catalog three
+                # times per persistent notice and exhaust the active frame.
+                entry['parameter_context'] = {k: clone(v) for k,v in parameter_context.items() if k!='parameters'}
+                entry['parameter_context']['parameters_sha256'] = digest(parameter_context['parameters'])
             latest[node]=entry
             if test['status']=='tested':
                 tested[node]=entry
-                by_artifact[node,test['artifact_sha256']]=entry
+                by_artifact[node,test['artifact_sha256'],None if parameter_context is None
+                    else digest(parameter_context['parameters'])]=entry
     current=code_nodes(document);rows=[]
     for node,notice in sorted(latest.items()):
         artifacts=current.get(node,[])
         current_hash=sha(artifacts[0]) if len(artifacts)==1 else None
         last=tested.get(node)
-        applicable=by_artifact.get((node,current_hash))
+        current_parameters = None
+        if 'parameter_context' in notice and len(artifacts) == 1:
+            try: current_parameters = digest(component_parameters(document, node))
+            except ValueError: current_parameters = 'not-a-current-unique-code-component'
+        applicable=by_artifact.get((node,current_hash,current_parameters))
         applicability=('code-artifact-not-present' if node not in current else
             'no-unique-current-artifact' if current_hash is None else
             'same-current-artifact' if applicable is not None else
@@ -132,6 +146,9 @@ class NativePostEditFeedback:
                 raise ValueError('unknown explicit tensor-delivery diagnostic scope')
             self.tensor_delivery_scope=SCOPE
         self.maximum_probes=maximum_probes;self.suites={}
+        self.parameter_context_scope = bank.get(PARAMETER_OPTION)
+        if self.parameter_context_scope is not None and self.parameter_context_scope != PARAMETER_SCOPE:
+            raise ValueError('unknown explicit post-edit parameter context scope')
         for node in bank['nodes']:
             origins=[o for o in bank['origins'] if o['node_id']==node and o['reference']==reference]
             origins.sort(key=lambda o:o['year'])
@@ -149,6 +166,12 @@ class NativePostEditFeedback:
             'veto_on_test_failure':False,'source_repair':False,'new_native_worlds':0,'new_model_calls':0}
         if 'post_edit_reference' in bank:self.contract['fixture_reference']=reference
         if self.probe_scope!=LEGACY_PROBE_SCOPE:self.contract['budget_scope']=self.probe_scope
+        if self.parameter_context_scope is not None:
+            from .native_component_parameter_context_v1 import NOTE as PARAMETER_NOTE
+            self.contract['parameter_context_scope'] = self.parameter_context_scope
+            self.contract['parameter_context_note'] = PARAMETER_NOTE
+            self.contract['parameter_projection_source_sha256'] = hashlib.sha256(
+                Path(__file__).with_name('native_component_parameter_context_v1.py').read_bytes()).hexdigest()
         if self.tensor_delivery_scope is not None:
             from .native_tensor_delivery_diagnostics_v1 import source_hashes,NOTE as DELIVERY_NOTE
             self.contract['tensor_delivery_diagnostics']={'scope':self.tensor_delivery_scope,
@@ -176,7 +199,8 @@ class NativePostEditFeedback:
         lab=NativeComponentLab(lab_path,records=self.bank['records'],
             provenance={'scope':'post-edit developer component diagnostics, not native loss',
                 'bank_content_sha256':self.bank['content_sha256']},executor=self.executor,
-            source_commit=self.source_commit,maximum_probes=self.maximum_probes,budget_scope=self.probe_scope)
+            source_commit=self.source_commit,maximum_probes=self.maximum_probes,budget_scope=self.probe_scope,
+            parameter_context_scope=self.parameter_context_scope)
         return BoundFeedback(self,lab)
 
     @classmethod
@@ -203,13 +227,20 @@ class BoundFeedback:
         if feedback is None:return []
         start=feedback['probe_offset'];end=start+feedback['probe_attempts'];rows=self.lab.replay()
         if end>len(rows):raise ValueError('missing exact post-edit probe records')
-        return [{**clone(r),'context':clone(self.lab.fixtures[r['intent']['fixture_id']]['context']),
-            'context_scope':'fixed developer fixture, not a new candidate native trajectory'} for r in rows[start:end]]
+        return [{**clone(r),'context':self.lab.context_for(r['intent']),
+            'context_scope':('Current component parameters on recorded inputs/state, not a candidate native trajectory'
+                if self.owner.parameter_context_scope is not None else
+                'fixed developer fixture, not a new candidate native trajectory')} for r in rows[start:end]]
 
     def enrich(self,before,after,receipt,*,steps,dispatch):
         if not receipt['ok'] or receipt['tool'] not in ('edit','write_file','edit_fields','splice'):return receipt
         old,new=code_nodes(before['document']),code_nodes(after['document'])
-        changed=[n for n in sorted(new) if new[n]!=old.get(n)]
+        def parameters_if_code(document, node):
+            try: return component_parameters(document, node)
+            except ValueError: return None
+        changed=[n for n in sorted(new) if new[n]!=old.get(n)
+            or self.owner.parameter_context_scope is not None and n in old
+            and parameters_if_code(before['document'],n)!=parameters_if_code(after['document'],n)]
         if not changed:return receipt
         offset=consumed(steps);cursor=offset;tests=[]
         if dispatch:self.check_prefix(steps)
@@ -218,6 +249,12 @@ class BoundFeedback:
             entry={'node_id':node,'status':'not-configured','results':[]};tests.append(entry)
             if node not in self.owner.suites:continue
             if len(new[node])!=1:entry['status']='ambiguous-current-node';continue
+            parameter_context = None
+            if self.owner.parameter_context_scope is not None:
+                if parameters_if_code(after['document'],node) is None:
+                    entry['status']='not-current-code-component';continue
+                parameter_context = parameter_binding(after['document'], node)
+                entry['parameter_context'] = clone(parameter_context)
             artifact=new[node][0]
             try:validate_code_artifact(artifact)
             except Exception as error:
@@ -228,7 +265,8 @@ class BoundFeedback:
             entry.update(status='tested',artifact_sha256=sha(artifact))
             for fixture in suite:
                 if dispatch:
-                    try:self.lab.probe(artifact,fixture)
+                    try:self.lab.probe(artifact,fixture, **({} if parameter_context is None
+                        else {'parameter_context':parameter_context}))
                     except ComponentProbePending:raise
                     except BaseException as error:
                         # I/O or orchestration failure is not a model's invalid
@@ -238,7 +276,8 @@ class BoundFeedback:
                 if cursor>=len(rows) or rows[cursor]['terminal'] is None:
                     raise ValueError('post-edit component reply is missing; never fabricate one')
                 row=rows[cursor]
-                if row['intent']['artifact']!=artifact or row['intent']['fixture_id']!=fixture:
+                if (row['intent']['artifact']!=artifact or row['intent']['fixture_id']!=fixture
+                        or row['intent'].get('parameter_context') != parameter_context):
                     raise ValueError('post-edit component call differs from current literal artifact/suite')
                 reply=row['terminal'];full_error=reply.get('error')
                 entry['results'].append({'fixture_id':fixture,'status':reply['status'],

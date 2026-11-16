@@ -55,6 +55,9 @@ def native_sources(original, source):
         'role': 'Designer-only workflow phase calculation bound to actual V45 document visibility; no native world/loss change'}
     adapters['utopia/optimization/native_post_edit_feedback_v1.py'] = {
         'source_commit': source, 'role': 'Staged feedback; no world-law change'}
+    adapters['utopia/optimization/native_component_lab_v1.py'] = {
+        'source_commit': source,
+        'role': 'Explicit optional candidate-parameter component probes; legacy exact fixtures/native world laws unchanged'}
     adapters['utopia/system/native_catalog_planning.py'] = {
         'source_commit': source, 'role': 'Explicit predicate error diagnostics; original acceptance predicates unchanged'}
     return free.base.native_sources(original, adapters=adapters)

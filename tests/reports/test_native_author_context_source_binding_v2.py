@@ -37,7 +37,10 @@ def test_actual_author_repair_is_explicitly_bound_not_excluded(kind):
 @pytest.mark.parametrize('kind', ['method', 'fixed'])
 @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
                                 'utopia/optimization/native_factory.py',
-                                'scripts/native_benchmark_physical.py'])
+                                    'scripts/native_benchmark_physical.py',
+                                    'utopia/optimization/native_component_lab_v1.py',
+                                    'utopia/optimization/native_post_edit_feedback_v1.py',
+                                    'utopia/optimization/native_workflow_staged_designer_v1.py'])
 def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
     # Inject only the read result; do not alter this checkout or an active source.
     original_read = Path.read_bytes

@@ -32,12 +32,15 @@ def read(path, sealed=True):
 
 def usage(rows):
     """Missing provider counts stay unknown, never zero-token observations."""
+    def reply_value(row, key):
+        return row[key] if key in row else (row.get('response_payload') or {}).get(key)
     return {'chat_POSTs': len(rows), **{name: {
         'known_sum': sum(r[key] for r in rows if type(r.get(key)) is int),
         'unknown_responses': sum(type(r.get(key)) is not int for r in rows)}
         for name, key in [('prompt_tokens', 'prompt_tokens'), ('output_tokens', 'completion_tokens')]},
-        'nonfinal_responses': sum(r.get('done') is not True for r in rows),
-        'length_terminated_responses': sum(r.get('done_reason') == 'length' for r in rows)}
+        'nonfinal_responses': sum(reply_value(r, 'done') is False for r in rows),
+        'completion_signal_unknown': sum(type(reply_value(r, 'done')) is not bool for r in rows),
+        'length_terminated_responses': sum(reply_value(r, 'done_reason') == 'length' for r in rows)}
 
 
 def base_change(parent, definition):

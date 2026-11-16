@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="11" skipped="0" tests="85" time="39.490" timestamp="2026-11-17T01:04:04.131083+09:00" hostname="flower-man.local"><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_only_explicit_current_parameters_change_and_original_bundle_stays_literal" time="0.005" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_legacy_scope_cannot_gain_rebinding_authority_or_silently_change_contract" time="0.002" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[missing]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[scope]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[reserved]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[extra]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[hash]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[type]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_literal_projection_matches_actual_native_handler_not_a_guessed_parameter_filter" time="0.000" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_after_edit_current_parameters_reach_executor_archive_and_cold_replay" time="0.429" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_parameter_only_changes_do_not_inherit_a_previous_artifact_pass" time="0.207" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_reverted_parameters_can_reuse_only_their_own_recorded_suite_without_probe_refill" time="0.576" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_new_scope_traverses_actual_public_path_certificate_role_next_prompt_and_cold" time="20.322" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_parameter_overlay_requires_explicit_evidence_and_preserves_exact_original_bank" time="0.001" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_literal_changed_source_can_be_tested_without_golden_policy_output_gate" time="0.003" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_bad_literal_fixture_uses_a_slot_and_does_not_guess_an_alternative" time="0.002" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_reported_executor_failure_keeps_source_and_cannot_be_host_repaired" time="0.003" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_interruption_leaves_a_pending_intent_and_stops_next_probe" time="0.003" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_budget_cannot_reset_on_reload_and_contract_cannot_silently_expand" time="0.004" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_executor_drift_stops_before_any_consumed_dispatch" time="0.002" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_cold_replay_rejects_receipt_corruption_and_unaccounted_results" time="0.003" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_probe_budget_is_finite_and_not_coerced[0]" time="0.001" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_probe_budget_is_finite_and_not_coerced[9]" time="0.001" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_probe_budget_is_finite_and_not_coerced[True]" time="0.001" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_probe_budget_is_finite_and_not_coerced[1.5]" time="0.001" /><testcase classname="tests.optimization.test_native_component_lab_v1" name="test_extended_budget_is_explicit_and_cannot_refill_or_relabel_a_legacy_contract" time="0.030" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_extended_declared_budget_rejects_invalid_values_before_any_model_call[0]" time="0.001" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_extended_declared_budget_rejects_invalid_values_before_any_model_call[65]" time="0.001" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_extended_declared_budget_rejects_invalid_values_before_any_model_call[True]" time="0.001" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_extended_declared_budget_rejects_invalid_values_before_any_model_call[64]" time="0.001" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_extended_declared_budget_rejects_invalid_values_before_any_model_call[None]" time="0.001" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_old_fixture_bank_does_not_implicitly_acquire_a_larger_budget" time="0.001" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_role_factory_requires_exact_readiness_contract_before_constructing_model[None]" time="0.002" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_role_factory_requires_exact_readiness_contract_before_constructing_model[declared1]" time="0.002" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_role_factory_requires_exact_readiness_contract_before_constructing_model[exact]" time="0.003" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_component_error_reaches_next_model_call_before_literal_repair_and_cold_replay" time="0.404" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_bounded_component_error_survives_two_reads_and_updates_after_literal_repair" time="1.503" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_later_untested_edit_cannot_inherit_old_component_pass" time="1.290" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_persistent_failure_display_does_not_veto_explicit_finish" time="0.863" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_reverted_exact_artifact_keeps_its_earlier_failure_not_the_latest_other_version_pass" time="0.807" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_missing_or_ambiguous_current_artifact_cannot_inherit_a_test_pass" time="0.115" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_actual_first_proposal_failure_remains_visible_after_its_recorded_read" time="1.107" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_failed_component_tests_do_not_veto_finish_or_restore_baseline_source" time="0.211" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_fixed_probe_budget_never_refills_and_later_edits_still_remain_literal" time="0.571" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_pending_component_stops_before_any_next_model_call_or_fabricated_terminal" time="0.106" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_rehashed_component_error_cannot_change_saved_next_prompt_or_tool_receipt" time="0.129" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_malformed_intermediate_node_can_be_repaired_without_crashing_feedback_or_next_prompt" time="0.379" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_real_bounded_wire_shape_keeps_large_probe_bodies_in_exact_step_archives" time="0.727" /><testcase classname="tests.optimization.test_native_post_edit_feedback_v1" name="test_diagnostic_provenance_is_not_inserted_into_the_sampled_scientific_system" time="0.206" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_all_three_known_cases_and_unknown_tokens_not_invention_or_zero_cost" time="0.026" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_calibration_completion_comes_from_original_provider_envelope_not_missing_flat_field" time="0.000" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_known_no_submission_is_retained_without_a_parent_program" time="0.016" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_authored_source_change_is_literal_not_a_behavior_or_loss_claim" time="0.039" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_generated_factors_and_coordinates_are_counted_but_not_instantiated" time="0.023" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[stopped]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[missing]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[reorder]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[cold]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[request]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[loss]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[world]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[phase]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[pending]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[fallback]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_wrong_patch_parent_is_not_repaired" time="0.006" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_output_preflight_precedes_source_or_writer_access[reader]" time="0.001" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_output_preflight_precedes_source_or_writer_access[raw]" time="0.000" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_output_preflight_precedes_source_or_writer_access[source]" time="0.000" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_live_original_writer_lock_is_not_bypassed" time="0.001" /><testcase classname="tests.reports.test_native_priority_method_plan_v1" name="test_three_methods_shared_strong_visible_parents_and_literal_world_losses" time="1.392" /><testcase classname="tests.reports.test_native_priority_method_plan_v1" name="test_numeric_methods_share_exact_parent_and_first_sample_without_coercing_other_fields" time="2.922" /><testcase classname="tests.reports.test_native_priority_method_plan_v1" name="test_unmeasured_parent_program_is_rejected_instead_of_becoming_a_warm_start" time="1.569" /><testcase classname="tests.reports.test_native_priority_method_plan_v1" name="test_own_only_selection_keeps_nulls_and_earliest_ties_separate_from_parent" time="1.466" /><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_actual_author_repair_is_explicitly_bound_not_excluded[method]" time="0.036"><failure message="ValueError: local execution requires clean pinned source">kind = 'method'
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    def test_actual_author_repair_is_explicitly_bound_not_excluded(kind):
+&gt;       result = proof(kind)
+                 ^^^^^^^^^^^
+
+tests/reports/test_native_author_context_source_binding_v2.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:19: in proof
+    return method.native_sources(ORIGINAL, pinned_revision(method.ROOT))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_actual_author_repair_is_explicitly_bound_not_excluded[fixed]" time="0.029"><failure message="ValueError: local execution requires clean pinned source">kind = 'fixed'
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    def test_actual_author_repair_is_explicitly_bound_not_excluded(kind):
+&gt;       result = proof(kind)
+                 ^^^^^^^^^^^
+
+tests/reports/test_native_author_context_source_binding_v2.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:20: in proof
+    return fixed.native_sources(LEGACY_METHOD)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/run_native_priority_fixed_evaluation_v1.py:47: in native_sources
+    source = pinned_revision(ROOT)
+             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_guard_still_rejects_local_author_or_scientific_drift[utopia/optimization/native_authoring_recovery_v44.py-method]" time="0.029"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'source differs|adapter differs'&#10; Input: 'local execution requires clean pinned source'">kind = 'method', name = 'utopia/optimization/native_authoring_recovery_v44.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x12485dd10&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+        with pytest.raises(ValueError, match='source differs|adapter differs'):
+&gt;           proof(kind)
+
+tests/reports/test_native_author_context_source_binding_v2.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:19: in proof
+    return method.native_sources(ORIGINAL, pinned_revision(method.ROOT))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'method', name = 'utopia/optimization/native_authoring_recovery_v44.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x12485dd10&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+&gt;       with pytest.raises(ValueError, match='source differs|adapter differs'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'source differs|adapter differs'
+E        Input: 'local execution requires clean pinned source'
+
+tests/reports/test_native_author_context_source_binding_v2.py:51: AssertionError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_guard_still_rejects_local_author_or_scientific_drift[utopia/optimization/native_authoring_recovery_v44.py-fixed]" time="0.029"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'source differs|adapter differs'&#10; Input: 'local execution requires clean pinned source'">kind = 'fixed', name = 'utopia/optimization/native_authoring_recovery_v44.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x123e29410&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+        with pytest.raises(ValueError, match='source differs|adapter differs'):
+&gt;           proof(kind)
+
+tests/reports/test_native_author_context_source_binding_v2.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:20: in proof
+    return fixed.native_sources(LEGACY_METHOD)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/run_native_priority_fixed_evaluation_v1.py:47: in native_sources
+    source = pinned_revision(ROOT)
+             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'fixed', name = 'utopia/optimization/native_authoring_recovery_v44.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x123e29410&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+&gt;       with pytest.raises(ValueError, match='source differs|adapter differs'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'source differs|adapter differs'
+E        Input: 'local execution requires clean pinned source'
+
+tests/reports/test_native_author_context_source_binding_v2.py:51: AssertionError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_guard_still_rejects_local_author_or_scientific_drift[utopia/simulation.py-method]" time="0.029"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'source differs|adapter differs'&#10; Input: 'local execution requires clean pinned source'">kind = 'method', name = 'utopia/simulation.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x12413d510&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+        with pytest.raises(ValueError, match='source differs|adapter differs'):
+&gt;           proof(kind)
+
+tests/reports/test_native_author_context_source_binding_v2.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:19: in proof
+    return method.native_sources(ORIGINAL, pinned_revision(method.ROOT))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'method', name = 'utopia/simulation.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x12413d510&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+&gt;       with pytest.raises(ValueError, match='source differs|adapter differs'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'source differs|adapter differs'
+E        Input: 'local execution requires clean pinned source'
+
+tests/reports/test_native_author_context_source_binding_v2.py:51: AssertionError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_guard_still_rejects_local_author_or_scientific_drift[utopia/simulation.py-fixed]" time="0.029"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'source differs|adapter differs'&#10; Input: 'local execution requires clean pinned source'">kind = 'fixed', name = 'utopia/simulation.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1241b1c90&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+        with pytest.raises(ValueError, match='source differs|adapter differs'):
+&gt;           proof(kind)
+
+tests/reports/test_native_author_context_source_binding_v2.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:20: in proof
+    return fixed.native_sources(LEGACY_METHOD)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/run_native_priority_fixed_evaluation_v1.py:47: in native_sources
+    source = pinned_revision(ROOT)
+             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'fixed', name = 'utopia/simulation.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1241b1c90&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+&gt;       with pytest.raises(ValueError, match='source differs|adapter differs'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'source differs|adapter differs'
+E        Input: 'local execution requires clean pinned source'
+
+tests/reports/test_native_author_context_source_binding_v2.py:51: AssertionError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_guard_still_rejects_local_author_or_scientific_drift[utopia/optimization/native_factory.py-method]" time="0.028"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'source differs|adapter differs'&#10; Input: 'local execution requires clean pinned source'">kind = 'method', name = 'utopia/optimization/native_factory.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1244a0f90&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+        with pytest.raises(ValueError, match='source differs|adapter differs'):
+&gt;           proof(kind)
+
+tests/reports/test_native_author_context_source_binding_v2.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:19: in proof
+    return method.native_sources(ORIGINAL, pinned_revision(method.ROOT))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'method', name = 'utopia/optimization/native_factory.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1244a0f90&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+&gt;       with pytest.raises(ValueError, match='source differs|adapter differs'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'source differs|adapter differs'
+E        Input: 'local execution requires clean pinned source'
+
+tests/reports/test_native_author_context_source_binding_v2.py:51: AssertionError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_guard_still_rejects_local_author_or_scientific_drift[utopia/optimization/native_factory.py-fixed]" time="0.029"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'source differs|adapter differs'&#10; Input: 'local execution requires clean pinned source'">kind = 'fixed', name = 'utopia/optimization/native_factory.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x124acc390&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+        with pytest.raises(ValueError, match='source differs|adapter differs'):
+&gt;           proof(kind)
+
+tests/reports/test_native_author_context_source_binding_v2.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:20: in proof
+    return fixed.native_sources(LEGACY_METHOD)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/run_native_priority_fixed_evaluation_v1.py:47: in native_sources
+    source = pinned_revision(ROOT)
+             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'fixed', name = 'utopia/optimization/native_factory.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x124acc390&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+&gt;       with pytest.raises(ValueError, match='source differs|adapter differs'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'source differs|adapter differs'
+E        Input: 'local execution requires clean pinned source'
+
+tests/reports/test_native_author_context_source_binding_v2.py:51: AssertionError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_guard_still_rejects_local_author_or_scientific_drift[scripts/native_benchmark_physical.py-method]" time="0.028"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'source differs|adapter differs'&#10; Input: 'local execution requires clean pinned source'">kind = 'method', name = 'scripts/native_benchmark_physical.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x124712750&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+        with pytest.raises(ValueError, match='source differs|adapter differs'):
+&gt;           proof(kind)
+
+tests/reports/test_native_author_context_source_binding_v2.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:19: in proof
+    return method.native_sources(ORIGINAL, pinned_revision(method.ROOT))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'method', name = 'scripts/native_benchmark_physical.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x124712750&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+&gt;       with pytest.raises(ValueError, match='source differs|adapter differs'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'source differs|adapter differs'
+E        Input: 'local execution requires clean pinned source'
+
+tests/reports/test_native_author_context_source_binding_v2.py:51: AssertionError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_guard_still_rejects_local_author_or_scientific_drift[scripts/native_benchmark_physical.py-fixed]" time="0.028"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'source differs|adapter differs'&#10; Input: 'local execution requires clean pinned source'">kind = 'fixed', name = 'scripts/native_benchmark_physical.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x108abda90&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+        with pytest.raises(ValueError, match='source differs|adapter differs'):
+&gt;           proof(kind)
+
+tests/reports/test_native_author_context_source_binding_v2.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:20: in proof
+    return fixed.native_sources(LEGACY_METHOD)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/run_native_priority_fixed_evaluation_v1.py:47: in native_sources
+    source = pinned_revision(ROOT)
+             ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'fixed', name = 'scripts/native_benchmark_physical.py'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x108abda90&gt;
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    @pytest.mark.parametrize('name', [RECOVERY, 'utopia/simulation.py',
+                                    'utopia/optimization/native_factory.py',
+                                    'scripts/native_benchmark_physical.py'])
+    def test_guard_still_rejects_local_author_or_scientific_drift(kind, name, monkeypatch):
+        # Inject only the read result; do not alter this checkout or an active source.
+        original_read = Path.read_bytes
+        target = method.ROOT / name
+    
+        def drift(path):
+            raw = original_read(path)
+            return raw + b'\n# injected uncommitted byte drift\n' if path == target else raw
+    
+        monkeypatch.setattr(Path, 'read_bytes', drift)
+&gt;       with pytest.raises(ValueError, match='source differs|adapter differs'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'source differs|adapter differs'
+E        Input: 'local execution requires clean pinned source'
+
+tests/reports/test_native_author_context_source_binding_v2.py:51: AssertionError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_same_source_evaluation_needs_no_fabricated_author_adapter" time="0.028"><failure message="ValueError: local execution requires clean pinned source">def test_same_source_evaluation_needs_no_fabricated_author_adapter():
+&gt;       result = fixed.native_sources(pinned_revision(fixed.ROOT))
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/reports/test_native_author_context_source_binding_v2.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1')
+
+    def pinned_revision(root):
+        if subprocess.check_output(['git', 'status', '--porcelain'], cwd=root):
+&gt;           raise ValueError('local execution requires clean pinned source')
+E           ValueError: local execution requires clean pinned source
+
+utopia/optimization/native_jobs.py:197: ValueError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_method_rejects_an_old_adapter_commit_for_the_new_author_bytes" time="0.078" /></testsuite></testsuites>

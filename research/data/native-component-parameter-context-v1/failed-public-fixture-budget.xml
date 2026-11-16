@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="14" time="2.653" timestamp="2026-11-17T00:57:05.419516+09:00" hostname="flower-man.local"><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_only_explicit_current_parameters_change_and_original_bundle_stays_literal" time="0.004" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_legacy_scope_cannot_gain_rebinding_authority_or_silently_change_contract" time="0.002" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[missing]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[scope]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[reserved]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[extra]" time="0.002" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[hash]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[type]" time="0.002" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_literal_projection_matches_actual_native_handler_not_a_guessed_parameter_filter" time="0.000" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_after_edit_current_parameters_reach_executor_archive_and_cold_replay" time="0.396" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_parameter_only_changes_do_not_inherit_a_previous_artifact_pass" time="0.180" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_reverted_parameters_can_reuse_only_their_own_recorded_suite_without_probe_refill" time="0.504" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_new_scope_traverses_actual_public_path_certificate_role_next_prompt_and_cold" time="0.149"><failure message="ValueError: finite component budget differs from explicit scope; no refills">tmp_path = PosixPath('/private/var/folders/ry/w663wy7n4j52rjwfmd7rxbl40000gn/T/pytest-of-shiro/pytest-2094/test_new_scope_traverses_actua0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x12236c6d0&gt;
+
+    def test_new_scope_traverses_actual_public_path_certificate_role_next_prompt_and_cold(tmp_path, monkeypatch):
+        """HTTP/executor/supervision/source identity are SCRIPTED, not native proof."""
+        from tests.reports.test_native_corrected_author_assay_v1 import example
+        from tests.optimization.test_native_designer_contract_v16 import ScriptedSession, Response
+        from tests.optimization.test_native_designer_roles_v38 import designer_binding
+        from utopia.optimization import native_workflow_staged_designer_v1 as authoring
+        from utopia.optimization import native_bounded_staged_designer as bounded
+        from utopia.optimization.native_designer_tools_v25 import function_data
+        from utopia.optimization.native_numeric_designer import checked
+        from utopia.system.design_patch import clone
+        body, document = example('parent-zero')
+        node = next(n for n in document['mechanisms'] if n['mechanism_id'] == 'developer-catalog-agenda')
+        artifact = node['parameters']['code_artifact']; provider = designer_binding()
+        provider['image_id'] = node['parameters']['runtime_image_id']
+        bank = {'nodes': [node['mechanism_id']], 'records': [], 'origins': [], OPTION: SCOPE}
+        for year in range(1, 5):
+            context = {'period': year, 'phase': 101, 'random_seed': 42, 'state': {},
+                'parameters': {k: v for k, v in parameters(document, node['mechanism_id']).items()
+                    if k != 'topic_priorities'}, 'inputs': {'world': []}}
+            result = {'outputs': {k: [] for k in artifact['outputs']}, 'state': {}}
+            record = {'schema': 'scienceutopia.native-code-input.v1',
+                'binding': {'source_commit': 'SCRIPTED', 'system_fingerprint': 'SCRIPTED', 'run_id': 'SCRIPTED'},
+                'artifact': clone(artifact), 'context': context, 'result': result,
+                'receipt': {'image_id': provider['image_id'], 'artifact_sha256': sha(artifact),
+                    'context_sha256': sha(context), 'result_sha256': sha(result)}}
+            record['bundle_sha256'] = sha(record); bank['records'].append(record)
+            bank['origins'].append({'node_id': node['mechanism_id'], 'year': year,
+                'reference': 'open-seed', 'bundle_sha256': record['bundle_sha256']})
+        bank['content_sha256'] = digest(bank); probes = []
+        def execute(a, c):
+            probes.append((clone(a), clone(c)))
+            assert c['parameters']['topic_priorities'] == parameters(document, node['mechanism_id'])['topic_priorities']
+            value = {'outputs': {k: [] for k in a['outputs']}, 'state': {}}
+            return CodeExecution(value, {'image_id': provider['image_id'], 'artifact_sha256': sha(a),
+                'context_sha256': sha(c), 'result_sha256': sha(value)})
+        executor = SimpleNamespace(image_id=provider['image_id'], timeout=15., execute=execute)
+        actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED interface only', 'design_intent': 'SCRIPTED'},
+            {'tool': 'write_file', 'filename': 'code/developer-catalog-agenda.py',
+                'content': artifact['source'] + '\n# SCRIPTED current-parameter public path\n'}, finish()]
+        class Session(ScriptedSession):
+            calls = []; production = []
+            def get(self, url, **kw):
+                return Response({'version': 'SCRIPTED-backend'} if url.endswith('/version') else {
+                    'models': [{'name': provider['model'], 'digest': provider['model_digest']}]})
+            def post(self, url, **kw):
+                payload = json.loads(kw['data'])
+                if 'TRUSTED INTERFACE CALIBRATION TASK' in payload['messages'][0]['content']:
+                    value = super().post(url, **kw).json(); value['model'] = provider['model']; return Response(value)
+                action = actions[len(self.production)]; self.production.append(payload)
+                return Response({'model': provider['model'], 'done': True, 'done_reason': 'stop',
+                    'prompt_eval_count': 120, 'eval_count': 12, 'message': {'role': 'assistant',
+                        'content': json.dumps(function_data(action)),
+                        **({'thinking': 'SCRIPTED'} if payload['think'] else {})}})
+        monkeypatch.setattr('requests.Session', Session)
+        monkeypatch.setattr('utopia.optimization.native_jobs.pinned_revision', lambda root: 'c' * 40)
+        monkeypatch.setattr('utopia.optimization.native_scientist_load_v38.load_local_role', lambda *a, **kw: None)
+        monkeypatch.setattr('utopia.system.code_mechanisms.DockerCodeExecutor', lambda **kw: executor)
+        def child(argv, **kw):
+            bounded.worker(argv[-2], argv[-1]); return {'timed_out': False, 'returncode': 0}
+        monkeypatch.setattr(bounded, 'run_bounded', child)
+&gt;       author = authoring.StagedWorkflowDesigner(tmp_path / 'public', provider=provider,
+            backend={'model': provider['model'], 'model_digest': provider['model_digest'], 'ollama_version': 'SCRIPTED-backend'},
+            inference_lock=tmp_path / 'SCRIPTED-inference.lock', source_commit='c' * 40, bank=bank)
+
+tests/optimization/test_native_component_parameter_context_v1.py:191: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_workflow_staged_designer_v1.py:146: in __init__
+    self.feedback = component_feedback(bank, provider, source_commit)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+utopia/optimization/native_workflow_staged_designer_v1.py:71: in component_feedback
+    return NativePostEditFeedback(bank,
+utopia/optimization/native_post_edit_feedback_v1.py:126: in __init__
+    validate_probe_budget(maximum_probes,self.probe_scope)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+maximum_probes = 64, scope = 'legacy-eight-v1'
+
+    def validate_probe_budget(maximum_probes,scope=LEGACY_PROBE_SCOPE):
+        bounds={LEGACY_PROBE_SCOPE:8,EXTENDED_PROBE_SCOPE:64}
+        if not isinstance(scope,str) or scope not in bounds or type(maximum_probes) is not int or not 1&lt;=maximum_probes&lt;=bounds[scope]:
+&gt;           raise ValueError('finite component budget differs from explicit scope; no refills')
+E           ValueError: finite component budget differs from explicit scope; no refills
+
+utopia/optimization/native_component_lab_v1.py:46: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_parameter_overlay_requires_explicit_evidence_and_preserves_exact_original_bank" time="0.002" /></testsuite></testsuites>

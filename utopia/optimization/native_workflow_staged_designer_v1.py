@@ -41,6 +41,11 @@ def require_bank(bank, evidence, anchor):
     checked(bank)
     scope = evidence.get('staging_scope', WORKFLOW_SCOPE)
     expected_keys = {'run','source','audit','audit_file_sha256'}
+    from .native_component_parameter_context_v1 import SCOPE as PARAMETER_SCOPE, OPTION as PARAMETER_OPTION
+    parameter_scope = evidence.get('parameter_context_scope')
+    if parameter_scope is not None:
+        expected_keys.add('parameter_context_scope')
+        if parameter_scope != PARAMETER_SCOPE: raise ValueError('unknown declared component parameter context')
     if 'staging_scope' in evidence:
         expected_keys.add('staging_scope')
         if scope != TOPIC_SCOPE:
@@ -49,6 +54,7 @@ def require_bank(bank, evidence, anchor):
             or file_sha256(evidence['audit']) != evidence['audit_file_sha256']):
         raise ValueError('exact original component audit/source/run evidence required')
     original = collect(evidence['run'], evidence['audit'], scope=scope, source_root=evidence['source'])
+    if parameter_scope is not None: original[PARAMETER_OPTION] = parameter_scope
     if bank != {**original, 'content_sha256': digest(original)}:
         raise ValueError('workflow component bank differs from original audited R7 inputs')
     spec = SystemSpec.from_dict(anchor)

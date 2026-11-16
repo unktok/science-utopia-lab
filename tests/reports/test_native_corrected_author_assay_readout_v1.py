@@ -55,9 +55,16 @@ def test_all_three_known_cases_and_unknown_tokens_not_invention_or_zero_cost():
     usage = report['cases'][0]['free_transport_usage']
     assert usage['prompt_tokens'] == {'known_sum': 100, 'unknown_responses': 1}
     assert usage['output_tokens'] == {'known_sum': 5, 'unknown_responses': 1}
-    assert usage['nonfinal_responses'] == 1
+    assert usage['nonfinal_responses'] == 0 and usage['completion_signal_unknown'] == 1
     assert report['new_model_calls'] == report['new_generated_code_executions'] == report['new_native_worlds'] == 0
     assert not report['publication_ready'] and not report['selection_changed']
+
+
+def test_calibration_completion_comes_from_original_provider_envelope_not_missing_flat_field():
+    counts = reader.usage([{'prompt_tokens': 9, 'completion_tokens': 3,
+        'response_payload': {'done': True, 'done_reason': 'stop'}}])
+    assert counts['nonfinal_responses'] == counts['completion_signal_unknown'] == 0
+    assert counts['prompt_tokens']['known_sum'] == 9
 
 
 def test_known_no_submission_is_retained_without_a_parent_program():

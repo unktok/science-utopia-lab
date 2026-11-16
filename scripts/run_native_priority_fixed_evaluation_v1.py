@@ -43,12 +43,18 @@ def native_sources(original):
     # Fixed evaluation never calls the designer. Still bind the prospective
     # visibility fix explicitly rather than excluding another file or allowing
     # arbitrary native drift. Same-source closure needs no invented adapter.
-    name = 'utopia/optimization/native_authoring_recovery_v44.py'
     source = pinned_revision(ROOT)
-    before = subprocess.check_output(['git', 'show', original + ':' + name], cwd=ROOT)
-    adapters = {} if (ROOT / name).read_bytes() == before else {name: {
-        'source_commit': source,
-        'role': 'Designer-only workflow visibility correction; designer is not called by fixed evaluation'}}
+    names = {
+        'utopia/optimization/native_authoring_recovery_v44.py': 'Designer-only workflow visibility correction',
+        'utopia/optimization/native_component_lab_v1.py': 'Explicit optional designer component parameter contexts',
+        'utopia/optimization/native_post_edit_feedback_v1.py': 'Explicit optional designer post-edit parameter diagnostics',
+        'utopia/optimization/native_workflow_staged_designer_v1.py': 'Explicit attributed designer fixture-bank overlay',
+    }
+    adapters = {}
+    for name, role in names.items():
+        before = subprocess.check_output(['git', 'show', original + ':' + name], cwd=ROOT)
+        if (ROOT / name).read_bytes() != before:
+            adapters[name] = {'source_commit': source, 'role': role + '; designer is not called by fixed evaluation'}
     return original_native_sources(original, adapters=adapters)
 
 

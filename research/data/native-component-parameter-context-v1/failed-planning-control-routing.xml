@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="34" time="8.649" timestamp="2026-11-17T01:01:08.713375+09:00" hostname="flower-man.local"><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_only_explicit_current_parameters_change_and_original_bundle_stays_literal" time="0.005" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_legacy_scope_cannot_gain_rebinding_authority_or_silently_change_contract" time="0.002" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[missing]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[scope]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[reserved]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[extra]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[hash]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_malformed_counterfactual_consumes_a_known_failed_probe_not_a_repair[type]" time="0.003" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_literal_projection_matches_actual_native_handler_not_a_guessed_parameter_filter" time="0.000" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_after_edit_current_parameters_reach_executor_archive_and_cold_replay" time="0.414" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_parameter_only_changes_do_not_inherit_a_previous_artifact_pass" time="0.190" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_reverted_parameters_can_reuse_only_their_own_recorded_suite_without_probe_refill" time="0.536" /><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_new_scope_traverses_actual_public_path_certificate_role_next_prompt_and_cold" time="5.498"><failure message="AssertionError: ['INSTRUCTED PLANNING INTERFACE CONTROL&#10;  Do not optimize or invent an institution in this control. Retu']&#10;assert not [{'format': 'json', 'messages': [{'content': 'INSTRUCTED PLANNING INTERFACE CONTROL\nDo not optimize or invent an inst...'qwen3.6:35b-mlx-64k', 'options': {'min_p': 0.0, 'num_ctx': 65536, 'num_predict': 8192, 'seed': 1490777261, ...}, ...}]&#10; +  where [{'format': 'json', 'messages': [{'content': 'INSTRUCTED PLANNING INTERFACE CONTROL\nDo not optimize or invent an inst...'qwen3.6:35b-mlx-64k', 'options': {'min_p': 0.0, 'num_ctx': 65536, 'num_predict': 8192, 'seed': 1490777261, ...}, ...}] = &lt;class 'test_native_component_parameter_context_v1.test_new_scope_traverses_actual_public_path_certificate_role_next_prompt_and_cold.&lt;locals&gt;.Session'&gt;.production">tmp_path = PosixPath('/private/var/folders/ry/w663wy7n4j52rjwfmd7rxbl40000gn/T/pytest-of-shiro/pytest-2096/test_new_scope_traverses_actua0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1260abe90&gt;
+
+    def test_new_scope_traverses_actual_public_path_certificate_role_next_prompt_and_cold(tmp_path, monkeypatch):
+        """HTTP/executor/supervision/source identity are SCRIPTED, not native proof."""
+        from tests.reports.test_native_corrected_author_assay_v1 import example
+        from tests.optimization.test_native_designer_contract_v16 import ScriptedSession, Response
+        from tests.optimization.test_native_designer_roles_v38 import designer_binding
+        from utopia.optimization import native_workflow_staged_designer_v1 as authoring
+        from utopia.optimization import native_bounded_staged_designer as bounded
+        from utopia.optimization.native_designer_tools_v25 import function_data
+        from utopia.optimization.native_numeric_designer import checked
+        from utopia.system.design_patch import clone
+        body, document = example('parent-zero')
+        node = next(n for n in document['mechanisms'] if n['mechanism_id'] == 'developer-catalog-agenda')
+        artifact = node['parameters']['code_artifact']; provider = designer_binding()
+        provider['image_id'] = node['parameters']['runtime_image_id']
+        bank = {'nodes': [node['mechanism_id']], 'records': [], 'origins': [], OPTION: SCOPE,
+            'post_edit_probe_scope': 'declared-sixtyfour-v2'}
+        for year in range(1, 5):
+            context = {'period': year, 'phase': 101, 'random_seed': 42, 'state': {},
+                'parameters': {k: v for k, v in parameters(document, node['mechanism_id']).items()
+                    if k != 'topic_priorities'}, 'inputs': {'world': []}}
+            result = {'outputs': {k: [] for k in artifact['outputs']}, 'state': {}}
+            record = {'schema': 'scienceutopia.native-code-input.v1',
+                'binding': {'source_commit': 'SCRIPTED', 'system_fingerprint': 'SCRIPTED', 'run_id': 'SCRIPTED'},
+                'artifact': clone(artifact), 'context': context, 'result': result,
+                'receipt': {'image_id': provider['image_id'], 'artifact_sha256': sha(artifact),
+                    'context_sha256': sha(context), 'result_sha256': sha(result)}}
+            record['bundle_sha256'] = sha(record); bank['records'].append(record)
+            bank['origins'].append({'node_id': node['mechanism_id'], 'year': year,
+                'reference': 'open-seed', 'bundle_sha256': record['bundle_sha256']})
+        bank['content_sha256'] = digest(bank); probes = []
+        def execute(a, c):
+            probes.append((clone(a), clone(c)))
+            assert c['parameters']['topic_priorities'] == parameters(document, node['mechanism_id'])['topic_priorities']
+            value = {'outputs': {k: [] for k in a['outputs']}, 'state': {}}
+            return CodeExecution(value, {'image_id': provider['image_id'], 'artifact_sha256': sha(a),
+                'context_sha256': sha(c), 'result_sha256': sha(value)})
+        executor = SimpleNamespace(image_id=provider['image_id'], timeout=15., execute=execute)
+        actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED interface only', 'design_intent': 'SCRIPTED'},
+            {'tool': 'write_file', 'filename': 'code/developer-catalog-agenda.py',
+                'content': artifact['source'] + '\n# SCRIPTED current-parameter public path\n'}, finish()]
+        class Session(ScriptedSession):
+            calls = []; production = []
+            def get(self, url, **kw):
+                return Response({'version': 'SCRIPTED-backend'} if url.endswith('/version') else {
+                    'models': [{'name': provider['model'], 'digest': provider['model_digest']}]})
+            def post(self, url, **kw):
+                payload = json.loads(kw['data'])
+                if 'TRUSTED INTERFACE CALIBRATION TASK' in payload['messages'][0]['content']:
+                    value = super().post(url, **kw).json(); value['model'] = provider['model']; return Response(value)
+                action = actions[len(self.production)]; self.production.append(payload)
+                return Response({'model': provider['model'], 'done': True, 'done_reason': 'stop',
+                    'prompt_eval_count': 120, 'eval_count': 12, 'message': {'role': 'assistant',
+                        'content': json.dumps(function_data(action)),
+                        **({'thinking': 'SCRIPTED'} if payload['think'] else {})}})
+        monkeypatch.setattr('requests.Session', Session)
+        monkeypatch.setattr('utopia.optimization.native_jobs.pinned_revision', lambda root: 'c' * 40)
+        monkeypatch.setattr('utopia.optimization.native_scientist_load_v38.load_local_role', lambda *a, **kw: None)
+        monkeypatch.setattr('utopia.system.code_mechanisms.DockerCodeExecutor', lambda **kw: executor)
+        def child(argv, **kw):
+            bounded.worker(argv[-2], argv[-1]); return {'timed_out': False, 'returncode': 0}
+        monkeypatch.setattr(bounded, 'run_bounded', child)
+        author = authoring.StagedWorkflowDesigner(tmp_path / 'public', provider=provider,
+            backend={'model': provider['model'], 'model_digest': provider['model_digest'], 'ollama_version': 'SCRIPTED-backend'},
+            inference_lock=tmp_path / 'SCRIPTED-inference.lock', source_commit='c' * 40, bank=bank)
+        body = author.feedback.declare_request(body)
+        certificate = author.calibrate(body)
+        assert certificate.is_file()  # Actual public API returns Path, not a mock certificate dictionary.
+&gt;       assert not Session.production, [p['messages'][0]['content'][:100] for p in Session.production]
+E       AssertionError: ['INSTRUCTED PLANNING INTERFACE CONTROL
+E         Do not optimize or invent an institution in this control. Retu']
+E       assert not [{'format': 'json', 'messages': [{'content': 'INSTRUCTED PLANNING INTERFACE CONTROL\nDo not optimize or invent an inst...'qwen3.6:35b-mlx-64k', 'options': {'min_p': 0.0, 'num_ctx': 65536, 'num_predict': 8192, 'seed': 1490777261, ...}, ...}]
+E        +  where [{'format': 'json', 'messages': [{'content': 'INSTRUCTED PLANNING INTERFACE CONTROL\nDo not optimize or invent an inst...'qwen3.6:35b-mlx-64k', 'options': {'min_p': 0.0, 'num_ctx': 65536, 'num_predict': 8192, 'seed': 1490777261, ...}, ...}] = &lt;class 'test_native_component_parameter_context_v1.test_new_scope_traverses_actual_public_path_certificate_role_next_prompt_and_cold.&lt;locals&gt;.Session'&gt;.production
+
+tests/optimization/test_native_component_parameter_context_v1.py:198: AssertionError</failure></testcase><testcase classname="tests.optimization.test_native_component_parameter_context_v1" name="test_parameter_overlay_requires_explicit_evidence_and_preserves_exact_original_bank" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_all_three_known_cases_and_unknown_tokens_not_invention_or_zero_cost" time="0.023" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_calibration_completion_comes_from_original_provider_envelope_not_missing_flat_field" time="0.000" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_known_no_submission_is_retained_without_a_parent_program" time="0.015" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_authored_source_change_is_literal_not_a_behavior_or_loss_claim" time="0.035" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_generated_factors_and_coordinates_are_counted_but_not_instantiated" time="0.020" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[stopped]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[missing]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[reorder]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[cold]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[request]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[loss]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[world]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[phase]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[pending]" time="0.002" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_incomplete_or_mismatched_original_evidence_is_not_promoted[fallback]" time="0.003" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_wrong_patch_parent_is_not_repaired" time="0.006" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_output_preflight_precedes_source_or_writer_access[reader]" time="0.001" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_output_preflight_precedes_source_or_writer_access[raw]" time="0.000" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_output_preflight_precedes_source_or_writer_access[source]" time="0.000" /><testcase classname="tests.reports.test_native_corrected_author_assay_readout_v1" name="test_live_original_writer_lock_is_not_bypassed" time="0.001" /></testsuite></testsuites>
