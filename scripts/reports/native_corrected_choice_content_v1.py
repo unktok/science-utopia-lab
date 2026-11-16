@@ -52,6 +52,8 @@ def summarize_observation(observation, cache):
              for s in SIGNS}
     return {'observer_content_sha256': observer['content_sha256'], 'accepted_records': records,
         'accepted_occurrences': len(records), 'recorded_U': u,
+        'distinct_contents': observer['unique_contents'],
+        'within_world_repeated_occurrences': len(records) - observer['unique_contents'],
         'sign_counts': {s: sum(r['sign'] == s for r in records) for s in SIGNS},
         'exact_U_by_sign': {s: str(v) for s, v in exact.items()},
         'exact_U': str(sum(exact.values(), Fraction(0))),
@@ -81,12 +83,16 @@ def derive(plan, audit, slots, references):
         'frozen_selection_content_sha256': report['frozen_selection_content_sha256'],
         'coverage': clone(report['coverage']), 'rows': rows,
         'accepted_occurrences': sum(r['accepted_occurrences'] for r in complete),
+        'sum_per_world_distinct_contents': sum(r['distinct_contents'] for r in complete),
+        'within_world_repeated_occurrences': sum(r['within_world_repeated_occurrences'] for r in complete),
         'distinct_content_hashes': len(cache),
         'sign_counts': {s: sum(r['sign_counts'][s] for r in complete) for s in SIGNS},
         'new_model_calls': 0, 'new_native_worlds': 0, 'new_code_executions': 0,
         'loss_changed': False, 'selection_changed': False, 'publication_ready': False,
         'scope': 'All3 references/all24 compound attempts, preserving generation/execution nulls. '
-            'Repeated records, matching policies and panel positions are not independent samples. '
+            'Within-world repeated content and cross-world shared content are distinct diagnostics; '
+            'neither filters records or adopts a deduplicated loss. Repeated records, matching '
+            'policies and panel positions are not independent samples. '
             'Rational signs explain original ratings; original floating losses/selections remain literal. '
             'Deletion arithmetic holds accepted records/scores and every other consequence fixed: '
             'it is not an attainable subset policy, causal mediation, a global optimum or an estimate '

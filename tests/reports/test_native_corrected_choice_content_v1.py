@@ -34,8 +34,11 @@ def test_all27_logical_rows_keep_repeated_occurrences_negative_signs_and_fractio
     p, a, slots, refs = fixture(); r = module.derive(p, a, slots, refs)
     assert len(r['rows']) == 27 and len({x['cell_id'] for x in r['rows']}) == 27
     assert r['accepted_occurrences'] == 135 and r['distinct_content_hashes'] == 4
+    assert r['sum_per_world_distinct_contents'] == 108
+    assert r['within_world_repeated_occurrences'] == 27
     assert r['sign_counts'] == {'positive': 54, 'zero': 54, 'negative': 27}
     c = r['rows'][0]['content']
+    assert c['distinct_contents'] == 4 and c['within_world_repeated_occurrences'] == 1
     assert c['exact_U_by_sign'] == {'positive': '4/3', 'zero': '0', 'negative': '-1'}
     assert c['exact_U'] == '1/3' and c['recorded_U'] != float(1/3)
     assert c['fixed_record_deletion_arithmetic_gain'] == '1'
@@ -49,6 +52,8 @@ def test_generation_nulls_remain_rows_without_content_or_imputed_utility():
     assert len(r['rows']) == 27 and len(nulls) == 4 and r['coverage']['physical_worlds'] == 23
     assert all(x['content'] is x['assigned_loss'] is x['observation_canonical_sha256'] is None for x in nulls)
     assert r['accepted_occurrences'] == 115
+    assert r['sum_per_world_distinct_contents'] == 92
+    assert r['within_world_repeated_occurrences'] == 23
 
 
 def test_execution_null_is_unavailable_not_zero_or_partial_complete_panel():
@@ -66,6 +71,7 @@ def test_completed_empty_set_is_measured_zero_and_not_an_execution_null():
             'native.common_content_utility_sum': 0.}.items()}}]}}
     content = module.summarize_observation(observation, {})
     assert content is not None and content['recorded_U'] == 0 and content['accepted_records'] == []
+    assert content['distinct_contents'] == content['within_world_repeated_occurrences'] == 0
     assert content['fixed_record_deletion_arithmetic_gain'] == '0'
 
 

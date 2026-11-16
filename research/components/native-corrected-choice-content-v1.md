@@ -17,6 +17,14 @@ not hardcoded. A fixed-record deletion arithmetic gain holds scores and every
 other consequence fixed; it is not an attainable policy counterfactual, a new
 objective, global optimality or evidence about future research/resource effects.
 
+A later data-only extension reports each world's distinct contents and repeated
+occurrences, and the sum of per-world distinct counts alongside the global
+distinct-content count. Within-world duplication and cross-world sharing are
+not the same phenomenon. These diagnostics never deduplicate accepted records,
+change a loss or turn matching worlds/content panels into independent samples.
+Empty completed worlds have both counts0; failed/generation-null content remains
+unavailable. The older45-case receipt below predates this additive extension.
+
 The public export requires normal original paired cold/cost/all-slot readouts,
 the exact scientific source, reader commit, complete evidence hashes and a
 nonblocking shared writer lock. Output must be fresh and outside every reader/
