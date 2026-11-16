@@ -176,8 +176,16 @@ def worker(root, output, *, driver_module=None):
             if c.state['pending'] or len(c.state['records']) != p.get('generations', 3):
                 raise ValueError('workflow declared own slots not terminal')
             campaigns[key] = c
+        numeric = (driver.cold_numeric_begin(root, p, context)
+                   if hasattr(driver, 'cold_numeric_begin') else None)
         for slot in p['schedule']:
-            objective, g = slot['objective'], slot['generation']; key = driver.history_key(slot); c = campaigns[key]
+            objective, g = slot['objective'], slot['generation']; key = driver.history_key(slot)
+            if key not in campaigns:
+                if numeric is None:
+                    raise ValueError('declared slot has no audited campaign')
+                driver.cold_numeric_slot(root, p, context, slot, numeric, physical)
+                continue
+            c = campaigns[key]
             record = c.state['records'][g]
             result = author(driver.history_directory(root, key) / 'authoring', record['request'], proposal=True)
             if generation_definition(result) != record['definition']:
@@ -187,6 +195,8 @@ def worker(root, output, *, driver_module=None):
                     if o is None: raise ValueError('workflow compiled draw lacks its consumed observation')
                     physical(driver.history_directory(root, key), draw['suggestion'], o, objective,
                         'workflow-own-proposal', history=key)
+        if numeric is not None:
+            driver.cold_numeric_end(root, p, numeric, start, end)
         if literal(read(root / 'selection.json')) != driver.selection(root, p, context):
             raise ValueError('workflow original own-only selection differs')
         if (cells != {v.resolve() for v in root.glob('**/worlds/*') if v.is_dir()}
