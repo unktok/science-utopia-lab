@@ -514,3 +514,49 @@ The new18 tests plus existing corrected readout/figure-data checks pass45 in
 actual native observation also keeps content/loss unavailable, not zero.
 These are software/data-format evidence, not a new full original export or
 independent scientific samples. The scientific campaign remains unmodified.
+
+## Adaptive U/g1 worsens; original search continues
+
+At21:53:44UTC adaptive/U/g1 completes at U loss-25.6667, compared with its
+own initial-27.6667 and measured reference-28.6667. Its U25.6667/T36/K200/
+uncollected0 are complete, not a technical null. The actual next candidate
+was based on the better measured reference, not the worse own initial sample.
+All185 scientist requests/replies and body hashes verify; the exact observation
+is registered once in the original post-tell state (pending[],proposal_index2,
+one primed reference plus two own). [Exact source/outcome/tell/next ask](../results/native-corrected-choice-first-adaptive-utility-update-v1.json).
+
+This adverse update is retained without repair/refill. Earlier adaptive C own
+recovery does not mean every adaptive move improves or establish a ranking;
+the best-known measured references remain unbeaten. The own prefix is now
+11consumed/10complete/7worse/3ties/0better/1execution-null. Original42803 advances
+to uniform/U/g1 at21:53:45UTC; it is the declared next initial random sample.
+Full24 closure, final selections, original paired analyses/fixed unused
+evaluation and publication readiness remain open.
+
+## Current status made current rather than a growing chronological transcript
+
+The former927-line STATUS contained many historical sections labeled active
+and a superseded104-page artifact claim below newer111-page notes. It is
+preserved byte-for-byte at status-history-2026-11-17-before-corrected-live-summary.md,
+SHA256 `11f5b87436e238e66726b32d2418ebe45e2ad73566e73cce3097e256edeb297f`.
+No raw evidence or history is deleted. Current STATUS now separates the six
+partial paths, authoritative live processes, completed wider tracks and open
+R1--R6 obligations. Its source/metric/null/primary-vs-own qualifiers remain
+explicit; old dated active-process language is not current evidence. INDEX
+and paper README link this live view; the logbook retains chronology.
+
+The [navigation snapshot manifest](../results/repository-status-snapshot-2026-11-17-v1.json)
+binds the archive to actual7d169027 STATUS bytes (63,873 bytes/927 lines).
+The earlier parameter-study milestone now links its real historical anchor
+directly. Publication entrypoint tests no longer mistake the old topic-paper
+receipt for the latest111-page artifact; they preserve the historical PDF/
+scientific-scope assertions separately and check the current exact PDF hash,
+immutable limits and current status/archive split. These are pointer/hash
+checks, not rendering, a minimal rebuild or new manuscript evidence.
+
+The first light invocation passes14 entrypoint/current-requirement checks in
+6.08seconds. The default document checker separately passes25 documents,
+687 local links and6 historical snapshots with0 network/model/scientific-world
+requests. A direct check matches the new adaptive-U outcome/tell/hashes/next
+dispatch to its literal record. None of these narrow checks certify the full
+scientific study, independent evidence, significance or publication readiness.

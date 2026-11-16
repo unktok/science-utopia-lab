@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Current compact status/table/process map](STATUS.md) replaces chronological
+  accumulation; the previous927-line status is archived byte-for-byte. The
+  [first adaptive U update](results/native-corrected-choice-first-adaptive-utility-update-v1.json)
+  worsens its own initial loss by2/reference by3. Eleven own slots are consumed
+  (10complete/1execution-null), no reference improvement; next uniform/U/g1
+  runs. This adverse update and earlier C own recovery are not a method ranking.
+
 - [Actual free-U feedback update fails its native consumer](results/native-corrected-choice-first-feedback-execution-null-v1.json):
   explicit submission/code execution doubles the payload envelope, hiding all
   eight actual paper IDs from the consumer. Eight local probes returned but

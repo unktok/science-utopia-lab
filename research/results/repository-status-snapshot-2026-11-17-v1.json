@@ -1,0 +1,25 @@
+{
+  "schema": "scienceutopia.repository-docs-reset.v1",
+  "observed_utc": "2026-11-16T22:00:13+00:00",
+  "source_commit": "7d169027c30a5e6e55b44aa1f5595b2bc06eb33c",
+  "snapshots": [
+    {
+      "original": "research/STATUS.md",
+      "snapshot": "research/status-history-2026-11-17-before-corrected-live-summary.md",
+      "sha256": "11f5b87436e238e66726b32d2418ebe45e2ad73566e73cce3097e256edeb297f",
+      "bytes": 63873,
+      "lines": 927
+    }
+  ],
+  "current_document": "research/STATUS.md",
+  "current_document_is_live_not_a_sealed_historical_snapshot": true,
+  "historical_milestone_anchor_redirected_to_retained_parameter_study": true,
+  "deleted_worktrees": 0,
+  "deleted_raw_artifacts": 0,
+  "deleted_branches": 0,
+  "new_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "scientific_source_changed": false,
+  "publication_ready": false,
+  "scope": "Navigation work only. Exact former status bytes are retained; historical dated live-process/PDF claims are not current evidence. The current six-path table/process map/open-goal view is mutable and is not an original scientific audit. No raw outcome, frozen source, candidate, loss, selection or old artifact is altered."
+}

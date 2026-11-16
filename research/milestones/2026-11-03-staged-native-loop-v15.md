@@ -49,7 +49,7 @@ are methods for that goal. Whole-world differentiability is not required:
 Evidence anchors:
 
 - [V15 publication verification and reviewed PDF/artifact identities](../results/native-staged-search-v15-verification.json).
-- [Parameter/held-out study status](../STATUS.md#metric-conditioned-study-execution-snapshot).
+- [Parameter/held-out study status (historical snapshot)](../status-history-2026-11-16-before-public-qa-preparation.md#metric-conditioned-study-execution-snapshot).
 - [V5 external/native two-objective source loop](../results/native-external-objectives-v5-a1.md),
   [V7 native entities/effects](../components/native-open-domain-v7.md),
   [V7 explicit processes](../components/native-process-execution-v7.md).

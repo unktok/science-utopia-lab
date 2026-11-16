@@ -8,23 +8,31 @@ ROOT=Path(__file__).resolve().parents[2]
 
 
 def test_first_integrated_pdf_pointer_matches_the_latest_closed_receipt():
+    from utopia.optimization.native_numeric_designer import checked
     text=(ROOT/'paper/README.md').read_text()
     paths=re.findall(r'\]\((\.\./output/pdf/[^)]+\.pdf)\)',text)
-    receipt=json.loads((ROOT/'paper/integrated-topic-systems-build-v1.json').read_text())
+    receipt=checked(json.loads((ROOT/'paper/integrated-priority-method-build-v1.json').read_text()))
     first=(ROOT/'paper'/paths[0]).resolve()
-    assert first==ROOT/receipt['output']
+    assert first==ROOT/receipt['pdf']
     assert hashlib.sha256(first.read_bytes()).hexdigest()==receipt['pdf_sha256']
     assert f"{receipt['pages']}-page integrated draft" in text
-    assert f"with {receipt['figures']} figures, {receipt['tables']} tables" in text
+    assert f"{receipt['figures']} figures/{receipt['tables']} tables/{receipt['cited_references']}" in text
+    assert not receipt['publication_ready']
+    assert receipt['new_model_calls']==receipt['new_native_worlds']==0
+    assert not receipt['minimal_source_subset_rebuild_verified']
+    assert not receipt['corrected_real_model_readiness_proven']
+    current=text.split('## Current111-page revised working paper',1)[0]
+    assert 'it does not contain' in current and 'ongoing corrected four-step study' in current
+    assert receipt['source_commit'][:8] in text
+
+
+def test_historical_topic_paper_preserves_its_original_identity_and_scientific_scope():
+    receipt=json.loads((ROOT/'paper/integrated-topic-systems-build-v1.json').read_text())
+    assert hashlib.sha256((ROOT/receipt['output']).read_bytes()).hexdigest()==receipt['pdf_sha256']
     assert not receipt['publication_ready']
     assert receipt['scientific_scope']['new_scientific_model_calls_by_manuscript_work']==0
     assert receipt['scientific_scope']['own_slots']==6
     assert receipt['scientific_scope']['previous_receipt_scope']['previous_receipt_scope']['own_slots']==12
-    current=text.split('## Earlier reviewed snapshots',1)[0]
-    assert 'all six free-system proposals' in current
-    assert 'All meaningful earlier tracks' in (ROOT/'research/STATUS.md').read_text()
-    assert 'not a focused main-track-ready' in current
-    assert receipt['source_commit'][:8] in current and receipt['pdf_sha256'] in current
 
 
 def test_earlier_resource_pdf_keeps_its_own_literal_identity():
@@ -74,7 +82,7 @@ def test_navigation_separates_historical_heartbeats_from_current_orientation():
     text=(ROOT/'research/INDEX.md').read_text()
     active,old=text.split('## Records and historical navigation',1)
     assert 'native-longitudinal-postprocessing-v1.md' in active
-    assert 'reviewed 98-page working PDF' in active
+    assert 'Reviewed111-page integrated revision' in active
     assert 'index-history-2026-11-15-longitudinal-prefix.md' in old
     assert 'not current heartbeats' in old
     assert 'Latest54-page integrated manuscript' not in active
@@ -100,9 +108,35 @@ def test_navigation_snapshot_preserves_original_bytes_links_and_compatibility_an
         assert len(retained)==row['bytes'] and len(retained.splitlines())==row['lines']
     assert all(data[k]==0 for k in ('deleted_worktrees','deleted_raw_artifacts',
         'deleted_branches','new_model_calls','new_scientific_worlds'))
-    status=(ROOT/'research/STATUS.md').read_text()
-    assert '## Metric-conditioned study execution snapshot' in status
-    assert 'status-history-through-v45.md#metric-conditioned-study-execution-snapshot' in status
+    # The old compatibility anchor now has an explicit historical destination;
+    # do not put obsolete process/artifact claims back into the live status.
+    milestone=(ROOT/'research/milestones/2026-11-03-staged-native-loop-v15.md').read_text()
+    target='status-history-2026-11-16-before-public-qa-preparation.md'
+    assert target+'#metric-conditioned-study-execution-snapshot' in milestone
+    assert '## Metric-conditioned study execution snapshot' in (ROOT/'research'/target).read_text()
+
+
+def test_compact_live_status_preserves_the_entire_previous_snapshot_without_claiming_ready():
+    import subprocess
+    from scripts.check_repository_docs import check
+    manifest='research/results/repository-status-snapshot-2026-11-17-v1.json'
+    data=json.loads((ROOT/manifest).read_text()); row,=data['snapshots']
+    old=subprocess.check_output(['git','show',data['source_commit']+':'+row['original']],cwd=ROOT)
+    retained=(ROOT/row['snapshot']).read_bytes()
+    assert retained==old and len(retained)==row['bytes'] and len(retained.splitlines())==row['lines']
+    result=check(ROOT,documents=('research/STATUS.md',row['snapshot']),manifest=manifest)
+    assert result['status']=='passed',result['errors']
+    assert result['snapshots']==1 and result['network_requests']==result['model_calls']==result['scientific_worlds']==0
+    current=(ROOT/'research/STATUS.md').read_text()
+    for heading in ('Goal and present answer','Current actual experiment','Parallel work and actual waiting processes',
+                    'Wider project tracks','What remains before a submission-ready claim'):
+        assert '## '+heading in current
+    assert 'Publication readiness remains' in current and 'unachieved' in current
+    assert row['snapshot'].split('/',1)[1] in current
+    assert '## Earlier matched-initial snapshot' not in current
+    assert '## Active study: original-world mixed-method comparison' not in current
+    assert all(data[k]==0 for k in ('deleted_worktrees','deleted_raw_artifacts','deleted_branches',
+        'new_model_calls','new_scientific_worlds'))
 
 
 def test_current_reader_links_exist_and_readiness_is_not_claimed_by_finished_qa():

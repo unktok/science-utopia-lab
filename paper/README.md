@@ -34,6 +34,11 @@ one failed), without repaired code, replacement or an imputed loss. Local
 component return did not establish downstream compatibility. The separate
 [signed-content reader preparation](../research/components/native-corrected-choice-content-v1.md)
 passes45 light checks, not an actual new full-study export or scientific gain.
+The [next actual adaptive U update](../research/results/native-corrected-choice-first-adaptive-utility-update-v1.json)
+worsens its own initial loss by2, remaining3 worse than the reference. Eleven
+own slots are consumed (10 complete/1 execution null). [Current compact status](../research/STATUS.md)
+separates current tables/processes/remaining publication work from archived
+dated snapshots; all original adverse/tied/unavailable outcomes remain retained.
 The new study's full24-slot paths, final paired audits, selection-fixed unused
 evaluation and consequential interpretation remain open. No method ranking or
 useful invention follows from this partial initial history. Source/notes are

@@ -1,0 +1,39 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-first-adaptive-utility-update.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T21:56:18+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "method": "adaptive-priority", "objective": "content-utility", "generation": 1, "replication": 0,
+  "suggestion_id": "s2bf72f84e671a1a5", "phase": "adaptive",
+  "based_on_observation_id": "developer-reference-rescore-f975e833fffbb1bfbd8d059ab381220ace37f98fb71c6c07da255aed061d5fa8",
+  "candidate_sha256": "924b91529a45185fe2b0e21e9fea5c7317df76df623c429f589a62112e0b9d91",
+  "status": "complete", "loss": -25.666666666666668,
+  "previous_own_loss": -27.666666666666668, "own_loss_change_from_previous_own": 2.0,
+  "assigned_reference_loss": -28.666666666666668, "own_minus_assigned_reference": 3.0,
+  "prefix_best_known_loss_change": 0.0,
+  "metrics": {"U": 25.666666666666668, "T": 36, "K_collected": 200.0, "K_uncollected": 0.0},
+  "observation_file_sha256": "92c6a8dea82980781561e939b3fe3b38b8cc50872c1b3e666eb2ee143db3535d",
+  "observation_content_sha256": "a68a628d762e3f968e6133c5c6401b7ac356e30cd0a2a66a9880a899a6f01fbc",
+  "post_tell_file_sha256": "40af305409aa93e56afaccd6897fe69f5ed25655b30181cc0e87814351a1402a",
+  "post_tell_content_sha256": "cd6278b98fdc6469815a667d2ff4bdd5b84e454466e35ad71f6e97c4ba570a62",
+  "literal_own_observation_registered_exactly_once": true,
+  "optimizer_pending": [], "optimizer_proposal_index": 2,
+  "optimizer_observations_including_one_primed_reference": 3,
+  "observed_scientist_path": {
+    "wire_requests": 185, "completed_responses": 185, "wire_inputs_without_committed_reply": 0,
+    "ordered_full_request_payload_sha256": "f5fb242513a8f8217c013719448f1b10857c798dfe16a1c0c48018642cbc3a64",
+    "ordered_literal_response_choices_sha256": "0a2c93293620633cdbd6a5c24d634a256ee00f8cfbef0c1dc3375baf6ef18874",
+    "ordered_full_provider_body_hashes_sha256": "14be39fe971a365515bbedd6ae3eae9848de725629ef9ad907820df68e4c38e0",
+    "all_response_cache_body_hashes_checked": true
+  },
+  "prefix": {"consumed_own_slots": 11, "complete": 10, "better_than_reference": 0, "tie": 3, "worse": 7, "execution_nulls": 1, "generation_nulls": 0},
+  "next_actual_dispatch": {
+    "method": "uniform-priority", "objective": "content-utility", "generation": 1, "phase": "initial",
+    "suggestion_id": "s7ce05743c8cceab8", "started_utc": "2026-11-16T21:53:45.175733+00:00",
+    "candidate_sha256": "8d0e15234b9cbec3fb59429bf23fcc75e36eec4ebb73a606c820844c0633b1ae"
+  },
+  "loss_changed": false, "candidate_repaired": false, "candidate_refilled": false,
+  "final_selection_frozen": false, "full_study_cold_audit_complete": false, "publication_ready": false,
+  "scope": "Actual adverse adaptive update retained. Earlier C own recovery does not imply every adaptive move improves; no method ranking or independent-history inference follows. The measured warm reference remains best known. This direct original-record projection is not the pending full source-bound cold/readout closure."
+}
