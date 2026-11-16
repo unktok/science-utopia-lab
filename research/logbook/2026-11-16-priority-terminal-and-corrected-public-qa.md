@@ -53,3 +53,27 @@ remain unchanged.20 numeric/source/evidence checks pass in original handle70642
 (exit0,1.21s); exact JUnit is retained alongside this note. The prior104-page
 PDF and minimal source subset are unchanged. A fresh build/render/visual review
 is still required, separately from this source update and active native QA.
+
+## Subsequent paired closure and actual figure
+
+At14:21UTC, all original cold/cost/readout/all8-author continuations have
+exited0, and the two actual visibility exports (51477/73809) match exactly.
+The final closed receipt and compressed reports bind the exact output bytes.
+The counts/selections do not change.25 light retention/source/plot-data checks
+pass in original22891 (exit0,0.99s); the earlier21-case retention-only run35654
+also exits0. No original native execution or model request is repeated.
+
+The optional10-adjacent-swap setting cannot change any retained founder's
+initial winner: alternative boundaries require35/27/17 swaps. The pre-existing
+24-combination initial-choice test is not claimed as a new result; the two new
+barrier checks pass in76216 (exit0,1.12s,27 explicit deselections). No baseline
+or actual scientific protocol is silently changed.
+
+After source commit8fa731f3, the real figure exporter runs once (65548,exit0)
+into a fresh external directory. All12 two-point paths are shown in six small
+panels, with actual losses separate from best-own lines and visible-reference
+gaps. The PNG is visually inspected: labels/legend/markers are legible and no
+overlap/clipping is visible. Original exporter manifest retains visual-review
+false at creation; this note records the later manual review without mutating
+that original file. Exact PNG/SVG/data/manifest copies are retained in paper.
+No PDF has been built by these steps.
