@@ -85,8 +85,11 @@
 C損失を4改善する対照であり、自動発明ではない。三つ目の対照も完了し、
 [最初の自己候補のU損失](research/results/native-priority-first-own-outcome-prefix-v1.json)は
 −27.6667で親より1悪化した。53個の優先度が[実際に2人の研究テーマを変えた](research/results/native-priority-first-own-year1-actuation-prefix-v1.json)
-ことは確認し、実測を最適化器へ返した。[最初の5件の自己候補](research/results/native-priority-first-five-own-outcomes-prefix-v1.json)
-では、数値候補4件は対照より悪く、自由設計1件は親をそのまま提出して同点だった。
+ことは確認し、実測を最適化器へ返した。[最初の5件](research/results/native-priority-first-five-own-outcomes-prefix-v1.json)
+と[6件目の自己候補](research/results/native-priority-sixth-own-outcome-and-read-loop-prefix-v1.json)
+では、数値候補4件は対照より悪く、自由設計2件は各親をそのまま提出して同点だった。
+後者のC設計者は14操作中12回読んで編集せず終了した。全文の読み取り結果と次の実際の要求を照合し、
+この試行での読み取り欠落や成功した編集の消失は確認されないが、行動の原因までは断定しない。
 現状の実行位置は短い[進捗一覧](research/STATUS.md)を参照する。
 全24自己候補・最終選択・全体監査・実結果の可視化はまだ未完了。
 [全候補・探索経路の集計](research/results/native-priority-method-readout-preparation-v1.json)と、

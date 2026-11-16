@@ -1,0 +1,507 @@
+{
+  "schema": "scienceutopia.native-priority-sixth-own-outcome-and-read-loop-prefix.v1",
+  "observed_utc": "2026-11-16T07:38:46.841718+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "prior_five_outcomes_content_sha256": "9ef4d0c248220ea3a04c0fdaf51c36d044de09d72bf5595101b845deeae4bf5a",
+  "own_outcomes_observed": 6,
+  "current_stage_snapshot": {
+    "active": "uniform-priority/1/content-utility:g0",
+    "observed_utc": "2026-11-16T07:29:57.080443+00:00",
+    "stage": "optimization"
+  },
+  "sixth": {
+    "cell_id": "free-code-graph/history-0/resource-aware-content/generation-0",
+    "suggestion_id": "native-adaptive-6f3e5b948760380187a6adea",
+    "status": "complete",
+    "cross_scores": {
+      "content-utility": -28.666666666666668,
+      "resource-aware-content": -12.666666666666668,
+      "throughput": -36.0
+    },
+    "metrics": {
+      "native.accepted_decisions": {
+        "status": "measured",
+        "value": 36
+      },
+      "native.accepted_peer_score_sum": {
+        "status": "measured",
+        "value": 0.0
+      },
+      "native.accepted_unreviewed_decisions": {
+        "status": "measured",
+        "value": 36
+      },
+      "native.collected_activity_resource_cost": {
+        "status": "measured",
+        "value": 160.0
+      },
+      "native.common_content_score_sum": {
+        "status": "measured",
+        "value": 136.66666666666666
+      },
+      "native.common_content_utility_sum": {
+        "status": "measured",
+        "value": 28.666666666666668
+      },
+      "native.final_active_authors": {
+        "status": "measured",
+        "value": 1
+      },
+      "native.final_author_resources": {
+        "status": "measured",
+        "value": 70.0
+      },
+      "native.institutional_context_deliveries": {
+        "status": "measured",
+        "value": 20
+      },
+      "native.rejected_decisions": {
+        "status": "measured",
+        "value": 0
+      },
+      "native.review_records": {
+        "status": "measured",
+        "value": 0
+      },
+      "native.uncollected_activity_resource_cost": {
+        "status": "measured",
+        "value": 40.0
+      }
+    },
+    "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+    "actual_parent_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+    "literal_parent_retained": true,
+    "graph_delta": {
+      "nodes_added": [],
+      "nodes_removed": [],
+      "source_changed_nodes": [],
+      "parameter_changed_nodes": [],
+      "wires_added": 0,
+      "wires_removed": 0,
+      "schedules_changed": false,
+      "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+    },
+    "assigned_loss_minus_initial_reference": 0.0,
+    "observed_scientist_path": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "503ee03ba2d34a808cdb85c2f6b33666ab1195032de71672efca6cfc7af1d4d3"
+    },
+    "reference_observed_scientist_path": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "4db3daac1ea8a8c7a885d50cb8ddd77c5b3d0a6e59f67499044ad63501954963"
+    }
+  },
+  "actual_request_readiness_certificate_content_sha256": "df896aa9a8d0ca3b09112a2d79c1e4ac8c3af986bff264a483616095bbd42f36",
+  "proposal_result_content_sha256": "f556b24914b21247a3588a16a9752fb757300c53534ea350b8b0689facdba6a5",
+  "returned_definition_equals_campaign_definition": true,
+  "cumulative_completed_author_steps": [
+    {
+      "step": 0,
+      "tool": "plan",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": false,
+      "request_wire_sha256": "bd6ca0ce30083df95ad840f41b87f61baa254576e5c3a08484574ea268205b12",
+      "done_reason": "stop"
+    },
+    {
+      "step": 1,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "2fa56db3e7a61d6dc256bfb56bf0f17ac115691985623fefba0d49bdff41f689",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 2,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "098500e3810f5c9c7a8929a2a046e45f1c0e045332656c594e09a6dfea5b732d",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 3,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "eb128c5f36cba49ed4b176e04f94ab6cf27af3a2fb79b8820c63582eb1f48abb",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/native-feature-extractor.py",
+        "offset": 0,
+        "content_sha256": "337902cd5b71c322b1541badce682a2f2ae9c7837ba60e20cd2bfcb9efa955d0",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 749
+      }
+    },
+    {
+      "step": 4,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "dfc2de027e8fd2bf5a9abd6400f30da1003a8291b4356eae3495c422cdc5b056",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 5,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "8f3c95c2ebe0ed5e62e4ea217a238a6467469d9d4f54c174f03656e7f91fae2b",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 6,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "ddb63c4eeb7a821825d08d927469c8cda7efbac71e7f45f6f54a09e567bacbb7",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 7,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "76e13fbea15c0f0fd0fbdcdc4716f4c00ca8274056550229edcae4c0cb22980d",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 8,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "0010af03e09791ed40a8eb6dbde3104e0ea5c92caf354bb93b98077e68f3432e",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 9,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "e47f0e79c6773d8426fb0e6edfa98bcc51e5452b70ab731b7473278629d178f9",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 10,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "5c9c0e0139867d5e445b62397fe153ef267937c926465cc46ed790e1dd74786d",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 11,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "9e2c58423c8de1839888f250edc0bae0e62d5806462d4ab5f95984cd1e20098a",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 12,
+      "tool": "read_file",
+      "status": "applied",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "1e07ca7fc3813d2110ab04b08025fd9200677c01c7001a6954ede0122769f4b8",
+      "done_reason": "stop",
+      "read": {
+        "filename": "code/developer-catalog-agenda.py",
+        "offset": 0,
+        "content_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+        "complete": true,
+        "slice_reaches_end": true,
+        "total_characters": 2952
+      }
+    },
+    {
+      "step": 13,
+      "tool": "finish",
+      "status": "finished",
+      "errors": [],
+      "transition_errors": [],
+      "draft_unchanged": true,
+      "request_wire_sha256": "4c9f783c64586bfdd43196c2dd4c19a6acfb51cab4cea3134688ecfd67285ee8",
+      "done_reason": "stop"
+    }
+  ],
+  "next_request_receipt_checks": [
+    {
+      "step": 1,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 0,
+      "nonconsecutive_revisits": 0,
+      "inspection_notice_present": false
+    },
+    {
+      "step": 2,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 1,
+      "nonconsecutive_revisits": 0,
+      "inspection_notice_present": false
+    },
+    {
+      "step": 3,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 2,
+      "nonconsecutive_revisits": 1,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 4,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 1,
+      "nonconsecutive_revisits": 1,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 5,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 1,
+      "nonconsecutive_revisits": 2,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 6,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 2,
+      "nonconsecutive_revisits": 3,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 7,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 3,
+      "nonconsecutive_revisits": 4,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 8,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 4,
+      "nonconsecutive_revisits": 5,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 9,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 5,
+      "nonconsecutive_revisits": 6,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 10,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 6,
+      "nonconsecutive_revisits": 7,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 11,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 7,
+      "nonconsecutive_revisits": 8,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 12,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 8,
+      "nonconsecutive_revisits": 9,
+      "inspection_notice_present": true
+    },
+    {
+      "step": 13,
+      "previous_action_and_full_receipt_preserved": true,
+      "literal_current_system_equals_parent": true,
+      "consecutive_identical_read_count": 9,
+      "nonconsecutive_revisits": 10,
+      "inspection_notice_present": true
+    }
+  ],
+  "read_counts": {
+    "developer-catalog-agenda": 11,
+    "native-feature-extractor": 1,
+    "all_reads_complete": true,
+    "edits_attempted": 0,
+    "total_steps": 14,
+    "declared_step_allowance": 16
+  },
+  "mutable_campaign_state_snapshot_sha256": "3aa321c9aa307572364fc98ce55c98ec7a0f33d48b6d62992d409546f24b91e0",
+  "bound_immutable_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/plan.json": "91a63d5753f0f30b5470bdd725bd42365a610cb8f61a1a3002e3175b68d1925b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/observation.json": "422d8364c91454a183ee0e90719407467b07e8009d8d92d7a7671a2e265cfa3f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/result.json": "9d73fbc2449460032685be267098925341984f6fba27dfe8e053038816bd35df",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/calibration-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-readiness/calibration/certificate.json": "f1705c2f2a1a4c717101cb1f2f1b27cf9ff4fa96dadcc9d3a6688e39477c6198",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-00.completed.json": "ac54e8c811716a0107aafac9ca621cec6fb8127a0d6b469807e0167d3898b25b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-01.completed.json": "0eff1e6701a7bade1ac8f0c3bf4ea5972f439791ddaa275a0da9f84214b2d923",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-02.completed.json": "ff9f1657edf2c24b3b22d879b931b6d1fce655f9aeb3c38c536b16eb7338ce36",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-03.completed.json": "7a88aca18ccd924d3de06066d697ca0cd5bbbb169c399120e36cea93aaef86fe",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-04.completed.json": "461119a69e88a27e72dd297d20b988b5a3f3f33722779f20890251bf2dc88b9f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-05.completed.json": "c3737d070c51723ad4099f42498cb2871eca3e9edb73463544f463ab0e888601",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-06.completed.json": "13a078348bfa27913c6bb12cf168f573ab39f2a4665157d72cdce10d0b9158a7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-07.completed.json": "af4c0f94c25a0b193bbdf853b03db800bf69243c556fd934cefa68b34083bc36",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-08.completed.json": "ea0c7a7098763709ff38851b51cb247afc0eda3559af0f12684189db1ee765b5",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-09.completed.json": "d474fe8c6b8eb3528380022be3df7e9f80b357c55ea9d6942283bdd25f479609",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-10.completed.json": "ca62e7b13e721d65acfe1ffe478c470ccd46e4bf9d3f4b5a1f8baa0e3d4e0dbe",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-11.completed.json": "32cd36c28d7b080a53c3d2aaddf5de8c8ab1d203ee4589452a0917c31178e2c1",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-12.completed.json": "e871cb5fd0d1b14e41051a1ca52e1858b2316d7de92fcd623303073b9cce4ed4",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-13.completed.json": "5d5c813b012067c3bd565b59b1a63a0effca4aed8c6c19be77f08dec56fba2c0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-00.started.json": "95057dd1cc3e4118ca4fe1f6fa0af041b9d43aff8fad85db54e8368b38ebf95d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-01.started.json": "0b44ca8b914c23cdab9d7ca3f3903497200b747c505230734091242e222da90a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-02.started.json": "c2d420badc9d1728c111e1e1f521edfe19a40cb4632e731118b1019eea9425d8",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-03.started.json": "ae70ffe7b04bf74fa8149e820a7bd45d0f9766568f5cfc79d073014521fad6d1",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-04.started.json": "5045290389f84b8940d14010cc99de8140c23e724f8734b5e94767c990ef550a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-05.started.json": "c1055885e99453f7d455b876b164f970e1cf683095e57cdaeadf433482b42c4c",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-06.started.json": "edd2de0f651ae688f033ce1a9e6254b65c154b08de0afc3ce4317ba451fac706",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-07.started.json": "2c516e47f2fa76c7fb8a7786bcb4073740d7d688788d3763f5189298b1cbfff0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-08.started.json": "0073ed00661a933e271d72f294a94e3307602240529b78bfbd8e168f6ebe59aa",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-09.started.json": "83d8eae140c2613b16ee92d77202e574d9579b2d8b5c130f5f5e5098c37a17ca",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-10.started.json": "5a38974a83a6aca8b8c7f0435d2c01053c33a69d653f05cd1acb201f53dbe5da",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-11.started.json": "72b26a28c3371050d93e3c150f17b32fb93f9ef9e5a15cc0d4b7555949b7a03e",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-12.started.json": "2897dd65cbdb9b65d022ce1bff011a615ac56f85533f068f7381c5577c07c4f6",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/editor-session/authoring/generation-55b69f7c95e2db62cede2978ea13465ccab605f86d9ddb576a47bb9f3eb7d29e/step-13.started.json": "65fce37b629709247ac8ddfdf90dd7faf5fab30b941dec6cbf2338e4708302f6",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/worlds/native-adaptive-6f3e5b948760380187a6adea-s61001/system.json": "2885ba60519787c60491e8c9c484df2cd1b9c5e698f4759c5b58b44166e9691d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/worlds/native-adaptive-6f3e5b948760380187a6adea-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/worlds/native-adaptive-6f3e5b948760380187a6adea-s61001/replies/responses.sqlite": "68ca0a2d6b69c61308062d29c15198f399a0eedf27f81b784c51da13735c4e93",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/replies/responses.sqlite": "3d5464998a5092a03fbe06b9b23daf74979e515a1e01f96f79f917bffe819c50"
+  },
+  "whole_cold_audit_complete": false,
+  "scope": "Complete first C free-author trace and sixth measured own outcome only. Eleven reads of the same unchanged full agenda source include nonconsecutive revisits. Every subsequent saved actual provider request preserves the full preceding receipt/action and literal current system; notices are recorded, not a veto. No edit is attempted and an explicit finish retains/ties the known terminal parent. This rules out missing read bytes or a lost successful edit on this trace, not all bugs or the causal reason for model behavior, optimality, invention, method superiority or new independent population evidence. The active scientific source/settings remain unchanged. Earlier diagnostic displays used top-level rather than nested transition fields; null display fields were not missing producer data. First derived receipt attempt assumed a nonexistent prior bound_immutable_file_sha256 key and stopped without output/raw mutation; corrected against the actual bound_fifth_file_sha256 field. A second derived attempt applied the sealed reader to plain world/system.json and stopped without output/raw mutation; corrected to its producer ABI, with byte binding and literal candidate equality unchanged.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "publication_ready": false,
+  "content_sha256": "f8343d1bd58bf6e65d143306b7b8a821f031a7506367659b893d45d9d0f6b095"
+}

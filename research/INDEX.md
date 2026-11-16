@@ -12,7 +12,10 @@ This page is navigation, not a chronological experiment transcript.
   terminal rule is visible, not a new discovery. [Complete reference bank](results/native-priority-method-reference-bank-and-first-dispatch-prefix-v1.json)
   and [first five own outcomes](results/native-priority-first-five-own-outcomes-prefix-v1.json)
   are retained: paired U numeric evaluations worsen by1, paired initial C
-  numeric evaluations worsen by3, first free submission retains/ties its parent. This is a
+  numeric evaluations worsen by3, first free submission retains/ties its parent.
+  The [sixth original outcome and full free C trace](results/native-priority-sixth-own-outcome-and-read-loop-prefix-v1.json)
+  also retain/tie the parent: fourteen actions, repeated full reads, no attempted
+  edit, with exact next-request receipts preserved. This is a
   prefix, not the completed24-slot comparison. See [STATUS](STATUS.md) for the
   active slot/source/processes and [first free journal](results/native-priority-first-free-submission-prefix-v1.json)
   for the five applied/finished actions, without an invented institution claim.

@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at07:13UTC/16:13JST.
+Last scientific snapshot: November16,2026 at07:38UTC/16:38JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -31,14 +31,16 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | Five complete observations so far, not final24-slot closure. No completed own improvement over its assigned strong parent yet |
-| Current stage | Free code/graph/history0/C/g0 at the snapshot |
+| Own outcomes | Six complete observations so far, not final24-slot closure. No completed own improvement over its assigned strong parent yet |
+| Current stage | Uniform priorities/history1/U/g0 at the snapshot |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
+| First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
 | Selection | Final own-only earliest-tie selections are not yet frozen; no reference fallback, adverse-slot refill or hidden merit/fairness/activity veto |
 | Independence | Two optimizer seeds are not independent scientist populations; initial numeric proposals are deliberately paired, not independent policy samples |
 
-[First five original outcomes](results/native-priority-first-five-own-outcomes-prefix-v1.json):
+[First five original outcomes](results/native-priority-first-five-own-outcomes-prefix-v1.json)
+and [sixth outcome/complete free C trace](results/native-priority-sixth-own-outcome-and-read-loop-prefix-v1.json):
 
 | Method/history/generation | Assigned objective | Assigned loss | Meaning |
 | --- | --- | --- | --- |
@@ -47,6 +49,7 @@ real science or a publication-ready differentiated main finding.
 | Free code/graph/0/0 | U | -28.6667 | Literal unchanged parent, same179 observed inputs/choices |
 | Uniform/0/0 | C | -9.6667 | Three worse than visible terminal C parent |
 | Adaptive/0/0 | C | -9.6667 | Same paired initial C proposal; no adaptation result yet |
+| Free code/graph/0/0 | C | -12.6667 | Literal unchanged terminal parent, same179 observed inputs/choices |
 
 The U numeric proposal changes two founders' actual topics while preserving
 original durations/deadlines; its186 complete scientist inputs/replies differ
@@ -56,6 +59,14 @@ from the reference's179. See [year1 actuation](results/native-priority-first-own
 and [complete first free submission](results/native-priority-first-free-submission-prefix-v1.json).
 Literal edits, native effects, observed inputs and useful loss improvement are
 different evidence layers. A valid retained parent is allowed, not a lost edit.
+
+The first free C author reads the unchanged2952-character agenda source11
+times and the feature source once. Every read is complete; all13 subsequent
+actual provider requests preserve the full preceding receipt/action and literal
+current parent. Repeat-read notices are present from step3, without vetoing
+legal actions. No write/edit is attempted. This trace rules out a lost successful
+edit or missing read bytes here, not every interface defect or a causal reason
+for the author's behavior. The active protocol is not changed to force novelty.
 
 All3 references have36 accepted decisions/U28.6667 and179 matching complete
 scientist input/choice sequences. The known terminal rule changes K200→160/
