@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Fresh corrected free-C readiness and implementation prefix](logbook/2026-11-17-corrected-first-own-outcome.md#free-c-fresh-readiness-and-actual-implementation-prefix):
+  all28 actual request-specific controls pass. One overlong plan is rejected
+  and retained; three reads and one agenda-code write apply subsequently.
+  The full19:49 prefix reaches implementation1 with0 observed phase/loss-view
+  mismatches, but no terminal/free-C native loss or benefit yet. All five
+  earlier adverse own outcomes and the active scientific source stay unchanged.
+
 - [Both corrected numeric C initial outcomes and free-C readiness](logbook/2026-11-17-corrected-first-own-outcome.md#matched-c-initial-programs-complete):
   both matched initial programs complete at C-9.6667, worse by3 against their
   reference; all183 input/choice paths match and both exact tells are retained.

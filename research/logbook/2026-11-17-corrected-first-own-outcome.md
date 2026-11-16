@@ -226,3 +226,35 @@ yet,0 production steps and campaign pendingNone. The designer load and actual
 wire intents/HTTP receipts are present, and original42803/writer30048/
 supervisor29982 remain live. This is not a reused U certificate, free C submission
 or native benefit. No active source/request/candidate is edited or refilled.
+
+## Free C fresh readiness and actual implementation prefix
+
+At19:46:34UTC the actual new request2a1213ee readiness certificate is present,
+with28 records and all_controls_passed true. Content hash
+`6f9cee77f841f7559a7e029be79fb2b77076b430447837e2f2c37e111c173b1a`,
+file hash `61bc25d808e38c26c91da04b7501ada2b9a093678f1ff29cc63c675d78b0f959`.
+It is freshly produced for the current C request; the U certificate is not reused.
+The actual production binding is
+`75cd6c1bd5a7059807901411d11f2652f358e4c9346afeaca9d474994939f034`,
+request.json file hash
+`cf7978eb68c19b316dae998feb99e2b394a96aac6dcef808cfdf3c7ae755d18b`.
+
+The first plan action is **rejected**, not a successful plan: its
+objective_reasoning has8753 characters against the original recorded
+response_schema's maxLength4096. The received value and rejection remain
+literal; no truncation, limit change, replacement action or step refund occurs.
+This does not by itself establish a transport/interface bug or a fatal session.
+The original session proceeds to read_file actions successfully.
+
+At19:49:33UTC the complete available prefix has6 intents/5 completed steps:
+one rejected plan, three applied reads and one applied write, one still-pending
+response. Its first write targets `code/developer-catalog-agenda.py`, receipt
+content `9b2994c0495f6aad20d475f62f14e260293063903153f7407938c45ce6b20dc3`.
+There is one successful literal document change, not an executed new native
+institution or proof of its effect. The full prefix's actual prompt visibility
+has planning1/general4/implementation1 and0 phase/loss-view mismatches. Unlike
+the earlier U prefix it reaches an implementation checkpoint, but this still
+does not prove correctness of future prompts, model understanding or benefit.
+There is no terminal submission, original C free outcome or frozen selection
+yet. Original42803/writer30048 remain live, with no failure record; the running
+source, finite settings and all previously measured adverse losses stay unchanged.

@@ -1,6 +1,20 @@
 # Current research status
 
-## Latest verified state: November16,2026 at19:37UTC / November17 04:37JST
+## Latest verified state: November16,2026 at19:49UTC / November17 04:49JST
+
+[Free C passes fresh28-control readiness and edits code](logbook/2026-11-17-corrected-first-own-outcome.md#free-c-fresh-readiness-and-actual-implementation-prefix).
+The actual request2a1213ee uses a new certificate, not the U certificate.
+At19:49:33UTC its full chronological prefix has6 intents/5 completed steps:
+one rejected plan (8753 characters against recorded maxLength4096),three applied
+reads and one applied agenda-code write. The rejection remains literal and
+charged; no host repair/truncation or hidden retry occurs. One response is
+pending/unknown, not failed. The actual visibility includes implementation1,
+with0 observed phase/loss-view mismatches; this is not an all-session proof.
+No free C submission/native loss is measured yet. Original42803 continues
+unchanged. Five own outcomes remain complete/all worse, with full24-slot
+closure, analyses, fixed evaluation and publication readiness still open.
+
+## Earlier matched C initial outcomes:19:37UTC / 04:37JST
 
 [Both numeric C initial outcomes complete](logbook/2026-11-17-corrected-first-own-outcome.md#matched-c-initial-programs-complete).
 The same actual initial program gives L_C-9.6667/U25.6667/T36/collected160/
