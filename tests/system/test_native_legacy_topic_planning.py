@@ -62,7 +62,7 @@ def test_related_topic_uses_original_content_duration_and_native_project_consume
 
 def test_historical_core_action_does_not_silently_gain_related_topic_authority():
     kernel, actors, ctx, assignment = example()
-    with pytest.raises(GraphRuntimeError, match='displayed topic'):
+    with pytest.raises(GraphRuntimeError, match='outside this actor'):
         run_commands(kernel, ctx, command('old', CORE_ACTION, {'assignment': assignment}, BOOTSTRAP))
     assert actors['a'].newest_direction is None
 

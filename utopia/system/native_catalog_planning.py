@@ -50,16 +50,24 @@ def validate_catalog_assignment(assignment, actor, *, year, catalog):
             or len({d['topic'] for d in rows}) != len(rows)):
         raise GraphRuntimeError('exact native catalog identity required')
     actual = {d['topic']: d for d in rows}
-    if (not isinstance(direction, dict) or not isinstance(direction.get('topic'), str)
-            or direction.get('topic') not in actor['expertise']
-            or direction != actual.get(direction.get('topic'))
-            or type(direction.get('years')) is not int or direction['years'] < 1
-            or assignment['project_start_year'] != year
+    # Keep the original acceptance predicates, but identify the first failed
+    # contract. Eligibility is not a duration/content error. These diagnostics
+    # neither repair an authored assignment nor add a scientific-merit gate.
+    if not isinstance(direction, dict) or not isinstance(direction.get('topic'), str):
+        raise GraphRuntimeError('catalog project direction requires an object with a string topic')
+    if direction['topic'] not in actor['expertise']:
+        raise GraphRuntimeError('catalog project topic is outside this actor\'s permitted expertise set')
+    if direction != actual.get(direction['topic']):
+        raise GraphRuntimeError('catalog project direction must equal the displayed canonical topic content and duration')
+    if type(direction.get('years')) is not int or direction['years'] < 1:
+        raise GraphRuntimeError('catalog project original topic duration must be a positive integer')
+    if (assignment['project_start_year'] != year
             or type(assignment['project_start_year']) is not int
             or type(assignment['project_end_year']) is not int
-            or assignment['project_end_year'] != year + direction['years'] - 1
-            or any(not isinstance(assignment[k], str) for k in ('detailed_focus', 'reason'))):
-        raise GraphRuntimeError('catalog project must preserve displayed topic content and native duration')
+            or assignment['project_end_year'] != year + direction['years'] - 1):
+        raise GraphRuntimeError('catalog project calendar must start this year and preserve the original topic duration')
+    if any(not isinstance(assignment[k], str) for k in ('detailed_focus', 'reason')):
+        raise GraphRuntimeError('catalog project detailed_focus and reason must be strings')
     return {'schema': PLAN, 'year': year, 'assignments': [deepcopy(assignment)], 'submit_actor_ids': []}
 
 
