@@ -132,3 +132,14 @@ def test_export_path_guard_runs_before_reading_or_creating_source_local_destinat
         args = SimpleNamespace(run=tmp_path / 'raw', frozen_source=tmp_path / 'science', output=out)
         with pytest.raises(ValueError, match='outside reader'): r.export(args)
         assert not out.exists()
+
+
+def test_plot_data_keeps_six_panels_twelve_histories_and_frozen_cells_without_rendering():
+    from scripts.figures.native_priority_method_paths_v1 import plot_data
+    p, a, slots, refs = fixture(); report = r.analyze(p, a, slots, refs)
+    panels = plot_data(report)
+    assert len(panels) == 6 and sum(len(p['histories']) for p in panels) == 12
+    assert all(len(h['path']) == 2 for p in panels for h in p['histories'])
+    assert len({h['selected_cell_id'] for p in panels for h in p['histories']}) == 12
+    report['paths'][r.METHODS[0] + '/0/' + r.OBJECTIVES[0]].pop()
+    with pytest.raises(ValueError, match='both actual generations'): plot_data(report)

@@ -6,9 +6,11 @@ model request, generated program or scientific world is created or repaired.
 import argparse
 from collections import Counter
 import csv
+import hashlib
 import json
 import os
 from pathlib import Path
+import sqlite3
 import subprocess
 import sys
 
@@ -66,7 +68,8 @@ def graph_delta(parent, candidate):
         'parameter_changed_nodes': sorted(k for k in a.keys() & b.keys() if a[k].get('parameters') != b[k].get('parameters')),
         'wires_added': len(edges(candidate) - edges(parent)), 'wires_removed': len(edges(parent) - edges(candidate)),
         'schedules_changed': parent['schedules'] != candidate['schedules'],
-        'scope': 'Literal edits relative to actual parent, not proof of native effect or benefit'}
+        'scope': 'Literal edits relative to declared comparison base (a uniform draw has a family anchor, '
+                 'not a feedback-selected generation parent); not proof of native effect or benefit'}
 
 
 def analyze(plan, audit, slots, references):
@@ -126,7 +129,8 @@ def analyze(plan, audit, slots, references):
     rows = []; candidates = {}
     for i, entry in enumerate(slots):
         slot, o, s = entry['slot'], entry['observation'], entry['suggestion']
-        row = {'slot_index': i, 'cell_id': cell_id(slot), **clone(slot), 'generation_error': clone(entry['generation_error'])}
+        row = {'slot_index': i, 'cell_id': cell_id(slot), **clone(slot), 'generation_error': clone(entry['generation_error']),
+               'comparison_base_role': entry.get('comparison_base_role', 'explicit-comparison-base')}
         if o is None:
             if s is not None or slot['method'] != METHODS[2] or not entry['generation_error']:
                 raise ValueError('explicit original generation failure, not fabricated missing observation, required')
@@ -206,7 +210,8 @@ def collect(root, plan):
             # declared reference, not a fabricated based_on observation.
             parent = before['space_binding']['anchor'] if parent is None else parent
             slots.append({'slot': clone(slot), 'suggestion': started['suggestion'],
-                'observation': read(target / 'observation.json'), 'parent_system': parent, 'generation_error': None})
+                'observation': read(target / 'observation.json'), 'parent_system': parent, 'generation_error': None,
+                'comparison_base_role': 'numeric-family-anchor' if parent_id is None else 'numeric-feedback-parent'})
         else:
             key = history_key(slot)
             if key not in states:
@@ -225,8 +230,46 @@ def collect(root, plan):
                 s, o = draws[0]['suggestion'], observations[0]
                 error = record['generation_error'] or draws[0].get('error')
             slots.append({'slot': clone(slot), 'suggestion': s, 'observation': o,
-                'parent_system': record['request']['parent_system'], 'generation_error': error})
+                'parent_system': record['request']['parent_system'], 'generation_error': error,
+                'comparison_base_role': 'free-author-actual-parent'})
     return slots, refs
+
+
+def behavior(root, plan, report):
+    """Full observed-input classes with compound labels, not program equivalence."""
+    from scripts.reports.native_observed_request_classes_v1 import sequence, groups
+    seed = plan['initial_system']['initial_state']['seed']; traces = []
+    for row in [*report['references'], *report['slots']]:
+        if row['suggestion_id'] is None:
+            continue
+        if 'cell_id' in row:
+            key = history_key(row)
+            directory = root / 'search' / key[0] / ('history-' + str(key[1])) / key[2]
+            if key[0] != METHODS[2]: directory = directory / ('generation-' + str(row['generation']))
+            label = row['cell_id']
+        else:
+            directory = root / 'references' / row['label']; label = 'reference/' + row['label']
+        cell = (directory / 'worlds' / (row['suggestion_id'] + '-s' + str(seed))).resolve()
+        if not cell.is_relative_to(root.resolve()) or not cell.is_dir():
+            raise ValueError('actual original native cell inside raw root required')
+        wire, cache = cell / 'wire-requests.jsonl', cell / 'replies/responses.sqlite'
+        wires = [json.loads(line) for line in wire.read_text().splitlines()] if wire.exists() else []
+        replies = []
+        if cache.exists():
+            with sqlite3.connect(cache.as_uri() + '?mode=ro', uri=True) as db:
+                replies = db.execute('SELECT payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+        if any(hashlib.sha256(body.encode()).hexdigest() != expected for _, _, body, expected in replies):
+            raise ValueError('original response-cache body changed')
+        errors = [outcome for _, outcome, _, _ in replies if outcome != 'response']
+        requests = sequence(wires, replies) if not errors else None
+        traces.append({'identity': label, 'suggestion_id': row['suggestion_id'], 'seed': seed,
+            'status': row['status'] if requests is not None else 'nonresponse-cache-entry',
+            'original_status': row['status'], 'requests': requests,
+            'wire_file_exists': wire.exists(), 'response_cache_exists': cache.exists(),
+            'nonresponse_cache_outcomes': errors,
+            'scope': 'Observed recorded scientist path only; absent wire/cache is not zero physical/load cost'})
+    return {'traces': traces, 'complete_observed_input_classes': groups(traces),
+            'scope': 'Complete observed paths, not semantic/global policy equivalence or independent replications'}
 
 
 def export(args):
@@ -250,6 +293,7 @@ def export(args):
         raise ValueError('unchanged original normal closure, selection, inventory and costs required')
     slots, refs = collect(root, plan); result = analyze(plan, audit, slots, refs)
     result.update(analysis_source_commit=reader_source, cost_content_sha256=cost['content_sha256'])
+    result['behavior_evidence'] = behavior(root, plan, result)
     if before != _inventory(root) or hashes != {str(p): file_sha256(p) for p in inputs}:
         raise ValueError('original evidence changed during projection')
     out.mkdir(parents=True); save(out / 'report.json', result)
