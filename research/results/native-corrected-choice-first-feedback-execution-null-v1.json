@@ -1,0 +1,84 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-first-feedback-execution-null.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T21:43:12+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "method": "free-code-graph", "objective": "content-utility", "generation": 1, "replication": 0,
+  "request_sha256": "36033579a1b2127fdc10e6cd3e0867d7be551775508215a3e960916ce851a39f",
+  "suggestion_id": "native-adaptive-12db00b28ae8ab4bcbd0d242",
+  "candidate_sha256": "000f51887f1106bb0dd5611271052c2be66977080953c161aa4c21c5d5cbbb45",
+  "status": "failed", "loss": null, "generation_error": null,
+  "observation_canonical_sha256": "cd8b312a661a5017318d25814e30426545a90002b8e7a374012881f56714a63b",
+  "record_canonical_sha256": "2dc247927fba003e5efe40b88433fefb1d61995cbbd57c1309f2ea98682cf72b",
+  "version_sha256": "05d90f739c57739c1e8aae6e5464926b61efdfd70255ac69e036b90ecca56398",
+  "technical_failure": {
+    "error_type": "GraphRuntimeError",
+    "error": "native decisions must cover exactly the real submitted paper identities",
+    "year": 1, "selection_context_phase": 130,
+    "actual_submitted_papers": 8, "returned_decision_envelopes": 8,
+    "returned_envelope_shape": {"payload": {"payload": {"paper_id": "actual submitted identity", "conference_id": "FOCS", "decision": "accept", "final_score": 0.0}}},
+    "direct_paper_id_missing_from_each_received_payload": true,
+    "diagnosis": "Authored selection code appends an already payload-wrapped decision and then wraps each item again at return. The native consumer unwraps the graph envelope once and requires direct paper_id fields. The received/source/native execution artifact identities agree. This is a generated protocol error; static validity and local component return do not establish downstream native compatibility. No unwrapping repair, replacement candidate or retry is applied.",
+    "completed_annual_boundaries": 0, "retained_checkpoint_years": [0],
+    "complete_native_measurements": 0
+  },
+  "author_session": {
+    "started_calls": 14, "completed_steps": 14, "uncommitted_responses": 0,
+    "status_counts": {"applied": 9, "rejected": 4, "finished": 1},
+    "attempted_tool_counts": {"plan": 1, "read_file": 10, "write_file": 2, "finish": 1},
+    "applied_write_steps": [6, 11], "both_write_AST_sha256": "f8fa8037d3fe92805c82b750ec008a581c30f6ac4bab75c5d665c21e88ebcb7e",
+    "last_received_source_utf8_sha256": "77fd9778125d6795b4d9f4a55ae0227125eb99bc57630590d516b4f712f96a6f",
+    "changed_source_nodes": ["world.selection"], "nodes_added": [], "nodes_removed": [],
+    "wires_added": 0, "wires_removed": 0, "schedules_changed": false,
+    "component_probe_returns": 8,
+    "component_return_is_not_downstream_native_validation": true,
+    "phase_counts": {"planning": 1, "general": 7, "implementation": 5, "submit": 1},
+    "phase_interpretation_mismatches": 0, "loss_view_mismatches": 0,
+    "terminal_content_sha256": "679fb45064abc0f253cba20361a8e2c45213873773a1f06041bc9bc478f150f2",
+    "terminal_file_sha256": "010e52aef7a5ffc6d41ab08c031e8272c7e53367d8dd148771d0270562a94670"
+  },
+  "first_actual_feedback_wire": {
+    "saved_staged_prompt_verbatim_in_actual_user_message": true,
+    "whole_user_message_equals_staged_prompt": false,
+    "previous_own_observation_id": "observation-native-adaptive-fc757975b26905a80f27fc98",
+    "previous_own_loss": -7.0, "visible_reference_losses": [-28.666666666666668, -28.666666666666668],
+    "staged_prompt_canonical_string_sha256": "d4152715ce71b1d62ac4003db53daf8c89c4698c4817ba6706fceb8b966e3a46",
+    "wire_intent_content_sha256": "a1d535a0e68f8d99ef571508fbe1307103e3756d971511bfaf6569403b5a3b7d",
+    "wire_intent_file_sha256": "7f969f075c2fc9367116c4bd0b48718a0be96b4b7d68d449289474ab4d93c163",
+    "wire_body_utf8_sha256": "c264bc1fa579f805115888f4d0301be4ca83f46a102d9d2c19047a7c2a9ba166",
+    "provider_done": true, "provider_done_reason": "stop", "prompt_eval_count": 33438, "eval_count": 1331,
+    "provider_receipt_matches_intent": true,
+    "scope": "Actual first request only. The saved prompt occurs verbatim inside the user message, which also has the declared surrounding instruction; whole-message equality is not required. This does not establish understanding, all-step transport behavior or useful feedback effects."
+  },
+  "actual_native_selection_execution": {
+    "validated_recorded_code_calls": 4,
+    "selection_bundle_sha256": "25cb5acc4fc0b7f4b67d15b6ff56c5e3085e93ade225a5e4319271ffd3c9fdeb",
+    "artifact_sha256": "0de0e1fda9a7304dc9131fa4d8a9c4608132cda632a05af931b35eae69b48de0",
+    "context_sha256": "ab74b0d94b60d2c42483471071d62261ae5a88136f55deafc3287ef26e5bb2e9",
+    "result_sha256": "c79a18365728570bce24da0eae6e8978b6a3fbf993c4dea6b226da8e57ab9a06",
+    "code_contexts_file_sha256": "db7f66a6fa626baf3b50d85870c0d4bfec34fe5f63906d8b3e47eb041487cbba",
+    "code_attempts_file_sha256": "9516454b13660ba800ca2256e48b38cdbe0806283810fdc0df763b993ce3fcb4"
+  },
+  "partial_scientist_path": {
+    "wire_requests": 8, "completed_responses": 8, "wire_inputs_without_committed_reply": 0,
+    "ordered_full_request_payload_sha256": "2bc97b66c2ffc2b53c3230777527b4c8bc6541fd6f73c51f4d94c64d4cf55666",
+    "ordered_literal_response_choices_sha256": "2718413dc82713a19561cbcde0777d2c6382a94b521e35c9b9b01b732fa9f156",
+    "ordered_full_provider_body_hashes_sha256": "a44ce3b3f46fa443ef6c64da64a21353b01acc79038301784260029023d9c3b1",
+    "all_response_body_hashes_checked": true, "partial_work_is_not_a_complete_world": true
+  },
+  "retained_exact_state": {
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1/milestones/first-free-utility-g1/native-adaptive-state.json",
+    "bytes": 2729939, "file_sha256": "05efacb91e2e184531e7f65065b0ced60fa7aa3afa683540a08939ccb3f1bda1",
+    "canonical_sha256": "642f9aaa87173313f2968043584512a29f96082bc12d0863b7bbee7711957b25",
+    "records": 2, "pending": null
+  },
+  "prefix": {"consumed_own_slots": 10, "complete": 9, "better_than_reference": 0, "tie": 3, "worse": 6, "execution_nulls": 1, "generation_nulls": 0},
+  "next_actual_dispatch": {
+    "method": "adaptive-priority", "objective": "content-utility", "generation": 1, "phase": "adaptive",
+    "suggestion_id": "s2bf72f84e671a1a5", "started_utc": "2026-11-16T21:37:43.155499+00:00",
+    "candidate_sha256": "924b91529a45185fe2b0e21e9fea5c7317df76df623c429f589a62112e0b9d91"
+  },
+  "source_repair": false, "candidate_refilled": false, "loss_imputed": false,
+  "full_study_cold_audit_complete": false, "final_selection_frozen": false, "publication_ready": false
+}

@@ -459,3 +459,58 @@ manuscript already distinguishes graph syntax from trusted native authority
 and describes this transfer guard. It is not a newly discovered harness bug,
 a loss constraint or evidence that an unimplemented treasury would improve
 the objective. No extension is slipped into this active study.
+
+## Free U/g1 submits but fails the actual native decision consumer
+
+At21:37:42UTC the original writer consumes free/U/g1 and advances to adaptive/U/g1.
+The author explicitly finishes after14 actions (plan1/read10/write2/finish1;
+9applied/4rejected/1finished). All14 saved views have0 phase/loss mismatches.
+The fresh request includes the exact adverse own loss once. Its saved first
+prompt occurs verbatim inside the actual wire user message; the first
+intent-bound provider response ends normally (done/stop,33438 input/1331 output
+tokens). The user message includes surrounding declared instructions, so whole
+user-message equality is not expected. No input/body is normalized to match.
+
+The single generated candidate changes only world.selection source, not nodes,
+wires, schedules or admission parameters. Applied writes at6 and11 share one
+AST and differ only literally. The second write's exact source is the actual
+container artifact. Its loop appends `{'payload': decision}` and its return
+wraps every item once more. The year1 recorded output has eight envelopes,
+each `payload.payload.paper_id` containing an actual submitted identity; the
+native consumer unwraps the graph envelope once and requires direct paper_id.
+It raises `native decisions must cover exactly the real submitted paper identities`.
+[Exact bindings, original result and failure](../results/native-corrected-choice-first-feedback-execution-null-v1.json).
+
+All four retained code bundles validate, including the actual selection
+artifact/context/result receipt. The double wrapping is in the generated
+source/result, not a transport rewrite or a missing invocation. Eight component
+probes returned under local code/ABI validation; that did not invoke the
+downstream publication consumer. This local-vs-downstream boundary is a
+concrete limitation of the available diagnostic, not proof of a useful rule or
+all possible interface failures. The current proposal was not unwrapped or
+repaired by the host. Original source/settings remain pinned.
+
+The observation is failed/lossNone with no complete measurements. Eight actual
+scientist replies and their hashes verify, but only initialization year0 has
+a portable checkpoint: no completed annual boundary exists. An exact external
+2,729,939-byte state copy preserves both U records/pendingNone. The first ten
+own consumed slots are9complete/6worse/3ties/0better plus1execution-null.
+No loss penalty, candidate replacement or hidden retry is supplied. The next
+actual adaptive/U/g1 dispatch s2bf72f84 starts at21:37:43UTC.
+
+## Data-only full signed-content analysis preparation
+
+Committed6e1796fd adds a separate complete corrected reader, reusing original
+all-slot validation and signed occurrence arithmetic. All27 logical rows are
+retained, including unavailable generation/execution outcomes; original
+floating losses/selections are not replaced with rational explanations.
+The real export requires original normal paired closure/cost/readouts and a
+writer lock, fresh external outputs and clean reader/scientific sources. No
+partial prefix can satisfy that export contract, and no render/model/generated
+code/native execution is added. [Implementation, exact test receipt and future command](../components/native-corrected-choice-content-v1.md).
+
+The new18 tests plus existing corrected readout/figure-data checks pass45 in
+4.11seconds with a retained JUnit. A direct helper check on the newly failed
+actual native observation also keeps content/loss unavailable, not zero.
+These are software/data-format evidence, not a new full original export or
+independent scientific samples. The scientific campaign remains unmodified.

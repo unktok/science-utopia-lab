@@ -27,6 +27,13 @@ decomposition of all406 accepted occurrences across twelve completed worlds:
 none has negative centered content opinion. This conditional set arithmetic
 is not a global optimum or a counterfactual policy evaluation. Actual free/U/g1
 starts after fresh readiness with its adverse own observation retained.
+Its [subsequent actual native outcome](../research/results/native-corrected-choice-first-feedback-execution-null-v1.json)
+is an execution null: generated selection code wraps payload twice, so the
+consumer cannot read the paper IDs. Ten slots are consumed (nine complete,
+one failed), without repaired code, replacement or an imputed loss. Local
+component return did not establish downstream compatibility. The separate
+[signed-content reader preparation](../research/components/native-corrected-choice-content-v1.md)
+passes45 light checks, not an actual new full-study export or scientific gain.
 The new study's full24-slot paths, final paired audits, selection-fixed unused
 evaluation and consequential interpretation remain open. No method ranking or
 useful invention follows from this partial initial history. Source/notes are

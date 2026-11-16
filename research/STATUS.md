@@ -1,6 +1,31 @@
 # Current research status
 
-## Latest verified state: November16,2026 at21:29UTC / November17 06:29JST
+## Latest verified state: November16,2026 at21:43UTC / November17 06:43JST
+
+[First feedback-bearing free-U execution null](results/native-corrected-choice-first-feedback-execution-null-v1.json).
+Free/U/g1 explicitly submits after14 actions but fails in year1 publication:
+its generated selection code wraps each decision payload twice. All eight
+actual submitted paper identities are present one layer too deep, so the
+native consumer rejects them. Exact received source/container result agree;
+this is an authored protocol failure, not a missing-feedback claim or a
+measured poor loss. Eight local component probes returned, but did not check
+downstream native compatibility. Only the year0 checkpoint exists; eight
+scientist replies/partial work do not constitute a complete annual outcome.
+
+Ten own slots are consumed:9 complete (6worse/3ties/0better) and1 execution
+null with lossNone. The failed candidate, all rejections and an exact external
+state copy are retained, without unwrapping repair/refill/restart. Original42803
+advances to actual adaptive/U/g1 at21:37:43UTC. Full24 closure and original
+paired analyses/frozen unused evaluation/publication readiness remain open.
+
+[Complete corrected signed-content reader preparation](components/native-corrected-choice-content-v1.md)
+passes45 lightweight overlapping checks, including all27 logical rows,
+negative/repeated/fractional contributions, explicit nulls and data-only export.
+A direct actual-format helper check preserves the new failed observation as
+unavailable, not zero. No new actual whole-study export or scientific gain is
+claimed, and no heavy QA/render/model work is added during the live experiment.
+
+## Earlier nine complete outcomes:21:29UTC / 06:29JST
 
 [Nine own outcomes and accepted-content prefix](results/native-corrected-choice-nine-outcomes-content-prefix-v1.json).
 Uniform/C/g1 completes at-10.3333, recovering about0.6667 from its own initial

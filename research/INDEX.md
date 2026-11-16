@@ -5,6 +5,15 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Actual free-U feedback update fails its native consumer](results/native-corrected-choice-first-feedback-execution-null-v1.json):
+  explicit submission/code execution doubles the payload envelope, hiding all
+  eight actual paper IDs from the consumer. Eight local probes returned but
+  were not downstream validation. Ten slots consumed/9complete/1execution-null;
+  no loss penalty/repair/refill is supplied. Actual adaptive/U/g1 follows.
+  [New complete signed-content reader](components/native-corrected-choice-content-v1.md)
+  retains negative/repeated records and all nulls, with45 light checks; its
+  original full scientific export waits for closure, not a partial-data claim.
+
 - [Nine actual own outcomes and signed-content prefix](results/native-corrected-choice-nine-outcomes-content-prefix-v1.json):
   uniform/C/g1 recovers0.6667 from its own initial sample but stays2.3333 worse
   than the reference. All406 accepted occurrences in twelve completed worlds
