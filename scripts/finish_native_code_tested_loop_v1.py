@@ -17,7 +17,7 @@ def run(args,*,plan_schema='scienceutopia.native-code-tested-loop.v1.plan',
         audit_module='scripts.audit_native_code_tested_loop_v1',
         continuation_schema='scienceutopia.code-tested-loop-finish.v1',
         writer_command='scripts.run_native_code_tested_loop_v1 run',
-        waiting_stage='await-code-tested-normal-closure',next_steps=None):
+        waiting_stage='await-code-tested-normal-closure',next_steps=None,writer_wait=None):
     root,frozen,out=args.run.resolve(),args.frozen_source.resolve(),args.output.resolve()
     source,scientific=git_binding(ROOT),git_binding(frozen)
     plan=json.loads((root/'plan.json').read_text());start=json.loads((root/'started.json').read_text())
@@ -38,7 +38,8 @@ def run(args,*,plan_schema='scienceutopia.native-code-tested-loop.v1.plan',
     stage=waiting_stage;steps=[]
     try:
         print(json.dumps({'stage':stage,'new_model_calls':0}),flush=True)
-        save(out/'writer-absent.json',wait_closed(root,args.writer_pid,identity))
+        wait = wait_closed if writer_wait is None else writer_wait
+        save(out/'writer-absent.json',wait(root,args.writer_pid,identity))
         for kind in ('audit','costs'):
             for i in (1,2):
                 stage=kind+'-'+str(i)
