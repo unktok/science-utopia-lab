@@ -44,6 +44,14 @@ def test_different_observed_document_value_slice_or_address_is_not_a_repeat(chan
     assert summarize_steps(steps)['duplicate_unchanged_read_observations'] == 0
 
 
+def test_unknown_document_freshness_does_not_become_an_unchanged_read_claim():
+    steps = [step(0, 'read_file'), step(1, 'read_file')]
+    for item in steps: item['transition'].pop('document_after_sha256')
+    result = summarize_steps(steps)
+    assert result['successful_read_observations'] == 2
+    assert result['duplicate_unchanged_read_observations'] == 0
+
+
 @pytest.mark.parametrize('action', [None, [], {'arguments': []}, {'tool': []}])
 def test_schema_rejected_actions_remain_errors_without_treating_them_as_tools(action):
     item = step(0, 'read_file'); item.update(transition=None, status='invalid-response', errors=[{'SCRIPTED': True}])
@@ -71,6 +79,7 @@ def session(tmp_path, *, pending=False, finish=True):
         status = 'interrupted-response-unknown'
         if not (pending and i == len(tools) - 1):
             item = step(i, tool, status='finished' if finish and tool == 'finish' else 'applied')
+            item['binding_sha256'] = binding['binding_sha256']
             item['started_file_sha256'] = file_sha256(path)
             completed = tmp_path / f'step-{i:02}.completed.json'; steps.append(save(completed, item)); status = item['status']
         receipts.append({'step': i, 'status': status, 'started_sha256': file_sha256(path),
@@ -119,6 +128,16 @@ def test_missing_terminal_is_an_observed_prefix_not_a_fabricated_terminal(tmp_pa
     result = read_session(tmp_path)
     assert result['explicit_finish_observed'] and not result['terminal_record_present']
     assert result['terminal_status'] is None
+
+
+def test_resealed_cross_session_step_cannot_pass_only_by_rebinding_its_terminal_hash(tmp_path):
+    session(tmp_path)
+    p = tmp_path / 'step-03.completed.json'; item = json.loads(p.read_text()); item.pop('content_sha256')
+    item['binding_sha256'] = 'f' * 64; item['content_sha256'] = digest(item); write_json_atomic(p, item)
+    terminal = tmp_path / 'response.json'; value = json.loads(terminal.read_text()); value.pop('content_sha256')
+    value['steps'][3]['completed_sha256'] = file_sha256(p)
+    value['content_sha256'] = digest(value); write_json_atomic(terminal, value)
+    with pytest.raises(ValueError, match='original intent'): read_session(tmp_path)
 
 
 def test_nonchronological_completed_projection_is_rejected():

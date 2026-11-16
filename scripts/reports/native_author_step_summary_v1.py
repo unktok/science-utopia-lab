@@ -39,7 +39,10 @@ def summarize_steps(steps):
         if t.get('tool') in READS and t.get('ok') is True and isinstance(value, dict):
             # Include the literal returned value hash, selection AND document:
             # a changed draft, different slice or changed value is not a repeat.
-            key = digest([t.get('document_after_sha256'), value.get('resource'),
+            document = t.get('document_after_sha256')
+            # A missing legacy document identity is unknown freshness, not
+            # evidence that two observations saw one unchanged draft.
+            key = digest([document if document is not None else ['unknown-document', s['step']], value.get('resource'),
                 value.get('path'), value.get('selection'), value.get('descriptor'),
                 value.get('content_sha256'), value.get('value_included'), value.get('value')])
             previous = reads[key]; reads[key] += 1
@@ -101,6 +104,7 @@ def read_session(directory):
         if i not in completed: continue
         step = read(completed[i])
         if (step['schema'] != 'scienceutopia.staged-author-step.v15'
+                or step['binding_sha256'] != binding['binding_sha256']
                 or step['step'] != i or step['started_file_sha256'] != file_sha256(path)):
             raise ValueError('completed step differs from its original intent')
         steps.append(step)
