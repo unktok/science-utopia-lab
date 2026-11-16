@@ -21,9 +21,10 @@ def read(path):
 
 
 def wait_supervised(root, pid, identity, *, wait=wait_closed, observe=process_identity,
-                    poll=time.sleep, clock=time.monotonic, supervisor_grace_seconds=60):
+                    poll=time.sleep, clock=time.monotonic, supervisor_grace_seconds=60,
+                    schema_prefix='scienceutopia.native-priority-method-writer'):
     plan, start = read(root / 'plan.json'), read(root / 'writer-supervision-start.json')
-    if (start['schema'] != 'scienceutopia.native-priority-method-writer-supervision.v1'
+    if (start['schema'] != schema_prefix+'-supervision.v1'
             or start['source_commit'] != plan['source_commit']
             or start['plan_content_sha256'] != plan['content_sha256']
             or type(start['supervisor_pid']) is not int or start['supervisor_pid'] <= 0):
@@ -36,7 +37,7 @@ def wait_supervised(root, pid, identity, *, wait=wait_closed, observe=process_id
             raise ValueError('supervisor PID identity changed; no analysis')
         if current is None and path.is_file():
             result = read(path); end = read(root / 'terminal.json')
-            if (result['schema'] != 'scienceutopia.native-priority-method-writer-exit.v1'
+            if (result['schema'] != schema_prefix+'-exit.v1'
                     or result['source_commit'] != plan['source_commit']
                     or result['plan_content_sha256'] != plan['content_sha256']
                     or type(result['exit_code']) is not int or result['exit_code'] != 0

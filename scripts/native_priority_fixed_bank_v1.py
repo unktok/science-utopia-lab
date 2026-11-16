@@ -4,7 +4,7 @@ This is not a dispatchable evaluation plan, seed-usage proof or cold audit.
 Only literal programs modulo the explicitly rebound world seed may share jobs.
 """
 from scripts.native_design_benchmark_plan import policy_identity
-from scripts.reports.native_priority_method_readout_v1 import analyze, METHODS, OBJECTIVES
+from scripts.reports.native_priority_method_readout_v1 import analyze, METHODS, OBJECTIVES, SCHEMA as LEGACY_READOUT
 from utopia.optimization.native_numeric_designer import checked
 from utopia.system.design_patch import clone, digest
 
@@ -23,6 +23,8 @@ def freeze_bank(plan, audit, slots, references):
     # The same all-slot projection verifies every audited world, generation
     # failure, assigned loss, earliest own tie and literal selected program.
     report = analyze(plan, audit, slots, references)
+    if report['schema'] != LEGACY_READOUT:
+        raise ValueError('legacy own-only bank cannot label corrected best-known references as own discoveries')
     visible = [r for r in report['references'] if r['visible_parent']]
     selected = []
     for row in report['selected']:

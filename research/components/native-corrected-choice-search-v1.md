@@ -41,3 +41,25 @@ HTTP/corpus/upstream attribution/synchronous child supervision remain SCRIPTED.
 Run it only after committing, from unchanged clean source with no real inference.
 Its actual success, new real-model calibration/dispatch, scientific losses and
 publication readiness are not asserted by this preparation note.
+
+Subsequent light preparation6417 passes75 cases/52.50s. Clean083f374e source
+checks38603 pass43 cases/21.15s. The separately pinned full public test67383 is
+actually active: its24 own slots/3 references finish, retaining one prescribed
+native execution-null; paired cold/cost/readouts remain pending at this dated
+preparation entry. Its source stays unchanged until the original handle exits.
+
+The prospective supervised writer and cold/readout continuations are now
+implemented separately. A durable child-exit record is distinct from a native
+terminal file, so the cold chain also waits for the supervisor's final append.
+Legacy supervisor schemas remain the default; the new schema is explicit.
+Invalid output paths resolve/reject before waiting or making directories.
+Metadata tests77289 pass32 cases/0.95s across new and old continuations.
+
+The pure corrected fixed-policy bank now retains3 reference/6 best-known/6
+own-only labels, including absent own submissions and explicit reference/own
+origin. Only exact policy identity modulo initial_state.seed may share physical
+jobs. No usage attestation or dispatch is supplied by these drafts. The legacy
+own-only bank explicitly rejects the new profile rather than labeling a returned
+reference as own invention. Support99055 passes65 cases/1.01s, including both
+bank/continuation families. Actual scientific losses/unused evaluation remain
+unmeasured and no corrected real study is dispatched by this preparation.
