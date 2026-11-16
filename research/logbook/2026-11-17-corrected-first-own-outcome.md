@@ -462,7 +462,7 @@ the objective. No extension is slipped into this active study.
 
 ## Free U/g1 submits but fails the actual native decision consumer
 
-At21:37:42UTC the original writer consumes free/U/g1 and advances to adaptive/U/g1.
+At21:37:42UTC free/U/g1 terminates and the original writer advances to adaptive/U/g1.
 The author explicitly finishes after14 actions (plan1/read10/write2/finish1;
 9applied/4rejected/1finished). All14 saved views have0 phase/loss mismatches.
 The fresh request includes the exact adverse own loss once. Its saved first
@@ -494,7 +494,7 @@ The observation is failed/lossNone with no complete measurements. Eight actual
 scientist replies and their hashes verify, but only initialization year0 has
 a portable checkpoint: no completed annual boundary exists. An exact external
 2,729,939-byte state copy preserves both U records/pendingNone. The first ten
-own consumed slots are9complete/6worse/3ties/0better plus1execution-null.
+own terminal outcomes are9complete/6worse/3ties/0better plus1execution-null.
 No loss penalty, candidate replacement or hidden retry is supplied. The next
 actual adaptive/U/g1 dispatch s2bf72f84 starts at21:37:43UTC.
 
@@ -528,7 +528,7 @@ one primed reference plus two own). [Exact source/outcome/tell/next ask](../resu
 This adverse update is retained without repair/refill. Earlier adaptive C own
 recovery does not mean every adaptive move improves or establish a ranking;
 the best-known measured references remain unbeaten. The own prefix is now
-11consumed/10complete/7worse/3ties/0better/1execution-null. Original42803 advances
+11terminal/10complete/7worse/3ties/0better/1execution-null. Original42803 advances
 to uniform/U/g1 at21:53:45UTC; it is the declared next initial random sample.
 Full24 closure, final selections, original paired analyses/fixed unused
 evaluation and publication readiness remain open.
@@ -566,3 +566,42 @@ all-slot/figure-data group passes59 cases in10.47seconds. The retained JUnit
 and exact source/hash are in the navigation manifest. This invocation overlaps
 the earlier14/45 groups; those counts are not additive scientific evidence.
 No PDF/render/model/generated-code/native execution is performed by the checks.
+
+## Reporting correction: charged dispatches versus terminal outcomes
+
+The writer increments consumed before asking/evaluating each slot and writes
+its sealed dispatch slot then. Earlier derived10/11-prefix documents used
+"consumed" for terminal outcomes, omitting the already charged next running
+slot. The outcome counts themselves were correct. They are now explicitly
+terminal_own_slots10/11 versus dispatch_started_own_slots11/12 at their dated
+snapshots. The corresponding current prose is corrected; the prior status
+archive and original raw scientific files remain byte-for-byte unchanged.
+This is a reporting-label correction, not refunded budget, altered outcome,
+new retry or a different experiment. A finite slot is charged at dispatch even
+while its response/outcome is unknown.
+
+## All six two-proposal prefixes are terminal; third proposal begins
+
+At22:10:09UTC uniform/U/g1 completes at-28.3333, improving its own initial
+-27.6667 by about2/3 while staying about1/3 worse than reference-28.6667.
+Its U28.3333/T36/K200/uncollected0 and181 complete scientist replies verify.
+The exact observation is registered once in the original optimizer, with
+pending[],proposal_index2 and one reference/two own observations. This is
+the second of the declared four initial random samples, not an adaptive move.
+[All12 literal terminal cells and exact latest evidence](../results/native-corrected-choice-two-proposal-prefix-v1.json).
+
+The midpoint has11 complete own outcomes (8worse/3ties/0better) and1execution
+null, not12 complete worlds or a final method ranking. All three references
+plus11 own completed worlds have478 accepted occurrences/88 content identities:
+383positive/95zero/0negative centered opinions. Existing sealed observer/three
+integer ratings/native float metrics check for each. The failed world's
+content remains unavailable; none is imputed or rerated. Conditional deletion
+arithmetic still does not establish global optimality, attainable policies or
+absence of plan/resource/information/future effects.
+
+Actual uniform/U/g2 starts at22:10:10UTC as s8b344614, the thirteenth charged
+dispatch while12 terminal slots are known. Both final endpoint scopes remain
+unfrozen. No active code/model/source/settings/objective or candidate changes,
+and no repair/refill/restart occurs. Original paired audit/cost/all-slot/all8
+author/visibility/native-effect readers continue to wait for the unchanged
+full24-slot original closure. Publication readiness remains open.

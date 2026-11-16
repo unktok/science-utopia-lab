@@ -73,7 +73,7 @@
     "canonical_sha256": "642f9aaa87173313f2968043584512a29f96082bc12d0863b7bbee7711957b25",
     "records": 2, "pending": null
   },
-  "prefix": {"consumed_own_slots": 10, "complete": 9, "better_than_reference": 0, "tie": 3, "worse": 6, "execution_nulls": 1, "generation_nulls": 0},
+  "prefix": {"terminal_own_slots": 10, "dispatch_started_own_slots": 11, "complete": 9, "better_than_reference": 0, "tie": 3, "worse": 6, "execution_nulls": 1, "generation_nulls": 0},
   "next_actual_dispatch": {
     "method": "adaptive-priority", "objective": "content-utility", "generation": 1, "phase": "adaptive",
     "suggestion_id": "s2bf72f84e671a1a5", "started_utc": "2026-11-16T21:37:43.155499+00:00",

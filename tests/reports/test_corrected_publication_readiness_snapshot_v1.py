@@ -63,3 +63,30 @@ def test_followup_decision_does_not_promote_a_warm_reference_or_add_a_merit_veto
     assert 'not independent' in decision and 'Do not automatically grow seeds' in decision
     assert 'without imposing an unpaid/fairness veto' in decision
     assert 'R2/R3/R5/R6 remain open' in decision
+
+
+def test_documentary_partial_counts_separate_charged_dispatches_from_terminal_outcomes():
+    for filename, terminal in (
+        ('native-corrected-choice-first-feedback-execution-null-v1.json', 10),
+        ('native-corrected-choice-first-adaptive-utility-update-v1.json', 11)):
+        data=read('research/results/'+filename); prefix=data['prefix']
+        assert prefix['terminal_own_slots']==terminal
+        assert prefix['complete']+prefix['execution_nulls']+prefix['generation_nulls']==terminal
+        assert prefix['dispatch_started_own_slots']==terminal+1
+        assert prefix['better_than_reference']+prefix['tie']+prefix['worse']==prefix['complete']
+        assert 'consumed_own_slots' not in prefix
+        assert data['next_actual_dispatch']['suggestion_id'] and not data['final_selection_frozen']
+
+
+def test_two_proposal_prefix_keeps_all_six_histories_and_null_without_final_selection():
+    data=read('research/results/native-corrected-choice-two-proposal-prefix-v1.json')
+    cells=data['cells']; expected={(m,o,g) for m in ('uniform-priority','adaptive-priority','free-code-graph')
+        for o in ('content-utility','resource-aware-content') for g in (0,1)}
+    assert len(cells)==12 and {(r['method'],r['objective'],r['generation']) for r in cells}==expected
+    assert data['terminal_own_slots']==12 and data['dispatch_started_own_slots']==13
+    assert sum(r['status']=='complete' for r in cells)==data['complete_own_outcomes']==11
+    missing=[r for r in cells if r['status']!='complete']; assert len(missing)==data['execution_nulls']==1
+    assert missing[0]['status']=='failed' and missing[0]['loss'] is None
+    assert not data['final_selection_frozen'] and not data['full_study_cold_audit_complete']
+    assert not data['publication_ready'] and not data['loss_changed_or_imputed']
+    assert data['next_actual_dispatch']['generation']==2

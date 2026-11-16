@@ -1,0 +1,59 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-two-proposal-prefix.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T22:12:30+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "terminal_own_slots": 12, "dispatch_started_own_slots": 13,
+  "complete_own_outcomes": 11, "execution_nulls": 1, "generation_nulls": 0,
+  "complete_own_against_assigned_reference": {"better": 0, "tie": 3, "worse": 8},
+  "reference_minima": {"content-utility": -28.666666666666668, "resource-aware-content": -12.666666666666668},
+  "cells": [
+    {"method": "uniform-priority", "objective": "content-utility", "generation": 0, "status": "complete", "loss": -27.666666666666668, "suggestion_id": "scbd86c6da048c335", "observation_canonical_sha256": "94155c42d3ad2c611cb162ec0c906f6b2217125a9fbdc62191b9ceb1f8083e43"},
+    {"method": "adaptive-priority", "objective": "content-utility", "generation": 0, "status": "complete", "loss": -27.666666666666668, "suggestion_id": "scbd86c6da048c335", "observation_canonical_sha256": "7350a3cc346b5bdb6403f74c1bd6a004b0fc299e6ee336b39a3f54e9a8a921e4"},
+    {"method": "free-code-graph", "objective": "content-utility", "generation": 0, "status": "complete", "loss": -7.0, "suggestion_id": "native-adaptive-fc757975b26905a80f27fc98", "observation_canonical_sha256": "1caf71cbbc10a3dbcc7026875b58e25ecef3cfd3e980ed5b24bdeb898de120d7"},
+    {"method": "uniform-priority", "objective": "resource-aware-content", "generation": 0, "status": "complete", "loss": -9.666666666666668, "suggestion_id": "se803cd930f3f7af2", "observation_canonical_sha256": "187867b87bc1359af66d8a1dcd05efc63406844e85c860c6f809b194316e135d"},
+    {"method": "adaptive-priority", "objective": "resource-aware-content", "generation": 0, "status": "complete", "loss": -9.666666666666668, "suggestion_id": "se803cd930f3f7af2", "observation_canonical_sha256": "5c6b9fb82905a32456468df1819b9be8095f17af9cc791b53645c2482c4a1f11"},
+    {"method": "free-code-graph", "objective": "resource-aware-content", "generation": 0, "status": "complete", "loss": -12.666666666666668, "suggestion_id": "native-adaptive-2d3d9db5e7f3da250531266d", "observation_canonical_sha256": "199a0ae46d0d0ede5c89d50a486bcf911b5061db73bdb6e7059bfe4592bd3d5c"},
+    {"method": "free-code-graph", "objective": "resource-aware-content", "generation": 1, "status": "complete", "loss": -12.666666666666668, "suggestion_id": "native-adaptive-dd94ee6c9c4cc7b52ee49a30", "observation_canonical_sha256": "0da12371f2725597a65ef2db850802177d67fcfa11538514be2a69a7030a14cc"},
+    {"method": "adaptive-priority", "objective": "resource-aware-content", "generation": 1, "status": "complete", "loss": -12.666666666666668, "suggestion_id": "s75aa754d71b0e21a", "observation_canonical_sha256": "df17c75775ec7d52750af5dd015df52b36169617356e7806ac5913af43ee96e7"},
+    {"method": "uniform-priority", "objective": "resource-aware-content", "generation": 1, "status": "complete", "loss": -10.333333333333332, "suggestion_id": "s1a57305fbff793b2", "observation_canonical_sha256": "5d96cd5868e3458e380ef32a8e23d58f084112ad8d5ae99de6fb67ec19598660"},
+    {"method": "free-code-graph", "objective": "content-utility", "generation": 1, "status": "failed", "loss": null, "suggestion_id": "native-adaptive-12db00b28ae8ab4bcbd0d242", "observation_canonical_sha256": "cd8b312a661a5017318d25814e30426545a90002b8e7a374012881f56714a63b"},
+    {"method": "adaptive-priority", "objective": "content-utility", "generation": 1, "status": "complete", "loss": -25.666666666666668, "suggestion_id": "s2bf72f84e671a1a5", "observation_canonical_sha256": "a68a628d762e3f968e6133c5c6401b7ac356e30cd0a2a66a9880a899a6f01fbc"},
+    {"method": "uniform-priority", "objective": "content-utility", "generation": 1, "status": "complete", "loss": -28.333333333333332, "suggestion_id": "s7ce05743c8cceab8", "observation_canonical_sha256": "6362d7774158f091968dcfe7e726c7a0acf084f957f87e91103531db20a03f90"}
+  ],
+  "latest_uniform_U_outcome": {
+    "metrics": {"U": 28.333333333333332, "T": 36, "K_collected": 200.0, "K_uncollected": 0.0},
+    "observation_file_sha256": "eecfbf6eaa9333c93d60b1fcb4f437c9e679df04092df90d36e23d47803bca8c",
+    "observation_content_sha256": "6362d7774158f091968dcfe7e726c7a0acf084f957f87e91103531db20a03f90",
+    "post_tell_file_sha256": "0516af9da65c689334d49d0fcdeb6ed392083b2f9ec5bc24e3362f20fdafc6c5",
+    "post_tell_content_sha256": "6c2e60ed7da6b709f99a9fb485fcb62b54303de5dcc787d22e320eb44db2ba81",
+    "literal_own_observation_registered_exactly_once": true,
+    "optimizer_pending": [], "optimizer_proposal_index": 2,
+    "optimizer_observations_including_one_primed_reference": 3,
+    "observed_scientist_path": {
+      "wire_requests": 181, "completed_responses": 181, "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6707973d897a157274f72861a6651ddda1d34d802be2dcd9a1b0dcb946caa1ed",
+      "ordered_literal_response_choices_sha256": "78413f3205e22a28f7640ff164f1318caef2f81ff9ecbfb394dfd55175512333",
+      "ordered_full_provider_body_hashes_sha256": "322a3f39380b788d8bd54689318ea5ccc5a4cef21ee7cf53345b38dfa494b3d3",
+      "all_response_cache_body_hashes_checked": true
+    },
+    "scope": "Second declared initial random sample; own best improves by about2/3 loss unit, remaining about1/3 worse than the measured reference. Original floats govern comparisons; this is not an adaptive update or a gain beyond best known."
+  },
+  "accepted_content_prefix": {
+    "complete_physical_worlds": 14, "complete_own_worlds": 11, "references": 3,
+    "accepted_occurrences": 478, "distinct_content_hashes": 88,
+    "sign_counts": {"positive": 383, "zero": 95, "negative": 0},
+    "scope": "Existing sealed observer/three-position ratings/float native metrics checked for each completed observation. The failed world has no complete accepted-content outcome and is not a zero. Repeats are not independent samples; fixed-record nonnegative contributions do not establish a global optimum or absence of future institutional effects. No new content is rated by this analysis."
+  },
+  "next_actual_dispatch": {
+    "method": "uniform-priority", "objective": "content-utility", "generation": 2, "phase": "initial",
+    "suggestion_id": "s8b344614571716af", "started_utc": "2026-11-16T22:10:10.002527+00:00",
+    "candidate_sha256": "2c3d3be2e87fe1d15f199a737eb05aa2f01113f4c938f110fc653bbcaf605b6c"
+  },
+  "new_model_calls_by_this_analysis": 0, "new_native_worlds_by_this_analysis": 0,
+  "new_generated_code_executions_by_this_analysis": 0,
+  "final_selection_frozen": false, "full_study_cold_audit_complete": false,
+  "candidate_repaired_or_refilled": false, "loss_changed_or_imputed": false, "publication_ready": false,
+  "scope": "All six histories have their first two terminal own outcomes, not the full four-step study. Original dispatch is charged before completion:12 terminal slots plus one live third proposal means13 started slots. Direct documentary projection, not full original source-bound cold/readout closure, a final selection, independent method ranking or a finished figure."
+}

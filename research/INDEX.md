@@ -5,17 +5,24 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [All six two-proposal prefixes](results/native-corrected-choice-two-proposal-prefix-v1.json):
+  12terminal/13started,11complete/1execution-null,0better/3ties/8worse against
+  reference. Uniform/U/g1 reaches-28.3333 (about1/3 worse than reference),
+  with181 complete replies/exact tell. Actual uniform/U/g2 starts. All478
+  accepted occurrences in14 completed worlds have nonnegative contributions;
+  this partial arithmetic is not a global optimum or final method result.
+
 - [Current compact status/table/process map](STATUS.md) replaces chronological
   accumulation; the previous927-line status is archived byte-for-byte. The
   [first adaptive U update](results/native-corrected-choice-first-adaptive-utility-update-v1.json)
-  worsens its own initial loss by2/reference by3. Eleven own slots are consumed
+  worsens its own initial loss by2/reference by3. Eleven own outcomes are terminal
   (10complete/1execution-null), no reference improvement; next uniform/U/g1
   runs. This adverse update and earlier C own recovery are not a method ranking.
 
 - [Actual free-U feedback update fails its native consumer](results/native-corrected-choice-first-feedback-execution-null-v1.json):
   explicit submission/code execution doubles the payload envelope, hiding all
   eight actual paper IDs from the consumer. Eight local probes returned but
-  were not downstream validation. Ten slots consumed/9complete/1execution-null;
+  were not downstream validation. Ten terminal outcomes/9complete/1execution-null;
   no loss penalty/repair/refill is supplied. Actual adaptive/U/g1 follows.
   [New complete signed-content reader](components/native-corrected-choice-content-v1.md)
   retains negative/repeated records and all nulls, with45 light checks; its

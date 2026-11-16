@@ -27,7 +27,7 @@
     "ordered_full_provider_body_hashes_sha256": "14be39fe971a365515bbedd6ae3eae9848de725629ef9ad907820df68e4c38e0",
     "all_response_cache_body_hashes_checked": true
   },
-  "prefix": {"consumed_own_slots": 11, "complete": 10, "better_than_reference": 0, "tie": 3, "worse": 7, "execution_nulls": 1, "generation_nulls": 0},
+  "prefix": {"terminal_own_slots": 11, "dispatch_started_own_slots": 12, "complete": 10, "better_than_reference": 0, "tie": 3, "worse": 7, "execution_nulls": 1, "generation_nulls": 0},
   "next_actual_dispatch": {
     "method": "uniform-priority", "objective": "content-utility", "generation": 1, "phase": "initial",
     "suggestion_id": "s7ce05743c8cceab8", "started_utc": "2026-11-16T21:53:45.175733+00:00",

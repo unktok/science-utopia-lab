@@ -29,16 +29,21 @@ is not a global optimum or a counterfactual policy evaluation. Actual free/U/g1
 starts after fresh readiness with its adverse own observation retained.
 Its [subsequent actual native outcome](../research/results/native-corrected-choice-first-feedback-execution-null-v1.json)
 is an execution null: generated selection code wraps payload twice, so the
-consumer cannot read the paper IDs. Ten slots are consumed (nine complete,
+consumer cannot read the paper IDs. Ten own outcomes are terminal (nine complete,
 one failed), without repaired code, replacement or an imputed loss. Local
 component return did not establish downstream compatibility. The separate
 [signed-content reader preparation](../research/components/native-corrected-choice-content-v1.md)
 passes45 light checks, not an actual new full-study export or scientific gain.
 The [next actual adaptive U update](../research/results/native-corrected-choice-first-adaptive-utility-update-v1.json)
 worsens its own initial loss by2, remaining3 worse than the reference. Eleven
-own slots are consumed (10 complete/1 execution null). [Current compact status](../research/STATUS.md)
+own outcomes are terminal (10 complete/1 execution null). [Current compact status](../research/STATUS.md)
 separates current tables/processes/remaining publication work from archived
 dated snapshots; all original adverse/tied/unavailable outcomes remain retained.
+The [complete first-two-proposal prefix](../research/results/native-corrected-choice-two-proposal-prefix-v1.json)
+now has12 terminal outcomes (11 complete/1 execution null), with13 dispatches
+started including uniform/U/g2. Uniform/U/g1 reaches-28.3333, still about1/3
+worse than reference. These are all six two-step prefixes, not the final
+four-step study, frozen selections or a new PDF. No reference gain is measured.
 The new study's full24-slot paths, final paired audits, selection-fixed unused
 evaluation and consequential interpretation remain open. No method ranking or
 useful invention follows from this partial initial history. Source/notes are
