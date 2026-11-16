@@ -23,6 +23,7 @@ def freeze_bank(plan, audit, slots, references):
     # The same all-slot projection verifies every audited world, generation
     # failure, assigned loss, earliest own tie and literal selected program.
     report = analyze(plan, audit, slots, references)
+    visible = [r for r in report['references'] if r['visible_parent']]
     selected = []
     for row in report['selected']:
         method, history, objective = row['method'], row['replication'], row['objective']
@@ -31,11 +32,16 @@ def freeze_bank(plan, audit, slots, references):
             'role': 'own-selection', 'method': method, 'optimizer_history': history, 'objective': objective,
             'selected_cell_id': row['cell_id'], 'selected_id': row['suggestion_id'],
             'development_loss': row['loss'], 'completed_submissions': row['completed_submissions'],
+            'development_cross_scores': clone(row['cross_scores']),
+            'development_initial_reference_label': min(visible, key=lambda r: r['cross_scores'][objective])['label'],
+            'development_initial_reference_loss': row['reference_loss'],
             'all_tied_ids': clone(row['all_tied_ids']), 'system': clone(original['system']),
             'selection_available': original['system'] is not None})
     refs = [{'label': 'reference/' + label, 'role': 'reference', 'reference_label': label,
-        'system': clone(references[label]['candidate']), 'selection_available': True}
-        for label in plan['reference_order']]
+        'system': clone(references[label]['candidate']), 'selection_available': True,
+        'development_cross_scores': clone(report['references'][i]['cross_scores']),
+        'optimizer_visible': report['references'][i]['visible_parent']}
+        for i, label in enumerate(plan['reference_order'])]
     return seal({'schema': SCHEMA, 'scientific_source_commit': plan['source_commit'],
         'origin_plan_content_sha256': plan['content_sha256'], 'origin_audit_content_sha256': audit['content_sha256'],
         'origin_selection_content_sha256': audit['selection']['content_sha256'],
