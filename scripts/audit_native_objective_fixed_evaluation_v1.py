@@ -9,9 +9,11 @@ import sys
 
 
 def worker(root,output,*,study='count-content-v1'):
+    priority_fixed = study == 'priority-fixed-v1'
+    workflow = study in ('workflow-v1', 'longitudinal-v1', 'priority-fixed-v1')
     topic_pilot = study == 'legacy-topic-v1'
     terminal_pilot = study == 'terminal-cost-v1'
-    resource_pilot = topic_pilot or terminal_pilot
+    resource_pilot = topic_pilot or terminal_pilot or priority_fixed
     pilot = study in ('legacy-choice-v1', 'legacy-topic-v1', 'terminal-cost-v1')
     if study=='count-content-v1':
         from scripts import run_native_objective_fixed_evaluation_v1 as driver
@@ -48,6 +50,20 @@ def worker(root,output,*,study='count-content-v1'):
         audit_schema='scienceutopia.native-longitudinal-fixed-evaluation-audit.v1'
         source_scripts=['scripts/run_native_longitudinal_fixed_evaluation_v1.py',
             'scripts/audit_native_longitudinal_fixed_evaluation_v1.py',
+            'scripts/audit_native_objective_fixed_evaluation_v1.py',
+            'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+    elif priority_fixed:
+        from scripts import run_native_priority_fixed_evaluation_v1 as driver
+        audit_schema='scienceutopia.native-priority-fixed-evaluation.v1.audit'
+        source_scripts=['scripts/run_native_priority_fixed_evaluation_v1.py',
+            'scripts/native_priority_fixed_bank_v1.py', 'scripts/native_benchmark_seed_usage.py',
+            'scripts/reports/native_priority_method_readout_v1.py',
+            'scripts/run_native_objective_fixed_evaluation_v1.py',
+            'scripts/run_native_topic_free_optimization_v1.py',
+            'scripts/run_native_workflow_objective_loop_v1.py',
+            'scripts/run_native_objective_instrument_loop_v1.py',
+            'scripts/run_native_legacy_topic_pilot_v1.py',
+            'scripts/audit_native_priority_fixed_evaluation_v1.py',
             'scripts/audit_native_objective_fixed_evaluation_v1.py',
             'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
     elif terminal_pilot:
@@ -107,15 +123,19 @@ def worker(root,output,*,study='count-content-v1'):
                     or dispatched['root']!=prepared['root'] or dispatched['seeds']!=p['evaluation']['seeds']
                     or not epoch(prepared['checked_utc'])<=epoch(dispatched['checked_utc'])<=epoch(start['started_utc'])):
                 raise ValueError('literal pre-dispatch unused-seed proof differs')
-            if study in ('workflow-v1','longitudinal-v1') and 'seed_software_exclusions' in p:
+            if priority_fixed and (dispatched.get('schema') != 'scienceutopia.native-benchmark-seed-usage.v4'
+                    or dispatched.get('strict_path_coverage') is not True
+                    or dispatched.get('excluded_software_verification_paths')):
+                raise ValueError('strict all-path pre-dispatch inventory required')
+            if workflow and 'seed_software_exclusions' in p:
                 from scripts.native_benchmark_seed_usage import require_inventory_policy
                 for receipt in (prepared, dispatched):
                     require_inventory_policy(receipt, p['seed_software_exclusions'])
         resources=[p['protocol']]
-        if study in ('workflow-v1','longitudinal-v1') and 'seed_software_exclusions' in p:
+        if workflow and 'seed_software_exclusions' in p:
             source_scripts.append('scripts/native_benchmark_seed_usage.py')
-            resources.append(p['seed_inventory_protocol']['path'])
-        if (study in ('workflow-v1','longitudinal-v1') or pilot) and 'operational_protocol' in p:
+            if not priority_fixed: resources.append(p['seed_inventory_protocol']['path'])
+        if (workflow or pilot) and 'operational_protocol' in p:
             resources.append(p['operational_protocol']['path'])
         source=source_proofs(driver.ROOT,p['source_commit'],scripts=source_scripts,resources=resources)
         observer=ColdObserver(root/'observer',p['observer_contract']);observer_audit=observer.audit()
@@ -134,7 +154,7 @@ def worker(root,output,*,study='count-content-v1'):
                     or m['loss_spec_sha256']!=loss_spec_sha256(p['losses']['throughput'])):
                 raise ValueError('fixed native observation identity/loss differs')
             cell=directory/'worlds'/(job['identity']+'-s'+str(job['seed']));cells.add(cell)
-            if study in ('workflow-v1','longitudinal-v1') or pilot:
+            if workflow or pilot:
                 from utopia.optimization.native_scientist_transport_v1 import require_cell_transport
                 require_cell_transport(cell,p,spec,seed=job['seed'],failed=o['status']=='failed')
             cache=cell/'replies/responses.sqlite'
@@ -150,7 +170,7 @@ def worker(root,output,*,study='count-content-v1'):
                     rebuilt=reconstruct_measurement(state,proof['measurement'],observer)
                     if resource_pilot:
                         rebuilt=driver.additional_from_checkpoints(rebuilt,cell)
-                    if study in ('workflow-v1','longitudinal-v1') or pilot:
+                    if workflow or pilot:
                         rebuilt={**rebuilt,'native_workflow_interval':driver.interval(
                             p,spec,state['native_system']['events'],job['seed'])}
                     if measurements!=[rebuilt] or m['technical_failures']:raise ValueError('literal additional measurement differs')

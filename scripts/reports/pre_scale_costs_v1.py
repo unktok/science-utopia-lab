@@ -44,7 +44,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-terminal-cost-pilot-audit.v1',
         'scienceutopia.native-topic-free-optimization.v1.audit',
         'scienceutopia.native-consumer-source-comparison.v1.audit',
-        'scienceutopia.native-priority-method-comparison.v1.audit')
+        'scienceutopia.native-priority-method-comparison.v1.audit',
+        'scienceutopia.native-priority-fixed-evaluation.v1.audit')
 
 
 def classify_numeric(relative):
