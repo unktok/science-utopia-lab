@@ -100,6 +100,9 @@ def test_final_paired_reports_are_retained_exactly_without_resealing_or_new_scie
     assert len(closed['complete_observed_input_classes']) == 9
     assert not closed['corrected_author_model_readiness_proven'] and not closed['method_superiority_claimed']
     assert not closed['held_out_evaluation'] and not closed['publication_ready']
+    discussion = (ROOT / 'paper/integrated/discussion.tex').read_text()
+    assert 'comparison with all 24 own outcomes and paired audits' in discussion
+    assert 'comparison but remains unfinished' not in discussion
     text = (ROOT / SECTION).read_text()
     for phrase in ('14:21 UTC', '52 duplicate unchanged reads', 'five actual source writes',
                    '4,888 complete researcher responses', '7,392,125 prompt tokens',
