@@ -27,7 +27,7 @@ from utopia.optimization.native_resource_cost import measure, METRIC
 from utopia.optimization.native_scientist_transport_v1 import contract, configure_existing_client
 from utopia.optimization.native_world import measure_native_world
 from utopia.optimization.native_workflow_domain_v4 import post_funding_cost_control
-from utopia.system import code_mechanisms
+from utopia.system import SystemSpec, code_mechanisms
 from utopia.system.design_patch import clone
 from utopia.system.native_catalog_planning import catalog_contract
 from utopia.system.native_legacy_topic_controls import legacy_topic_control
