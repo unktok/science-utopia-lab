@@ -5,7 +5,20 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
-Current November16 snapshot: the reviewed104-page manuscript retains all prior
+Current reviewed artifact: the111-page integrated manuscript includes the
+complete old24-slot native method pilot, frozen selections, all8 author/
+visibility joins and measured role costs:53 figures/52 tables/32 references.
+The [literal build/visual receipt](integrated-priority-method-build-v1.json)
+binds its two builds and whole-page review. It does not contain the ongoing
+corrected four-step experiment. The working TeX now additionally includes
+[that experiment's methods](integrated/native-corrected-choice-design.tex),
+not its complete results or new figures. This changed source is unbuilt and
+unrendered during actual inference; the111-page artifact/identity is unchanged.
+Current results/processes remain in [STATUS](../research/STATUS.md). A focused
+main-track claim, new full manuscript build and critical readiness judgment
+remain outstanding.
+
+Historical November16 snapshot: the reviewed104-page manuscript retains all prior
 tracks and adds the complete two-objective/source-information pilot. All8 own
 slots, seven completions/one null, four frozen own selections, full observed
 paths, measured costs and the zero selected-own contrast are included. An adverse
@@ -71,6 +84,7 @@ No older PDF or receipt is overwritten, and none proves publication readiness.
 
 | Material | Placement | Reason and evidence boundary |
 | --- | --- | --- |
+| Corrected four-step design | Separate working-TeX methods section after the old native pilot | One history/four proposals per method-target, same24+3 world ceiling, corrected visibility/current-parameter contexts, rank moves and separate best-known/own-only endpoints. A changed package, not isolated representation/equal compute or a completed new result. No new PDF/layout proof during inference |
 | November14 closed open-code v3 | Main native-workflow-feedback section, complete all-slot table, abstract and costs | One own completion/five nulls, all double original-source readers agree. U policy worse than both references; T selection missing without control fallback. Three complete native input classes, separate critic measurement and designer misunderstanding retained. Frozen unused condition is live, not a completed result or independent optimizer replication |
 | November14 stopped real open-code v2 | Main native-workflow-feedback subsection, all three complete cells and exact observed content path | Changed institutional score reaches later scientist inputs and changes accepted contents, without improving either loss. Following directed calibration stops. Physical completed-world reads and cold author replay do not fabricate whole-history audit/selection/closure |
 | November14 closed structural search and unused evaluation | Main native-workflow-feedback section, all-slot table and actual path figure | Four own completions tie strong hand and retain full scientist inputs/choices; two generation nulls. Three physical unused worlds/four frozen labels, same hand tie, all readouts and separately corrected critic costs retained. No novel effective wiring or autonomous advantage |
