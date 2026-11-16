@@ -1,0 +1,29 @@
+{
+  "schema": "scienceutopia.native-author-source-guard-preparation-stop.v1",
+  "observed_utc": "2026-11-16T10:20:44.818279+00:00",
+  "checked_source_commit": "3629ccf6b24f7cd40eda5a93d59039caa25486e1",
+  "prospective_method_original_source": "a5be8d3103854368a4bc6ba4c13eff7552e9dd15",
+  "fixed_evaluation_original_source": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "checks": [
+    {
+      "name": "prospective_method_source_guard",
+      "status": "stopped",
+      "error_type": "ValueError",
+      "error": "original scientist/effect source differs: utopia/optimization/native_authoring_recovery_v44.py"
+    },
+    {
+      "name": "selection_fixed_evaluation_source_guard",
+      "status": "stopped",
+      "error_type": "ValueError",
+      "error": "original scientist/effect source differs: utopia/optimization/native_authoring_recovery_v44.py"
+    }
+  ],
+  "probe_shell_exit_code": 0,
+  "probe_caught_errors_for_read_only_diagnosis": true,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "running_sources_modified": false,
+  "source_guard_weakened": false,
+  "interpretation": "Actual production source guards stop before prospective dispatch. This is not a scientific loss, a model failure, an original campaign stop or a native-world change.",
+  "content_sha256": "440c68d4aef56fb7027bb0ca864f3596742c36078e7cd44c446260b45371bb6d"
+}
