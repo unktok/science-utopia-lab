@@ -15,6 +15,10 @@ def seal(value):
     return {**value, 'content_sha256': digest(value)}
 
 
+def selection_label(method, history, objective):
+    return 'selected/' + method + '/history-' + str(history) + '/' + objective
+
+
 def freeze_bank(plan, audit, slots, references):
     # The same all-slot projection verifies every audited world, generation
     # failure, assigned loss, earliest own tie and literal selected program.
@@ -23,7 +27,7 @@ def freeze_bank(plan, audit, slots, references):
     for row in report['selected']:
         method, history, objective = row['method'], row['replication'], row['objective']
         original = audit['selection']['selected'][method][str(history)][objective]
-        selected.append({'label': 'selected/' + method + '/history-' + str(history) + '/' + objective,
+        selected.append({'label': selection_label(method, history, objective),
             'role': 'own-selection', 'method': method, 'optimizer_history': history, 'objective': objective,
             'selected_cell_id': row['cell_id'], 'selected_id': row['suggestion_id'],
             'development_loss': row['loss'], 'completed_submissions': row['completed_submissions'],
@@ -49,15 +53,18 @@ def planned_jobs(bank, seeds):
     checked(bank)
     if (bank['schema'] != SCHEMA or bank['candidate_reselection'] or bank['reference_fallback']
             or bank['dispatchable'] or bank['seed_usage_validated']
-            or type(seeds) is not list or not 1 <= len(seeds) <= 3 or len(set(seeds)) != len(seeds)
-            or any(type(s) is not int or not 0 <= s < 2**31 or s == bank['development_world_seed'] for s in seeds)):
+            or type(seeds) is not list or not 1 <= len(seeds) <= 3
+            or any(type(s) is not int or not 0 <= s < 2**31 or s == bank['development_world_seed'] for s in seeds)
+            or len(set(seeds)) != len(seeds)):
         raise ValueError('literal frozen bank and explicit finite non-development seed draft required')
     entries = bank['entries']; refs = entries[:3]; own = entries[3:]
     expected = [(m, h, o) for m in METHODS for h in range(2) for o in OBJECTIVES]
     if (len(refs) != 3 or len(own) != 12 or len({e['label'] for e in entries}) != 15
             or [e['role'] for e in refs] != ['reference'] * 3
             or [e['reference_label'] for e in refs] != bank['reference_order']
+            or [e['label'] for e in refs] != ['reference/' + name for name in bank['reference_order']]
             or [(e['method'], e['optimizer_history'], e['objective']) for e in own] != expected
+            or [e['label'] for e in own] != [selection_label(*key) for key in expected]
             or any(e['role'] != 'own-selection' for e in own)
             or any(e['selection_available'] != (e['system'] is not None) for e in entries)
             or any(e['system'] is None for e in refs)

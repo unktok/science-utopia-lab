@@ -59,7 +59,7 @@ def test_source_or_parameter_difference_never_coalesces_on_equal_development_sco
     assert sorted(len(j['labels']) for j in draft['jobs']) == [1, 14]
 
 
-@pytest.mark.parametrize('seeds', [[], [61001], [True], [-1], [2**31], [83003, 83003], [1, 2, 3, 4]])
+@pytest.mark.parametrize('seeds', [[], [61001], [True], [-1], [2**31], [83003, 83003], [1, 2, 3, 4], [[]], [{}]])
 def test_invalid_or_development_seed_drafts_rejected(seeds):
     bank = module.freeze_bank(*inputs())
     with pytest.raises(ValueError): module.planned_jobs(bank, seeds)
@@ -83,11 +83,14 @@ def test_no_own_selection_stays_absent_not_a_reference_fallback():
     assert len(draft['jobs'][0]['labels']) == 14
 
 
-@pytest.mark.parametrize('edit', ['dropped-label', 'reordered-label', 'reference-fallback', 'fabricated-unused'])
+@pytest.mark.parametrize('edit', ['dropped-label', 'reordered-label', 'renamed-own', 'renamed-reference',
+                                'reference-fallback', 'fabricated-unused'])
 def test_draft_refuses_lost_labels_or_unearned_execution_claim(edit):
     bank = module.freeze_bank(*inputs())
     if edit == 'dropped-label': bank['entries'].pop()
     elif edit == 'reordered-label': bank['entries'][-1], bank['entries'][-2] = bank['entries'][-2], bank['entries'][-1]
+    elif edit == 'renamed-own': bank['entries'][-1]['label'] = 'foreign-label'
+    elif edit == 'renamed-reference': bank['entries'][0]['label'] = 'foreign-label'
     elif edit == 'reference-fallback': bank['reference_fallback'] = True
     else: bank['seed_usage_validated'] = True
     bank = seal({k: v for k, v in bank.items() if k != 'content_sha256'})
