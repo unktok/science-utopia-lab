@@ -1,6 +1,14 @@
 # Current research status
 
-## Latest verified state: November16,2026 at17:09UTC / November17 02:09JST
+## Latest verified state: November16,2026 at17:22UTC / November17 02:22JST
+
+Original42803 still owns live supervisor29982/writer30048. The first fresh
+reference has179 actual scientist-request lines; no reference observation,
+failure/terminal or writer-exit is present. Frozen57b35144 remains clean.
+Read-only47015/48527 remain waiting, without new inference. Prospective fixed
+support is committed/pushed as efde64dd on both main/feature;44 additional light
+checks pass from that clean source, not full native verification. These later
+preparations do not alter the running experiment or establish new loss gains.
 
 The fresh initial real-backend certificate now passes all28 controls
 (contenta77104c2, file8c20d0a1). The actual writer has advanced to the first fresh

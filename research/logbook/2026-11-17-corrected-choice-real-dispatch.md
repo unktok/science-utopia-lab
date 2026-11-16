@@ -67,3 +67,13 @@ single `replication_seeds` history element. Earlier protocol prose's combined
 "history/optimizer seed79011" is imprecise; the actual sealed plan fields and
 dispatch record distinguish them. No seed/source/plan is changed in the active
 frozen57 checkout, and no completed software proof is relabeled under new bytes.
+
+At17:22UTC original42803 and actual supervisor29982/writer30048 remain live.
+The first reference has179 scientist-request lines, no completed observation
+and no failure/terminal/writer-exit. Original57b35144 remains clean;47015/48527
+remain waiting. No useful invention/loss gain can yet be inferred. Main and
+feature remote heads both verify efde64dd0fe5f77bedfb3ebc6ea021b495a83ff3.
+The separate clean efde64dd support check68271 exits0:44 passes/2.19s.
+Its exactJUnit is retained as `clean-efde64dd-support.xml` (fileSHA
+d8cde45d16e20f2cefedbeb258e5226fd35c10fa4d233377d7761c7b35f1bb3c).
+This is another overlapping metadata/retention check, not new native QA.
