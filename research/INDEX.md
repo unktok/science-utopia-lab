@@ -5,6 +5,16 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Public author checkpoint canary preparation](components/native-priority-public-author-workflow-v1.md)
+  closes a coverage gap before future native QA: the same prescribed public
+  actions/checker now exercise3 inspections before and after a real code/wiring
+  edit.27 light cases pass; the first3 test-queue alias failures are retained.
+  No actual full native/public run or corrected-model certificate is claimed.
+  [Outcome21](results/native-priority-twenty-first-own-outcome-v1.json) brings
+  the original prefix to21 complete/10 ties/11 worse/0 better. Equal C scores
+  accompany different184/182 researcher input paths. The original writer runs
+  the final free author slot, unchanged.
+
 - [Manuscript evidence-to-claim synthesis](components/manuscript-claim-evidence-map-v1.md)
   adds a reader-facing result/limit map without removing prior tracks or imposing
   a page cap. Actual V2 evaluation is reprojected: code/control throughput means

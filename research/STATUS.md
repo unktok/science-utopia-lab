@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at12:19UTC/21:19JST.
+Last scientific snapshot: November16,2026 at12:46UTC/21:46JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -21,6 +21,15 @@ mandatory. No corrected real-model/native proof is claimed; fresh source-bound
 readiness/integration remain necessary. All four running sources stay unchanged
 on the old context-v1. Old records/certificates are not repaired or reused.
 See [publication implications/next steps](publication/native-priority-visibility-correction-plan-v1.md).
+
+[The future public/native proof now explicitly exercises the repaired checkpoint](components/native-priority-public-author-workflow-v1.md).
+Its old plan/edit/finish canary did not pass through3 inspections. The prepared
+canary now reads3 times, adds its prescribed transparent node/wires, reads3
+times again and finishes.27 light cases pass on three real native boundary
+documents, with actual saved envelopes and cold author replay; the original
+3-failure test-queue aliasing mistake is retained. This is not execution of
+the full public/native route or fresh corrected-model readiness. No original
+scientific source, author budget, loss or waiter is changed.
 
 [Prospective source binding now passes](results/native-author-context-source-binding-v2.json):
 the existing guard is unchanged; the changed designer workflow is an explicit
@@ -57,6 +66,12 @@ bring it to20 complete/10 ties/10 worse/0 better, not final study closure.
 Adaptive/history0/C/g1 recovers2/3 from its previous own loss but remains7/3
 worse than the strong terminal reference. Its182 full scientist requests/choices
 differ from the reference179. Own-to-own recovery is not a method win.
+The [twenty-first original outcome](results/native-priority-twenty-first-own-outcome-v1.json)
+also completes: uniform/history0/C/g1 is-10.3333,7/3 worse than the terminal
+reference. It has the same aggregate cross-scores as the preceding adaptive
+proposal but184 versus182 full researcher input/choice sequences, not identical
+behavior. The prefix is21 complete/10 ties/11 worse/0 better. The final free
+author slot is active; two numeric U slots follow it. No final selection yet.
 
 ## Purpose and present answer
 
@@ -92,8 +107,8 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | First20 own observations complete:10 ties/10 worse/0 better than visible reference. Not final24-slot closure |
-| Current stage | Uniform priority/history0/C/g1, still old context-v1 |
+| Own outcomes | First21 own observations complete:10 ties/11 worse/0 better than visible reference. Not final24-slot closure |
+| Current stage | Free code/graph/history0/U/g1, still old context-v1; then two remaining numeric U slots |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |

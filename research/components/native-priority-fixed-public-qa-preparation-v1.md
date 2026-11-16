@@ -23,6 +23,18 @@ only. The two heavy tests are deliberately skipped while inference runs.
 The earlier705b5259 development proof does not prove this refactored helper or
 the new evaluation route. Execute this new proof after a clean hardware window.
 
+Follow-on [checkpoint canary preparation](native-priority-public-author-workflow-v1.md)
+at394f2378 replaces the test-only plan/edit/finish sequence with9 prescribed
+actions including3 reads before and after its transparent code/wiring edit.
+Every actual sent proposal frame must match actual-body phase/visibility/hash/
+loss interpretation; at least both terminal-parent histories must hit the
+compact-fit/spaced-over-cap checkpoint, and a full post-edit checkpoint must
+be observed. The same helper now drives the future proof;72 SCRIPTED proposal
+calls replace24, within unchanged16-call production allowances and without
+adding native worlds.27 light cases pass on actual native documents/envelopes/
+cold author replay. The full native/public route below remains unexecuted;
+these cases do not establish a real corrected-model certificate or benefit.
+
 ## Preconditions, before any expensive phase
 
 - The real original writer19200/supervisor19169 and its actual model work must

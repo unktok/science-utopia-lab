@@ -1,0 +1,236 @@
+{
+  "schema": "scienceutopia.native-priority-public-author-workflow-preparation.v1",
+  "observed_utc": "2026-11-16T12:49:57.500809+00:00",
+  "analysis_source_commit": "394f23784b03f160fbceef1b7d5aa6ecfeff1af4",
+  "actual_tests": [
+    {
+      "file": "research/data/native-priority-public-author-workflow-v1/failed-4730c232.xml",
+      "file_sha256": "db767105df11309e346160b6176d8df00c2c1414178afba32ba3868845d1b748",
+      "source_commit": "4730c2328565e5c638264ed4ffc48f5a3459f5ff",
+      "original_handle": 46897,
+      "actual_exit_code": 1,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "3",
+        "skipped": "0",
+        "tests": "27",
+        "time": "39.180",
+        "timestamp": "2026-11-16T21:44:11.156821+09:00",
+        "hostname": "flower-man.local"
+      }
+    },
+    {
+      "file": "research/data/native-priority-public-author-workflow-v1/passed-394f2378.xml",
+      "file_sha256": "ecea590c639885af85615fbdab0022a7c8c0cd8f8de9e869ec8f8d8aee5212ba",
+      "source_commit": "394f23784b03f160fbceef1b7d5aa6ecfeff1af4",
+      "original_handle": 76670,
+      "actual_exit_code": 0,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "27",
+        "time": "52.399",
+        "timestamp": "2026-11-16T21:45:57.739908+09:00",
+        "hostname": "flower-man.local"
+      }
+    }
+  ],
+  "preserved_failed_test_cause": "The SCRIPTED DialogueModel consumes its passed list using pop(0). The first canary compared nine actual calls with the emptied expected list. Pass a private clone, preserving the independent nine-action expectation. Actual generation already finished; no production/runtime/scientific repair or weakened assertion. Original3fail/24pass record retained.",
+  "source_files": {
+    "tests/reports/test_native_priority_method_public_v1.py": "ae885fe1de16a279486d23e7710ccafb5f8478076389b5dc70cc5351083e8cf2",
+    "tests/reports/test_native_priority_public_author_workflow_v1.py": "65e1e365b24a7e70a7a2f8090c32ed3672b671276f1b58d3450a84d680cf62ce",
+    "tests/reports/test_native_priority_fixed_public_v1.py": "2240963287e4052d24f11474ff96fbad6d431c7262a97861cd98216cae0cdf30",
+    "scripts/reports/native_author_visibility_v1.py": "16f9fb3219026426f40df6c8b502b21e6f7e44a4b81cfe495d2300e1d007f7aa",
+    "utopia/optimization/native_bounded_author_context_v45.py": "041aae0923e21d8d33cce12115497bdd2021f7dcba83cd2912769043ba3aaacf",
+    "utopia/optimization/native_authoring_recovery_v44.py": "99bdd04704c0d78afba87c35309dab9364997b69644e08f4dab7c1cd07019c69"
+  },
+  "fixture_input_files": {
+    "tests/fixtures/native_author_context_boundary_v1/parent-zero.json": "176dd3fafba738b59c9249a7598ba5e0359ad689a87ba89eb25823df96e4925a",
+    "tests/fixtures/native_author_context_boundary_v1/parent-terminal.json": "aef640546f57fc9463173b331a2a29dd9d1e79780b5315ed8ee2accd161e80a8",
+    "tests/fixtures/native_author_context_boundary_v1/after-feature-write.json": "0376258c61d5d613900d0a434a08ff81f6f48696f840d823e886a490065ba41f"
+  },
+  "actual_scripted_canaries": [
+    {
+      "fixture": "tests/fixtures/native_author_context_boundary_v1/parent-zero.json",
+      "actual_started_and_completed_steps": 9,
+      "journal_json_files": 20,
+      "journal_relative_file_manifest_sha256": "d33dfef38471aedee61787ad85574892ba9bc0675261c4620f238bfc178755d2",
+      "request_file_sha256": "3d2dd16baca46719c71a10296711f5883c623712f67d6abb85c7709339929be3",
+      "response_file_sha256": "42c01de3fb8f47009868097297058fe29608ff872ae2a1a07d7219a405cff8d4",
+      "checkpoints": [
+        {
+          "step": 4,
+          "recorded_phase": "implementation",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 3,
+          "compact_document_utf8_bytes": 61892,
+          "legacy_spaced_document_utf8_bytes": 65479,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        },
+        {
+          "step": 5,
+          "recorded_phase": "general",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 0,
+          "compact_document_utf8_bytes": 63087,
+          "legacy_spaced_document_utf8_bytes": 66739,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        },
+        {
+          "step": 8,
+          "recorded_phase": "implementation",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 3,
+          "compact_document_utf8_bytes": 63087,
+          "legacy_spaced_document_utf8_bytes": 66739,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        }
+      ],
+      "all9_phase_and_loss_views_match": true,
+      "actual_cold_author_replay_assertion_passed": true
+    },
+    {
+      "fixture": "tests/fixtures/native_author_context_boundary_v1/parent-terminal.json",
+      "actual_started_and_completed_steps": 9,
+      "journal_json_files": 20,
+      "journal_relative_file_manifest_sha256": "6a1159afe5c5ef77affbf6985423bd0f36830aa9a054f3e79488b46345fcc1ac",
+      "request_file_sha256": "4fd3bbf5eed44b77cb13fa0ff6e3c20770003327054628a95f7229abf5595de6",
+      "response_file_sha256": "f70ea31ed02de71e5f5e452f426a7ea1e4c0980c52756714b010de2b982a6a7c",
+      "checkpoints": [
+        {
+          "step": 4,
+          "recorded_phase": "implementation",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 3,
+          "compact_document_utf8_bytes": 62755,
+          "legacy_spaced_document_utf8_bytes": 66342,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        },
+        {
+          "step": 5,
+          "recorded_phase": "general",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 0,
+          "compact_document_utf8_bytes": 63950,
+          "legacy_spaced_document_utf8_bytes": 67602,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        },
+        {
+          "step": 8,
+          "recorded_phase": "implementation",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 3,
+          "compact_document_utf8_bytes": 63950,
+          "legacy_spaced_document_utf8_bytes": 67602,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        }
+      ],
+      "all9_phase_and_loss_views_match": true,
+      "actual_cold_author_replay_assertion_passed": true
+    },
+    {
+      "fixture": "tests/fixtures/native_author_context_boundary_v1/after-feature-write.json",
+      "actual_started_and_completed_steps": 9,
+      "journal_json_files": 20,
+      "journal_relative_file_manifest_sha256": "c5d120bba91f9a000652366173e49689c6c99243c455ca23ad770a999eaf0fb2",
+      "request_file_sha256": "0bb495d1321f254c75757a5060ef14cc81e90da07a5eb5b4e967015895e41c39",
+      "response_file_sha256": "e3d26e87b99ea477db0cac2c006b91d4db0da8b96634e9cb903589876781dad1",
+      "checkpoints": [
+        {
+          "step": 4,
+          "recorded_phase": "implementation",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 3,
+          "compact_document_utf8_bytes": 62032,
+          "legacy_spaced_document_utf8_bytes": 65619,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        },
+        {
+          "step": 5,
+          "recorded_phase": "general",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 0,
+          "compact_document_utf8_bytes": 63227,
+          "legacy_spaced_document_utf8_bytes": 66879,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        },
+        {
+          "step": 8,
+          "recorded_phase": "implementation",
+          "whole_document_actually_supplied": true,
+          "inspection_attempts": 3,
+          "compact_document_utf8_bytes": 63227,
+          "legacy_spaced_document_utf8_bytes": 66879,
+          "declared_literal_byte_cap": 65536,
+          "phase_differs_from_actual_body_interpretation": false,
+          "exact_loss_arithmetic_and_definitions_present": true
+        }
+      ],
+      "all9_phase_and_loss_views_match": true,
+      "actual_cold_author_replay_assertion_passed": true
+    }
+  ],
+  "old_public_software_reference_documents": {
+    "file_sha256": "ddf19e2b0005c9693bb251459f5c59b902e4a18b50b1b8270547b0e47c9745c2",
+    "scientific_reproduction": false,
+    "sizes": {
+      "literal-related": {
+        "compact": 60207,
+        "spaced": 63687
+      },
+      "priority-zero": {
+        "compact": 61889,
+        "spaced": 65476
+      },
+      "terminal-priority-zero": {
+        "compact": 62752,
+        "spaced": 66339
+      }
+    }
+  },
+  "prepared_future_public_path": {
+    "author_actions_per_session": 9,
+    "free_sessions": 8,
+    "scripted_proposal_calls": 72,
+    "new_native_worlds_added_to_that_software_protocol": 0,
+    "requires_actual_terminal_boundary_histories": true,
+    "requires_post_edit_full_document_checkpoint": true,
+    "all_sent_proposal_frames_checked_for_phase_visibility_hash_and_exact_loss": true,
+    "actual_native_public_path_executed_this_turn": false,
+    "real_corrected_backend_readiness_obtained": false,
+    "outer_subprocess_CLI_route_proved": false
+  },
+  "twenty_first_original_outcome_content_sha256": "ea247da4e8ece462287ea55035ad8ec9b50247fdbf0cc33de20656c3fc0b0b4f",
+  "original_prefix_counts": {
+    "complete": 21,
+    "tie": 10,
+    "worse": 11,
+    "better": 0
+  },
+  "new_real_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "scientific_losses_or_selection_changed": false,
+  "publication_ready": false,
+  "scope": "Light exact-native-document staged author/envelope/cold-replay canaries, using the same prescribed actions and frame checker as the future public native proof. Corpus/HTTP/model and upstream provenance are not real scientific evidence here; native world/Docker/public prepare-run/evaluation and real corrected-model capacity remain unexecuted. Original scientific writer and four pinned source checkouts are unchanged.",
+  "content_sha256": "d2d7325aafa63e422417f980fb4691fb46ea82015b1408ece4e351da5201a1f8"
+}
