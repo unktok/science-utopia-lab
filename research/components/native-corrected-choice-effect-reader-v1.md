@@ -46,3 +46,10 @@ Inspect original invocation/received-input/resource consequences and assigned
 losses separately; output emission is not proof of downstream consumption,
 changed inputs are not benefit, and equal observed paths are not program
 equivalence. Independent conditions and main-track findings remain open.
+
+Subsequently, clean fa90a758 source is frozen separately and original21828/
+PID39421 actually starts waiting at17:45:34UTC. Exact local reader imports and
+clean unchanged57/b0201/fa90 sources are verified;17:46:51UTC `ps` confirms the
+waiting process live. [Dispatch](../results/native-corrected-choice-effect-analysis-dispatch-v1.json).
+Its external `effects/report-1,2` are not yet created. This connects the future
+paired exports without starting code/model/world execution or altering sources.

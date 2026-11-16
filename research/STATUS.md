@@ -1,6 +1,23 @@
 # Current research status
 
-## Latest verified state: November16,2026 at17:33UTC / November17 02:33JST
+## Latest verified state: November16,2026 at17:47UTC / November17 02:47JST
+
+[Both fresh visible references now complete](results/native-corrected-choice-two-references-v1.json).
+Both retain U28.666666666666668/T36 and179 same complete scientist inputs/
+literal choices. The known terminal rule changes collected200→160/uncollected
+0→40, so L_C moves-8.666666666666668→-12.666666666666668, while L_U ties.
+Provider response bodies are not identical. This is known reference behavior,
+not an own invention, actual-work efficiency gain or universal equivalence.
+Original42803 advances to comparison-only `literal-related`, the third fresh
+reference. No own slot is measured and the final full-study cold is pending.
+
+[Effect continuation21828/PID39421 actually waits](results/native-corrected-choice-effect-analysis-dispatch-v1.json)
+from separately frozen fa90a758, alongside all-slot/cold/all8-author/visibility
+continuations. Source57/b0201/fa90 are clean and unchanged; no analysis is
+misreported as completed. Main/feature are pushed through fa90a758. Original
+science and all reader sources stay fixed. R2/R3/R5/R6 and publication goal remain open.
+
+## Earlier first-reference snapshot:17:33UTC / 02:33JST
 
 [The first fresh `priority-zero` reference is complete](results/native-corrected-choice-first-reference-v1.json):
 U28.666666666666668/K200, L_U-28.666666666666668/L_C-8.666666666666668,

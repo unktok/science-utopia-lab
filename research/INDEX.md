@@ -5,6 +5,15 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Two fresh corrected references are complete](results/native-corrected-choice-two-references-v1.json).
+  Both have U28.6667/T36 and179 same actual scientist inputs/choices; the known
+  terminal rule changes collected200→160/uncollected0→40 and lowers C by4.
+  This is a known warm control, not autonomous invention or actual-work gain.
+  The third reference is running; no own slot is yet measured at17:47UTC.
+  [Native effect continuation21828](results/native-corrected-choice-effect-analysis-dispatch-v1.json)
+  is now actually waiting from clean fa90 source, alongside original cold/
+  all-slot/all8-author/visibility continuations, not completed effect analysis.
+
 - [Corrected native effect-reader preparation](components/native-corrected-choice-effect-reader-v1.md)
   reuses actual source/ledger/input-trace primitives with exact audited compound
   cells, preserving repeats/nulls rather than globbing ambiguous IDs. Light

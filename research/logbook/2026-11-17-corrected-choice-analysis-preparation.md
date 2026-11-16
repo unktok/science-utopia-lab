@@ -40,3 +40,18 @@ embedding build or video work competes with actual inference. The111-page
 reviewed PDF remains unchanged. These preparations connect forthcoming results
 to mechanism/path/cost interpretation; they do not complete R2/R3/R5/R6 or
 establish useful invention, method superiority, scientific truth or readiness.
+
+At17:45:34UTC the separate clean fa90a758 effect reader actually launches in
+original21828,PID39421, waiting for normal original paired audit/cost closure.
+Local imports/source roles and clean unchanged57/b0201/fa90 checkouts verify.
+No completed effect export is claimed. [Actual waiting dispatch](../results/native-corrected-choice-effect-analysis-dispatch-v1.json).
+
+At17:47:51UTC both visible fresh references are complete and the third,
+comparison-only `literal-related`, is running. Reprojected U/T tie at28.6667/36;
+the known terminal rule changes collected200→160/uncollected0→40, yielding C
+lower by4. Both179 full scientist-input hashes and literal response-choice
+hashes match. Full provider-body hashes differ, and every cached body is checked
+individually. This is scoped observed-path evidence and known warm-reference
+behavior, not automatic invention, reduced actual work, global equivalence or
+independent replication. No own slot is measured yet. [Exact two observations,
+losses and complete-path hashes](../results/native-corrected-choice-two-references-v1.json).

@@ -1,0 +1,44 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-two-references.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T17:47:51+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "reference_observations": [
+    {
+      "label": "priority-zero", "status": "complete",
+      "observation_file_sha256": "9eb27a036a9a1f2085ef683d2f6b2d2482fe3ee55240c7f8ef77a1845dc97490",
+      "observation_content_sha256": "3333d82196defd4a4625c0b7e9df097ebe12d5baaaf4ec7b14450126ced8e6cd",
+      "U": 28.666666666666668, "K_collected": 200.0, "K_uncollected": 0.0, "T": 36,
+      "L_U": -28.666666666666668, "L_C": -8.666666666666668,
+      "scientist_requests": 179, "scientist_committed_responses": 179,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "21f632872df54a76f94decf427e0bcf411151a1ae53a0da1cdc1eb31e30d8a13"
+    },
+    {
+      "label": "terminal-priority-zero", "status": "complete",
+      "observation_file_sha256": "1f3cc25d7ddb2428ea4c1574172724aff28db52a756adebbb4f22573ceb57d98",
+      "observation_content_sha256": "1c5007c5d452070c79146877a8a211ba162bcd60605a4ae2690e6ccbf7b65e42",
+      "U": 28.666666666666668, "K_collected": 160.0, "K_uncollected": 40.0, "T": 36,
+      "L_U": -28.666666666666668, "L_C": -12.666666666666668,
+      "scientist_requests": 179, "scientist_committed_responses": 179,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "694d34ad6dcc11342664e79b0775d6ed39310a9874aa13cc3957874f7e3d003d"
+    }
+  ],
+  "second_minus_first_L_U": 0.0,
+  "second_minus_first_L_C": -4.0,
+  "observed_full_scientist_inputs_equal": true,
+  "observed_literal_scientist_choices_equal": true,
+  "full_provider_response_bodies_equal": false,
+  "next_progress": {"stage": "references", "active": "literal-related", "observed_utc": "2026-11-16T17:46:44.351756+00:00"},
+  "own_slots_measured_at_snapshot": 0,
+  "final_source_bound_cold_audit_complete": false,
+  "automatic_invention_demonstrated": false,
+  "actual_work_efficiency_gain_demonstrated": false,
+  "unused_condition_evidence": false,
+  "publication_ready": false,
+  "scope": "Two fresh known development references and checked measurement-derived cross-losses, not autonomous discoveries. Full request/choice equality describes these two observed paths only, not global policy equivalence or independent repeats. Response cache bodies are individually hashed and complete, not claimed identical. K is collected cost; increased uncollected charges are retained, with no new rejection gate."
+}
