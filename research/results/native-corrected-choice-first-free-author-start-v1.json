@@ -1,0 +1,38 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-first-free-author-start.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T18:44:10+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "writer_pid": 30048,
+  "supervisor_pid": 29982,
+  "slot": {"generation": 0, "method": "free-code-graph", "objective": "content-utility", "replication": 0},
+  "request_sha256": "774e5ee1ae7ada4b3d10bb8288ea454aa88f555b602221d166d4b56b995bb915",
+  "session_binding_sha256": "797dc695e27c8f807066d68eb85d8c390f07d66b5cfa6670529321195356b3ff",
+  "session_binding_file_sha256": "26028fc77f0c03fb622f471b3e113fde5dd5e55c56a6040af1f5297125261670",
+  "fresh_calibration": {
+    "certificate_relative_path": "search/free-code-graph/history-0/content-utility/authoring/calibration-774e5ee1ae7ada4b3d10bb8288ea454aa88f555b602221d166d4b56b995bb915/editor-readiness/calibration/certificate.json",
+    "all_controls_passed": true, "records": 28,
+    "certificate_content_sha256": "72315e041a078fe9d3e14f21fe851937712a12f84f14ff2bd0f5c65efe8d3a79",
+    "certificate_file_sha256": "8bf0c492fe08d5cedf53c4704b4ae36247b66782a5e39a51e9988c6c4232dcba",
+    "old_assay_certificate_reused": false,
+    "actual_production_session_started": true
+  },
+  "whole_observed_production_prefix": {
+    "started_calls": 4, "completed_steps": 3, "started_without_committed_receipt": 1,
+    "attempted_tool_counts": {"plan": 1, "read_file": 2},
+    "phase_counts_including_pending_intent": {"general": 3, "planning": 1},
+    "observed_phase_interpretation_mismatches": 0,
+    "observed_missing_or_different_loss_views": 0,
+    "implementation_phase_calls_observed": 0,
+    "terminal_record_present": false, "terminal_status": null,
+    "scope": "Complete available chronological intent/receipt prefix, not only a recent tail. One pending response remains unknown, not a failure/zero-cost reply. Zero phase mismatches before implementation is not proof of all later checkpoints or model understanding."
+  },
+  "free_submission_complete": false,
+  "free_native_loss_measured": false,
+  "source_edit_or_new_structure_claimed": false,
+  "useful_new_institution_demonstrated": false,
+  "full_study_cold_audit_complete": false,
+  "publication_ready": false,
+  "scope": "Fresh real-backend request-specific technical certificate and actual bounded free-author session start, not completed institutional invention, execution success or native gain. Both earlier numeric initial outcomes remain literal; no active source, request, loss, budget or candidate is repaired/refilled."
+}

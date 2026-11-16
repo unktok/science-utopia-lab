@@ -1,6 +1,21 @@
 # Current research status
 
-## Latest verified state: November16,2026 at18:35UTC / November17 03:35JST
+## Latest verified state: November16,2026 at18:44UTC / November17 03:44JST
+
+[Free/U/g0 passes fresh readiness and enters production](results/native-corrected-choice-first-free-author-start-v1.json).
+The actual request-specific certificate passes28 controls, without reusing
+the old assay. The available complete prefix has4 intents/3 completed steps
+(plan1/read_file2),1 pending response and no terminal record. Planning1/general3
+show no observed phase/loss-view mismatch, but no implementation checkpoint
+has been reached. This is not a free submission, new structure, native benefit
+or all-session correctness proof. Original42803 remains active, unchanged.
+
+Both numeric initial outcomes remain complete at L_U-27.6667, each worse by1
+than the measured reference. The two initial programs/input/choice paths are
+matched, not independent new institutions. Whole-study/four-step histories,
+all8 free outcomes, paired analysis and publication readiness remain open.
+
+## Earlier matched-initial snapshot:18:35UTC / 03:35JST
 
 [Both numeric initial outcomes complete and free-design calibration starts](results/native-corrected-choice-two-own-prefix-v1.json).
 Uniform/U/g0 and adaptive/U/g0 have the matched literal initial program and

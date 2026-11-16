@@ -59,3 +59,14 @@ while its proposal calibration is ongoing; do not fabricate an absent pending
 request or infer a stopped writer from that value alone. This is not completed
 free authoring, a full certificate, a next-generation update or native benefit.
 [Exact second observation/tell/path evidence and scoped prefix](../results/native-corrected-choice-two-own-prefix-v1.json).
+
+At18:43UTC the first free/U/g0 fresh calibration actually passes28 controls,
+certificate content72315e04/file8bf0c492. The old assay certificate is not reused.
+At18:44:10UTC the actual request-bound production session has4 intents/3
+completed steps (plan1/read_file2), one pending reply and no terminal record.
+The complete available visibility prefix has planning1/general3, zero observed
+phase/loss-view mismatches, but no implementation-phase call yet. Do not turn
+that early zero into all-session correctness, code understanding or benefit.
+[Exact request/binding/certificate and prefix](../results/native-corrected-choice-first-free-author-start-v1.json).
+Free submission, execution and native loss remain unobserved. No raw output,
+source, request or measured numeric result is changed to obtain this start.

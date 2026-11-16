@@ -5,6 +5,12 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First corrected free-author production session starts](results/native-corrected-choice-first-free-author-start-v1.json):
+  fresh actual28-control request-specific calibration passes. The18:44 prefix
+  has4 intents/3 completed plan/read steps and1 unknown pending reply, no
+  terminal/submission/native loss or implementation checkpoint yet. This is
+  actual free-session execution, not useful invention or reused old readiness.
+
 - [Two corrected own numeric outcomes and the free-design stage](results/native-corrected-choice-two-own-prefix-v1.json):
   both matched initial programs complete at L_U-27.6667, worse by1 than the
   reference. Their186 full input/choice paths match; they are two physical
