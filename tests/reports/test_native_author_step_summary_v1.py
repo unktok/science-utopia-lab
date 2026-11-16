@@ -63,9 +63,10 @@ def test_schema_rejected_actions_remain_errors_without_treating_them_as_tools(ac
     assert not result['explicit_finish_observed']
 
 
-def session(tmp_path, *, pending=False, finish=True):
+def session(tmp_path, *, pending=False, finish=True, request=None, definition=None):
     binding = {'schema': 'scienceutopia.staged-author-request.v15',
-        'request': {'SCRIPTED': 'no actual institution'}, 'settings': {'max_steps': 16}}
+        'request': {'SCRIPTED': 'no actual institution'} if request is None else request,
+        'settings': {'max_steps': 16}}
     binding['request_sha256'] = digest(binding['request']); binding['binding_sha256'] = digest(binding)
     write_json_atomic(tmp_path / 'request.json', binding)
     steps = []; receipts = []
@@ -88,6 +89,7 @@ def session(tmp_path, *, pending=False, finish=True):
         'binding_sha256': binding['binding_sha256'], 'request_sha256': binding['request_sha256'],
         'status': 'generated' if finish and not pending else 'generation-failed',
         'selected_step': len(steps) - 1 if finish and not pending else None, 'steps': receipts}
+    if definition is not None: terminal['definition'] = definition
     save(tmp_path / 'response.json', terminal)
 
 
