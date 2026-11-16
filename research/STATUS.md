@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at10:32UTC/19:32JST.
+Last scientific snapshot: November16,2026 at10:51UTC/19:51JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -31,6 +31,15 @@ rejection of injected author/native byte drift. The original2-case stop and
 first broad41-pass/1-failure run remain retained. No new real/native proof is
 claimed. The historical free-topic driver keeps its narrower adapter scope.
 
+[Current manuscript source is amended, not rebuilt](components/native-priority-manuscript-source-v1.md):
+all previous26 recursive inputs remain, plus a dated15-slot method/visibility
+section.19 source/transcription/historical-artifact checks pass. The reviewed
+104-page PDF remains unchanged and does not include these amendments; current
+source layout/page count is unverified. No PDF/render work overlaps inference.
+An [all8-session/101-request check of the older closed pilot](results/native-consumer-source-visibility-diagnostic-v1.json)
+finds zero instances of this particular visibility mismatch, not a bug-free
+certificate or a reason to invalidate its original valid/null outcomes.
+
 ## Purpose and present answer
 
 Optimize the scientific system itself under a declared loss, with fixed
@@ -58,8 +67,8 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | First15 own observations complete:8 ties/7 worse/0 better than visible reference. Not final24-slot closure |
-| Current stage | Free code/graph/history1/U/g1; previous C/g1 source edit executes and ties its reference, still old context-v1 |
+| Own outcomes | First16 own observations complete:9 ties/7 worse/0 better than visible reference. Not final24-slot closure |
+| Current stage | Adaptive priority/history1/U/g1; preceding free U/g1 source edit completes and ties its reference, still old context-v1 |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
@@ -112,6 +121,17 @@ only reason text; all179 full scientist inputs/literal response choices match
 the reference, while provider envelopes remain different. No new node/wire or
 loss gain is observed. Nine general-phase steps still show the known visibility
 mismatch; this remains old-source exploratory evidence, not a clean comparison.
+
+[Outcome16](results/native-priority-sixteenth-own-outcome-v1.json) also completes
+and ties U's reference: U-28.6667/C-8.6667/T-36. A14-action free session has one
+selection-source write,11 reads/4 duplicate reads. It removes the empty-cycle
+sentinel. All4 actual years are nonempty; their8/10/8/10 literal decision outputs
+and179 full scientist inputs/choices match the reference. A separate two-input
+unit probe of the unchanged native receiver rejects an empty list and accepts
+the sentinel on an empty-conference input. That is conditional ABI evidence,
+not a scored counterfactual, execution of generated empty-case code or an
+observed failure of this complete candidate world. Do not repair/relabel/refill
+the original. The16-outcome snapshot is separate from the manuscript's dated15.
 
 [Outcome8 and the next actual edited submission](results/native-priority-author-outcomes-preparation-and-first-edit-v1.json)
 retain all original feedback and the first literal source write in this study.

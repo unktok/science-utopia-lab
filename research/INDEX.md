@@ -5,6 +5,16 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Manuscript source integration, not a new PDF](components/native-priority-manuscript-source-v1.md)
+  retains all previous26 recursive inputs, adds a dated15-slot table/method and
+  interface-confound section, and passes19 source/evidence checks. The reviewed
+  104-page artifact is unchanged. [The older closed pilot's full8-session/101-request diagnostic](results/native-consumer-source-visibility-diagnostic-v1.json)
+  finds no instance of this specific serialization mismatch; this is not a
+  universal interface certificate. [Outcome16](results/native-priority-sixteenth-own-outcome-v1.json)
+  separately brings the live study prefix to16 complete/9 tied/7 worse/0 better.
+  Its actual nonempty years tie; a conditional empty-case receiver incompatibility
+  is not an observed failed world, a refill or a rewritten loss.
+
 - [Critical author visibility/phase diagnosis and prospective repair](components/native-author-workflow-visibility-correction-v1.md):
   real whole-document data reproduce2 pre-fix failures; fixed runtime195739f6
   passes87 relevant/scripted author-wire/replay cases with1 optional skip/1

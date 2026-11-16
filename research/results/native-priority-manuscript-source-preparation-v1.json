@@ -1,0 +1,109 @@
+{
+  "schema": "scienceutopia.native-priority-manuscript-source-preparation.v1",
+  "observed_utc": "2026-11-16T10:55:34.595856+00:00",
+  "tested_source_commit": "ec60405edd0d3ad54149d7fbc585bd3e74f34bcc",
+  "manuscript_source_file_sha256": {
+    "paper/integrated.tex": "7f0c28ca2512a5b04cc9823ab7ab916179f7c27508c14e368b238e255fa68cc7",
+    "paper/integrated/native-priority-method-snapshot.tex": "e1c2ed93fd1343c5b871ce9f31438e5436c58b01ceaab6d1379c70c55b851502",
+    "paper/integrated/native-consumer-source.tex": "28713da457034eb6caa4f20b8c148ba17c3d45e8371bb0b9c11581c01d341a61",
+    "paper/integrated/discussion.tex": "9cfbe3c5b51fb504f04b3d4f62a50161f0e685fc200fa1a8a1ef38c10e5a47ea",
+    "paper/README.md": "ef1279b7baf28e215cdcdabd74890e1655f5c7ee6721eae1e705176f66dc0b2b",
+    "tests/reports/test_priority_method_manuscript_snapshot_v1.py": "515f1fb922c1a4a62c0e997e5df6e686a94194517a805c6ba80a6c5d669f9a5f",
+    "tests/reports/test_consumer_source_pdf_retained_v1.py": "751668d84690d7f77e7f3ebc4d8e75f9880698c58d2198fb41fc139478907c0c"
+  },
+  "prior_recursive_source_count": 26,
+  "current_recursive_source_count": 27,
+  "all_prior_recursive_inputs_retained": true,
+  "new_recursive_input": [
+    "paper/integrated/native-priority-method-snapshot.tex"
+  ],
+  "evidence": {
+    "research/results/native-priority-first-three-second-generation-outcomes-v1.json": {
+      "file_sha256": "eb94c01092f2785305eb4a80fb0bf3da8b476d0c417cd74b031d001a5411db0f",
+      "content_sha256": "5ada558e638555536216111e0cedb00b5fa79fb0e2ecf66f5894c0ac4674139b"
+    },
+    "research/results/native-author-workflow-visibility-correction-v1.json": {
+      "file_sha256": "1471207f671fe3add05a154d10a33ffb7a1c810992fff29b7d71720377668f9e",
+      "content_sha256": "1bc94a15da0b3921372970a9c9eba72d27c052c3ee3b18f6ed8befd952e14b03"
+    },
+    "research/results/native-author-context-source-binding-v2.json": {
+      "file_sha256": "d77348815776bd6a9cccd3a69a3826793afaf76243448049f346cb272abe7c3e",
+      "content_sha256": "8f037a3f7a323085f34d4cb0d6f63add4ef4d4cac3546ce8d0e244eb34c6ec23"
+    },
+    "research/results/native-consumer-source-visibility-diagnostic-v1.json": {
+      "file_sha256": "35c55aac8f98f42c31074a8de64b89a32dca9486bc8324ac7b2cd05fd75d2d85",
+      "content_sha256": "a8bc9404fbc83d4f7a550afdba4942bf84525ad75e4bfa299a8bb1d5a54cb6e9"
+    }
+  },
+  "actual_source_test_runs": [
+    {
+      "file": "research/data/native-priority-manuscript-source-v1/prefix-source-b6d3ede5.xml",
+      "file_sha256": "451daf3624e72f347fc486665441d805b9239477094f8321b1cec02213626ac0",
+      "tested_source_commit": "b6d3ede5972ca8ddeb005d1ff3ade9f92d9c972a",
+      "original_handle": 6333,
+      "actual_exit_code": 0,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "18",
+        "time": "9.906",
+        "timestamp": "2026-11-16T19:42:54.401698+09:00",
+        "hostname": "flower-man.local"
+      }
+    },
+    {
+      "file": "research/data/native-priority-manuscript-source-v1/older-scope-ec60405e.xml",
+      "file_sha256": "1bcc0a3f3199d9c5390d96de76a7efcdf366a2e57fa4a10d022aba606f4aea3d",
+      "tested_source_commit": "ec60405edd0d3ad54149d7fbc585bd3e74f34bcc",
+      "original_handle": 33888,
+      "actual_exit_code": 0,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "19",
+        "time": "11.609",
+        "timestamp": "2026-11-16T19:47:39.119218+09:00",
+        "hostname": "flower-man.local"
+      }
+    }
+  ],
+  "retained_reviewed_artifact": {
+    "receipt_file": "paper/integrated-consumer-source-build-v1.json",
+    "receipt_file_sha256": "376d0cc5ee4483eca55a6bba41084fbd1d633c83e676ef6192927d27f89b63c3",
+    "source_commit": "2d19cc966790ff0c2402b6889485ba58f32a49cd",
+    "pdf": "output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf",
+    "pdf_sha256": "cc5d2ca81f434023466184525e3555edc32ae63a1695033e263ab7cbab387af4",
+    "pages": 104,
+    "current_amendments_included": false
+  },
+  "snapshot_scientific_scope": {
+    "own_complete_slots_in_paper": 15,
+    "declared_own_slots": 24,
+    "ties": 8,
+    "worse": 7,
+    "better_than_reference": 0,
+    "final_selection_available": false,
+    "full_current_campaign_closure_available": false,
+    "older_visibility_diagnostic_sessions": 8,
+    "older_visibility_diagnostic_requests": 101,
+    "older_visibility_mismatch_observed": 0
+  },
+  "source_review_scope": "All15 table rows/full cross-scores, own recovery versus reference, inert edits/phase diagnostics, native fixture sizes, inclusion/labels/references/citations and historical PDF source identity. Not typeset layout review; later scientific slots do not change the dated15-slot snapshot.",
+  "historical_dependency_test_scope": "The104-page receipt binds exact2d19cc96 Git blobs, not future editorial HEAD. Current retained PDF/preserved artifacts/new evidence still match actual unchanged bytes. Old receipt and hashes are not modified.",
+  "derivation_diagnostic": "An earlier read-only recursive source walk stopped before retention because Git rejects the lexical paper/../research path. The successful walk resolves repository-relative blob paths while preserving exact original input text and checking that resolution stays inside the repository. No manuscript or evidence was modified to bypass it.",
+  "new_pdf_build_attempted": false,
+  "new_pdf_generated": false,
+  "new_page_renders_generated": false,
+  "current_source_visually_reviewed": false,
+  "new_real_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "scientific_losses_or_selection_changed": false,
+  "publication_ready": false,
+  "remaining": "Original finite paired closure and critical scientific-value analysis; exact committed-source builds/render/reference/layout/full-page visual QA in a suitable verified hardware window; fresh real readiness/native proof, differentiated finding, adequate independent evidence and final main-track judgment.",
+  "content_sha256": "7aea6f09291c254eeaa98bd7d8faf8af0f837b5b913ea90a9ffda82cfb829586"
+}

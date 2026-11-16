@@ -7,6 +7,15 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November16 10:51UTC：[原稿sourceの追記](../components/native-priority-manuscript-source-v1.md)
+で過去26入力を残し、日付付き15枠の表・手法・作用・文書可視性の不整合を統合した。
+19 source検査は通ったが、新PDFのbuild／全頁目視は未実施で、確認済み104頁版は不変。
+[旧情報比較の全8著者session／101要求](../results/native-consumer-source-visibility-diagnostic-v1.json)
+にはこの特定の不整合は観測されない。全interfaceの無欠陥や理解の因果証明ではない。
+原稿tableとは別に[16枠目](../results/native-priority-sixteenth-own-outcome-v1.json)が完走し、
+現在の記録は9同点／7悪化／0改善。元worldの有効な同点を未観測分岐の危険性でnullへ
+書き換えたり、次の枠で補充したりしない。R2/R3/R5/R6は未達のまま。
+
 November16の重要な修正：[文書可視性と作業フェーズの不整合](../components/native-author-workflow-visibility-correction-v1.md)
 を実33要求・完全な元世界3状態で再現し、次回ソース向けに修正した。旧ソースの測定損失は正しい
 観測として残すが、親／編集後文書のサイズがallowed-tool scheduleにも作用していたため、

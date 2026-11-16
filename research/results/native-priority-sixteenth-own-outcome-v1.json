@@ -1,0 +1,195 @@
+{
+  "schema": "scienceutopia.native-priority-sixteenth-own-outcome.v1",
+  "observed_utc": "2026-11-16T10:51:00.822599+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "prior_first15_content_sha256": "5ada558e638555536216111e0cedb00b5fa79fb0e2ecf66f5894c0ac4674139b",
+  "slot_index": 15,
+  "slot": {
+    "generation": 1,
+    "method": "free-code-graph",
+    "objective": "content-utility",
+    "replication": 1
+  },
+  "request_sha256": "c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7",
+  "original_record_sha256": "4816c112be2afebedd1b74204a89f99bdb76d4d674e39c1293303845726ad13e",
+  "original_observation_value_sha256": "7f45b7e057f81bd570ea7176d5ada1d5388d0dc17c3179d0a29e0b4a800fb7b1",
+  "suggestion_id": "native-adaptive-cb55dce9c17f9a575ff2923a",
+  "status": "complete",
+  "submitted_program_sha256": "878b143abf3bcb6b5e585c94c0a4035a3279c0a790f0a232bc38527a9462bdce",
+  "parent_program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+  "cross_scores": {
+    "content-utility": -28.666666666666668,
+    "resource-aware-content": -8.666666666666668,
+    "throughput": -36.0
+  },
+  "assigned_loss_minus_reference": 0.0,
+  "prefix_counts_against_visible_reference": {
+    "complete": 16,
+    "tie": 9,
+    "worse": 7,
+    "better": 0
+  },
+  "session_counts": {
+    "completed_steps": 14,
+    "attempted_tool_counts": {
+      "finish": 1,
+      "plan": 1,
+      "read_file": 11,
+      "write_file": 1
+    },
+    "attempted_edit_steps": 1,
+    "successful_document_changes": 1,
+    "duplicate_unchanged_read_observations": 4,
+    "terminal_status": "generated"
+  },
+  "graph_delta": {
+    "nodes_added": [],
+    "nodes_removed": [],
+    "source_changed_nodes": [
+      "world.selection"
+    ],
+    "parameter_changed_nodes": [
+      "world.selection"
+    ],
+    "wires_added": 0,
+    "wires_removed": 0,
+    "schedules_changed": false,
+    "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+  },
+  "selection_source_sha256": "efa367e48889a00a952a508aa8766d1c95647968ec84d2986d311a4af4ec3d6f",
+  "actual_annual_decision_outputs": {
+    "own": [
+      {
+        "year": 1,
+        "decision_count": 8,
+        "literal_decisions_sha256": "a341c2beccd1a4fe2ada8fcd4d8d05d1c7b1bb2addce0f43989f16ed98e419ef"
+      },
+      {
+        "year": 2,
+        "decision_count": 10,
+        "literal_decisions_sha256": "051852b5d61816d194b02137880e99bb57e0ac21be8905d02de98adf87fd5a11"
+      },
+      {
+        "year": 3,
+        "decision_count": 8,
+        "literal_decisions_sha256": "34df0dd5b5cfafc3cde8a88e424daa8136a97c168e8340ed88809c9b1b77b013"
+      },
+      {
+        "year": 4,
+        "decision_count": 10,
+        "literal_decisions_sha256": "4eed19209315b1ae49ec4e84cd5c156f5e23a6aba5df887044992ae423389df6"
+      }
+    ],
+    "reference": [
+      {
+        "year": 1,
+        "decision_count": 8,
+        "literal_decisions_sha256": "a341c2beccd1a4fe2ada8fcd4d8d05d1c7b1bb2addce0f43989f16ed98e419ef"
+      },
+      {
+        "year": 2,
+        "decision_count": 10,
+        "literal_decisions_sha256": "051852b5d61816d194b02137880e99bb57e0ac21be8905d02de98adf87fd5a11"
+      },
+      {
+        "year": 3,
+        "decision_count": 8,
+        "literal_decisions_sha256": "34df0dd5b5cfafc3cde8a88e424daa8136a97c168e8340ed88809c9b1b77b013"
+      },
+      {
+        "year": 4,
+        "decision_count": 10,
+        "literal_decisions_sha256": "4eed19209315b1ae49ec4e84cd5c156f5e23a6aba5df887044992ae423389df6"
+      }
+    ]
+  },
+  "scientist_observed_traces": {
+    "own": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "175b9b229d47981051a69f13bfe082ebf22e5b70722865f889cd92d1ad457248"
+    },
+    "reference": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "cca4ba583662d76bcf678c74d6e6bd223dc85633a88506ca2ea42331dd427103"
+    }
+  },
+  "original_native_receiver_unit_probes": [
+    {
+      "input": "empty_list",
+      "status": "rejected",
+      "error_type": "GraphRuntimeError",
+      "error": "empty native cycle requires an explicit empty decision batch"
+    },
+    {
+      "input": "sentinel",
+      "status": "accepted",
+      "return_is_none": true
+    }
+  ],
+  "native_receiver_source_file": "utopia/system/native_kernel.py",
+  "native_receiver_source_sha256": "2d7e2fd1c1063ae129c06b1bf22ba1d4288f7e787ad4dc3c6b7e1a3ed23b6322",
+  "generated_source_executed_in_diagnostic": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "original_measurement_or_selection_rewritten": false,
+  "whole_campaign_closed": false,
+  "publication_ready": false,
+  "immutable_original_input_files": {
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/request.json": "8ca950e513bc527ca5b3d1146b29c56a163ca57f4f7b6cdd17d2632afeeba88c",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-00.started.json": "76456d334c4716a9c91905a68fd0d073e0839f010f38eddab9c25acc37973728",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-00.completed.json": "0a3738066288d188f13491d16429405515e7423a3e3d26872c32e8cda4143a68",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-01.started.json": "9e89363a4a4fe72d35633238cb72624e8dd0e9df944ac100721f72159b2870cf",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-01.completed.json": "d669ae78a321be59f720609ec8058fa78692344393d2cea24898caf3d0d8f474",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-02.started.json": "d095290247e3225b58f60987538d8a11f5c80b89704de11506d658d74de3e790",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-02.completed.json": "1f1886afbcc635049631d7d8619ac607a8e2fa6d3c10f5c43012a2b3459040e5",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-03.started.json": "ab1bc29a1550cadb80a8e32f586b4c04178ad3d255ae414c213a652779828962",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-03.completed.json": "c96fc3daae3ee20e6f3bf4c1280a263c47dcbbe32ef79cead3af4b89652f47f6",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-04.started.json": "3199101f5c56805fbdfb9688167086c29a7dbb094a56a88151382f9e506ca14c",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-04.completed.json": "d558906338d44066f988a96d51210625fd3eaea03ef4cf9a9439d884010dfb4e",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-05.started.json": "950528d84b11721d648eb6eb927f5f4cf95069e57dfa3023c4e72d1666209032",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-05.completed.json": "25f7155a34a9cd1c7dd0ccec8d73efc20619bfaa8973415eba91cc40d1c72e34",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-06.started.json": "25fa7b49e9f2a878ce5b58ceae4a2497ab5eb3fad8274166220942dbfb644042",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-06.completed.json": "2a5792f0b6dd47fb064db54bbe61f0b367ba6b52f8789f09d0082f12bb0ec455",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-07.started.json": "c824518d718b07102b148f9705522fdd531d6c01cdea220d0bdda9cf09544b89",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-07.completed.json": "4d2b653bf98b7202097ac3980afa8d59a8d26ae7994db3ac8e10fa16221ed73c",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-08.started.json": "0c08f07485b404b96f956d0906862b25359ff80d4335495175e7ddba0c7b5dbe",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-08.completed.json": "7e59e5331fb0ca4134ae26dbc0f4504b4745c8bc9650b488ac92ca10aae16319",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-09.started.json": "6ae6f3baf383f4a6a94c06f8549d7ed27944136f558caf8db34729cef06d2fe2",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-09.completed.json": "829c34fbe0d21870dbdf7b4c95a7f9f90cb9edbd576c1ab568a0e9dc14139cbc",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-10.started.json": "842cc4dfa898c8906ccd4e8852553765767aa1fc0f7ee5b4d581cdf16d5fea2f",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-10.completed.json": "87a132b755340993978fdb3c5107b234a81ecfdc028fa942a25b8f56507b8fd3",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-11.started.json": "8873ed257cd794257d4104990c5262532cb13f51ac0c3a2d0f30e9b667c79826",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-11.completed.json": "ca29846a696732e46326c8bbff50eeb1d29b36c8e306df010533475da66b210d",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-12.started.json": "203dbe6ab9b81a8f356f2842b0b3ab7944e3a1bde61c0741a08820bfcb205202",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-12.completed.json": "e9c60fedcb86ac5e3302428d7db6005a970cb7b9dd636888ffe30c7d23d5db58",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-13.started.json": "246b7482dc680efd3d5cd55ff9cb8c3fb459cbd7846b6bc9da2f5b0f5a299274",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/step-13.completed.json": "69f18e389a9fac88c5ae1debbce8179ff43201f839a7c6581a28c80a015424a7",
+    "search/free-code-graph/history-1/content-utility/authoring/proposal-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/editor-session/authoring/generation-c23f07a0f73314ece47d39a7d38814bcc410b237f45125ea178d0aba836399f7/response.json": "a0e2a180b8d75121686f306f886093409fc5ea1ad85a54635e411bf405cd104b",
+    "search/free-code-graph/history-1/content-utility/worlds/native-adaptive-cb55dce9c17f9a575ff2923a-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "search/free-code-graph/history-1/content-utility/worlds/native-adaptive-cb55dce9c17f9a575ff2923a-s61001/replies/responses.sqlite": "0bf582d5e9025aa841d1e38851b7789c9b41ffa32ff713c7f42a95a97ec2d77d",
+    "search/free-code-graph/history-1/content-utility/worlds/native-adaptive-cb55dce9c17f9a575ff2923a-s61001/code-contexts.jsonl": "720c4383e40a86e21d233d86f3a5f39120f30a780f2764312add1429b1bbcf94",
+    "search/free-code-graph/history-1/content-utility/worlds/native-adaptive-cb55dce9c17f9a575ff2923a-s61001/system.json": "7ca5295b2c4920052f649041855a203660cbf0231f1fb5c3cf8e2aa27e84eb65",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/replies/responses.sqlite": "2d9838b9702829ddba3bd88df9b28ff06ae34b3cde77dfce7a470f8b270c90db",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/code-contexts.jsonl": "4476cf83848893cd9e5641962b07924ec1cddbf2cfe17de128c89ce41630e00c",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/system.json": "9df190475fee82e08bf222947d9f415a180aa1fedb03824146766a2bd3187276"
+  },
+  "campaign_state_snapshot_not_permanent_guard": {
+    "relative_path": "search/free-code-graph/history-1/content-utility/campaign/native-adaptive-state.json",
+    "snapshot_file_sha256": "8b1aafd4367a7c9c61b1ef01df20680aff18de1fe9cf41cc41ba875b4cb0a04a"
+  },
+  "interpretation": "The new literal selection edit removes the explicit empty-cycle sentinel and emits an empty list when no decisions exist. Every actually observed year is nonempty, with8/10/8/10 identical outputs and179 identical full scientist inputs/choices; the valid native outcome ties. A separate unit probe of the unchanged original receiver rejects [] and accepts the sentinel on a minimal empty conference input. This is a conditional ABI incompatibility, not an observed failure of this candidate world, a new scored counterfactual, full generated-code empty-cycle execution or reason to relabel/refill its outcome. The sentinel is not an accepted paper; original accepted counts come from actual paper review histories. Known author visibility confound still limits method/competence interpretation.",
+  "content_sha256": "51ea0e4e44612e244c5e393f1652bc12144985e7fcc7efe4e3e4f395ef9da4b8"
+}
