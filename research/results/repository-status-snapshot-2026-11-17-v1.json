@@ -14,6 +14,15 @@
   "current_document": "research/STATUS.md",
   "current_document_is_live_not_a_sealed_historical_snapshot": true,
   "historical_milestone_anchor_redirected_to_retained_parameter_study": true,
+  "post_commit_software_checks": {
+    "source_commit": "0ff4af9c6b1c01f4d76f9b036768fe056af8b9b4",
+    "tests": 59,
+    "failures": 0,
+    "seconds": 10.47,
+    "junit": "research/data/corrected-live-status-v1/pytest.xml",
+    "junit_file_sha256": "110cb6bf156f9a12d4d9a23bb35b0326d0ce0f734492c79cf2e26af6e351442f",
+    "scope": "Light publication entrypoint/current-requirement/content/all-slot/figure-data checks; overlapping software evidence, not independent scientific samples, original cold closure, PDF rendering or a new rebuild."
+  },
   "deleted_worktrees": 0,
   "deleted_raw_artifacts": 0,
   "deleted_branches": 0,

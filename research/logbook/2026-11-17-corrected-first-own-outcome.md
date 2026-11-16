@@ -560,3 +560,9 @@ The first light invocation passes14 entrypoint/current-requirement checks in
 requests. A direct check matches the new adaptive-U outcome/tell/hashes/next
 dispatch to its literal record. None of these narrow checks certify the full
 scientific study, independent evidence, significance or publication readiness.
+
+After committing0ff4af9c, the combined entrypoint/current-requirement/content/
+all-slot/figure-data group passes59 cases in10.47seconds. The retained JUnit
+and exact source/hash are in the navigation manifest. This invocation overlaps
+the earlier14/45 groups; those counts are not additive scientific evidence.
+No PDF/render/model/generated-code/native execution is performed by the checks.
