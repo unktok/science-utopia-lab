@@ -1,6 +1,23 @@
 # Current research status
 
-## Latest verified state: November16,2026 at17:47UTC / November17 02:47JST
+## Latest verified state: November16,2026 at18:06UTC / November17 03:06JST
+
+[All3 fresh references are complete and own optimization starts](results/native-corrected-choice-optimization-start-v1.json).
+Original42803/writer30048/supervisor29982 remain live. The comparison-only third
+reference has T36/U28.666666666666668/K200/uncollected0; its full input path is
+not compared here. First own uniform-priority/content-utility/history0/g0 is
+dispatched at18:01:54UTC (scbd86c6da048c335), without an own observation yet.
+This is native candidate evaluation underway, not measured gain or completion.
+
+[The canonical publication requirement table](publication/publication-ready-v3.md)
+is corrected from stale22/24 and104-page states to actual old24-slot closure/
+111-page artifact. R2/R3/R5/R6 remain open. [Four-step figure-data preparation](components/native-corrected-choice-figures-v1.md)
+checks all attempts/nulls/both endpoint scopes, including actual retained
+SCRIPTED public/native data.25 overlapping checks pass; no rendering or new
+scientific outcome is produced. All active scientific/analysis sources remain
+fixed, and no heavy independent QA/PDF/render/embedding work is started.
+
+## Earlier two-reference snapshot:17:47UTC / 02:47JST
 
 [Both fresh visible references now complete](results/native-corrected-choice-two-references-v1.json).
 Both retain U28.666666666666668/T36 and179 same complete scientist inputs/

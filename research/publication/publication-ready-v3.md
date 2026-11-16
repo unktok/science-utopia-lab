@@ -453,17 +453,23 @@ November12 05:47JST更新：新しいT（論文数）／U（固定内容評価�
 
 ## 完了に必要なもの
 
-以下の必要成果は変更しない。現状欄をNovember16の確認済み証拠へ更新する。
+以下の必要成果は変更しない。現状欄をNovember17JSTの確認済み証拠へ更新する。
 過去の時点付き本文・実験・原稿receiptはそのまま保持し、各証拠を独立反復へ合算しない。
 
 | 段階 | 必要な成果 | 現状 |
 | --- | --- | --- |
-| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 実装と複数の旧有限研究・選択固定評価は閉鎖済み。[三目的自由探索](../results/native-topic-free-optimization-closed-v1.json)と[後続source提示比較](../results/native-consumer-source-comparison-closed-v1.json)は全枠・元監査／費用／readout・own選択固定まで完了したが、それぞれの未使用評価はない。[新手法比較の13:30UTC時点の22/24件](../results/native-priority-twenty-second-own-outcome-v1.json)は未閉鎖。旧評価を新scopeへ流用せず、修正版authorの実モデル／native証明も未達 |
-| R2 | 重要で識別可能な研究上の答えと対照 | 未達。閉鎖6枠は同点4・弱い既知ルール再現1・実行null1、後続source提示8枠は7完走／1nullで全4自己選択が強い参照と同点。現在の22件も11同点／11悪化／参照超え0だが、[実際の可視性・作業フェーズ不整合](../components/native-author-workflow-visibility-correction-v1.md)により旧pipelineから純粋な目的・手法差を因果的に結論しない。最後の自由設計は実sourceが4年次で動き、18同方向command／179同一入力・選択で同点。[手設計対照](../results/native-terminal-cost-pilot-closed-v1.json)のC改善4は回収／未回収の会計上の差で、自動発明や実効率改善ではない。条件付き解析を大域最適性へ拡大せず、修正の効果やモデル理解を先取りせず、新規性・改善vetoも追加しない |
-| R3 | 精度と範囲を支える独立反復・追加条件 | 未達。pilotの変動と意味のある差から有限予算を定める |
-| R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 閉鎖6枠と後続source提示8枠は全枠・二重元監査／費用／readout、実行仕様・固定選択・図・費用まで保持。source提示の当初の出力先エラーも保存。現在の手法比較は22件prefixと全8生成session／102操作を保持し、8自由設計のnative観測も記録済み。ただし全24件閉鎖・all8結合集計・総費用は未完了。最終照合CLIの73軽量検査は実閉鎖の代用ではない。設計者の上流revision／変換手順は未特定。prefix・部品probe・critic・独立worldを同じ標本数にしない |
-| R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [確認済み104頁稿](../../paper/integrated-consumer-source-build-v1.json)は閉鎖source提示8枠まで含み、二重cached build・全頁画像一致／目視を完了。52図・49表・32文献。現在sourceは15件詳細表・欠陥診断・20件の別時点summary・主張と証拠の対応表を追加したが未build／未目視で、新ページ数は未確認。以前の意味ある全trackは保持。104頁版固有の最小再構築と焦点ある主会議稿は未完成。旧100頁の82-file再構築を104頁の証明へ流用しない |
-| R6 | 技術・重要性・先行研究・再現性を批判的に点検した最終ready判定 | 未達。肯定／否定いずれも重要な答えが必要 |
+| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 部分達成。[旧24枠・27世界は全閉鎖](../results/native-priority-method-comparison-closed-v1.json)し、二重監査・費用・全8著者結合まで完了。修正後の[実モデル3形状検証](../results/native-corrected-author-assay-closed-v1.json)も完了したが、技術検証と科学損失を分ける。[新しい1履歴×4世代の24枠探索](../results/native-corrected-choice-real-dispatch-v1.json)は実行中で、17:47UTC時点は対照2件完了／自己枠未測定。新scopeの選択後評価未実行。旧評価やSCRIPTED通しQAを新しい科学的証拠へ流用しない |
+| R2 | 重要で識別可能な研究上の答えと対照 | 未達。旧24自己枠は対照に12同点／12悪化／0改善、旧12自己選択は8同点／4悪化／0改善。[45操作の可視性・作業フェーズ不整合](../components/native-author-workflow-visibility-correction-v1.md)があり、純粋な目的・手法差やモデル能力を因果的に結論しない。[新しい既知参照2件](../results/native-corrected-choice-two-references-v1.json)のC差4も回収200→160／未回収0→40による既知ルールで、自動発明や実作業効率の改善ではない。新探索の有用な知見・重要性は未確定。大域最適性や新規性／改善vetoを追加しない |
+| R3 | 精度と範囲を支える独立反復・追加条件 | 未達。新探索は再利用world61001／optimizer_seed68011／replication_seeds[79011]の1履歴×4提案で、独立反復ではない。[両endpoint固定評価](../components/native-corrected-choice-fixed-evaluation-v1.md)は実装・軽量検証までで、実native通しQA・新scopeの厳格な未使用seed棚卸し・実評価は未実行。pilotの意味ある差と実測変動から有限予算を定め、QA数や同じpolicyの共有jobを標本数へ足さない |
+| R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 部分達成。[旧全24枠・全8著者・費用・可視性](../results/native-priority-method-comparison-closed-v1.json)は実閉鎖済みで102操作／5編集／52重複readを保持。修正後3形状の全記録と失敗した派生readoutも保持。新探索のcold／全枠／全8著者／可視性／作用readerは別の固定sourceで実際に待機中で、全結果・解析・作図は未完。[モデルのローカル由来](../results/designer-local-public-provenance-v2.json)は記録したが上流revision／変換手順は未特定で、[3層のHEAD照会](../results/designer-registry-head-approved-v1.json)を全986tensorの検証としない |
+| R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | 部分達成。[確認済み111頁統合稿](../../paper/integrated-priority-method-build-v1.json)は旧全24枠・固定選択・全8著者・実経路図・費用を含む。53図／52表／32文献、二重cached build・全頁画像一致／目視を完了。旧104頁も保持。111頁版固有の最小source再構築、修正後の新しい実測／解析／図の統合とそのbuild・目視、焦点ある投稿本文・付録は未完。古い稿の再構築を新しい稿の証明へ流用しない |
+| R6 | 技術・重要性・先行研究・再現性を批判的に点検した最終ready判定 | 未達。肯定／否定どちらでも重要な答えと適切な独立根拠が必要。近接研究との相違は実証する対象であり、一般的なcode／graph探索やQA完了を新規性にしない。最新証拠・最終稿に基づく批判的判断は未実施 |
+
+この表は現状の正本であり、上の日付付き22枠／104頁等は保存された過去のsnapshotである。
+publication-ready判定の必要成果は縮めない。ただし科学的真理のoracle、全世界の厳密微分、
+graph変更の必須化、ある手法の勝利を一律の追加完了条件にもせず、各主張の射程に合う証拠を求める。
+[現在の有限pilotから主張へ接続する判断](corrected-pilot-to-main-claim-v1.md)に従い、結果を見て
+有利な自己枠・評価seedへ補充したり、既知の参照を新発明へ言い換えたりしない。
 
 seed数やQA数だけを増やしてR2を閉じない。単発の改善、意図した新nodeの生成、
 弱い基準に勝つこと、モデルが提出できたことだけでは重要性の不足を埋めない。

@@ -1,0 +1,34 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-optimization-start.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T18:06:05+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "supervisor_pid": 29982,
+  "writer_pid": 30048,
+  "confirmed_live": true,
+  "reference_worlds_complete": 3,
+  "comparison_only_third_reference": {
+    "label": "literal-related", "optimizer_visible": false, "status": "complete",
+    "observation_file_sha256": "134c9bcb0f419f8f041a548439201177d11e6388419d390d8e300cd28177bb18",
+    "observation_content_sha256": "60070499756a2e6ffd335864fd0aa051631f71da545e11fb1ba0811aed5f3084",
+    "U": 28.666666666666668, "K_collected": 200.0, "K_uncollected": 0.0, "T": 36,
+    "L_U": -28.666666666666668, "L_C": -8.666666666666668,
+    "full_input_path_equivalence_measured_for_third_reference": false
+  },
+  "first_own_dispatch": {
+    "slot": {"generation": 0, "method": "uniform-priority", "objective": "content-utility", "replication": 0},
+    "started_utc": "2026-11-16T18:01:54.077436+00:00",
+    "suggestion_id": "scbd86c6da048c335",
+    "started_file_sha256": "1cf9e3f1db5a553a438203a271808854f4ad5543a1441c9d1fe9e2a6e2171c75",
+    "started_content_sha256": "335c3b71146b6c646fb7503b33e340ca5f6a87a499f0fc2ada962d924e20aadc",
+    "own_observation_present": false
+  },
+  "own_slots_completed_at_snapshot": 0,
+  "initial_choice_record_exists": true,
+  "failure_observed": false,
+  "final_source_bound_cold_audit_complete": false,
+  "new_own_gain_measured": false,
+  "publication_ready": false,
+  "scope": "Actual checked third reference and first optimizer ask/native dispatch, not first candidate loss, completed feedback update, all-study closure or measured new institutional improvement. Equal reference totals are not a third-world input/path equivalence claim."
+}

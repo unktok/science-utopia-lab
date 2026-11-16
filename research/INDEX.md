@@ -5,6 +5,16 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Actual corrected optimization begins](results/native-corrected-choice-optimization-start-v1.json):
+  all3 fresh references complete and first own uniform/U/g0 native dispatch
+  starts at18:01:54UTC. No own loss is yet measured at the18:06 snapshot.
+  [The current R1--R6 table](publication/publication-ready-v3.md) now reflects
+  old24-slot closure/111-page manuscript, not stale22/104 states, without
+  closing significance/independent-evidence/final-paper obligations.
+  [New four-step plot data](components/native-corrected-choice-figures-v1.md)
+  passes25 overlapping checks including the actual retained SCRIPTED-native
+  null; no new figure/render/scientific win is claimed.
+
 - [Two fresh corrected references are complete](results/native-corrected-choice-two-references-v1.json).
   Both have U28.6667/T36 and179 same actual scientist inputs/choices; the known
   terminal rule changes collected200→160/uncollected0→40 and lowers C by4.
