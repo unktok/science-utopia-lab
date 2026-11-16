@@ -57,3 +57,14 @@ development. The guard is not relaxed; retain the failure and run source-bound
 checks only after a commit, without changing HEAD/files during their execution.
 The prospective method/fixed readers explicitly Git-bind the changed designer
 lab/feedback/bank modules, not additional exclusions or arbitrary native drift.
+
+Subsequent actual verification at clean70a6bc06: original7194 passes91 cases in
+56.49s, including unchanged native-source guards and rejection of injected
+designer/scientist byte drift. Original5340 then exits0 with1 actual opt-in public
+test passing in100.45s. All3 real native document shapes use an actual Path
+certificate/public worker/role/feedback/next prompt/cold path and original
+audited fixture attribution. The24 real-container probes retain6 raised/6
+returned historical-context results and12/12 returned current-parameter results.
+HTTP, load suppression and child supervision are SCRIPTED. No actual model,
+new native world, scientist seed, measured loss or new-source model certificate
+is claimed. Exact verification/JUnit files remain in the component data folder.

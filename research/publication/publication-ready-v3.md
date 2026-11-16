@@ -7,6 +7,14 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November17 JST更新：[修正後実モデル3形状の技術検証](../results/native-corrected-author-assay-closed-v1.json)
+は85校正／35自由操作、全3明示提出で正常閉鎖し、二重cold／readoutも一致した。
+実測済みの新しい科学損失・有用な制度発明ではない。新たなパラメータ文脈の部品検証も
+24実コンテナprobe／SCRIPTED HTTP公開経路と91 source/component checkまで完了した。
+[次の有限研究設計](native-corrected-search-decision-v1.md)は同じ24自己枠を4世代へ割り振り、
+対照の実効的な移動と自由設計の損失feedbackを検証する。新runner／prepared plan／dispatchは未完。
+これらを重要な主張、独立証拠、焦点ある最終稿、投稿readyの代用にはしない。
+
 全24枠閉鎖後の[111頁改訂稿](../../paper/integrated-priority-method-build-v1.json)を生成・紙面確認した。
 53図／52表／32文献、source09c2e6d1から二重cached build、本文・log・全111頁画像が一致。
 原稿冒頭の根拠対応表、全24行、固定選択、実最適化経路図、全8著者の編集／入力作用／不整合、

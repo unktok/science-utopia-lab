@@ -1,5 +1,39 @@
 # Current research status
 
+## Latest verified state: November16,2026 at16:13UTC / November17 01:13JST
+
+[The corrected real-model assay closes](results/native-corrected-author-assay-closed-v1.json)
+in original12849,exit0, at15:56:43UTC:3/3 cases submit explicitly.85 directed
+controls and35 actual free calls have no observed phase/loss-view mismatches or
+unknown responses. Two base programs change source, one retains;7 writes,
+no new node/wire/schedule. Paired original-source cold reads and paired complete
+readouts match. Shared-host elapsed2595.3s is not a speed benchmark. No new native
+world or loss is measured, so no benefit/useful invention is claimed.
+
+[Current-parameter component feedback](components/native-component-parameter-context-v1.md)
+now implements an explicit optional projection rather than applying only old
+fixture parameters. Its clean70a6bc06 public check actually passes with24 real
+container probes:12 historical-context diagnostics include6 missing-priority
+errors, while all12 current-parameter counterparts return. HTTP/child supervision
+are SCRIPTED; there is no new real-model certificate or whole-world outcome.
+91 clean-source/component/readout tests also pass, with original preparation
+failures retained. The legacy assay source and all original science stay unchanged.
+
+[The next finite research decision](publication/native-corrected-search-decision-v1.md)
+uses the same24-own/27-world ceiling with four-step feedback histories, an
+adequately active initial-choice comparator and corrected free authoring. It
+explicitly separates best-known returned incumbents from own-only discoveries.
+Its new runner/full verification/prepared plan/dispatch are not yet completed.
+Do not reuse old certificates, invent losses or report a new optimization result.
+
+The111-page reviewed PDF remains the original closed-study snapshot; these new
+technical results are in the records, not a newly built PDF. R2/R3/R5/R6 and the
+publication-ready goal remain open. No study/QA/report process from this completed
+chain remains active. Future scientific comparison is the priority, not another
+automatic seed increase or a claim that an active worker still exists.
+
+## Earlier dated snapshots (retained history, not current process status)
+
 Last scientific snapshot: November16,2026 at14:21UTC/23:21JST.
 Latest software verification:14:32UTC/23:32JST.
 This is a verified dated snapshot, not a live heartbeat.

@@ -1,0 +1,486 @@
+{
+  "calibration_transport_usage": {
+    "chat_POSTs": 85,
+    "completion_signal_unknown": 0,
+    "length_terminated_responses": 0,
+    "nonfinal_responses": 0,
+    "output_tokens": {
+      "known_sum": 4151,
+      "unknown_responses": 0
+    },
+    "prompt_tokens": {
+      "known_sum": 1786624,
+      "unknown_responses": 0
+    }
+  },
+  "cases": [
+    {
+      "actual_calibration_records": 28,
+      "actual_proposal_started_calls": 14,
+      "calibration_certificate_file_sha256": "4b3e5c800157fb51c2069ffe069fd299f258339df536ca0dde35c1cfed914cdc",
+      "calibration_copy_diagnostics": {
+        "exact": 26,
+        "noncopy": 2
+      },
+      "calibration_transport_usage": {
+        "chat_POSTs": 28,
+        "completion_signal_unknown": 0,
+        "length_terminated_responses": 0,
+        "nonfinal_responses": 0,
+        "output_tokens": {
+          "known_sum": 1385,
+          "unknown_responses": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 585928,
+          "unknown_responses": 0
+        }
+      },
+      "component_fixture_status_counts": {
+        "returned": 8
+      },
+      "free_submission_available": true,
+      "free_transport_usage": {
+        "chat_POSTs": 14,
+        "completion_signal_unknown": 0,
+        "length_terminated_responses": 0,
+        "nonfinal_responses": 0,
+        "output_tokens": {
+          "known_sum": 2491,
+          "unknown_responses": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 495413,
+          "unknown_responses": 0
+        }
+      },
+      "implementation_phase_calls": 5,
+      "label": "parent-zero",
+      "literal_base_change": {
+        "added_node_ids": [],
+        "authored_base_program_sha256": "84a2164c4ea98d15218c4171b81f3a0b88f108caa5895775618f04e37bc9e5ea",
+        "authored_continuous_coordinate_count": 0,
+        "authored_factor_count": 0,
+        "changed_source_nodes": [
+          {
+            "after_source_value_sha256": "5bbcf9581c70de060e5191ab3a058e33c636abd4ce0d26608b3e00560024485f",
+            "before_source_value_sha256": "7b59be5606acd8ba557e0328d0c9f64ff82d9cba1ecfeabf085670aa23ace225",
+            "node_id": "developer-catalog-agenda"
+          }
+        ],
+        "changed_top_level_fields": [
+          "mechanisms"
+        ],
+        "connections_changed": false,
+        "literal_base_changed": true,
+        "literal_operation_paths": [
+          "/mechanisms/22/parameters/code_artifact/source",
+          "/mechanisms/22/parameters/code_artifact/source"
+        ],
+        "mixed_distribution_instantiated": false,
+        "new_native_loss": null,
+        "parent_program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+        "removed_node_ids": [],
+        "schedules_changed": false,
+        "scope": "Literal base-document change only; no behavioral equivalence or native benefit inferred."
+      },
+      "measured_full_output_reservation_fits_every_free_prompt": true,
+      "missing_or_different_loss_views": 0,
+      "new_native_loss": null,
+      "phase_counts": {
+        "general": 7,
+        "implementation": 5,
+        "planning": 1,
+        "submit": 1
+      },
+      "recorded_component_probe_attempts": 8,
+      "request_sha256": "dcbc32fbcf785ead398e7fe44f8d5299104bdd9014d7030c786e0e75d45850ce",
+      "session": {
+        "attempted_edit_steps": 2,
+        "attempted_tool_counts": {
+          "finish": 1,
+          "plan": 1,
+          "read_file": 10,
+          "write_file": 2
+        },
+        "completed_steps": 14,
+        "duplicate_unchanged_read_observations": 1,
+        "explicit_finish_observed": true,
+        "status_counts": {
+          "applied": 9,
+          "finished": 1,
+          "rejected": 4
+        },
+        "successful_document_changes": 2,
+        "terminal_status": "generated"
+      },
+      "visibility": {
+        "any_phase_interpretation_mismatch_calls": 0,
+        "missing_or_different_loss_views": 0,
+        "serializer_mismatch_calls": 0,
+        "uncommitted_responses": 0
+      }
+    },
+    {
+      "actual_calibration_records": 28,
+      "actual_proposal_started_calls": 14,
+      "calibration_certificate_file_sha256": "ad2a78228255d73683dee7f161db5d96a15f624c179303b789add9c9e69ed569",
+      "calibration_copy_diagnostics": {
+        "exact": 26,
+        "noncopy": 2
+      },
+      "calibration_transport_usage": {
+        "chat_POSTs": 28,
+        "completion_signal_unknown": 0,
+        "length_terminated_responses": 0,
+        "nonfinal_responses": 0,
+        "output_tokens": {
+          "known_sum": 1385,
+          "unknown_responses": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 592442,
+          "unknown_responses": 0
+        }
+      },
+      "component_fixture_status_counts": {
+        "raised": 10,
+        "returned": 10
+      },
+      "free_submission_available": true,
+      "free_transport_usage": {
+        "chat_POSTs": 14,
+        "completion_signal_unknown": 0,
+        "length_terminated_responses": 0,
+        "nonfinal_responses": 0,
+        "output_tokens": {
+          "known_sum": 5900,
+          "unknown_responses": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 529385,
+          "unknown_responses": 0
+        }
+      },
+      "implementation_phase_calls": 0,
+      "label": "parent-terminal",
+      "literal_base_change": {
+        "added_node_ids": [],
+        "authored_base_program_sha256": "214573a465d1474954fa379781151d68a57861cd86b237e29cc6f2206d611981",
+        "authored_continuous_coordinate_count": 0,
+        "authored_factor_count": 0,
+        "changed_source_nodes": [
+          {
+            "after_source_value_sha256": "61220be54aa93bd178b88777120880048da0f4b4152422dce3f9dffdfb8482f7",
+            "before_source_value_sha256": "7b59be5606acd8ba557e0328d0c9f64ff82d9cba1ecfeabf085670aa23ace225",
+            "node_id": "developer-catalog-agenda"
+          }
+        ],
+        "changed_top_level_fields": [
+          "mechanisms"
+        ],
+        "connections_changed": false,
+        "literal_base_changed": true,
+        "literal_operation_paths": [
+          "/mechanisms/22/parameters/code_artifact/source",
+          "/mechanisms/22/parameters/code_artifact/source",
+          "/mechanisms/22/parameters/code_artifact/source",
+          "/mechanisms/22/parameters/code_artifact/source",
+          "/mechanisms/22/parameters/code_artifact/source"
+        ],
+        "mixed_distribution_instantiated": false,
+        "new_native_loss": null,
+        "parent_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+        "removed_node_ids": [],
+        "schedules_changed": false,
+        "scope": "Literal base-document change only; no behavioral equivalence or native benefit inferred."
+      },
+      "measured_full_output_reservation_fits_every_free_prompt": true,
+      "missing_or_different_loss_views": 0,
+      "new_native_loss": null,
+      "phase_counts": {
+        "general": 12,
+        "planning": 1,
+        "submit": 1
+      },
+      "recorded_component_probe_attempts": 20,
+      "request_sha256": "94c74ec3000312d440ed5710307ef478190560d3de65ff2f267eb0f8e9ed4c2f",
+      "session": {
+        "attempted_edit_steps": 5,
+        "attempted_tool_counts": {
+          "finish": 1,
+          "plan": 1,
+          "read_file": 7,
+          "write_file": 5
+        },
+        "completed_steps": 14,
+        "duplicate_unchanged_read_observations": 1,
+        "explicit_finish_observed": true,
+        "status_counts": {
+          "applied": 13,
+          "finished": 1
+        },
+        "successful_document_changes": 5,
+        "terminal_status": "generated"
+      },
+      "visibility": {
+        "any_phase_interpretation_mismatch_calls": 0,
+        "missing_or_different_loss_views": 0,
+        "serializer_mismatch_calls": 0,
+        "uncommitted_responses": 0
+      }
+    },
+    {
+      "actual_calibration_records": 29,
+      "actual_proposal_started_calls": 7,
+      "calibration_certificate_file_sha256": "e4f0b0e4055ff13863f448ead3b62807d8a688f94b2592d743363f53d4e8f6a9",
+      "calibration_copy_diagnostics": {
+        "exact": 27,
+        "noncopy": 2
+      },
+      "calibration_transport_usage": {
+        "chat_POSTs": 29,
+        "completion_signal_unknown": 0,
+        "length_terminated_responses": 0,
+        "nonfinal_responses": 0,
+        "output_tokens": {
+          "known_sum": 1381,
+          "unknown_responses": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 608254,
+          "unknown_responses": 0
+        }
+      },
+      "component_fixture_status_counts": {},
+      "free_submission_available": true,
+      "free_transport_usage": {
+        "chat_POSTs": 7,
+        "completion_signal_unknown": 0,
+        "length_terminated_responses": 0,
+        "nonfinal_responses": 0,
+        "output_tokens": {
+          "known_sum": 1290,
+          "unknown_responses": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 239542,
+          "unknown_responses": 0
+        }
+      },
+      "implementation_phase_calls": 3,
+      "label": "after-feature-write",
+      "literal_base_change": {
+        "added_node_ids": [],
+        "authored_base_program_sha256": "c61f9b554a916750e62db9328d5e9bc062309457e4936470d1e641d090e1d853",
+        "authored_continuous_coordinate_count": 0,
+        "authored_factor_count": 0,
+        "changed_source_nodes": [],
+        "changed_top_level_fields": [],
+        "connections_changed": false,
+        "literal_base_changed": false,
+        "literal_operation_paths": [],
+        "mixed_distribution_instantiated": false,
+        "new_native_loss": null,
+        "parent_program_sha256": "c61f9b554a916750e62db9328d5e9bc062309457e4936470d1e641d090e1d853",
+        "removed_node_ids": [],
+        "schedules_changed": false,
+        "scope": "Literal base-document change only; no behavioral equivalence or native benefit inferred."
+      },
+      "measured_full_output_reservation_fits_every_free_prompt": true,
+      "missing_or_different_loss_views": 0,
+      "new_native_loss": null,
+      "phase_counts": {
+        "general": 3,
+        "implementation": 3,
+        "planning": 1
+      },
+      "recorded_component_probe_attempts": 0,
+      "request_sha256": "547a82b2f235623ef434d8acad33978c5eccf25b0626fbe46536ad2b0e477f5b",
+      "session": {
+        "attempted_edit_steps": 0,
+        "attempted_tool_counts": {
+          "finish": 1,
+          "plan": 1,
+          "read_file": 5
+        },
+        "completed_steps": 7,
+        "duplicate_unchanged_read_observations": 1,
+        "explicit_finish_observed": true,
+        "status_counts": {
+          "applied": 3,
+          "finished": 1,
+          "rejected": 3
+        },
+        "successful_document_changes": 0,
+        "terminal_status": "generated"
+      },
+      "visibility": {
+        "any_phase_interpretation_mismatch_calls": 0,
+        "missing_or_different_loss_views": 0,
+        "serializer_mismatch_calls": 0,
+        "uncommitted_responses": 0
+      }
+    }
+  ],
+  "content_sha256": "b7176e2b4ca2b97c233ef7757768a2b1dff7d05a2983b03d35c9986d049743f8",
+  "current_parameter_public_QA": {
+    "HTTP_and_process_supervision": "SCRIPTED",
+    "actual_model_POSTs": 0,
+    "cases": [
+      {
+        "SCRIPTED_proposal_POSTs": 3,
+        "actual_generic_controls": 28,
+        "actual_model_POSTs": 0,
+        "actual_public_certificate_Path_and_paired_cold": true,
+        "current_parameter_probe_statuses": [
+          "returned",
+          "returned",
+          "returned",
+          "returned"
+        ],
+        "label": "parent-zero",
+        "literal_historical_probe_statuses": [
+          "raised",
+          "returned",
+          "raised",
+          "returned"
+        ],
+        "new_native_worlds": 0
+      },
+      {
+        "SCRIPTED_proposal_POSTs": 3,
+        "actual_generic_controls": 28,
+        "actual_model_POSTs": 0,
+        "actual_public_certificate_Path_and_paired_cold": true,
+        "current_parameter_probe_statuses": [
+          "returned",
+          "returned",
+          "returned",
+          "returned"
+        ],
+        "label": "parent-terminal",
+        "literal_historical_probe_statuses": [
+          "raised",
+          "returned",
+          "raised",
+          "returned"
+        ],
+        "new_native_worlds": 0
+      },
+      {
+        "SCRIPTED_proposal_POSTs": 3,
+        "actual_generic_controls": 29,
+        "actual_model_POSTs": 0,
+        "actual_public_certificate_Path_and_paired_cold": true,
+        "current_parameter_probe_statuses": [
+          "returned",
+          "returned",
+          "returned",
+          "returned"
+        ],
+        "label": "after-feature-write",
+        "literal_historical_probe_statuses": [
+          "raised",
+          "returned",
+          "raised",
+          "returned"
+        ],
+        "new_native_worlds": 0
+      }
+    ],
+    "content_sha256": "6226e9375ed6717fba85ebfbeeb9a89556546208c4f63dfb699ca1ca70fc5b82",
+    "new_native_worlds": 0,
+    "original_assay_plan_file_sha256": "a1a83762f5cc71abb735dab832b2b92e6bb4a1f6d82900899ee2f7ac200b2c09",
+    "original_raw_inventory_sha256": "6b39789af8df2635e1a6376fff70df3564dc7b446087f767e8bd7f8528416a67",
+    "publication_ready": false,
+    "real_container_probes": 24,
+    "real_new_source_model_calibration_verified": false,
+    "schema": "scienceutopia.current-parameter-public-QA.v1",
+    "source_commit": "70a6bc062715c006762aab351936bc010163edad",
+    "whole_native_world_verified": false
+  },
+  "current_parameter_public_QA_verification_file_sha256": "b518fa900eb14c84ee19590e5884b9b2cde46a490d6d18cc470c8a2ecb00c12e",
+  "free_transport_usage": {
+    "chat_POSTs": 35,
+    "completion_signal_unknown": 0,
+    "length_terminated_responses": 0,
+    "nonfinal_responses": 0,
+    "output_tokens": {
+      "known_sum": 9681,
+      "unknown_responses": 0
+    },
+    "prompt_tokens": {
+      "known_sum": 1264340,
+      "unknown_responses": 0
+    }
+  },
+  "held_out_conditions_consumed": false,
+  "interpretation": "All3 fixed corrected-source free sessions close with explicit submissions and zero observed phase/loss-view mismatches. Two base sources change, one retains; no new node/wire/schedule. No native benefit/equivalence inferred. New optional parameter context has real-container/SCRIPTED-HTTP public proof, not a real-model certificate or scientific outcome. Original scientific24-slot record and all adverse/null outcomes unchanged.",
+  "new_optional_context_real_model_certificate": false,
+  "new_scientific_comparison_dispatched": false,
+  "new_scientific_losses": 0,
+  "new_scientific_native_worlds": 0,
+  "original_assay_exit_code": 0,
+  "original_assay_handle": 12849,
+  "original_clean_source_tests_exit_code": 0,
+  "original_clean_source_tests_handle": 7194,
+  "original_clean_source_tests_passed": 91,
+  "original_cold_exit_codes": [
+    0,
+    0
+  ],
+  "original_cold_handles": [
+    38364,
+    26495
+  ],
+  "original_optional_context_QA_exit_code": 0,
+  "original_optional_context_QA_handle": 5340,
+  "original_readout_exit_codes": [
+    0,
+    0
+  ],
+  "original_readout_handles": [
+    11095,
+    5297
+  ],
+  "original_terminal": {
+    "completed_cases": 3,
+    "content_sha256": "37450d527fb66250fa43603043f377c7aef03ea51536c3327f3342e48a23a779",
+    "corrected_free_invention_or_loss_gain_claimed": false,
+    "ended_utc": "2026-11-16T15:56:43.552840+00:00",
+    "new_native_worlds": 0,
+    "publication_ready": false,
+    "schema": "scienceutopia.native-corrected-author-assay.v1.terminal",
+    "stage": "after-feature-write:free-generation",
+    "status": "closed"
+  },
+  "paired_original_cold_file_sha256": "da3855c42f1cbd0ea74344863d2075bfaa59449c0c71acc6dafbdc906df135fc",
+  "paired_readout_content_sha256": "abee5ee8b88a2567783032b8a89ee55854f2cfe1d5d099c2068626bdcbe6309f",
+  "plan_content_sha256": "09a483a8dc675b84a34c11d101582d328d0eb55cdb52d10f3ccb6b3957793d48",
+  "plan_file_sha256": "a1a83762f5cc71abb735dab832b2b92e6bb4a1f6d82900899ee2f7ac200b2c09",
+  "preserved_first_derived_readout": {
+    "file_sha256": "f87d73c586319dc075592caa43b0410d38a447bb4fd929ad797e1ef70e7550a3",
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-author-assay-v1-a1/report-1/report.json",
+    "projection_error": "Read flat done for calibration records instead of their original provider envelope; falsely counted85 nonfinal responses. Original actual responses/cold passes unchanged; fixed at70a6bc06, no scientific rerun."
+  },
+  "publication_ready": false,
+  "raw_inventory_sha256": "6b39789af8df2635e1a6376fff70df3564dc7b446087f767e8bd7f8528416a67",
+  "role_load_token_counts": {
+    "eval_count": {
+      "known_sum": 0,
+      "unknown_responses": 6
+    },
+    "prompt_eval_count": {
+      "known_sum": 0,
+      "unknown_responses": 6
+    }
+  },
+  "schema": "scienceutopia.native-corrected-author-assay-closed.v1",
+  "separate_role_load_POSTs": 6,
+  "shared_host_elapsed_seconds": 2595.295495,
+  "source_commits": {
+    "assay": "2f8d8ac38e10fbe006e399ecb846846916c95dce",
+    "readout_and_new_optional_context_QA": "70a6bc062715c006762aab351936bc010163edad"
+  }
+}

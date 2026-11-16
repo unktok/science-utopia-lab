@@ -19,7 +19,12 @@
 重要な修正：[設計者の文書可視性と作業フェーズの不整合](research/components/native-author-workflow-visibility-correction-v1.md)
 を実記録・完全な元世界データで再現し、次回ソース向けに修正した。元実験の旧ソースは変更せず、
 測定損失も消さないが、その旧比較からモデル固有能力や純粋な目的／手法差を因果的に結論しない。
-修正後の実モデル校正・有効性は未実証であり、87件の軽量検証やSCRIPTED native通し検証とは区別する。
+その後、可視性修正後の[実モデル3形状検証は全件完了](research/results/native-corrected-author-assay-closed-v1.json)した。
+85校正／35自由操作で明示提出3件、不整合0件。ただし新たな科学損失は測っておらず、改善の証明ではない。
+さらに、古い部品入力のパラメータと現行制度を混同しない[明示的なパラメータ投影](research/components/native-component-parameter-context-v1.md)
+を実装し、24実コンテナprobeと公開API／coldを確認した。こちらのHTTPはSCRIPTEDで、新たな実モデル校正ではない。
+[次の設計](research/publication/native-corrected-search-decision-v1.md)は世界数を増やすのでなく、
+同じ24自己枠を4世代の損失feedbackへ使い、適切な対照と自由制度探索を接続する。実runnerの準備・実行は残る。
 最新の確認済み統合PDFは[111ページの原稿記録](paper/integrated-priority-method-build-v1.json)
 と[PDF](output/pdf/science-utopia-lab-integrated-priority-method-working-paper.pdf)。
 以前の意味ある研究を保持し、元世界の全24候補・12固定選択・全8設計者操作／作用／可視性・

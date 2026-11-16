@@ -5,6 +5,16 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Corrected real-model assay: all3 cases closed](results/native-corrected-author-assay-closed-v1.json)
+  retains85 directed controls/35 free actions, two source changes/one retention,
+  zero observed phase/loss-view mismatches and matching paired cold/readouts.
+  No new native loss is measured. [Current-parameter component feedback](components/native-component-parameter-context-v1.md)
+  passes91 source/component checks and an actual24-probe container/public-API
+  QA with SCRIPTED HTTP, not a new model certificate or scientific gain.
+  [Next research decision](publication/native-corrected-search-decision-v1.md)
+  keeps24 own slots but deepens feedback, uses meaningful restricted moves and
+  separates best-known incumbents from own-only invention; its runner is pending.
+
 - [Actual corrected-author real-model assay dispatch](results/native-corrected-author-assay-dispatch-v1.json)
   fixes three real document shapes/requests at2f8d8ac3 and uses fresh source/
   model/backend-bound calibration plus one free session per shape. The first
