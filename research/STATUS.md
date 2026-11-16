@@ -1,6 +1,24 @@
 # Current research status
 
-## Latest verified state: November16,2026 at18:44UTC / November17 03:44JST
+## Latest verified state: November16,2026 at18:53UTC / November17 03:53JST
+
+[First corrected free/U/g0 submission reaches native execution](results/native-corrected-choice-first-free-submission-v1.json).
+The original session finishes explicitly after14 actions (plan1/read7/write5/
+finish1), with no pending response. Its literal returned definition matches
+the outer result and original campaign pending definition; one candidate is
+generated/compiled and actual scientist requests begin. No free loss is yet
+measured. Only the catalog-agenda source changes: node IDs/wires/schedules
+remain unchanged. All five write ASTs match each other but differ from the
+parent; five literal edits are not five invented algorithms. Its duration
+comparison contradicts its comment, and is evaluated literally, not repaired.
+
+The complete14-intent visibility prefix has zero phase/loss-view mismatches;
+no implementation checkpoint was reached. This is not a proof of every possible
+interface path, native benefit or publication readiness. Both prior numeric
+initial outcomes remain worse by1. Original42803 and all scientific settings
+remain unchanged; the whole24-slot study and final paired analyses are pending.
+
+## Earlier free-author start:18:44UTC / 03:44JST
 
 [Free/U/g0 passes fresh readiness and enters production](results/native-corrected-choice-first-free-author-start-v1.json).
 The actual request-specific certificate passes28 controls, without reusing

@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First corrected free submission and actual native execution](results/native-corrected-choice-first-free-submission-v1.json):
+  explicit finish after14 actions; the returned definition matches the actual
+  pending campaign and one generated candidate starts scientist requests.
+  Five literal writes share one AST, different from the parent; only agenda
+  code changes, not nodes/wiring/schedules. Its comment/comparison inconsistency
+  is retained and evaluated, not repaired or rejected. No free loss/gain yet.
+
 - [First corrected free-author production session starts](results/native-corrected-choice-first-free-author-start-v1.json):
   fresh actual28-control request-specific calibration passes. The18:44 prefix
   has4 intents/3 completed plan/read steps and1 unknown pending reply, no

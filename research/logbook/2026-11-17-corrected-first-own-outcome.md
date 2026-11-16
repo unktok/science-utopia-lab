@@ -70,3 +70,21 @@ that early zero into all-session correctness, code understanding or benefit.
 [Exact request/binding/certificate and prefix](../results/native-corrected-choice-first-free-author-start-v1.json).
 Free submission, execution and native loss remain unobserved. No raw output,
 source, request or measured numeric result is changed to obtain this start.
+
+At18:53:39UTC the first actual free/U/g0 session has explicitly finished after
+14 completed actions: plan1/read7/write5/finish1, no pending reply. Its complete
+available prompt/receipt chain verifies and has no phase/loss-view mismatches;
+no implementation-phase call occurred. Inner/outer/original pending definitions
+match exactly. One generated/compiled candidate starts actual native scientist
+requests (10 observed at this dated prefix); no own free loss is present yet.
+[Exact terminal, returned-program and native-start evidence](../results/native-corrected-choice-first-free-submission-v1.json).
+
+The changed catalog-agenda code has a different AST from the measured parent,
+but all five literal writes have the same AST. Later whitespace changes are
+not new algorithms. The final submitted text matches step11, not an earlier
+draft; mechanism IDs/connections/schedules stay unchanged. Direct static
+inspection shows the minimum of (-years, topic), favoring longer durations,
+despite the author's shortest-duration comment. This is not diagnosed as an
+interface failure, silently corrected or vetoed: the submitted policy must be
+measured as it is. Neither source change nor completed component probes proves
+useful invention, and the eventual whole-study paired cold is still required.

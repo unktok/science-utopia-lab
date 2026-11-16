@@ -1,0 +1,53 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-first-free-submission.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T18:53:39+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "slot": {"generation": 0, "method": "free-code-graph", "objective": "content-utility", "replication": 0},
+  "request_sha256": "774e5ee1ae7ada4b3d10bb8288ea454aa88f555b602221d166d4b56b995bb915",
+  "session_binding_sha256": "797dc695e27c8f807066d68eb85d8c390f07d66b5cfa6670529321195356b3ff",
+  "completed_session": {
+    "started_calls": 14, "completed_steps": 14, "started_without_committed_receipt": 0,
+    "attempted_tool_counts": {"finish": 1, "plan": 1, "read_file": 7, "write_file": 5},
+    "status_counts": {"applied": 13, "finished": 1},
+    "successful_document_changes": 5,
+    "duplicate_unchanged_read_observations": 1,
+    "explicit_finish_observed": true, "terminal_status": "generated",
+    "response_file_sha256": "5d62bdb1ce269586ae646775fd70053cdcbdc5017365d900b20ba532ac86d105",
+    "response_content_sha256": "de4785b7494a19113672bfd0a751ed0febee27026282c24d35810565f898d8ed",
+    "outer_result_file_sha256": "9f6c0ea7d59401f9c8a9fbef034319b9e9a426b4bd002565e23bf4e136a3e570",
+    "outer_result_content_sha256": "219c3f148901609bceca8fb3f7b32eca8e9213bc0fb7050430d426a0a6c476b9",
+    "inner_outer_and_original_pending_definitions_equal": true,
+    "whole_visibility_prefix": {
+      "phase_counts": {"general": 12, "planning": 1, "submit": 1},
+      "observed_phase_interpretation_mismatches": 0,
+      "observed_missing_or_different_loss_views": 0,
+      "implementation_phase_calls_observed": 0
+    }
+  },
+  "submitted_program": {
+    "suggestion_id": "native-adaptive-fc757975b26905a80f27fc98",
+    "candidate_sha256": "8fec7e3ebb49352d5d2d27ee93db9a6d56bda863c5fe382a9b081296f4cc8813",
+    "parent_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+    "changed_top_level_fields": ["mechanisms"],
+    "changed_mechanism_ids": ["developer-catalog-agenda"],
+    "same_mechanism_ids_connections_and_schedules": true,
+    "parent_source_ast_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318",
+    "submitted_source_ast_sha256": "92abd7fca4e08d612abbef8acfbab88887184c99e4c078acedbf48bcc134c651",
+    "ast_hash_convention": "SHA256 of CPython3.11 ast.dump(ast.parse(source), include_attributes=False) UTF-8 text; diagnostic, not a semantic equivalence proof.",
+    "all_five_write_sources_share_submitted_ast": true,
+    "submitted_source_matches_literal_write_step": 11,
+    "code_inspection": "The submitted comparison minimizes (-c['years'], c['topic']), favoring longer catalog duration before lexical topic among the constructed candidates, contrary to its shortest-duration comment. This is an authored-program observation, not a measured native consequence, a reason to reject it, or evidence of an interface/transport bug."
+  },
+  "original_campaign_prefix": {"generated": true, "compiled": true, "generation_error": null, "pending_draws": 1, "pending_observations": 0, "completed_records": 0},
+  "native_world_started": true,
+  "observed_scientist_request_prefix": {"requests": 10, "scope": "Available wire-requests.jsonl prefix at observation, not final totals or complete response accounting."},
+  "component_result_files_observed": 20,
+  "component_result_count_scope": "Recorded files only; neither a new full native audit nor twenty independent institutions or loss measurements.",
+  "free_native_loss_measured": false,
+  "full_study_cold_audit_complete": false,
+  "useful_new_institution_demonstrated": false,
+  "publication_ready": false,
+  "scope": "Actual fresh calibrated free submission, exact returned-definition propagation and subsequent native evaluation start. Literal edits are not five distinct algorithms: all five write ASTs match, while the final source AST differs from the measured parent. No source/request/candidate repair, hidden rejection/refill or loss rewriting is performed. Original scientific writer/supervisor and declared finite study remain unchanged."
+}
