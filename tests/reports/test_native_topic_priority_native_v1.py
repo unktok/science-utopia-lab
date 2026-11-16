@@ -130,7 +130,12 @@ def test_zero_priority_full_inputs_and_changed_priority_actuation_with_double_co
             'assignments': row['assignments'], 'physical_proof': proofs[0],
             'augmented_measurement': row['augmented']})
     left, zero, changed = summaries
-    assert left['assignments'] == zero['assignments']
+    # Keep the raw envelopes; graph-bound audit ids are intentionally distinct.
+    # Compare actual project facts rather than requiring those ids to match.
+    assignment_facts = lambda rows: [(e['year'], e['phase'], e['actor_ids'],
+        e['payload']['assignment'], e['payload']['eligible_actor_before'],
+        e['payload']['eligible_topics']) for e in rows]
+    assert assignment_facts(left['assignments']) == assignment_facts(zero['assignments'])
     for key in ('wire_requests', 'completed_responses', 'ordered_full_request_payload_sha256',
                 'ordered_literal_response_choices_sha256'):
         assert left['sequence'][key] == zero['sequence'][key]
