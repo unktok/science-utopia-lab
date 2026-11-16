@@ -1,10 +1,22 @@
 {
   "both_own_proposals_change_full_native_inputs": true,
   "classification": "SCRIPTED-native-ask-tell-not-scientific-optimization-result",
-  "content_sha256": "e8a016f6cb985c12b1cb8cbf25360fc3291b85b2bbe7c255549b50370347905b",
+  "content_sha256": "455c32038ae36b973c503953e8b77760d2231bfc38550c1a676e3d5b47fa211b",
   "exact_zero_anchor_measured_before_warm_start": true,
   "free_institution_domain_narrowed": false,
   "independent_optimizer_replications": false,
+  "initial_retention_failure": {
+    "cause": "JavaScript JSON roundtrip converted four original Python float200.0 values to int200 after sealing. Failed original remains; corrected receipt takes literal metric objects from untouched native verification and seals once. No scientific or native QA rerun.",
+    "exit_code": 1,
+    "junit_file": "research/data/native-topic-priority-search-v1/topic-priority-search-retention-v1-a1-junit.xml",
+    "junit_sha256": "f82cf2ba280899958d07d4d9bc0de5ce4f40c2e112ab7dbedab8d2db997593b2",
+    "original_handle": 93087,
+    "record": "research/results/native-topic-priority-search-preparation-initial-json-roundtrip-failed-v1.json",
+    "record_sha256": "e4ea5d80ff7c478df3602b2804ecc3b35cee44d97fcdfa2686383ec854d568ca",
+    "seconds": 13.52,
+    "tests_failed": 3,
+    "tests_passed": 65
+  },
   "light_checks": {
     "passed": 60,
     "seconds": 11.42
@@ -104,7 +116,7 @@
       "native_assignment_count": 20,
       "native_collected_cost": {
         "status": "measured",
-        "value": 200
+        "value": 200.0
       },
       "physical_proof_status": "complete",
       "sequence": {
@@ -122,7 +134,7 @@
       "native_assignment_count": 20,
       "native_collected_cost": {
         "status": "measured",
-        "value": 200
+        "value": 200.0
       },
       "physical_proof_status": "complete",
       "sequence": {
@@ -140,7 +152,7 @@
       "native_assignment_count": 20,
       "native_collected_cost": {
         "status": "measured",
-        "value": 200
+        "value": 200.0
       },
       "physical_proof_status": "complete",
       "sequence": {
@@ -158,7 +170,7 @@
       "native_assignment_count": 20,
       "native_collected_cost": {
         "status": "measured",
-        "value": 200
+        "value": 200.0
       },
       "physical_proof_status": "complete",
       "sequence": {

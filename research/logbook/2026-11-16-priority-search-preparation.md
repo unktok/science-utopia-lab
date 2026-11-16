@@ -52,3 +52,12 @@ authors keep those degrees of freedom. Unmeasured headroom, method superiority,
 independent optimization histories and future frozen unused evaluation remain
 open. The manuscript source snapshot stays2d19cc96; this later software work is
 not retroactively inserted into its reviewed PDF. R2/R3/R5/R6 remain open.
+
+The first retention suite93087 at3ab8f5a1 exits1:65 checks pass and three receipt
+checks reject a checksum mismatch. The transfer of the already sealed Python
+projection through JavaScript JSON serialization changed four200.0 cost values
+to integer200. The invalid initial receipt is preserved under its explicit
+initial-json-roundtrip-failed filename and its JUnit remains. A new receipt takes
+literal cost objects from untouched native verification, preserves Python JSON
+text through the file patch and seals once. No scientific data, native run,
+optimizer state or acceptance guard is changed; this is a retention error.
