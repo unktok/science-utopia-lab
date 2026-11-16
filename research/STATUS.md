@@ -1,6 +1,39 @@
 # Current research status
 
-## Latest verified state: November16,2026 at16:13UTC / November17 01:13JST
+## Latest verified state: November16,2026 at17:09UTC / November17 02:09JST
+
+The fresh initial real-backend certificate now passes all28 controls
+(contenta77104c2, file8c20d0a1). The actual writer has advanced to the first fresh
+reference `priority-zero`, with real scientist requests observed. This is a
+stage advance, not a completed reference loss, free proposal or scientific gain.
+The launch snapshot below preserves what was known at17:07UTC.
+
+[The corrected four-step real search is actually dispatched](results/native-corrected-choice-real-dispatch-v1.json)
+once from clean57b35144. Supervisor29982/writer30048 are confirmed live under
+original42803. The fresh real-backend readiness prefix has26 completed control
+files, but its final certificate and new scientific losses are not yet observed.
+The original native world, corpus, Qwen3-8B scientists and U/C objectives stay
+fixed. Three methods/two objectives/one four-step history give24 own slots plus
+3 fresh references. Development61001/79011 are explicitly reused, not unused
+conditions or independent optimizer replications. There is no new loss veto.
+
+[The actual full public/native software QA has completed](results/native-corrected-choice-full-public-qa-v1.json):
+original67383 exits0,1pass/973.84s. All24 attempts/27 native worlds, one prescribed
+execution-null with its next feedback,32 actual container probes and paired
+cold/cost/readouts pass. All351 audited core files match the actual scientific
+source. HTTP/corpus/synchronous child supervision are SCRIPTED, so this is not
+real-model capacity, beneficial invention or new science proof.
+
+Read-only47015 waits for the original writer AND supervisor exit before paired
+cold/cost analysis;48527 then exports all slots/paths and both6-policy endpoint
+scopes twice. No new model call/retry/refill is allowed in these continuations.
+Primary best-known incumbents preserve reference/own origin; own-only endpoints
+are separate and may be absent. Actual scientific gain and the unused-condition
+evaluation remain unmeasured. The111-page reviewed PDF is unchanged. R2/R3/R5/R6
+and the publication-ready goal remain open. Heavy independent QA/PDF/video is
+not run alongside real inference; light records/evaluation preparation continue.
+
+## Earlier verified state: November16,2026 at16:13UTC / November17 01:13JST
 
 [The corrected real-model assay closes](results/native-corrected-author-assay-closed-v1.json)
 in original12849,exit0, at15:56:43UTC:3/3 cases submit explicitly.85 directed

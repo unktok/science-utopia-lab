@@ -5,6 +5,16 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Corrected four-step real native search is dispatched](results/native-corrected-choice-real-dispatch-v1.json)
+  from clean57b35144 with24 own slots/3 fresh references, the original world,
+  U/C losses and fixed Qwen3-8B scientists. Original42803 owns the live writer;
+  fresh backend calibration passes28 controls and the first native reference
+  starts by17:09UTC, with no completed scientific loss yet. Read-only47015/48527 wait for original normal closure
+  before paired audits/costs/all-slot exports. [Full public software QA](results/native-corrected-choice-full-public-qa-v1.json)
+  has actually passed all24 attempts/27 worlds and the deliberate null, with
+  SCRIPTED HTTP, not a new scientific gain. [Dispatch log](logbook/2026-11-17-corrected-choice-real-dispatch.md).
+  Entries below are earlier dated records, not live process status.
+
 - [Corrected real-model assay: all3 cases closed](results/native-corrected-author-assay-closed-v1.json)
   retains85 directed controls/35 free actions, two source changes/one retention,
   zero observed phase/loss-view mismatches and matching paired cold/readouts.
@@ -13,7 +23,8 @@ This page is navigation, not a chronological experiment transcript.
   QA with SCRIPTED HTTP, not a new model certificate or scientific gain.
   [Next research decision](publication/native-corrected-search-decision-v1.md)
   keeps24 own slots but deepens feedback, uses meaningful restricted moves and
-  separates best-known incumbents from own-only invention; its runner is pending.
+  separates best-known incumbents from own-only invention; implementation and
+  actual dispatch are now recorded above.
 
 - [Actual corrected-author real-model assay dispatch](results/native-corrected-author-assay-dispatch-v1.json)
   fixes three real document shapes/requests at2f8d8ac3 and uses fresh source/

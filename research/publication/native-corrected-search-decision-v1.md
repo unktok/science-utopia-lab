@@ -32,7 +32,8 @@ hidden loss terms or acceptance gates. No new metric is chosen to obtain a win.
 
 Use three methods, two objectives, **one optimizer history with four proposals**
 per cell:24 own slots plus3 fresh common references, the same27-world ceiling as
-the old pilot. Reuse development world seed61001 and optimizer seed79011 explicitly;
+the old pilot. Reuse development world seed61001, optimizer_seed68011 and
+replication_seeds[79011] explicitly;
 neither is unused or an independent population. Four steps provide three
 feedback-conditioned opportunities, not convergence or sufficient independent
 evidence for a general method ranking. The eight free sessions do not grow.

@@ -81,3 +81,11 @@ It remains SCRIPTED HTTP/corpus/upstream/synchronous child supervision, not
 real-model capacity, scientific loss, unused evaluation or publication readiness.
 Any real run still needs a separately frozen source/plan and fresh per-request
 real-backend certificates. The083f374e test checkout is left unchanged.
+
+Subsequently, the separate clean57b35144 scientific source prepares and actually
+dispatches once under original42803. Its exact351 core files match that QA;
+fresh real-backend readiness is underway at17:07UTC, not yet a new native loss.
+[The dispatch record](../results/native-corrected-choice-real-dispatch-v1.json)
+binds the actual plan hashes/PIDs/models/budgets and waiting read-only paired
+closure/readout handles. The original source remains unchanged. The above
+preparation entries are dated history, not current worker status or science.

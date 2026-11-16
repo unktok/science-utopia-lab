@@ -24,7 +24,13 @@
 さらに、古い部品入力のパラメータと現行制度を混同しない[明示的なパラメータ投影](research/components/native-component-parameter-context-v1.md)
 を実装し、24実コンテナprobeと公開API／coldを確認した。こちらのHTTPはSCRIPTEDで、新たな実モデル校正ではない。
 [次の設計](research/publication/native-corrected-search-decision-v1.md)は世界数を増やすのでなく、
-同じ24自己枠を4世代の損失feedbackへ使い、適切な対照と自由制度探索を接続する。実runnerの準備・実行は残る。
+同じ24自己枠を4世代の損失feedbackへ使い、適切な対照と自由制度探索を接続する。
+そのrunnerは実native世界での全24枠・27世界・nullのfeedback・二重監査を通る
+[software QAを完了](research/results/native-corrected-choice-full-public-qa-v1.json)した。
+HTTP等はSCRIPTEDなので科学的な改善とは分ける。その後、別の固定sourceから
+[実モデル探索を一度だけ起動](research/results/native-corrected-choice-real-dispatch-v1.json)した。
+11月17日02:09JST時点で新しい実backend校正28件が通り、最初の対照世界を実行中。
+科学損失・改善はまだ未観測。終了後の二重監査・費用・全枠出力は読み取り専用で待機している。
 最新の確認済み統合PDFは[111ページの原稿記録](paper/integrated-priority-method-build-v1.json)
 と[PDF](output/pdf/science-utopia-lab-integrated-priority-method-working-paper.pdf)。
 以前の意味ある研究を保持し、元世界の全24候補・12固定選択・全8設計者操作／作用／可視性・

@@ -1,0 +1,72 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-real-dispatch.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T17:07:00+00:00",
+  "source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "plan_file_sha256": "12b3d347a78e057aea28364fe32e74f7f42be20990ed448c22cc188076feb7d7",
+  "source": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-choice-search-v1-a1",
+  "raw": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-choice-search-v1-a1/outputs/native-corrected-choice-search-v1-a1",
+  "export_root": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1",
+  "source_confirmed_clean": true,
+  "supervisor": {"original_handle": 42803, "pid": 29982, "started_utc": "2026-11-16T17:01:13.063821+00:00", "confirmed_live": true},
+  "writer": {"pid": 30048, "confirmed_live": true},
+  "read_only_continuations": {
+    "paired_cold_and_cost": {"original_handle": 47015, "started_utc": "2026-11-16T17:06:31.811220+00:00", "stage": "await-original-corrected-choice-writer-and-supervisor"},
+    "paired_readouts": {"original_handle": 48527, "started_utc": "2026-11-16T17:06:43.210618+00:00", "stage": "await-audit-and-cost-closure"},
+    "new_inference_allowed": false,
+    "retry_failed_stages": false
+  },
+  "models": {
+    "scientist": {"model": "qwen3:8b", "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"},
+    "designer": {"model": "qwen3.6:35b-mlx-64k", "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8"},
+    "backend_version": "0.33.3",
+    "real_model_certificate_reused": false
+  },
+  "verified_software": {
+    "source_commit": "083f374e0cf446eae64f79a2ec389fe0c884abc3",
+    "QA_receipt": "research/results/native-corrected-choice-full-public-qa-v1.json",
+    "QA_content_sha256": "5cf71585473f75b8c0fb455f5f812f0535ed0db5f9fbd10370da5cfe4066a4be",
+    "source_closure_files_byte_identical": 351,
+    "actual_full_native_QA": true,
+    "QA_HTTP_corpus_and_supervision_SCRIPTED": true,
+    "new_support_helpers_have_separate_scoped_tests": true,
+    "real_backend_capacity_proven_by_software_QA": false
+  },
+  "declared_design": {
+    "methods": ["uniform-priority", "adaptive-priority", "free-code-graph"],
+    "objectives": ["content-utility", "resource-aware-content"],
+    "optimizer_histories_per_method_objective": 1,
+    "proposals_per_history": 4,
+    "development_world_seed": 61001,
+    "optimizer_seed": 68011,
+    "replication_seeds": [79011],
+    "development_seeds_are_unused": false,
+    "primary_endpoint": "earliest-minimum-complete-visible-reference-then-own",
+    "secondary_endpoint": "earliest-minimum-complete-own-or-absent",
+    "native_world_simplified": false,
+    "new_fairness_novelty_or_merit_gate": false
+  },
+  "declared_budget": {
+    "candidate_slots": 24,
+    "fresh_reference_worlds": 3,
+    "native_worlds_upper_bound": 27,
+    "designer_POSTs_upper_bound": 488,
+    "readiness_sessions": 9,
+    "readiness_POSTs_per_session": 40,
+    "proposal_POSTs_per_session": 16,
+    "component_probes_upper_bound": 512,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_wall_seconds": 7200,
+    "observer_POSTs_upper_bound": 6000,
+    "designer_session_wall_seconds": 1800,
+    "replace_failed_slots": false
+  },
+  "observed_stage": "initial-real-backend-readiness",
+  "initial_readiness_partial_prefix": {"completed_control_files": 26, "http_files": 26, "final_certificate_observed": false},
+  "new_scientific_loss_observed": false,
+  "new_scientific_gain_claimed": false,
+  "publication_ready": false,
+  "exclusive_hardware_claimed": false,
+  "timing_is_dedicated_benchmark": false,
+  "scope": "Dated launch/process snapshot, not a final native audit, real-model certificate or scientific outcome. Raw source-bound journals and original process exits remain authoritative."
+}
