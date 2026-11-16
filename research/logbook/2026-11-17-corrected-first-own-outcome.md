@@ -774,3 +774,31 @@ formatting-only proposal is evaluated, not rejected as uncreative or replaced.
 Whether its observed path/loss matches the reference remains an empirical
 result to check after completion. Full original closure and publication
 readiness remain open, with no source/metric/budget/retry changes.
+
+## Free U/g2 completes: own recovery by repeating the strong reference
+
+At23:17:31UTC free/U/g2 completes at-28.6667, U28.6667/T36/K200/uncollected0.
+The own complete-loss path recovers from-7, with the intervening g1 failure
+remaining lossNone. The best-known reference was already-28.6667. This is
+own-path recovery, not a newly improved institution, implemented planned
+parameter change or repair of the failed own selection code. [Exact outcome,
+source/call/observed-path evidence and retained state](../results/native-corrected-choice-free-utility-recovery-v1.json).
+
+All24 original code bundles validate. Four developer-catalog-agenda receipts,
+one per year, join bijectively to committed generated.code_executed events by
+image/artifact/context/result and actual candidate checkpoint. The new code
+really executes; it is not discarded by the framework. Its unchanged normalized
+AST and intended-but-unimplemented parameters remain as documented above.
+All179 original scientist inputs/literal choices match the priority-zero
+reference exactly, with different provider bodies; both complete caches and
+body hashes are checked. This is scoped observed-path equality, not global
+world/program equivalence or independent populations.
+
+An exact4,394,645-byte external state copy retains the three U records and
+pendingNone before g3 extends the live file. Fifteen terminal own slots are
+14complete/10worse/4ties/0better plus1execution-null. Sixteen dispatches have
+started: actual uniform/C/g2 begins at23:17:31.787UTC as sec0c2cf6e1cb4bd2,
+phase initial, candidate11304963. It is the third declared random sample.
+No code/metric/budget changes, native restart, replacement or loss imputation
+occurs. Both final endpoint scopes and the full original paired closure remain
+uncompleted; the research goal is still active, not publication-ready.

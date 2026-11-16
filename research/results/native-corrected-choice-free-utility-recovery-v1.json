@@ -1,0 +1,63 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-free-utility-recovery.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T23:22:40+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "method": "free-code-graph", "objective": "content-utility", "generation": 2, "replication": 0,
+  "request_sha256": "cc3b3a859642a9b229e1adf829e99a308738668151592d1a19f04712331f9423",
+  "suggestion_id": "native-adaptive-dd868b10efd7d7952ca23723",
+  "candidate_sha256": "20bc4a175ca16658984af73ff395ba40c07237e38897689439a8ae16302fff0f",
+  "status": "complete", "loss": -28.666666666666668,
+  "metrics": {"U": 28.666666666666668, "T": 36, "K_collected": 200.0, "K_uncollected": 0.0},
+  "previous_own_best_complete_loss": -7.0,
+  "intervening_own_outcome": {"generation": 1, "status": "failed", "loss": null},
+  "assigned_reference_loss": -28.666666666666668,
+  "own_minus_assigned_reference": 0.0, "prefix_best_known_loss_change": 0.0,
+  "observation_canonical_sha256": "51a3a31bad5d0c1c58f438a3ab30f372484c1e7e207ac91207cdb96d0c5c5b30",
+  "record_canonical_sha256": "43d9f3fabfd6ad2b900cfbb048eb0d90f9a2cc47c32131087e1a95d4701c161a",
+  "version_sha256": "aa3fc5ae6220175028c58657ecf5f23a6e194b1d6cb7dd847bc0df7e9b91222f",
+  "source_change": {
+    "changed_source_nodes": ["developer-catalog-agenda"],
+    "nodes_added": [], "nodes_removed": [], "wires_added": 0, "wires_removed": 0, "schedules_changed": false,
+    "normalized_AST_same_as_parent": true,
+    "normalized_AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318",
+    "actual_source_utf8_sha256": "4e846a3926e8917664aab34cebc8ce9be29173edbe2714cdafa608951731416d",
+    "scope": "Three actual writes change indentation, not algorithm/parameters. The stated information/core-only plan is not implemented. No source/parameter repair is supplied by the host."
+  },
+  "actual_execution_evidence": {
+    "validated_original_code_bundles": 24, "changed_agenda_calls": 4,
+    "changed_agenda_committed_events": 4, "exact_receipt_event_join_years": [1, 2, 3, 4],
+    "artifact_sha256": "9ef534253fb0e5e2a9b2e55ffbdb0abdf46872a658c025cf961e15feba51361d",
+    "checkpoint_file_sha256": "9e365387fcc0e15870a4671e9133998c2ee9fad6f3be74587151d2fabcfbbed5",
+    "checkpoint_spec_equals_recorded_candidate": true,
+    "scope": "Original recorded isolated-code receipts and committed native events, not newly executed source or the pending whole-study source-bound cold audit."
+  },
+  "observed_scientist_path": {
+    "wire_requests": 179, "completed_responses": 179, "wire_inputs_without_committed_reply": 0,
+    "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+    "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+    "ordered_full_provider_body_hashes_sha256": "b1ce5155c82f1944d9de4a03948466bfba21481ac99868171637d9e452077429",
+    "complete_inputs_and_literal_choices_equal_priority_zero_reference": true,
+    "full_provider_bodies_equal_reference": false,
+    "all_own_and_reference_response_cache_body_hashes_checked": true
+  },
+  "retained_exact_state": {
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1/milestones/free-utility-g2/native-adaptive-state.json",
+    "bytes": 4394645, "file_sha256": "b4df215c7aa41155e050ed0a1245d235a5330448a6d1f1a4574e92b098a7b2f4",
+    "canonical_sha256": "ae8d44573b4caae026122496474a32e5b3b8d20ac4f2d74bdce2689621d73cb5",
+    "records": 3, "pending": null
+  },
+  "prefix": {"terminal_own_slots": 15, "dispatch_started_own_slots": 16, "complete": 14,
+    "better_than_reference": 0, "tie": 4, "worse": 10, "execution_nulls": 1, "generation_nulls": 0},
+  "next_actual_dispatch": {
+    "method": "uniform-priority", "objective": "resource-aware-content", "generation": 2, "phase": "initial",
+    "suggestion_id": "sec0c2cf6e1cb4bd2", "started_utc": "2026-11-16T23:17:31.787255+00:00",
+    "candidate_sha256": "113049632020a0c9fd0467a07f565cc0985bb701cc7ffa3957cbc12efb140f83"
+  },
+  "source_repaired": false, "candidate_refilled": false, "loss_changed_or_imputed": false,
+  "new_model_calls_by_this_analysis": 0, "new_native_worlds_by_this_analysis": 0,
+  "new_generated_code_executions_by_this_analysis": 0,
+  "final_selection_frozen": false, "full_study_cold_audit_complete": false, "publication_ready": false,
+  "scope": "Own complete-loss recovery of about21.6667, not a new best-known institution, implemented new algorithm, repair of the failed own selection source or isolated causal benefit of error feedback. The editing parent was the already measured strong reference. Changed code really executes, and the complete observed scientist path/assigned loss reproduce that reference; no global equivalence or independent-population claim follows. The original four-step study continues unchanged."
+}

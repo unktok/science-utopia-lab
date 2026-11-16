@@ -7,6 +7,12 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Free U/g2 recovers its own best but repeats the reference](results/native-corrected-choice-free-utility-recovery-v1.json):
+  complete loss-28.6667 after own-7/null, with four actual agenda executions
+  and179 same full inputs/choices as the measured parent. Indentation changes,
+  not a new algorithm or implemented planned parameters.15terminal/16started,
+  14complete/1execution-null;0better/4ties/10worse. Next uniform/C/g2 runs.
+
 - [Third adaptive U outcome](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-u-outcome):
   own best reaches-28.3333 but stays about1/3 worse than reference. Exact saved
   ask/tell replay explains four internal duplicate-vector draws, not extra
