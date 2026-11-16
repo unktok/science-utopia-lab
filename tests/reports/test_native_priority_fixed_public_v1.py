@@ -27,7 +27,7 @@ from tests.reports.test_native_priority_method_public_v1 import public_mixed_ope
 from tests.reports.test_native_legacy_choice_native_v1 import ScriptedCritic
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 from utopia.system import code_mechanisms
-from utopia.system.design_patch import clone
+from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 SOFTWARE_SEEDS = [43003, 43011]
@@ -120,6 +120,9 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
         assert (audits / 'costs-1.json').read_bytes() == (audits / 'costs-2.json').read_bytes()
         cold = driver.read(audits / 'audit-1.json')
         assert all(w['status'] == 'complete' and w['loaded']['confirmed'] for w in cold['worlds'])
+        for seed in SOFTWARE_SEEDS:
+            group = [w for w in cold['worlds'] if w['seed'] == seed]
+            assert group and len({digest(w['physical_proof']['initial_identity']) for w in group}) == 1
         assert cold['fixed_selection'] == p['fixed_selection']
         readouts = external / 'evaluation-readouts'; readouts.mkdir(); stage = 'evaluation-paired-readouts'
         for i in (1, 2):
@@ -141,6 +144,7 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
             'development_native_worlds': 27, 'upstream_native_worlds': 2, 'evaluation_native_worlds': len(p['jobs']),
             'evaluation_scientist_SDK_POSTs': len(new_requests), 'logical_policy_labels': 15, 'logical_rows': 30,
             'paired_rows': 108, 'matching_readout_files': matching, 'new_real_model_calls': 0,
+            'same_initial_identity_within_software_seed': True,
             'outer_subprocess_CLI_routing_tested': False, 'visual_review_complete': False,
             'scientific_gain_or_publication_readiness_claimed': False}, sort_keys=True)
     except BaseException as error:
