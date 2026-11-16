@@ -1,0 +1,46 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-first-free-cost-submission.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T19:57:04+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "slot": {"generation": 0, "method": "free-code-graph", "objective": "resource-aware-content", "replication": 0},
+  "request_sha256": "2a1213ee71f35f1f56a1e5c92cf18d5cb8684d184cd97fcaa96bdd259bc32b56",
+  "session_binding_sha256": "75cd6c1bd5a7059807901411d11f2652f358e4c9346afeaca9d474994939f034",
+  "completed_session": {
+    "started_calls": 14, "completed_steps": 14, "started_without_committed_receipt": 0,
+    "attempted_tool_counts": {"finish": 1, "plan": 1, "read_file": 10, "write_file": 2},
+    "status_counts": {"applied": 10, "finished": 1, "rejected": 3},
+    "successful_document_changes": 2, "successful_read_observations": 8,
+    "duplicate_unchanged_read_observations": 2,
+    "explicit_finish_observed": true, "terminal_status": "generated",
+    "response_file_sha256": "111c3f0985aa0b302ed71aecffd6d2c221e52b402e42ced2c38f10149a36ff6a",
+    "response_content_sha256": "d7993a34b672c28a75a49de621e1cc7311bc1034eed83419fd3d9dfb1046403b",
+    "outer_result_file_sha256": "c5255882e5ab7d63656a332a560bf52dbf82daf051ebe015bae7374a017398af",
+    "outer_result_content_sha256": "f484343955aa90386ee4eb2e63b277db8da6d9128f80e24b6c4078a18ee80a24",
+    "inner_outer_and_original_pending_definitions_equal": true,
+    "rejections": [{"step": 0, "tool": "plan", "reason": "objective_reasoning8753 characters exceeds recorded response_schema maxLength4096"}, {"step": 8, "tool": "read_file", "reason": "implementation checkpoint; attempted read not executed"}, {"step": 11, "tool": "read_file", "reason": "unexpected field rationacle"}],
+    "whole_visibility_prefix": {"phase_counts": {"general": 9, "implementation": 3, "planning": 1, "submit": 1}, "observed_phase_interpretation_mismatches": 0, "observed_missing_or_different_loss_views": 0}
+  },
+  "submitted_program": {
+    "suggestion_id": "native-adaptive-2d3d9db5e7f3da250531266d",
+    "candidate_sha256": "966684172d186175afccd8f052c9c5348dab2feeed2c9cc1082c457bfd19457d",
+    "parent_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+    "nodes_added": [], "nodes_removed": [],
+    "source_changed_nodes": ["developer-catalog-agenda", "world.selection"],
+    "parameter_changed_nodes": ["developer-catalog-agenda", "world.selection"],
+    "wires_added": 0, "wires_removed": 0, "schedules_changed": false,
+    "source_ast_diagnostics": {
+      "developer-catalog-agenda": {"parent": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318", "submitted": "b56bdaf7f436c7e03480bddc556cc9ddbe05e1f33a55b6c53d99793d7be243a2"},
+      "world.selection": {"parent": "f5474b2741c83133680263f1e4a305ca8add053518cd2860adcd4db0f9527fce", "submitted": "dfac69001c5d39d72a9fdef72fc8282ca4d462e433376c685cbd16c092359237"}
+    },
+    "ast_hash_convention": "SHA256 of CPython3.11 ast.dump(ast.parse(source), include_attributes=False) UTF-8 text. A changed AST is not a proof of changed behavior or gain."
+  },
+  "original_campaign_prefix": {"generated": true, "compiled": true, "generation_error": null, "pending_draws": 1, "pending_observations": 0, "completed_records": 0},
+  "native_world_started": true,
+  "free_C_native_loss_measured": false,
+  "full_study_cold_audit_complete": false,
+  "useful_new_institution_demonstrated": false,
+  "publication_ready": false,
+  "scope": "Actual freshly calibrated free-C explicit submission, literal return propagation and native evaluation start, not new nodes/wiring or measured benefit. The two source edits do not establish changed admission behavior; the submitted selection code still explicitly accepts papers. Three rejected actions consume their original steps and remain literal. No repair, misspelled-field normalization, threshold/limit change, fallback, retry/refill, active-source change or loss rewriting occurs. Earlier five own native outcomes remain complete and adverse; the whole four-step study and later fixed evaluation are unfinished."
+}

@@ -258,3 +258,21 @@ does not prove correctness of future prompts, model understanding or benefit.
 There is no terminal submission, original C free outcome or frozen selection
 yet. Original42803/writer30048 remain live, with no failure record; the running
 source, finite settings and all previously measured adverse losses stay unchanged.
+
+At19:55UTC the original C author session explicitly finishes after14 actions:
+plan1/read10/write2/finish1, with10 applied/3 rejected/1 finished. The three
+rejections are the original overlong plan, implementation-checkpoint read at8
+and misspelled extra field `rationacle` at11. Nothing is normalized/refunded.
+All14 actual prompts have0 phase/loss-view mismatches, including implementation3.
+This is scoped prompt evidence, not a universal interface/transport proof.
+
+The literal returned C definition matches the inner response, outer result and
+original pending campaign. One compiled draw starts actual scientist requests.
+The two writes change agenda and selection source/ASTs, with no added/removed
+node, wire or schedule change. In particular, changing selection source does
+not demonstrate a changed admission decision rule: the submitted code still
+explicitly accepts papers. Native invocations/effects/loss remain to be observed.
+[Exact terminal/program hashes and scope](../results/native-corrected-choice-first-free-cost-submission-v1.json).
+No host edits the source, fixes the typo/plan, modifies any loss or refills a slot.
+Five prior own outcomes remain measured and adverse; no C free loss is yet
+available at19:57:04UTC and the full four-step comparison remains active.

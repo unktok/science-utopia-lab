@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First corrected free-C submission and actual native start](results/native-corrected-choice-first-free-cost-submission-v1.json):
+  explicit finish after14 actions, including three retained rejections. Two
+  source edits in agenda/selection, no new wiring/nodes/schedule; actual returned
+  definitions match and one compiled native draw starts scientist requests.
+  All14 prompts show0 observed phase/loss-view mismatches, not proof of
+  changed admission behavior, a free-C native loss or useful invention yet.
+
 - [Fresh corrected free-C readiness and implementation prefix](logbook/2026-11-17-corrected-first-own-outcome.md#free-c-fresh-readiness-and-actual-implementation-prefix):
   all28 actual request-specific controls pass. One overlong plan is rejected
   and retained; three reads and one agenda-code write apply subsequently.

@@ -1,6 +1,22 @@
 # Current research status
 
-## Latest verified state: November16,2026 at19:49UTC / November17 04:49JST
+## Latest verified state: November16,2026 at19:57UTC / November17 04:57JST
+
+[First corrected free-C explicit submission reaches native evaluation](results/native-corrected-choice-first-free-cost-submission-v1.json).
+It finishes after14 actions (plan1/read10/write2/finish1); three original
+rejections remain charged, including one misspelled extra field. Inner/outer/
+pending definitions match. One generated/compiled draw starts actual scientist
+requests, with no free-C native loss yet. Agenda/selection source changes,
+but no new node/wire/schedule. Source/AST changes do not prove altered admission
+behavior or benefit; the selection still explicitly accepts papers.
+
+All14 actual prompt/receipt steps verify, with implementation3 and0 observed
+phase/loss-view mismatches. This is not proof of every possible interface path.
+Five earlier own outcomes remain complete/all worse, not repaired or refilled.
+Original42803 continues unchanged; full24-slot paths, final audits/analysis,
+fixed unused evaluation, important claims and publication readiness remain open.
+
+## Earlier free-C implementation prefix:19:49UTC / 04:49JST
 
 [Free C passes fresh28-control readiness and edits code](logbook/2026-11-17-corrected-first-own-outcome.md#free-c-fresh-readiness-and-actual-implementation-prefix).
 The actual request2a1213ee uses a new certificate, not the U certificate.
