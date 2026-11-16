@@ -17,12 +17,20 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def historical_sha(source, name):
+    # The review binds immutable source bytes, not a future editorial HEAD.
+    # Current retained PDF/evidence bytes are still checked separately below.
+    return hashlib.sha256(subprocess.check_output(
+        ['git', 'show', source + ':' + name], cwd=ROOT)).hexdigest()
+
+
 def test_current_reviewed_pdf_and_earlier_artifacts_are_literal():
     r = read('paper/integrated-consumer-source-build-v1.json')
     assert sha(ROOT / r['output']) == r['pdf_sha256']
     assert (r['pages'], r['figures'], r['tables'], r['cited_references']) == (104, 52, 49, 32)
     assert all(sha(ROOT / n) == s for n, s in r['preserved_files'].items())
-    assert all(sha(ROOT / n) == s for n, s in r['literal_dependency_file_sha256'].items())
+    assert all(historical_sha(r['source_commit'], n) == s
+               for n, s in r['literal_dependency_file_sha256'].items())
     assert all(sha(ROOT / n) == s for n, s in r['new_evidence_file_sha256'].items())
 
 

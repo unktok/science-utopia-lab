@@ -1,5 +1,22 @@
 # Objective-conditioned institution paper
 
+## Current editable source versus last reviewed PDF
+
+The canonical source [integrated.tex](integrated.tex) now additionally includes
+[the dated, unfinished priority/free-method pilot and visibility defect](integrated/native-priority-method-snapshot.tex).
+It retains all15 complete observations at10:32UTC, not a selected subset or the
+final24-slot comparison, and separates literal edits, observed effects and gains.
+The abstract/discussion report the interface confound and prospective repair's
+unproved real-model/native scope. Earlier meaningful tracks remain included.
+
+**These amendments have not been built or visually reviewed.** The104-page
+artifact and its source-bound receipt below remain unchanged; they do not prove
+the current source's page count, layout or results. No heavy PDF/render work
+overlaps the active original scientific inference. After a verified hardware
+window, build the exact committed source twice, check all references/layouts,
+inspect all page renders and retain a new artifact/receipt without overwriting
+the old PDF. Source and numeric-transcription checks alone are not PDF QA.
+
 The latest reviewed working artifact is the
 [104-page integrated draft](../output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf),
 with52 figures,49 tables and32 references. Its
