@@ -1,0 +1,17 @@
+{
+  "schema": "scienceutopia.native-topic-priority-search-retention-qa.v1",
+  "source_commit": "0d658cc52a47a8dca598bd21a7de528b2a8df203",
+  "original_process_handle": 87110,
+  "exit_code": 0,
+  "tests_passed": 68,
+  "failures": 0,
+  "skipped": 0,
+  "seconds": 13.56,
+  "junit_file": "research/data/native-topic-priority-search-v1/topic-priority-search-retention-v1-a2-junit.xml",
+  "junit_sha256": "a87ed30e45519e0c37de6088b99d2732c9c5ebc724dbca044982ac8a1259c478",
+  "initial_failed_retention_process": 93087,
+  "initial_failed_retention_preserved": true,
+  "new_real_model_calls": 0,
+  "new_native_worlds_by_retention_check": 0,
+  "publication_ready": false
+}

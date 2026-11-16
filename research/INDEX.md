@@ -60,6 +60,9 @@ This page is navigation, not a chronological experiment transcript.
   two proposals,652 mock SDK POSTs, measured loss feedback and paired cold proofs.
   This connects the comparator to an existing optimizer, not a real-model study
   or verification of an outer scientific CLI.
+  [Next comparison decision](publication/native-priority-vs-free-next-study-v1.md)
+  specifies the intended restricted/uniform/free comparison and remaining
+  runner/audit/plan/readiness work. It is not a newly dispatched experiment.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

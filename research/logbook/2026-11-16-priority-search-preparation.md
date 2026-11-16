@@ -61,3 +61,10 @@ initial-json-roundtrip-failed filename and its JUnit remains. A new receipt take
 literal cost objects from untouched native verification, preserves Python JSON
 text through the file patch and seals once. No scientific data, native run,
 optimizer state or acceptance guard is changed; this is a retention error.
+
+Corrected retention87110 at0d658cc5 exits0:68 pass/13.56s, including all native
+priority-space controls, original parameter-space checks and reviewed PDF
+retention. Its JUnit and [receipt](../results/native-topic-priority-search-retention-qa-v1.json)
+remain. This repeats pure checks only, not the four-world native fixture or
+scientific inference. AGENTS now requires literal sealed Python JSON transfer
+and actual consumer validation before retention.

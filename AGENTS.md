@@ -61,6 +61,12 @@
   output salvage, hidden retries or changes to active experiment settings.
 - Keep raw caches and outputs out of Git. Track compact results, hashes,
   manifests, protocols, and interpreted reports.
+- Preserve sealed Python JSON text literally across orchestration boundaries.
+  A JavaScript parse/stringify roundtrip can change 200.0 to 200 after sealing,
+  invalidating a type-sensitive canonical checksum. Copy exact bytes or carry
+  the original serialized string; validate with the actual `checked` consumer
+  before retaining it. Keep a failed derived receipt/JUnit explicitly separate
+  and regenerate from unchanged raw evidence; never weaken checksum validation.
 - Before expensive model-authored campaigns, run the finite real-backend
   designer interface calibration at the exact runtime/model/backend binding.
   Mocked tests, successful JSON parsing and static validity alone are not real
