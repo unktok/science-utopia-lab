@@ -3,6 +3,7 @@
 This is not the real closed study, a fresh native audit or model readiness.
 """
 import csv
+import fcntl
 from pathlib import Path
 import shutil
 from types import SimpleNamespace
@@ -15,9 +16,17 @@ from tests.optimization.test_native_world import loss_spec
 from tests.reports.test_native_author_visibility_v1 import journal
 from utopia.optimization.native_numeric_designer import save
 from utopia.system.design_patch import digest
-from utopia.utils.data_utils import file_sha256
+from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 READER, AUTHOR, SCIENCE = '1' * 40, '2' * 40, '3' * 40
+
+
+@pytest.fixture(autouse=True)
+def forbid_new_science(monkeypatch):
+    def forbidden(*a, **kw): pytest.fail('visibility export must not call a model/client or execute generated source')
+    monkeypatch.setattr('requests.Session.post', forbidden)
+    monkeypatch.setattr('openai.OpenAI.__init__', forbidden)
+    monkeypatch.setattr('utopia.system.code_mechanisms.DockerCodeExecutor.execute', forbidden)
 
 
 def fixture(tmp_path, monkeypatch, *, missing=False):
@@ -148,3 +157,45 @@ def test_public_cli_parser_forwards_all_path_names(tmp_path, monkeypatch):
     monkeypatch.setattr(e, 'export', captured.append); e.main()
     assert len(captured) == 1
     for name in names: assert getattr(captured[0], name.replace('-', '_')) == tmp_path / name
+
+
+def test_active_original_writer_lock_stops_export_without_creating_outputs(tmp_path, monkeypatch):
+    args, roots, calls, _ = fixture(tmp_path, monkeypatch)
+    with (roots['raw'] / 'writer.lock').open('r') as writer:
+        fcntl.flock(writer, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        with pytest.raises(BlockingIOError): e.export(args)
+    assert not calls and not args.output.exists()
+
+
+@pytest.mark.parametrize('place', ['closure', 'readouts'])
+def test_discovered_original_evidence_root_is_guarded_before_output_creation(tmp_path, monkeypatch, place):
+    args, roots, calls, _ = fixture(tmp_path, monkeypatch)
+    args.output = roots[place] / 'new'
+    with pytest.raises(ValueError, match='fresh output outside'): e.export(args)
+    assert not calls and not args.output.exists()
+
+
+@pytest.mark.parametrize('kind', ['outside', 'symlink'])
+def test_even_resealed_paired_manifest_cannot_escape_original_input_roots(tmp_path, monkeypatch, kind):
+    args, roots, calls, ended = fixture(tmp_path, monkeypatch)
+    outside = tmp_path / 'unrelated.json'; outside.write_text('{}\n')
+    target = outside
+    if kind == 'symlink':
+        target = roots['raw'] / 'alias.json'; target.symlink_to(outside)
+    path = roots['authors'] / 'report-1/manifest.json'; manifest = e.read(path)
+    manifest = {k:v for k,v in manifest.items() if k != 'content_sha256'}
+    manifest['input_files'][str(target)] = file_sha256(target)
+    write_json_atomic(path, {**manifest, 'content_sha256': digest(manifest)})
+    shutil.copyfile(path, roots['authors'] / 'report-2/manifest.json')
+    new = {k:v for k,v in ended.items() if k != 'content_sha256'}
+    new['report_files']['manifest.json'] = file_sha256(path)
+    write_json_atomic(roots['authors'] / 'ended.json', {**new, 'content_sha256': digest(new)})
+    with pytest.raises(ValueError, match='input changed or escaped'): e.export(args)
+    assert not calls and not args.output.exists()
+
+
+def test_missing_original_terminal_is_not_synthesized_or_waited_away(tmp_path, monkeypatch):
+    args, roots, calls, _ = fixture(tmp_path, monkeypatch)
+    path = roots['authors'] / 'ended.json'; path.rename(roots['authors'] / 'saved-ended-not-terminal.json')
+    with pytest.raises(FileNotFoundError): e.export(args)
+    assert not calls and not args.output.exists()
