@@ -1,0 +1,138 @@
+{
+  "schema": "scienceutopia.native-author-visibility-export-preparation-and-nineteenth-outcome.v1",
+  "observed_utc": "2026-11-16T12:11:38.958589+00:00",
+  "analysis_source_commit": "09868239a98f47626c092d95162540502fe8ef73",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "prior_author_prefix_content_sha256": "d39440e1d9679b4d949295038dd7da8cc74101848de763bb636eacac886ade11",
+  "actual_source_test_runs": [
+    {
+      "file": "research/data/native-author-visibility-export-v1/export-e9be735a.xml",
+      "file_sha256": "9fe5d04e7ed032a04e71c67fac7cd610389811263c1c1136b65d55cc2ef2e800",
+      "source_commit": "e9be735aba8edcf5551f0aa65c7f0da36f2e03e6",
+      "original_handle": 57756,
+      "actual_exit_code": 0,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "67",
+        "time": "11.683",
+        "timestamp": "2026-11-16T21:03:19.991436+09:00",
+        "hostname": "flower-man.local"
+      }
+    },
+    {
+      "file": "research/data/native-author-visibility-export-v1/guards-09868239.xml",
+      "file_sha256": "d56bddcf4172ab4e104cd448a6140451bd686b8719638d847c14dbfcb4e64179",
+      "source_commit": "09868239a98f47626c092d95162540502fe8ef73",
+      "original_handle": 89479,
+      "actual_exit_code": 0,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "73",
+        "time": "12.052",
+        "timestamp": "2026-11-16T21:06:17.160679+09:00",
+        "hostname": "flower-man.local"
+      }
+    }
+  ],
+  "actual_CLI_help": {
+    "module": "scripts.reports.export_native_author_visibility_v1",
+    "arguments": [
+      "--help"
+    ],
+    "original_handle": 51285,
+    "actual_exit_code": 0,
+    "original_closure_or_export_executed": false
+  },
+  "current_source_file_sha256": {
+    "scripts/reports/export_native_author_visibility_v1.py": "5f7ad35c288efb6852c4d08f587e9bdc79fcd051f5dc24031297bebdb2dd86a7",
+    "tests/reports/test_export_native_author_visibility_v1.py": "8c7cf785000b80c21a9e06212e7ab0768932687cc754d6960da74789d3dbe5da",
+    "scripts/reports/native_author_visibility_v1.py": "16f9fb3219026426f40df6c8b502b21e6f7e44a4b81cfe495d2300e1d007f7aa",
+    "tests/reports/test_native_author_visibility_v1.py": "7921bbf289668a470e81b7899f5254ceb67f4350bbe127a49d194b33daca12cc"
+  },
+  "export_verification_scope": "73 metadata/component/export cases. Real journal/lock/parser/CSV and two matching three-file outputs use explicitly SCRIPTED origin/Git provenance, not the real closed study. Model clients/POSTs/generated-code execution are forbidden in final export tests. Unknown/null/adverse rows, active locks, missing/changed closure, escaped input and output aliases stop rather than trigger repair/retry.",
+  "postclosure_export_CLI_implemented": true,
+  "original_real_all8_export_executed": false,
+  "source_bound_full_native_public_proof": false,
+  "original_nineteenth_outcome": {
+    "slot_index": 18,
+    "slot": {
+      "generation": 1,
+      "method": "free-code-graph",
+      "objective": "resource-aware-content",
+      "replication": 0
+    },
+    "request_sha256": "ae1687efb8bc23c6e26694eff15702a5cc1de0f31315becfb840491177252eec",
+    "record_sha256": "56971188fd5b8499f7d73ed21f03f9b239f1cf9dcd2bbc5a1de8f23712cc93ec",
+    "observation_value_sha256": "34950179db818f4b91887ae5016942e9d1db20402f663879e176b63486c7728e",
+    "status": "complete",
+    "suggestion_id": "native-adaptive-ae8a4997060a4bc7e836dd3f",
+    "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+    "literal_submission_equals_selected_parent": true,
+    "literal_submission_equals_terminal_reference": true,
+    "cross_scores": {
+      "content-utility": -28.666666666666668,
+      "resource-aware-content": -12.666666666666668,
+      "throughput": -36.0
+    },
+    "assigned_loss_minus_reference": 0.0,
+    "observed_scientist_traces": {
+      "own": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "66359e936a55e4a901133a8b98f12f198a3412f91f7ccc7e1d1652c48ca4047a"
+      },
+      "reference": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "4db3daac1ea8a8c7a885d50cb8ddd77c5b3d0a6e59f67499044ad63501954963"
+      }
+    },
+    "prefix_counts_against_reference": {
+      "complete": 19,
+      "tie": 10,
+      "worse": 9,
+      "better": 0
+    }
+  },
+  "immutable_original_world_input_files": {
+    "search/free-code-graph/history-0/resource-aware-content/worlds/native-adaptive-ae8a4997060a4bc7e836dd3f-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "search/free-code-graph/history-0/resource-aware-content/worlds/native-adaptive-ae8a4997060a4bc7e836dd3f-s61001/replies/responses.sqlite": "fcf595d4e4be74ea1b36d1fc648974cb1be15e672ff862b28be6f96f9d63f2c7",
+    "search/free-code-graph/history-0/resource-aware-content/worlds/native-adaptive-ae8a4997060a4bc7e836dd3f-s61001/system.json": "2885ba60519787c60491e8c9c484df2cd1b9c5e698f4759c5b58b44166e9691d",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/replies/responses.sqlite": "3d5464998a5092a03fbe06b9b23daf74979e515a1e01f96f79f917bffe819c50",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/system.json": "2885ba60519787c60491e8c9c484df2cd1b9c5e698f4759c5b58b44166e9691d"
+  },
+  "original_record_snapshot_not_permanent_whole_state_guard": {
+    "relative_path": "search/free-code-graph/history-0/resource-aware-content/campaign/native-adaptive-state.json",
+    "record_index": 1,
+    "record_sha256": "56971188fd5b8499f7d73ed21f03f9b239f1cf9dcd2bbc5a1de8f23712cc93ec"
+  },
+  "current_progress_snapshot": {
+    "active": "adaptive-priority/0/resource-aware-content:g1",
+    "observed_utc": "2026-11-16T11:57:22.381622+00:00",
+    "stage": "optimization"
+  },
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "scientific_losses_or_selection_changed": false,
+  "whole_campaign_closed": false,
+  "publication_ready": false,
+  "remaining": "After original full source-bound paired closure/readouts/all8 author continuation normally finish, run guarded export twice from exact clean pinned analysis code to distinct external fresh outputs and compare all three files. No actual final export/extra waiter is claimed. The remaining scientific slots, important differentiated findings, independent evidence and critical main-track readiness remain open.",
+  "content_sha256": "04156d384a56fc926e8a204c443ca06390e2efdefe9051f46834fa6718327ed7"
+}

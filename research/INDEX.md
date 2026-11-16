@@ -5,13 +5,22 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Guarded all8 postclosure visibility export](components/native-author-visibility-export-v1.md)
+  is implemented with73 light/component cases, including source/output guards,
+  active writer locks, deterministic paired files and preserved adverse/nulls.
+  Origin/Git provenance is explicitly SCRIPTED in these tests, not proof of
+  the original study's closure. [Exact tests/source/nineteenth outcome](results/native-author-visibility-export-preparation-and-nineteenth-outcome-v1.json)
+  retain the subsequent unchanged free C tie:19 complete/10 ties/9 worse/0 better.
+  Original normal closure, real all8 exports and publication readiness remain open.
+
 - [Whole-prefix author visibility reader](components/native-author-visibility-v1.md)
   passes50 metadata/component checks and reads all7 currently generated sessions:
   89 completed proposal steps/45 specific phase mismatches, with no different
   loss view. The8th session and slot18's native loss are still unobserved at its
   dated snapshot. [Full rows/file/test evidence](results/native-author-visibility-reader-preparation-and-actual-prefix-v1.json)
   also rechecks old8/101 with zero mismatches. The all8 pure join is not a real
-  closed export; a guarded postclosure CLI/paired execution remain outstanding.
+  closed export. The guarded postclosure CLI is now implemented separately;
+  its real paired execution remains outstanding.
 
 - [First-update geometry, not an added optimizer](components/native-priority-kernel-geometry-v1.md)
   reconstructs all8 numeric next asks, matching4 original receipts at its dated

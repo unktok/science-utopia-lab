@@ -14,5 +14,9 @@ SCRIPTED; no provider, native world or generated institution executes.
 [Actual7-session/89-step prefix and same-reader old8/101 scope](../../results/native-author-visibility-reader-preparation-and-actual-prefix-v1.json)
 is separate real journal evidence, not completion of the current all8 study.
 The original experiment/continuations stay pinned and unchanged. A postclosure
-export CLI and actual all8 paired export remain outstanding. Shared-host test
+export CLI is implemented in a [later scoped preparation](../native-author-visibility-export-v1/README.md);
+actual all8 paired export remains outstanding. The optional generation argument
+in the SCRIPTED test helper changes later test-file bytes; historical component
+hashes in the original receipt bind aacf5388, not perpetual current HEAD bytes.
+Shared-host test
 duration is not a model-speed benchmark or independent optimization replication.

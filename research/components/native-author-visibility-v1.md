@@ -74,10 +74,11 @@ the original paired export provenance. SCRIPTED fixtures are not that proof.
 The existing5bf61d6e original author/outcome continuation remains unchanged.
 This reader is not installed into that frozen process. The current7-session
 prefix is deliberately not passed off as the completed all8 join. A guarded
-postclosure export CLI and its real paired all8 export are still unimplemented/
-unexecuted, respectively; finish those without weakening original closure or
-external-output/source guards. No new scientific dispatch or fifth worker is
-claimed by this preparation.
+postclosure export CLI was still unimplemented at that snapshot. A
+[subsequent preparation](native-author-visibility-export-v1.md) implements it
+with73 scoped metadata/component checks. Its real paired all8 export remains
+unexecuted; original closure and external-output/source guards are not weakened.
+No new scientific dispatch or fifth worker is claimed by either preparation.
 
 Original4106 at aacf5388 exits0:50 metadata/component cases pass, no skips or
 deselection. Three mandatory complete native documents, attempted-versus-
