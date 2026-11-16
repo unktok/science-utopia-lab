@@ -107,6 +107,26 @@ def test_all_prior_tracks_references_and_labels_survive_current_integration():
     assert 'interface can depend on the institution' in current['paper/integrated/discussion.tex']
 
 
+def test_earlier_closed_study_diagnostic_does_not_expand_the_new_confounds_scope():
+    r = record('research/results/native-consumer-source-visibility-diagnostic-v1.json')
+    assert r['totals'] == {'requests': 101, 'mismatches': 0, 'supplied_whole_document': 101, 'sessions': 8}
+    assert [s['slot_index'] for s in r['sessions']] == list(range(8))
+    assert sum(s['completed_steps'] for s in r['sessions']) == 101
+    assert sum(len(s['steps']) for s in r['sessions']) == 101
+    assert all(not s['mismatch_steps'] and s['terminal_status'] == 'generated' for s in r['sessions'])
+    sizes = [pair for session in r['sessions'] for pair in session['full_document_size_pairs']]
+    assert (min(a for a, b in sizes), max(a for a, b in sizes)) == (60210, 60885)
+    assert (min(b for a, b in sizes), max(b for a, b in sizes)) == (63690, 64365)
+    assert r['all_observed_documents_fit_both_serializers']
+    assert not r['whole_native_cold_audit_repeated'] and not r['scientific_losses_or_selection_changed']
+    assert r['new_model_calls'] == r['new_code_executions'] == 0
+    text = (ROOT / SECTION).read_text()
+    for phrase in ('not be projected onto every earlier study', '101 original',
+                   '60,210 to 60,885', '63,690 to 64,365', 'No instance of this',
+                   'does not extend to uninspected studies'):
+        assert phrase in text
+
+
 def test_reviewed_pdf_receipt_is_historical_not_a_new_source_build_claim():
     r = record('paper/integrated-consumer-source-build-v1.json')
     old = subprocess.check_output(['git', 'show', r['source_commit'] + ':paper/integrated.tex'], cwd=ROOT)
