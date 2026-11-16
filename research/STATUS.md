@@ -15,6 +15,21 @@ Light new/old checks pass114/53 overlapping cases after retaining/fixing one
 CLI compatibility regression. The actual whole-study/all8 analysis remains
 outstanding; no active scientific source, metric or outcome is changed.
 
+Subsequent17:37:57UTC check: [the new read-only continuations actually start](results/native-corrected-choice-author-analysis-dispatch-v1.json)
+from separate clean b0201b97. Original37722/PID37882 waits for original57 all-slot
+readouts;3077/PID37902 waits for its all8 author exports. Both are live and their
+fresh external outputs are distinct from all frozen sources/raw. Neither has
+completed or may call a model, execute generated code, retry or restart science.
+
+[The prospective native effect reader](components/native-corrected-choice-effect-reader-v1.md)
+now accepts the corrected development/fixed scopes using the exact audited
+physical cell, not ambiguous globally repeated suggestion basenames. Actual
+ledger/renderer/delegate primitives stay unchanged. Light7/13/149 overlapping
+checks pass, with one native checkpoint case explicitly deselected; actual
+whole-study effect exports remain pending. At17:43UTC the second reference's
+scientist-request prefix reaches140, while the first completed outcome stays
+literal and no failure is observed. No own improvement is yet measured.
+
 ## Earlier running snapshot:17:22UTC / 02:22JST
 
 Original42803 still owns live supervisor29982/writer30048. The first fresh

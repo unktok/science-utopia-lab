@@ -51,3 +51,12 @@ is measured: U28.6667/K200, L_U-28.6667/L_C-8.6667, T36. It is a baseline,
 not own invention, improvement, unused evidence or a completed study. The
 writer advances to the second reference while these lightweight readers are
 developed without independent native QA/render/embedding work.
+
+Subsequently, actual clean b0201b97 reader source is frozen separately at
+`native-corrected-choice-analysis-v1-a1`. Original37722/PID37882 waits for the
+original57 paired readouts; original3077/PID37902 then waits for paired all8
+author closure. Both are confirmed live at17:37:57UTC. Their external
+`authors`/`visibility` outputs do not modify either source or the original raw.
+[Exact dispatch](../results/native-corrected-choice-author-analysis-dispatch-v1.json).
+No actual all8 export has yet completed, and neither reader can infer gain or
+call models/execute source/restart science. Keep b0201b97 unchanged while waiting.

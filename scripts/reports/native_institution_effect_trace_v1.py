@@ -25,7 +25,12 @@ from utopia.system.design_patch import clone,digest
 from utopia.utils.data_utils import file_sha256
 
 SCHEMA='scienceutopia.native-institution-effect-trace.v1'
+ROOT=Path(__file__).resolve().parents[2]
+CORRECTED_SCOPES={
+    'corrected-choice-development':'scienceutopia.native-corrected-choice-search.v1',
+    'corrected-choice-fixed-evaluation':'scienceutopia.native-corrected-choice-fixed-evaluation.v1'}
 SCOPES={
+    **{key:value+'.audit' for key,value in CORRECTED_SCOPES.items()},
     'legacy-choice-controls':'scienceutopia.native-legacy-choice-pilot-audit.v1',
     'longitudinal-objective-development':'scienceutopia.native-longitudinal-comparison-audit.v1',
     'longitudinal-fixed-evaluation':'scienceutopia.native-longitudinal-fixed-evaluation-audit.v1',
@@ -228,6 +233,9 @@ def trace_world(cell,world,source,*,workflow=False):
 def export(args):
     root=args.run.resolve();out=args.output.resolve();source=args.frozen_source.resolve()
     if out.exists() or out.is_relative_to(root) or out.is_relative_to(source):raise ValueError('fresh trace outside scientific raw/source required')
+    corrected=args.scope in CORRECTED_SCOPES
+    if corrected and out.is_relative_to(ROOT.resolve()):raise ValueError('fresh trace outside reader source required')
+    reader=pinned_revision(ROOT) if corrected else None
     paths=[args.audit_one,args.audit_two,root/'plan.json'];inputs={str(p):file_sha256(p) for p in paths}
     if args.audit_one.read_bytes()!=args.audit_two.read_bytes():raise ValueError('two matching original audits required')
     audit=checked(json.loads(args.audit_one.read_text()));plan=checked(json.loads((root/'plan.json').read_text()));before=_inventory(root)
@@ -236,20 +244,36 @@ def export(args):
             or audit['plan_sha256']!=plan['content_sha256'] or audit['source_proof']['status']!='verified-exact-source-closure'
             or audit['raw_inventory_sha256']!=digest(before) or audit['new_model_calls'] or audit['new_code_executions']):
         raise ValueError('matching normal-closure source/audit/raw and explicit study scope required')
-    worlds=[]
-    for w in audit['worlds']:
-        name=w['identity']+'-s'+str(w['seed']);cells=[p for p in root.glob('**/worlds/'+name) if p.is_dir()]
+    if corrected and plan['schema']!=CORRECTED_SCOPES[args.scope]+'.plan':
+        raise ValueError('explicit matching corrected development/fixed-evaluation plan required')
+    worlds=[];seen=set()
+    for index,w in enumerate(audit['worlds']):
+        name=w['identity']+'-s'+str(w['seed'])
+        if corrected:
+            # Suggestion identities can repeat across method/objective/history.
+            # Use the exact independently audited role-context cell, not a
+            # global basename search that can attach another candidate's run.
+            cell=Path(w['loaded']['context']).resolve().parent
+            if (not cell.is_relative_to(root) or not cell.is_dir() or cell.name!=name or cell in seen):
+                raise ValueError('unique exact audited compound native cell inside original raw required')
+            seen.add(cell);cells=[cell]
+        else:cells=[p for p in root.glob('**/worlds/'+name) if p.is_dir()]
         if len(cells)!=1:raise ValueError('unique audited physical world directory required')
         worlds.append(trace_world(cells[0],w,plan['source_commit'],
-            workflow=args.scope in ('workflow-objective-development','workflow-fixed-evaluation',
+            workflow=corrected or args.scope in ('workflow-objective-development','workflow-fixed-evaluation',
                 'longitudinal-objective-development','longitudinal-fixed-evaluation','legacy-choice-controls')))
+        if corrected:
+            worlds[-1].update(audited_world_ordinal=index,original_compound_cell=str(cells[0].relative_to(root)),
+                original_slot_metadata={k:clone(w[k]) for k in ('method','optimizer_history','objective','generation') if k in w})
     result={'schema':SCHEMA,'scope':args.scope,'source_commit':plan['source_commit'],'plan_sha256':plan['content_sha256'],
         'audit_content_sha256':audit['content_sha256'],'raw_inventory_sha256':digest(before),'worlds':worlds,
         'interpretation':{'report_only':True,'new_model_calls':0,'new_code_executions':0,'new_native_worlds':0,
             'loss_or_selection_changed':False,'causal_mechanism_effect_identified':False,
             'annual_boundaries_are_within_year_minima':False,'publication_ready':False}}
     if (before!=_inventory(root) or inputs!={str(p):file_sha256(p) for p in paths}
-            or pinned_revision(source)!=plan['source_commit']):raise ValueError('trace inputs or scientific source changed')
+            or pinned_revision(source)!=plan['source_commit']
+            or corrected and pinned_revision(ROOT)!=reader):raise ValueError('trace inputs or scientific/reader source changed')
+    if corrected:result['analysis_source_commit']=reader
     out.mkdir(parents=True);save(out/'report.json',result)
     rows=[{'world':w['identity'],'role':w['role'],'status':w['status'],'seed':w['seed'],
         **{k:y[k] for k in ('year','active_founders','total_founder_resources','minimum_founder_resources','transferred_units')}}
@@ -259,7 +283,11 @@ def export(args):
         writer.writeheader();writer.writerows(rows)
     save(out/'manifest.json',{'schema':SCHEMA+'.export','inputs':inputs,
         'report_file_sha256':file_sha256(out/'report.json'),'annual_file_sha256':file_sha256(out/'annual-boundaries.csv'),
-        'adapter_file_sha256':file_sha256(Path(__file__)),'new_model_calls':0,'new_code_executions':0})
+        'adapter_file_sha256':file_sha256(Path(__file__)),'new_model_calls':0,'new_code_executions':0,
+        **({'analysis_source_commit':reader} if corrected else {})})
+    if corrected and (before!=_inventory(root) or inputs!={str(p):file_sha256(p) for p in paths}
+            or pinned_revision(ROOT)!=reader or pinned_revision(source)!=plan['source_commit']):
+        raise ValueError('original data or reader/scientific source changed during corrected trace export')
     print(json.dumps({'scope':args.scope,'worlds':len(worlds),'annual_boundaries':len(rows),
         'recorded_code_calls':sum(len(w['code_calls']) for w in worlds)}))
 

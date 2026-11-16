@@ -1,0 +1,35 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-author-analysis-dispatch.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T17:37:57+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "analysis_source_commit": "b0201b97f59d4ddd27d7f6c297e5f82cfcf5b1e2",
+  "preceding_readout_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "analysis_source": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-choice-analysis-v1-a1",
+  "analysis_source_confirmed_clean": true,
+  "export_root": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1",
+  "author_outcomes": {
+    "original_handle": 37722,
+    "pid": 37882,
+    "confirmed_live": true,
+    "started_utc": "2026-11-16T17:37:03.710172+00:00",
+    "stage": "await-original-paired-readouts",
+    "schema": "scienceutopia.native-corrected-choice-author-outcomes-finish.v1"
+  },
+  "author_visibility": {
+    "original_handle": 3077,
+    "pid": 37902,
+    "confirmed_live": true,
+    "started_utc": "2026-11-16T17:37:04.836220+00:00",
+    "stage": "await-original-paired-authors",
+    "schema": "scienceutopia.native-corrected-choice-author-visibility-finish.v1"
+  },
+  "actual_all8_exports_completed": false,
+  "new_model_calls_allowed": false,
+  "new_generated_code_executions_allowed": false,
+  "restart_original_science_allowed": false,
+  "retry_failed_exports": false,
+  "reselect_policies": false,
+  "rewrite_scientific_losses": false,
+  "publication_ready": false,
+  "scope": "Actual separate reader startup/source/handle/process snapshot. Both continuations are waiting, not completed all8 analysis or independent native proof. Original scientific source and preceding57 reader sources remain unchanged."
+}

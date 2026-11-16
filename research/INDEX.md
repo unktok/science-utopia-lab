@@ -5,6 +5,12 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Corrected native effect-reader preparation](components/native-corrected-choice-effect-reader-v1.md)
+  reuses actual source/ledger/input-trace primitives with exact audited compound
+  cells, preserving repeats/nulls rather than globbing ambiguous IDs. Light
+  checks pass7,13(1 native case deliberately deselected),149 overlapping cases.
+  Actual whole-study effect exports remain pending, not evidence of benefit.
+
 - [First corrected fresh reference is measured](results/native-corrected-choice-first-reference-v1.json):
   U28.6667/K200 gives L_U-28.6667/L_C-8.6667; T36 is a separate diagnostic.
   The real writer advances to the second reference. No own result/gain or full
@@ -12,6 +18,8 @@ This page is navigation, not a chronological experiment transcript.
   now preserve the four-step profile, all nulls and actual request/loss evidence.
   Light checks pass114/53 overlapping cases after preserving/fixing one legacy
   CLI forwarding regression; actual all8 scientific exports remain outstanding.
+  [The separate b0201b97 readers are now actually waiting](results/native-corrected-choice-author-analysis-dispatch-v1.json)
+  in original37722/3077, not merely a proposed continuation or completed analysis.
 
 - [Both corrected endpoint scopes: fixed native evaluation preparation](components/native-corrected-choice-fixed-evaluation-v1.md)
   implements the new named runner/cold/readout/supervision/waiting continuations
