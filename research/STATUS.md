@@ -40,6 +40,14 @@ An [all8-session/101-request check of the older closed pilot](results/native-con
 finds zero instances of this particular visibility mismatch, not a bug-free
 certificate or a reason to invalidate its original valid/null outcomes.
 
+[Whole-prefix visibility analysis](components/native-author-visibility-v1.md)
+now verifies7 generated sessions/89 completed proposal steps at11:47UTC,45
+specific mismatches and no different loss view.50 metadata cases pass, including
+attempt-based checkpoints and pending responses remaining unknown. The eighth
+session is unrecorded; slot18's world loss is still unknown at that snapshot.
+This is not current all8 closure/transport proof or a patched original waiter;
+a guarded final export CLI and real paired all8 export remain outstanding.
+
 ## Purpose and present answer
 
 Optimize the scientific system itself under a declared loss, with fixed

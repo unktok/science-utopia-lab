@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Whole-prefix author visibility reader](components/native-author-visibility-v1.md)
+  passes50 metadata/component checks and reads all7 currently generated sessions:
+  89 completed proposal steps/45 specific phase mismatches, with no different
+  loss view. The8th session and slot18's native loss are still unobserved at its
+  dated snapshot. [Full rows/file/test evidence](results/native-author-visibility-reader-preparation-and-actual-prefix-v1.json)
+  also rechecks old8/101 with zero mismatches. The all8 pure join is not a real
+  closed export; a guarded postclosure CLI/paired execution remain outstanding.
+
 - [First-update geometry, not an added optimizer](components/native-priority-kernel-geometry-v1.md)
   reconstructs all8 numeric next asks, matching4 original receipts at its dated
   snapshot; the remaining4 are not observed dispatches. All4 adaptive parents
