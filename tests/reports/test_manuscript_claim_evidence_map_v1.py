@@ -108,17 +108,22 @@ def test_source_information_summary_retains_null_and_all_four_frozen_ties():
     assert 'A general negative effect of source access' in text
 
 
-def test_twenty_slot_dated_summary_does_not_rewrite_the_fifteen_slot_snapshot():
+def test_complete_terminal_summary_preserves_historical_twenty_slot_receipt():
     r = retained('research/results/native-priority-twentieth-own-outcome-and-prefix-v1.json', sealed=True)
     assert r['prefix_counts_against_visible_reference'] == {'complete': 20, 'tie': 10, 'worse': 10, 'better': 0}
     assert len(r['rows']) == 20 and not r['whole_campaign_closed'] and not r['publication_ready']
     text = overview()
-    assert '12:19 UTC' in text and '20\ncompleted own observations: 10 tie and 10 worsen' in text
-    assert 'Four planned slots, final selection' in text
-    assert 'separately dated 15-slot table' in text
+    final = retained('research/results/native-priority-method-terminal-snapshot-v1.json', sealed=True)
+    assert final['counts_against_visible_reference'] == {'tie': 12, 'worse': 12, 'better': 0}
+    assert final['selected_counts_against_visible_reference'] == {'tie': 8, 'worse': 4, 'better': 0}
+    assert final['all24_native_observations_recorded'] and not final['original_paired_cold_cost_readouts_complete']
+    assert '14:05 UTC' in text and '14:11 UTC' in text
+    assert 'Twelve own\nobservations tie and 12 worsen' in text
+    assert '12 frozen own-only selections yield eight ties and four worse losses' in text
+    assert 'older dated receipts remain unchanged' in text
     assert 'prospectively\ncorrected software is not an observed corrected search result' in text
     previous = bodies()['paper/integrated/native-priority-method-snapshot.tex']
-    assert '10:32 UTC' in previous and 'Fifteen own observations' in previous
+    assert 'All 24 own native observations' in previous
     assert 'three inspection attempts' in previous and 'counter records\nattempts' in previous
 
 

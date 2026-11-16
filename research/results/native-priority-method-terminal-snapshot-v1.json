@@ -1,0 +1,1027 @@
+{
+  "schema": "scienceutopia.native-priority-method-terminal-snapshot.v1",
+  "observed_utc": "2026-11-16T14:11:51.059757+00:00",
+  "analysis_source_commit": "8ec3b1f1435aaebbff28d6697e52541fc1b12fb9",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "terminal": {
+    "consumed_slots": 24,
+    "content_sha256": "404f3e6e67740ea81898e04ffd1c772f1ca8cd24c4dd37b8aec19805e0b3f14f",
+    "ended_utc": "2026-11-16T14:05:44.305661+00:00",
+    "held_out_evaluation": false,
+    "no_retry": true,
+    "observations": 27,
+    "publication_ready": false,
+    "schema": "scienceutopia.native-priority-method-comparison.v1.terminal",
+    "stage": "closed",
+    "status": "closed"
+  },
+  "writer_exit": {
+    "content_sha256": "f2d24ca95fef92be5b6cc5b6edc88fc890886cee8b3052bd92b1fcc4c51360f8",
+    "elapsed_seconds_shared_host": 35144.914796375204,
+    "ended_utc": "2026-11-16T14:05:46.397620+00:00",
+    "exit_code": 0,
+    "host_is_exclusive": false,
+    "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+    "schema": "scienceutopia.native-priority-method-writer-exit.v1",
+    "source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4"
+  },
+  "normal_original_handle": 82425,
+  "normal_original_exit_code": 0,
+  "rows": [
+    {
+      "slot_index": 0,
+      "cell_id": "uniform-priority/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "scbd86c6da048c335",
+      "observation_value_sha256": "dbd14306f5ce72d95a60fce9e6feec12dea79720b4b1de251f6dd4bb41eb89d5",
+      "literal_program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 1.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 1,
+      "cell_id": "adaptive-priority/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "scbd86c6da048c335",
+      "observation_value_sha256": "c9c0f17b7a72b5f1a70b8841912896bba2b386487aaec08029cb5761ffc754b7",
+      "literal_program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 1.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 2,
+      "cell_id": "free-code-graph/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-c0cbd1982f59807194212235",
+      "observation_value_sha256": "22c57307e42e7c0e04de2a17e650b0a5accca1494ce08703a3eb9bd05851f2bd",
+      "literal_program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 3,
+      "cell_id": "uniform-priority/history-0/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "se803cd930f3f7af2",
+      "observation_value_sha256": "50df13c0e8c4d9aa75fd35a4c0ce3e64bd6d61218de78688e3e7f8982c153066",
+      "literal_program_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 3.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 4,
+      "cell_id": "adaptive-priority/history-0/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "se803cd930f3f7af2",
+      "observation_value_sha256": "97227a7ab118856ec81210381b393e7c00b479eefa8ffead195defab28ed7805",
+      "literal_program_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 3.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 5,
+      "cell_id": "free-code-graph/history-0/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-6f3e5b948760380187a6adea",
+      "observation_value_sha256": "10cab53f5526f958c3e0c09fd7201f8b9438f09cc9f877fcf59aa492136536a2",
+      "literal_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 6,
+      "cell_id": "uniform-priority/history-1/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s439cf53bd46638ab",
+      "observation_value_sha256": "678aefee620bd5bd60f25497689eedf698979f6d2c6d2b4726349ee68a0a5688",
+      "literal_program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 7,
+      "cell_id": "adaptive-priority/history-1/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s439cf53bd46638ab",
+      "observation_value_sha256": "72b8e3f7cd0415d3d53cdc19696aac9aba4ad9df29d877f106d2e349d61125d4",
+      "literal_program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 8,
+      "cell_id": "free-code-graph/history-1/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-ada832b4da4e271303815783",
+      "observation_value_sha256": "2f93a65267cd1ac38e907f888a38b484ee624c671044bdcfbd78406526a22470",
+      "literal_program_sha256": "c61f9b554a916750e62db9328d5e9bc062309457e4936470d1e641d090e1d853",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [
+          "native-feature-extractor"
+        ],
+        "parameter_changed_nodes": [
+          "native-feature-extractor"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 9,
+      "cell_id": "uniform-priority/history-1/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s4ea8e2cb523eecde",
+      "observation_value_sha256": "c50c79ced6e2c12b179c6a1510c036b4371427c23bee9ea8ca0678ae781b9ff3",
+      "literal_program_sha256": "34a9bfe9ee25338fc8cf1e8d34b897089fb3b2296cc81bb16b7d5ab47de69505",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 3.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 10,
+      "cell_id": "adaptive-priority/history-1/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s4ea8e2cb523eecde",
+      "observation_value_sha256": "0f1d6fb2d846e864f33fbfd13f2a8b64f7eee5dbaf5b393f58a0c44fce38d65b",
+      "literal_program_sha256": "34a9bfe9ee25338fc8cf1e8d34b897089fb3b2296cc81bb16b7d5ab47de69505",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 3.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 11,
+      "cell_id": "free-code-graph/history-1/resource-aware-content/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-50d7b177a3220913368b0bad",
+      "observation_value_sha256": "82d9aeee1cbd2af75e5b804b4676b17101b48e860b5958e699108a6473a15ab6",
+      "literal_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 12,
+      "cell_id": "free-code-graph/history-1/resource-aware-content/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-4ac8b75532add3a0b994e569",
+      "observation_value_sha256": "aa2d66553cc50c636cfe9ea3b9f873516ede163f31f927a998dd4cc5ee0c133f",
+      "literal_program_sha256": "b07c46dcd4a3bdb63827f6c94e4a45bb4d9458b7ed3c74861fa2b628e2862f3e",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 13,
+      "cell_id": "adaptive-priority/history-1/resource-aware-content/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s57ba2348ec2b2db7",
+      "observation_value_sha256": "e478d3470f6222c19480433388f23d86e49cee26bae879983ed2dd511dd52050",
+      "literal_program_sha256": "28115133fa3a4e66b0bd218b6c0c29b399e466fb42ebe4cdc77c5136de9c6b47",
+      "cross_scores": {
+        "content-utility": -28.333333333333332,
+        "resource-aware-content": -12.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.3333333333333357,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 14,
+      "cell_id": "uniform-priority/history-1/resource-aware-content/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "se71333203546aa95",
+      "observation_value_sha256": "b78965b9b77e0f050c2fc291b0868be2aa88f4f34b045afdb3c996f4f32e25f5",
+      "literal_program_sha256": "71e45f18dd69df574c14ac86f5c07bdb157d7d772ede7057a7415408c5e5891b",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 15,
+      "cell_id": "free-code-graph/history-1/content-utility/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-cb55dce9c17f9a575ff2923a",
+      "observation_value_sha256": "7f45b7e057f81bd570ea7176d5ada1d5388d0dc17c3179d0a29e0b4a800fb7b1",
+      "literal_program_sha256": "878b143abf3bcb6b5e585c94c0a4035a3279c0a790f0a232bc38527a9462bdce",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [
+          "world.selection"
+        ],
+        "parameter_changed_nodes": [
+          "world.selection"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 16,
+      "cell_id": "adaptive-priority/history-1/content-utility/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s3ae24de5968caeda",
+      "observation_value_sha256": "a11fa57c8aec81aa1a5ab9727813b5cbefc9160cca31d280f2d6b29698d1e7a7",
+      "literal_program_sha256": "346d867f4e0a0303a45845a8ee2cac94d1ef0e0917b907e63a58d88cf27de76d",
+      "cross_scores": {
+        "content-utility": -28.333333333333332,
+        "resource-aware-content": -8.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.3333333333333357,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 17,
+      "cell_id": "uniform-priority/history-1/content-utility/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s4e73e51c92913079",
+      "observation_value_sha256": "d152c58013146fd7c902102c145b87173177d0ad2211ac338407881cee4de146",
+      "literal_program_sha256": "20e2f71f4b9905159d2f209b43de99871f7b5fe23f8a6144da1d4e25a4d19b6e",
+      "cross_scores": {
+        "content-utility": -28.333333333333332,
+        "resource-aware-content": -8.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.3333333333333357,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 18,
+      "cell_id": "free-code-graph/history-0/resource-aware-content/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-ae8a4997060a4bc7e836dd3f",
+      "observation_value_sha256": "34950179db818f4b91887ae5016942e9d1db20402f663879e176b63486c7728e",
+      "literal_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 19,
+      "cell_id": "adaptive-priority/history-0/resource-aware-content/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "scc4bb20c33573167",
+      "observation_value_sha256": "8b0a669613f7864127a9f70e04ad884e632023eccf49f4ede0ed8db0930db3d4",
+      "literal_program_sha256": "0ae7e1d924cfe4944b12c6621b43174b43806e911c6070b3557b23279054226e",
+      "cross_scores": {
+        "content-utility": -26.333333333333332,
+        "resource-aware-content": -10.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 2.3333333333333357,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 20,
+      "cell_id": "uniform-priority/history-0/resource-aware-content/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "s1a57305fbff793b2",
+      "observation_value_sha256": "98a8844ad3a453a594cc3b2df10804d2c7001d3da26d93e777e880a0bca91581",
+      "literal_program_sha256": "cb55395e5eace05807bd97efa394ac991fd1b4fc9012291d2cea68468e823f69",
+      "cross_scores": {
+        "content-utility": -26.333333333333332,
+        "resource-aware-content": -10.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 2.3333333333333357,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 21,
+      "cell_id": "free-code-graph/history-0/content-utility/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-76efdedcceeaac38dbb55f4f",
+      "observation_value_sha256": "d85a5e5b86912809b53b7e1005e7f6c9dce8b50b96ad17409c30bfa53aa7ffe5",
+      "literal_program_sha256": "9538cfef912131b67ad9ebbace468b526d52397e74e075debf240d17a8ca29b8",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 22,
+      "cell_id": "adaptive-priority/history-0/content-utility/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "sf7b868a9f016e44e",
+      "observation_value_sha256": "754502ef3ec8f205330ea26f1c81e8eceb58234312d7dfe178b66a9760353648",
+      "literal_program_sha256": "8bdbc0f26a25fefec949713e003a62386955b5b7cf4863b482f7d1de15c27d30",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    },
+    {
+      "slot_index": 23,
+      "cell_id": "uniform-priority/history-0/content-utility/generation-1",
+      "slot": {
+        "generation": 1,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "s7ce05743c8cceab8",
+      "observation_value_sha256": "c0867f7c04e039ecfce2911b9b88e616a656d0af2a8c31428d2eb05f14a52388",
+      "literal_program_sha256": "8d0e15234b9cbec3fb59429bf23fcc75e36eec4ebb73a606c820844c0633b1ae",
+      "cross_scores": {
+        "content-utility": -28.333333333333332,
+        "resource-aware-content": -8.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.3333333333333357,
+      "graph_delta": {
+        "nodes_added": [],
+        "nodes_removed": [],
+        "source_changed_nodes": [],
+        "parameter_changed_nodes": [
+          "developer-catalog-agenda"
+        ],
+        "wires_added": 0,
+        "wires_removed": 0,
+        "schedules_changed": false,
+        "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+      }
+    }
+  ],
+  "counts_against_visible_reference": {
+    "tie": 12,
+    "worse": 12,
+    "better": 0
+  },
+  "selected": [
+    {
+      "method": "adaptive-priority",
+      "replication": 0,
+      "objective": "content-utility",
+      "all_tied_ids": [
+        "sf7b868a9f016e44e"
+      ],
+      "completed_submissions": 2,
+      "loss": -28.666666666666668,
+      "reference_loss": -28.666666666666668,
+      "selected_id": "sf7b868a9f016e44e",
+      "literal_program_sha256": "8bdbc0f26a25fefec949713e003a62386955b5b7cf4863b482f7d1de15c27d30",
+      "own_minus_reference": 0.0
+    },
+    {
+      "method": "adaptive-priority",
+      "replication": 0,
+      "objective": "resource-aware-content",
+      "all_tied_ids": [
+        "scc4bb20c33573167"
+      ],
+      "completed_submissions": 2,
+      "loss": -10.333333333333332,
+      "reference_loss": -12.666666666666668,
+      "selected_id": "scc4bb20c33573167",
+      "literal_program_sha256": "0ae7e1d924cfe4944b12c6621b43174b43806e911c6070b3557b23279054226e",
+      "own_minus_reference": 2.3333333333333357
+    },
+    {
+      "method": "adaptive-priority",
+      "replication": 1,
+      "objective": "content-utility",
+      "all_tied_ids": [
+        "s439cf53bd46638ab"
+      ],
+      "completed_submissions": 2,
+      "loss": -28.666666666666668,
+      "reference_loss": -28.666666666666668,
+      "selected_id": "s439cf53bd46638ab",
+      "literal_program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "own_minus_reference": 0.0
+    },
+    {
+      "method": "adaptive-priority",
+      "replication": 1,
+      "objective": "resource-aware-content",
+      "all_tied_ids": [
+        "s57ba2348ec2b2db7"
+      ],
+      "completed_submissions": 2,
+      "loss": -12.333333333333332,
+      "reference_loss": -12.666666666666668,
+      "selected_id": "s57ba2348ec2b2db7",
+      "literal_program_sha256": "28115133fa3a4e66b0bd218b6c0c29b399e466fb42ebe4cdc77c5136de9c6b47",
+      "own_minus_reference": 0.3333333333333357
+    },
+    {
+      "method": "free-code-graph",
+      "replication": 0,
+      "objective": "content-utility",
+      "all_tied_ids": [
+        "native-adaptive-c0cbd1982f59807194212235",
+        "native-adaptive-76efdedcceeaac38dbb55f4f"
+      ],
+      "completed_submissions": 2,
+      "loss": -28.666666666666668,
+      "reference_loss": -28.666666666666668,
+      "selected_id": "native-adaptive-c0cbd1982f59807194212235",
+      "literal_program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "own_minus_reference": 0.0
+    },
+    {
+      "method": "free-code-graph",
+      "replication": 0,
+      "objective": "resource-aware-content",
+      "all_tied_ids": [
+        "native-adaptive-6f3e5b948760380187a6adea",
+        "native-adaptive-ae8a4997060a4bc7e836dd3f"
+      ],
+      "completed_submissions": 2,
+      "loss": -12.666666666666668,
+      "reference_loss": -12.666666666666668,
+      "selected_id": "native-adaptive-6f3e5b948760380187a6adea",
+      "literal_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "own_minus_reference": 0.0
+    },
+    {
+      "method": "free-code-graph",
+      "replication": 1,
+      "objective": "content-utility",
+      "all_tied_ids": [
+        "native-adaptive-ada832b4da4e271303815783",
+        "native-adaptive-cb55dce9c17f9a575ff2923a"
+      ],
+      "completed_submissions": 2,
+      "loss": -28.666666666666668,
+      "reference_loss": -28.666666666666668,
+      "selected_id": "native-adaptive-ada832b4da4e271303815783",
+      "literal_program_sha256": "c61f9b554a916750e62db9328d5e9bc062309457e4936470d1e641d090e1d853",
+      "own_minus_reference": 0.0
+    },
+    {
+      "method": "free-code-graph",
+      "replication": 1,
+      "objective": "resource-aware-content",
+      "all_tied_ids": [
+        "native-adaptive-50d7b177a3220913368b0bad",
+        "native-adaptive-4ac8b75532add3a0b994e569"
+      ],
+      "completed_submissions": 2,
+      "loss": -12.666666666666668,
+      "reference_loss": -12.666666666666668,
+      "selected_id": "native-adaptive-50d7b177a3220913368b0bad",
+      "literal_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "own_minus_reference": 0.0
+    },
+    {
+      "method": "uniform-priority",
+      "replication": 0,
+      "objective": "content-utility",
+      "all_tied_ids": [
+        "s7ce05743c8cceab8"
+      ],
+      "completed_submissions": 2,
+      "loss": -28.333333333333332,
+      "reference_loss": -28.666666666666668,
+      "selected_id": "s7ce05743c8cceab8",
+      "literal_program_sha256": "8d0e15234b9cbec3fb59429bf23fcc75e36eec4ebb73a606c820844c0633b1ae",
+      "own_minus_reference": 0.3333333333333357
+    },
+    {
+      "method": "uniform-priority",
+      "replication": 0,
+      "objective": "resource-aware-content",
+      "all_tied_ids": [
+        "s1a57305fbff793b2"
+      ],
+      "completed_submissions": 2,
+      "loss": -10.333333333333332,
+      "reference_loss": -12.666666666666668,
+      "selected_id": "s1a57305fbff793b2",
+      "literal_program_sha256": "cb55395e5eace05807bd97efa394ac991fd1b4fc9012291d2cea68468e823f69",
+      "own_minus_reference": 2.3333333333333357
+    },
+    {
+      "method": "uniform-priority",
+      "replication": 1,
+      "objective": "content-utility",
+      "all_tied_ids": [
+        "s439cf53bd46638ab"
+      ],
+      "completed_submissions": 2,
+      "loss": -28.666666666666668,
+      "reference_loss": -28.666666666666668,
+      "selected_id": "s439cf53bd46638ab",
+      "literal_program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "own_minus_reference": 0.0
+    },
+    {
+      "method": "uniform-priority",
+      "replication": 1,
+      "objective": "resource-aware-content",
+      "all_tied_ids": [
+        "se71333203546aa95"
+      ],
+      "completed_submissions": 2,
+      "loss": -12.666666666666668,
+      "reference_loss": -12.666666666666668,
+      "selected_id": "se71333203546aa95",
+      "literal_program_sha256": "71e45f18dd69df574c14ac86f5c07bdb157d7d772ede7057a7415408c5e5891b",
+      "own_minus_reference": 0.0
+    }
+  ],
+  "selected_counts_against_visible_reference": {
+    "tie": 8,
+    "worse": 4,
+    "better": 0
+  },
+  "selection_content_sha256": "abacb1c6ed63d5cfddc4d3e9863f5bb561df674400707656610c15a608013e3e",
+  "all24_native_observations_recorded": true,
+  "selection_frozen_and_checked": true,
+  "original_paired_cold_cost_readouts_complete": false,
+  "all8_author_outcome_and_visibility_exports_complete": false,
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "raw_scientific_records_modified": false,
+  "held_out_evaluation": false,
+  "publication_ready": false,
+  "scope": "Literal checked terminal/own observations and own-only selection, with recomputed assigned/cross losses. Original paired full native cold/cost/readout chain is still running. This is not that audit, corrected-inventor proof, method superiority or useful invention. Preserve the original context-v1 interface confound.",
+  "input_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/plan.json": "91a63d5753f0f30b5470bdd725bd42365a610cb8f61a1a3002e3175b68d1925b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/terminal.json": "8d08385ff5613d26d40997fc5c15d55eeaa1fa62c0f0570b3b50344812648f91",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/writer-exit.json": "cf68860a81617f3ac953b5600279302544466150dd51f74ee0806a667d9f3cf9",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/writer-supervision-start.json": "27b50646798238ac7e71bc2fa3ebbaf7232e8e8870748a38ff45cbd4258e8308",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/selection.json": "b91ac1f7468205ea4447280cbd2f02af1ae56d3bd4b234cc6301e9d1d65ceea9",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/observation.json": "a24e4a0eb6bafdde1f24d2be09684d8b42140ef8b70a8f874fcb12504770e41f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/observation.json": "422d8364c91454a183ee0e90719407467b07e8009d8d92d7a7671a2e265cfa3f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/literal-related/observation.json": "bdd58da50f16356e37678a7090a686b8fd3413b84c6f6d3823d5e67f89e0dda0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/observation.json": "ee39bb52e82bb6cb64283db693d798927c63e5c5bcfaae9506d9413dfdbbf09a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/observation.json": "21cf1bab66854c71b024687f4c3c298587712743e33c3817ddb16c66521bf9f4",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/campaign/native-adaptive-state.json": "d001362b45c6736d56a56ad9e927a836b25c64f469decca23050f32900aedc08",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/resource-aware-content/generation-0/observation.json": "a5e046e5abe2e5b2d3b2d96d2b83d720881c162eb164aca983883aa95919ed8b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/resource-aware-content/generation-0/observation.json": "b4d6ab0af6c2606ace5ec23c7798d2eccbc25c5ff48754fabee41cffa017c4b0",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/resource-aware-content/campaign/native-adaptive-state.json": "81b5c98872acd69f3349426165394544cdba23b271cd404c6b3d6c12fd562516",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/content-utility/generation-0/observation.json": "220f1000c16f04e00efc8d4cdc9e76fff5d30588e5f9f207c6f8c7be1ac99939",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/content-utility/generation-0/observation.json": "f1e8a25b6561026ae68c9b35ce15f63ae939f3c5d8bef4d86406bc72d31dd99b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/campaign/native-adaptive-state.json": "8b1aafd4367a7c9c61b1ef01df20680aff18de1fe9cf41cc41ba875b4cb0a04a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/resource-aware-content/generation-0/observation.json": "8ccda6cdf49ae0ff32316780f2218d061d0310ac3620a042f023517e75872904",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/resource-aware-content/generation-0/observation.json": "2cd8b83302bb49057a17e37c238e47e8d0dfbacf915487a80adc07b1b7fa5d0d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/resource-aware-content/campaign/native-adaptive-state.json": "42535472416cbd0112d70f816c2ac390ad239b6dedfedc5e37e9716684018e5a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/resource-aware-content/generation-1/observation.json": "45496b10a9be6b97a6ca5bedbc5c383905dff82c87e29f28b13f57fbc2d2d555",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/resource-aware-content/generation-1/observation.json": "95c2b26f942b888b41dead2d896614feae31b57c466000aaec43645d690c4f74",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-1/content-utility/generation-1/observation.json": "4bb6a189dd8c6cd1e1f8b9e0646436aca3637cadd2b21837b9718679a45ce8f5",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-1/content-utility/generation-1/observation.json": "480ac43a116655eda5c6511aab3f53c6d8b6f3d11631579ebc44dc2eeb754ce3",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/resource-aware-content/generation-1/observation.json": "f3ff9a0ba1f4ef7a7e04030f211bb85724c76290d9f758102b588de09d0b25b2",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/resource-aware-content/generation-1/observation.json": "db3ab960b99352683e1da51613e5c6bbdea7d46b63f4c50c2e1821129941cb63",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-1/observation.json": "f2df170ca6bfd9fe36e807a85c094861fe093cc0d1b4e098a5e710f0ef52b3cf",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-1/observation.json": "231fe72577813eca84ec9afe45b3e10ded2ae3fb36dcaa1d3aaaaae29cfb3f04"
+  },
+  "content_sha256": "fe1f7da38ff64011f6e026a9a0415f4020b4acfaf73210aa057d63ed58fc1df9"
+}

@@ -7,6 +7,15 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November16 14:11UTC：[全24自己候補と固定選択](../results/native-priority-method-terminal-snapshot-v1.json)
+を保存・再計算した。元writer/supervisorは14:05UTCにexit0、全27worldの観測が記録済み。
+自己候補は12同点／12悪化／0改善、12固定選択は8同点／4悪化／0改善。
+対照への優位、新制度の有用な発明、修正後モデルの有効性は示していない。
+元sourceの二重cold/cost/readout/all8結合はまだ実行中。全24行の原稿source更新は
+20軽量検査を通過したが、新PDFではない。準備済みadfd6b94の公開native通しQAは
+実推論終了後に起動し、SCRIPTED応答／software seed43003/43011で稼働している。
+これらをR2/R3/R5/R6の達成とは数えない。以下の以前のsnapshotは履歴として残す。
+
 November16 10:51UTC：[原稿sourceの追記](../components/native-priority-manuscript-source-v1.md)
 で過去26入力を残し、日付付き15枠の表・手法・作用・文書可視性の不整合を統合した。
 19 source検査は通ったが、新PDFのbuild／全頁目視は未実施で、確認済み104頁版は不変。

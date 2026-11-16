@@ -11,19 +11,20 @@ from utopia.optimization.native_numeric_designer import checked
 ROOT = Path(__file__).resolve().parents[2]
 SECTION = 'paper/integrated/native-priority-method-snapshot.tex'
 PREFIX = 'research/results/native-priority-first-three-second-generation-outcomes-v1.json'
+TERMINAL = 'research/results/native-priority-method-terminal-snapshot-v1.json'
 
 
 def record(name):
     return checked(json.loads((ROOT / name).read_text()))
 
 
-def test_all_fifteen_complete_rows_cross_scores_and_chronology_match_original_prefix():
-    r = record(PREFIX)
+def test_all_twenty_four_rows_match_terminal_without_changing_earlier_prefix():
+    r = record(TERMINAL)
     text = (ROOT / SECTION).read_text()
     rows = [line for line in text.splitlines() if re.match(r'^\d+ & [RAF] & ', line)]
-    assert len(rows) == len(r['first_15_own_slots']) == 15
+    assert len(rows) == len(r['rows']) == 24
     methods = {'uniform-priority': 'R', 'adaptive-priority': 'A', 'free-code-graph': 'F'}
-    for original, line in zip(r['first_15_own_slots'], rows, strict=True):
+    for original, line in zip(r['rows'], rows, strict=True):
         slot = original['slot']; fields = line.removesuffix('\\\\').split(' & ')
         assert fields[:4] == [str(original['slot_index'] + 1), methods[slot['method']],
             str(slot['replication']) + '/' + str(slot['generation']),
@@ -31,11 +32,47 @@ def test_all_fifteen_complete_rows_cross_scores_and_chronology_match_original_pr
         assert fields[4:] == [f"${original['cross_scores'][k]:.2f}$" for k in
             ('content-utility', 'resource-aware-content')] + [f"${original['cross_scores']['throughput']:.0f}$"]
         assert original['status'] == 'complete'
-    assert r['counts_against_visible_reference'] == {'tie': 8, 'worse': 7, 'better': 0}
-    assert not r['whole_campaign_closed'] and not r['selection_frozen'] and not r['publication_ready']
-    for text_boundary in ('10:32 UTC', 'nine planned slots', 'not a selected subset',
-                          'No row is marked', 'not failed or zero-valued'):
+    old = record(PREFIX)
+    for earlier, final in zip(old['first_15_own_slots'], r['rows'][:15], strict=True):
+        assert earlier['slot'] == final['slot']
+        assert earlier['cross_scores'] == final['cross_scores']
+        assert earlier['assigned_loss_minus_reference'] == final['assigned_loss_minus_reference']
+    assert old['counts_against_visible_reference'] == {'tie': 8, 'worse': 7, 'better': 0}
+    assert not old['whole_campaign_closed'] and not old['selection_frozen']
+    assert r['counts_against_visible_reference'] == {'tie': 12, 'worse': 12, 'better': 0}
+    assert r['selection_frozen_and_checked'] and not r['publication_ready']
+    assert not r['original_paired_cold_cost_readouts_complete']
+    for text_boundary in ('14:05 UTC', '14:11 UTC', 'not a selected subset',
+                          '12 tie and 12 worsen', 'this terminal snapshot is not that audit'):
         assert text_boundary in text
+
+
+def test_terminal_and_own_only_selection_do_not_become_method_or_cold_proof():
+    r = record(TERMINAL); text = (ROOT / SECTION).read_text()
+    assert r['normal_original_handle'] == 82425 and r['normal_original_exit_code'] == 0
+    assert checked(r['terminal'])['consumed_slots'] == 24
+    assert r['terminal']['observations'] == 27 and r['terminal']['no_retry']
+    assert checked(r['writer_exit'])['exit_code'] == 0
+    assert r['selected_counts_against_visible_reference'] == {'tie': 8, 'worse': 4, 'better': 0}
+    assert len(r['selected']) == 12
+    for chosen in r['selected']:
+        pool = [row for row in r['rows'] if row['slot']['method'] == chosen['method']
+                and row['slot']['replication'] == chosen['replication']
+                and row['slot']['objective'] == chosen['objective']]
+        best = min(row['cross_scores'][chosen['objective']] for row in pool)
+        ties = [row for row in pool if row['cross_scores'][chosen['objective']] == best]
+        assert chosen['completed_submissions'] == len(pool) == 2
+        assert chosen['loss'] == best and chosen['selected_id'] == ties[0]['suggestion_id']
+        assert chosen['all_tied_ids'] == [row['suggestion_id'] for row in ties]
+        assert chosen['own_minus_reference'] == best - chosen['reference_loss']
+        assert chosen['literal_program_sha256'] == ties[0]['literal_program_sha256']
+    assert not r['held_out_evaluation'] and not r['raw_scientific_records_modified']
+    assert r['new_model_calls'] == r['new_code_executions'] == 0
+    assert not r['all8_author_outcome_and_visibility_exports_complete']
+    for phrase in ('eight tie and four', 'without falling back',
+                   'not independent populations', '45 instances', '102 committed proposal steps',
+                   '179 full researcher inputs', 'corrected-model\nproof'):
+        assert phrase in text
 
 
 def test_recovery_is_not_promoted_to_best_known_or_adaptive_advantage():

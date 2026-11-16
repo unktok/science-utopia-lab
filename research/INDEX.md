@@ -5,6 +5,15 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [All24 native outcomes and frozen own-only selections](results/native-priority-method-terminal-snapshot-v1.json)
+  verify the original14:05UTC normal writer/supervisor exit:12 ties/12 worse/0
+  better than the strong visible reference. The12 frozen selections give8 ties/
+  4 worse/0 better. Original paired cold/cost/readout/all8 joins are still running.
+  The manuscript source now prints the complete table;20 source/evidence checks
+  pass, not PDF layout or corrected-model proof. The prepared clean-source
+  public/native software QA has actually started, with SCRIPTED responses and
+  separate software seeds, not another scientific comparison or hidden retry.
+
 - [Actual104-page source-only subset preparation](results/integrated-consumer-rebuild-subset-preparation-v1.json)
   stages84 exact reviewed files/81 dependencies from clean c1b12a5e on a pushed
   proof branch.29 source checks pass,20 older cases are explicitly deselected.

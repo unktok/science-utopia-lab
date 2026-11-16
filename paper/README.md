@@ -3,14 +3,17 @@
 ## Current editable source versus last reviewed PDF
 
 The canonical source [integrated.tex](integrated.tex) now additionally includes
-[the dated, unfinished priority/free-method pilot and visibility defect](integrated/native-priority-method-snapshot.tex).
-It retains all15 complete observations at10:32UTC, not a selected subset or the
-final24-slot comparison, and separates literal edits, observed effects and gains.
+[the finite priority/free-method pilot and visibility defect](integrated/native-priority-method-snapshot.tex).
+It retains all24 complete own observations at the14:05UTC normal writer exit,
+not a selected subset, and separates literal edits, observed effects and gains.
+At14:11UTC,12 outcomes tie/12 worsen the strong reference; the12 frozen own-only
+selections yield8 ties/4 worse. The paired full cold/cost/readout chain is still
+running, not proved by the literal observation/selection checks. Older15/20-slot
+dated receipts remain unchanged; their unfinished tables are superseded here.
 The abstract/discussion report the interface confound and prospective repair's
 unproved real-model/native scope. Earlier meaningful tracks remain included.
 The introduction now adds an evidence-to-claim reading map, a study-local loss
-notation clarification and a separately dated20-slot prefix at12:19UTC.
-The older15-slot detailed table is deliberately retained as its own snapshot.
+notation clarification and the complete24-slot terminal snapshot.
 The evidence-family table also includes later topic/resource and free-design
 studies; it no longer describes V2 as the latest matched study. No new result,
 pooled replication, important main-track finding or corrected-model benefit is

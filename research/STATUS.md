@@ -1,8 +1,31 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at13:30UTC/22:30JST.
+Last scientific snapshot: November16,2026 at14:11UTC/23:11JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
+
+## All finite native slots recorded; paired closure is running
+
+[The original writer and supervisor exit normally](results/native-priority-method-terminal-snapshot-v1.json)
+at14:05UTC with24 complete own observations/3 references and no slot refill.
+Checked literal observations/recomputed cross-losses give12 ties/12 worse/0
+better than the common visible reference. All12 own-only earliest-tie selections
+are frozen and verified:8 ties/4 worse/0 better. This terminal projection is not
+the full source-bound cold audit, corrected-inventor proof or a method advantage.
+The original paired audit/cost/readout/all8-author continuation remains active.
+Older dated receipts below are preserved history, not the current stage.
+
+After the original inference and supervisor ended, the prepared clean
+adfd6b94 public/native software QA actually started (original handle46875).
+Host-wide checks also showed other projects using Docker; this is a shared-host
+correctness check, not an exclusive timing benchmark. Its software seeds are
+43003/43011 and its model/corpus replies are SCRIPTED. No new scientific seed,
+corrected real-model readiness certificate or research improvement is claimed.
+The pinned QA source stays unchanged until the actual process exits.
+
+The manuscript source now includes all24 rows and the12 frozen selections,
+superseding the unfinished table while preserving its old evidence receipts.
+20 source/evidence checks pass; no new PDF/build/layout review has occurred.
 
 ## Important author-interface correction, not an active-run patch
 
@@ -135,13 +158,13 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | First22 own observations complete:11 ties/11 worse/0 better than visible reference. Not final24-slot closure |
-| Current stage | Adaptive priority/history0/U/g1, still old context-v1; then final uniform priority/history0/U/g1 |
+| Own outcomes | All24 complete:12 ties/12 worse/0 better than visible reference;3 references complete. Original context-v1 |
+| Current stage | Original writer/supervisor exit0; paired original cold/cost/readout chain running. Corrected public/native SCRIPTED QA active separately |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
 | First edited proposal in this study | Free/history1/U:14 actions, one literal extractor-source write, complete/ties parent; no new node/wire/schedule |
-| Selection | Final own-only earliest-tie selections are not yet frozen; no reference fallback, adverse-slot refill or hidden merit/fairness/activity veto |
+| Selection | All12 own-only earliest-tie selections frozen and checked:8 ties/4 worse/0 better; no reference fallback, refill or hidden merit/fairness/activity veto |
 | Independence | Two optimizer seeds are not independent scientist populations; initial numeric proposals are deliberately paired, not independent policy samples |
 
 [First five original outcomes](results/native-priority-first-five-own-outcomes-prefix-v1.json)
