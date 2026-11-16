@@ -14,7 +14,7 @@ is development-informed, not a blind independent method comparison.
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
 | Own-system optimization | First3 outcomes tie the strong parent: [interface/U](results/native-consumer-source-first-own-outcome-prefix-v1.json)=-28.6667, [consumers/C](results/native-consumer-source-second-own-outcome-prefix-v1.json) and [interface/C](results/native-consumer-source-third-own-outcome-prefix-v1.json)=-8.6667. [Fourth consumers/U outcome](results/native-consumer-source-fourth-own-outcome-prefix-v1.json) completes at-7, worse by21.6667;4/8 own slots complete |
-| Next original slot | Literal-consumers / U / g1 readiness begins00:17:09UTC November16 (09:17:09JST), after the first round's four measured outcomes; same original finite loop |
+| Next original slot | [Consumers/U/g1 actually receives own loss-7](results/native-consumer-source-first-g1-feedback-wire-prefix-v1.json), passes readiness and [submits a selector-source revision](results/native-consumer-source-fifth-own-submission-prefix-v1.json) after14 steps; original native evaluation is active |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -77,6 +77,17 @@ has10 accepted decisions/U7 versus the strong parent's36/U28.6667, with equal
 collected K200/unpaid0/final active5. Its91 complete scientist inputs/responses
 are not the parent's179-input class. Assigned U loss worsens, without a refill
 or new veto; neither more source context nor actual actuation guarantees gain.
+
+The first g1 actual model wires contain the adverse own outcome and the
+declared stronger parent. A14,755-character plan violates the4096-character
+limit explicitly present in that wire; its rejection is delivered in the next
+wire without truncating/repairing the plan. All14 steps, including5 rejections,
+remain recorded. A valid new feature-source read is later blocked by the
+declared implementation checkpoint, although its full source is already in
+the supplied current system. Available design authority is not unrestricted
+dialogue workflow; no causal effect of that checkpoint is identified here.
+The final submitted change is selector empty-cycle fallback syntax, not the
+unadopted raw plan's liquidity change. Native outcome is still pending.
 
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history

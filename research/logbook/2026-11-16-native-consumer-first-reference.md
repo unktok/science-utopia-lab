@@ -371,3 +371,57 @@ actual feedback-bearing model wire; verify that separately when it exists.
 No unfavorable candidate is hidden, repaired or refilled. Original paired
 audit/cost/readout closure, later frozen unused evaluation and the full
 publication-ready objective remain open.
+
+## First g1 real feedback wire, ordinary rejections and fifth submission
+
+Previous goal turn makes progress by retaining the fourth native outcome and
+its actual5-founder project effects, then pushing main. This turn rechecks
+original writer11821 and original continuations11949/11967 live, waits on the
+same15471 handle, and observes consumers/U/g1 pass exact-request readiness and
+enter optimization at00:24:15.195113UTC November16 (09:24:15JST).
+
+The [actual feedback-wire prefix](../results/native-consumer-source-first-g1-feedback-wire-prefix-v1.json)
+verifies original request strings/hashes and decoded USER data. The prior
+own observation is complete with loss-7, and the strong parent is retained
+under the declared best-visible/own rule. Its full authored definition and
+observation remain exact in the request archive; the two common visible
+references are also present, not another history's own outcomes or the withheld
+terminal hand rule. Delivery is not proof of causal use/learning. Selecting
+the measured stronger parent is the declared optimizer rule, not repairing the
+old lexical submission or hiding its worse result.
+
+The initial model plan has14,755 objective_reasoning characters and is rejected
+against the4096 maxLength explicitly present in the actual SYSTEM wire. The
+raw plan remains intact. The error's message_character_limit4000 is the error
+message cap, not that plan-field limit. The next actual wire includes the same
+rejection and prior measured loss; the next read applies. This is an ordinary
+declared tool-validation event, not an observed missing-feedback bug or a
+completed failed world. Actual reported prompt count40,774 with8192 output room
+and stop termination is a local capacity observation, not a general guarantee.
+
+Two early passive displays assume the wrong observation shape/index and fail
+without writing/dispatching: the request stores wrappers, and the common
+references precede the own row. The retained projection identifies the nested
+own observation by its original observation_id instead of guessing its position.
+No original input or outcome is rewritten.
+
+The [fifth submission prefix](../results/native-consumer-source-fifth-own-submission-prefix-v1.json)
+retains all14 complete steps:8 applied,5 rejected,1 finished. One rejection is
+the long plan; four are the declared implementation checkpoint. At step4 the
+requested code/native-feature-extractor.py is a valid listed filename, but the
+checkpoint rejects the new read after repeated selector reads. The same actual
+wire already contains the complete current SystemSpec and that literal feature
+source. This is a workflow restriction, not source absence or a scientific-merit
+veto. Its causal impact on the proposal is not identified and the policy is not
+changed inside this run. Full step_errors feedback, not only the outer errors
+list, is retained; rejected editor actions are not failed candidate slots.
+
+The initial raw, unadopted plan proposes liquidity priority. The final generated/
+compiled candidate instead changes only world.selection source, rewriting its
+already present empty-cycle fallback as an explicit conditional and keeping the
+acceptance rule. AST differs; no node, wire, phase or schedule changes. Its
+installed SystemSpec matches exactly and73 actual scientist requests are
+observed at retention. That prefix is not a final charged-call total, native
+loss, global program-equivalence proof or improvement. The original finite
+native loop and its paired closure/readout wait continue unchanged. R2/R3/R5/R6
+and the full publication-ready goal remain open.

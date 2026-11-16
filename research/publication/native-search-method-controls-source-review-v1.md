@@ -44,6 +44,21 @@ Shared outer optimization draw seeds and per-step decoding seeds are different
 layers; paired outer seeds must not be described as identical per-turn LLM
 randomness. A future method comparison must bind and report both layers.
 
+The [first actual g1 wires](../results/native-consumer-source-first-g1-feedback-wire-prefix-v1.json)
+do deliver the earlier own loss-7 and keep the stronger parent under the
+declared rule. A long plan is rejected against an explicit4096-character field
+limit, with the error retained in the next input. The
+[submitted followup](../results/native-consumer-source-fifth-own-submission-prefix-v1.json)
+also records implementation-checkpoint read restrictions: after repeated
+selector reads, a requested feature-source filename is valid but blocked, while
+the complete literal source is already supplied in the current-system body.
+This distinguishes a missing source from a workflow restriction. It does not
+identify why the model chooses its final revision or prove the restriction
+helps/hurts; unrestricted read/implement sequencing would be a separate
+prospective same-authority method ablation, not a mid-study repair or a new
+scientific objective. Do not call the present interaction protocol unrestricted
+merely because its executable design domain is broad.
+
 The current procedure selects the minimum-loss visible/own parent and retains
 literal archives for reading. Retaining all records is not the same as sampling
 non-incumbent programs as parents or giving multiple inspirations to a proposal.

@@ -1,0 +1,129 @@
+{
+  "schema": "scienceutopia.native-consumer-source-first-g1-feedback-wire-prefix.v1",
+  "recorded_utc": "2026-11-16T00:32:27.943609+00:00",
+  "classification": "actual-feedback-bearing-proposal-wire-and-ordinary-step-rejection-not-native-outcome",
+  "scientific_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "arm": "literal-consumers",
+  "objective": "content-utility",
+  "generation": 1,
+  "request_sha256": "1bdd18643f83d100c53366b7b51606d44ab157ef001324eadd6dcd9ac0d5371c",
+  "prior_request_sha256": "c3b6e25c1612a52a08f3dc3cab983d0e14bad8215381708f148e8a2c7bc9fed3",
+  "prior_observation_id": "observation-native-adaptive-72efc298c5322e87007fc4e2",
+  "prior_assigned_loss": -7.0,
+  "parent_selection": "declared best visible/own completed parent; strong reference retained after adverse own result",
+  "parent_system_matches_strong_reference": true,
+  "prior_full_authored_definition_and_observation_match_original_request_archive": true,
+  "history_is_other_arms_or_objectives": false,
+  "readiness_passed": true,
+  "readiness_worker_file_sha256": "e8c16cd63924e453d28fb37f309486af5e917054b84aae6df177372b76e95137",
+  "readiness_certificate_sha256": "86ae9c0cf57cfeda60f54968b36d8e12a2c21ab875ba075c74c661b100fffd2e",
+  "actual_wire_rows": [
+    {
+      "step": 0,
+      "status": "rejected",
+      "tool": "plan",
+      "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/content-utility/authoring/proposal-1bdd18643f83d100c53366b7b51606d44ab157ef001324eadd6dcd9ac0d5371c/editor-session/authoring/generation-1bdd18643f83d100c53366b7b51606d44ab157ef001324eadd6dcd9ac0d5371c/step-00.completed.json",
+      "record_file_sha256": "5b7f370127d7f25becc8c9be5a76a51a67ea13636833b80fe5421f20ed796952",
+      "request_wire_sha256": "05f93b761252a6dd56f5989e11fa41a9981b5e1de10fbfb6545a1ac73531596a",
+      "current_parent_system_sha256": "67e71aaecc1c5350cb343bb9a0c5b16879aa14fb9041f319f18e99f0b28eb3dd",
+      "own_observation": {
+        "observation_id": "observation-native-adaptive-72efc298c5322e87007fc4e2",
+        "status": "complete",
+        "loss": -7.0,
+        "loss_spec_sha256": "37205a64c692bd77a64ddf6a5bdb3843fdbeff3f8e47382b1d59c2ddc92d5867"
+      },
+      "visible_reference_labels": [
+        "workflow-reference-core-only",
+        "workflow-reference-core-plus-related"
+      ],
+      "own_history_retrieval": {
+        "canonical_value_utf8_bytes": 217034,
+        "exact_archive_filename": "archive/request.json",
+        "json_pointer": "/history",
+        "literal_body_included": false,
+        "retrieval": "read_file exact filename with explicit character offset/limit; no automatic adoption",
+        "value_sha256": "81b2733c7964eb500c806f9225aeb415eaf3a446cd2b28272b3ab50a9f9bf9c1"
+      },
+      "backend_reported_context": {
+        "actual_wire_utf8_bytes": 174152,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 40774,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "done_reason": "stop"
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "tool": "read_file",
+      "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/content-utility/authoring/proposal-1bdd18643f83d100c53366b7b51606d44ab157ef001324eadd6dcd9ac0d5371c/editor-session/authoring/generation-1bdd18643f83d100c53366b7b51606d44ab157ef001324eadd6dcd9ac0d5371c/step-01.completed.json",
+      "record_file_sha256": "d242d900f82a58be0ec370618771f65db115bd8f4ea376ab7a7f9b57861b7de7",
+      "request_wire_sha256": "0e7753b0548287e119eb074e87a904678df4657fd504d96a31f9b451954ea5fe",
+      "current_parent_system_sha256": "67e71aaecc1c5350cb343bb9a0c5b16879aa14fb9041f319f18e99f0b28eb3dd",
+      "own_observation": {
+        "observation_id": "observation-native-adaptive-72efc298c5322e87007fc4e2",
+        "status": "complete",
+        "loss": -7.0,
+        "loss_spec_sha256": "37205a64c692bd77a64ddf6a5bdb3843fdbeff3f8e47382b1d59c2ddc92d5867"
+      },
+      "visible_reference_labels": [
+        "workflow-reference-core-only",
+        "workflow-reference-core-plus-related"
+      ],
+      "own_history_retrieval": {
+        "canonical_value_utf8_bytes": 217034,
+        "exact_archive_filename": "archive/request.json",
+        "json_pointer": "/history",
+        "literal_body_included": false,
+        "retrieval": "read_file exact filename with explicit character offset/limit; no automatic adoption",
+        "value_sha256": "81b2733c7964eb500c806f9225aeb415eaf3a446cd2b28272b3ab50a9f9bf9c1"
+      },
+      "backend_reported_context": {
+        "actual_wire_utf8_bytes": 174307,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 40613,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "done_reason": "stop"
+    }
+  ],
+  "ordinary_first_plan_rejection": {
+    "requested_plan_reasoning_characters": 14755,
+    "declared_maxLength": 4096,
+    "declaration_present_in_actual_system_wire": true,
+    "raw_plan_preserved": true,
+    "original_transition_errors": [
+      {
+        "message": "tool schema: $.objective_reasoning: invalid maxLength (actual JSON type string)",
+        "message_character_limit": 4000,
+        "type": "ValueError"
+      }
+    ],
+    "error_message_character_limit_4000_is_not_the_plan_field_limit": true,
+    "same_error_delivered_in_next_actual_wire": true,
+    "next_read_action_applied": true,
+    "host_truncated_or_repaired_plan": false,
+    "is_a_completed_candidate_failure_or_loss": false
+  },
+  "scope": {
+    "delivered_feedback_proves_causal_learning": false,
+    "successful_real_readiness_guarantees_free_task_compliance": false,
+    "backend_context_observations_guarantee_all_later_frames_fit": false,
+    "generation1_candidate_submitted_or_evaluated_by_this_record": false,
+    "whole_study_closed": false,
+    "new_model_calls": 0,
+    "new_generated_code_executions": 0,
+    "new_native_worlds": 0,
+    "active_settings_changed": false,
+    "previous_passive_diagnostics": "A display assumed bare rather than wrapped observations and raised KeyError(status); an initial assertion assumed the own observation occupied index0 and failed. The actual request includes two visible references before its own observation. No state was written or dispatched; this retained projection matches the nested own observation by its original identity, not its array position."
+  }
+}

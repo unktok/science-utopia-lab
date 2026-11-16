@@ -1,0 +1,286 @@
+{
+  "schema": "scienceutopia.native-consumer-source-fifth-own-submission-prefix.v1",
+  "recorded_utc": "2026-11-16T00:38:20.986341+00:00",
+  "classification": "actual-feedback-followup-submission-and-native-wires-not-completed-outcome",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "original_writer_handle": 15471,
+  "writer_pid": 11821,
+  "arm": "literal-consumers",
+  "objective": "content-utility",
+  "generation": 1,
+  "request_sha256": "1bdd18643f83d100c53366b7b51606d44ab157ef001324eadd6dcd9ac0d5371c",
+  "suggestion_id": "native-adaptive-9180a08c032383e51a015f76",
+  "generated": true,
+  "compiled": true,
+  "generation_error": null,
+  "candidate_sha256": "df747dd7ccb1a78ae367fb6348e56b6a61877d1a4ad1a43396df287912970b21",
+  "candidate_matches_installed_system": true,
+  "installed_system_file_sha256": "26df0faca8f043104f492b057a422751b7967e258cfbdd37c51f54a83c0328c0",
+  "chronological_completed_author_steps": 14,
+  "step_status_counts": {
+    "applied": 8,
+    "finished": 1,
+    "rejected": 5
+  },
+  "step_count_is_physical_POST_total": false,
+  "all_retained_technical_feedback_empty": false,
+  "steps": [
+    {
+      "step": 0,
+      "status": "rejected",
+      "tool": "plan",
+      "filename": null,
+      "root_errors": [],
+      "transition_errors": [
+        {
+          "message": "tool schema: $.objective_reasoning: invalid maxLength (actual JSON type string)",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "all_technical_feedback": [
+        {
+          "message": "tool schema: $.objective_reasoning: invalid maxLength (actual JSON type string)",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "record_file_sha256": "5b7f370127d7f25becc8c9be5a76a51a67ea13636833b80fe5421f20ed796952"
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "d242d900f82a58be0ec370618771f65db115bd8f4ea376ab7a7f9b57861b7de7"
+    },
+    {
+      "step": 2,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "6ecbcd4ba92e720ee4fb3f99b283a1942bae97fa228f77b766fde44927d8ccdb"
+    },
+    {
+      "step": 3,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "b12e7ca0efdf7d2b440028102c44bfe34887c4f91efb4b717ffb2c445094de01"
+    },
+    {
+      "step": 4,
+      "status": "rejected",
+      "tool": "read_file",
+      "filename": "code/native-feature-extractor.py",
+      "root_errors": [],
+      "transition_errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "all_technical_feedback": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "record_file_sha256": "8e98a414b2342f0fd6d87a097629f83e8d9aa848d87ef8dbdfe09411b576602c"
+    },
+    {
+      "step": 5,
+      "status": "rejected",
+      "tool": "read_file",
+      "filename": "code/native-feature-extractor.py",
+      "root_errors": [],
+      "transition_errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "all_technical_feedback": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "record_file_sha256": "5d4c63a6e865d427b684fc9295be511030e549d0d770d1546b579d25a0ee14f8"
+    },
+    {
+      "step": 6,
+      "status": "applied",
+      "tool": "edit",
+      "filename": null,
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "acbfe2b4426e58e45b3af5811ca8c0d3faeeb7ef6ea47ada2213f91c69ee29d3"
+    },
+    {
+      "step": 7,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "591c68aa1a0448b62e279f12bbc0b654504f2cd2f879caee2e95a9c20f510788"
+    },
+    {
+      "step": 8,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "0a0e275d8f7be1a3c605f3d84b0459d7a72f8a0fc8987479ec4da3f5c7188ec9"
+    },
+    {
+      "step": 9,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "5ee6a3092ba2bcc3e5c6c7f7e3a9e57bcc988fae7ee7a31eb9b8e66ff7569a17"
+    },
+    {
+      "step": 10,
+      "status": "rejected",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "all_technical_feedback": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "record_file_sha256": "a9309e62ee48eb9447ca86a369d39da49ba9f93d8a74095d83f8409e8545c982"
+    },
+    {
+      "step": 11,
+      "status": "rejected",
+      "tool": "read_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "all_technical_feedback": [
+        {
+          "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "record_file_sha256": "5ee8a2b1d447cbcbe21aeef83715528941eb5bcc494af295863b6e3a26fd8ab5"
+    },
+    {
+      "step": 12,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/world.selection.py",
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "20337a452f79aec123f514894315f3062c3a9358c8ad15d36177016889764cf0"
+    },
+    {
+      "step": 13,
+      "status": "finished",
+      "tool": "finish",
+      "filename": null,
+      "root_errors": [],
+      "transition_errors": [],
+      "all_technical_feedback": [],
+      "record_file_sha256": "51899f616cdd2f18c5ef2001094dd8e9b8c3088670ea068f75156299eaec1cec"
+    }
+  ],
+  "graph_from_parent": {
+    "phase_updates": {},
+    "removed_connections": [],
+    "added_connections": [],
+    "source_parameters_nodes_unchanged": false,
+    "added_nodes": {},
+    "removed_nodes": {},
+    "changed_mechanisms": {
+      "world.selection": {
+        "before_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+        "after_sha256": "dfb92d961af321fca077dc693ce5ffae64ca28e499e3abbc598bd4855a310bea",
+        "changed_fields": [
+          "parameters"
+        ]
+      }
+    },
+    "source_edits": {
+      "world.selection": {
+        "before_source_utf8_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6",
+        "after_source_utf8_sha256": "6ae7b7526b121819c4acd6391f3a45ca8d7050e9edc83a8784cab24dd91811ee"
+      }
+    },
+    "changed_system_fields": {},
+    "added_schedules": {},
+    "removed_schedules": {}
+  },
+  "changed_source_parsed_AST_equal_without_attributes": false,
+  "literal_delta": "world.selection retains its acceptance rule and replaces decisions-or-empty-list fallback with an explicit if-not-decisions assignment. This source inspection is not a whole-program equivalence or native outcome proof.",
+  "implementation_checkpoint_read_scope": {
+    "attempted_step": 4,
+    "attempted_filename": "code/native-feature-extractor.py",
+    "filename_in_actual_supplied_index": true,
+    "complete_current_SystemSpec_already_supplied": true,
+    "current_system_matches_declared_parent": true,
+    "feature_source_utf8_sha256": "337902cd5b71c322b1541badce682a2f2ae9c7837ba60e20cd2bfcb9efa955d0",
+    "step_record_file_sha256": "8e98a414b2342f0fd6d87a097629f83e8d9aa848d87ef8dbdfe09411b576602c",
+    "rejection_was_implementation_checkpoint_not_missing_filename": true,
+    "blocked_read_executed": false,
+    "other_route_to_literal_source_was_available": true,
+    "loss_or_scientific_merit_veto": false,
+    "checkpoint_policy_changed": false,
+    "causal_effect_on_final_proposal_identified": false
+  },
+  "initial_raw_unadopted_plan_targeted_liquidity": true,
+  "final_submitted_mechanism_is_liquidity": false,
+  "prior_feedback_wire_record_file_sha256": "dc9a19362905852a5de41c3df6de715812c495dffe415dabab497fbaec53234e",
+  "scientist_wire_requests_at_snapshot": 73,
+  "wire_count_scope": "Literal input prefix, not final responses or total charged calls",
+  "assigned_loss_at_snapshot": null,
+  "outcome_complete_at_snapshot": false,
+  "own_completed_slots_at_snapshot": 4,
+  "whole_study_closed": false,
+  "new_model_calls_by_observation": 0,
+  "new_generated_code_executions_by_observation": 0,
+  "settings_changed": false,
+  "scope": "Five rejected editor actions remain charged within the original14-step session; not five failed scientific candidates. Plan-length and implementation-checkpoint feedback were not silently discarded or repaired. Original native evaluation follows explicit finish under unchanged source/model/loss/selection/budgets. This does not demonstrate useful invention, causal learning, source-information benefit or normal whole-study cold closure."
+}

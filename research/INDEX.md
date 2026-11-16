@@ -15,7 +15,9 @@ This page is navigation, not a chronological experiment transcript.
   complete and tie the strong parent. [The third own C outcome](results/native-consumer-source-third-own-outcome-prefix-v1.json)
   also completes and ties it. [The fourth original consumers/U outcome](results/native-consumer-source-fourth-own-outcome-prefix-v1.json)
   completes with U loss-7, worse than-28.6667;4/8 own slots complete, with no own
-  gain or whole-study closure. The original consumers/U/g1 readiness now starts.
+  gain or whole-study closure. [Own measured feedback reaches the first g1 model wire](results/native-consumer-source-first-g1-feedback-wire-prefix-v1.json)
+  and [its14-step selector revision submits](results/native-consumer-source-fifth-own-submission-prefix-v1.json),
+  retaining5 tool rejections and a pending original native outcome.
   [Its saved year1 project effects](results/native-consumer-source-fourth-year1-actuation-prefix-v1.json)
   change all5 founder topics/calendars and agree with actual native author state;
   that is observed actuation, not an isolated information effect or useful gain.
