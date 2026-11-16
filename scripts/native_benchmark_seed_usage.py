@@ -36,8 +36,17 @@ def software_fixture_policy(policy):
     return policy
 
 
-def usage_inventory(root,seeds,*,software_exclusions=None):
+def usage_inventory(root,seeds,*,software_exclusions=None,strict_paths=False):
+    if type(strict_paths) is not bool:
+        raise ValueError('explicit boolean prospective path-coverage mode required')
     root=Path(root).resolve();rows=[];excluded=[];errors=[];seen=[]
+    if strict_paths:
+        if not root.is_dir():
+            errors.append({'path': '.', 'error': 'explicit inventory root is missing or not a directory'})
+        for path in root.rglob('*'):
+            if path.is_symlink() and path.is_dir():
+                errors.append({'path': str(path.relative_to(root)),
+                    'error': 'directory symlink coverage unresolved; inventory its target as an explicit root'})
     explicit = {}; retained = []
     if software_exclusions is not None:
         policy = software_fixture_policy(software_exclusions)
@@ -50,6 +59,9 @@ def usage_inventory(root,seeds,*,software_exclusions=None):
     for path in sorted(root.rglob('responses.sqlite')):
         relative=path.relative_to(root)
         name = str(relative)
+        if strict_paths and not path.resolve().is_relative_to(root):
+            errors.append({'path': name, 'error': 'response journal resolves outside explicit inventory root'})
+            continue
         # An explicit exception is only for the inspected non-production stores.
         # A real metadata-bearing journal is ALWAYS scanned, even if listed.
         if name in explicit:
@@ -66,7 +78,8 @@ def usage_inventory(root,seeds,*,software_exclusions=None):
                 retained.append({'path': name, 'file_sha256': row['file_sha256'], 'reason': row['reason']})
                 continue
             errors.append({'path': name, 'error': 'refuse software exclusion of metadata-bearing journal'})
-        if name not in explicit and any('verification' in part or 'pytest' in part for part in relative.parts):
+        if (not strict_paths and name not in explicit
+                and any('verification' in part or 'pytest' in part for part in relative.parts)):
             excluded.append(str(relative));continue
         try:
             with sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True) as db:
@@ -87,6 +100,11 @@ def usage_inventory(root,seeds,*,software_exclusions=None):
         receipt.update(schema='scienceutopia.native-benchmark-seed-usage.v3',
             explicit_nonproduction_software_files=retained,
             software_fixture_policy_sha256=software_exclusions['content_sha256'])
+    if strict_paths:
+        receipt.update(schema='scienceutopia.native-benchmark-seed-usage.v4', strict_path_coverage=True,
+            scope='All response journals under the explicit resolved root, without directory-name exclusions; '
+                  'only exact reviewed non-production file exceptions may be omitted. '
+                  'Not proof that other roots/machines or a different corpus are unused.')
     receipt['content_sha256']=digest(receipt)
     return receipt
 
@@ -96,7 +114,11 @@ def require_inventory_policy(receipt, policy):
     expected = [{'path': row['path'], 'file_sha256': row['file_sha256'], 'reason': row['reason']}
         for row in policy['files'] if row['root'] == receipt['root']]
     order = lambda rows: sorted(rows, key=lambda row: row['path'])
-    if (receipt.get('schema') != 'scienceutopia.native-benchmark-seed-usage.v3'
+    supported = receipt.get('schema') == 'scienceutopia.native-benchmark-seed-usage.v3' or (
+        receipt.get('schema') == 'scienceutopia.native-benchmark-seed-usage.v4'
+        and receipt.get('strict_path_coverage') is True
+        and not receipt.get('excluded_software_verification_paths'))
+    if (not supported
             or receipt.get('software_fixture_policy_sha256') != policy['content_sha256']
             or order(receipt.get('explicit_nonproduction_software_files', [])) != order(expected)):
         raise ValueError('literal complete software-fixture exclusions differ from the bound policy')
