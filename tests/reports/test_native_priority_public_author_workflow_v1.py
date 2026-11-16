@@ -39,7 +39,9 @@ def test_same_public_prescribed_actions_reach_both_checkpoints_and_cold_saved_en
     binding = {**dialogue.BINDING, 'image_id': image}; monkeypatch.setattr(dialogue, 'BINDING', binding)
     actions = prescribed_author_actions(body)
     assert [a['tool'] for a in actions] == ['plan', *(['read_file'] * 3), 'edit', *(['read_file'] * 3), 'finish']
-    model = Model(actions)
+    # DialogueModel consumes its private queue with pop(0); retain the expected
+    # public canary list independently rather than asserting on the emptied queue.
+    model = Model(clone(actions))
     generator = StagedVocabularyGenerator(model, tmp_path / 'author', image_id=image,
         provider_binding=binding, max_steps=16, max_tokens=8192, conversation_profile=BOUNDED_AUTHORING)
     result = generator(body)
