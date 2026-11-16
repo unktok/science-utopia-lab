@@ -18,6 +18,7 @@ from scripts import run_native_priority_method_comparison_v1 as driver
 from scripts import audit_native_priority_method_comparison_v1 as auditor
 from scripts.analyze_native_open_v7 import _inventory
 from scripts.reports.pre_scale_costs_v1 import analyze as costs
+from scripts.reports.native_author_visibility_v1 import prompt_projection
 from tests.reports.test_native_legacy_choice_pilot_native_v1 import public_operator_path
 from tests.reports.test_native_legacy_choice_native_v1 import ScriptedCritic
 from tests.reports.test_native_open_workflow_post_edit_v1 import transparent_office
@@ -27,7 +28,44 @@ from utopia.optimization import native_bounded_staged_designer as bounded
 from utopia.optimization.native_designer_tools_v25 import function_data
 from utopia.system import code_mechanisms
 from utopia.system.design_patch import clone, digest
+from utopia.optimization.native_objective_view import loss_arithmetic
 from utopia.utils.data_utils import write_json_atomic
+
+
+def prescribed_author_actions(request):
+    """Test-only workflow canary: no real inventor or extra native worlds.
+
+    Exercise three reads before an edit and again after it, so the public
+    proof cannot bypass the implementation checkpoint with plan/edit/finish.
+    """
+    reads = [{'tool': 'read_file', 'filename': name} for name in (
+        'system.json', 'code/developer-catalog-agenda.py', 'system.json')]
+    return [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED loss-aware interface test',
+        'design_intent': 'Exercise literal code/wiring and actual-body workflow, not scientific improvement'},
+        *clone(reads),
+        transparent_office(request, identity='scripted-mixed-office-' + str(request['generation'])),
+        *clone(reads),
+        {'tool': 'finish', 'rationale': 'SCRIPTED mixed-method software construction'}]
+
+
+def checked_actual_workflow(payload, *, step, request):
+    """Inspect the exact saved/sent SCRIPTED body, not a reconstructed prompt."""
+    marker = 'BOUNDED ACTIVE SESSION DATA\n'
+    texts = [m['content'].split('\n', 1)[1] for m in payload['messages']
+             if m['role'] == 'user' and m.get('content', '').startswith(marker)]
+    assert len(texts) == 1, 'one literal active-session backend message required'
+    view, _ = json.JSONDecoder().raw_decode(texts[0])
+    assert view['active_context_contract']['prospective_context_revision'] == (
+        'matched-bounded-author-64k-v2-literal-visibility')
+    remaining = view['000_current_turn']['authoring_workflow']['remaining_calls_including_this_one']
+    row = prompt_projection(json.dumps(view, ensure_ascii=False, allow_nan=False),
+        index=step, maximum=step + remaining, previous_status=None if step == 0 else 'applied',
+        expected_loss=loss_arithmetic(request['loss_spec']))
+    assert not row['phase_differs_from_actual_body_interpretation'], 'actual body/phase mismatch'
+    assert row['displayed_visibility_matches_body_presence'], 'actual visibility flag mismatch'
+    assert row['supplied_body_matches_declared_document_hash'] is not False, 'actual body hash mismatch'
+    assert row['exact_loss_arithmetic_and_definitions_present'], 'actual objective view differs'
+    return row
 
 
 @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_PRIORITY_METHOD_PUBLIC_QA') != '1',
@@ -55,6 +93,7 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
         'SCRIPTED': 'upstream provenance only; actual current runtime source cold checked'})
     old = driver.read(upstream['run'] / 'plan.json'); provider, scientist = old['designer'], old['scientist']
     current = {'request': None, 'kind': None}; production, calibration, sessions = [], [], {}
+    workflows = []
 
     class Session(ScriptedSession):
         calls = []
@@ -87,11 +126,9 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
             else:
                 assert current['kind'] == 'proposal'; req = current['request']; key = digest(req)
                 i = sessions.get(key, 0); sessions[key] = i + 1
-                # Prescribed source/wiring probe, not an autonomously invented rule.
-                actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED loss-aware interface test',
-                    'design_intent': 'Exercise new literal code and wiring, not scientific improvement'},
-                    transparent_office(req, identity='scripted-mixed-office-' + str(req['generation'])),
-                    {'tool': 'finish', 'rationale': 'SCRIPTED mixed-method software construction'}]
+                # Prescribed workflow/source/wiring probe, not autonomous invention.
+                actions = prescribed_author_actions(req)
+                workflows.append(checked_actual_workflow(payload, step=i, request=req))
                 if i >= len(actions):
                     pytest.fail('SCRIPTED author did not finish after its prescribed valid actions')
                 action = actions[i]; production.append(payload)
@@ -118,8 +155,14 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
         audit_one=upstream['audit_one'], audit_two=upstream['audit_two']))
     driver.run(root); p = driver.require_plan(root); end = driver.read(root / 'terminal.json')
     assert end['status'] == 'closed' and end['consumed_slots'] == 24 and end['observations'] == 27
-    assert len(sessions) == 8 and set(sessions.values()) == {3}
-    assert len(production) == 24 and calibration
+    assert len(sessions) == 8 and set(sessions.values()) == {9}
+    assert len(production) == len(workflows) == 72 and calibration
+    boundary = [r for r in workflows if r['step'] == 4 and r['whole_document_actually_supplied']
+        and r['compact_document_utf8_bytes'] <= r['declared_literal_byte_cap'] < r['legacy_spaced_document_utf8_bytes']]
+    assert len(boundary) >= 2, 'both actual terminal-parent histories must exercise the serializer boundary'
+    assert all(r['recorded_phase'] == 'implementation' for r in boundary)
+    post_edit = [r for r in workflows if r['step'] == 8 and r['whole_document_actually_supplied']]
+    assert post_edit and all(r['recorded_phase'] == 'implementation' for r in post_edit)
     assert len(list((root / 'slots').glob('*.json'))) == 24
     for key in driver.all_history_keys(p):
         if key[0] == driver.METHODS[2]:
@@ -167,6 +210,9 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
         'own_slots': 24, 'numeric_own_worlds': 16, 'free_own_worlds': 8,
         'scientist_SDK_POSTs_including_upstream': len(upstream['scientist_requests']),
         'scripted_proposal_POSTs': len(production), 'scripted_calibration_POSTs': len(calibration),
+        'scripted_workflow_calls': len(workflows), 'literal_serializer_boundary_checkpoint_calls': len(boundary),
+        'post_edit_full_document_checkpoint_calls': len(post_edit),
+        'actual_body_phase_mismatches': sum(r['phase_differs_from_actual_body_interpretation'] for r in workflows),
         'audit_content_sha256': proof['content_sha256'], 'cost_content_sha256': pair[0]['content_sha256'],
         'new_real_model_calls': 0, 'deadline_supervision_tested': False,
         'scientific_improvement_demonstrated': False, 'publication_ready': False}, sort_keys=True)
