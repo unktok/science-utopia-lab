@@ -1,0 +1,102 @@
+{
+  "schema": "scienceutopia.native-priority-first-free-submission-prefix.v1",
+  "observed_utc": "2026-11-16T06:38:19.663026+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "request_sha256": "05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d",
+  "actual_request_readiness": {
+    "certificate_content_sha256": "0c91a7b499b7b7675625198b1974923f2f274220b85ead74a9a8c43f9ccb2e16",
+    "all_controls_passed": true,
+    "control_records": 28
+  },
+  "proposal_result_content_sha256": "4dd17e415b973fa8a706d2470fcabbc35491ba57a60a1db243b2450fb4f41177",
+  "proposal_public_return_sha256": "4511078c4a5b72aeb0ca7bf19c80a4723dcb9952c7e1a529d88ef10d2a201471",
+  "returned_definition_equals_campaign_definition": true,
+  "cumulative_completed_author_steps": [
+    {
+      "step": 0,
+      "status": "applied",
+      "executed_tool": "plan",
+      "errors": [],
+      "transition_errors": [],
+      "draft_before_sha256": "116bfa894582c3e8ed9dca992895b288183223b75d3f3c1d2449c1757dc9782b",
+      "draft_after_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b"
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "executed_tool": "read_file",
+      "errors": [],
+      "transition_errors": [],
+      "draft_before_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b",
+      "draft_after_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b"
+    },
+    {
+      "step": 2,
+      "status": "applied",
+      "executed_tool": "read_file",
+      "errors": [],
+      "transition_errors": [],
+      "draft_before_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b",
+      "draft_after_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b"
+    },
+    {
+      "step": 3,
+      "status": "applied",
+      "executed_tool": "read_file",
+      "errors": [],
+      "transition_errors": [],
+      "draft_before_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b",
+      "draft_after_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b"
+    },
+    {
+      "step": 4,
+      "status": "finished",
+      "executed_tool": "finish",
+      "errors": [],
+      "transition_errors": [],
+      "draft_before_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b",
+      "draft_after_sha256": "dc8247b99ae83352b635fcc822371937eca157e3456034f692d50f3854f7177b"
+    }
+  ],
+  "declared_proposal_POST_allowance": 16,
+  "suggestion_id": "native-adaptive-c0cbd1982f59807194212235",
+  "compiled_program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+  "actual_parent_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+  "literal_parent_retained": true,
+  "graph_from_actual_parent": {
+    "nodes_added": [],
+    "nodes_removed": [],
+    "source_changed_nodes": [],
+    "parameter_changed_nodes": [],
+    "wires_added": 0,
+    "wires_removed": 0,
+    "schedules_changed": false,
+    "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+  },
+  "native_world_system_recorded": true,
+  "mutable_campaign_state_snapshot_sha256": "0ac96d1ea7d53e146c60f29375e1bc7dcf56e40238fc0cdf7170013f689362c2",
+  "bound_immutable_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-00.completed.json": "3022970a44b03750a152ff7856871a513caafd2d583f521ccaa3ec3ee25c05ea",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-00.started.json": "1b92742bb27ece4749f7605c7f734548a1fe4f5bb9c8e2832f96cf4fb8753763",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-01.completed.json": "e417edcdb9815ee3d4d0c6ad6f308bf256de2d5ae9048375531ef819b210f650",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-01.started.json": "ee33c7eba87963fe963e439a63d624b5c9a93016d8c1455bfa2245428308ba56",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-02.completed.json": "d4adadbe9df78cf5ab7a058a06bf31130d1ed3b2fa287d9488ce2445810e049c",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-02.started.json": "7b2b02dfdd80f0ee535b133811de5955d018fc8c9c0cb663e3094b9095238d82",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-03.completed.json": "82f21f7aaf22c92bc3e94297fa806d416d9f0af57a01a62761e7ffd9581544bc",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-03.started.json": "f5483ef01106cd9488e16f735cdf91e1d6c6d479ae711f81bb375fdd1cc45e95",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-04.completed.json": "08bed32cd215053b33e9ab5e98d4fc6d4b53cac510b232c4b05d9173e0ded6d6",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-session/authoring/generation-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/step-04.started.json": "10a26892e35099d92888c9512b6925970b65a7e55479faec78e57c8c11c14a7e",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/proposal-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/result.json": "08bb075d3bb2decc5f26aac34ea416120ab33a74213a8677beecf40967903029",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/authoring/calibration-05951423d05746fcdd7238679bcd601f7adc152f721d26d8b3d328456b7b012d/editor-readiness/calibration/certificate.json": "15d34f33e644e576730255898f9ccbe6ae6d636f221242a20256e6a36ffa271a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/worlds/native-adaptive-c0cbd1982f59807194212235-s61001/system.json": "9df190475fee82e08bf222947d9f415a180aa1fedb03824146766a2bd3187276"
+  },
+  "loss_claimed_in_this_submission_prefix": false,
+  "whole_cold_audit_complete": false,
+  "scope": "Complete actual-request readiness and five-step proposal prefix: plan/read/read/read/finish, no recorded errors and no edit attempted. The valid unchanged parent is compiled/submitted, not a new institution or useful invention. This is not a lost successful edit, a novelty veto or proof the parent is optimal; no causal explanation of model behavior is identified. Plain step-start JSON is bound by each completed receipt started_file_sha256, not a nonexistent self-seal. Separate read-only diagnostics omitted cwd, assumed non-null base_patch and applied the wrong sealed reader to plain started JSON; all stopped without output/raw changes, not simulator/transport/journal corruption.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "publication_ready": false,
+  "content_sha256": "b4c655d215adc83eae86545eb2c01b1e949c8be31d5310957b45867751a8396e"
+}

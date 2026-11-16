@@ -8,38 +8,27 @@ This page is navigation, not a chronological experiment transcript.
 - [New finite uniform/adaptive/free-method protocol](protocols/campaigns/native-priority-method-comparison-v1.md)
   and [actual pinned real dispatch](results/native-priority-method-dispatch-v1.json):
   two U/C losses, two optimizer histories/method/objective,24 own slots and3
-  fresh strong references in the original persistent researcher world. The known
-  terminal rule is visible, not an unseen discovery for us. Initial real readiness
-  now passes28 controls; the [first reference completes](results/native-priority-method-first-reference-prefix-v1.json)
-  at U28.6667/K200; [the second now completes](results/native-priority-method-visible-reference-prefix-v1.json)
-  with equal full scientist inputs/choices and known K160/C gain4. The third
-  [also completes and the first own proposal is dispatched](results/native-priority-method-reference-bank-and-first-dispatch-prefix-v1.json).
-  [Its first own loss](results/native-priority-first-own-outcome-prefix-v1.json)
-  is U=-27.6667, one worse than its strong parent, and is told without repair.
-  [Actual year1 topics change for two founders](results/native-priority-first-own-year1-actuation-prefix-v1.json)
-  while original deadlines remain. Adaptive's initial world is now running;
-  this is not a completed own-method comparison.
-  [All-slot readout preparation](results/native-priority-method-readout-preparation-v1.json)
-  adds compound identities, all12 paths/frozen selections and an actual separate
-  paired-export waiter, with56 light tests. The renderer is prepared but not yet
-  rendered or visually reviewed; no own-method gain is claimed.
-  [Frozen bank preparation](results/native-priority-fixed-bank-preparation-v1.json)
-  retains12 own labels/3 controls with33 light checks; its
-  [prospective transfer draft](protocols/campaigns/native-priority-selection-transfer-draft-v1.md)
-  is not unused-seed proof, a full execution-ready evaluation or a new dispatch.
-  [Actual evaluation preparation code](results/native-priority-fixed-evaluation-preparation-v1.json)
-  adds strict inventories/public prepare/run/v6 cold/cost adapters with27 latest
-  light checks and84 reader regressions. Full native/Docker/cold/readout proof
-  and real unused-condition evaluation are still open.
-  [All-label evaluation readout](results/native-priority-fixed-readout-preparation-v1.json)
-  now implements all30 logical rows/54 contrast definitions/108 paired rows,
-  with34 latest pure tests and42 boundary regressions. An original path-fixture
-  failure remains retained. This is not actual native/cold or unused evidence.
-  [Actual27-world SOFTWARE proof](results/native-priority-method-public-software-retention-v1.json)
-  closes with matching paired cold/cost records; SCRIPTED success is not a real
-  gain. The separate actual read-only continuation waits for writer and supervisor
-  exit. [Observation log](logbook/2026-11-16-priority-method-dispatch.md) records
-  scope, processes and preserved failures. Main-track readiness remains open.
+  fresh references in the original persistent researcher world. The known
+  terminal rule is visible, not a new discovery. [Complete reference bank](results/native-priority-method-reference-bank-and-first-dispatch-prefix-v1.json)
+  and [first five own outcomes](results/native-priority-first-five-own-outcomes-prefix-v1.json)
+  are retained: paired U numeric evaluations worsen by1, paired initial C
+  numeric evaluations worsen by3, first free submission retains/ties its parent. This is a
+  prefix, not the completed24-slot comparison. See [STATUS](STATUS.md) for the
+  active slot/source/processes and [first free journal](results/native-priority-first-free-submission-prefix-v1.json)
+  for the five applied/finished actions, without an invented institution claim.
+  [Actual year1 effects](results/native-priority-first-own-year1-actuation-prefix-v1.json)
+  distinguish changed parameters, changed topics and unproved useful gain.
+  [All-slot readout](results/native-priority-method-readout-preparation-v1.json),
+  [frozen bank](results/native-priority-fixed-bank-preparation-v1.json),
+  [evaluation runner/cold/cost](results/native-priority-fixed-evaluation-preparation-v1.json)
+  and [all-label evaluation readout](results/native-priority-fixed-readout-preparation-v1.json)
+  have scoped software preparation, not real unused evaluation.
+  [New opt-in public-proof activation/scope](components/native-priority-fixed-public-qa-preparation-v1.md)
+  is prepared, not executed; the earlier [705b5259 development proof](results/native-priority-method-public-software-retention-v1.json)
+  is separate source-specific evidence. Preserve both paired continuation waits,
+  all null/adverse outcomes and original failure records. Main-track readiness
+  stays open; the [old detailed status](status-history-2026-11-16-before-public-qa-preparation.md)
+  remains available without presenting historical jobs as current heartbeats.
 
 - [Matched free-institution source-evidence pilot](protocols/campaigns/native-consumer-source-comparison-v1.md):
   [actual pinned dispatch](results/native-consumer-source-comparison-dispatch-v1.json)

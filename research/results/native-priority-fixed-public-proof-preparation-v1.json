@@ -1,0 +1,108 @@
+{
+  "schema": "scienceutopia.native-priority-fixed-public-proof-preparation.v1",
+  "prepared_test_file": "tests/reports/test_native_priority_fixed_public_v1.py",
+  "prepared_helper_refactor_source_commit": "408d2e41251c110d4d4ebb8ff0c1a6e2095a9443",
+  "qa": [
+    {
+      "implementation_source_commit": "7839bc84cf01bba1a6295cd128bab2de20bd274a",
+      "original_tool_handle": 67168,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-public-preparation-v1/priority-fixed-public-preflight-v1-a1-junit.xml",
+      "junit_sha256": "ecfb151e46a06e47702c58083da9077f23fa5fc3b296faa0cf09da4f05a3b585",
+      "suite": {
+        "tests": "7",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "2",
+        "time": "1.689"
+      },
+      "scope": "Five light destination/forced-failure-retention cases only; both native/Docker public bodies deliberately skipped. Repeated cases are not new scientific observations."
+    },
+    {
+      "implementation_source_commit": "d647a780683059f4d9bd7e77f6ba625dbe68ac53",
+      "original_tool_handle": 17750,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-public-preparation-v1/priority-fixed-public-preflight-v1-a2-junit.xml",
+      "junit_sha256": "0561e5732f00de4307a3617ea6a45e56d0bebe2aec06998a04dae659a09e5e18",
+      "suite": {
+        "tests": "7",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "2",
+        "time": "1.714"
+      },
+      "scope": "Five light destination/forced-failure-retention cases only; both native/Docker public bodies deliberately skipped. Repeated cases are not new scientific observations."
+    },
+    {
+      "implementation_source_commit": "e182351544c0b23dd5ac202a36ec49e2f553b30d",
+      "original_tool_handle": 96649,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-public-preparation-v1/priority-fixed-public-preflight-v1-a3-junit.xml",
+      "junit_sha256": "eadd8e1ff196117540858a3d3f4e289e699ae8e7f6a185aa0225bb7c612c5339",
+      "suite": {
+        "tests": "7",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "2",
+        "time": "1.726"
+      },
+      "scope": "Five light destination/forced-failure-retention cases only; both native/Docker public bodies deliberately skipped. Repeated cases are not new scientific observations."
+    }
+  ],
+  "collection_only": {
+    "source_commit": "408d2e41251c110d4d4ebb8ff0c1a6e2095a9443",
+    "original_tool_handle": 18067,
+    "exit_code": 0,
+    "tests_collected": 2,
+    "tests_executed": 0
+  },
+  "original_template": {
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-comparison-64k-v1-a1/outputs/native-longitudinal-comparison-64k-v1-a1/plan.json",
+    "file_sha256": "f2a12bf41b8cd0ff790f441c2db2cdb2b2082828210c86c1ac9808f860a13d3e",
+    "narrow_candidate_plans_checked": 13,
+    "scope": "Same literal input as prior705b5259 public proof; located read-only, not a new actual evaluation"
+  },
+  "software_only_seed_override": [
+    43003,
+    43011
+  ],
+  "scientific_candidate_seeds_not_used": [
+    83003,
+    83011
+  ],
+  "new_public_native_Docker_SDK_cold_proof_executed": false,
+  "outer_subprocess_CLI_routing_tested": false,
+  "real_unused_seed_inventory_performed": false,
+  "actual_evaluation_dispatched": false,
+  "activation_guide": "research/components/native-priority-fixed-public-qa-preparation-v1.md",
+  "original_scientific_source_unchanged": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "original_closure_reader_unchanged": "4b43a9a37b1a859772182a244dc419dcec86893e",
+  "original_report_reader_unchanged": "ee030eaa551365e1789a33998cf81ea095654250",
+  "status_cleanup": {
+    "historical_status_source_revision": "d647a780683059f4d9bd7e77f6ba625dbe68ac53",
+    "old_lines": 921,
+    "archived_exact_body_sha256": "eddb1f33ee442d337eab170750cce2e4e43527c58fec58a87a18d530e52f611f",
+    "original_body_sha256": "eddb1f33ee442d337eab170750cce2e4e43527c58fec58a87a18d530e52f611f",
+    "archive_file": "research/status-history-2026-11-16-before-public-qa-preparation.md",
+    "archive_file_sha256": "b600a49dfa1b54644fe08f713a8eeb23924238922159788d047f1c051f360437",
+    "new_status_snapshot_sha256": "2cd3354cbde6d2b21e6a93b29696938ced6507be9f709810624110b7a19663a3",
+    "new_status_lines": 164,
+    "historical_body_preserved_verbatim": true,
+    "relative_links_keep_same_directory": true,
+    "existing_metric_conditioned_anchor_redirect_retained": true,
+    "scope": "Dated document snapshot; later legitimate STATUS updates do not amend this original archival proof."
+  },
+  "real_progress_prefixes": [
+    "research/results/native-priority-first-two-own-outcomes-prefix-v1.json",
+    "research/results/native-priority-first-three-own-outcomes-prefix-v1.json",
+    "research/results/native-priority-first-four-own-outcomes-prefix-v1.json",
+    "research/results/native-priority-first-five-own-outcomes-prefix-v1.json",
+    "research/results/native-priority-first-free-submission-prefix-v1.json"
+  ],
+  "scope": "Prepared opt-in actual native public-function proof plus light preflight only, not a passed full native/CLI proof or scientific result. Default feature source is separate from all three active checkouts. Native raw/external artifacts will persist on a future failure; no scientific candidate/setting is repaired/refilled.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "publication_ready": false,
+  "content_sha256": "d8fd89d8f66ee85073dfc05999860b59892f09d1f8a58d52f978731b6f8a532a"
+}

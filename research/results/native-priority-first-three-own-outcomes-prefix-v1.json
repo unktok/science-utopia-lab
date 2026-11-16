@@ -1,0 +1,180 @@
+{
+  "schema": "scienceutopia.native-priority-first-three-own-outcomes-prefix.v1",
+  "observed_utc": "2026-11-16T06:41:43.594968+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "prior_two_outcomes_content_sha256": "a67ce323fea8e8b909a9dd6a91de10dea9f27732d951f691a6f74fc844ad5f11",
+  "first_free_submission_receipt": "research/results/native-priority-first-free-submission-prefix-v1.json",
+  "rows": [
+    {
+      "cell_id": "uniform-priority/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "scbd86c6da048c335",
+      "phase": "initial",
+      "based_on_observation_id": null,
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "observed_scientist_path": {
+        "wire_requests": 186,
+        "completed_responses": 186,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+        "ordered_completed_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+        "ordered_literal_response_choices_sha256": "7b79919f643959ebb67b33745531c3ef1356137d4526fcf9f7d35a49efdd55c9",
+        "ordered_full_provider_body_hashes_sha256": "54c6a2129b48c8f4e4cf7a1ef342ad3a5f7c1d44c0bbd8b0691966e62bff3e37"
+      },
+      "optimizer_after_tell_content_sha256": "177d5c1586e6ce41381bdd4c9b290c4fc616625f2bb7cef3f9fcd498127b2e78",
+      "known_incumbent_loss": -28.666666666666668,
+      "known_incumbent_all_priorities_zero": true
+    },
+    {
+      "cell_id": "adaptive-priority/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "scbd86c6da048c335",
+      "phase": "initial",
+      "based_on_observation_id": null,
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "observed_scientist_path": {
+        "wire_requests": 186,
+        "completed_responses": 186,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+        "ordered_completed_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+        "ordered_literal_response_choices_sha256": "7b79919f643959ebb67b33745531c3ef1356137d4526fcf9f7d35a49efdd55c9",
+        "ordered_full_provider_body_hashes_sha256": "8466ffdba7ad0b2ebe2663302b8ac9ea2fa721571d3c35cf12560a636bea2242"
+      },
+      "optimizer_after_tell_content_sha256": "67887d928d5cf67d513cc078766154c57245bf010d523dd4d44e28519415531d",
+      "known_incumbent_loss": -28.666666666666668,
+      "known_incumbent_all_priorities_zero": true
+    },
+    {
+      "cell_id": "free-code-graph/history-0/content-utility/generation-0",
+      "suggestion_id": "native-adaptive-c0cbd1982f59807194212235",
+      "program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 0.0
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200.0
+        },
+        "native.common_content_score_sum": {
+          "status": "measured",
+          "value": 136.66666666666666
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 30.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 20
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0.0
+        }
+      },
+      "observed_scientist_path": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "ea0d95768c7fbe8326ebedcb5efee23964d78d4f763409608cc5fa81791d2b0d"
+      },
+      "parent_retained_literally": true
+    }
+  ],
+  "complete_observed_input_classes": [
+    {
+      "seed": 61001,
+      "full_request_sequence_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "physical_ids": [
+        "free-code-graph/history-0/content-utility/generation-0"
+      ],
+      "all_literal_response_choices_equal": true,
+      "all_full_provider_bodies_equal": true
+    },
+    {
+      "seed": 61001,
+      "full_request_sequence_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+      "physical_ids": [
+        "adaptive-priority/history-0/content-utility/generation-0",
+        "uniform-priority/history-0/content-utility/generation-0"
+      ],
+      "all_literal_response_choices_equal": true,
+      "all_full_provider_bodies_equal": false
+    }
+  ],
+  "free_matches_visible_parent_full_inputs": true,
+  "free_matches_visible_parent_literal_choices": true,
+  "bound_immutable_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/worlds/native-adaptive-c0cbd1982f59807194212235-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-0/content-utility/worlds/native-adaptive-c0cbd1982f59807194212235-s61001/replies/responses.sqlite": "1425faf98eb0d81322f7ddc3cc8768906380f0d41c95e228cf3f85212bf35d62"
+  },
+  "mutable_free_campaign_snapshot_sha256": "0ac96d1ea7d53e146c60f29375e1bc7dcf56e40238fc0cdf7170013f689362c2",
+  "whole_cold_audit_complete": false,
+  "final_selection_frozen": false,
+  "next_active_slot": "uniform-priority/0/resource-aware-content:g0",
+  "scope": "First three original own outcomes: same paired initial numeric draw has U=-27.6667 in both cells; free author submits unchanged visible parent and U=-28.6667. No own gain, new institution or method-superiority result. All scored attempts remain; input/choice equality is observed, not semantic equivalence or independent replication.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "publication_ready": false,
+  "content_sha256": "0eacae1c93c35621315ff002256fcab31f87145b1238971b31e9453a2a784fd9"
+}

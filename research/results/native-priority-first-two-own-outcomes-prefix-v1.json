@@ -1,0 +1,106 @@
+{
+  "schema": "scienceutopia.native-priority-first-two-own-outcomes-prefix.v1",
+  "observed_utc": "2026-11-16T06:34:26.265601+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "rows": [
+    {
+      "cell_id": "uniform-priority/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "scbd86c6da048c335",
+      "phase": "initial",
+      "based_on_observation_id": null,
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "observed_scientist_path": {
+        "wire_requests": 186,
+        "completed_responses": 186,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+        "ordered_completed_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+        "ordered_literal_response_choices_sha256": "7b79919f643959ebb67b33745531c3ef1356137d4526fcf9f7d35a49efdd55c9",
+        "ordered_full_provider_body_hashes_sha256": "54c6a2129b48c8f4e4cf7a1ef342ad3a5f7c1d44c0bbd8b0691966e62bff3e37"
+      },
+      "optimizer_after_tell_content_sha256": "177d5c1586e6ce41381bdd4c9b290c4fc616625f2bb7cef3f9fcd498127b2e78",
+      "known_incumbent_loss": -28.666666666666668,
+      "known_incumbent_all_priorities_zero": true
+    },
+    {
+      "cell_id": "adaptive-priority/history-0/content-utility/generation-0",
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "scbd86c6da048c335",
+      "phase": "initial",
+      "based_on_observation_id": null,
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "observed_scientist_path": {
+        "wire_requests": 186,
+        "completed_responses": 186,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+        "ordered_completed_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+        "ordered_literal_response_choices_sha256": "7b79919f643959ebb67b33745531c3ef1356137d4526fcf9f7d35a49efdd55c9",
+        "ordered_full_provider_body_hashes_sha256": "8466ffdba7ad0b2ebe2663302b8ac9ea2fa721571d3c35cf12560a636bea2242"
+      },
+      "optimizer_after_tell_content_sha256": "67887d928d5cf67d513cc078766154c57245bf010d523dd4d44e28519415531d",
+      "known_incumbent_loss": -28.666666666666668,
+      "known_incumbent_all_priorities_zero": true
+    }
+  ],
+  "same_literal_first_program": true,
+  "same_suggestion_id_in_distinct_method_cells": true,
+  "complete_observed_input_classes": [
+    {
+      "seed": 61001,
+      "full_request_sequence_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+      "physical_ids": [
+        "adaptive-priority/history-0/content-utility/generation-0",
+        "uniform-priority/history-0/content-utility/generation-0"
+      ],
+      "all_literal_response_choices_equal": true,
+      "all_full_provider_bodies_equal": false
+    }
+  ],
+  "bound_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/started.json": "95a0d265f82ffe6f3f9199116afc6dbfc2f763772d3f0f708cde0315c4e74e0b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/observation.json": "ee39bb52e82bb6cb64283db693d798927c63e5c5bcfaae9506d9413dfdbbf09a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/cross-scores.json": "4a7be1d81fbd96facf6d9cb1690e39a08a715a6a80da1e58f7c133e5e7d3871d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "d8fe4a28b7aa58aa0050d49badf467bb806b0cc0d89b46855ea46595a0caa099",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/worlds/scbd86c6da048c335-s61001/wire-requests.jsonl": "40c0a6e6e904576eddbf47b0bfee20663c481e88d10431639e8d9c1ce77fe3ca",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/uniform-priority/history-0/content-utility/generation-0/worlds/scbd86c6da048c335-s61001/replies/responses.sqlite": "e6c0077b93ad2befaab5e9ec067180bc6a2aa246c4cc1a0ad0139d93e88c0425",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/started.json": "37fa3c9339d1e3292a07e2a97bc7d37fa054f7671a22d6742cbad0fc8358c375",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/observation.json": "21cf1bab66854c71b024687f4c3c298587712743e33c3817ddb16c66521bf9f4",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/cross-scores.json": "4a7be1d81fbd96facf6d9cb1690e39a08a715a6a80da1e58f7c133e5e7d3871d",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "af66601d81b991acfb17ab0c8eb81a5e94f8d1f64766ff1b73e89a84a2ed9fdf",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/worlds/scbd86c6da048c335-s61001/wire-requests.jsonl": "40c0a6e6e904576eddbf47b0bfee20663c481e88d10431639e8d9c1ce77fe3ca",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/adaptive-priority/history-0/content-utility/generation-0/worlds/scbd86c6da048c335-s61001/replies/responses.sqlite": "84ffcbdd1fa6112484dff79358bf8857692937a822cff1f011cd78533e9365bc"
+  },
+  "own_outcomes_in_this_prefix": 2,
+  "whole_cold_audit_complete": false,
+  "scope": "Two original physical initial evaluations of the same sampled program, both U=-27.6667 versus visible parent -28.6667. Common-seed initial draws are not independent policy samples or an adaptation result. Each literal loss reaches its own optimizer; no slot refill or final reselection. For adaptive history0/U the current incumbent has all-zero priorities; this qualifies later interpretation of scalar-radius versus selector-rank locality, without predicting or changing g1.",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "publication_ready": false,
+  "content_sha256": "a67ce323fea8e8b909a9dd6a91de10dea9f27732d951f691a6f74fc844ad5f11"
+}
