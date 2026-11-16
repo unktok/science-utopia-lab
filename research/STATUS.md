@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November16,2026 at22:54UTC / November17 07:54JST.
+Verified November16,2026 at23:07UTC / November17 08:07JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -41,7 +41,7 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 | --- | ---: | ---: | --- |
 | Uniform / U | -27.6667 | -28.3333 | g2 -27.6667 / g3 not dispatched |
 | Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 not dispatched |
-| Free code/graph / U | -7 | Execution null | g2 authoring / g3 not dispatched |
+| Free code/graph / U | -7 | Execution null | g2 native evaluation / g3 not dispatched |
 | Uniform / C | -9.6667 | -10.3333 | Not dispatched |
 | Adaptive / C | -9.6667 | -12.6667 | Not dispatched |
 | Free code/graph / C | -12.6667 | -12.6667 | Not dispatched |
@@ -49,7 +49,7 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
 Fourteen own slots have terminal outcomes:13 complete (10 worse/3 tied/0 better
 than their assigned reference) and1 execution null. Fifteen slots have started,
-including free/U/g2 authoring; the writer charges each at dispatch, not
+including free/U/g2 native evaluation; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
 programs; uniform g1 is another initial random sample, not an adaptive move.
@@ -63,8 +63,11 @@ precede the accepted parameter vector: replay matches saved ask/tell exactly,
 with no additional native/model evaluation. Free/U/g2's saved request retains
 the prior failed observation as lossNone with its actual consumer error.
 Fresh29-control readiness passes, and that failure/error is verified in the
-first actual production wire. The session is active, not a submitted/evaluated
-new program or proof that the model understood/corrected the protocol error.
+first actual production wire. The author subsequently submits after14 actions
+with0 rejections. Its three agenda writes have the parent's identical normalized
+AST, while planned actuation/policy parameter changes are not implemented.
+The exact received source reaches candidate20bc4a17; native requests start.
+No U/g2 outcome, useful invention or feedback-caused correction is measured yet.
 
 [Earlier uniform/U/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-u-outcome)
 completes at-27.6667, without improving own best-28.3333 or reference-28.6667.
@@ -89,7 +92,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 is running free/U/g2 authoring after fresh readiness; source/plan/settings unchanged |
+| Real scientific search | Original42803 is evaluating the submitted free/U/g2 candidate; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |

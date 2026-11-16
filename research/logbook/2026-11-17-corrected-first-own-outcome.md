@@ -737,3 +737,40 @@ The first intent-bound provider response ends done/stop with33747 input and
 313 output tokens. This is actual error-feedback inclusion, not mere HTTP200,
 a completed proposal, model understanding, successful protocol correction,
 a measured gain or causal evidence that this feedback improves design.
+
+## Free U/g2 submits and begins native execution, but its edit is indentation
+
+By23:02:59UTC requestcc3b3a85 explicitly finishes after14 actions:
+plan1/read9/write3/finish1,13applied/1finished/0rejected and no pending reply.
+All14 saved views verify: planning1/general10/implementation2/submit1,
+0 phase-interpretation mismatches and0 missing/different loss views. The terminal
+content is `63984c3ddeb52d7d443b32b3ff7b4503c4beeb36a4028a3ebf5e001e1b27dd04`,
+file `4529e770b01ef5a25fe29336884ac020e6d0e1635a555fca2fa161776dbc7da4`.
+
+One generated/compiled candidate, native-adaptive-dd868b10efd7d7952ca23723,
+has fingerprint `20bc4a175ca16658984af73ff395ba40c07237e38897689439a8ae16302fff0f`.
+Only developer-catalog-agenda source changes, with no new node/wire/schedule.
+Applied write steps4/7/11 all have the same normalized AST as the measured
+parent: `ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318`.
+The net textual difference is indentation, not a new algorithm. Last received
+source UTF8 hash `4e846a3926e8917664aab34cebc8ce9be29173edbe2714cdafa608951731416d`
+equals the actual candidate's source exactly. Whole-world/native-effect
+equivalence is not inferred from AST identity alone.
+
+The actual first plan instead proposes actuation=information or
+candidate_policy=core-only. Both remain project/core-plus-related in the
+final candidate, and every other agenda parameter is equal to its parent.
+This is a concrete intent-to-implementation gap, not evidence that an
+unimplemented plan would improve loss. The host does not translate prose into
+parameter changes or silently correct generated code. The prior bad selection
+source is not the editing parent: this submission starts from the measured
+strong reference and leaves its selection literal. It cannot be described as
+a demonstrated repair of the failed own selection implementation.
+
+The candidate enters actual native execution:47 original scientist requests
+are observed at23:07:59UTC, with no U/g2 observation yet. Fourteen terminal own
+slots/15 charged dispatches remain unchanged at this dated point. The literal
+formatting-only proposal is evaluated, not rejected as uncreative or replaced.
+Whether its observed path/loss matches the reference remains an empirical
+result to check after completion. Full original closure and publication
+readiness remain open, with no source/metric/budget/retry changes.
