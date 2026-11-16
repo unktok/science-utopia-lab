@@ -5,6 +5,8 @@ import pytest
 
 from tests.optimization.test_native_topic_priority_space_v1 import reference
 from tests.system.test_native_topic_priority_controls import actors, output, producer
+from utopia.system.native_catalog_planning import catalog_contract
+from utopia.system.native_legacy_topic_planning import eligible_topics
 from utopia.optimization.blackbox import Observation
 from utopia.optimization.native_parameter_space_v1 import NativeParameterOptimizer
 from utopia.optimization.native_topic_priority_space_v1 import topic_priority_space
@@ -12,6 +14,43 @@ from utopia.optimization.native_topic_rank_space_v1 import NativeTopicRankSpace,
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.system.native_topic_priority_controls import SOURCE
+
+
+def test_literal_zero_initial_choice_barrier_exceeds_ten_global_adjacent_swaps():
+    # The existing24-output component test already establishes the initial
+    # choice tuples. This checks why global rank locality need not reach them.
+    rank = NativeTopicRankSpace(reference()); anchor = rank.binding['anchor']
+    order = rank.order(anchor); positions = {t: i for i, t in enumerate(order)}
+    catalog = catalog_contract(); directions = {d['topic']: d for d in catalog['directions']}
+    barriers = []
+    for actor in actors():
+        topics = eligible_topics(actor, catalog=catalog)
+        minimum = min(directions[t]['years'] for t in topics)
+        shortest = sorted(t for t in topics if directions[t]['years'] == minimum)
+        barriers.append(None if len(shortest) == 1 else
+            min(positions[t] - positions[shortest[0]] for t in shortest[1:]))
+    assert len(order) == 53 and barriers == [None, 35, 27, 17, None]
+    assert rank.rank_steps(.2) == 10 < min(v for v in barriers if v is not None)
+    # At least that many adjacent swaps are needed to reverse an initial
+    # winner/alternative pair. This is a fixed initial input, not all worlds.
+    assert output(SOURCE, producer(SystemSpec.from_dict(anchor)).parameters, actors())[
+        'outputs']['agenda'][0]['payload']['assignments'][3]['direction']['topic'] == 'deep_learning'
+
+
+def test_seventeen_adjacent_swaps_can_cross_the_retained_initial_boundary():
+    rank = NativeTopicRankSpace(reference()); anchor = rank.binding['anchor']
+    order = rank.order(anchor); changed = order.copy()
+    alternative = changed.index('meta-learning'); before = changed.index('deep_learning')
+    assert alternative - before == 17
+    # Explicit boundary witness, not a random proposal or a new loss result.
+    for index in range(alternative, before, -1):
+        changed[index], changed[index - 1] = changed[index - 1], changed[index]
+    assert rank_inversions(order, changed) == 17
+    candidate = rank.candidate_for_order(changed)
+    assigned = output(SOURCE, producer(SystemSpec.from_dict(candidate)).parameters, actors())[
+        'outputs']['agenda'][0]['payload']['assignments']
+    assert assigned[3]['direction']['topic'] == 'meta-learning'
+    assert assigned[3]['direction']['years'] == 1
 
 
 def test_literal_anchor_initial_samples_and_native_consumer_remain_the_existing_family():

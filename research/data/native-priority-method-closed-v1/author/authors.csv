@@ -1,0 +1,9 @@
+cell_id,objective,replication,generation,status,loss,own_minus_measured_parent,own_minus_initial_reference,literal_submitted_program_equals_parent,observed_full_inputs_match_a_complete_parent,session_evidence_status,completed_steps,attempted_edit_steps,successful_document_changes,duplicate_unchanged_read_observations
+free-code-graph/history-0/content-utility/generation-0,content-utility,0,0,complete,-28.666666666666668,0.0,0.0,True,True,recorded,5,0,0,2
+free-code-graph/history-0/resource-aware-content/generation-0,resource-aware-content,0,0,complete,-12.666666666666668,0.0,0.0,True,True,recorded,14,0,0,10
+free-code-graph/history-1/content-utility/generation-0,content-utility,1,0,complete,-28.666666666666668,0.0,0.0,False,True,recorded,14,1,1,7
+free-code-graph/history-1/resource-aware-content/generation-0,resource-aware-content,1,0,complete,-12.666666666666668,0.0,0.0,True,True,recorded,14,0,0,8
+free-code-graph/history-1/resource-aware-content/generation-1,resource-aware-content,1,1,complete,-12.666666666666668,0.0,0.0,False,True,recorded,14,1,1,7
+free-code-graph/history-1/content-utility/generation-1,content-utility,1,1,complete,-28.666666666666668,0.0,0.0,False,True,recorded,14,1,1,4
+free-code-graph/history-0/resource-aware-content/generation-1,resource-aware-content,0,1,complete,-12.666666666666668,0.0,0.0,True,True,recorded,14,0,0,10
+free-code-graph/history-0/content-utility/generation-1,content-utility,0,1,complete,-28.666666666666668,0.0,0.0,False,True,recorded,13,2,2,4

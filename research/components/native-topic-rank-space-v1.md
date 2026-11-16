@@ -54,6 +54,43 @@ certificate or claim a stronger measured baseline. Finish/inspect the original
 finite run, then choose any prospective comparator and budget before unused
 conditions, with appropriate exact-source/native/readiness proof.
 
+## Initial-consumer barrier: do not adopt this kernel uncritically
+
+After original writer closure, the actual zero-reference year1 catalog/actor
+context is inspected read-only. The existing priority-control component test
+already constructs all24 shortest-topic initial assignments; this is not a new
+24-world experiment or a global-policy enumeration. The same initial actor
+projection has shortest eligible set sizes1/2/6/2/1. A common global ranking can
+represent all24 combinations on this fixed input, but most of the53 displayed
+coordinates do not choose its initial topics.
+
+More importantly, from the literal all-zero anchor's lexical order, the minimum
+adjacent-swap distances needed to replace an initial winner are:
+
+| Initial founder | Shortest eligible choices | Minimum global adjacent swaps |
+| --- | --- | --- |
+| 0 | neural_symbolic_ai only | No alternative |
+| 1 | artificial_intelligence / neural_symbolic_ai | 35 |
+| 2 | computational_science and five other two-year topics | 27 |
+| 3 | deep_learning / meta-learning | 17 |
+| 4 | information_retrieval only | No alternative |
+
+At the prepared scale0.2,10 global adjacent swaps cannot cross any of those
+boundaries on this initial input, regardless of their sampled sequence. The
+earlier targeted one-swap test deliberately rearranges a ranking to put the
+two topics adjacent; it is not a one-swap witness from the literal zero anchor.
+Two new component checks bind these gaps to the retained initial founders and
+show a17-swap boundary witness using unchanged trusted developer source. Neither
+is a new native world/model/loss result. Later reachable states and the general
+free-design authority are not restricted by this initial-state conclusion.
+
+Decision: keep the adapter as an explicit optional comparator, but do not adopt
+this10-swap setting as an adequately active baseline for a new real comparison.
+Before prospective dispatch, consider proposals over declared eligible-choice
+orderings or rank moves that can cross the relevant boundaries; specify that
+kernel/budget first. Do not add a measured-behavior novelty veto, refill adverse
+slots or relabel the old results. Rank locality alone is not a scientific gain.
+
 ## Concurrent original author completion
 
 At13:07UTC the final free U author has generated/compiled its proposal after13

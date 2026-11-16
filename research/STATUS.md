@@ -1,8 +1,40 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at14:11UTC/23:11JST.
+Last scientific snapshot: November16,2026 at14:21UTC/23:21JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
+
+## Original finite study fully audited and retained
+
+[The full original paired chain now closes](results/native-priority-method-comparison-closed-v1.json):
+both full native cold audits/cost exports, both all-slot readouts and both
+all8-author joins agree and exit0. The guarded visibility exporter also runs
+twice from clean4dd92c17 with identical three-file outputs. All24 outcomes/
+12 frozen selections retain the same12/12/0 and8/4/0 tie/worse/better counts.
+Exact compressed reports, CSVs and original manifests are tracked under
+`research/data/native-priority-method-closed-v1`; no raw cache or world is added.
+
+All8 authors finish,4 retain their parent and4 change source.102 actions include
+5 successful writes and52 duplicate unchanged reads;45 calls have the specific
+phase mismatch. All8 observed full researcher-input paths match a complete
+parent, not unobserved policy equivalence. No new node/wire/schedule is authored.
+The cost ledger records4888 scientist replies,213 physical critic requests,
+256 author-readiness/102 proposal POSTs and separate17/27 designer/scientist
+loads. Shared-host writer elapsed time is35144.9s (about9h46m), not a dedicated
+throughput benchmark or a sum of nested durations. No useful-invention or
+method-superiority claim follows from full audit closure.
+
+The optional global-rank adapter is not adopted: on the actual retained initial
+input, a changed founder winner requires at least17/27/35 adjacent swaps, while
+the prepared scale0.2 permits10. Two new component checks pass (27 other cases
+explicitly deselected). This does not restrict later states or free institutions;
+it prevents treating that setting as an adequately active baseline by default.
+See [the initial-consumer limitation](components/native-topic-rank-space-v1.md).
+
+The prospective public/native SCRIPTED QA remains active in its unchanged clean
+adfd6b94 checkout. Corrected real-model readiness, a justified new finite
+comparison, unused-condition evidence, an updated reviewed PDF and the critical
+main-track judgment remain open. Historical snapshots below remain unchanged.
 
 ## All finite native slots recorded; paired closure is running
 
@@ -159,7 +191,7 @@ real science or a publication-ready differentiated main finding.
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
 | Own outcomes | All24 complete:12 ties/12 worse/0 better than visible reference;3 references complete. Original context-v1 |
-| Current stage | Original writer/supervisor exit0; paired original cold/cost/readout chain running. Corrected public/native SCRIPTED QA active separately |
+| Current stage | Original writer/supervisor and full paired cold/cost/readout/all8 chain close normally; paired visibility export matches. Corrected public/native SCRIPTED QA active |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |

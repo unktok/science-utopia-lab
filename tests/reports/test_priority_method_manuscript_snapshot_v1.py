@@ -1,4 +1,6 @@
 """Current-source transcription and retained-identity checks, not PDF layout QA."""
+import gzip
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -72,6 +74,37 @@ def test_terminal_and_own_only_selection_do_not_become_method_or_cold_proof():
     for phrase in ('eight tie and four', 'without falling back',
                    'not independent populations', '45 instances', '102 committed proposal steps',
                    '179 full researcher inputs', 'corrected-model\nproof'):
+        assert phrase in text
+
+
+def test_final_paired_reports_are_retained_exactly_without_resealing_or_new_science():
+    closed = record('research/results/native-priority-method-comparison-closed-v1.json')
+    directory = ROOT / 'research/data/native-priority-method-closed-v1'
+    for kind, paired in [('method', 'readouts'), ('author', 'author'), ('visibility', 'visibility')]:
+        for name, expected in closed['paired_matching_files'][paired].items():
+            path = directory / kind / (name + '.gz' if name == 'report.json' else name)
+            raw = gzip.decompress(path.read_bytes()) if path.suffix == '.gz' else path.read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == expected
+            if name == 'report.json': checked(json.loads(raw))
+    costs = gzip.decompress((directory / 'closure/costs.json.gz').read_bytes())
+    assert hashlib.sha256(costs).hexdigest() == closed['paired_matching_files']['costs']
+    assert checked(json.loads(costs))['content_sha256'] == closed['cost_content_sha256']
+    assert all(code == 0 for code in closed['actual_exit_codes'].values())
+    assert closed['coverage']['physical_worlds'] == 27
+    assert closed['counts_against_visible_reference'] == record(TERMINAL)['counts_against_visible_reference']
+    assert closed['author_totals'] == {'completed_steps': 102, 'attempted_edit_steps': 5,
+        'successful_document_changes': 5, 'duplicate_unchanged_read_observations': 52,
+        'serializer_mismatch_calls': 45, 'missing_or_different_loss_views': 0, 'uncommitted_responses': 0}
+    assert closed['unchanged_parent_submissions'] == 4
+    assert closed['observed_parent_matching_input_paths'] == 8
+    assert len(closed['complete_observed_input_classes']) == 9
+    assert not closed['corrected_author_model_readiness_proven'] and not closed['method_superiority_claimed']
+    assert not closed['held_out_evaluation'] and not closed['publication_ready']
+    text = (ROOT / SECTION).read_text()
+    for phrase in ('14:21 UTC', '52 duplicate unchanged reads', 'five actual source writes',
+                   '4,888 complete researcher responses', '7,392,125 prompt tokens',
+                   '442,516 output tokens', '256 readiness and 102 proposal POSTs',
+                   '35,144.9 seconds on a shared host'):
         assert phrase in text
 
 

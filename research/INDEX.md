@@ -5,6 +5,15 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Full24-slot original paired closure](results/native-priority-method-comparison-closed-v1.json)
+  now verifies matching cold/cost/readout/all8-author and visibility pairs,
+  with every original handle exiting0. Counts/selections are unchanged.
+  All8 parent-matching researcher input paths remain distinct from5 actual
+  source writes and the45-call phase confound. Compressed exact reports/CSVs/
+  manifests are retained. The unadopted rank comparator's10-swap setting
+  cannot cross the retained initial17/27/35-swap topic boundaries;2 new
+  component cases pass, not new scientific worlds or a global optimum claim.
+
 - [All24 native outcomes and frozen own-only selections](results/native-priority-method-terminal-snapshot-v1.json)
   verify the original14:05UTC normal writer/supervisor exit:12 ties/12 worse/0
   better than the strong visible reference. The12 frozen selections give8 ties/

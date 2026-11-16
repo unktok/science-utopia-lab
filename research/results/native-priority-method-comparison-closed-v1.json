@@ -1,0 +1,886 @@
+{
+  "schema": "scienceutopia.native-priority-method-comparison-closed.v1",
+  "observed_utc": "2026-11-16T14:21:31.892379+00:00",
+  "source_commits": {
+    "analysis": "4dd92c1785a9de2391e6377e25186d31dcb507a7",
+    "scientific": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+    "closure": "4b43a9a37b1a859772182a244dc419dcec86893e",
+    "readout": "ee030eaa551365e1789a33998cf81ea095654250",
+    "author": "5bf61d6e431fc391b821f0829deacd0d84619d8c"
+  },
+  "actual_original_handles": {
+    "writer": 82425,
+    "closure": 22008,
+    "readout": 30782,
+    "author_outcomes": 59986,
+    "visibility_one": 51477,
+    "visibility_two": 73809
+  },
+  "actual_exit_codes": {
+    "writer": 0,
+    "closure": 0,
+    "readout": 0,
+    "author_outcomes": 0,
+    "visibility_one": 0,
+    "visibility_two": 0
+  },
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "terminal_snapshot_content_sha256": "fe1f7da38ff64011f6e026a9a0415f4020b4acfaf73210aa057d63ed58fc1df9",
+  "raw_inventory_sha256": "94913b68e284a7408162367239828d9ca478db437c3940634282681b5b3f07a9",
+  "audit_content_sha256": "058d886407049a0ac6b3941fa01e05ad7198d006cd9331884db02fa2aae37b63",
+  "cost_content_sha256": "1d93454ff0744d8fbfeb667e008163b6adbeb06fc14f5a826948553aa6c3d6b9",
+  "readout_content_sha256": "6cf389e51faef9ecdf14524e0032c6434607c7651c13228823464e72e1d0a8b5",
+  "author_outcome_content_sha256": "067db5df528a223a51ef852c18d28a49b3a4f8ddd693ab4f39328a5958fa6148",
+  "visibility_content_sha256": "17983a809c918f82d3967f240f2f5361d8b53a0ed503b683abe0937f5271fd69",
+  "frozen_selection_content_sha256": "abacb1c6ed63d5cfddc4d3e9863f5bb561df674400707656610c15a608013e3e",
+  "paired_matching_files": {
+    "audit": "cb8973b3006e1e6ecbf69b83c036603e3ad5d571fa08ac21e39c973080c3f43e",
+    "costs": "5361344cec1d789632f6ea58bd85c82419cbd660b341dc724139aa46bf0e7e7a",
+    "readouts": {
+      "manifest.json": "167de28617e5a7d86bc88838cb9c757fb5ffe3aacbffe10e347d9d55518d0807",
+      "report.json": "686766ce2799f92b95fe1b5070f0c9957b2080b65137abb26f85681b6f10dcb8",
+      "slots.csv": "55a98a797b911d765459c2f6416ec230afbe7ef079704d2e9bece34ce2562e4d"
+    },
+    "author": {
+      "authors.csv": "bc13a99712c37594d029c40f0d0a493ec8acad57d840b18a9805e5b18784a743",
+      "manifest.json": "46039a287d040ed4910b4834f1a1dddf31abc3eb11af9bc82baee24957b35b0e",
+      "report.json": "ba0e02aa47882fbc5a8dfc108007ee218216ee8efdd264aff1eb49625ce0f60b"
+    },
+    "visibility": {
+      "manifest.json": "d9df7d4d0417e7005edc3490f65f462c2ed72aa494fdac9caf5ab4abc6d3269a",
+      "report.json": "cc73634e064047fcaf3e33006c7419c6ce3978f5b19d0ae11e88dcf68ce63717",
+      "steps.csv": "2d4a7171bde5a2b7f974ecbf89e2b77bbb0a82b65951a0d65556153aa4aed393"
+    }
+  },
+  "coverage": {
+    "complete_own_slots": 24,
+    "declared_own_slots": 24,
+    "execution_or_measurement_nulls": 0,
+    "generation_nulls": 0,
+    "physical_worlds": 27
+  },
+  "counts_against_visible_reference": {
+    "tie": 12,
+    "worse": 12,
+    "better": 0
+  },
+  "selected_counts_against_visible_reference": {
+    "tie": 8,
+    "worse": 4,
+    "better": 0
+  },
+  "author_sessions": [
+    {
+      "cell_id": "free-code-graph/history-0/content-utility/generation-0",
+      "status": "complete",
+      "loss": -28.666666666666668,
+      "literal_submitted_program_equals_parent": true,
+      "observed_full_inputs_match_a_complete_parent": true,
+      "completed_steps": 5,
+      "attempted_edit_steps": 0,
+      "successful_document_changes": 0,
+      "duplicate_unchanged_read_observations": 2,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 3
+      },
+      "serializer_mismatch_calls": 0,
+      "missing_or_different_loss_views": 0,
+      "uncommitted_responses": 0
+    },
+    {
+      "cell_id": "free-code-graph/history-0/resource-aware-content/generation-0",
+      "status": "complete",
+      "loss": -12.666666666666668,
+      "literal_submitted_program_equals_parent": true,
+      "observed_full_inputs_match_a_complete_parent": true,
+      "completed_steps": 14,
+      "attempted_edit_steps": 0,
+      "successful_document_changes": 0,
+      "duplicate_unchanged_read_observations": 10,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 12
+      },
+      "serializer_mismatch_calls": 9,
+      "missing_or_different_loss_views": 0,
+      "uncommitted_responses": 0
+    },
+    {
+      "cell_id": "free-code-graph/history-1/content-utility/generation-0",
+      "status": "complete",
+      "loss": -28.666666666666668,
+      "literal_submitted_program_equals_parent": false,
+      "observed_full_inputs_match_a_complete_parent": true,
+      "completed_steps": 14,
+      "attempted_edit_steps": 1,
+      "successful_document_changes": 1,
+      "duplicate_unchanged_read_observations": 7,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 11,
+        "write_file": 1
+      },
+      "serializer_mismatch_calls": 5,
+      "missing_or_different_loss_views": 0,
+      "uncommitted_responses": 0
+    },
+    {
+      "cell_id": "free-code-graph/history-1/resource-aware-content/generation-0",
+      "status": "complete",
+      "loss": -12.666666666666668,
+      "literal_submitted_program_equals_parent": true,
+      "observed_full_inputs_match_a_complete_parent": true,
+      "completed_steps": 14,
+      "attempted_edit_steps": 0,
+      "successful_document_changes": 0,
+      "duplicate_unchanged_read_observations": 8,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 12
+      },
+      "serializer_mismatch_calls": 9,
+      "missing_or_different_loss_views": 0,
+      "uncommitted_responses": 0
+    },
+    {
+      "cell_id": "free-code-graph/history-1/resource-aware-content/generation-1",
+      "status": "complete",
+      "loss": -12.666666666666668,
+      "literal_submitted_program_equals_parent": false,
+      "observed_full_inputs_match_a_complete_parent": true,
+      "completed_steps": 14,
+      "attempted_edit_steps": 1,
+      "successful_document_changes": 1,
+      "duplicate_unchanged_read_observations": 7,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 11,
+        "write_file": 1
+      },
+      "serializer_mismatch_calls": 9,
+      "missing_or_different_loss_views": 0,
+      "uncommitted_responses": 0
+    },
+    {
+      "cell_id": "free-code-graph/history-1/content-utility/generation-1",
+      "status": "complete",
+      "loss": -28.666666666666668,
+      "literal_submitted_program_equals_parent": false,
+      "observed_full_inputs_match_a_complete_parent": true,
+      "completed_steps": 14,
+      "attempted_edit_steps": 1,
+      "successful_document_changes": 1,
+      "duplicate_unchanged_read_observations": 4,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 11,
+        "write_file": 1
+      },
+      "serializer_mismatch_calls": 4,
+      "missing_or_different_loss_views": 0,
+      "uncommitted_responses": 0
+    },
+    {
+      "cell_id": "free-code-graph/history-0/resource-aware-content/generation-1",
+      "status": "complete",
+      "loss": -12.666666666666668,
+      "literal_submitted_program_equals_parent": true,
+      "observed_full_inputs_match_a_complete_parent": true,
+      "completed_steps": 14,
+      "attempted_edit_steps": 0,
+      "successful_document_changes": 0,
+      "duplicate_unchanged_read_observations": 10,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 12
+      },
+      "serializer_mismatch_calls": 9,
+      "missing_or_different_loss_views": 0,
+      "uncommitted_responses": 0
+    },
+    {
+      "cell_id": "free-code-graph/history-0/content-utility/generation-1",
+      "status": "complete",
+      "loss": -28.666666666666668,
+      "literal_submitted_program_equals_parent": false,
+      "observed_full_inputs_match_a_complete_parent": true,
+      "completed_steps": 13,
+      "attempted_edit_steps": 2,
+      "successful_document_changes": 2,
+      "duplicate_unchanged_read_observations": 4,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 9,
+        "write_file": 2
+      },
+      "serializer_mismatch_calls": 0,
+      "missing_or_different_loss_views": 0,
+      "uncommitted_responses": 0
+    }
+  ],
+  "author_totals": {
+    "completed_steps": 102,
+    "attempted_edit_steps": 5,
+    "successful_document_changes": 5,
+    "duplicate_unchanged_read_observations": 52,
+    "serializer_mismatch_calls": 45,
+    "missing_or_different_loss_views": 0,
+    "uncommitted_responses": 0
+  },
+  "unchanged_parent_submissions": 4,
+  "observed_parent_matching_input_paths": 8,
+  "complete_observed_input_classes": [
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "331900d57420f4b1acbbaf8668c345eae91173fe510e72e6239788346348646f",
+      "physical_ids": [
+        "adaptive-priority/history-1/resource-aware-content/generation-1"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "347b4408022b784878f86e9a4e6b41180fd9005bac5eb1f221f4ab8c668989ee",
+      "physical_ids": [
+        "uniform-priority/history-0/resource-aware-content/generation-1"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "34e74635907750d367f08dc07432a78488c856b53fdbb2295dc4f19bee0226a1",
+      "physical_ids": [
+        "adaptive-priority/history-0/content-utility/generation-1"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "6707973d897a157274f72861a6651ddda1d34d802be2dcd9a1b0dcb946caa1ed",
+      "physical_ids": [
+        "uniform-priority/history-0/content-utility/generation-1"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": false,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "physical_ids": [
+        "adaptive-priority/history-1/content-utility/generation-0",
+        "free-code-graph/history-0/content-utility/generation-0",
+        "free-code-graph/history-0/content-utility/generation-1",
+        "free-code-graph/history-0/resource-aware-content/generation-0",
+        "free-code-graph/history-0/resource-aware-content/generation-1",
+        "free-code-graph/history-1/content-utility/generation-0",
+        "free-code-graph/history-1/content-utility/generation-1",
+        "free-code-graph/history-1/resource-aware-content/generation-0",
+        "free-code-graph/history-1/resource-aware-content/generation-1",
+        "reference/literal-related",
+        "reference/priority-zero",
+        "reference/terminal-priority-zero",
+        "uniform-priority/history-1/content-utility/generation-0",
+        "uniform-priority/history-1/resource-aware-content/generation-1"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": false,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+      "physical_ids": [
+        "adaptive-priority/history-0/content-utility/generation-0",
+        "uniform-priority/history-0/content-utility/generation-0"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": false,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "93a3f2ac25b3a316d548336ea588541e183d81df9d1990c6e25b827af0bfcfca",
+      "physical_ids": [
+        "adaptive-priority/history-1/content-utility/generation-1",
+        "uniform-priority/history-1/content-utility/generation-1"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "96c9d73707cc3712751682d71f453680a6a7f3fd3ad612d4cdbeb6c2044109d7",
+      "physical_ids": [
+        "adaptive-priority/history-0/resource-aware-content/generation-1"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": false,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "a7217109b9cdd0681101201d35befbd8d361a66a435476006a60857ef374c397",
+      "physical_ids": [
+        "adaptive-priority/history-0/resource-aware-content/generation-0",
+        "adaptive-priority/history-1/resource-aware-content/generation-0",
+        "uniform-priority/history-0/resource-aware-content/generation-0",
+        "uniform-priority/history-1/resource-aware-content/generation-0"
+      ],
+      "seed": 61001
+    }
+  ],
+  "cost_summary": {
+    "scientist_completed_responses": 4888,
+    "scientist_provider_usage": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 4888,
+        "missing_responses": 0,
+        "recorded_sum": 1150167
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 4888,
+        "missing_responses": 0,
+        "recorded_sum": 442516
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 4888,
+        "missing_responses": 0,
+        "recorded_sum": 7392125
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 4888,
+        "missing_responses": 0,
+        "recorded_sum": 7834641
+      }
+    },
+    "scientist_wire_inputs_without_committed_reply": 0,
+    "content_observer": {
+      "known_terminal_attempts": 213,
+      "overlap_with_native_response_caches": false,
+      "physical_requests": 213,
+      "scope": "Separate fixed-content critic POSTs; repeated content cache hits are not additional physical ratings.",
+      "usage": {
+        "http_elapsed_seconds": {
+          "known_sum": 1137.8874781667255,
+          "unknown_attempts": 0
+        },
+        "output_tokens": {
+          "known_sum": 30942,
+          "unknown_attempts": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 97347,
+          "unknown_attempts": 0
+        }
+      }
+    },
+    "auxiliary_groups": {
+      "editor-readiness": {
+        "completion_record_available": 256,
+        "final_response_reported": 256,
+        "known_HTTP_response": 256,
+        "measurements": {
+          "caller_elapsed_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 256,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "host_model_call_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 256,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "native_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 256,
+            "missing_records": 0,
+            "recorded_sum": 12604,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 256,
+            "missing_records": 0,
+            "recorded_sum": 68863,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 256,
+            "missing_records": 0,
+            "recorded_sum": 5365670,
+            "unit": "integer count"
+          },
+          "provider_eval_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 256,
+            "missing_records": 0,
+            "recorded_sum": 236733667876,
+            "unit": "integer nanoseconds"
+          },
+          "provider_load_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 256,
+            "missing_records": 0,
+            "recorded_sum": 3135699706,
+            "unit": "integer nanoseconds"
+          },
+          "provider_prompt_eval_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 256,
+            "missing_records": 0,
+            "recorded_sum": 4169199393422,
+            "unit": "integer nanoseconds"
+          },
+          "provider_total_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 256,
+            "missing_records": 0,
+            "recorded_sum": 4428891468580,
+            "unit": "integer nanoseconds"
+          },
+          "transport_completion_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 256,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_prompt_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 256,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 256,
+            "missing_records": 0,
+            "recorded_sum": 4429.239049206488,
+            "unit": "seconds"
+          }
+        },
+        "native_cache_subset_counts": {
+          "within-prompt": 256
+        },
+        "recorded_POST_attempt": 256,
+        "request_intents": 256,
+        "status_counts": {
+          "http-recorded": 256
+        },
+        "unknown_usage_imputed": false
+      },
+      "load-designer": {
+        "completion_record_available": 17,
+        "final_response_reported": 17,
+        "known_HTTP_response": 17,
+        "measurements": {
+          "caller_elapsed_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 17,
+            "missing_records": 0,
+            "recorded_sum": 172.99218466645107,
+            "unit": "seconds"
+          },
+          "host_model_call_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "native_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "provider_eval_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_load_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_prompt_eval_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_total_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "transport_completion_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_prompt_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 17,
+            "recorded_sum": null,
+            "unit": "seconds"
+          }
+        },
+        "native_cache_subset_counts": {
+          "unknown": 17
+        },
+        "recorded_POST_attempt": 17,
+        "request_intents": 17,
+        "status_counts": {
+          "completed-load": 17
+        },
+        "unknown_usage_imputed": false
+      },
+      "load-scientist": {
+        "completion_record_available": 27,
+        "final_response_reported": 27,
+        "known_HTTP_response": 27,
+        "measurements": {
+          "caller_elapsed_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 27,
+            "missing_records": 0,
+            "recorded_sum": 31.104654791299254,
+            "unit": "seconds"
+          },
+          "host_model_call_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "native_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "provider_eval_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_load_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_prompt_eval_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_total_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "transport_completion_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_prompt_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 27,
+            "recorded_sum": null,
+            "unit": "seconds"
+          }
+        },
+        "native_cache_subset_counts": {
+          "unknown": 27
+        },
+        "recorded_POST_attempt": 27,
+        "request_intents": 27,
+        "status_counts": {
+          "completed-load": 27
+        },
+        "unknown_usage_imputed": false
+      },
+      "staged-proposal": {
+        "completion_record_available": 102,
+        "final_response_reported": 102,
+        "known_HTTP_response": 102,
+        "measurements": {
+          "caller_elapsed_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 102,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "host_model_call_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 102,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "native_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 102,
+            "missing_records": 0,
+            "recorded_sum": 16353,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 102,
+            "missing_records": 0,
+            "recorded_sum": 214690,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 102,
+            "missing_records": 0,
+            "recorded_sum": 3604688,
+            "unit": "integer count"
+          },
+          "provider_eval_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 102,
+            "missing_records": 0,
+            "recorded_sum": 373607119956,
+            "unit": "integer nanoseconds"
+          },
+          "provider_load_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 102,
+            "missing_records": 0,
+            "recorded_sum": 1553002542,
+            "unit": "integer nanoseconds"
+          },
+          "provider_prompt_eval_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 102,
+            "missing_records": 0,
+            "recorded_sum": 2892753258121,
+            "unit": "integer nanoseconds"
+          },
+          "provider_total_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 102,
+            "missing_records": 0,
+            "recorded_sum": 3281167316163,
+            "unit": "integer nanoseconds"
+          },
+          "transport_completion_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 102,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_prompt_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 102,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 102,
+            "missing_records": 0,
+            "recorded_sum": 3281.2942074942403,
+            "unit": "seconds"
+          }
+        },
+        "native_cache_subset_counts": {
+          "within-prompt": 102
+        },
+        "recorded_POST_attempt": 102,
+        "request_intents": 102,
+        "status_counts": {
+          "http-recorded": 102
+        },
+        "unknown_usage_imputed": false
+      }
+    },
+    "writer_elapsed_seconds_shared_host": 35144.914796375204,
+    "exclusive_hardware_or_dedicated_speed_claimed": false
+  },
+  "new_model_calls": 0,
+  "new_generated_code_executions": 0,
+  "original_native_worlds_restarted": 0,
+  "scientific_losses_rewritten": false,
+  "selection_changed": false,
+  "corrected_author_model_readiness_proven": false,
+  "held_out_evaluation": false,
+  "method_superiority_claimed": false,
+  "publication_ready": false,
+  "input_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1/ended.json": "f2fd43e9de095ec66b74fca403c7a43f44992912052ddfcec75cfa85d834c03d",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-readouts-v1-a1/ended.json": "7f85e52cfc25df4a0b32d712e3763db9514792fe5c9439684007ad4f46146071",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1/ended.json": "dc376a4dcd022da7750926ac6c247e2ed13f29b49b1b2ce5b8b9d83ba19f2c46",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1/audit-1.json": "cb8973b3006e1e6ecbf69b83c036603e3ad5d571fa08ac21e39c973080c3f43e",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1/audit-2.json": "cb8973b3006e1e6ecbf69b83c036603e3ad5d571fa08ac21e39c973080c3f43e",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1/costs-1.json": "5361344cec1d789632f6ea58bd85c82419cbd660b341dc724139aa46bf0e7e7a",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1/costs-2.json": "5361344cec1d789632f6ea58bd85c82419cbd660b341dc724139aa46bf0e7e7a",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-readouts-v1-a1/report-1/manifest.json": "167de28617e5a7d86bc88838cb9c757fb5ffe3aacbffe10e347d9d55518d0807",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-readouts-v1-a1/report-2/manifest.json": "167de28617e5a7d86bc88838cb9c757fb5ffe3aacbffe10e347d9d55518d0807",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-readouts-v1-a1/report-1/report.json": "686766ce2799f92b95fe1b5070f0c9957b2080b65137abb26f85681b6f10dcb8",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-readouts-v1-a1/report-2/report.json": "686766ce2799f92b95fe1b5070f0c9957b2080b65137abb26f85681b6f10dcb8",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-readouts-v1-a1/report-1/slots.csv": "55a98a797b911d765459c2f6416ec230afbe7ef079704d2e9bece34ce2562e4d",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-readouts-v1-a1/report-2/slots.csv": "55a98a797b911d765459c2f6416ec230afbe7ef079704d2e9bece34ce2562e4d",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1/report-1/authors.csv": "bc13a99712c37594d029c40f0d0a493ec8acad57d840b18a9805e5b18784a743",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1/report-2/authors.csv": "bc13a99712c37594d029c40f0d0a493ec8acad57d840b18a9805e5b18784a743",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1/report-1/manifest.json": "46039a287d040ed4910b4834f1a1dddf31abc3eb11af9bc82baee24957b35b0e",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1/report-2/manifest.json": "46039a287d040ed4910b4834f1a1dddf31abc3eb11af9bc82baee24957b35b0e",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1/report-1/report.json": "ba0e02aa47882fbc5a8dfc108007ee218216ee8efdd264aff1eb49625ce0f60b",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1/report-2/report.json": "ba0e02aa47882fbc5a8dfc108007ee218216ee8efdd264aff1eb49625ce0f60b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-priority-author-visibility-v1-a1/report-1/manifest.json": "d9df7d4d0417e7005edc3490f65f462c2ed72aa494fdac9caf5ab4abc6d3269a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-priority-author-visibility-v1-a1/report-2/manifest.json": "d9df7d4d0417e7005edc3490f65f462c2ed72aa494fdac9caf5ab4abc6d3269a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-priority-author-visibility-v1-a1/report-1/report.json": "cc73634e064047fcaf3e33006c7419c6ce3978f5b19d0ae11e88dcf68ce63717",
+    "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-priority-author-visibility-v1-a1/report-2/report.json": "cc73634e064047fcaf3e33006c7419c6ce3978f5b19d0ae11e88dcf68ce63717",
+    "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-priority-author-visibility-v1-a1/report-1/steps.csv": "2d4a7171bde5a2b7f974ecbf89e2b77bbb0a82b65951a0d65556153aa4aed393",
+    "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-priority-author-visibility-v1-a1/report-2/steps.csv": "2d4a7171bde5a2b7f974ecbf89e2b77bbb0a82b65951a0d65556153aa4aed393",
+    "/Users/shiro/unktok/dev/science-utopia-lab/research/results/native-priority-method-terminal-snapshot-v1.json": "f2cb55279e41245a8b0228e28cc9fcef87260f3c9488c6ed9aff038f9e5720ad"
+  },
+  "content_sha256": "82d6ac43512a77662a219c148fcb95d98fceaf09fd2ed9a77d7f026791c617f3"
+}

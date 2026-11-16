@@ -1,0 +1,28 @@
+{
+  "audit_file_sha256": "cb8973b3006e1e6ecbf69b83c036603e3ad5d571fa08ac21e39c973080c3f43e",
+  "cost_file_sha256": "5361344cec1d789632f6ea58bd85c82419cbd660b341dc724139aa46bf0e7e7a",
+  "ended_utc": "2026-11-16T14:16:40.576492+00:00",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false,
+  "remaining": "Retain all24 slots/three references and objective/method/history identities, including repeated suggestion ids across different histories; analyze effects and costs without reselection, imputed losses or an automatic superiority/readiness claim.",
+  "status": "closed",
+  "steps": [
+    {
+      "exit_code": 0,
+      "stage": "audit-1"
+    },
+    {
+      "exit_code": 0,
+      "stage": "audit-2"
+    },
+    {
+      "exit_code": 0,
+      "stage": "costs-1"
+    },
+    {
+      "exit_code": 0,
+      "stage": "costs-2"
+    }
+  ]
+}

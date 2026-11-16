@@ -10,6 +10,10 @@ At14:11UTC,12 outcomes tie/12 worsen the strong reference; the12 frozen own-only
 selections yield8 ties/4 worse. The paired full cold/cost/readout chain is still
 running, not proved by the literal observation/selection checks. Older15/20-slot
 dated receipts remain unchanged; their unfinished tables are superseded here.
+The later14:21UTC paired original cold/cost/readout/all8-author closure and
+separate paired visibility exports are now retained, with unchanged counts and
+selection. The source includes all8 author effects and non-overlapping role
+costs; this is not corrected-inventor proof, equal compute or a method advantage.
 The abstract/discussion report the interface confound and prospective repair's
 unproved real-model/native scope. Earlier meaningful tracks remain included.
 The introduction now adds an evidence-to-claim reading map, a study-local loss

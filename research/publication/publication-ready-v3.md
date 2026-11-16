@@ -7,6 +7,14 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November16 14:21UTC：[元24枠の全二重監査・費用・readout・全8著者集計・可視性結合](../results/native-priority-method-comparison-closed-v1.json)
+が正常閉鎖し、元の全handleがexit0。12同点／12悪化／0改善と12固定選択は変わらない。
+全102操作、5編集、52重複read、45可視性phase不整合、全8案の親と一致する実入力経路を区別して残した。
+原稿sourceには全体結果・非重複role費用まで追記した。25軽量source/retention/plot-data検査が通る。
+ただし作図・新PDF・修正後実モデル・独立評価は別工程である。未採用rank対照の10隣接swapが
+初年度選択境界17/27/35を越えないことも2軽量検査で確認し、設定を無批判に実験へ採用しない。
+R2/R3/R5/R6は未達のまま。過去のsnapshotを正常閉鎖後の状態へ遡及改変しない。
+
 November16 14:11UTC：[全24自己候補と固定選択](../results/native-priority-method-terminal-snapshot-v1.json)
 を保存・再計算した。元writer/supervisorは14:05UTCにexit0、全27worldの観測が記録済み。
 自己候補は12同点／12悪化／0改善、12固定選択は8同点／4悪化／0改善。
