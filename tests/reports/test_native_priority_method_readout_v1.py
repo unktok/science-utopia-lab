@@ -143,3 +143,32 @@ def test_plot_data_keeps_six_panels_twelve_histories_and_frozen_cells_without_re
     assert len({h['selected_cell_id'] for p in panels for h in p['histories']}) == 12
     report['paths'][r.METHODS[0] + '/0/' + r.OBJECTIVES[0]].pop()
     with pytest.raises(ValueError, match='both actual generations'): plot_data(report)
+
+
+def test_execution_null_keeps_its_world_and_never_becomes_zero_loss():
+    p, a, slots, refs = fixture(); entry = slots[0]; o = entry['observation']
+    o.update(status='failed', loss=None)
+    o['metadata'].update(measurements=[], technical_failures=[{'type': 'SCRIPTED-technical-failure'}],
+        loss_evaluation=evaluate_loss(p['losses'][entry['slot']['objective']], []))
+    target = (*r.history_key(entry['slot']), o['suggestion_id'])
+    world = next(w for w in a['worlds'] if r.world_key(w) == target)
+    world.update(status='failed', scores={k: None for k in p['losses']})
+    selected = a['selection']['selected'][r.METHODS[0]]['0'][r.OBJECTIVES[0]]
+    selected.update(completed_submissions=1, all_tied_ids=['shared-id-g1'], selected_id='shared-id-g1')
+    a = seal(r.literal(a)); result = r.analyze(p, a, slots, refs)
+    assert result['coverage']['execution_or_measurement_nulls'] == 1
+    assert result['coverage']['physical_worlds'] == 27 and result['coverage']['complete_own_slots'] == 23
+    path = result['paths'][r.METHODS[0] + '/0/' + r.OBJECTIVES[0]]
+    assert path[0]['observed_loss'] is path[0]['best_own_loss'] is None
+    assert path[0]['best_known_including_visible_parent'] == -10. and path[1]['best_own_loss'] == -11.
+
+
+@pytest.mark.parametrize('duplicated', ['audit', 'cost'])
+def test_export_rejects_same_file_pair_before_projecting_any_observation(tmp_path, monkeypatch, duplicated):
+    monkeypatch.setattr(r, 'ROOT', tmp_path / 'reader'); monkeypatch.setattr(r, 'pinned_revision', lambda path: 'a' * 40)
+    audits = [tmp_path / 'a1', tmp_path / ('a1' if duplicated == 'audit' else 'a2')]
+    costs = [tmp_path / 'c1', tmp_path / ('c1' if duplicated == 'cost' else 'c2')]
+    args = SimpleNamespace(run=tmp_path / 'raw', frozen_source=tmp_path / 'science', output=tmp_path / 'out',
+        audit_one=audits[0], audit_two=audits[1], cost_one=costs[0], cost_two=costs[1])
+    with pytest.raises(ValueError, match='distinct matching paired'): r.export(args)
+    assert not args.output.exists()
