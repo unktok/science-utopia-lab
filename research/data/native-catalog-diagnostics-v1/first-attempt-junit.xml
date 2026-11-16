@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="34" time="5.664" timestamp="2026-11-16T10:37:15.027938+09:00" hostname="flower-man.local"><testcase classname="tests.system.test_native_catalog_validation_diagnostics" name="test_distinct_failed_predicate_and_no_input_repair[shape-object with a string topic]" time="0.001" /><testcase classname="tests.system.test_native_catalog_validation_diagnostics" name="test_distinct_failed_predicate_and_no_input_repair[eligibility-outside this actor]" time="0.000" /><testcase classname="tests.system.test_native_catalog_validation_diagnostics" name="test_distinct_failed_predicate_and_no_input_repair[content-displayed canonical topic]" time="0.000" /><testcase classname="tests.system.test_native_catalog_validation_diagnostics" name="test_distinct_failed_predicate_and_no_input_repair[calendar-calendar must start]" time="0.000" /><testcase classname="tests.system.test_native_catalog_validation_diagnostics" name="test_distinct_failed_predicate_and_no_input_repair[annotation-must be strings]" time="0.000" /><testcase classname="tests.system.test_native_catalog_validation_diagnostics" name="test_related_scope_reports_actor_eligibility_not_duration_and_retains_nonshortest" time="0.001" /><testcase classname="tests.system.test_native_catalog_validation_diagnostics" name="test_final_predicate_acceptance_matches_previous_compound_guard_on_finite_matrix" time="0.006" /><testcase classname="tests.system.test_native_catalog_planning" name="test_real_atomic_action_accepts_nonshortest_choice_without_merit_veto" time="0.016" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[duration]" time="0.016" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[topic]" time="0.016" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[content]" time="0.016" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[start]" time="0.015" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[end]" time="0.016" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[ongoing]" time="0.016" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[inactive]" time="0.016" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[filtered]" time="0.015" /><testcase classname="tests.system.test_native_catalog_planning" name="test_false_completion_or_different_choice_domain_rolls_back_whole_batch[exploration]" time="0.014" /><testcase classname="tests.system.test_native_catalog_planning" name="test_new_authority_is_explicit_and_cannot_bypass_old_or_new_production_guards" time="0.204" /><testcase classname="tests.system.test_native_catalog_planning" name="test_common_source_catalog_authority_wiring_and_exact_agenda_across_modes" time="0.022" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_related_topic_uses_original_content_duration_and_native_project_consumer" time="0.016" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_historical_core_action_does_not_silently_gain_related_topic_authority" time="0.016"><failure message="AssertionError: Regex pattern did not match.&#10; Regex: 'displayed topic'&#10; Input: &quot;catalog project topic is outside this actor's permitted expertise set&quot;">def test_historical_core_action_does_not_silently_gain_related_topic_authority():
+        kernel, actors, ctx, assignment = example()
+        with pytest.raises(GraphRuntimeError, match='displayed topic'):
+&gt;           run_commands(kernel, ctx, command('old', CORE_ACTION, {'assignment': assignment}, BOOTSTRAP))
+
+tests/system/test_native_legacy_topic_planning.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/system/test_native_open_domain.py:69: in run_commands
+    return apply_domain_commands(kernel, replace(ctx, inputs={'commands': tuple(value(c) for c in commands)}))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+utopia/system/native_open_domain.py:455: in apply_domain_commands
+    prepare(tx, command['payload'], command['actor_id'])
+utopia/system/native_catalog_planning.py:92: in apply_catalog_project
+    validate_catalog_assignment(assignment, snapshot, year=tx.context.period, catalog=catalog)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+assignment = {'actor_id': 'a', 'detailed_focus': 'Real catalog direction', 'direction': {'focus_areas': ['hybrid systems', 'neuro s...ficial_intelligence', 'deep_learning', 'logic_in_cs'], 'topic': 'neural_symbolic_ai', ...}, 'project_end_year': 1, ...}
+actor = {'can_author': True, 'expertise': ['logic_in_cs'], 'id': 'a', 'is_active': True, ...}
+
+    def validate_catalog_assignment(assignment, actor, *, year, catalog):
+        """Pure identity, eligibility, canonical content and duration validation.
+    
+        Choose any displayed expertise topic. Neither shortest duration nor merit
+        is enforced here. An ongoing project cannot be relabelled as a new one.
+        """
+        from .native_activity_contracts import PLAN
+        required = {'actor_id', 'direction', 'detailed_focus', 'reason',
+                    'project_start_year', 'project_end_year'}
+        if (not isinstance(assignment, dict) or set(assignment) != required
+                or type(year) is not int or year &lt; 1
+                or assignment['actor_id'] != actor['id']
+                or actor['can_author'] is not True or actor['is_active'] is not True
+                or type(actor['project_end_year']) is not int
+                or actor['project_end_year'] &gt;= year):
+            raise GraphRuntimeError('catalog project requires an actual active idle author and exact assignment')
+        direction = assignment['direction']
+        rows = catalog['directions']
+        if (catalog['schema'] != 'scienceutopia.native-direction-catalog.v1'
+                or sha(rows) != catalog['directions_sha256']
+                or len({d['topic'] for d in rows}) != len(rows)):
+            raise GraphRuntimeError('exact native catalog identity required')
+        actual = {d['topic']: d for d in rows}
+        # Keep the original acceptance predicates, but identify the first failed
+        # contract. Eligibility is not a duration/content error. These diagnostics
+        # neither repair an authored assignment nor add a scientific-merit gate.
+        if not isinstance(direction, dict) or not isinstance(direction.get('topic'), str):
+            raise GraphRuntimeError('catalog project direction requires an object with a string topic')
+        if direction['topic'] not in actor['expertise']:
+&gt;           raise GraphRuntimeError('catalog project topic is outside this actor\'s permitted expertise set')
+E           utopia.system.runtime.GraphRuntimeError: catalog project topic is outside this actor's permitted expertise set
+
+utopia/system/native_catalog_planning.py:59: GraphRuntimeError
+
+During handling of the above exception, another exception occurred:
+
+    def test_historical_core_action_does_not_silently_gain_related_topic_authority():
+        kernel, actors, ctx, assignment = example()
+&gt;       with pytest.raises(GraphRuntimeError, match='displayed topic'):
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'displayed topic'
+E        Input: "catalog project topic is outside this actor's permitted expertise set"
+
+tests/system/test_native_legacy_topic_planning.py:65: AssertionError</failure></testcase><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_developer_comparators_have_literal_same_source_permissions_and_wiring" time="0.176" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_pure_union_is_one_hop_and_all_eligible_nonshortest_choices_are_legal" time="0.017" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[unrelated]" time="0.019" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[two-hops]" time="0.019" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[shortened]" time="0.017" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[content]" time="0.019" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[ongoing]" time="0.018" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[inactive]" time="0.017" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[exploration]" time="0.017" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[filtered]" time="0.016" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[mutated-expertise]" time="0.017" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_unknown_or_changed_native_laws_fail_atomically_without_context_commit[no-grant]" time="0.016" /><testcase classname="tests.system.test_native_legacy_topic_planning" name="test_new_authority_requires_explicit_v5_and_keeps_code_graph_and_workflow_freedom" time="0.766" /></testsuite></testsuites>

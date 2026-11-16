@@ -1,0 +1,53 @@
+{
+  "schema": "scienceutopia.native-catalog-diagnostics-preparation.v1",
+  "recorded_utc": "2026-11-16T01:38:23+00:00",
+  "classification": "prospective-error-diagnostics-regression-not-scientific-gain",
+  "source_commit": "715745f0b64332ec4f4d0faa11c4a8cf88e507ac",
+  "verified_native_exec_session": 47480,
+  "exit_code": 0,
+  "passed_tests": 55,
+  "elapsed_seconds": 11.35,
+  "source_files": {
+    "utopia/system/native_catalog_planning.py": "b7191da0f00c0623ba1223ccce470c4ff30379c355688afe2ec1d94f19726127",
+    "tests/system/test_native_catalog_validation_diagnostics.py": "976012bb0ec6b96bbce1b71c31d5753f753cb1e496858e76c966c12ba49cd356",
+    "tests/system/test_native_legacy_topic_planning.py": "660abb0be4a07de34ecc08a49b80463141a6f434131b7ddb19bc7f41b74884ca"
+  },
+  "pytest_arguments": [
+    "tests/system/test_native_catalog_validation_diagnostics.py",
+    "tests/system/test_native_catalog_planning.py",
+    "tests/system/test_native_legacy_topic_planning.py",
+    "tests/optimization/test_native_consumer_evidence_v1.py",
+    "--basetemp", "outputs/catalog-diagnostic-v1-a2",
+    "--junitxml", "outputs/catalog-diagnostic-v1-a2-junit.xml"
+  ],
+  "junit": {
+    "path": "research/data/native-catalog-diagnostics-v1/verified-junit.xml",
+    "sha256": "070ef58762fb80449df9a852eb3611e3f4992111014a9c069e3c2e4f7abfb302"
+  },
+  "preserved_first_attempt": {
+    "native_exec_session": 50135,
+    "exit_code": 1,
+    "passed_tests": 33,
+    "failed_tests": 1,
+    "reason": "Historical core-scope assertion expected the old generic message; command remained rejected. Assertion now checks specific eligibility text.",
+    "junit_path": "research/data/native-catalog-diagnostics-v1/first-attempt-junit.xml",
+    "junit_sha256": "b6a91994c3540e1c3a5e6881d3b28f53dc43f4e76f573bd80de58441c2bd725d"
+  },
+  "finite_acceptance_comparison": {
+    "assignments": 144,
+    "accepted_before_and_after": 1,
+    "rejected_before_and_after": 143,
+    "universal_equivalence_proof": false
+  },
+  "active_scientific_source_unchanged": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "original_failure_rewritten": false,
+  "active_protocol_model_loss_or_history_changed": false,
+  "failed_slot_repaired_or_refilled": false,
+  "new_real_model_calls": 0,
+  "new_generated_candidate_executions": 0,
+  "new_scientific_worlds": 0,
+  "new_heavy_QA_or_rendering": false,
+  "new_scientific_constraint": false,
+  "later_dispatch_requires_fresh_source_binding_and_readiness": true,
+  "publication_ready": false
+}

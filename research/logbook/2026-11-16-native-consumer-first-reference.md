@@ -513,3 +513,21 @@ scientist-request journal. The original writer is progressing through that
 evaluation; no seventh measured loss or final selection is yet retained here.
 The author does not receive this passive diagnosis of another arm's failure.
 No source, history, selection, loss, model, budget or active request is changed.
+
+## Prospective diagnostic-only implementation while native evaluation continues
+
+The sixth failure exposes an ambiguous compound error, not a duration violation.
+Separate development commit715745f0 splits that error into first-failed-predicate
+messages without changing its acceptance conditions. The active scientific,
+analysis and readout checkouts remain clean at7e51b2a4. Nothing patches the
+failed candidate, its original error, the seventh author's context or any slot.
+
+[55 committed-source light checks](../results/native-catalog-diagnostics-preparation-v1.json)
+pass in11.35s: diagnostic cases, the144-input prior/current acceptance comparison,
+existing atomic native catalog/legacy-topic units and literal-source/editor/cold
+SCRIPTED checks. The first attempt's33 pass/1 failure is retained: an existing
+test expects the replaced generic text even though the authority guard correctly
+rejects the command. Only that expected message is updated; no guard is removed.
+No model, generated candidate, Docker, independent heavy QA, TeX or render job
+is launched. This is software feedback preparation, not evidence of better
+search, a completed new scientific condition or publication readiness.

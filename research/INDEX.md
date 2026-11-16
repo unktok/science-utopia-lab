@@ -39,6 +39,8 @@ This page is navigation, not a chronological experiment transcript.
   retains903 data/cache/tmp directories from40 additional clean checkouts.
   [The third archive](results/native-consumer-closed-checkout-archive-v3.json)
   preserves183 directories from10 further clean code copies and skips linked data.
+  [Prospective precise catalog diagnostics](data/native-catalog-diagnostics-v1/README.md)
+  pass55 software checks without changing current scientific source or failures.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

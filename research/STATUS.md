@@ -103,6 +103,14 @@ but this is not duration shortening. One saved code call and year0 checkpoint,
 with no retained scientist-task wire, are not a completed measured world or
 zero physical/model cost. The null stays unknown, not a numeric penalty.
 
+A [separate prospective diagnostic change](results/native-catalog-diagnostics-preparation-v1.json)
+now names the failing eligibility/content/duration/calendar/annotation predicate.
+Its55 source-bound software checks pass, including a144-case acceptance
+comparison and existing atomic native unit tests. The first generic-message
+test mismatch is retained. This adds no scientific constraint and repairs no
+candidate; active7e51b2a4 and its original errors remain unchanged. Future use
+requires fresh source cards/readiness, not reuse of this study's certificate.
+
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history
 retention from program-pool parent sampling. This is unbuilt manuscript source
