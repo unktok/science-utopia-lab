@@ -75,7 +75,7 @@ def test_changed_bank_science_or_uncertain_seed_proof_rejected(tmp_path, monkeyp
     elif edit == 'used': u['prior_matching_runs'] = [{'seed': 83003, 'SCRIPTED': True}]
     elif edit == 'different-seed': u['seeds'] = [83003, 83017]
     elif edit == 'skipped-directory': u['excluded_software_verification_paths'] = ['pytest-hidden/responses.sqlite']
-    elif edit == 'observer': p['observer_contract']['options']['temperature'] = .7
+    elif edit == 'observer': backend['ollama_version'] = 'SCRIPTED changed backend'
     elif edit == 'bank-origin': bank['origin_selection_content_sha256'] = 'f' * 64
     elif edit == 'source-origin': proof['original_source'] = 'f' * 40
     else: usages.append(clone(u))
@@ -139,6 +139,33 @@ def test_changed_original_output_never_becomes_a_frozen_policy_bank(tmp_path, mo
     with pytest.raises(ValueError, match='changed'): driver.origin_evidence(origin)
 
 
+@pytest.mark.parametrize('used', [False, True])
+def test_public_prepare_preserves_strict_proof_and_stops_before_any_models(tmp_path, monkeypatch, used):
+    from scripts import run_pre_scale_search_v1 as environment
+    from tests.reports.test_native_benchmark_seed_usage import journal
+    origin = closed_origin(tmp_path / 'input', monkeypatch)
+    # closed_origin's parent is created by its fixture setup.
+    raw_plan = driver.read(Path(origin['run']) / 'plan.json')
+    monkeypatch.setattr(environment, 'require_environment', lambda: None)
+    monkeypatch.setattr(driver, 'backend_binding', lambda provider: raw_plan['observer_contract']['backend'])
+    monkeypatch.setattr(driver, 'native_sources', lambda commit: {'original_source': commit})
+    inventory_root = tmp_path / 'strict-root'; inventory_root.mkdir()
+    if used: journal(inventory_root / 'pytest-real/responses.sqlite', 83003)
+    args = SimpleNamespace(output=tmp_path / 'out', seed_usage_root=[inventory_root], seed_software_exclusions=None,
+        **{'origin_' + key: Path(origin[key]) for key in ('run', 'source', 'analysis', 'readouts')})
+    (Path(origin['run']) / 'writer.lock').touch()
+    if used:
+        with pytest.raises(ValueError, match='strict all-path'): driver.prepare(args)
+    else: driver.prepare(args)
+    proof = driver.read(args.output / 'seed-usage-00.json')
+    assert proof['strict_path_coverage'] and proof['valid'] is (not used)
+    assert bool(proof['prior_matching_runs']) is used
+    assert driver.read(args.output / 'preparation-ended.json')['status'] == ('stopped' if used else 'prepared')
+    assert (args.output / 'plan.json').exists() is (not used)
+    assert not (args.output / 'started.json').exists()
+    with pytest.raises(ValueError, match='fresh output'): driver.prepare(args)
+
+
 @pytest.mark.parametrize('failure', [None, 'known-null', 'unknown'])
 def test_real_shared_run_lock_dispatch_boundary_no_refill_or_restart(tmp_path, monkeypatch, failure):
     p, _ = build(tmp_path / 'inputs', monkeypatch); root = tmp_path / 'run'; root.mkdir()
@@ -157,6 +184,7 @@ def test_real_shared_run_lock_dispatch_boundary_no_refill_or_restart(tmp_path, m
         calls.append(job['identity'])
         if failure == 'unknown': raise Unknown('SCRIPTED unknown dispatch')
         # A known null returns normally; it consumes its scheduled job.
+        return {'status': 'failed', 'loss': None} if failure == 'known-null' else {'status': 'complete'}
     monkeypatch.setattr(driver, 'observe', observe)
     if failure == 'unknown':
         with pytest.raises(Unknown): driver.run(root)
