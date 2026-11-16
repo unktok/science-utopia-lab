@@ -571,3 +571,20 @@ inference; a future comparison still needs a finite plan, appropriate histories,
 strong controls, frozen selection/evaluation and physical costs. No new study
 or unused evaluation is scheduled, and current authors receive none of this
 post-hoc analysis. The publication-ready goal remains active and unachieved.
+
+## Final own candidate submits; opt-in native control proof prepared
+
+Original interface/U/g1 request
+4bcd6069c8418b52ef1440d9e64abb175f47c563a9d8b5c06341d405140e336d
+finishes14 editor steps and its pending record becomes generated/compiled.
+The installed native-adaptive-c2d18b6b9dca3f3ff3f9df0e world has actual scientist
+wire entries. That is execution progress, not an eighth measured loss or whole
+study closure. Original writer11821 and the two continuations remain live.
+
+Separate test commits92f11dc1/e81eb92a prepare the three-world native factory/
+Docker/installed-SDK/cold priority-control proof described in the component note.
+The default-gating command70147 exits0 with one skip in1.58s, without starting
+those worlds. During source review the zero-control assertion is corrected to
+compare actual assignment facts rather than intentionally different graph-bound
+raw event ids. No failed native QA run is relabelled; the heavy test has not yet
+executed, no new scientific study is dispatched and all active sources stay fixed.

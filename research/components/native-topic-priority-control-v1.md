@@ -62,3 +62,18 @@ objective, independent histories, strong comparators, evaluation/selection and
 cost budgets. A constructor is not an ask/tell optimizer, native gain or method
 superiority. No24-world grid, new held-out evaluation or automatic next campaign
 is dispatched here. Do not give current authors this post-hoc choice analysis.
+
+An opt-in three-world **software** test is now prepared in
+`tests/reports/test_native_topic_priority_native_v1.py`. It uses SCRIPTED replies
+and corpus but the actual native factory, Docker execution, installed SDK,
+900-second transport settings, saved checkpoints and paired cold physical proof.
+It requires full-input/choice equality for the zero-priority policy and actual
+project/input changes for the reversed tie policy. Raw graph-bound audit ids
+are retained, not equated or rewritten. Cold checks forbid SDK construction
+and generated-code execution. This is not the outer scientific study CLI.
+
+The gating check skips it while real inference is active, as intended; that
+skip is not execution proof. After inference ends, run from a clean committed
+source with an unused basetemp/JUnit destination and the normal fixed Python/
+offline environment, setting `SCIENCE_UTOPIA_TOPIC_PRIORITY_NATIVE_QA=1`.
+Retain the original process outcome before editing source or collecting outputs.
