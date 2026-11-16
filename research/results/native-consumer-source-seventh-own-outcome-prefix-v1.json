@@ -1,0 +1,256 @@
+{
+  "schema": "scienceutopia.native-consumer-source-seventh-own-outcome-prefix.v1",
+  "recorded_utc": "2026-11-16T01:44:10.816133+00:00",
+  "classification": "actual-original-complete-native-outcome-not-whole-study-cold-closure",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "writer_pid": 11821,
+  "original_writer_handle": 15471,
+  "arm": "literal-consumers",
+  "objective": "resource-aware-content",
+  "generation": 1,
+  "request_sha256": "d8fc0805e8cce530d422b3cd65ec68bab223b55115f256f5c92f7af1ea0d0cf7",
+  "suggestion_id": "native-adaptive-1bd325a3ba8ab24f46c8240d",
+  "status": "complete",
+  "assigned_loss": -8.666666666666668,
+  "parent_original_stored_loss": -36,
+  "parent_re_scored_under_assigned_loss": -8.666666666666668,
+  "own_minus_parent_assigned_loss": 0,
+  "cross_scores": {
+    "content-utility": -28.666666666666668,
+    "resource-aware-content": -8.666666666666668,
+    "throughput": -36
+  },
+  "metrics": {
+    "native.accepted_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.accepted_peer_score_sum": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.accepted_unreviewed_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.collected_activity_resource_cost": {
+      "status": "measured",
+      "value": 200
+    },
+    "native.common_content_score_sum": {
+      "status": "measured",
+      "value": 136.66666666666666
+    },
+    "native.common_content_utility_sum": {
+      "status": "measured",
+      "value": 28.666666666666668
+    },
+    "native.final_active_authors": {
+      "status": "measured",
+      "value": 5
+    },
+    "native.final_author_resources": {
+      "status": "measured",
+      "value": 30
+    },
+    "native.institutional_context_deliveries": {
+      "status": "measured",
+      "value": 20
+    },
+    "native.rejected_decisions": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.review_records": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.uncollected_activity_resource_cost": {
+      "status": "measured",
+      "value": 0
+    }
+  },
+  "all_metrics_match_strong_reference": true,
+  "candidate_matches_installed_system": true,
+  "original_campaign_record_sha256": "aac3c08b5b3e9624d4b1331bc4068709eec462462b8acdb3db9baf5dbf9f3919",
+  "campaign_state_file_sha256_at_snapshot": "b6a9ae944960b398f19178f7a1a59171f3b647da028fb0aa155935d9f5415df4",
+  "reference_observation_file_sha256": "6fb9e640ad918e410c65e0c1186094d638f43959888201ad3e3286a1b614f38e",
+  "installed_system_file_sha256": "4736da1538fdfa80e54489985d3457e3caf9a6d48347116b6c7ea05c665fa286",
+  "graph_from_parent": {
+    "phase_updates": {},
+    "removed_connections": [],
+    "added_connections": [],
+    "source_parameters_nodes_unchanged": false,
+    "added_nodes": {},
+    "removed_nodes": {},
+    "changed_mechanisms": {
+      "developer-catalog-agenda": {
+        "before_sha256": "9a94ab1c7c206afbf7ca1ed2969cf8f8f457f5f59128a9238857099626cf8083",
+        "after_sha256": "a91e02f3de0d3132880af5fb9d51678bda26fb79bc01bd7fd34fbcd9a7cb45e0",
+        "changed_fields": [
+          "parameters"
+        ]
+      }
+    },
+    "source_edits": {
+      "developer-catalog-agenda": {
+        "before_source_utf8_sha256": "4287a12ee9ef0a400f0b1090ec3372b1fc752eace42d8a6060a77abbd9d3b041",
+        "after_source_utf8_sha256": "27ade7cae2d2ce7dd15f846bef265f43eea7ec5fa76b573c10a96f8e7beb5e37"
+      }
+    },
+    "changed_system_fields": {},
+    "added_schedules": {},
+    "removed_schedules": {}
+  },
+  "changed_agenda_source_parsed_AST_equal": true,
+  "author_steps": [
+    {
+      "step": 0,
+      "status": "applied",
+      "tool": "plan",
+      "all_technical_feedback": [],
+      "record_file_sha256": "fa8ae56c414bafa5817a548f943a967e04d5b1a62b82c70a3d68f242fea6a53f"
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "tool": "read_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "83130ec52c34754e20082c129721be2fd8998769dbc0bf96f6b249f72580a5a7"
+    },
+    {
+      "step": 2,
+      "status": "applied",
+      "tool": "write_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "c8f2b49c55c3ce354cfd16a469803aab0a04d8e76b9109bff5a2f2b61347bb8a"
+    },
+    {
+      "step": 3,
+      "status": "applied",
+      "tool": "read_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "06566c57560b632d4600cddef488c63ed71686c12817738e74423d21bfcfa1c4"
+    },
+    {
+      "step": 4,
+      "status": "applied",
+      "tool": "write_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "f71543201bc34ad33ec0617e8fe3493a6fb4b72338a4b197c03123aac51394a2"
+    },
+    {
+      "step": 5,
+      "status": "applied",
+      "tool": "read_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "4479dc73ff2b3a0117de973525ec2f101c7725129cd03d24b64c49348b575dae"
+    },
+    {
+      "step": 6,
+      "status": "applied",
+      "tool": "write_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "eb9dd785e6e5b3793724d8e4ac726c350320cc516735a0df94d716ecf17cfa37"
+    },
+    {
+      "step": 7,
+      "status": "applied",
+      "tool": "read_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "0aa873f48e47a1c201ac1ec2ab21eb8684cb5680668c8501670d3c2fd32b8b1b"
+    },
+    {
+      "step": 8,
+      "status": "applied",
+      "tool": "write_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "1863bc1d3e4378a87df8e804fb0b58a7e05371fc522e43fce95bb5c3901615e1"
+    },
+    {
+      "step": 9,
+      "status": "applied",
+      "tool": "read_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "2caaa78d3bf2813563c97ef5807013898789041447ecb5c7e31651706ee4aa24"
+    },
+    {
+      "step": 10,
+      "status": "applied",
+      "tool": "write_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "58a0a5cbd596fc1b4c6dd81bd3d38bb3b50b60d52c61792a30c81bc7d20ba2ac"
+    },
+    {
+      "step": 11,
+      "status": "applied",
+      "tool": "read_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "f687f9002ca75d3cbcf88874cf95100f49007ada549363504f24669545d63343"
+    },
+    {
+      "step": 12,
+      "status": "applied",
+      "tool": "write_file",
+      "all_technical_feedback": [],
+      "record_file_sha256": "a211a8f52d37ef3da5128c862db425b6bc12f08d6f962bdf38c961b75d18a0de"
+    },
+    {
+      "step": 13,
+      "status": "finished",
+      "tool": "finish",
+      "all_technical_feedback": [],
+      "record_file_sha256": "996397957ac89f1644ecf68f65b4637d18b726602f4e63c721208c35fbc2c39a"
+    }
+  ],
+  "completed_editor_steps": 14,
+  "editor_steps_are_physical_POST_total": false,
+  "passive_complete_request_sequences": {
+    "own": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "e29c8ef0f1cdbb07ce793a7360ae384703a7453db2b0d4ad21001434b32e83f6"
+    },
+    "parent": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "72029c0e657b29b0ded39fd885ae1e40880d2d58f103a4e820b67bd8bf8d8821"
+    }
+  },
+  "sequence_equalities": {
+    "wire_requests": true,
+    "completed_responses": true,
+    "wire_inputs_without_committed_reply": true,
+    "ordered_full_request_payload_sha256": true,
+    "ordered_completed_request_payload_sha256": true,
+    "ordered_literal_response_choices_sha256": true,
+    "ordered_full_provider_body_hashes_sha256": false
+  },
+  "original_next_progress": {
+    "active": "interface-only::content-utility:g1",
+    "observed_utc": "2026-11-16T01:42:21.578052+00:00",
+    "stage": "readiness"
+  },
+  "consumed_own_slots": 7,
+  "complete_own_native_outcomes": 6,
+  "runtime_nulls": 1,
+  "known_gain_beyond_visible_reference": false,
+  "failed_slot_repaired_or_refilled": false,
+  "original_world_or_error_rewritten": false,
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "new_native_worlds": 0,
+  "held_out_evaluation": false,
+  "independent_optimizer_replication": false,
+  "publication_ready": false,
+  "scope": "Final agenda-source change is formatting with equal parsed AST. All14 actual steps and original errors remain; no added node/wire/schedule. Both C proposals tie the known strong visible reference. Full scientist inputs/literal choices and all measured metrics match that reference; provider envelopes differ. This is an observed-path comparison, not global program equivalence, isolated information causality, zero compute or better science. Whole original paired closure/cost/readouts remain pending; final own selection is not written by this read-only prefix."
+}
