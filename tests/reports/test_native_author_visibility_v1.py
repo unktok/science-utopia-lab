@@ -102,8 +102,8 @@ def test_unsupported_or_malformed_metadata_is_not_imputed_as_zero_mismatches(cha
     with pytest.raises(ValueError): project(value)
 
 
-def journal(path, *, pending=False):
-    request = {'loss_spec': loss_spec(), 'generation': 0, 'SCRIPTED': 'no inference'}
+def journal(path, *, pending=False, generation=0):
+    request = {'loss_spec': loss_spec(), 'generation': generation, 'SCRIPTED': 'no inference'}
     binding = {'schema': 'scienceutopia.staged-author-request.v15', 'request': request,
         'settings': {'max_steps': 16}, 'request_sha256': digest(request)}
     binding['binding_sha256'] = digest(binding); write_json_atomic(path / 'request.json', binding)
