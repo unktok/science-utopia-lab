@@ -49,3 +49,8 @@ targets and compare all3 files. This prepared command is not a dispatch record.
 The [retention receipt](../results/native-priority-author-outcomes-preparation-and-first-edit-v1.json)
 separately records actual outcome8 and the next real edited submission/year1
 prefix, not a completed study, invention or measured improvement.
+The [actual read-only continuation](native-priority-author-outcomes-continuation-v1.md)
+is now waiting for normal original readouts; future real exports remain pending.
+The [first edited candidate subsequently completes](../results/native-priority-ninth-outcome-and-author-join-waiter-v1.json)
+with the same179 researcher inputs/choices and loss as its parent. All4 years
+show shifted internal features but unchanged native decision identities.

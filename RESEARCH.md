@@ -98,6 +98,11 @@ C損失を4改善する対照であり、自動発明ではない。三つ目の
 実際に変わったが採択identity／最終scoreは同じだった。全期間の損失はまだ未確定で、改善とはしない。
 操作・提出制度・入力・損失を結ぶ[全8提案の集計実装](research/components/native-priority-author-outcomes-v1.md)
 は48軽量checkを通過したが、実データ全体への実行は正常閉鎖後である。
+その実編集案も[9件目として測定完了](research/results/native-priority-ninth-outcome-and-author-join-waiter-v1.json)した。
+全4年で特徴量／内部scoreは変わるが、179件の研究者入力・選択と損失は親と同じだった。
+[10件目](research/results/native-priority-tenth-own-outcome-prefix-v1.json)の数値C候補は親より3悪化。
+終了後の全8自由提案の結合集計は、別固定sourceの[実際の待機処理](research/components/native-priority-author-outcomes-continuation-v1.md)
+として稼働させた。69件の軽量検証とは別に、実データの結合集計完了はまだ未達である。
 現状の実行位置は短い[進捗一覧](research/STATUS.md)を参照する。
 全24自己候補・最終選択・全体監査・実結果の可視化はまだ未完了。
 [全候補・探索経路の集計](research/results/native-priority-method-readout-preparation-v1.json)と、

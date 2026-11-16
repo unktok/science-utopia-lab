@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at08:22UTC/17:22JST.
+Last scientific snapshot: November16,2026 at08:42UTC/17:42JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -31,12 +31,12 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | Eight complete observations so far, not final24-slot closure. No completed own improvement over its assigned strong parent yet |
-| Current stage | Free code/graph/history1/U/g0 native world at the snapshot; its final loss is still unknown |
+| Own outcomes | Ten complete observations so far, not final24-slot closure. No completed own improvement over its assigned strong parent yet |
+| Current stage | Adaptive priorities/history1/C/g0 at the snapshot |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
-| First edited proposal in this study | Free/history1/U:14 actions, one literal extractor-source write, submitted/executing; no new node/wire/schedule |
+| First edited proposal in this study | Free/history1/U:14 actions, one literal extractor-source write, complete/ties parent; no new node/wire/schedule |
 | Selection | Final own-only earliest-tie selections are not yet frozen; no reference fallback, adverse-slot refill or hidden merit/fairness/activity veto |
 | Independence | Two optimizer seeds are not independent scientist populations; initial numeric proposals are deliberately paired, not independent policy samples |
 
@@ -54,6 +54,8 @@ plus [seventh outcome and complete author summaries](results/native-author-step-
 | Free code/graph/0/0 | C | -12.6667 | Literal unchanged terminal parent, same179 observed inputs/choices |
 | Uniform/1/0 | U | -28.6667 | Different priorities, same179 observed inputs/choices as zero reference; ties it |
 | Adaptive/1/0 | U | -28.6667 | Same paired initial proposal/inputs/choices as uniform; no exploitation step yet |
+| Free code/graph/1/0 | U | -28.6667 | Actual feature-source edit; same179 researcher inputs/choices and loss as parent |
+| Uniform/1/0 | C | -9.6667 | Three worse than visible terminal C parent; literal feedback retained |
 
 [Outcome8 and the next actual edited submission](results/native-priority-author-outcomes-preparation-and-first-edit-v1.json)
 retain all original feedback and the first literal source write in this study.
@@ -61,7 +63,12 @@ Saved year1 features change0→1 for the same8 paper records; tensor acceptance
 and native decision identities/final scores stay unchanged. Complete paper
 records differ in submission_time; no full-record/world equality is claimed.
 The unchanged native selection code uses its accept-all control, not that
-internal feature as the fixed external observer. Whole-horizon loss is unknown.
+internal feature as the fixed external observer. That was the dated first-edit
+prefix. [The complete ninth outcome](results/native-priority-ninth-outcome-and-author-join-waiter-v1.json)
+now ties the parent: all4 years shift features/scores0→1 without changing native
+decision identities/final scores or any179 researcher inputs/choices. Raw paper
+records retain different submission_time values, not a whole-world byte match.
+[The tenth outcome](results/native-priority-tenth-own-outcome-prefix-v1.json) worsens C by3.
 
 The U numeric proposal changes two founders' actual topics while preserving
 original durations/deadlines; its186 complete scientist inputs/replies differ
@@ -90,6 +97,10 @@ The [all8-author/outcome join](components/native-priority-author-outcomes-v1.md)
 is implemented and passes48 light checks, including matching three-file
 SCRIPTED-provenance exports. Real all8-session analysis still waits for normal
 paired closure; no outer CLI/native proof or new model experiment is claimed.
+An [actual pinned continuation](components/native-priority-author-outcomes-continuation-v1.md)
+now waits for the original paired readouts, then exports this join twice.
+Its real future exports have not run.69 light cases include SCRIPTED orchestration,
+not completion of the original study or publication readiness.
 
 All3 references have36 accepted decisions/U28.6667 and179 matching complete
 scientist input/choice sequences. The known terminal rule changes K200→160/
@@ -105,10 +116,13 @@ difference to generated edits or call it a discovered tradeoff/global optimum.
 | Scientific writer/supervisor |82425; writer19200, supervisor19169;705b5259 | Live original run, not restarted |
 | Paired cold/cost continuation |22008;4b43a9a3 | Waiting for original child and sealed successful supervisor exit |
 | All-slot report continuation |30782;ee030eaa | Waiting for paired audit/cost closure; then exports twice and compares bytes |
+| Author/outcome join continuation |59986;5bf61d6e;PID86837 | Waiting for normal original paired readouts; then exports all8 rows twice, without inference |
 
 Full scientific source is705b5259ad06366f7d178804c6d67ff5ea17cdb4.
 Closure/readout checkouts stay separate, clean and pinned. Main/feature edits
-do not change those running sources. On unknown/stopped execution preserve the
+do not change those running sources. The fourth author-join checkout is also
+clean/pinned and must stay unchanged until its original process exits.
+On unknown/stopped execution preserve the
 original terminal/nulls; never infer success from a saved envelope or restart
 because a polling call times out. Host time is shared-resource time, not a
 dedicated model-speed benchmark. Do not add independent heavy native/Docker QA,

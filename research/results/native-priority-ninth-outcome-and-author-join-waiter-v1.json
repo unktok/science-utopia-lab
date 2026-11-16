@@ -1,0 +1,1255 @@
+{
+  "schema": "scienceutopia.native-priority-author-join-continuation-and-ninth-outcome.v1",
+  "observed_utc": "2026-11-16T08:40:42.023056+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "prior_first_edit_prefix_content_sha256": "30e24c16b6b3c9b75096e12069bb5b785cf667e348d6eb66ad5ad788e7e1f05f",
+  "ninth_original_outcome": {
+    "cell_id": "free-code-graph/history-1/content-utility/generation-0",
+    "suggestion_id": "native-adaptive-ada832b4da4e271303815783",
+    "status": "complete",
+    "program_sha256": "c61f9b554a916750e62db9328d5e9bc062309457e4936470d1e641d090e1d853",
+    "original_observation_sha256": "2f93a65267cd1ac38e907f888a38b484ee624c671044bdcfbd78406526a22470",
+    "cross_scores": {
+      "content-utility": -28.666666666666668,
+      "resource-aware-content": -8.666666666666668,
+      "throughput": -36.0
+    },
+    "metrics": {
+      "native.accepted_decisions": {
+        "status": "measured",
+        "value": 36
+      },
+      "native.accepted_peer_score_sum": {
+        "status": "measured",
+        "value": 0.0
+      },
+      "native.accepted_unreviewed_decisions": {
+        "status": "measured",
+        "value": 36
+      },
+      "native.collected_activity_resource_cost": {
+        "status": "measured",
+        "value": 200.0
+      },
+      "native.common_content_score_sum": {
+        "status": "measured",
+        "value": 136.66666666666666
+      },
+      "native.common_content_utility_sum": {
+        "status": "measured",
+        "value": 28.666666666666668
+      },
+      "native.final_active_authors": {
+        "status": "measured",
+        "value": 5
+      },
+      "native.final_author_resources": {
+        "status": "measured",
+        "value": 30.0
+      },
+      "native.institutional_context_deliveries": {
+        "status": "measured",
+        "value": 20
+      },
+      "native.rejected_decisions": {
+        "status": "measured",
+        "value": 0
+      },
+      "native.review_records": {
+        "status": "measured",
+        "value": 0
+      },
+      "native.uncollected_activity_resource_cost": {
+        "status": "measured",
+        "value": 0.0
+      }
+    },
+    "assigned_loss_minus_actual_parent": 0.0,
+    "observed_scientist_paths": {
+      "parent": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "cca4ba583662d76bcf678c74d6e6bd223dc85633a88506ca2ea42331dd427103"
+      },
+      "own": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "a0a746e7e2bcfecd22ca1a8887835adc429615b982d377aa3f3812912ccb3386"
+      }
+    },
+    "all_four_years": [
+      {
+        "year": 1,
+        "parent": {
+          "feature_inputs": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "feature_records": [
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1604.02780"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1606.04422"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1601.02650"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1601.04105"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1611.06791"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1611.01186"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1608.01972"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1612.03597"
+            }
+          ],
+          "tensor_accept": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tensor_scores": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "native_decision_full_record_sha256": "9cb0ce1dbb7ca86f86fdb98e844c13cdf8a38927531d0aa690d6a95d3ba6e028",
+          "native_decision_identity_final_score_sha256": "a54dcabb5ee410c2c5ff9b4b6b5dcbaaa505b1290623f3cd8fb4d32f4a46952c",
+          "accepts": 8,
+          "rejects": 0
+        },
+        "own": {
+          "feature_inputs": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "feature_records": [
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1604.02780"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1606.04422"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1601.02650"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1601.04105"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1611.06791"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1611.01186"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1608.01972"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1612.03597"
+            }
+          ],
+          "tensor_accept": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tensor_scores": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "native_decision_full_record_sha256": "a070da4d75f4d81623cd0db0bce5ba57fbf1f3d4b4913d9a38088a14739c75ac",
+          "native_decision_identity_final_score_sha256": "a54dcabb5ee410c2c5ff9b4b6b5dcbaaa505b1290623f3cd8fb4d32f4a46952c",
+          "accepts": 8,
+          "rejects": 0
+        },
+        "paper_record_field_differences": [
+          {
+            "paper_id": "https://arxiv.org/abs/1604.02780",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1606.04422",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1601.02650",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1601.04105",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1611.06791",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1611.01186",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1608.01972",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1612.03597",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          }
+        ]
+      },
+      {
+        "year": 2,
+        "parent": {
+          "feature_inputs": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "feature_records": [
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1702.08367"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1705.11040"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1709.07314"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1701.05724"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1707.08900"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1710.09995"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1712.05652"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1709.02956"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1705.03556"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1706.06613"
+            }
+          ],
+          "tensor_accept": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tensor_scores": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "native_decision_full_record_sha256": "5aee9f8eba1d5202d24ca6a5d9ae45f2df9f7c4ec803963e3743ac7153bed594",
+          "native_decision_identity_final_score_sha256": "fac49f0c1a7f40230d3cfa27544b31b8a2a7b357db55a91551357dcf51f43a8f",
+          "accepts": 10,
+          "rejects": 0
+        },
+        "own": {
+          "feature_inputs": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "feature_records": [
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1702.08367"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1705.11040"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1709.07314"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1701.05724"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1707.08900"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1710.09995"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1712.05652"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1709.02956"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1705.03556"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1706.06613"
+            }
+          ],
+          "tensor_accept": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tensor_scores": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "native_decision_full_record_sha256": "5106b34bfa45beadfb7fc55d981b4f859a17d1e453afc229d6ea1d633bc4b8b4",
+          "native_decision_identity_final_score_sha256": "fac49f0c1a7f40230d3cfa27544b31b8a2a7b357db55a91551357dcf51f43a8f",
+          "accepts": 10,
+          "rejects": 0
+        },
+        "paper_record_field_differences": [
+          {
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1705.11040",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1709.07314",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1701.05724",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1707.08900",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1710.09995",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1712.05652",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1709.02956",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1705.03556",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1706.06613",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          }
+        ]
+      },
+      {
+        "year": 3,
+        "parent": {
+          "feature_inputs": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "feature_records": [
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1805.07433"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1809.02193"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1811.04132"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1805.08606"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1810.06401"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1812.06224"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1809.01682"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1811.08008"
+            }
+          ],
+          "tensor_accept": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tensor_scores": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "native_decision_full_record_sha256": "010d0cdd5bd2b263901f014959347f6b77b423208c18c1d1cb1f0095dbdc31cd",
+          "native_decision_identity_final_score_sha256": "93ce6ee5e534e20e8067591dcdab25590e4b9e5362821328b0827be8ac989b85",
+          "accepts": 8,
+          "rejects": 0
+        },
+        "own": {
+          "feature_inputs": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "feature_records": [
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1805.07433"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1809.02193"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1811.04132"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1805.08606"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1810.06401"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1812.06224"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1809.01682"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1811.08008"
+            }
+          ],
+          "tensor_accept": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tensor_scores": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "native_decision_full_record_sha256": "4760832fa71585da2471c69337864a3a6e0059cf8d32a399588dd044ae8367b2",
+          "native_decision_identity_final_score_sha256": "93ce6ee5e534e20e8067591dcdab25590e4b9e5362821328b0827be8ac989b85",
+          "accepts": 8,
+          "rejects": 0
+        },
+        "paper_record_field_differences": [
+          {
+            "paper_id": "https://arxiv.org/abs/1805.07433",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1809.02193",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1811.04132",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1805.08606",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1810.06401",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1812.06224",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1809.01682",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1811.08008",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          }
+        ]
+      },
+      {
+        "year": 4,
+        "parent": {
+          "feature_inputs": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "feature_records": [
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1906.03523"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1904.11694"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1906.07749"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1902.03273"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1911.03062"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1908.04279"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1911.12423"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1903.09109"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1908.02451"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1905.00052"
+            }
+          ],
+          "tensor_accept": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tensor_scores": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "native_decision_full_record_sha256": "d33b20c6d6a9ba0f95b7e592040d80ba5925f4e311592b196755651628fc6181",
+          "native_decision_identity_final_score_sha256": "0f70dc7af23d1b005d462c068e3c26ed181e7a38a5c04f1e8715bd1a0e4c3932",
+          "accepts": 10,
+          "rejects": 0
+        },
+        "own": {
+          "feature_inputs": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "feature_records": [
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1906.03523"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1904.11694"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1906.07749"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1902.03273"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1911.03062"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1908.04279"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1911.12423"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1903.09109"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1908.02451"
+            },
+            {
+              "conference_id": "FOCS",
+              "paper_id": "https://arxiv.org/abs/1905.00052"
+            }
+          ],
+          "tensor_accept": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tensor_scores": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "native_decision_full_record_sha256": "79625e41bfa3de84dc75fc3d94d1d46aaf88b0a9c8c5314f2a7ad1e3c1755933",
+          "native_decision_identity_final_score_sha256": "0f70dc7af23d1b005d462c068e3c26ed181e7a38a5c04f1e8715bd1a0e4c3932",
+          "accepts": 10,
+          "rejects": 0
+        },
+        "paper_record_field_differences": [
+          {
+            "paper_id": "https://arxiv.org/abs/1906.03523",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1904.11694",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1906.07749",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1902.03273",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1911.03062",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1908.04279",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1911.12423",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1903.09109",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1908.02451",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          },
+          {
+            "paper_id": "https://arxiv.org/abs/1905.00052",
+            "status": "accept",
+            "different_fields": [
+              "submission_time"
+            ]
+          }
+        ]
+      }
+    ],
+    "scope": "Literal source edit changes represented features/scores each year, but tensor acceptance, native decision identities/final scores, all179 scientist inputs/choices and assigned loss remain unchanged on this one condition. Full paper records differ in submission_time and raw hashes stay distinct; no global semantic equivalence, invention or benefit is claimed."
+  },
+  "mutable_campaign_state_snapshot_sha256": "b459970d4798c5daa294c80ada1cb3a209b3433f091de0f5f8974186a1c7da77",
+  "join_continuation": {
+    "original_tool_handle": 59986,
+    "observed_live_pid": 86837,
+    "source_checkout": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-author-outcomes-v1-a1",
+    "source_commit": "5bf61d6e431fc391b821f0829deacd0d84619d8c",
+    "output": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1",
+    "started_content_sha256": "57bb2d9d87134e4eefee972f2e85771ac3210368cf87ad259a0fcd7d45a35965",
+    "status": "waiting-original-paired-readouts",
+    "maximum_wait_seconds": 86400,
+    "new_inference_allowed": false,
+    "actual_all8_join_run": false,
+    "scope": "Actual commit-pinned live waiter, not completed joined analysis. Original source/plan and preceding readout header verified before waiting; no model/native work, repair/refill/reselection."
+  },
+  "qa": {
+    "source_commit": "5bf61d6e431fc391b821f0829deacd0d84619d8c",
+    "original_tool_handle": 14668,
+    "exit_code": 0,
+    "junit_file": "research/data/native-priority-author-outcomes-finish-v1/priority-author-outcomes-finish-v1-a1-junit.xml",
+    "junit_sha256": "711a33bfcf9df9eba4e70326ca508e77990b693709f194eef92cc586d72bd94e",
+    "suite": {
+      "tests": "69",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "time": "2.925"
+    },
+    "scope": "69 pure SCRIPTED metadata/collection/export/continuation tests; child/source/closure provenance is scripted, not new native proof or actual future export success"
+  },
+  "bound_immutable_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/plan.json": "91a63d5753f0f30b5470bdd725bd42365a610cb8f61a1a3002e3175b68d1925b",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/observation.json": "a24e4a0eb6bafdde1f24d2be09684d8b42140ef8b70a8f874fcb12504770e41f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/worlds/native-adaptive-ada832b4da4e271303815783-s61001/system.json": "0259c186803a5fe0c6fa2afb55fa60d80e251fd0b39a034bbdebdb1a0534e052",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/replies/responses.sqlite": "2d9838b9702829ddba3bd88df9b28ff06ae34b3cde77dfce7a470f8b270c90db",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/worlds/native-adaptive-ada832b4da4e271303815783-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/worlds/native-adaptive-ada832b4da4e271303815783-s61001/replies/responses.sqlite": "e207bf7c8043f7a139313446a4309d9c9219c44fc715491940e4d9fa93d43e7f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz": "245de793e6c8bd1ddf82d70527e3ce774498e9dd23dd6fd150fac19d26efe7c2",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/worlds/native-adaptive-ada832b4da4e271303815783-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz": "250239e8fefe2efd0073c89a1ba801ddad2ee5e939810cd6b3f1bb6386394199",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz": "e2eb4d85cc237edc24162a626b4bf7f2a5642579ccfc1133d8c5525e655f370c",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/worlds/native-adaptive-ada832b4da4e271303815783-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz": "948172875a2e5d00d90c60e5d3d40651de65a8d15cc7429efb79affdf6e0b50f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_3.json.gz": "488cbe8cc5436b4cefcb438f8c5c790cb8ff5342d446fe101edab3f24e0d0e27",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/worlds/native-adaptive-ada832b4da4e271303815783-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_3.json.gz": "547c5d11417153bd50078acc1061bcc845d1a7015364e690992c1fd8432b392f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_4.json.gz": "bd9daace37535eab81a085d47145d80b013b36ebfb84d5c63108b1119c62f192",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/search/free-code-graph/history-1/content-utility/worlds/native-adaptive-ada832b4da4e271303815783-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_4.json.gz": "206d48a14961b2aea285896d8d1359b47f30d6f83c8430b035a1d10c09e93412",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-author-outcomes-v1-a1/started.json": "3b6fede6d3297decdbd32067adcb4cc189bad67d1da52af0f76738009056c4c5"
+  },
+  "current_stage_snapshot": {
+    "active": "adaptive-priority/1/resource-aware-content:g0",
+    "observed_utc": "2026-11-16T08:39:16.599457+00:00",
+    "stage": "optimization"
+  },
+  "whole_cold_audit_complete": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "publication_ready": false,
+  "content_sha256": "504331712e9ff24564116f303533304230f0986d0d566e230c05bb9a568c52bb"
+}

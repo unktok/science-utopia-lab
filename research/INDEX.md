@@ -21,9 +21,13 @@ This page is navigation, not a chronological experiment transcript.
   tests are not full native/CLI proof or causal diagnosis.
   [Outcome8 and current study's first edited submission](results/native-priority-author-outcomes-preparation-and-first-edit-v1.json)
   preserve a paired numeric tie and one literal extractor-source write. Year1
-  features change but native decision identities do not; final edited loss is
-  still unknown. [All8-author/outcome join preparation](components/native-priority-author-outcomes-v1.md)
-  passes48 light checks, not actual full-study analysis. This is a
+  features change but native decision identities do not; loss was unknown in
+  that dated prefix. [All8-author/outcome join preparation](components/native-priority-author-outcomes-v1.md)
+  passes48 light checks, not actual full-study analysis.
+  [The subsequent ninth complete edited outcome and actual join waiter](results/native-priority-ninth-outcome-and-author-join-waiter-v1.json)
+  now show no gain/same179 researcher inputs across4 years. [Outcome10](results/native-priority-tenth-own-outcome-prefix-v1.json)
+  worsens C by3. The [fourth pinned continuation](components/native-priority-author-outcomes-continuation-v1.md)
+  actually waits for original paired readouts;69 light tests are not future real-export proof. This is a
   prefix, not the completed24-slot comparison. See [STATUS](STATUS.md) for the
   active slot/source/processes and [first free journal](results/native-priority-first-free-submission-prefix-v1.json)
   for the five applied/finished actions, without an invented institution claim.
