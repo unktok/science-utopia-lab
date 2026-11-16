@@ -24,6 +24,13 @@ not the same phenomenon. These diagnostics never deduplicate accepted records,
 change a loss or turn matching worlds/content panels into independent samples.
 Empty completed worlds have both counts0; failed/generation-null content remains
 unavailable. The older45-case receipt below predates this additive extension.
+At sourcee9d7992fdeebd8ce250eb8ccffbb1e8d68fb50cc this extension passes33
+overlapping content/all-slot/figure-data checks in1.38seconds, with
+[retained JUnit](../data/corrected-content-identity-v1/pytest.xml), SHA256
+22c1ee914186feb16f5d25b619b84efe772f7d5376839a197c52e6249c7d4e1a.
+The [actual current prefix](../logbook/2026-11-17-corrected-first-own-outcome.md#within-world-duplication-is-not-the-observed-issue)
+has no within-world repeats; the scripted tests deliberately do. Neither is
+a completed original whole-study export or a universal no-duplication claim.
 
 The public export requires normal original paired cold/cost/all-slot readouts,
 the exact scientific source, reader commit, complete evidence hashes and a

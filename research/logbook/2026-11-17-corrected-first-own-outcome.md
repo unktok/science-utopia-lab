@@ -900,3 +900,58 @@ guide's latest104-page heading is corrected to111 while keeping its old scope.
 No TeX/render/model/native execution is added by this work. Actual111-page
 minimal-input reconstruction and a new corrected-study PDF remain unfinished;
 the broad publication goal and R2/R3/R5/R6 are not closed by staging.
+
+## Within-world duplication is not the observed issue
+
+During free/C/g2 readiness, inspect whether cumulative U is inflated by repeated
+identical accepted content within one world. The existing pure content reader
+checks sealed observers, all three original ratings/means, content identity and
+native floating U/Q/counts. Select the three raw references, all twelve numeric
+g0..2 observations, free/U records0..2 and free/C records0..1. This is the
+17-terminal-own prefix, not a final24-slot dataset. The ordered identity/
+observation-canonical-hash projection is
+94fc1532687eebede01287baed5aa4e3d09391da627391dd7aa6134c6cd20fa9
+(references and numeric paths sorted, then free/U followed by free/C records).
+
+Twenty physical observation rows retain the execution null as unavailable.
+The19 complete worlds have658 accepted occurrences,528 positive/130 zero/0
+negative recorded centered contributions. Every complete world's count equals
+its own distinct-content count: within-world repetition is0. The sum of those
+per-world distinct counts is658, while the shared cache has88 contents across
+worlds. In particular, all three reference worlds have36 distinct contents each.
+The reference files' original scalar loss is throughput; assigned U/C contexts
+and original optimization losses remain unchanged by this content check.
+
+Therefore replacing occurrence aggregation by unique-content aggregation would
+not change this prefix's realized content sums. A within-world repetition
+explanation or a deduplication-only follow-up is not supported by these data.
+This does not prove that every legal system is duplicate-free, that all future
+outcomes have nonnegative utility, global optimality, independent populations
+or absence of other objective/proxy issues. Cross-world shared content and
+repeat native input paths are separate dependence, not score inflation inside
+one world. No new loss is adopted, no rejected content is rated, and this host
+diagnosis is not fed into the active designer.
+
+The data-only full-study reader gains explicit per-world distinct/repeat counts
+and their totals, retaining all original occurrences and nulls. At committed
+sourcee9d7992f,33 overlapping content/all-slot/figure-data checks pass in1.38s.
+The completed original JUnit is retained at
+research/data/corrected-content-identity-v1/pytest.xml, SHA
+22c1ee914186feb16f5d25b619b84efe772f7d5376839a197c52e6249c7d4e1a.
+Scripted repeat/negative/empty/null cases remain supported; observed absence
+of repeats is not hardcoded. This is not a new model/native experiment, full
+original cold export, method advantage or publication-readiness evidence.
+
+## Free C/g2 clears fresh readiness and begins the next author session
+
+Request3ea48c2622daf0a87237d00dd627b722e00e424380ebbf384e6db2297fcd116d
+passes all29 actual readiness controls. Checked certificate content
+7c58e105f8377799753a02bef0f1e9c490dcc75a5c91237d5c3f7f911223d2ef,
+filefacc120b6c01a7edc104a8c60319b88edc62f6dc3fe175379210c8a24ca83a90.
+Production starts, with two completed/applied plan/read_file operations and
+one uncommitted pending intent at23:54UTC. The complete three-prompt journal
+prefix has0 observed phase mismatches and0 missing/different loss views.
+This is journal verification, not full actual-wire understanding, a submitted
+institution or a native loss. Pending is unknown, not failed or zero-cost.
+The17 terminal/18 charged counts, original settings/source and all old results
+remain unchanged. The same original writer/supervisor continues.

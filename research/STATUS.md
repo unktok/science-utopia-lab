@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November16,2026 at23:45UTC / November17 08:45JST.
+Verified November16,2026 at23:54UTC / November17 08:54JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -44,7 +44,7 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 | Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 not dispatched |
 | Uniform / C | -9.6667 | -10.3333 | g2 -10.6667 / g3 not dispatched |
 | Adaptive / C | -9.6667 | -12.6667 | g2 -11.6667 / g3 not dispatched |
-| Free code/graph / C | -12.6667 | -12.6667 | g2 readiness / g3 not dispatched |
+| Free code/graph / C | -12.6667 | -12.6667 | g2 authoring / g3 not dispatched |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
 Seventeen own slots have terminal outcomes:16 complete (12 worse/4 tied/0 better
@@ -58,8 +58,9 @@ separate scope. Final endpoints are not frozen.
 
 [Latest adaptive/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-c-outcome)
 completes at-11.6667, worse by1 than its own prior best and assigned reference.
-All183 replies/body hashes and its one typed tell verify. Free/C/g2 starts
-fresh request-specific readiness; it is not yet a submitted/evaluated world.
+All183 replies/body hashes and its one typed tell verify. Free/C/g2 passes
+fresh29-control request-specific readiness and starts actual authoring; it is
+not yet a submitted/evaluated world.
 
 [Latest uniform/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-c-outcome)
 completes at-10.6667, improving its previous own best by about1/3 but staying2
@@ -110,7 +111,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 is preparing free/C/g2; source/plan/settings unchanged |
+| Real scientific search | Original42803 is authoring free/C/g2; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |
@@ -126,6 +127,11 @@ The [signed-content reader](components/native-corrected-choice-content-v1.md)
 passes45 overlapping light checks, not45 scientific experiments or a complete
 new actual export. The earlier [twelve-completed-world content prefix](results/native-corrected-choice-nine-outcomes-content-prefix-v1.json)
 is dated partial evidence, not a full24-slot result or global headroom bound.
+The later [17-outcome content-identity check](logbook/2026-11-17-corrected-first-own-outcome.md#within-world-duplication-is-not-the-observed-issue)
+finds658 accepted occurrences in19 complete physical worlds, no within-world
+content repetition and88 contents across worlds. Cross-world sharing is not
+within-world score inflation or independent replication. The additive reader
+diagnostics pass33 light checks; no new deduplicated loss is adopted.
 
 ## Wider project tracks
 
