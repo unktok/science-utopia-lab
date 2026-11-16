@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at09:41UTC/18:41JST.
+Last scientific snapshot: November16,2026 at10:32UTC/19:32JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -21,6 +21,15 @@ mandatory. No corrected real-model/native proof is claimed; fresh source-bound
 readiness/integration remain necessary. All four running sources stay unchanged
 on the old context-v1. Old records/certificates are not repaired or reused.
 See [publication implications/next steps](publication/native-priority-visibility-correction-plan-v1.md).
+
+[Prospective source binding now passes](results/native-author-context-source-binding-v2.json):
+the existing guard is unchanged; the changed designer workflow is an explicit
+Git-bound adapter, not another excluded file.264 original files match for the
+method route,285 match the old study for fixed evaluation; pre-existing adapters
+and exclusions are separately declared.43 scoped light cases pass, including
+rejection of injected author/native byte drift. The original2-case stop and
+first broad41-pass/1-failure run remain retained. No new real/native proof is
+claimed. The historical free-topic driver keeps its narrower adapter scope.
 
 ## Purpose and present answer
 
@@ -49,8 +58,8 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | Initial12 own observations complete:6 ties/6 worse/0 better than visible parent. Not final24-slot closure |
-| Current stage | Free code/graph/history1/C/g1; actual own scalar reaches a completed next-generation model request, still old context-v1 |
+| Own outcomes | First15 own observations complete:8 ties/7 worse/0 better than visible reference. Not final24-slot closure |
+| Current stage | Free code/graph/history1/U/g1; previous C/g1 source edit executes and ties its reference, still old context-v1 |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
@@ -82,6 +91,27 @@ retain all observations without favorable filtering. The prior own C loss-12.666
 appears literally in the next completed planner request. This verifies feedback
 delivery, not model understanding/use, an adaptive advantage or improved loss.
 Paired numeric initial samples are not independent policies/exploitation.
+
+[The first3 second-generation outcomes](results/native-priority-first-three-second-generation-outcomes-v1.json)
+extend the reconciled initial12 to15 complete observations,8 ties/7 worse/0
+better than their strong visible reference:
+
+| History1/C/g1 method | Assigned C loss | Change from previous own | Gap above strong reference |
+| --- | ---: | ---: | ---: |
+| Free code/graph | -12.6667 | 0 | 0 |
+| Adaptive priority | -12.3333 | -2.6667 | +0.3333 |
+| Uniform priority | -12.6667 | -3 | 0 |
+
+Lower is better. Numeric recovery from one's prior worse proposal is real,
+but not superiority over the reference or evidence that adaptation caused an
+advantage. The free author makes one literal agenda-source write in14 steps
+(11 reads/7 duplicate reads). Its9 nonzero priority keys are actual catalog
+topics. However, duration-first ranking selects exactly the parent's direction
+on all18 logged eligible actor/year inputs. All18 actual agenda records change
+only reason text; all179 full scientist inputs/literal response choices match
+the reference, while provider envelopes remain different. No new node/wire or
+loss gain is observed. Nine general-phase steps still show the known visibility
+mismatch; this remains old-source exploratory evidence, not a clean comparison.
 
 [Outcome8 and the next actual edited submission](results/native-priority-author-outcomes-preparation-and-first-edit-v1.json)
 retain all original feedback and the first literal source write in this study.

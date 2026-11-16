@@ -1,0 +1,953 @@
+{
+  "schema": "scienceutopia.native-priority-first-three-second-generation-outcomes.v1",
+  "observed_utc": "2026-11-16T10:32:17.693345+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "prior_initial_half_content_sha256": "4d7831c35ffaa96a3cd734bb6bace56912591aa1af21f0888a5d2f9b7bb010bb",
+  "first_15_own_slots": [
+    {
+      "slot_index": 0,
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "scbd86c6da048c335",
+      "original_observation_sha256": "dbd14306f5ce72d95a60fce9e6feec12dea79720b4b1de251f6dd4bb41eb89d5",
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -27.666666666666668,
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 1.0
+    },
+    {
+      "slot_index": 1,
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "scbd86c6da048c335",
+      "original_observation_sha256": "c9c0f17b7a72b5f1a70b8841912896bba2b386487aaec08029cb5761ffc754b7",
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -27.666666666666668,
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 1.0
+    },
+    {
+      "slot_index": 2,
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "suggestion_id": "native-adaptive-c0cbd1982f59807194212235",
+      "original_observation_sha256": "22c57307e42e7c0e04de2a17e650b0a5accca1494ce08703a3eb9bd05851f2bd",
+      "program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -28.666666666666668,
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 0.0
+    },
+    {
+      "slot_index": 3,
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "suggestion_id": "se803cd930f3f7af2",
+      "original_observation_sha256": "50df13c0e8c4d9aa75fd35a4c0ce3e64bd6d61218de78688e3e7f8982c153066",
+      "program_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -9.666666666666668,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 3.0
+    },
+    {
+      "slot_index": 4,
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "suggestion_id": "se803cd930f3f7af2",
+      "original_observation_sha256": "97227a7ab118856ec81210381b393e7c00b479eefa8ffead195defab28ed7805",
+      "program_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -9.666666666666668,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 3.0
+    },
+    {
+      "slot_index": 5,
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "suggestion_id": "native-adaptive-6f3e5b948760380187a6adea",
+      "original_observation_sha256": "10cab53f5526f958c3e0c09fd7201f8b9438f09cc9f877fcf59aa492136536a2",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -12.666666666666668,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 0.0
+    },
+    {
+      "slot_index": 6,
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "suggestion_id": "s439cf53bd46638ab",
+      "original_observation_sha256": "678aefee620bd5bd60f25497689eedf698979f6d2c6d2b4726349ee68a0a5688",
+      "program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -28.666666666666668,
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 0.0
+    },
+    {
+      "slot_index": 7,
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "suggestion_id": "s439cf53bd46638ab",
+      "original_observation_sha256": "72b8e3f7cd0415d3d53cdc19696aac9aba4ad9df29d877f106d2e349d61125d4",
+      "program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -28.666666666666668,
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 0.0
+    },
+    {
+      "slot_index": 8,
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "suggestion_id": "native-adaptive-ada832b4da4e271303815783",
+      "original_observation_sha256": "2f93a65267cd1ac38e907f888a38b484ee624c671044bdcfbd78406526a22470",
+      "program_sha256": "c61f9b554a916750e62db9328d5e9bc062309457e4936470d1e641d090e1d853",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -28.666666666666668,
+      "initial_reference_label": "priority-zero",
+      "assigned_loss_minus_reference": 0.0
+    },
+    {
+      "slot_index": 9,
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "s4ea8e2cb523eecde",
+      "original_observation_sha256": "c50c79ced6e2c12b179c6a1510c036b4371427c23bee9ea8ca0678ae781b9ff3",
+      "program_sha256": "34a9bfe9ee25338fc8cf1e8d34b897089fb3b2296cc81bb16b7d5ab47de69505",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -9.666666666666668,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 3.0
+    },
+    {
+      "slot_index": 10,
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "s4ea8e2cb523eecde",
+      "original_observation_sha256": "0f1d6fb2d846e864f33fbfd13f2a8b64f7eee5dbaf5b393f58a0c44fce38d65b",
+      "program_sha256": "34a9bfe9ee25338fc8cf1e8d34b897089fb3b2296cc81bb16b7d5ab47de69505",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -9.666666666666668,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 3.0
+    },
+    {
+      "slot_index": 11,
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "native-adaptive-50d7b177a3220913368b0bad",
+      "original_observation_sha256": "82d9aeee1cbd2af75e5b804b4676b17101b48e860b5958e699108a6473a15ab6",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -12.666666666666668,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 0.0
+    },
+    {
+      "slot_index": 12,
+      "slot": {
+        "generation": 1,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "native-adaptive-4ac8b75532add3a0b994e569",
+      "original_observation_sha256": "aa2d66553cc50c636cfe9ea3b9f873516ede163f31f927a998dd4cc5ee0c133f",
+      "program_sha256": "b07c46dcd4a3bdb63827f6c94e4a45bb4d9458b7ed3c74861fa2b628e2862f3e",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -12.666666666666668,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 0.0
+    },
+    {
+      "slot_index": 13,
+      "slot": {
+        "generation": 1,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "s57ba2348ec2b2db7",
+      "original_observation_sha256": "e478d3470f6222c19480433388f23d86e49cee26bae879983ed2dd511dd52050",
+      "program_sha256": "28115133fa3a4e66b0bd218b6c0c29b399e466fb42ebe4cdc77c5136de9c6b47",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.333333333333332,
+        "resource-aware-content": -12.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss": -12.333333333333332,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 0.3333333333333357,
+      "previous_own_assigned_loss": -9.666666666666668,
+      "assigned_loss_minus_previous_own": -2.6666666666666643
+    },
+    {
+      "slot_index": 14,
+      "slot": {
+        "generation": 1,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "suggestion_id": "se71333203546aa95",
+      "original_observation_sha256": "b78965b9b77e0f050c2fc291b0868be2aa88f4f34b045afdb3c996f4f32e25f5",
+      "program_sha256": "71e45f18dd69df574c14ac86f5c07bdb157d7d772ede7057a7415408c5e5891b",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss": -12.666666666666668,
+      "initial_reference_label": "terminal-priority-zero",
+      "assigned_loss_minus_reference": 0.0,
+      "previous_own_assigned_loss": -9.666666666666668,
+      "assigned_loss_minus_previous_own": -3.0
+    }
+  ],
+  "counts_against_visible_reference": {
+    "tie": 8,
+    "worse": 7,
+    "better": 0
+  },
+  "new_free_C_g1": {
+    "request_sha256": "a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136",
+    "based_on_observation_id": "developer-reference-rescore-3c29d5949ab370907a1ac53a4059e134d6adf31af00891a56639b94c3c927d2a",
+    "parent_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+    "submitted_program_sha256": "b07c46dcd4a3bdb63827f6c94e4a45bb4d9458b7ed3c74861fa2b628e2862f3e",
+    "graph_delta": {
+      "nodes_added": [],
+      "nodes_removed": [],
+      "source_changed_nodes": [
+        "developer-catalog-agenda"
+      ],
+      "parameter_changed_nodes": [
+        "developer-catalog-agenda"
+      ],
+      "wires_added": 0,
+      "wires_removed": 0,
+      "schedules_changed": false,
+      "scope": "Literal edits relative to declared comparison base (a uniform draw has a family anchor, not a feedback-selected generation parent); not proof of native effect or benefit"
+    },
+    "session_counts": {
+      "completed_steps": 14,
+      "attempted_tool_counts": {
+        "finish": 1,
+        "plan": 1,
+        "read_file": 11,
+        "write_file": 1
+      },
+      "attempted_edit_steps": 1,
+      "successful_document_changes": 1,
+      "duplicate_unchanged_read_observations": 7,
+      "terminal_status": "generated"
+    },
+    "phase_rows": [
+      {
+        "step": 0,
+        "phase": "planning",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 0,
+        "remaining_calls": 16,
+        "affected_by_visibility_phase_mismatch": false
+      },
+      {
+        "step": 1,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 0,
+        "remaining_calls": 15,
+        "affected_by_visibility_phase_mismatch": false
+      },
+      {
+        "step": 2,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 1,
+        "remaining_calls": 14,
+        "affected_by_visibility_phase_mismatch": false
+      },
+      {
+        "step": 3,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 2,
+        "remaining_calls": 13,
+        "affected_by_visibility_phase_mismatch": false
+      },
+      {
+        "step": 4,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 3,
+        "remaining_calls": 12,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 5,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 4,
+        "remaining_calls": 11,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 6,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 5,
+        "remaining_calls": 10,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 7,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 6,
+        "remaining_calls": 9,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 8,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 7,
+        "remaining_calls": 8,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 9,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 8,
+        "remaining_calls": 7,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 10,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 9,
+        "remaining_calls": 6,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 11,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 10,
+        "remaining_calls": 5,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 12,
+        "phase": "general",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 11,
+        "remaining_calls": 4,
+        "affected_by_visibility_phase_mismatch": true
+      },
+      {
+        "step": 13,
+        "phase": "submit",
+        "full_document_actually_supplied": true,
+        "successful_inspections": 0,
+        "remaining_calls": 3,
+        "affected_by_visibility_phase_mismatch": false
+      }
+    ],
+    "authored_topic_priority_bias": {
+      "artificial_intelligence": 10,
+      "deep_learning": 8,
+      "natural_language_processing": 7,
+      "image_recognition": 6,
+      "generative_models": 5,
+      "reinforcement_learning": 4,
+      "interdisciplinary_cs": 3,
+      "computing_education": 2,
+      "computer_graphics": 1
+    },
+    "ranking_analysis_is_pure_read_only_diagnostic_not_generated_code_execution": true,
+    "actual_agenda_assignments": [
+      {
+        "year": 1,
+        "actor_id": "institution_0000_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "neural_symbolic_ai",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "neural_symbolic_ai",
+        "generated_rank_topic": "neural_symbolic_ai",
+        "actual_logged_topic": "neural_symbolic_ai",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 1,
+        "actor_id": "institution_0001_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "artificial_intelligence",
+            "authored_bias": 10
+          },
+          {
+            "topic": "neural_symbolic_ai",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "artificial_intelligence",
+        "generated_rank_topic": "artificial_intelligence",
+        "actual_logged_topic": "artificial_intelligence",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 1,
+        "actor_id": "institution_0002_researcher_0",
+        "shortest_duration": 2,
+        "minimum_duration_candidates": [
+          {
+            "topic": "computational_science",
+            "authored_bias": 0
+          },
+          {
+            "topic": "mathematical_software",
+            "authored_bias": 0
+          },
+          {
+            "topic": "operating_systems",
+            "authored_bias": 0
+          },
+          {
+            "topic": "parallel_computing",
+            "authored_bias": 0
+          },
+          {
+            "topic": "performance_analysis",
+            "authored_bias": 0
+          },
+          {
+            "topic": "software_engineering",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "computational_science",
+        "generated_rank_topic": "computational_science",
+        "actual_logged_topic": "computational_science",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 1,
+        "actor_id": "institution_0003_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "deep_learning",
+            "authored_bias": 8
+          },
+          {
+            "topic": "meta-learning",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "deep_learning",
+        "generated_rank_topic": "deep_learning",
+        "actual_logged_topic": "deep_learning",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 1,
+        "actor_id": "institution_0004_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "information_retrieval",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "information_retrieval",
+        "generated_rank_topic": "information_retrieval",
+        "actual_logged_topic": "information_retrieval",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 2,
+        "actor_id": "institution_0000_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "neural_symbolic_ai",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "neural_symbolic_ai",
+        "generated_rank_topic": "neural_symbolic_ai",
+        "actual_logged_topic": "neural_symbolic_ai",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 2,
+        "actor_id": "institution_0001_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "artificial_intelligence",
+            "authored_bias": 10
+          },
+          {
+            "topic": "neural_symbolic_ai",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "artificial_intelligence",
+        "generated_rank_topic": "artificial_intelligence",
+        "actual_logged_topic": "artificial_intelligence",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 2,
+        "actor_id": "institution_0003_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "deep_learning",
+            "authored_bias": 8
+          },
+          {
+            "topic": "meta-learning",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "deep_learning",
+        "generated_rank_topic": "deep_learning",
+        "actual_logged_topic": "deep_learning",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 2,
+        "actor_id": "institution_0004_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "information_retrieval",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "information_retrieval",
+        "generated_rank_topic": "information_retrieval",
+        "actual_logged_topic": "information_retrieval",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 3,
+        "actor_id": "institution_0000_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "neural_symbolic_ai",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "neural_symbolic_ai",
+        "generated_rank_topic": "neural_symbolic_ai",
+        "actual_logged_topic": "neural_symbolic_ai",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 3,
+        "actor_id": "institution_0001_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "artificial_intelligence",
+            "authored_bias": 10
+          },
+          {
+            "topic": "neural_symbolic_ai",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "artificial_intelligence",
+        "generated_rank_topic": "artificial_intelligence",
+        "actual_logged_topic": "artificial_intelligence",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 3,
+        "actor_id": "institution_0002_researcher_0",
+        "shortest_duration": 2,
+        "minimum_duration_candidates": [
+          {
+            "topic": "computational_science",
+            "authored_bias": 0
+          },
+          {
+            "topic": "mathematical_software",
+            "authored_bias": 0
+          },
+          {
+            "topic": "operating_systems",
+            "authored_bias": 0
+          },
+          {
+            "topic": "parallel_computing",
+            "authored_bias": 0
+          },
+          {
+            "topic": "performance_analysis",
+            "authored_bias": 0
+          },
+          {
+            "topic": "software_engineering",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "computational_science",
+        "generated_rank_topic": "computational_science",
+        "actual_logged_topic": "computational_science",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 3,
+        "actor_id": "institution_0003_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "deep_learning",
+            "authored_bias": 8
+          },
+          {
+            "topic": "meta-learning",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "deep_learning",
+        "generated_rank_topic": "deep_learning",
+        "actual_logged_topic": "deep_learning",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 3,
+        "actor_id": "institution_0004_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "information_retrieval",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "information_retrieval",
+        "generated_rank_topic": "information_retrieval",
+        "actual_logged_topic": "information_retrieval",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 4,
+        "actor_id": "institution_0000_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "neural_symbolic_ai",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "neural_symbolic_ai",
+        "generated_rank_topic": "neural_symbolic_ai",
+        "actual_logged_topic": "neural_symbolic_ai",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 4,
+        "actor_id": "institution_0001_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "artificial_intelligence",
+            "authored_bias": 10
+          },
+          {
+            "topic": "neural_symbolic_ai",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "artificial_intelligence",
+        "generated_rank_topic": "artificial_intelligence",
+        "actual_logged_topic": "artificial_intelligence",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 4,
+        "actor_id": "institution_0003_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "deep_learning",
+            "authored_bias": 8
+          },
+          {
+            "topic": "meta-learning",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "deep_learning",
+        "generated_rank_topic": "deep_learning",
+        "actual_logged_topic": "deep_learning",
+        "same_direction_as_parent": true
+      },
+      {
+        "year": 4,
+        "actor_id": "institution_0004_researcher_0",
+        "shortest_duration": 1,
+        "minimum_duration_candidates": [
+          {
+            "topic": "information_retrieval",
+            "authored_bias": 0
+          }
+        ],
+        "lexical_parent_topic": "information_retrieval",
+        "generated_rank_topic": "information_retrieval",
+        "actual_logged_topic": "information_retrieval",
+        "same_direction_as_parent": true
+      }
+    ],
+    "actual_assignments_differ_only_in_reason_text": 18,
+    "scientist_observed_traces": {
+      "own": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "a34c50d2564de597ddc612bc8989d5308939591fd67cd5bf10e83b95bb989161"
+      },
+      "exact_same_program_reference": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "4db3daac1ea8a8c7a885d50cb8ddd77c5b3d0a6e59f67499044ad63501954963"
+      }
+    },
+    "original_losses": {
+      "content-utility": -28.666666666666668,
+      "resource-aware-content": -12.666666666666668,
+      "throughput": -36.0
+    },
+    "interpretation": "All18 logged eligible actor/year inputs select the same catalog direction/duration as the lexical parent. The9 authored nonzero priorities are real catalog topics, but do not alter this observed path. All18 actual agenda records change only reason text. Not global semantic equivalence or a model-competence diagnosis."
+  },
+  "immutable_original_input_files": {
+    "search/uniform-priority/history-0/content-utility/generation-0/observation.json": "ee39bb52e82bb6cb64283db693d798927c63e5c5bcfaae9506d9413dfdbbf09a",
+    "search/adaptive-priority/history-0/content-utility/generation-0/observation.json": "21cf1bab66854c71b024687f4c3c298587712743e33c3817ddb16c66521bf9f4",
+    "search/uniform-priority/history-0/resource-aware-content/generation-0/observation.json": "a5e046e5abe2e5b2d3b2d96d2b83d720881c162eb164aca983883aa95919ed8b",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-0/observation.json": "b4d6ab0af6c2606ace5ec23c7798d2eccbc25c5ff48754fabee41cffa017c4b0",
+    "search/uniform-priority/history-1/content-utility/generation-0/observation.json": "220f1000c16f04e00efc8d4cdc9e76fff5d30588e5f9f207c6f8c7be1ac99939",
+    "search/adaptive-priority/history-1/content-utility/generation-0/observation.json": "f1e8a25b6561026ae68c9b35ce15f63ae939f3c5d8bef4d86406bc72d31dd99b",
+    "search/uniform-priority/history-1/resource-aware-content/generation-0/observation.json": "8ccda6cdf49ae0ff32316780f2218d061d0310ac3620a042f023517e75872904",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-0/observation.json": "2cd8b83302bb49057a17e37c238e47e8d0dfbacf915487a80adc07b1b7fa5d0d",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/observation.json": "45496b10a9be6b97a6ca5bedbc5c383905dff82c87e29f28b13f57fbc2d2d555",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/optimizer-after-tell.json": "6b92828bbb6c00afcdca5d46d043987bf1c5818db13cdb6bd4cfa90e29f2bc0d",
+    "search/uniform-priority/history-1/resource-aware-content/generation-1/observation.json": "95c2b26f942b888b41dead2d896614feae31b57c466000aaec43645d690c4f74",
+    "search/uniform-priority/history-1/resource-aware-content/generation-1/optimizer-after-tell.json": "f06af359f95f8bbe199612a91833a23d56ad38819f4b0aa10f9e73bfb17e102e",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/request.json": "0a4e800a8c7f4b1acc2f635f2500eed89d3a20ecf9d0653cc42dc7c00776011e",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-00.started.json": "ea3c92be564866debf0dba0d66454d89ebe1cb85b168413a953663e74c9aa90e",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-00.completed.json": "7a498d298b1c3c306ffaf7bdc33c5702008ca4fc8ac3dbadb0e0dc308bf84445",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-01.started.json": "ab02bac646b57a4facc4ea683f4c80d12e1ebedc32a0cb781b0482a2dada2df3",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-01.completed.json": "aafc9da8e931de0247dde267d1658df0eb2cf1067b3e3e9a651703b3d3526094",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-02.started.json": "4ce069ddc89817376dfad2861a2308d59c0f0607181cd50cd3c2f9f5f0c74924",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-02.completed.json": "1af481a3e7eafaa6605a11e6ba6e03fb17654fe8977c63fc0fd0031d119e33e8",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-03.started.json": "8e435df19ae8c243ad3810bf6717540f7d6c35a2abb193f33704ca21b5afe31c",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-03.completed.json": "9d21f1a91e9ab7785602587a10ce3b70fedf4491d35a9b61b86e85963c839c47",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-04.started.json": "772fe8b8c2be35e176ce9dff77bc39cc31f87f03922c618b002e11411f8bd9cf",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-04.completed.json": "3eefa6d1d6abe0ebe7c1fcdad94fda931d33cd5b8e4379697ccc8ac2cbe0aaa9",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-05.started.json": "c560d758b207e460710b094f80ef84f4a445f8fab4a883888c021a3a2a257170",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-05.completed.json": "6dcc3b54db07eef386b8f51c6a85a63c68fbeda9849389bbf80095ec2e909c0b",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-06.started.json": "0f24e82bd7ae7695d9f0a48e051e86ceaa4090040c4a15de3c2a835519bc2579",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-06.completed.json": "f367cff5cf237bf1e31cb86bed79c6249a2433e1c54d352e1c4786ba33a51f9b",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-07.started.json": "70cd3cb09a669532963ec5050c6da806288aced4f52497903a94e17e37c501a3",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-07.completed.json": "e500bf745594e59c9a33313c883779103a9bac93dc095ea2f89d3a46153cdd98",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-08.started.json": "764aebd369341d1f40477d816d27c040bf479fee9beedf4373abee97871322c3",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-08.completed.json": "8a0d8c02713322186cd10c3afc812f03631a9bf24b26cd388c691f6395f73011",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-09.started.json": "e7f7fd4091f511018b0e56feed868cf29ae40a20b583afa648ae5b2feb671c5d",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-09.completed.json": "59e74d9f24eee36c11cade8cbf9a47762faa3246761cbfd1340da75ab7b3ad2a",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-10.started.json": "77d5468d115a2bf2bf38f2716599f7ff7c226dd828c60323e6e1c2e9bc20119f",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-10.completed.json": "2a5cfa303224516599a2bdcb91636ae5eda7d03075403718d9951b4198ddf9b1",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-11.started.json": "17cd6ff78c899953ace3417370155171630b578ede68ce1aa4f5f51c2190a5ee",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-11.completed.json": "827a18dd3b291e47c76fbb06b6a938e525c226531eff3b4a314b3ce6df6d30ea",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-12.started.json": "0a0613b7a9154c45f443b92bc5b1854719c1b1731c06e5716e3665f765df881a",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-12.completed.json": "ef667c496ec30062c824ef04baa3aca843eaba462678de9435e3bdfa7417d21f",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-13.started.json": "120e0463cc34555dc7aadf570abc855ce60d5accf59ef3732b43d4da89da34aa",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/step-13.completed.json": "b71d1f063d164a7879bb43359b865364888f5d2b28ce46ac123ec81c5d3d8602",
+    "search/free-code-graph/history-1/resource-aware-content/authoring/proposal-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/editor-session/authoring/generation-a8cd174d5232e2f68d1609dd830fe55bc486d4a946e64c0e3f9304f07c1b4136/response.json": "e1f0fc4a15a72fa6dcc728ab3f0a8b4da27d142d84591d35210e3a375b15f5ee",
+    "search/free-code-graph/history-1/resource-aware-content/worlds/native-adaptive-4ac8b75532add3a0b994e569-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "search/free-code-graph/history-1/resource-aware-content/worlds/native-adaptive-4ac8b75532add3a0b994e569-s61001/replies/responses.sqlite": "6d995eae2f5eafd75d490baed69c7933a58ad68e1f771aa0ac85cba558ee29f2",
+    "search/free-code-graph/history-1/resource-aware-content/worlds/native-adaptive-4ac8b75532add3a0b994e569-s61001/code-contexts.jsonl": "50d38a19d69964c5094d3c60a7c94286fc0bd60b43e0723990bd04821cd11421",
+    "search/free-code-graph/history-1/resource-aware-content/worlds/native-adaptive-4ac8b75532add3a0b994e569-s61001/system.json": "10754914d4f5ae93dcda87bc56755606c0884ec83df1dd709c168b8b233a9764",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/replies/responses.sqlite": "3d5464998a5092a03fbe06b9b23daf74979e515a1e01f96f79f917bffe819c50",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/code-contexts.jsonl": "00fd79ad04816feeab8f7671daad9889f173c94c584ff58b77f787ae872f323d",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/system.json": "2885ba60519787c60491e8c9c484df2cd1b9c5e698f4759c5b58b44166e9691d"
+  },
+  "mutable_campaign_state_snapshots_not_permanent_guards": {
+    "search/free-code-graph/history-0/content-utility/campaign/native-adaptive-state.json": {
+      "file_sha256_at_snapshot": "0ac96d1ea7d53e146c60f29375e1bc7dcf56e40238fc0cdf7170013f689362c2",
+      "records_at_snapshot": 1,
+      "permanent_file_equality_guard": false
+    },
+    "search/free-code-graph/history-0/resource-aware-content/campaign/native-adaptive-state.json": {
+      "file_sha256_at_snapshot": "3aa321c9aa307572364fc98ce55c98ec7a0f33d48b6d62992d409546f24b91e0",
+      "records_at_snapshot": 1,
+      "permanent_file_equality_guard": false
+    },
+    "search/free-code-graph/history-1/content-utility/campaign/native-adaptive-state.json": {
+      "file_sha256_at_snapshot": "6bd6d842edee86195415b9a47ca5e78e7c5d4939c424fa7bbf8fef8eeffb266e",
+      "records_at_snapshot": 1,
+      "permanent_file_equality_guard": false
+    },
+    "search/free-code-graph/history-1/resource-aware-content/campaign/native-adaptive-state.json": {
+      "file_sha256_at_snapshot": "42535472416cbd0112d70f816c2ac390ad239b6dedfedc5e37e9716684018e5a",
+      "records_at_snapshot": 2,
+      "permanent_file_equality_guard": false
+    }
+  },
+  "progress_snapshot": {
+    "active": "free-code-graph/1/content-utility:g1",
+    "observed_utc": "2026-11-16T10:14:24.665087+00:00",
+    "stage": "optimization"
+  },
+  "derivation_diagnostics": [
+    "An earlier read-only projection failed before retention: it incorrectly compared a complete observation-value digest to an optional inner seal. The original12 values reconcile using digest(original observation), including its seal when present; plain embedded free observations remain unsealed. No raw evidence or guard was changed.",
+    "A read-only inspector mistakenly treated a serialized prompt as a dictionary and stopped. Subsequent diagnostics explicitly JSON-decode the unchanged prompt string."
+  ],
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "whole_campaign_closed": false,
+  "selection_frozen": false,
+  "publication_ready": false,
+  "scope": "All15 completed original-prefix slots, no favorable filtering, repair, reselection or dispatch. Initial12 reconcile to their prior sealed snapshot. Numeric own-to-own recovery is not superiority over the strong reference or isolated adaptation. This old context-v1 pipeline has a known author visibility/phase confound; native losses remain valid. Full original cold/cost/readout closure is still pending.",
+  "content_sha256": "5ada558e638555536216111e0cedb00b5fa79fb0e2ecf66f5894c0ac4674139b"
+}

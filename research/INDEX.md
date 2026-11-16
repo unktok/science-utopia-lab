@@ -12,6 +12,10 @@ This page is navigation, not a chronological experiment transcript.
   this legacy pipeline as an isolated clean method/objective comparison or
   infer useful benefit from the fix. [All raw-wire/test/fixture bindings](results/native-author-workflow-visibility-correction-v1.json)
   and [publication decision requirements](publication/native-priority-visibility-correction-plan-v1.md).
+  [Follow-on source binding](results/native-author-context-source-binding-v2.json)
+  retains the actual preparation stop, first broad failed run and43 passing
+  scoped cases. The guard/exclusion list is not widened; the repaired author
+  module is explicitly Git-bound. This is not real corrected-model/native proof.
 
 - [New finite uniform/adaptive/free-method protocol](protocols/campaigns/native-priority-method-comparison-v1.md)
   and [actual pinned real dispatch](results/native-priority-method-dispatch-v1.json):
@@ -41,6 +45,10 @@ This page is navigation, not a chronological experiment transcript.
   This is not the completed24-slot comparison. See [STATUS](STATUS.md) for the
   active slot/source/processes and [first free journal](results/native-priority-first-free-submission-prefix-v1.json)
   for the five applied/finished actions, without an invented institution claim.
+  [First3 g1 outcomes and actual agenda effects](results/native-priority-first-three-second-generation-outcomes-v1.json)
+  extend the complete prefix to15:8 ties/7 worse/0 better than the reference.
+  A free C agenda write leaves all18 actual topic/duration assignments and179
+  scientist inputs unchanged. Numeric own-to-own recovery is not a method win.
   [Actual year1 effects](results/native-priority-first-own-year1-actuation-prefix-v1.json)
   distinguish changed parameters, changed topics and unproved useful gain.
   [All-slot readout](results/native-priority-method-readout-preparation-v1.json),

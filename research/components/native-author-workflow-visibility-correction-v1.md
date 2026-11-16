@@ -73,6 +73,36 @@ This is not full native/public/real-backend proof of the corrected source.
 Fresh source/model/backend-bound readiness and the appropriate idle-window
 integration proof remain necessary before any new corrected real campaign.
 
+### Follow-on source-guard preparation
+
+Read-only production probes at3629ccf6 stop both the prospective method and
+fixed-policy evaluation routes: recovery_v44 has changed but is not yet in
+their explicit source contracts. [The original stop](../results/native-author-source-guard-preparation-stop-v1.json)
+is retained. Original24972 at105c726f reproduces both failures in tests.
+
+The prospective method now explicitly registers the designer-only recovery
+module at its exact source commit. Fixed evaluation, which calls no designer,
+records that same one-file adapter only when it differs from its original
+scientific source. The original byte guard and four pre-existing exclusions
+are unchanged. Same-source evaluation invents no adapter; actual uncommitted
+author/scientist/factory/physical-executor drift is still rejected.
+
+Original47839 at54700d0e passes41 and fails1 historical free-driver assertion:
+that legacy path does not permit later feedback/catalog adapters. Preserve this
+failure. Do not silently expand the historical contract to pass it. At1e3b114b,
+the positive legacy test checks its actual immutable ce141d16 bytes; an added
+negative case requires current unsupported author changes to stop. The
+prospective method alone receives its additional adapter. Original20055 exits0,
+43 cases pass without skips/deselection. These are light source/unit/fixture
+checks, not native world execution or a corrected-model experiment.
+
+[The production static proofs](../results/native-author-context-source-binding-v2.json)
+bind264 literal original files plus10 previously/newly declared adapters for
+the prospective method; fixed evaluation binds285 literal old-study files and
+the one changed author module. File sets and exact adapter checksums remain
+separate, without a global semantic-equivalence assertion. Real source-bound
+readiness and public native verification are still outstanding.
+
 ## Interpretation of the ongoing experiment
 
 Scientific705b5259 and its three continuation sources remain pinned/unchanged.

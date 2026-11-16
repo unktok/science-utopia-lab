@@ -1,0 +1,138 @@
+{
+  "schema": "scienceutopia.native-author-context-source-binding.v2",
+  "observed_utc": "2026-11-16T10:28:22.602159+00:00",
+  "reader_source_commit": "ef654843d21e1b7da90c6453b45800e952e2c9af",
+  "runtime_tested_source_commit": "1e3b114b5fec430861b52c9f31f92b5bf3a5b605",
+  "earlier_stopped_receipt_content_sha256": "440c68d4aef56fb7027bb0ca864f3596742c36078e7cd44c446260b45371bb6d",
+  "production_source_proofs": [
+    {
+      "name": "prospective-method",
+      "status": "passed",
+      "proof_sha256": "7a815752fb36fa35e1fa193283e5a194689cba976b3f936f6307767b8d6066c4",
+      "original_source": "a5be8d3103854368a4bc6ba4c13eff7552e9dd15",
+      "literal_file_count": 264,
+      "literal_files_sha256": "5edc39d215811848ee6eb22b9f63308fd6f8b43b10dd9eb37d4455051ca927ba",
+      "explicit_adapters_sha256": "7d1b995b9122a2c0996c5568396550a96f1433c074cc21057040baa0fe5523c8",
+      "explicit_adapter_names": [
+        "utopia/optimization/native_authoring_recovery_v44.py",
+        "utopia/optimization/native_fixed_production_domain.py",
+        "utopia/optimization/native_objective_view.py",
+        "utopia/optimization/native_open_workflow_submission_v1.py",
+        "utopia/optimization/native_post_edit_feedback_v1.py",
+        "utopia/optimization/native_workflow_domain_v4.py",
+        "utopia/optimization/native_workflow_staged_designer_v1.py",
+        "utopia/system/native_capability_catalog.py",
+        "utopia/system/native_catalog_planning.py",
+        "utopia/system/native_open_domain.py"
+      ],
+      "new_recovery_adapter": {
+        "source_commit": "ef654843d21e1b7da90c6453b45800e952e2c9af",
+        "role": "Designer-only workflow phase calculation bound to actual V45 document visibility; no native world/loss change",
+        "original_sha256": "3193d3110d0136aef92eabceb34e259997bcbb3331b278e47df799014c191ebb",
+        "current_sha256": "99bdd04704c0d78afba87c35309dab9364997b69644e08f4dab7c1cd07019c69"
+      },
+      "author_domain_only_exclusions": [
+        "utopia/optimization/native_bounded_author_context_v45.py",
+        "utopia/optimization/native_parent_evidence_v46.py",
+        "utopia/optimization/native_staged_author_v15.py",
+        "utopia/optimization/native_design_space.py"
+      ],
+      "global_semantic_equivalence_claimed": false
+    },
+    {
+      "name": "selection-fixed-evaluation",
+      "status": "passed",
+      "proof_sha256": "5d158d113d8eab118136771361c8f4f7cb112904d73f4a8f07bd38de276368b7",
+      "original_source": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+      "literal_file_count": 285,
+      "literal_files_sha256": "349a452903bdec8471d05c4735de51400a7895bf94c6faf7e7c6135b20bc5f44",
+      "explicit_adapters_sha256": "f7fa33f119b48e9e874ebd20492a1941c0ca80bb9966532c4d36d0d2bb9377e5",
+      "explicit_adapter_names": [
+        "utopia/optimization/native_authoring_recovery_v44.py"
+      ],
+      "new_recovery_adapter": {
+        "source_commit": "ef654843d21e1b7da90c6453b45800e952e2c9af",
+        "role": "Designer-only workflow visibility correction; designer is not called by fixed evaluation",
+        "original_sha256": "3193d3110d0136aef92eabceb34e259997bcbb3331b278e47df799014c191ebb",
+        "current_sha256": "99bdd04704c0d78afba87c35309dab9364997b69644e08f4dab7c1cd07019c69"
+      },
+      "author_domain_only_exclusions": [
+        "utopia/optimization/native_bounded_author_context_v45.py",
+        "utopia/optimization/native_parent_evidence_v46.py",
+        "utopia/optimization/native_staged_author_v15.py",
+        "utopia/optimization/native_design_space.py"
+      ],
+      "global_semantic_equivalence_claimed": false
+    }
+  ],
+  "actual_test_runs": [
+    {
+      "path": "research/data/native-author-source-binding-v2/red-105c726f.xml",
+      "file_sha256": "c775670be7bdc8605e18e8deebf0c2196220c52368af6fb08027f46c739a6fe4",
+      "source_commit": "105c726f2feedf38d03fc9cb3c816e24a96385fe",
+      "original_handle": 24972,
+      "actual_exit_code": 1,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "2",
+        "skipped": "0",
+        "tests": "2",
+        "time": "1.709",
+        "timestamp": "2026-11-16T19:21:25.918586+09:00",
+        "hostname": "flower-man.local"
+      }
+    },
+    {
+      "path": "research/data/native-author-source-binding-v2/first-broad-54700d0e.xml",
+      "file_sha256": "042f0a9ba9f054a69cc0cfa390df2c0e0c9ba8670ed5a7e1a092000c8e5c7616",
+      "source_commit": "54700d0e119beadb3c36221f99b43ce4a0b6853c",
+      "original_handle": 47839,
+      "actual_exit_code": 1,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "1",
+        "skipped": "0",
+        "tests": "42",
+        "time": "62.343",
+        "timestamp": "2026-11-16T19:21:53.891027+09:00",
+        "hostname": "flower-man.local"
+      }
+    },
+    {
+      "path": "research/data/native-author-source-binding-v2/scoped-1e3b114b.xml",
+      "file_sha256": "92c559167feaf3dba84ae4ca3f298367c08cc650ab95082181dcc3eedcd7c576",
+      "source_commit": "1e3b114b5fec430861b52c9f31f92b5bf3a5b605",
+      "original_handle": 20055,
+      "actual_exit_code": 0,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "43",
+        "time": "72.574",
+        "timestamp": "2026-11-16T19:24:32.906863+09:00",
+        "hostname": "flower-man.local"
+      }
+    }
+  ],
+  "runtime_files": {
+    "scripts/run_native_priority_method_comparison_v1.py": "1565746a04146be3c87bf7041b7414c012583dc1fc9d0c99ee23a999e2bf55e6",
+    "scripts/run_native_priority_fixed_evaluation_v1.py": "45cc06014a5d90e06e44f1fff30ab7970ed5f17543d65ea8ad20002a41cc636f",
+    "scripts/run_native_topic_free_optimization_v1.py": "ef1b2fc048df339ea2247ef09fd5c58481b2d69234cae5eb32e822bf0352144d"
+  },
+  "historical_scope": "Legacy free-topic driver keeps its smaller adapter set. Its positive test uses actual ce141d1689835ea79184be980c175eded9ce58ff Git bytes. A negative test rejects unsupported current author changes. First broad failure is retained, not relabeled.",
+  "new_author_exclusions_added": [],
+  "native_source_guard_modified": false,
+  "native_source_guard_sha256": "d2ef570fb792a5255e92e9276476d0fd457a5d39f73133747a2b9407360f3826",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "corrected_real_backend_readiness": false,
+  "full_native_public_proof": false,
+  "running_sources_modified": false,
+  "publication_ready": false,
+  "scope": "Static native source binding and light unit/fixture tests only. Explicit designer adapters are versioned and checked against actual Git bytes, not blanket exclusions. No corrected model behavior, native execution, scientific gain or whole-pipeline readiness is proved.",
+  "content_sha256": "8f037a3f7a323085f34d4cb0d6f63add4ef4d4cac3546ce8d0e244eb34c6ec23"
+}
