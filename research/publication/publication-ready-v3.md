@@ -12,7 +12,11 @@ November17 JST更新：[修正後実モデル3形状の技術検証](../results/
 実測済みの新しい科学損失・有用な制度発明ではない。新たなパラメータ文脈の部品検証も
 24実コンテナprobe／SCRIPTED HTTP公開経路と91 source/component checkまで完了した。
 [次の有限研究設計](native-corrected-search-decision-v1.md)は同じ24自己枠を4世代へ割り振り、
-対照の実効的な移動と自由設計の損失feedbackを検証する。新runner／prepared plan／dispatchは未完。
+対照の実効的な移動と自由設計の損失feedbackを検証する。その後、全24枠・27世界の
+[実native software QA](../results/native-corrected-choice-full-public-qa-v1.json)が正常完了し、
+別のclean57b35144 sourceから[実探索を一度だけ起動](../results/native-corrected-choice-real-dispatch-v1.json)した。
+17:09UTC時点で新校正28件を通過し最初の対照世界を実行中で、新たな科学損失はまだ未観測。
+二重cold／費用／全枠・両endpoint出力は元本体・監督の正常終了を待っている。
 これらを重要な主張、独立証拠、焦点ある最終稿、投稿readyの代用にはしない。
 
 全24枠閉鎖後の[111頁改訂稿](../../paper/integrated-priority-method-build-v1.json)を生成・紙面確認した。

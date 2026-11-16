@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Both corrected endpoint scopes: fixed native evaluation preparation](components/native-corrected-choice-fixed-evaluation-v1.md)
+  implements the new named runner/cold/readout/supervision/waiting continuations
+  without changing the active scientific source. Three light invocations pass
+  50/35/89 overlapping cases;30 logical rows/all120 seedwise contrasts preserve
+  explicit origins/nulls. Actual public native verification and unused-condition
+  evaluation are NOT performed during ongoing real inference.
+
 - [Corrected four-step real native search is dispatched](results/native-corrected-choice-real-dispatch-v1.json)
   from clean57b35144 with24 own slots/3 fresh references, the original world,
   U/C losses and fixed Qwen3-8B scientists. Original42803 owns the live writer;

@@ -33,7 +33,32 @@ def read(path):
     return checked(decode_json(Path(path).read_text(), strict=True, finite_floats=True))
 
 
-def contrast_definitions(bank):
+def contrast_definitions(bank, *, profile='priority-v1'):
+    if profile == 'corrected-choice-v1':
+        from scripts.native_corrected_choice_fixed_bank_v1 import SCOPES, label
+        result = []
+        for entry in bank['entries'][3:]:
+            for ref in bank['entries'][:3]:
+                result.append({'id': 'control/' + entry['label'] + '-minus-' + ref['label'],
+                    'kind': 'fixed-' + entry['selection_scope'] + '-versus-reference',
+                    'left': entry['label'], 'right': ref['label']})
+        for scope in SCOPES:
+            for objective in OBJECTIVES:
+                for left, right in combinations(METHODS, 2):
+                    result.append({'id': 'method/' + scope + '/' + left + '-minus-' + right + '/' + objective,
+                        'kind': 'fixed-' + scope + '-method-policies',
+                        'left': label(scope, left, objective), 'right': label(scope, right, objective)})
+            for method in METHODS:
+                result.append({'id': 'objective/' + scope + '/' + method,
+                    'kind': 'fixed-' + scope + '-objective-policies',
+                    'left': label(scope, method, OBJECTIVES[0]), 'right': label(scope, method, OBJECTIVES[1])})
+        for method in METHODS:
+            for objective in OBJECTIVES:
+                result.append({'id': 'scope/' + method + '/' + objective,
+                    'kind': 'fixed-best-known-versus-own-only',
+                    'left': label('best-known', method, objective), 'right': label('own-only', method, objective)})
+        return result
+    if profile != 'priority-v1': raise ValueError('explicit fixed-evaluation readout profile required')
     entries = bank['entries']; result = []
     for own in entries[3:]:
         for ref in entries[:3]:
@@ -52,9 +77,13 @@ def contrast_definitions(bank):
     return result
 
 
-def summarize(p, audit):
+def summarize(p, audit, *, profile='priority-v1'):
+    from scripts.run_native_priority_fixed_evaluation_v1 import profile_contract
+    study, _, _, _, jobs = profile_contract(profile)
+    schema = ('scienceutopia.native-corrected-choice-fixed-evaluation-readout.v1'
+        if profile == 'corrected-choice-v1' else SCHEMA)
     checked(p); checked(audit); bank = checked(p['fixed_selection'])
-    if (p['schema'] != STUDY + '.plan' or audit['schema'] != STUDY + '.audit'
+    if (p['schema'] != study + '.plan' or audit['schema'] != study + '.audit'
             or audit['source_commit'] != p['source_commit'] or audit['plan_sha256'] != p['content_sha256']
             or audit['source_proof']['status'] != 'verified-exact-source-closure'
             or audit['closure']['terminal']['status'] != 'closed'
@@ -65,7 +94,7 @@ def summarize(p, audit):
             or set(p['losses']) != set(SCORE_ORDER)
             or p['claims']['candidate_reselection'] or p['claims']['reference_fallback']):
         raise ValueError('exact normally closed frozen-policy evaluation audit required')
-    draft = planned_jobs(bank, p['evaluation']['seeds'])
+    draft = jobs(bank, p['evaluation']['seeds'])
     if p['jobs'] != draft['jobs'] or len(audit['worlds']) != len(p['jobs']):
         raise ValueError('every exact declared physical job and literal sharing required')
     worlds = {}; physical = []; by_label = {}
@@ -107,7 +136,8 @@ def summarize(p, audit):
     expected_keys = {(e['label'], seed) for e in bank['entries'] if e['system'] is not None for seed in SEEDS}
     if set(by_label) != expected_keys or len(logical_keys) != 30:
         raise ValueError('all thirty logical rows, including unavailable selection rows, required')
-    definitions = contrast_definitions(bank); logical_by = {(r['label'], r['seed']): r for r in logical}
+    definitions = contrast_definitions(bank, **({} if profile == 'priority-v1' else {'profile': profile}))
+    logical_by = {(r['label'], r['seed']): r for r in logical}
     contrasts = []; summaries = []
     for definition in definitions:
         pairs = []
@@ -127,7 +157,7 @@ def summarize(p, audit):
                 / sum(row['differences'][score] is not None for row in pairs))
                 if any(row['differences'][score] is not None for row in pairs) else None}
             for score in p['losses']}})
-    return {'schema': SCHEMA, 'scientific_source_commit': p['source_commit'], 'plan_content_sha256': p['content_sha256'],
+    return {'schema': schema, 'scientific_source_commit': p['source_commit'], 'plan_content_sha256': p['content_sha256'],
         'input_audit_content_sha256': audit['content_sha256'], 'origin_audit_content_sha256': p['origin_audit_content_sha256'],
         'fixed_bank_content_sha256': bank['content_sha256'], 'seeds': clone(SEEDS),
         'labels': [e['label'] for e in bank['entries']], 'score_order': list(SCORE_ORDER),
@@ -141,7 +171,9 @@ def summarize(p, audit):
         'interpretation': 'Fixed programs in two new world-seed conditions, not repeated independent searches. '
             'All U/C/T cross-scores and unavailable pairs remain. Shared labels are not extra physical samples; '
             'available-pair means are descriptive, not superiority tests. U is abstract opinion, K collected cost; '
-            'C gains need not reduce requested work. Development parents are annotations, not effects of generated edits.',
+            'C gains need not reduce requested work. Development parents are annotations, not effects of generated edits.'
+            + (' Best-known reference origins remain explicit and are not own discoveries; both scopes are separate.'
+                if profile == 'corrected-choice-v1' else ''),
         'new_model_calls': 0, 'new_code_executions': 0, 'selection_changed': False,
         'method_superiority_claimed': False, 'publication_ready': False}
 
@@ -170,7 +202,7 @@ def observed_paths(root, report):
         'scope': 'Observed complete physical paths only; no semantic equivalence, independent-label or zero-cost inference'}
 
 
-def export(args):
+def export(args, *, profile='priority-v1'):
     root, frozen, out = args.run.resolve(), args.frozen_source.resolve(), args.output.resolve()
     if out.exists() or any(out.is_relative_to(p.resolve()) for p in (ROOT, root, frozen)):
         raise ValueError('fresh report outside reader/scientific source and raw required')
@@ -192,7 +224,8 @@ def export(args):
             or cost['input_audit_content_sha256'] != audit['content_sha256']
             or cost['raw_inventory_sha256'] != digest(before) or cost['new_model_calls'] or cost['new_code_executions']):
         raise ValueError('unchanged normal original evaluation closure and paired costs required')
-    report = summarize(p, audit); report['behavior_evidence'] = observed_paths(root, report)
+    report = summarize(p, audit, **({} if profile == 'priority-v1' else {'profile': profile}))
+    report['behavior_evidence'] = observed_paths(root, report)
     report.update(analysis_source_commit=reader, cost_content_sha256=cost['content_sha256'],
         cost_summary={k: clone(cost.get(k)) for k in ('scientist', 'common_content_observer', 'auxiliary', 'scope')})
     if before != _inventory(root) or hashes != {str(f): file_sha256(f) for f in files}:
@@ -210,7 +243,7 @@ def export(args):
         writer = csv.DictWriter(stream, fieldnames=fields); writer.writeheader()
         writer.writerows({**{k: row[k] for k in fields if k in row}, **row['differences']}
             for row in report['fixed_policy_contrasts'])
-    save(out / 'manifest.json', {'schema': SCHEMA + '.export', 'inputs': hashes, 'analysis_source_commit': reader,
+    save(out / 'manifest.json', {'schema': report['schema'] + '.export', 'inputs': hashes, 'analysis_source_commit': reader,
         'scientific_source_commit': scientific, 'adapter_file_sha256': file_sha256(Path(__file__)),
         'files': {f.name: file_sha256(f) for f in sorted(out.iterdir())}, 'new_model_calls': 0, 'new_code_executions': 0})
     if (before != _inventory(root) or hashes != {str(f): file_sha256(f) for f in files}
@@ -218,15 +251,16 @@ def export(args):
         raise ValueError('scientific/reader source or original evaluation records changed during export')
 
 
-def main():
+def main(*, profile='priority-v1', worker_path=None):
     parser = argparse.ArgumentParser(description=__doc__)
     keys = ('run', 'frozen-source', 'audit-one', 'audit-two', 'cost-one', 'cost-two', 'output')
     for key in keys: parser.add_argument('--' + key, type=Path, required=True)
     args = parser.parse_args()
-    if os.environ.get('SCIENCE_UTOPIA_PRIORITY_FIXED_READOUT_WORKER') == '1': export(args); return
+    if os.environ.get('SCIENCE_UTOPIA_PRIORITY_FIXED_READOUT_WORKER') == '1':
+        export(args, profile=profile); return
     result = subprocess.run([sys.executable, '-B', '-c',
         'import runpy,sys;sys.path.insert(0,sys.argv.pop(1));runpy.run_path(sys.argv.pop(1),run_name="__main__")',
-        str(args.frozen_source.resolve()), str(Path(__file__).resolve()),
+        str(args.frozen_source.resolve()), str(Path(__file__).resolve() if worker_path is None else worker_path.resolve()),
         *[value for key in keys for value in ('--' + key, str(getattr(args, key.replace('-', '_')).resolve()))]],
         cwd=args.frozen_source, env={**os.environ, 'PYTHONHASHSEED': '42', 'SCIENCE_UTOPIA_PRIORITY_FIXED_READOUT_WORKER': '1'},
         timeout=1800, check=False)

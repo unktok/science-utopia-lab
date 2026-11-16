@@ -35,6 +35,19 @@ PROTOCOL = 'research/protocols/campaigns/native-priority-fixed-evaluation-v1.md'
 SEEDS = [83003, 83011]
 
 
+def profile_contract(profile):
+    """Two explicitly named selection estimands; never infer from label count."""
+    if profile == 'priority-v1':
+        return SCHEMA, PROTOCOL, READOUT_SCHEMA, freeze_bank, planned_jobs
+    if profile == 'corrected-choice-v1':
+        from scripts.native_corrected_choice_fixed_bank_v1 import freeze_bank as freeze_corrected, planned_jobs as jobs_corrected
+        from scripts.reports.native_priority_method_readout_v1 import CORRECTED_SCHEMA
+        return ('scienceutopia.native-corrected-choice-fixed-evaluation.v1',
+            'research/protocols/campaigns/native-corrected-choice-fixed-evaluation-v1.md',
+            CORRECTED_SCHEMA, freeze_corrected, jobs_corrected)
+    raise ValueError('explicit legacy-priority or corrected-choice fixed selection profile required')
+
+
 def read(path):
     return checked(decode_json(Path(path).read_text(), strict=True, finite_floats=True))
 
@@ -66,7 +79,8 @@ def evidence_files(origin):
         + [reports / ('report-' + str(i)) / name for i in (1, 2) for name in ('report.json', 'slots.csv', 'manifest.json')])
 
 
-def origin_evidence(origin):
+def origin_evidence(origin, *, profile='priority-v1'):
+    _, _, readout_schema, freeze, _ = profile_contract(profile)
     raw, analysis, reports = (Path(origin[k]).resolve() for k in ('run', 'analysis', 'readouts'))
     if pinned_revision(Path(origin['source'])) != origin['source_commit']:
         raise ValueError('exact original mixed-study scientific source required')
@@ -101,9 +115,9 @@ def origin_evidence(origin):
         raise ValueError('all three original report files required')
     slots, refs = collect(raw, p); projected = analyze(p, a, slots, refs)
     report = read(reports / 'report-1/report.json')
-    if report['schema'] != READOUT_SCHEMA or any(report.get(k) != v for k, v in projected.items()):
+    if report['schema'] != readout_schema or any(report.get(k) != v for k, v in projected.items()):
         raise ValueError('literal complete original readout differs from all-slot projection')
-    bank = freeze_bank(p, a, slots, refs)
+    bank = freeze(p, a, slots, refs)
     if before != _inventory(raw) or {str(f): file_sha256(f) for f in files} != origin['input_files']:
         raise ValueError('original evidence changed during frozen-policy transfer')
     return p, a, bank
@@ -119,7 +133,8 @@ def interval(p, system, events, seed):
 
 
 def build_plan(original, audit, bank, *, source, origin, usages, observer_backend, source_proof,
-               software_exclusions=None):
+               software_exclusions=None, profile='priority-v1'):
+    schema, protocol, _, _, jobs = profile_contract(profile)
     checked(original); checked(audit); checked(bank)
     if (len(source) != 40 or any(c not in '0123456789abcdef' for c in source)
             or source_proof['original_source'] != original['source_commit']
@@ -136,7 +151,7 @@ def build_plan(original, audit, bank, *, source, origin, usages, observer_backen
             raise ValueError('strict all-path unused-seed inventories for both exact conditions required')
         if software_exclusions is not None: require_inventory_policy(u, software_exclusions)
         elif 'software_fixture_policy_sha256' in u: raise ValueError('inventory exception policy is not declared')
-    draft = planned_jobs(bank, clone(SEEDS))
+    draft = jobs(bank, clone(SEEDS))
     observer = make_contract(source_commit=source,
         provider={k: original['scientist'][k] for k in ('model', 'model_digest')},
         backend=observer_backend, maximum_posts=6000, critics=3)
@@ -144,15 +159,17 @@ def build_plan(original, audit, bank, *, source, origin, usages, observer_backen
     if {k: v for k, v in observer.items() if k not in ignored} != {
             k: v for k, v in original['observer_contract'].items() if k not in ignored}:
         raise ValueError('fixed scientific observer changed')
-    experiment = {'protocol': PROTOCOL, 'role': 'selection-fixed-mixed-method-evaluation'}
-    p = {'schema': SCHEMA + '.plan', 'source_commit': source, 'runtime': runtime_binding(),
-        'protocol': PROTOCOL, 'protocol_sha256': file_sha256(ROOT / PROTOCOL), 'origin': clone(origin),
+    experiment = {'protocol': protocol, 'role': ('selection-fixed-corrected-choice-evaluation'
+        if profile == 'corrected-choice-v1' else 'selection-fixed-mixed-method-evaluation')}
+    p = {'schema': schema + '.plan', 'source_commit': source, 'runtime': runtime_binding(),
+        'protocol': protocol, 'protocol_sha256': file_sha256(ROOT / protocol), 'origin': clone(origin),
         'origin_audit_content_sha256': audit['content_sha256'], 'original_native_sources': clone(source_proof),
         'origin_selection_content_sha256': audit['selection']['content_sha256'], 'fixed_selection': clone(bank),
         **{k: clone(original[k]) for k in ('scientist', 'designer', 'data_cache', 'losses', 'objectives', 'catalog', 'initial_system')},
         'experiment': experiment, 'observer_contract': observer,
         'world': {**clone(original['world']), 'source_commit': source, 'experiment': experiment,
-            'measurement_adapter_contract': observer, 'classification': 'actual-native-priority-fixed-evaluation-v1'},
+            'measurement_adapter_contract': observer, 'classification': ('actual-native-corrected-choice-fixed-evaluation-v1'
+                if profile == 'corrected-choice-v1' else 'actual-native-priority-fixed-evaluation-v1')},
         'evaluation': {'seeds': clone(SEEDS), 'maximum_physical_worlds': 30,
             'seed_usage': [u['content_sha256'] for u in usages], 'logical_policy_labels': 15,
             'missing_own_selections': clone(bank['missing_own_selections'])}, 'jobs': draft['jobs'],
@@ -172,15 +189,17 @@ def build_plan(original, audit, bank, *, source, origin, usages, observer_backen
     return p
 
 
-def require_plan(root):
+def require_plan(root, *, profile='priority-v1'):
+    profile_contract(profile)
+    options = {} if profile == 'priority-v1' else {'profile': profile}
     p = read(root / 'plan.json')
     if p['source_commit'] != pinned_revision(ROOT) or p['runtime'] != runtime_binding():
         raise ValueError('exact clean pinned evaluation source/runtime required')
-    original, audit, bank = origin_evidence(p['origin'])
+    original, audit, bank = origin_evidence(p['origin'], **options)
     usages = [read(root / ('seed-usage-' + str(i).zfill(2) + '.json')) for i in range(len(p['evaluation']['seed_usage']))]
     expected = build_plan(original, audit, bank, source=p['source_commit'], origin=p['origin'], usages=usages,
         observer_backend=p['observer_contract']['backend'], source_proof=native_sources(original['source_commit']),
-        software_exclusions=p.get('seed_software_exclusions'))
+        software_exclusions=p.get('seed_software_exclusions'), **options)
     if expected != {k: v for k, v in p.items() if k != 'content_sha256'}:
         raise ValueError('literal fixed evaluation reconstruction differs')
     return p
@@ -191,7 +210,9 @@ def strict_inventory(root, seeds, policy=None):
         **({} if policy is None else {'software_exclusions': policy}))
 
 
-def prepare(args):
+def prepare(args, *, profile='priority-v1'):
+    profile_contract(profile)
+    options = {} if profile == 'priority-v1' else {'profile': profile}
     from scripts.run_pre_scale_search_v1 import require_environment
     require_environment(); source = pinned_revision(ROOT); out = args.output.resolve()
     origin = {k: str(getattr(args, 'origin_' + k).resolve()) for k in ('run', 'source', 'analysis', 'readouts')}
@@ -202,7 +223,7 @@ def prepare(args):
     origin['input_files'] = {str(p): file_sha256(p) for p in evidence_files(origin)}
     policy = None if args.seed_software_exclusions is None else software_fixture_policy(read(args.seed_software_exclusions))
     with (Path(origin['run']) / 'writer.lock').open('r') as owner:
-        fcntl.flock(owner, fcntl.LOCK_EX | fcntl.LOCK_NB); original, audit, bank = origin_evidence(origin)
+        fcntl.flock(owner, fcntl.LOCK_EX | fcntl.LOCK_NB); original, audit, bank = origin_evidence(origin, **options)
         out.mkdir(parents=True); save(out / 'preparation-started.json', {'source_commit': source,
             'started_utc': utc(), 'origin': origin, 'new_model_calls': 0})
         try:
@@ -211,8 +232,8 @@ def prepare(args):
                 {k: v for k, v in u.items() if k != 'content_sha256'})
             plan = build_plan(original, audit, bank, source=source, origin=origin, usages=usages,
                 observer_backend=backend_binding({k: original['scientist'][k] for k in ('model', 'model_digest')}),
-                source_proof=native_sources(original['source_commit']), software_exclusions=policy)
-            save(out / 'plan.json', plan); require_plan(out)
+                source_proof=native_sources(original['source_commit']), software_exclusions=policy, **options)
+            save(out / 'plan.json', plan); require_plan(out, **options)
         except BaseException as error:
             save(out / 'preparation-ended.json', {'status': 'stopped', 'error_type': type(error).__name__,
                 'error': str(error), 'new_model_calls': 0}); raise
@@ -240,13 +261,17 @@ def additional_from_checkpoints(measurement, directory):
     return rebuild(measurement, directory)
 
 
-def run(root):
-    p = require_plan(root)
-    return run_shared(root, require_plan_fn=require_plan, observe_fn=observe, schema=SCHEMA,
+def run(root, *, profile='priority-v1'):
+    schema, _, _, _, _ = profile_contract(profile)
+    if profile == 'priority-v1': ensure = require_plan
+    else:
+        def ensure(directory): return require_plan(directory, profile=profile)
+    p = ensure(root)
+    return run_shared(root, require_plan_fn=ensure, observe_fn=observe, schema=schema,
         inventory_fn=lambda directory, seeds: strict_inventory(directory, seeds, p.get('seed_software_exclusions')))
 
 
-def main():
+def main(*, profile='priority-v1'):
     parser = argparse.ArgumentParser(description=__doc__); parser.add_argument('stage', choices=('prepare', 'run'))
     parser.add_argument('--output', type=Path, required=True)
     for key in ('run', 'source', 'analysis', 'readouts'): parser.add_argument('--origin-' + key, type=Path)
@@ -255,8 +280,8 @@ def main():
     if args.stage == 'prepare':
         if any(getattr(args, 'origin_' + k) is None for k in ('run', 'source', 'analysis', 'readouts')):
             parser.error('all exact normally closed original paths required')
-        prepare(args)
-    else: run(args.output.resolve())
+        prepare(args, profile=profile)
+    else: run(args.output.resolve(), profile=profile)
 
 
 if __name__ == '__main__': main()

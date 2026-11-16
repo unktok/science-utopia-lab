@@ -36,10 +36,21 @@ SOFTWARE_SEEDS = [43003, 43011]
 @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_PRIORITY_FIXED_PUBLIC_QA') != '1',
                    reason='explicit clean-source hardware window, no real inference active')
 def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_readouts(
-        tmp_path, fixed_corpus, monkeypatch):
+        tmp_path, fixed_corpus, monkeypatch, *, corrected=False):
+    if corrected:
+        from scripts import run_native_corrected_choice_fixed_evaluation_v1 as driver
+        from scripts import audit_native_corrected_choice_fixed_evaluation_v1 as auditor
+        from scripts.reports import native_corrected_choice_fixed_evaluation_v1 as evaluation_readout
+        from scripts import run_native_corrected_choice_search_v1 as development_driver
+        from scripts import audit_native_corrected_choice_search_v1 as development_auditor
+    else:
+        from scripts import run_native_priority_fixed_evaluation_v1 as driver
+        from scripts import audit_native_priority_fixed_evaluation_v1 as auditor
+        from scripts.reports import native_priority_fixed_evaluation_v1 as evaluation_readout
     if not os.environ.get('SCIENCE_UTOPIA_WORKFLOW_PLAN'):
         pytest.skip('explicit original world/provider/loss binding required')
-    declared = os.environ.get('SCIENCE_UTOPIA_PRIORITY_FIXED_QA_EXTERNAL')
+    declared = os.environ.get('SCIENCE_UTOPIA_CORRECTED_CHOICE_FIXED_QA_EXTERNAL' if corrected
+        else 'SCIENCE_UTOPIA_PRIORITY_FIXED_QA_EXTERNAL')
     if not declared:
         pytest.skip('explicit unused external output for retained native/cold/readout artifacts required')
     external = Path(declared).resolve()
@@ -57,12 +68,15 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
     development = tmp_path / 'development'; development.mkdir()
     stage = 'development-public-path'
     try:
+        options = ({'driver_module': development_driver, 'auditor_module': development_auditor, 'corrected': True}
+            if corrected else {})
         evidence = public_mixed_operator_path(development, fixed_corpus, monkeypatch,
-            closure_output=external / 'development-analysis')
+            closure_output=external / 'development-analysis', **options)
         root, original, analysis = evidence['run'], evidence['plan'], evidence['closure']
         # These are declared orchestration fixtures, not a real PID/supervisor
         # closure test. The actual two native cold/cost files above are retained.
-        write_json_atomic(analysis / 'started.json', {'schema': 'scienceutopia.native-priority-method-comparison.v1.finish',
+        study = original['schema'].removesuffix('.plan')
+        write_json_atomic(analysis / 'started.json', {'schema': study + '.finish',
             'scientific_source_commit': original['source_commit'],
             'plan_file_sha256': file_sha256(root / 'plan.json'), 'SCRIPTED': 'orchestration metadata only'}, sort_keys=True)
         write_json_atomic(analysis / 'ended.json', {'status': 'closed',
@@ -71,7 +85,7 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
             'new_native_worlds': 0, 'SCRIPTED': 'orchestration metadata only'}, sort_keys=True)
         reports = external / 'development-readouts'; reports.mkdir()
         driver.save(reports / 'started.json', {
-            'schema': 'scienceutopia.native-priority-method-comparison.v1.readout.finish',
+            'schema': study + '.readout.finish',
             'scientific_source_commit': original['source_commit'], 'analysis_source_commit': original['source_commit'],
             'plan_file_sha256': file_sha256(root / 'plan.json'), 'preceding_analysis': str(analysis),
             'SCRIPTED': 'orchestration metadata only'})
@@ -88,6 +102,13 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
         # actual scientific plan, reserved seed or running process is changed.
         monkeypatch.setattr(driver, 'SEEDS', clone(SOFTWARE_SEEDS))
         monkeypatch.setattr(evaluation_readout, 'SEEDS', clone(SOFTWARE_SEEDS))
+        if corrected:
+            # The corrected wrappers deliberately use the shared implementation;
+            # bind its explicit test-only seed override too, not just aliases.
+            from scripts import run_native_priority_fixed_evaluation_v1 as base_driver
+            from scripts.reports import native_priority_fixed_evaluation_v1 as base_readout
+            monkeypatch.setattr(base_driver, 'SEEDS', clone(SOFTWARE_SEEDS))
+            monkeypatch.setattr(base_readout, 'SEEDS', clone(SOFTWARE_SEEDS))
         monkeypatch.setattr(shared, 'LocalObserverBackend', lambda **kw: ScriptedCritic())
         target = external / 'evaluation-raw'; stage = 'evaluation-public-prepare'
         before_posts = len(evidence['upstream']['scientist_requests'])
@@ -133,17 +154,23 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
         matching = same_files(readouts / 'report-1', readouts / 'report-2')
         assert len(matching) == 4
         report = driver.read(readouts / 'report-1/report.json')
-        assert len(report['logical_rows']) == 30 and len(report['fixed_policy_contrasts']) == 108
+        paired_rows = 120 if corrected else 108
+        assert len(report['logical_rows']) == 30 and len(report['fixed_policy_contrasts']) == paired_rows
+        if corrected:
+            assert report['schema'] == evaluation_readout.SCHEMA
+            assert len([r for r in report['logical_rows'] if r.get('selection_scope') == 'best-known']) == 12
+            assert len([r for r in report['logical_rows'] if r.get('selection_scope') == 'own-only']) == 12
         assert report['coverage']['physical_worlds'] == len(p['jobs'])
         assert before == _inventory(target) and posts == len(evidence['upstream']['scientist_requests'])
         with pytest.raises(ValueError, match='no redispatch'): driver.run(target)
-        write_json_atomic(external / 'verification.json', {'schema': 'scienceutopia.native-priority-fixed-public-software.v1',
+        write_json_atomic(external / 'verification.json', {'schema': ('scienceutopia.native-corrected-choice-fixed-public-software.v1'
+                if corrected else 'scienceutopia.native-priority-fixed-public-software.v1'),
             'source_commit': p['source_commit'], 'classification': 'SCRIPTED-HTTP-corpus-history-supervision-and-orchestration',
             'original_workflow_plan': str(original_plan), 'original_workflow_plan_file_sha256': file_sha256(original_plan),
             'software_seed_override': SOFTWARE_SEEDS, 'scientific_reserved_seeds_consumed': False,
             'development_native_worlds': 27, 'upstream_native_worlds': 2, 'evaluation_native_worlds': len(p['jobs']),
             'evaluation_scientist_SDK_POSTs': len(new_requests), 'logical_policy_labels': 15, 'logical_rows': 30,
-            'paired_rows': 108, 'matching_readout_files': matching, 'new_real_model_calls': 0,
+            'paired_rows': paired_rows, 'matching_readout_files': matching, 'new_real_model_calls': 0,
             'same_initial_identity_within_software_seed': True,
             'outer_subprocess_CLI_routing_tested': False, 'visual_review_complete': False,
             'scientific_gain_or_publication_readiness_claimed': False}, sort_keys=True)

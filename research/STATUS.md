@@ -33,6 +33,14 @@ evaluation remain unmeasured. The111-page reviewed PDF is unchanged. R2/R3/R5/R6
 and the publication-ready goal remain open. Heavy independent QA/PDF/video is
 not run alongside real inference; light records/evaluation preparation continue.
 
+[The prospective fixed-evaluation route](components/native-corrected-choice-fixed-evaluation-v1.md)
+now implements both endpoint scopes through exact-origin transfer, native
+dispatch/cold/cost/readout and supervised waiting wrappers. Light checks pass
+50/35/89 overlapping cases, not independent worlds. All30 logical rows/120
+seedwise contrasts preserve absent own choices and explicit reference origins.
+The new full native test is prepared but intentionally not run during inference;
+no scientific evaluation/unused-seed attestation or new gain follows.
+
 ## Earlier verified state: November16,2026 at16:13UTC / November17 01:13JST
 
 [The corrected real-model assay closes](results/native-corrected-author-assay-closed-v1.json)

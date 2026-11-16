@@ -53,3 +53,17 @@ Actual native scientist requests for the first `priority-zero` reference are
 observed. No reference observation/loss or free proposal is yet complete.
 The dispatch receipt's earlier26-file prefix remains an explicitly dated
 snapshot, not an authoritative final-control count or current-stage flag.
+
+While real inference continues, the [both-scope fixed native evaluation route](../components/native-corrected-choice-fixed-evaluation-v1.md)
+is implemented separately, including source-bound origin transfer, native/cold/
+readout profiles, actual-exit supervision and external-output waiting wrappers.
+Light tests11556/50801/90256 pass50/35/89 overlapping cases. The full native test
+is prepared but NOT run in this hardware window. No real evaluation, unusedness
+or loss claim is made. The17:18UTC liveness check observes134 scientist-request
+lines in the first reference and no failure/terminal; original57 source is clean.
+
+Terminology correction: the global plan `optimizer_seed` is68011;79011 is the
+single `replication_seeds` history element. Earlier protocol prose's combined
+"history/optimizer seed79011" is imprecise; the actual sealed plan fields and
+dispatch record distinguish them. No seed/source/plan is changed in the active
+frozen57 checkout, and no completed software proof is relabeled under new bytes.

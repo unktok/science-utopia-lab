@@ -9,8 +9,9 @@ import sys
 
 
 def worker(root,output,*,study='count-content-v1'):
-    priority_fixed = study == 'priority-fixed-v1'
-    workflow = study in ('workflow-v1', 'longitudinal-v1', 'priority-fixed-v1')
+    corrected_fixed = study == 'corrected-choice-fixed-v1'
+    priority_fixed = study in ('priority-fixed-v1', 'corrected-choice-fixed-v1')
+    workflow = study in ('workflow-v1', 'longitudinal-v1', 'priority-fixed-v1', 'corrected-choice-fixed-v1')
     topic_pilot = study == 'legacy-topic-v1'
     terminal_pilot = study == 'terminal-cost-v1'
     resource_pilot = topic_pilot or terminal_pilot or priority_fixed
@@ -53,8 +54,11 @@ def worker(root,output,*,study='count-content-v1'):
             'scripts/audit_native_objective_fixed_evaluation_v1.py',
             'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
     elif priority_fixed:
-        from scripts import run_native_priority_fixed_evaluation_v1 as driver
-        audit_schema='scienceutopia.native-priority-fixed-evaluation.v1.audit'
+        if corrected_fixed:
+            from scripts import run_native_corrected_choice_fixed_evaluation_v1 as driver
+        else:
+            from scripts import run_native_priority_fixed_evaluation_v1 as driver
+        audit_schema=driver.SCHEMA+'.audit'
         source_scripts=['scripts/run_native_priority_fixed_evaluation_v1.py',
             'scripts/native_priority_fixed_bank_v1.py', 'scripts/native_benchmark_seed_usage.py',
             'scripts/reports/native_priority_method_readout_v1.py',
@@ -66,6 +70,10 @@ def worker(root,output,*,study='count-content-v1'):
             'scripts/audit_native_priority_fixed_evaluation_v1.py',
             'scripts/audit_native_objective_fixed_evaluation_v1.py',
             'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        if corrected_fixed:
+            source_scripts.extend(['scripts/run_native_corrected_choice_fixed_evaluation_v1.py',
+                'scripts/native_corrected_choice_fixed_bank_v1.py',
+                'scripts/audit_native_corrected_choice_fixed_evaluation_v1.py'])
     elif terminal_pilot:
         from scripts import run_native_terminal_cost_pilot_v1 as driver
         audit_schema='scienceutopia.native-terminal-cost-pilot-audit.v1'
