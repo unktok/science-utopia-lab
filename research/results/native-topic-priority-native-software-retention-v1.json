@@ -1,0 +1,234 @@
+{
+  "schema": "scienceutopia.native-topic-priority-native-software.v1.retention",
+  "recorded_utc": "2026-11-16T02:24:41.487190+00:00",
+  "classification": "SCRIPTED-native-factory-Docker-installed-SDK-cold-software-not-scientific-gain",
+  "source_commit": "fbd4cf1b578785289319dc533438b2c21565be2b",
+  "native_exec_session": 61079,
+  "exit_code": 0,
+  "passed_tests": 1,
+  "elapsed_seconds": 24.64,
+  "raw_verification_path": "outputs/topic-priority-native-v1-a1/test_zero_priority_full_inputs0/verification.json",
+  "raw_verification_file_sha256": "c391310805cfd200ebe554b338cb990c6a6f3a51c9e8b420c8c3ce798fb10655",
+  "raw_verification_bytes": 294787,
+  "test_file": "tests/reports/test_native_topic_priority_native_v1.py",
+  "test_file_sha256": "54e11063367a6351116873df8abaaafaf2d23dabf67b61067f46eb526a57663b",
+  "junit_path": "research/data/native-topic-priority-control-v1/native-junit.xml",
+  "junit_sha256": "3b33cf064fc8e13c1672abe5f84e5e930d2c5b5df773c2d0837744c819d47f8a",
+  "worlds": [
+    {
+      "label": "reference",
+      "status": "complete",
+      "initial_identity_sha256": "06a70e8ecf4caa148a7bb6abdd4716be6f3a5947b2b1644fda9df92c08bfea6c",
+      "request_sequence": {
+        "completed_responses": 163,
+        "ordered_completed_request_payload_sha256": "e6339849a3571dcfa06bb570123c7e84bf6c37f4be9cade2fe5d98ad88d40d49",
+        "ordered_full_provider_body_hashes_sha256": "0795b49e955456afae41b8fa8e7b0359036fb3a29ea6e7f0749e9baac4191464",
+        "ordered_full_request_payload_sha256": "e6339849a3571dcfa06bb570123c7e84bf6c37f4be9cade2fe5d98ad88d40d49",
+        "ordered_literal_response_choices_sha256": "d1be7d3c4c3bcac9bc92d280ab8bcb08bc8b5a6bea2f7df73c5da21b91c61e59",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 163
+      },
+      "project_assignments": 20,
+      "year1_project_rows": [
+        {
+          "year": 1,
+          "actor_id": "institution_0000_researcher_0",
+          "topic": "information_retrieval",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0001_researcher_0",
+          "topic": "artificial_intelligence",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0002_researcher_0",
+          "topic": "deep_learning",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0003_researcher_0",
+          "topic": "artificial_intelligence",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0004_researcher_0",
+          "topic": "artificial_intelligence",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        }
+      ],
+      "collected_cost": {
+        "status": "measured",
+        "value": 200
+      },
+      "physical_proof_sha256": "bdf6f7e90b57aa6ae5f05416bb670288c224badcefd3837672fd09df55e0a8e6"
+    },
+    {
+      "label": "zero-priority",
+      "status": "complete",
+      "initial_identity_sha256": "06a70e8ecf4caa148a7bb6abdd4716be6f3a5947b2b1644fda9df92c08bfea6c",
+      "request_sequence": {
+        "completed_responses": 163,
+        "ordered_completed_request_payload_sha256": "e6339849a3571dcfa06bb570123c7e84bf6c37f4be9cade2fe5d98ad88d40d49",
+        "ordered_full_provider_body_hashes_sha256": "0795b49e955456afae41b8fa8e7b0359036fb3a29ea6e7f0749e9baac4191464",
+        "ordered_full_request_payload_sha256": "e6339849a3571dcfa06bb570123c7e84bf6c37f4be9cade2fe5d98ad88d40d49",
+        "ordered_literal_response_choices_sha256": "d1be7d3c4c3bcac9bc92d280ab8bcb08bc8b5a6bea2f7df73c5da21b91c61e59",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 163
+      },
+      "project_assignments": 20,
+      "year1_project_rows": [
+        {
+          "year": 1,
+          "actor_id": "institution_0000_researcher_0",
+          "topic": "information_retrieval",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0001_researcher_0",
+          "topic": "artificial_intelligence",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0002_researcher_0",
+          "topic": "deep_learning",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0003_researcher_0",
+          "topic": "artificial_intelligence",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0004_researcher_0",
+          "topic": "artificial_intelligence",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        }
+      ],
+      "collected_cost": {
+        "status": "measured",
+        "value": 200
+      },
+      "physical_proof_sha256": "9236dd69ffc8387d81d00f91a687ad0152a05d940da829e64a2f51a9ec47ac90"
+    },
+    {
+      "label": "reverse-tie-priority",
+      "status": "complete",
+      "initial_identity_sha256": "06a70e8ecf4caa148a7bb6abdd4716be6f3a5947b2b1644fda9df92c08bfea6c",
+      "request_sequence": {
+        "completed_responses": 163,
+        "ordered_completed_request_payload_sha256": "3095ffa0bdf2117dff942cc4133cac668853ff938c664461d7af45634f9ce4cf",
+        "ordered_full_provider_body_hashes_sha256": "0795b49e955456afae41b8fa8e7b0359036fb3a29ea6e7f0749e9baac4191464",
+        "ordered_full_request_payload_sha256": "3095ffa0bdf2117dff942cc4133cac668853ff938c664461d7af45634f9ce4cf",
+        "ordered_literal_response_choices_sha256": "d1be7d3c4c3bcac9bc92d280ab8bcb08bc8b5a6bea2f7df73c5da21b91c61e59",
+        "wire_inputs_without_committed_reply": 0,
+        "wire_requests": 163
+      },
+      "project_assignments": 20,
+      "year1_project_rows": [
+        {
+          "year": 1,
+          "actor_id": "institution_0000_researcher_0",
+          "topic": "information_retrieval",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0001_researcher_0",
+          "topic": "neural_symbolic_ai",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0002_researcher_0",
+          "topic": "natural_language_processing",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0003_researcher_0",
+          "topic": "artificial_intelligence",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        },
+        {
+          "year": 1,
+          "actor_id": "institution_0004_researcher_0",
+          "topic": "neural_symbolic_ai",
+          "original_duration": 1,
+          "start": 1,
+          "end": 1
+        }
+      ],
+      "collected_cost": {
+        "status": "measured",
+        "value": 200
+      },
+      "physical_proof_sha256": "3e6743e159c48e83b4df7c0b2c6d96d5e5a7d703f98af28949aa022fd127f5b3"
+    }
+  ],
+  "actual_mock_SDK_POSTs": 489,
+  "scientist_fixture_calls": 489,
+  "all_initial_societies_match": true,
+  "cold_passes_per_world": 2,
+  "cold_model_construction_or_code_execution_allowed": false,
+  "actual_SDK_timeout_seconds": {
+    "connect": 10,
+    "read": 900,
+    "write": 30,
+    "pool": 30
+  },
+  "SDK_retries": 0,
+  "zero_priority_full_scientist_inputs_and_literal_choices_equal": true,
+  "reversed_priority_changes_actual_topics_and_full_scientist_inputs": true,
+  "SCRIPTED_literal_choices_unchanged_in_all_three": true,
+  "new_real_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "software_native_worlds": 3,
+  "new_generated_candidate_executions": 0,
+  "hand_control_source_executed_in_Docker": true,
+  "outer_study_CLI_verified": false,
+  "optimizer_or_real_model_capacity_verified": false,
+  "scientific_improvement_claimed": false,
+  "active_scientific_source_unchanged": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "original_scientific_writer_exit_confirmed_before_this_QA": true,
+  "current_or_historical_loss_or_selection_changed": false,
+  "source_or_HEAD_changed_during_original_QA": false,
+  "publication_ready": false,
+  "remaining": "A scientific comparison still requires its own finite protocol, optimizer, independent histories, real-backend readiness if a designer is used, strong same-authority controls, frozen evaluation and physical costs. This native factory proof is not an outer scientific study CLI or new inference replication."
+}

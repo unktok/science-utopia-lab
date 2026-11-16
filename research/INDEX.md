@@ -18,9 +18,13 @@ This page is navigation, not a chronological experiment transcript.
   and [the fifth outcome recovers the known strong rule](results/native-consumer-source-fifth-own-outcome-prefix-v1.json).
   [The sixth has an original actor-eligibility runtime null](results/native-consumer-source-sixth-own-runtime-null-prefix-v1.json):
   [The seventh consumers/C outcome](results/native-consumer-source-seventh-own-outcome-prefix-v1.json)
-  ties the strong reference:7/8 slots consumed,6 complete own outcomes/1 null.
-  Final interface/U/g1 passes readiness and enters optimization. No own
-  gain beyond the strong reference or whole-study closure is established.
+  ties the strong reference. Final interface/U/g1 also completes at U=-28.6667:
+  8/8 consumed slots,7 complete own outcomes/1 null; original15471 exits0.
+  [Whole audit/cost and corrected paired readout now close](results/native-consumer-source-comparison-closed-v1.json).
+  All4 own-only selected systems tie their strong reference; no own gain beyond
+  it is observed. The original source-local readout failure remains preserved;
+  the same frozen reader succeeds at a fresh external destination, without
+  new scientific inference or a failed-slot refill.
   [The fourth's saved year1 project effects](results/native-consumer-source-fourth-year1-actuation-prefix-v1.json)
   change all5 founder topics/calendars and agree with actual native author state;
   that is observed actuation, not an isolated information effect or useful gain.
@@ -31,8 +35,8 @@ This page is navigation, not a chronological experiment transcript.
   configuration, independent replication or proof of effective exploration.
   [Public software proof and19 checks](results/native-consumer-source-comparison-software-v1.json)
   are separate SCRIPTED evidence. [Prepared figure data](components/native-consumer-source-figures-v1.md)
-  passes11 light checks, not visual review. Original15471 runs;46051/79215 wait
-  for paired audit/cost/readout closure. [Observation log](logbook/2026-11-16-native-consumer-first-reference.md)
+  passes11 light checks, not visual review. No original scientific/continuation
+  worker remains for this study. [Observation log](logbook/2026-11-16-native-consumer-first-reference.md)
   and [preserved stage snapshots](status-history-2026-11-16-consumer-reference-prefix.md)
   retain the chronology. [Closed-checkout archive](results/native-consumer-closed-checkout-archive-v1.json)
   preserves all raw records while reclaiming only recoverable code copies;
@@ -43,7 +47,8 @@ This page is navigation, not a chronological experiment transcript.
   [Prospective precise catalog diagnostics](data/native-catalog-diagnostics-v1/README.md)
   pass55 software checks without changing current scientific source or failures.
   [Restricted priority-control preparation](components/native-topic-priority-control-v1.md)
-  passes68 light checks; no native score, new optimizer or scientific dispatch.
+  passes68 light checks and [3 SCRIPTED native/Docker/SDK worlds with paired cold proof](results/native-topic-priority-native-software-retention-v1.json);
+  no real native score, new optimizer or scientific dispatch.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

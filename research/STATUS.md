@@ -1,9 +1,9 @@
 # Current research status
 
-## Current matched study:7/8 own slots consumed,6 complete outcomes and1 runtime null
+## Matched study closed:8/8 own slots,7 complete outcomes and1 runtime null
 
 The [once-dispatched local-model study](results/native-consumer-source-comparison-dispatch-v1.json)
-runs from immutable7e51b2a4: fixed8B researchers, local35B designer, unchanged
+[now closes](results/native-consumer-source-comparison-closed-v1.json) from immutable7e51b2a4: fixed8B researchers, local35B designer, unchanged
 native world and free workflow-v6 institution authority. Two U/C losses and
 two source-information conditions have isolated histories and eight own slots.
 The [protocol](protocols/campaigns/native-consumer-source-comparison-v1.md)
@@ -15,12 +15,15 @@ is development-informed, not a blind independent method comparison.
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
 | Own-system optimization | First3 tie the strong parent; [fourth consumers/U](results/native-consumer-source-fourth-own-outcome-prefix-v1.json) worsens to-7; [fifth consumers/U/g1](results/native-consumer-source-fifth-own-outcome-prefix-v1.json) returns to-28.6667 without beating the visible reference; [sixth interface/C/g1](results/native-consumer-source-sixth-own-runtime-null-prefix-v1.json) fails original eligibility and retains null loss |
 | Seventh outcome | [Consumers/C/g1 completes](results/native-consumer-source-seventh-own-outcome-prefix-v1.json) at C=-8.6667, tying the strong reference. Only agenda formatting differs;14 complete editor steps,179 identical scientist inputs/literal choices and equal metrics |
-| Last original slot | Interface/U/g1 passes readiness and enters optimization01:53:36UTC November16 (10:53:36JST). Same finite loop; no failed-slot refill or eighth outcome yet |
-| Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
+| Last original slot | Interface/U/g1 completes at U=-28.6667, tying the strong reference. Original15471 exits0; no failed-slot refill |
+| Selection | All4 own-only selected systems tie their strong reference under assigned U/C losses; no reference fallback or withheld-rule recovery |
+| Whole audit/cost/readout | Both original audits/cost exports match. Original79215 stops at its source-local output guard; separate36879 uses the same frozen code with a fresh external output and closes with all3 paired files identical. Failure remains preserved; no science rerun |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
-Original15471/PID11821 remains live, with audit/cost11949 and readout11967
-waiting. No runtime/source/loss/model/budget/selection/visibility setting changes
+Original15471 and46051 have exited0; original79215 exits1 at the export path
+guard. Corrected read-only36879 exits0, not a restarted scientific experiment.
+None of those original scientific/continuation processes remains running.
+No runtime/source/loss/model/budget/selection/visibility setting changes
 during this run; no independent heavy QA/PDF/video overlaps inference.
 [Public software proof and19 targeted/saved-reader checks](results/native-consumer-source-comparison-software-v1.json)
 pass, but SCRIPTED success is not actual institutional gain or later-context
@@ -30,8 +33,18 @@ The fresh visible strong reference has T=-36/U=-28.6667/C=-8.6667.
 The known withheld terminal rule has the same179 full scientist inputs/literal
 choices and T/U, with collected K200→160/unpaid0→40 and C gain4. This is hand
 headroom, not automatic invention, reduced requested work or better science.
-Whole original cold closure remains pending. The third hand policy is not in
+Both original cold audits and corrected paired readouts now close. The third hand policy is not in
 either optimizer's reference context or selection pool.
+
+The final retained costs are1650 scientist responses,198 separate physical
+critic POSTs,284 readiness POSTs,101 proposal POSTs and18/11 designer/scientist
+loads. Token usage is retained per role, with cached-token subsets not added
+and unknown load usage not imputed. All101 editor steps and92 returned probes
+are retained separately; counts come from complete role journals, not recent
+displayed steps. No candidate adds a node, wire or schedule. The source-package
+own-best contrast is0 under both losses in this single reused development
+condition, not proof that source information never helps or free design cannot
+improve. R2/R3/R5/R6 and the full publication-ready goal remain open.
 
 The first3 completed own worlds have179 full scientist inputs and179 literal response
 choices matching their strong reference, with equal measured metrics and different
@@ -116,9 +129,10 @@ requires fresh source cards/readiness, not reuse of this study's certificate.
 is prepared separately:68 light source-bound checks pass. The five founders have
 24 static shortest-duration assignment combinations, not24 new evaluated worlds
 or proven quality headroom. This hand-defined comparison family neither narrows
-free institution authority nor supplies an optimizer. Public native/Docker/cold
-request proof, a finite scientific protocol and actual scores are still pending;
-it is not inserted into the active pilot or current author contexts.
+free institution authority nor supplies an optimizer. After the original writer
+exits, [3 native/Docker/installed-SDK SCRIPTED worlds and paired cold proofs pass](results/native-topic-priority-native-software-retention-v1.json).
+The outer scientific CLI, a finite real study and actual scores remain pending;
+this control is not inserted into the matched pilot or its author contexts.
 
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history

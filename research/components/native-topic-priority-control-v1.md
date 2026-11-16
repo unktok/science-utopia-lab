@@ -77,3 +77,18 @@ skip is not execution proof. After inference ends, run from a clean committed
 source with an unused basetemp/JUnit destination and the normal fixed Python/
 offline environment, setting `SCIENCE_UTOPIA_TOPIC_PRIORITY_NATIVE_QA=1`.
 Retain the original process outcome before editing source or collecting outputs.
+
+The [actual native proof now passes](../results/native-topic-priority-native-software-retention-v1.json)
+at cleanfbd4cf1b: original61079 exits0,1 test in24.64s,3 SCRIPTED native worlds,
+489 actual installed-SDK mock POSTs and two identical cold physical proofs per
+world. Initial societies match. Zero priorities preserve all163 full scientist
+inputs/literal choices and actual project assignments; reversed tie priorities
+change three founders' initial topics and the complete input hash. Each world
+retains20 original-duration project assignments and collected K200. All three
+SCRIPTED response-choice hashes match, emphasizing that this checks native
+actuation and input delivery, not a real model's counterfactual behavior or gain.
+No model/client or code execution is allowed during the cold checks.
+
+This completes that native-factory software path, not the outer scientific CLI,
+an optimizer comparison or real-model readiness. The earlier source-only receipt
+remains an accurate historical snapshot; no new scientific study is dispatched.

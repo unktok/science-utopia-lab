@@ -588,3 +588,59 @@ those worlds. During source review the zero-control assertion is corrected to
 compare actual assignment facts rather than intentionally different graph-bound
 raw event ids. No failed native QA run is relabelled; the heavy test has not yet
 executed, no new scientific study is dispatched and all active sources stay fixed.
+
+## Full scientific closure, preserved readout path failure and corrected export
+
+Original15471 exits0 at02:20:51.219929UTC November16 (11:20:51JST), after8 own
+slots and11 total native attempts. Seven own worlds complete and the sixth
+retains its runtime-null loss. Final interface/U/g1 returns-28.666666666666668;
+all4 own-only selected systems tie their strong visible reference. Selection
+does not fall back to a reference or recover the withheld terminal rule.
+
+Original46051 exits0: both original-source audits match and both complete cost
+exports match, closing02:26:31.710456UTC. The separately waiting original79215
+then exits1 at report1. Its child output is inside the reader checkout, so the
+exporter's existing external-output check correctly refuses it before creating
+a report. This is a launch/preflight mistake, not a failed scientific candidate,
+new measured bad loss, lost data or reason to weaken the guard. The original
+stopped ended.json and log remain unchanged at their original path.
+
+Separate read-only continuation36879 uses the same clean frozen7e51b2a4 reader,
+same scientific raw and same matching audit/cost files, with a fresh main-side
+external output `outputs/native-consumer-source-readout-v1-a2/`. It exits0 and
+closes02:29:57.022437UTC. Both report/CSV/manifest sets match byte-for-byte. No
+scientific world, critic rating or designer proposal is repeated. New development
+code rejects reader/scientific-local destinations, including resolved symlinks,
+before waiting or creating output. Its targeted check57218 passes11 tests with
+the opt-in saved-data test skipped in1.04s; that skip is not full execution proof.
+AGENTS now explicitly covers continuation launch paths, not only direct exporters.
+
+The [closed retention](../results/native-consumer-source-comparison-closed-v1.json)
+keeps all slots/references, fixed selection/ties, paths, input classes and role
+costs. Observed physical counts are1650 scientist responses,198 critic POSTs,
+284 readiness POSTs,101 proposal POSTs and18/11 designer/scientist loads. The
+101 complete editor steps and92 returned probes are distinct scopes, not
+independent scientific samples or extra invented systems. Cached prompt tokens
+are subsets and unknown load token usage remains unknown.
+
+Six complete own worlds share the strong reference's179 full scientist inputs
+and literal choices; the adverse fourth uses91. No candidate adds a node, wire
+or schedule. The package-minus-control selected-own contrast is0 for U and C
+on this reused condition. This short local search neither establishes a general
+negative effect of source information nor demonstrates useful new invention,
+independent method superiority, a valid science-policy objective or readiness.
+
+## Actual priority-control native software proof after scientific inference
+
+Only after original15471 exits, opt-in61079 runs from cleanfbd4cf1b and exits0:
+1 test/3 SCRIPTED native worlds in24.64s. The actual native factory, Docker and
+installed SDK process489 mock POSTs. Each world has20 original-duration project
+assignments and K200; initial societies match. Zero priorities preserve all163
+full scientist inputs/literal choices. Reverse tie priority changes3 initial
+founder topics and the complete input hash. SCRIPTED choices remain identical
+across all3, so this is input/actuation plumbing, not scientific behavioral gain.
+Two cold physical proofs per world match, with model/client construction and
+code execution forbidden during cold reading. [Exact retention](../results/native-topic-priority-native-software-retention-v1.json)
+and original JUnit remain. The outer study CLI, optimizer, real model scores,
+independent comparison and future frozen unused evaluation are not supplied by
+this software proof. No next scientific campaign is dispatched automatically.

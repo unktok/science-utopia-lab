@@ -82,11 +82,31 @@ def test_finisher_uses_actual_original_cost_stage_filenames(tmp_path, monkeypatc
     from scripts import finish_native_consumer_source_readouts_v1 as continuation
     captured = {}
     monkeypatch.setattr(continuation, 'finish', lambda args, **kw: captured.update(kw))
-    continuation.run(SimpleNamespace(frozen_source=tmp_path / 'source', analysis=tmp_path / 'analysis'))
+    monkeypatch.setattr(continuation, 'ROOT', tmp_path / 'reader-source')
+    continuation.run(SimpleNamespace(frozen_source=tmp_path / 'source', analysis=tmp_path / 'analysis',
+                                     output=tmp_path / 'external-output'))
     extra = captured['report_extra_arguments']
     assert extra[3] == str(tmp_path / 'analysis/costs-1.json')
     assert extra[5] == str(tmp_path / 'analysis/costs-2.json')
     assert captured['preceding_schema'] == reader.STUDY + '.finish'
+
+
+@pytest.mark.parametrize('location', ['reader', 'scientific', 'symlink'])
+def test_finisher_rejects_source_local_output_before_wait_or_directory_creation(tmp_path, monkeypatch, location):
+    from scripts import finish_native_consumer_source_readouts_v1 as continuation
+    reader_source, scientific_source = tmp_path / 'reader', tmp_path / 'scientific'
+    reader_source.mkdir(); scientific_source.mkdir()
+    monkeypatch.setattr(continuation, 'ROOT', reader_source)
+    monkeypatch.setattr(continuation, 'finish', lambda *a, **k: pytest.fail('must reject before wait or writes'))
+    if location == 'symlink':
+        link = tmp_path / 'external-looking-link'
+        link.symlink_to(scientific_source, target_is_directory=True)
+        output = link / 'new-report'
+    else:
+        output = (reader_source if location == 'reader' else scientific_source) / 'new-report'
+    with pytest.raises(ValueError, match='outside both reader and scientific sources before waiting'):
+        continuation.run(SimpleNamespace(frozen_source=scientific_source, output=output))
+    assert not output.exists()
 
 
 @pytest.mark.parametrize('mutation', ['visibility', 'reference', 'selection', 'loss', 'slot'])

@@ -32,6 +32,13 @@
   violates that contract. Use an external `TemporaryDirectory` for successful
   export fixtures and test source-local rejection separately; do not weaken the
   production guard or assume that a directory named temporary is outside source.
+- Waiting report continuations must check the actual child export destination
+  against both resolved reader/scientific source roots before waiting or making
+  an output directory. A fresh `outputs/` under the reader is still source-local.
+  Test the continuation's path preflight, not only a direct export with an
+  external temporary directory. Preserve a stopped original continuation; use
+  a separately named external output for corrected read-only exports, never a
+  scientific restart, hidden retry or weakened source guard.
 - Worktree isolation is not hardware isolation. Do not start independent heavy
   CPU/Docker full-path QA, bulk embeddings or video encoding while real model
   inference is active, unless that concurrent resource profile is explicitly

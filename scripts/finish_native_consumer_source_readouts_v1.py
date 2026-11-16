@@ -4,8 +4,16 @@ from pathlib import Path
 
 from scripts.finish_native_code_tested_report_v1 import run as finish
 
+ROOT = Path(__file__).resolve().parents[1]
+
 
 def run(args):
+    # Mirror the child exporter's existing path contract before starting a
+    # potentially long wait or creating any continuation output. Resolving
+    # both roots also rejects an apparently external symlink back into source.
+    output = args.output.resolve()
+    if any(output.is_relative_to(source.resolve()) for source in (ROOT, args.frozen_source)):
+        raise ValueError('report output must be outside both reader and scientific sources before waiting')
     extra = ('--frozen-source', str(args.frozen_source.resolve()),
         '--cost-one', str(args.analysis.resolve() / 'costs-1.json'),
         '--cost-two', str(args.analysis.resolve() / 'costs-2.json'))

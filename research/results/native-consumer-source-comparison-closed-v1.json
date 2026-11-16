@@ -1,0 +1,1274 @@
+{
+  "schema": "scienceutopia.native-consumer-source-comparison-closed.v1.retention",
+  "recorded_utc": "2026-11-16T02:33:42.786885+00:00",
+  "classification": "actual-finite-local-model-development-study-with-preserved-readout-path-failure",
+  "scientific_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "original_reader_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "analysis": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-analysis-v1-a3/outputs/native-consumer-source-closure-v1-a1",
+  "corrected_readouts": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-source-readout-v1-a2",
+  "original_writer": {
+    "native_exec_session": 15471,
+    "exit_code": 0,
+    "terminal": {
+      "consumed_slots": 8,
+      "content_sha256": "1423b6fa7a1f9cdbd6a8d120c643dcdd902d56ec5e8ea2b2499e022610c5c97a",
+      "ended_utc": "2026-11-16T02:20:51.219929+00:00",
+      "held_out_evaluation": false,
+      "no_retry": true,
+      "observations": 11,
+      "publication_ready": false,
+      "schema": "scienceutopia.native-consumer-source-comparison.v1.terminal",
+      "stage": "closed",
+      "status": "closed"
+    },
+    "terminal_file_sha256": "52684a29778a349a918b99c35c5668f5b609308a1ff9d0644d7e0e705963b951",
+    "started_file_sha256": "566eceae33db49d176b87b8d987cf9c91d74adb65b790c1bf709ec83cd7bec66"
+  },
+  "original_audit_cost_continuation": {
+    "native_exec_session": 46051,
+    "exit_code": 0,
+    "ended": {
+      "audit_file_sha256": "b9abe7ae008c7ce22e9aa448b0d2315f52a11f9e1b0e74e5af8f524f93fc28aa",
+      "cost_file_sha256": "e7872a0d56bf3b9498914060fd807a2fd47dfe9ce5575ba86e7c9440b0367b4d",
+      "ended_utc": "2026-11-16T02:26:31.710456+00:00",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "publication_ready": false,
+      "remaining": "Retain all eight matched own slots and three references, exact information visibility, full native input/effect/loss paths, nulls and per-role costs. No automatic method-superiority claim.",
+      "status": "closed",
+      "steps": [
+        {
+          "exit_code": 0,
+          "stage": "audit-1"
+        },
+        {
+          "exit_code": 0,
+          "stage": "audit-2"
+        },
+        {
+          "exit_code": 0,
+          "stage": "costs-1"
+        },
+        {
+          "exit_code": 0,
+          "stage": "costs-2"
+        }
+      ]
+    },
+    "ended_file_sha256": "2ed7bd1275b06f86936847ec07c5a548467f9f06e8cb12c6f8e17bf3b8a094be",
+    "matching_audit_file_sha256": "b9abe7ae008c7ce22e9aa448b0d2315f52a11f9e1b0e74e5af8f524f93fc28aa",
+    "matching_cost_file_sha256": "e7872a0d56bf3b9498914060fd807a2fd47dfe9ce5575ba86e7c9440b0367b4d"
+  },
+  "preserved_original_readout_failure": {
+    "native_exec_session": 79215,
+    "exit_code": 1,
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-readouts-v1-a3/outputs/native-consumer-source-readout-v1-a1",
+    "ended": {
+      "content_sha256": "6c0ff36c69735fab27a7a93488d0ef9cac42d53dbda1b503a665c84d506b0843",
+      "error": "read-only report failed; no automatic retry",
+      "error_type": "ValueError",
+      "science_restarted": false,
+      "stage": "report-1",
+      "status": "stopped",
+      "steps": [
+        {
+          "exit_code": 1,
+          "stage": "report-1"
+        }
+      ]
+    },
+    "ended_file_sha256": "6f96a7778ae1126591db3d52e4f4efabd8cff00d37cc5d56bd7610cf9bbfadc1",
+    "log_file_sha256": "7afdf1b82943d237ff6cc2db7a1c781fb8b34a696eb3398e6a5c97944e658ed3",
+    "cause": "Original continuation put child outputs inside its reader checkout, violating the exporter's pre-existing external-output guard. No report file was exported. Raw failure, frozen reader source and scientific results remain unchanged."
+  },
+  "corrected_read_only_exports": {
+    "native_exec_session": 36879,
+    "exit_code": 0,
+    "same_frozen_reader_code": true,
+    "new_fresh_external_output": true,
+    "report_content_sha256": "4b73525b9c9948e88ba104964610c69976aa8a1da62544a25909c04a78c2ebd2",
+    "ended": {
+      "content_sha256": "b3831e00cd84baa5f3ce314017db03544bea8b3bc1346ee78f136c1be5cefd46",
+      "ended_utc": "2026-11-16T02:29:57.022437+00:00",
+      "manuscript_updated": false,
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "publication_ready": false,
+      "report_files": {
+        "manifest.json": "5885c03f3bec3890e08be52606d819a5450635a4e0888e4d68f3484531cc2c9e",
+        "report.json": "6adcf375da0b6cc9c77f532db633387b0892622ab2c37826398018886deb897e",
+        "slots.csv": "21f4958196f2b27a7f3fddf682ed49170bfaf00be04e556e7141c2fba3938136"
+      },
+      "status": "closed",
+      "steps": [
+        {
+          "exit_code": 0,
+          "stage": "report-1"
+        },
+        {
+          "exit_code": 0,
+          "stage": "report-2"
+        }
+      ],
+      "visual_review_complete": false
+    },
+    "ended_file_sha256": "2eac9828b065a60c6cd9b3db54b4f552432e4b8ded02357a5e9fa7e459c609f0",
+    "new_scientific_inference": false,
+    "scientific_restart_or_slot_refill": false
+  },
+  "consumed_own_slots": 8,
+  "complete_own_outcomes": 7,
+  "runtime_nulls": 1,
+  "physical_world_attempts": 11,
+  "reference_visibility": [
+    {
+      "label": "core-only",
+      "optimizer_visible": true
+    },
+    {
+      "label": "core-plus-related",
+      "optimizer_visible": true
+    },
+    {
+      "label": "terminal-consolidation",
+      "optimizer_visible": false
+    }
+  ],
+  "references": [
+    {
+      "label": "core-only",
+      "optimizer_visible": true,
+      "physical_job": "workflow-reference-core-only",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -15.333333333333332,
+        "resource-aware-content": 4.666666666666668,
+        "throughput": -20
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 20
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 15.333333333333332
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200
+    },
+    {
+      "label": "core-plus-related",
+      "optimizer_visible": true,
+      "physical_job": "workflow-reference-core-plus-related",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200
+    },
+    {
+      "label": "terminal-consolidation",
+      "optimizer_visible": false,
+      "physical_job": "workflow-reference-terminal-consolidation",
+      "status": "complete",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 160
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 40
+        }
+      },
+      "requested_activity_cost": 200
+    }
+  ],
+  "slots": [
+    {
+      "slot_index": 0,
+      "arm": "interface-only",
+      "objective": "content-utility",
+      "generation": 0,
+      "status": "complete",
+      "physical_job": "native-adaptive-1fa017149d8dc7ab8097d20a",
+      "loss": -28.666666666666668,
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200,
+      "graph_from_parent": {
+        "added_connections": [],
+        "added_nodes": {},
+        "added_schedules": {},
+        "changed_mechanisms": {
+          "addressed-selection": {
+            "after_sha256": "b56695a7129225b3f8238a46929915fdd63c90e4aa916f42ec44e6789e29907a",
+            "before_sha256": "88a56c52673691294b83adbd82027fde767fda6812691cd5167bc458678153c2",
+            "changed_fields": [
+              "parameters"
+            ]
+          },
+          "world.selection": {
+            "after_sha256": "fb7162bc896b813e02ef00f4ef426aaf41945e46ebd544efee6b450f2823b509",
+            "before_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+            "changed_fields": [
+              "parameters"
+            ]
+          }
+        },
+        "changed_system_fields": {},
+        "phase_updates": {},
+        "removed_connections": [],
+        "removed_nodes": {},
+        "removed_schedules": {},
+        "source_edits": {
+          "world.selection": {
+            "after_source_utf8_sha256": "8b3d69c7623528eec090708e2fb42338571cd2a072f0abeabf0cabb291dbf044",
+            "before_source_utf8_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6"
+          }
+        },
+        "source_parameters_nodes_unchanged": false
+      },
+      "technical_failures": [],
+      "institutional_work_events": 0
+    },
+    {
+      "slot_index": 1,
+      "arm": "literal-consumers",
+      "objective": "resource-aware-content",
+      "generation": 0,
+      "status": "complete",
+      "physical_job": "native-adaptive-3435cdfa551f266e50faca5c",
+      "loss": -8.666666666666668,
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200,
+      "graph_from_parent": {
+        "added_connections": [],
+        "added_nodes": {},
+        "added_schedules": {},
+        "changed_mechanisms": {
+          "developer-catalog-agenda": {
+            "after_sha256": "2d292cc8f7d3f33a9a44e6173145b43ec5d6c73514fee49b2970d78e8643b97b",
+            "before_sha256": "9a94ab1c7c206afbf7ca1ed2969cf8f8f457f5f59128a9238857099626cf8083",
+            "changed_fields": [
+              "parameters"
+            ]
+          }
+        },
+        "changed_system_fields": {},
+        "phase_updates": {},
+        "removed_connections": [],
+        "removed_nodes": {},
+        "removed_schedules": {},
+        "source_edits": {
+          "developer-catalog-agenda": {
+            "after_source_utf8_sha256": "462f0287d13c9313a938e3b49c9fc95d2eef8ba660c4fb1a2409ad56e104eb4a",
+            "before_source_utf8_sha256": "4287a12ee9ef0a400f0b1090ec3372b1fc752eace42d8a6060a77abbd9d3b041"
+          }
+        },
+        "source_parameters_nodes_unchanged": false
+      },
+      "technical_failures": [],
+      "institutional_work_events": 0
+    },
+    {
+      "slot_index": 2,
+      "arm": "interface-only",
+      "objective": "resource-aware-content",
+      "generation": 0,
+      "status": "complete",
+      "physical_job": "native-adaptive-4cad5bce2111e3de30f4846d",
+      "loss": -8.666666666666668,
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200,
+      "graph_from_parent": {
+        "added_connections": [],
+        "added_nodes": {},
+        "added_schedules": {},
+        "changed_mechanisms": {
+          "world.selection": {
+            "after_sha256": "648cf2c966f145a0406b180589f4d28e5783fe5abb117adb2519e521fa4df750",
+            "before_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+            "changed_fields": [
+              "parameters"
+            ]
+          }
+        },
+        "changed_system_fields": {},
+        "phase_updates": {},
+        "removed_connections": [],
+        "removed_nodes": {},
+        "removed_schedules": {},
+        "source_edits": {
+          "world.selection": {
+            "after_source_utf8_sha256": "c39bf3a4a8bd4f7c881e0d9a91e7dd2026386078f15aa20c20a67f9999d07b00",
+            "before_source_utf8_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6"
+          }
+        },
+        "source_parameters_nodes_unchanged": false
+      },
+      "technical_failures": [],
+      "institutional_work_events": 0
+    },
+    {
+      "slot_index": 3,
+      "arm": "literal-consumers",
+      "objective": "content-utility",
+      "generation": 0,
+      "status": "complete",
+      "physical_job": "native-adaptive-72efc298c5322e87007fc4e2",
+      "loss": -7,
+      "cross_scores": {
+        "content-utility": -7,
+        "resource-aware-content": 13,
+        "throughput": -10
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 10
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 7
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200,
+      "graph_from_parent": {
+        "added_connections": [],
+        "added_nodes": {},
+        "added_schedules": {},
+        "changed_mechanisms": {
+          "developer-catalog-agenda": {
+            "after_sha256": "624ed0a05644c0d5c7e8b9b07d80f33ea8b15b9190232a04d1dc7e0069d07f32",
+            "before_sha256": "9a94ab1c7c206afbf7ca1ed2969cf8f8f457f5f59128a9238857099626cf8083",
+            "changed_fields": [
+              "parameters"
+            ]
+          }
+        },
+        "changed_system_fields": {},
+        "phase_updates": {},
+        "removed_connections": [],
+        "removed_nodes": {},
+        "removed_schedules": {},
+        "source_edits": {
+          "developer-catalog-agenda": {
+            "after_source_utf8_sha256": "355dd440ecba5ca767873ab484ed8bbaaef05497d6de69b9007c27857aa5600d",
+            "before_source_utf8_sha256": "4287a12ee9ef0a400f0b1090ec3372b1fc752eace42d8a6060a77abbd9d3b041"
+          }
+        },
+        "source_parameters_nodes_unchanged": false
+      },
+      "technical_failures": [],
+      "institutional_work_events": 0
+    },
+    {
+      "slot_index": 4,
+      "arm": "literal-consumers",
+      "objective": "content-utility",
+      "generation": 1,
+      "status": "complete",
+      "physical_job": "native-adaptive-9180a08c032383e51a015f76",
+      "loss": -28.666666666666668,
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200,
+      "graph_from_parent": {
+        "added_connections": [],
+        "added_nodes": {},
+        "added_schedules": {},
+        "changed_mechanisms": {
+          "world.selection": {
+            "after_sha256": "dfb92d961af321fca077dc693ce5ffae64ca28e499e3abbc598bd4855a310bea",
+            "before_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+            "changed_fields": [
+              "parameters"
+            ]
+          }
+        },
+        "changed_system_fields": {},
+        "phase_updates": {},
+        "removed_connections": [],
+        "removed_nodes": {},
+        "removed_schedules": {},
+        "source_edits": {
+          "world.selection": {
+            "after_source_utf8_sha256": "6ae7b7526b121819c4acd6391f3a45ca8d7050e9edc83a8784cab24dd91811ee",
+            "before_source_utf8_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6"
+          }
+        },
+        "source_parameters_nodes_unchanged": false
+      },
+      "technical_failures": [],
+      "institutional_work_events": 0
+    },
+    {
+      "slot_index": 5,
+      "arm": "interface-only",
+      "objective": "resource-aware-content",
+      "generation": 1,
+      "status": "failed",
+      "physical_job": "native-adaptive-0a24958c3694dbcf343a2fb8",
+      "loss": null,
+      "cross_scores": {
+        "content-utility": null,
+        "resource-aware-content": null,
+        "throughput": null
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measurement-not-recorded",
+          "value": null
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measurement-not-recorded",
+          "value": null
+        },
+        "native.common_content_utility_sum": {
+          "status": "measurement-not-recorded",
+          "value": null
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measurement-not-recorded",
+          "value": null
+        }
+      },
+      "requested_activity_cost": null,
+      "graph_from_parent": {
+        "added_connections": [],
+        "added_nodes": {},
+        "added_schedules": {},
+        "changed_mechanisms": {
+          "developer-catalog-agenda": {
+            "after_sha256": "b42a112dbb566d8350d42eb23b1a666459115334c1c77dd3e880064a69c0d080",
+            "before_sha256": "9a94ab1c7c206afbf7ca1ed2969cf8f8f457f5f59128a9238857099626cf8083",
+            "changed_fields": [
+              "parameters"
+            ]
+          }
+        },
+        "changed_system_fields": {},
+        "phase_updates": {},
+        "removed_connections": [],
+        "removed_nodes": {},
+        "removed_schedules": {},
+        "source_edits": {
+          "developer-catalog-agenda": {
+            "after_source_utf8_sha256": "f4dce706c9c61f566f5fe989b0ec39997773fb44475e4e4137e1c825669908bb",
+            "before_source_utf8_sha256": "4287a12ee9ef0a400f0b1090ec3372b1fc752eace42d8a6060a77abbd9d3b041"
+          }
+        },
+        "source_parameters_nodes_unchanged": false
+      },
+      "technical_failures": [
+        {
+          "error": "catalog project must preserve displayed topic content and native duration",
+          "error_type": "GraphRuntimeError",
+          "loss": null,
+          "run_id": "native-adaptive-0a24958c3694dbcf343a2fb8-s61001",
+          "seed": 61001
+        }
+      ],
+      "institutional_work_events": null
+    },
+    {
+      "slot_index": 6,
+      "arm": "literal-consumers",
+      "objective": "resource-aware-content",
+      "generation": 1,
+      "status": "complete",
+      "physical_job": "native-adaptive-1bd325a3ba8ab24f46c8240d",
+      "loss": -8.666666666666668,
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200,
+      "graph_from_parent": {
+        "added_connections": [],
+        "added_nodes": {},
+        "added_schedules": {},
+        "changed_mechanisms": {
+          "developer-catalog-agenda": {
+            "after_sha256": "a91e02f3de0d3132880af5fb9d51678bda26fb79bc01bd7fd34fbcd9a7cb45e0",
+            "before_sha256": "9a94ab1c7c206afbf7ca1ed2969cf8f8f457f5f59128a9238857099626cf8083",
+            "changed_fields": [
+              "parameters"
+            ]
+          }
+        },
+        "changed_system_fields": {},
+        "phase_updates": {},
+        "removed_connections": [],
+        "removed_nodes": {},
+        "removed_schedules": {},
+        "source_edits": {
+          "developer-catalog-agenda": {
+            "after_source_utf8_sha256": "27ade7cae2d2ce7dd15f846bef265f43eea7ec5fa76b573c10a96f8e7beb5e37",
+            "before_source_utf8_sha256": "4287a12ee9ef0a400f0b1090ec3372b1fc752eace42d8a6060a77abbd9d3b041"
+          }
+        },
+        "source_parameters_nodes_unchanged": false
+      },
+      "technical_failures": [],
+      "institutional_work_events": 0
+    },
+    {
+      "slot_index": 7,
+      "arm": "interface-only",
+      "objective": "content-utility",
+      "generation": 1,
+      "status": "complete",
+      "physical_job": "native-adaptive-c2d18b6b9dca3f3ff3f9df0e",
+      "loss": -28.666666666666668,
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "requested_activity_cost": 200,
+      "graph_from_parent": {
+        "added_connections": [],
+        "added_nodes": {},
+        "added_schedules": {},
+        "changed_mechanisms": {
+          "world.selection": {
+            "after_sha256": "c5525da65f021511f5146fc73ba9f539f914269a20fe90752d2ff4e98e624d33",
+            "before_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+            "changed_fields": [
+              "parameters"
+            ]
+          }
+        },
+        "changed_system_fields": {},
+        "phase_updates": {},
+        "removed_connections": [],
+        "removed_nodes": {},
+        "removed_schedules": {},
+        "source_edits": {
+          "world.selection": {
+            "after_source_utf8_sha256": "f25e2e5c9e3a38d2f698ab578f8a5d2be35068b434867f2d752efb5d19ad1339",
+            "before_source_utf8_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6"
+          }
+        },
+        "source_parameters_nodes_unchanged": false
+      },
+      "technical_failures": [],
+      "institutional_work_events": 0
+    }
+  ],
+  "own_only_selection": {
+    "interface-only::content-utility": {
+      "selected_id": "native-adaptive-1fa017149d8dc7ab8097d20a",
+      "loss": -28.666666666666668,
+      "all_tied_ids": [
+        "native-adaptive-1fa017149d8dc7ab8097d20a",
+        "native-adaptive-c2d18b6b9dca3f3ff3f9df0e"
+      ],
+      "system_sha256": "3b490baa4ce93d447d1694f0d9b536af7f76602b8e4307178c7e735884fb433d"
+    },
+    "interface-only::resource-aware-content": {
+      "selected_id": "native-adaptive-4cad5bce2111e3de30f4846d",
+      "loss": -8.666666666666668,
+      "all_tied_ids": [
+        "native-adaptive-4cad5bce2111e3de30f4846d"
+      ],
+      "system_sha256": "a20915e0bf40418c43c26573ba86e915e688571b9785cdd5ae1317b6e59730ba"
+    },
+    "literal-consumers::content-utility": {
+      "selected_id": "native-adaptive-9180a08c032383e51a015f76",
+      "loss": -28.666666666666668,
+      "all_tied_ids": [
+        "native-adaptive-9180a08c032383e51a015f76"
+      ],
+      "system_sha256": "df747dd7ccb1a78ae367fb6348e56b6a61877d1a4ad1a43396df287912970b21"
+    },
+    "literal-consumers::resource-aware-content": {
+      "selected_id": "native-adaptive-3435cdfa551f266e50faca5c",
+      "loss": -8.666666666666668,
+      "all_tied_ids": [
+        "native-adaptive-3435cdfa551f266e50faca5c",
+        "native-adaptive-1bd325a3ba8ab24f46c8240d"
+      ],
+      "system_sha256": "8ae6563e8e5b16c622943a1a91ae9d1861f2fd9037595be77be02c555b145349"
+    }
+  },
+  "selection_file_sha256": "c3a4783b8632390c62ccc948657bef470f6348db233760a9d87f32c3c1b5424e",
+  "loss_paths": {
+    "interface-only::content-utility": [
+      {
+        "best_known_loss_including_visible_references": -28.666666666666668,
+        "best_own_loss": -28.666666666666668,
+        "generation": 0,
+        "observed_loss": -28.666666666666668,
+        "status": "complete"
+      },
+      {
+        "best_known_loss_including_visible_references": -28.666666666666668,
+        "best_own_loss": -28.666666666666668,
+        "generation": 1,
+        "observed_loss": -28.666666666666668,
+        "status": "complete"
+      }
+    ],
+    "interface-only::resource-aware-content": [
+      {
+        "best_known_loss_including_visible_references": -8.666666666666668,
+        "best_own_loss": -8.666666666666668,
+        "generation": 0,
+        "observed_loss": -8.666666666666668,
+        "status": "complete"
+      },
+      {
+        "best_known_loss_including_visible_references": -8.666666666666668,
+        "best_own_loss": -8.666666666666668,
+        "generation": 1,
+        "observed_loss": null,
+        "status": "failed"
+      }
+    ],
+    "literal-consumers::content-utility": [
+      {
+        "best_known_loss_including_visible_references": -28.666666666666668,
+        "best_own_loss": -7,
+        "generation": 0,
+        "observed_loss": -7,
+        "status": "complete"
+      },
+      {
+        "best_known_loss_including_visible_references": -28.666666666666668,
+        "best_own_loss": -28.666666666666668,
+        "generation": 1,
+        "observed_loss": -28.666666666666668,
+        "status": "complete"
+      }
+    ],
+    "literal-consumers::resource-aware-content": [
+      {
+        "best_known_loss_including_visible_references": -8.666666666666668,
+        "best_own_loss": -8.666666666666668,
+        "generation": 0,
+        "observed_loss": -8.666666666666668,
+        "status": "complete"
+      },
+      {
+        "best_known_loss_including_visible_references": -8.666666666666668,
+        "best_own_loss": -8.666666666666668,
+        "generation": 1,
+        "observed_loss": -8.666666666666668,
+        "status": "complete"
+      }
+    ]
+  },
+  "comparisons": {
+    "interface-only::content-utility": {
+      "best_visible_reference_loss": -28.666666666666668,
+      "known_withheld_hand_control_loss": -28.666666666666668,
+      "own_minus_best_visible": 0,
+      "own_minus_known_withheld_hand_control": 0,
+      "selected_own_loss": -28.666666666666668
+    },
+    "interface-only::resource-aware-content": {
+      "best_visible_reference_loss": -8.666666666666668,
+      "known_withheld_hand_control_loss": -12.666666666666668,
+      "own_minus_best_visible": 0,
+      "own_minus_known_withheld_hand_control": 4,
+      "selected_own_loss": -8.666666666666668
+    },
+    "literal-consumers::content-utility": {
+      "best_visible_reference_loss": -28.666666666666668,
+      "known_withheld_hand_control_loss": -28.666666666666668,
+      "own_minus_best_visible": 0,
+      "own_minus_known_withheld_hand_control": 0,
+      "selected_own_loss": -28.666666666666668
+    },
+    "literal-consumers::resource-aware-content": {
+      "best_visible_reference_loss": -8.666666666666668,
+      "known_withheld_hand_control_loss": -12.666666666666668,
+      "own_minus_best_visible": 0,
+      "own_minus_known_withheld_hand_control": 4,
+      "selected_own_loss": -8.666666666666668
+    }
+  },
+  "literal_consumers_minus_interface_own_best": {
+    "content-utility": 0,
+    "resource-aware-content": 0
+  },
+  "complete_observed_input_classes": [
+    {
+      "all_full_provider_bodies_equal": false,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "physical_ids": [
+        "native-adaptive-1bd325a3ba8ab24f46c8240d",
+        "native-adaptive-1fa017149d8dc7ab8097d20a",
+        "native-adaptive-3435cdfa551f266e50faca5c",
+        "native-adaptive-4cad5bce2111e3de30f4846d",
+        "native-adaptive-9180a08c032383e51a015f76",
+        "native-adaptive-c2d18b6b9dca3f3ff3f9df0e",
+        "workflow-reference-core-plus-related",
+        "workflow-reference-terminal-consolidation"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "9ea2ff482f060724c70e21c3991fffe162a9df79e5e403049f21d9312fa04a7c",
+      "physical_ids": [
+        "workflow-reference-core-only"
+      ],
+      "seed": 61001
+    },
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "cc31de55155f9c6a0abe0f2ebe4bb1830c665958407ac8eae147b951627bd363",
+      "physical_ids": [
+        "native-adaptive-72efc298c5322e87007fc4e2"
+      ],
+      "seed": 61001
+    }
+  ],
+  "complete_author_construction": [
+    {
+      "arm": "interface-only",
+      "objective": "content-utility",
+      "generation": 0,
+      "completed_steps": 11,
+      "component_testing": {
+        "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 4,
+        "raised": 0,
+        "returned": 4,
+        "veto_on_finish": false
+      },
+      "terminal_response_missing": false
+    },
+    {
+      "arm": "literal-consumers",
+      "objective": "resource-aware-content",
+      "generation": 0,
+      "completed_steps": 6,
+      "component_testing": {
+        "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 4,
+        "raised": 0,
+        "returned": 4,
+        "veto_on_finish": false
+      },
+      "terminal_response_missing": false
+    },
+    {
+      "arm": "interface-only",
+      "objective": "resource-aware-content",
+      "generation": 0,
+      "completed_steps": 14,
+      "component_testing": {
+        "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 12,
+        "raised": 0,
+        "returned": 12,
+        "veto_on_finish": false
+      },
+      "terminal_response_missing": false
+    },
+    {
+      "arm": "literal-consumers",
+      "objective": "content-utility",
+      "generation": 0,
+      "completed_steps": 14,
+      "component_testing": {
+        "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 16,
+        "raised": 0,
+        "returned": 16,
+        "veto_on_finish": false
+      },
+      "terminal_response_missing": false
+    },
+    {
+      "arm": "literal-consumers",
+      "objective": "content-utility",
+      "generation": 1,
+      "completed_steps": 14,
+      "component_testing": {
+        "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 8,
+        "raised": 0,
+        "returned": 8,
+        "veto_on_finish": false
+      },
+      "terminal_response_missing": false
+    },
+    {
+      "arm": "interface-only",
+      "objective": "resource-aware-content",
+      "generation": 1,
+      "completed_steps": 14,
+      "component_testing": {
+        "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 16,
+        "raised": 0,
+        "returned": 16,
+        "veto_on_finish": false
+      },
+      "terminal_response_missing": false
+    },
+    {
+      "arm": "literal-consumers",
+      "objective": "resource-aware-content",
+      "generation": 1,
+      "completed_steps": 14,
+      "component_testing": {
+        "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 24,
+        "raised": 0,
+        "returned": 24,
+        "veto_on_finish": false
+      },
+      "terminal_response_missing": false
+    },
+    {
+      "arm": "interface-only",
+      "objective": "content-utility",
+      "generation": 1,
+      "completed_steps": 14,
+      "component_testing": {
+        "contract_sha256": "2078e4328cd9e17212557dbf837c7f5a30b3456b958a691472b6d0d1a0215681",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 8,
+        "raised": 0,
+        "returned": 8,
+        "veto_on_finish": false
+      },
+      "terminal_response_missing": false
+    }
+  ],
+  "physical_costs": {
+    "scientist": {
+      "completed_responses": 1650,
+      "provider_usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 1650,
+          "missing_responses": 0,
+          "recorded_sum": 358440
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 1650,
+          "missing_responses": 0,
+          "recorded_sum": 153603
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 1650,
+          "missing_responses": 0,
+          "recorded_sum": 2395104
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 1650,
+          "missing_responses": 0,
+          "recorded_sum": 2548707
+        }
+      },
+      "wire_inputs_without_committed_reply": 0,
+      "wire_only_worlds": []
+    },
+    "common_content_observer": {
+      "input_observer_audit_content_sha256": "976891a0e90c2dd75e4b25cf1399a8e3c093cdb22dd75a82e5ada2c4ce45e5a5",
+      "known_terminal_attempts": 198,
+      "overlap_with_native_response_caches": false,
+      "physical_requests": 198,
+      "scope": "Separate fixed-content critic POSTs; repeated content cache hits are not additional physical ratings.",
+      "usage": {
+        "http_elapsed_seconds": {
+          "known_sum": 862.8812468289398,
+          "unknown_attempts": 0
+        },
+        "output_tokens": {
+          "known_sum": 29111,
+          "unknown_attempts": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 94806,
+          "unknown_attempts": 0
+        }
+      }
+    },
+    "auxiliary_groups": {
+      "editor-readiness": {
+        "completion_record_available": 284,
+        "final_response_reported": 284,
+        "known_HTTP_response": 284,
+        "native_cache_subset_counts": {
+          "within-prompt": 284
+        },
+        "recorded_POST_attempt": 284,
+        "request_intents": 284,
+        "status_counts": {
+          "http-recorded": 284
+        },
+        "unknown_usage_imputed": false,
+        "token_measurements": {
+          "native_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 284,
+            "missing_records": 0,
+            "recorded_sum": 14027,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 284,
+            "missing_records": 0,
+            "recorded_sum": 77500,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 284,
+            "missing_records": 0,
+            "recorded_sum": 5825760,
+            "unit": "integer count"
+          }
+        }
+      },
+      "load-designer": {
+        "completion_record_available": 18,
+        "final_response_reported": 18,
+        "known_HTTP_response": 18,
+        "native_cache_subset_counts": {
+          "unknown": 18
+        },
+        "recorded_POST_attempt": 18,
+        "request_intents": 18,
+        "status_counts": {
+          "completed-load": 18
+        },
+        "unknown_usage_imputed": false,
+        "token_measurements": {
+          "native_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 18,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 18,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 18,
+            "recorded_sum": null,
+            "unit": "integer count"
+          }
+        }
+      },
+      "load-scientist": {
+        "completion_record_available": 11,
+        "final_response_reported": 11,
+        "known_HTTP_response": 11,
+        "native_cache_subset_counts": {
+          "unknown": 11
+        },
+        "recorded_POST_attempt": 11,
+        "request_intents": 11,
+        "status_counts": {
+          "completed-load": 11
+        },
+        "unknown_usage_imputed": false,
+        "token_measurements": {
+          "native_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 11,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 11,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 11,
+            "recorded_sum": null,
+            "unit": "integer count"
+          }
+        }
+      },
+      "staged-proposal": {
+        "completion_record_available": 101,
+        "final_response_reported": 101,
+        "known_HTTP_response": 101,
+        "native_cache_subset_counts": {
+          "within-prompt": 101
+        },
+        "recorded_POST_attempt": 101,
+        "request_intents": 101,
+        "status_counts": {
+          "http-recorded": 101
+        },
+        "unknown_usage_imputed": false,
+        "token_measurements": {
+          "native_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 101,
+            "missing_records": 0,
+            "recorded_sum": 26804,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 101,
+            "missing_records": 0,
+            "recorded_sum": 212450,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 101,
+            "missing_records": 0,
+            "recorded_sum": 4018739,
+            "unit": "integer count"
+          }
+        }
+      }
+    },
+    "cached_prompt_tokens_are_subsets_not_additions": true,
+    "unknown_usage_imputed": false,
+    "host_times_are_dedicated_benchmarks": false
+  },
+  "retention_model_calls": 0,
+  "retention_code_executions": 0,
+  "independent_optimizer_replications": false,
+  "new_held_out_evaluation": false,
+  "automatic_useful_institution_invention_demonstrated": false,
+  "isolated_source_comprehension_causality_identified": false,
+  "publication_ready": false,
+  "remaining": [
+    "Render/review measured paths and integrate complete results/costs into manuscript.",
+    "Complete the reviewed100-page subset reconstruction and build/review updated paper.",
+    "Establish an important supported objective-to-system finding beyond known controls, with suitable independent comparison and frozen unused evaluation.",
+    "Final critical main-track submission decision; no positive result or acceptance is guaranteed."
+  ]
+}
