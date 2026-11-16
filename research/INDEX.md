@@ -37,7 +37,10 @@ This page is navigation, not a chronological experiment transcript.
   are separate SCRIPTED evidence. [Measured figures](components/native-consumer-source-figures-v1.md)
   now have two matching seven-file exports and visual review;
   [all11 exact programs and data](data/native-consumer-source-comparison-v1/README.md)
-  are retained. The reviewed100-page PDF has not yet incorporated this study.
+  are retained. The [reviewed104-page manuscript](../paper/integrated-consumer-source-build-v1.json)
+  now includes this study, all slots/costs, measured paths and remaining limits.
+  Two builds/all104 page images match; every layout is inspected. This is not
+  independent inference or main-track readiness.
   No original scientific/continuation
   worker remains for this study. [Observation log](logbook/2026-11-16-native-consumer-first-reference.md)
   and [preserved stage snapshots](status-history-2026-11-16-consumer-reference-prefix.md)

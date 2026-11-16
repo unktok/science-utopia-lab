@@ -672,3 +672,52 @@ The paper image is prepared but no new TeX chapter or PDF is yet built/reviewed.
 The reviewed100-page PDF remains its earlier source-bound artifact. Full analysis
 still needs local raw data; derived plots are not independent inference or
 publication readiness. The full goal and R2/R3/R5/R6 remain open.
+
+## Integrated manuscript and previous-snapshot reconstruction now close
+
+After all original scientific writers have exited, manuscript source2d19cc96
+adds the complete source-information study, all8 own slots, all3 references,
+frozen selection, adverse recovery/null, exact observed-input classes, actual
+role costs and research limits. Meaningful earlier tracks remain; there is no
+artificial page cap. FunSearch/AlphaEvolve/ShinkaEvolve enter the related work.
+Their primary-source identities are reconciled in auditv4, without claiming
+benchmark reproduction or new scientific evidence.
+
+The initial editorial check retains17 passes/1 failure because the previous
+bibliographic ledger lacks the three newly cited identities. After that
+prospective ledger extension,18 checks pass. Initial successful builda1 has an
+underfull bibliography line; local raggedright bibliography fixes it without
+suppressing warnings. Buildsa2/a3 match, then a caption is clarified to four
+actual histories under two objectives. Finala4/a5 at2d19cc96 both exit0, handles
+36830/28222, with matching extracted text/logs and all10490dpi page images.
+All104 layouts and150dpi pages1/4/81/82/83/84/91/92/93 are actually inspected.
+The reviewed result has52 figures,49 tables and32 references; no off-page words
+or overfull/underfull/undefined-reference diagnostics are found. Two inherited
+h-to-ht notices remain.
+
+The optional pdfplumber import is unavailable; no package is installed.
+Strict XML parsing of original Poppler bbox text fails at a glyph control.
+Instead the original unsanitized output is read with stdlib HTMLParser:
+all47,619 word tags are accounted for and lie within their104 page bounds.
+These diagnostics are retained rather than relabeled as successful XML or
+pdfplumber checks. The [build/visual receipt](../../paper/integrated-consumer-source-build-v1.json)
+binds source2d19cc96, dependencies, preserved artifacts and final PDF SHA256
+cc5d2ca81f434023466184525e3555edc32ae63a1695033e263ab7cbab387af4.
+
+Separately, the old100-page staged82-file subset at a6e83485 actually rebuilds
+with cache-only/untrusted Tectonic25441 exit0. Render69987 exits0; extracted text
+and all100 page PNG hashes equal the prior reviewed artifact. Fresh sheets1/7/9
+cover28 representative pages; remaining layouts have exact prior-reviewed pixel
+identity, not a claimed fresh100-page inspection. Binary PDF bytes differ.
+All82 staged input hashes remain unchanged. The
+[verification receipt](../results/integrated-terminal-rebuild-subset-verification-v1.json)
+keeps that exact old snapshot separate from the104-page update and preserves
+the initial empty-index preparation failure. Neither document operation makes
+new model calls, native worlds, independent inference or a clean-machine claim.
+
+The next research question is effective objective-conditioned search and its
+strong restricted comparators, not another automatically enlarged flat pilot.
+The public shortest-duration-priority comparator has SCRIPTED native proof,
+not real scores or a completed outer optimizer. Useful new institution invention,
+appropriate independent histories and future selection-frozen unused evaluation
+remain unproven. R2/R3/R5/R6 and the full publication-ready goal stay open.

@@ -1,6 +1,37 @@
 # Objective-conditioned institution paper
 
 The latest reviewed working artifact is the
+[104-page integrated draft](../output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf),
+with52 figures,49 tables and32 references. Its
+[source/build/visual receipt](integrated-consumer-source-build-v1.json) binds
+source `2d19cc96` and PDF SHA256
+`cc5d2ca81f434023466184525e3555edc32ae63a1695033e263ab7cbab387af4`.
+Two cache-only builds have matching text/logs and all104 page images. All page
+layouts and150dpi first/concept/new-section/reference details are reviewed.
+No overfull/underfull/undefined-reference diagnostics or off-page words are found.
+The two inherited h-to-ht notices remain. Strict XML parsing of Poppler glyph
+text fails; the original unsanitized bbox output instead has complete HTMLParser
+coverage of47,619 word tags. No dependency installation or text sanitation is used.
+
+The [new section](integrated/native-consumer-source.tex) includes all eight
+own slots of the closed two-objective/source-information pilot: seven native
+completions, one eligibility runtime null, four frozen own selections, all11
+exact programs, full observed-input classes and separate role costs. All four
+selected systems tie their strong visible reference; no candidate adds wiring.
+An adverse U path recovers a supplied rule, not a new best-known institution.
+FunSearch, AlphaEvolve and ShinkaEvolve are now in the reviewed related work,
+with the [expanded identity audit](../research/results/manuscript-bibliographic-identity-audit-v4.json).
+Meaningful earlier tracks remain without an artificial page cap.
+
+This is a broad working manuscript, not a main-track-ready submission. Important
+supported findings, appropriate independent histories and future frozen unused
+evaluation remain open. The104-page snapshot has two full-checkout cached
+builds, not a separately verified minimal subset or clean-machine build.
+See [current research status](../research/STATUS.md).
+
+## Earlier reviewed snapshots
+
+The preceding
 [100-page integrated draft](../output/pdf/science-utopia-lab-integrated-terminal-cost-working-paper.pdf),
 with51 figures,47 tables and29 references. Its
 [source/build/visual receipt](integrated-terminal-cost-build-v1.json) binds source
@@ -23,26 +54,24 @@ All meaningful prior research tracks remain without a conference page cap.
 
 The broad working paper is not a focused main-track-ready paper. Important
 supported findings, appropriate independent evidence and final readiness remain
-open. A minimal source-only rebuild specific to this100-page snapshot has not
-yet been verified. Earlier reconstruction proofs apply to their own snapshots,
-not arbitrary current HEAD. See [current research status](../research/STATUS.md).
+open. Its exact82-file source-only subset has now
+[actually rebuilt](../research/results/integrated-terminal-rebuild-subset-verification-v1.json),
+matching text and all100 previously reviewed page images. Binary PDF bytes
+differ. Fresh contact-sheet inspection covers28 representative pages; the
+remaining layouts match the prior all-page review exactly. This uses an existing
+local cache, not independent inference or clean-machine setup.
 
 The [82-file rebuild policy](../research/publication/paper-rebuild-allowlist-integrated-terminal-cost-v1.json)
 now has [27 passing source checks and actual clean CLI staging](../research/results/integrated-terminal-rebuild-subset-preparation-v1.json).
 This reconstructs the reviewed input bytes at the recorded separate staging
-commit, not the later related-work amendment. Actual cached TeX rebuild,
-all100 page comparisons and fresh visual checks remain pending until inference
-ends; the original PDF and its receipt are unchanged.
+commit, not the later104-page amendments. The cached build and all100 page
+comparisons now pass after scientific inference exits; original bytes remain.
 
-Source-only update after the100-page snapshot: the integrated related-work
-section and bibliography now acknowledge FunSearch, AlphaEvolve and ShinkaEvolve.
+The update after the100-page snapshot acknowledges FunSearch, AlphaEvolve and ShinkaEvolve.
 The [primary-source check and prospective comparison boundary](../research/publication/native-search-method-controls-source-review-v1.md)
 distinguish history retention from parent/archive sampling and forbid importing
-a hidden novelty veto. This amendment is not built or visually reviewed yet;
-the reviewed PDF, its page/reference counts and frozen receipt above stay
-unchanged. No heavy build/render overlaps the active real-model study.
-
-## Earlier reviewed snapshots
+a hidden novelty veto. It is now built/reviewed in the104-page snapshot, not
+retroactively inserted into the preserved100-page PDF or its frozen receipt.
 
 
 The preceding reviewed working artifact is the

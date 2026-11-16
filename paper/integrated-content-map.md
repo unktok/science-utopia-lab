@@ -5,7 +5,19 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
-The November16 reviewed 98-page manuscript adds the normally closed same-authority original-topic
+Current November16 snapshot: the reviewed104-page manuscript retains all prior
+tracks and adds the complete two-objective/source-information pilot. All8 own
+slots, seven completions/one null, four frozen own selections, full observed
+paths, measured costs and the zero selected-own contrast are included. An adverse
+U path recovers a supplied rule, not a new best-known system. Added related work
+covers FunSearch/AlphaEvolve/ShinkaEvolve. The
+[source/build/visual receipt](integrated-consumer-source-build-v1.json) records
+two matching cached builds/all104 page images and inspection of every layout.
+There are52 figures,49 tables and32 references. The old100-page snapshot stays
+literal and has a [verified82-file cached reconstruction](../research/results/integrated-terminal-rebuild-subset-verification-v1.json).
+Neither result supplies independent inference, clean-machine setup or readiness.
+
+Historical November16 reviewed 98-page manuscript adds the normally closed same-authority original-topic
 pilot (T=-20/-36, U=-15.33/-28.67, equal K200), actual calendar/content/resource
 paths and per-role costs. The same section adds conditional calendar saturation
 and fixed-record content support, with their assumptions rather than a global

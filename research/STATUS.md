@@ -18,7 +18,7 @@ is development-informed, not a blind independent method comparison.
 | Last original slot | Interface/U/g1 completes at U=-28.6667, tying the strong reference. Original15471 exits0; no failed-slot refill |
 | Selection | All4 own-only selected systems tie their strong reference under assigned U/C losses; no reference fallback or withheld-rule recovery |
 | Whole audit/cost/readout | Both original audits/cost exports match. Original79215 stops at its source-local output guard; separate36879 uses the same frozen code with a fresh external output and closes with all3 paired files identical. Failure remains preserved; no science rerun |
-| Figures and paper | [Two matching final seven-file figure exports and visual review](results/native-consumer-source-figure-retention-v1.json) complete. [All11 exact programs, outcomes and fixed paths](data/native-consumer-source-comparison-v1/README.md) are retained. Existing reviewed paper is100 pages, before this study; new chapter/PDF integration remains |
+| Figures and paper | [Two matching final seven-file figure exports and visual review](results/native-consumer-source-figure-retention-v1.json) complete. [All11 exact programs, outcomes and fixed paths](data/native-consumer-source-comparison-v1/README.md) are retained. The [104-page manuscript](../paper/integrated-consumer-source-build-v1.json) now includes all8 own slots, full costs, fixed selection, observed paths and limits; two cached builds/all104 page images match and all layouts are inspected |
 
 Original15471 and46051 have exited0; original79215 exits1 at the export path
 guard. Corrected read-only36879 exits0, not a restarted scientific experiment.
@@ -136,14 +136,19 @@ this control is not inserted into the matched pilot or its author contexts.
 
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history
-retention from program-pool parent sampling. This is unbuilt manuscript source
-and a prospective comparison boundary, not a newly dispatched method study.
-The reviewed100-page PDF and its receipt remain unchanged.
+retention from program-pool parent sampling. This is now included in the reviewed
+104-page manuscript, not a newly dispatched method study. The reviewed100-page
+PDF and its receipt remain unchanged. The expanded bibliographic identity audit
+v4 includes the three added primary sources and does not claim new reproductions.
 
 [100-page reconstruction preparation](results/integrated-terminal-rebuild-subset-preparation-v1.json)
-passes27 source checks and actually stages82 files at clean a6e83485. Actual
-cached build, all-page comparison and fresh visual checks remain pending; no
-TeX/render overlaps inference. The first empty-checkout setup failure is retained.
+passes27 source checks and actually stages82 files at clean a6e83485. Its
+[actual cached reconstruction](results/integrated-terminal-rebuild-subset-verification-v1.json)
+now matches extracted text and all100 page images;28 representative pages are
+freshly inspected and all others match the prior all-page review. Binary PDF
+bytes differ. No TeX/render overlaps inference; the first empty-checkout setup
+failure remains. This proof is for the old100-page snapshot, not the new104-page
+one, independent inference or clean-machine setup.
 
 [Low-disk archive](results/native-consumer-closed-checkout-archive-v1.json):
 after an observation near260MiB free,16 completed clean code copies are

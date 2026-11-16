@@ -1,18 +1,30 @@
 # Local manuscript rebuild subsets
 
-## Latest reviewed artifact:100-page terminal-cost working manuscript
+## Latest reviewed artifact:104-page source-information working manuscript
 
-The [current reviewed receipt](../paper/integrated-terminal-cost-build-v1.json)
+The [current reviewed receipt](../paper/integrated-consumer-source-build-v1.json)
+binds104 pages,52 figures,49 tables and32 references to source2d19cc96. Both
+full-checkout cache-only builds match text/logs and every90dpi page image; all
+layouts and150dpi key details are inspected. This includes all8 closed own
+slots and the added program-search related work. It is not a scientific rerun.
+This snapshot does not yet have a separately verified minimal subset. Do not
+reuse an older subset policy or treat local cached reconstruction as a
+clean-machine build, independent inference, release clearance or readiness.
+
+## Preserved100-page terminal-cost working manuscript
+
+The [preserved reviewed receipt](../paper/integrated-terminal-cost-build-v1.json)
 binds100 pages,51 figures,47 tables and29 references to source382be46d.
 Both full-checkout cached builds match in text/logs/all100 page images and
 their layouts are reviewed. This snapshot includes the closed six-slot search
-and terminal-cost hand controls, not results from the currently live comparison.
-Its PDF hash is checked against the existing file; no new rebuild or layout
-review is performed during current model inference.
+and terminal-cost hand controls, not the later source-information comparison.
 
-A minimal source-only rebuild specific to this100-page snapshot is not yet
-verified. Do not apply an older allowlist to changed TeX or promote an older
-reconstruction receipt into proof for this snapshot. See the
+A minimal source-only rebuild specific to this100-page snapshot is now
+[verified](../research/results/integrated-terminal-rebuild-subset-verification-v1.json).
+It matches default pdftotext and all100 previously reviewed page images.
+Binary PDF bytes differ. Fresh inspection covers28 representative pages on
+contact sheets1/7/9; all other layouts have exact prior-reviewed pixel identity.
+Do not apply its allowlist to changed TeX or promote it into proof for104 pages. See the
 [manuscript overview](../paper/README.md) and [current status](../research/STATUS.md).
 
 The [new explicit82-file policy](../research/publication/paper-rebuild-allowlist-integrated-terminal-cost-v1.json)
@@ -23,7 +35,7 @@ now has [source-only staging preparation](../research/results/integrated-termina
 dependencies. Its main-side ignored output is
 `outputs/integrated-terminal-rebuild-subset-v1-a2/`. The first empty-index
 checkout setup failure is retained, not erased or counted as a scientific run.
-No Tectonic build, text/page comparison or fresh visual check has run yet.
+The actual cached build25441 and render69987 now exit0 after inference ends.
 The later related-work source amendment must not be mixed into these reviewed
 inputs or described as part of this100-page PDF.
 

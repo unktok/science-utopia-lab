@@ -109,8 +109,8 @@ costs and suitable comparisons. A null from one short local search is not
 automatically an important general result; recovering known accounting headroom
 would not by itself establish the stronger answer either.
 
-The integrated related-work source and bibliography now acknowledge these
-building blocks. This is a source-only amendment. The reviewed100-page PDF and
-its receipt remain unchanged and do not contain this amendment; build and
-visual verification wait until real inference exits. The publication-ready
-goal remains active, with R2/R3/R5/R6 open.
+The integrated related-work source and bibliography acknowledge these building
+blocks. The amendment is now built and visually reviewed in the104-page
+manuscript after scientific inference exits. The preserved100-page PDF/receipt
+remain unchanged and do not contain it. The publication-ready goal remains
+active, with R2/R3/R5/R6 open.
