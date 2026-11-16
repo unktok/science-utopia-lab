@@ -1,8 +1,29 @@
 # Current research status
 
 Last scientific snapshot: November16,2026 at14:21UTC/23:21JST.
+Latest software verification:14:32UTC/23:32JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
+
+## Corrected public/native software verification completes
+
+[The pinned adfd6b94 QA completes](results/native-priority-corrected-public-native-qa-v1.json)
+in original46875,exit0:1 test passes in1245.16 shared-host seconds. No failure,
+skip, hidden retry or stopped.json is present. Development27/upstream-fixture2/
+fixed-evaluation18 native worlds traverse the actual SDK/executor/checkpoint
+and paired cold/cost/readout paths. All30 logical rows/108 contrast rows remain.
+HTTP/corpus/orchestration are SCRIPTED, seeds43003/43011 are software-only;
+reserved scientific conditions are unused. This is not outer subprocess-CLI,
+corrected real-model readiness, model comprehension or scientific gain proof.
+The original QA checkout remains clean at its exact pinned source after exit.
+
+All12 actual loss paths are now plotted, visually inspected and integrated
+in manuscript source.26 updated source/retention checks pass. Cached PDF builds
+are being reviewed; the last released/reviewed PDF remains104 pages until a
+new all-page visual check and receipt are actually complete. The first new
+build's line-breaking diagnostics are preserved, corrected prospectively and
+rebuilt at a new output path. No real scientific inference is currently active
+in this project. Next real-model dispatch still requires fresh bound readiness.
 
 ## Original finite study fully audited and retained
 
@@ -191,7 +212,7 @@ real science or a publication-ready differentiated main finding.
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
 | Own outcomes | All24 complete:12 ties/12 worse/0 better than visible reference;3 references complete. Original context-v1 |
-| Current stage | Original writer/supervisor and full paired cold/cost/readout/all8 chain close normally; paired visibility export matches. Corrected public/native SCRIPTED QA active |
+| Current stage | Original full paired scientific closure and separate corrected public/native SCRIPTED QA both complete. New PDF review and corrected real-model readiness remain |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |

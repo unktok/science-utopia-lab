@@ -77,3 +77,20 @@ overlap/clipping is visible. Original exporter manifest retains visual-review
 false at creation; this note records the later manual review without mutating
 that original file. Exact PNG/SVG/data/manifest copies are retained in paper.
 No PDF has been built by these steps.
+
+## Actual prospective QA exit, followed by paper work
+
+Original46875 exits0 after1245.16s:1 pass, no failure/error/skip. The source is
+still clean adfd6b94; no stopped.json exists. Exact verification/JUnit and paired
+native/cost/readout hashes are retained separately. All27 development/2 upstream
+fixture/18 fixed-evaluation worlds complete, using SCRIPTED responses/corpus/
+orchestration and software-only43003/43011. This is not fresh real-model
+readiness, outer subprocess CLI proof or a new scientific optimization result.
+
+The PDF skill marker succeeds once before the first actual Tectonic build.
+Original13700 atccd7bb61 exits0 but reports line-breaking diagnostics; its
+output is preserved. A small prose/ragged-evidence paragraph fix is committed
+asbbfed2cf. Originals45972/64020 both build111-page PDFs with matching clean
+logs and no warnings. These remain intermediate artifacts: later manuscript
+source also includes the just-completed software QA. Final source must be
+committed/rebuilt twice and all pages inspected before new PDF release.

@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Actual corrected public/native software verification](results/native-priority-corrected-public-native-qa-v1.json)
+  completes once at adfd6b94:1 pass/1245.16s. Actual native SDK/executor and paired
+  cold/cost/readouts cover27 development/2 upstream-fixture/18 evaluation worlds;
+  HTTP/corpus/orchestration stay SCRIPTED. Software seeds do not consume reserved
+  scientific conditions. This is not corrected real-model readiness or new
+  scientific evidence. The actual12-path figure is retained/integrated;26 light
+  source/retention checks pass, while new PDF layout review remains in progress.
+
 - [Full24-slot original paired closure](results/native-priority-method-comparison-closed-v1.json)
   now verifies matching cold/cost/readout/all8-author and visibility pairs,
   with every original handle exiting0. Counts/selections are unchanged.

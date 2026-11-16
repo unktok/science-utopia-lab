@@ -14,12 +14,12 @@
 元世界の手法比較は[全24自己候補と3対照を完走し、二重監査・費用・全8設計者集計まで正常閉鎖](research/results/native-priority-method-comparison-closed-v1.json)。
 強い対照に12同点／12悪化／0改善、12固定選択は8同点／4悪化／0改善。
 5回のソース編集と全8案での親と同じ観測入力経路を区別し、優位や有用な発明は未実証とする。
-修正後のnative公開経路の通しsoftware QAを別の固定sourceで実行中だが、SCRIPTED応答であり、
+修正後のnative公開経路の[通しsoftware QAは別の固定sourceで成功](research/results/native-priority-corrected-public-native-qa-v1.json)したが、SCRIPTED応答であり、
 新しい実モデル校正・科学実験とは異なる。現在の原稿sourceには全24行・固定選択・全操作・費用を追記済み。
 重要な修正：[設計者の文書可視性と作業フェーズの不整合](research/components/native-author-workflow-visibility-correction-v1.md)
 を実記録・完全な元世界データで再現し、次回ソース向けに修正した。元実験の旧ソースは変更せず、
 測定損失も消さないが、その旧比較からモデル固有能力や純粋な目的／手法差を因果的に結論しない。
-修正後の実モデル校正・native通し検証・有効性は未実証であり、87件の軽量検証の成功とは区別する。
+修正後の実モデル校正・有効性は未実証であり、87件の軽量検証やSCRIPTED native通し検証とは区別する。
 最新の確認済み統合PDFは[104ページの原稿記録](paper/integrated-consumer-source-build-v1.json)
 と[PDF](output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf)。
 以前の意味ある研究を保持し、自由制度探索、回収費用の対照、元世界の実装sourceを

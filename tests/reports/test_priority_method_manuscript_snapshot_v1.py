@@ -108,6 +108,24 @@ def test_final_paired_reports_are_retained_exactly_without_resealing_or_new_scie
         assert phrase in text
 
 
+def test_corrected_public_native_qa_is_not_corrected_real_model_or_scientific_gain():
+    r = record('research/results/native-priority-corrected-public-native-qa-v1.json')
+    assert r['source_commit'] == 'adfd6b947aa6cb5f151faf144d2e708bdb27dea6'
+    assert r['actual_exit_code'] == 0 and r['passed'] == 1 and r['failures'] == r['errors'] == r['skipped'] == 0
+    assert r['verification']['software_seed_override'] == [43003, 43011]
+    assert r['verification']['evaluation_native_worlds'] == 18
+    assert r['verification']['logical_rows'] == 30 and r['verification']['paired_rows'] == 108
+    assert not r['corrected_real_model_readiness_proven'] and not r['new_scientific_optimization_run']
+    assert not r['scientific_reserved_seeds_consumed'] and r['new_real_model_calls'] == 0
+    directory = ROOT / 'research/data/native-priority-corrected-public-native-qa-v1'
+    for name, expected in [('verification.json', r['verification_file_sha256']), ('junit.xml', r['JUnit_file_sha256'])]:
+        assert hashlib.sha256((directory / name).read_bytes()).hexdigest() == expected
+    text = (ROOT / SECTION).read_text()
+    for phrase in ('1,245.16 shared-host seconds', '27 development', '18 fixed-evaluation native worlds',
+                   'explicitly scripted', 'not\nreal-model readiness'):
+        assert phrase in text
+
+
 def test_recovery_is_not_promoted_to_best_known_or_adaptive_advantage():
     r = record(PREFIX); text = (ROOT / SECTION).read_text()
     free, adaptive, uniform = r['first_15_own_slots'][12:]
