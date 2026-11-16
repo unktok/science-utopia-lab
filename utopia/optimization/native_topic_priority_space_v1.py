@@ -5,9 +5,8 @@ No new simulator, loss, optimizer, candidate repair or measured reference is
 invented. A scientific caller must bind its real native evaluation separately.
 """
 from .native_parameter_space_v1 import NativeParameterSpace, parameter_domain
+from .native_institution_workflow_domain_v6 import SCOPE
 from utopia.system.native_topic_priority_controls import topic_priority_control
-
-SCOPE = 'fixed-native-shortest-duration-topic-priority-comparator-v1'
 
 
 def topic_priority_space(related_control):
