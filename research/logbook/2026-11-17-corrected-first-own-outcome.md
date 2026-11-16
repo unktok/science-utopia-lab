@@ -88,3 +88,38 @@ despite the author's shortest-duration comment. This is not diagnosed as an
 interface failure, silently corrected or vetoed: the submitted policy must be
 measured as it is. Neither source change nor completed component probes proves
 useful invention, and the eventual whole-study paired cold is still required.
+
+At19:03:47UTC the original writer advances to uniform/C/g0. The first actual
+free/U/g0 native outcome is complete at-7.0 versus its measured parent-28.6667:
+worse by21.6667, not an execution null. U7/T10/K200/uncollected0 differ from
+the parent's U28.6667/T36/K200; its auxiliary C13 is a cross-score of an
+U-target proposal, not a C optimization result. All91 scientist requests have
+committed hash-verified responses; their full inputs/literal choices differ
+from the parent's179. [Exact native outcome, record and checkpoint evidence](../results/native-corrected-choice-first-free-outcome-v1.json).
+
+The literal original final checkpoint/spec confirms10 validated three-year
+assignments (five in year1, five in year4); the parent's18 comprise four
+one-year assignments every year plus one two-year assignment in years1/3.
+Code is therefore not merely edited but operative on native projects. This
+does not isolate duration from topic/explanatory text, explain the full loss
+difference causally or establish useful invention. The comparison/comment
+inconsistency remains the author's submitted program, not a host-side repair.
+
+The exact observation is stored in one completed original campaign record;
+pendingNone and report_status blackbox-observed. An exact external state copy
+keeps its1,492,330 bytes/hash before the live file can extend in later generations.
+Do not invent a separately sealed observation file or claim a next-generation
+request is already visible. Best own is-7, best known remains the measured
+reference-28.6667. Across the three current U initial slots the prefix is
+3complete/3worse/0better/0ties/0nulls, including two matched numeric initial
+dispatches. It is not three independent populations or a final method ranking.
+No source/settings/candidate/outcome is rewritten or slot refilled. The full
+four-step study and paired closure/selection evaluation remain outstanding.
+
+Read-only documentary verification matches the exact retained original record,
+assigned/cross losses, all91 response hashes, both final checkpoint/specs and
+the next actual numeric ask. Five current publication-table transcription/link
+checks pass in1.36s, with no new model or generated-code execution. These are
+light evidence checks, not the pending full-study cold or publication approval.
+The paper README now distinguishes this ongoing research from the unchanged
+reviewed111-page PDF; no heavy build/render runs during inference.

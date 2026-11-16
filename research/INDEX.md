@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First corrected free native loss and project effects](results/native-corrected-choice-first-free-outcome-v1.json):
+  valid L_U-7 versus parent-28.6667, worse by21.6667. U7/T10/K200 and91 complete
+  scientist requests differ from the parent's U28.6667/T36/K200/179 requests.
+  Ten actual three-year project assignments replace18 mixed one/two-year
+  assignments. The adverse original record is retained, with an exact external
+  state copy; no repair/refill or useful-invention claim. Next uniform/C/g0 starts.
+
 - [First corrected free submission and actual native execution](results/native-corrected-choice-first-free-submission-v1.json):
   explicit finish after14 actions; the returned definition matches the actual
   pending campaign and one generated candidate starts scientist requests.

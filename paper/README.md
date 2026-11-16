@@ -1,5 +1,19 @@
 # Objective-conditioned institution paper
 
+## Post-artifact research status: November17,2026
+
+The reviewed111-page PDF below remains the same artifact; it does not contain
+the ongoing corrected four-step study. That study now has three complete
+initial U outcomes: two matched numeric programs each worsen the strong
+reference by1, and the first real free-code proposal worsens U loss by21.6667
+(-7 versus-28.6667), with actual changed native project assignments and
+scientist paths. The adverse result is retained without repairing the program.
+[Exact first free outcome and scope](../research/results/native-corrected-choice-first-free-outcome-v1.json).
+The new study's full24-slot paths, final paired audits, selection-fixed unused
+evaluation and consequential interpretation remain open. No method ranking or
+useful invention follows from this partial initial history. Source/notes are
+updated without relabeling an old PDF or starting heavy builds during inference.
+
 ## Current111-page revised working paper
 
 The [new111-page integrated draft](../output/pdf/science-utopia-lab-integrated-priority-method-working-paper.pdf)

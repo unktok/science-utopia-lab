@@ -1,6 +1,26 @@
 # Current research status
 
-## Latest verified state: November16,2026 at18:53UTC / November17 03:53JST
+## Latest verified state: November16,2026 at19:05UTC / November17 04:05JST
+
+[First corrected free/U/g0 loss and actual native effects](results/native-corrected-choice-first-free-outcome-v1.json).
+The submitted program completes at L_U-7.0 versus its measured parent's
+-28.6667, worse by21.6667. It has U7/T10/collected200/uncollected0, compared
+with parent U28.6667/T36/collected200. All91 actual scientist responses complete;
+the observed input/choice sequences differ from the parent's179. Final original
+checkpoints show10 three-year project assignments versus the parent's18 mixed
+one/two-year assignments. This is operative code, not beneficial invention or
+a causal isolation of duration from topic/explanatory text.
+
+The adverse observation is retained in the original completed campaign record;
+pendingNone,record count1. An exact1,492,330-byte external state copy preserves
+this prefix before later generations extend the live state. Best own is-7,
+best known remains-28.6667. No next feedback-bearing request is claimed yet.
+The full own prefix is3 complete/3 worse/0 better/0 ties/0 nulls, not a method
+ranking or independent replication. Original42803 advances to uniform/C/g0
+at19:03:47UTC without repair/refill. Whole-study closure, both fixed endpoints,
+paired analyses, independent evidence and publication readiness remain open.
+
+## Earlier first free submission:18:53UTC / 03:53JST
 
 [First corrected free/U/g0 submission reaches native execution](results/native-corrected-choice-first-free-submission-v1.json).
 The original session finishes explicitly after14 actions (plan1/read7/write5/
