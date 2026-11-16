@@ -47,8 +47,11 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
             or external.is_relative_to(tmp_path.resolve())):
         raise ValueError('fresh external output outside source/test raw required before any native QA')
     external.mkdir(parents=True)
+    original_plan = Path(os.environ['SCIENCE_UTOPIA_WORKFLOW_PLAN']).resolve()
     write_json_atomic(tmp_path / 'external-locations.json', {'external': str(external),
         'classification': 'SCRIPTED-software-only-not-scientific-evaluation',
+        'original_workflow_plan': str(original_plan),
+        'original_workflow_plan_file_sha256': file_sha256(original_plan) if original_plan.is_file() else None,
         'software_seeds': SOFTWARE_SEEDS, 'scientific_reserved_seeds_consumed': False,
         'automatic_cleanup': False}, sort_keys=True)
     development = tmp_path / 'development'; development.mkdir()
@@ -133,6 +136,7 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
         with pytest.raises(ValueError, match='no redispatch'): driver.run(target)
         write_json_atomic(external / 'verification.json', {'schema': 'scienceutopia.native-priority-fixed-public-software.v1',
             'source_commit': p['source_commit'], 'classification': 'SCRIPTED-HTTP-corpus-history-supervision-and-orchestration',
+            'original_workflow_plan': str(original_plan), 'original_workflow_plan_file_sha256': file_sha256(original_plan),
             'software_seed_override': SOFTWARE_SEEDS, 'scientific_reserved_seeds_consumed': False,
             'development_native_worlds': 27, 'upstream_native_worlds': 2, 'evaluation_native_worlds': len(p['jobs']),
             'evaluation_scientist_SDK_POSTs': len(new_requests), 'logical_policy_labels': 15, 'logical_rows': 30,
