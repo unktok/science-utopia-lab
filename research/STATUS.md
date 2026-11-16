@@ -1,6 +1,23 @@
 # Current research status
 
-## Latest verified state: November16,2026 at19:22UTC / November17 04:22JST
+## Latest verified state: November16,2026 at19:37UTC / November17 04:37JST
+
+[Both numeric C initial outcomes complete](logbook/2026-11-17-corrected-first-own-outcome.md#matched-c-initial-programs-complete).
+The same actual initial program gives L_C-9.6667/U25.6667/T36/collected160/
+uncollected40 in both physical dispatches, each worse by3 versus its reference.
+All183 input/choice paths match; provider bodies differ and all body hashes
+verify. Each exact own observation is registered once in its actual optimizer.
+These are matched initial draws, not independent populations or method ranking.
+
+Original42803 advances to free/C/g0 at19:35:58UTC. Fresh request2a1213ee has
+3 completed control files at19:37:34UTC, no final certificate/production step
+yet. PendingNone in calibration is not a stopped writer. The full own prefix
+is5complete/5worse/0better/0ties/0nulls, without an actual feedback-conditioned
+next-generation request yet. Whole24-slot closure, all8 free outcomes, paired
+analysis/fixed evaluation and publication readiness remain open. No active
+source/settings/candidate/outcome is changed or refilled.
+
+## Earlier first C own outcome:19:22UTC / 04:22JST
 
 [First corrected C-target own outcome is complete](results/native-corrected-choice-first-cost-outcome-v1.json).
 Uniform/C/g0 has L_C-9.6667 versus its measured reference-12.6667, worse by3:

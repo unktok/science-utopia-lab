@@ -184,3 +184,45 @@ warm-start policy prospectively, or use an identical frozen candidate bank
 for cross-scoring. That would identify a different contrast; no active method,
 source, reference, loss or draw is changed here. This does not establish a
 top-conference finding, and the whole current package comparison continues.
+
+## Matched C initial programs complete
+
+At19:35:58.891223UTC the original writer advances to free-code-graph/C/g0.
+At19:37:34UTC both numeric C initial observations are complete at
+L_C-9.666666666666668, worse by3 than their measured-12.666666666666668
+reference. Both have U25.666666666666668/T36/collected160/uncollected40.
+The same literal candidate `5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4`
+is dispatched twice as declared. Each original post-tell contains its exact
+own observation once, pending[],proposal_index1, with one primed reference and
+one own. Different initial_random settings matter to later proposals, not an
+already completed initial-sample method ranking or independent populations.
+
+Adaptive C observation file hash
+`b325568af49a676d5c004390d181c2c3713b3d5b8610da5f21683cef91a74641`,
+sealed content `5c6b9fb82905a32456468df1819b9be8095f17af9cc791b53645c2482c4a1f11`.
+Its original post-tell file hash
+`4feb5f8d701cbccdc3bcf7f26eceb82ea5f01dd819a8bb8d350b20b7f4089a54`,
+sealed content `0ad256c08b81c052de67d2742ef858d2c8b148086601a3502c9455be60d0c484`.
+These are the original immutable generation0 files, not summaries substituted
+for the pending full-study paired cold.
+
+Both183-response paths have full request digest
+`a7217109b9cdd0681101201d35befbd8d361a66a435476006a60857ef374c397`
+and literal-choice digest
+`6b8755f8274645e434695458b128c237d946255fa563e239836f1155b0e6803c`.
+All original response body hashes verify; both have0 uncommitted inputs.
+Provider body sequences differ: adaptive digest
+`b7f631a95f9ecf6a5c7fcb4c664295f4b57af831b8620f3c5e2e29ccd1a83a8d`
+versus uniform `a9f501cb941e117627e7623e7bb034594ec51620f0029b463f07e45b67d8fbf0`.
+This is matched observed input/choice consistency, not universal equivalence or
+three/five independent discoveries. Across all own slots the dated prefix is
+5complete/5worse/0better/0ties/0nulls; neither objective has a complete four-step
+history or frozen final selection yet.
+
+The new actual C author request is
+`2a1213ee71f35f1f56a1e5c92cf18d5cb8684d184cd97fcaa96bdd259bc32b56`.
+Its fresh readiness has3 complete control files at this snapshot, no certificate
+yet,0 production steps and campaign pendingNone. The designer load and actual
+wire intents/HTTP receipts are present, and original42803/writer30048/
+supervisor29982 remain live. This is not a reused U certificate, free C submission
+or native benefit. No active source/request/candidate is edited or refilled.

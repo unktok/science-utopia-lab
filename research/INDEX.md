@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Both corrected numeric C initial outcomes and free-C readiness](logbook/2026-11-17-corrected-first-own-outcome.md#matched-c-initial-programs-complete):
+  both matched initial programs complete at C-9.6667, worse by3 against their
+  reference; all183 input/choice paths match and both exact tells are retained.
+  Five own slots are measured, all worse, not independent method populations.
+  Actual free/C/g0 begins fresh request-bound calibration, not a completed
+  certificate/free submission/native benefit or a changed active experiment.
+
 - [First corrected C-target own loss and tell](results/native-corrected-choice-first-cost-outcome-v1.json):
   uniform/C/g0 is complete at-9.6667, worse by3 versus reference-12.6667,
   with U25.6667/T36/K160/uncollected40 and183 complete scientist responses.
