@@ -80,11 +80,17 @@
 
 現在は[ランダム優先度探索・適応的優先度探索・自由コード／構成探索の比較](research/protocols/campaigns/native-priority-method-comparison-v1.md)
 を元世界で稼働中。U/Cそれぞれに各手法2探索履歴×2提案、自己候補24枠と対照3件である。
-初期設計者校正28項目は通過し、[最初の対照の実測](research/results/native-priority-method-first-reference-prefix-v1.json)
-が完了した。自動設計候補の改善結果・全体監査・実結果の可視化はまだ未完了。
+初期設計者校正28項目は通過し、[最初の二つの対照の実測](research/results/native-priority-method-visible-reference-prefix-v1.json)
+が完了した。同じ研究者入力・返信の下で、既知の手ルールが回収費用を200→160にし、
+C損失を4改善する対照であり、自動発明ではない。自動設計候補の改善結果・全体監査・
+実結果の可視化はまだ未完了。
 [全候補・探索経路の集計](research/results/native-priority-method-readout-preparation-v1.json)と、
 [選択を固定した未使用条件への移送設計](research/protocols/campaigns/native-priority-selection-transfer-draft-v1.md)
 を準備している。後者は純粋な政策一覧／ジョブ案で、未使用性の証明や実行可能な実験計画ではない。
+[評価実行経路の実装](research/results/native-priority-fixed-evaluation-preparation-v1.json)も追加し、
+元の選択との照合、全パスのseed確認、再実行防止、v6権限を保つ監査・費用集計を整えた。
+ただし元世界・Dockerを含む通し検証と全ラベルの評価結果集計は未完了であり、
+実際の未使用性確認や新しい評価実験の起動はまだしていない。
 実行位置は[STATUS](research/STATUS.md)を正本とする。
 重要で差別化された主張、十分な独立証拠、選択固定の未使用評価、焦点を持つ主稿と最終投稿判断が残る。
 

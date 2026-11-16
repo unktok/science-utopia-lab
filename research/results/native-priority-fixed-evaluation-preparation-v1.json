@@ -1,0 +1,98 @@
+{
+  "schema": "scienceutopia.native-priority-fixed-evaluation-preparation.v1",
+  "qa": [
+    {
+      "implementation_source_commit": "67dc8b784260ea3c52d632aa11fbad8d4fc905b9",
+      "original_tool_handle": 68005,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-evaluation-preparation-v1/priority-strict-seeds-v1-a1-junit.xml",
+      "junit_sha256": "ccf06d3be16c5cd131383c3fb9ec105aa9248a69bd9e60255b9ec34a06200a58",
+      "suite": {
+        "tests": "26",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "8.090"
+      },
+      "scope": "Light metadata/pure native graph validation/SCRIPTED process-boundary tests; no native simulation, Docker, model, original-source physical proof or rendering"
+    },
+    {
+      "implementation_source_commit": "6f67b880eeea5e7016add75049751710431ee07d",
+      "original_tool_handle": 45643,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-evaluation-preparation-v1/priority-fixed-evaluation-boundary-v1-a1-junit.xml",
+      "junit_sha256": "8dcd53e755f3628add80717fb3c41416fc2a55a27448cdcc9c1bf7ede997d7c3",
+      "suite": {
+        "tests": "25",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "37.746"
+      },
+      "scope": "Light metadata/pure native graph validation/SCRIPTED process-boundary tests; no native simulation, Docker, model, original-source physical proof or rendering"
+    },
+    {
+      "implementation_source_commit": "6f67b880eeea5e7016add75049751710431ee07d",
+      "original_tool_handle": 5344,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-evaluation-preparation-v1/priority-fixed-evaluation-readers-v1-a1-junit.xml",
+      "junit_sha256": "4a6288c006d1e49f78ec41f90101f48ef92ac68636886c1e54db10367bf1d27b",
+      "suite": {
+        "tests": "84",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "1.759"
+      },
+      "scope": "Light metadata/pure native graph validation/SCRIPTED process-boundary tests; no native simulation, Docker, model, original-source physical proof or rendering"
+    },
+    {
+      "implementation_source_commit": "ab250b6aa93eb27fe5c8becca8a9ed29baf0207b",
+      "original_tool_handle": 25716,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-evaluation-preparation-v1/priority-fixed-evaluation-boundary-v1-a2-junit.xml",
+      "junit_sha256": "1afd9c0c71e9ec6b33d06f38a77bc514fcaa6bc013e7c2f3dd22f5c2a2568aee",
+      "suite": {
+        "tests": "27",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "43.679"
+      },
+      "scope": "Light metadata/pure native graph validation/SCRIPTED process-boundary tests; no native simulation, Docker, model, original-source physical proof or rendering"
+    }
+  ],
+  "implemented": [
+    "prospective strict v4 seed inventories with no directory-name exclusion; missing roots/symlink coverage remain errors",
+    "exact original source/raw/paired audit-cost-readout binding and complete original selection reconstruction",
+    "finite public preparation with retained rejected inventories",
+    "pinned full evaluation plan:15 labels,2 candidate conditions,at most30 literal-policy worlds,unchanged native v6 authority and losses",
+    "shared exclusive-lock/no-redispatch/no-refill execution path, scientist900 transport, resource measurement and v6 interval",
+    "new opt-in shared original-source cold/resource/transport branch and appended cost schema"
+  ],
+  "candidate_seeds": [
+    83003,
+    83011
+  ],
+  "real_unused_seed_inventory_performed": false,
+  "new_real_evaluation_dispatched": false,
+  "new_public_native_Docker_cold_proof_performed": false,
+  "all_label_evaluation_readout_implemented": false,
+  "initial_prospective_draft": "research/protocols/campaigns/native-priority-selection-transfer-draft-v1.md",
+  "implementation_protocol": "research/protocols/campaigns/native-priority-fixed-evaluation-v1.md",
+  "actual_scientific_prefix": "research/results/native-priority-method-visible-reference-prefix-v1.json",
+  "original_scientific_source_unchanged": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "original_closure_reader_unchanged": "4b43a9a37b1a859772182a244dc419dcec86893e",
+  "original_readout_reader_unchanged": "ee030eaa551365e1789a33998cf81ea095654250",
+  "remaining_before_evaluation": [
+    "normal original study paired audit/cost/readout closure",
+    "complete strict explicit-root/archive coverage and exact nonproduction exception review",
+    "full public preparation/run/native/Docker/cold/cost/readout test in a clean pinned source after real inference is idle",
+    "new evaluation all-label cross-score/effect/null/cost readout",
+    "research-value decision, pinned actual plan and separate real dispatch with pre-dispatch unused recheck"
+  ],
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false,
+  "content_sha256": "e0cd218a35f9df14e6de82ae8db72c1e4d5b2fe38143f15a87037d8bf215d40e"
+}

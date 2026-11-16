@@ -11,7 +11,9 @@ This page is navigation, not a chronological experiment transcript.
   fresh strong references in the original persistent researcher world. The known
   terminal rule is visible, not an unseen discovery for us. Initial real readiness
   now passes28 controls; the [first reference completes](results/native-priority-method-first-reference-prefix-v1.json)
-  at U28.6667/K200 and the second is running, not a completed own-method
+  at U28.6667/K200; [the second now completes](results/native-priority-method-visible-reference-prefix-v1.json)
+  with equal full scientist inputs/choices and known K160/C gain4. The third
+  reference is running, not a completed own-method
   comparison. [All-slot readout preparation](results/native-priority-method-readout-preparation-v1.json)
   adds compound identities, all12 paths/frozen selections and an actual separate
   paired-export waiter, with56 light tests. The renderer is prepared but not yet
@@ -20,6 +22,10 @@ This page is navigation, not a chronological experiment transcript.
   retains12 own labels/3 controls with33 light checks; its
   [prospective transfer draft](protocols/campaigns/native-priority-selection-transfer-draft-v1.md)
   is not unused-seed proof, a full execution-ready evaluation or a new dispatch.
+  [Actual evaluation preparation code](results/native-priority-fixed-evaluation-preparation-v1.json)
+  adds strict inventories/public prepare/run/v6 cold/cost adapters with27 latest
+  light checks and84 reader regressions. Full native/Docker/cold/readout proof
+  and real unused-condition evaluation are still open.
   [Actual27-world SOFTWARE proof](results/native-priority-method-public-software-retention-v1.json)
   closes with matching paired cold/cost records; SCRIPTED success is not a real
   gain. The separate actual read-only continuation waits for writer and supervisor

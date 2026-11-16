@@ -2,6 +2,30 @@
 
 ## New finite method comparison: real readiness passed; references running
 
+At05:17:42UTC/14:17JST the [second common visible reference completes](results/native-priority-method-visible-reference-prefix-v1.json).
+Both controls have36 accepted decisions/U28.6667 and179 identical full scientist
+inputs/literal reply choices; provider envelopes differ. The known terminal
+rule changes collected K200→160/unpaid0→40, with C=-12.6667 versus-8.6667.
+This is known accounting headroom, not autonomous invention or less requested
+work. Under the declared first-min parent rule U will start from priority-zero
+and C from terminal-priority-zero once the bank closes; an inherited parent
+difference is not a generated-edit effect. No actual author request/own loss is
+claimed in this prefix; the original run advances to literal-related.
+
+[Fixed-evaluation implementation preparation](results/native-priority-fixed-evaluation-preparation-v1.json)
+now adds an actual public prepare/run route, exact original paired evidence
+binding, strict all-path seed inventory, v6/resource/transport-aware cold branch
+and cost schema under a separate [implementation protocol](protocols/campaigns/native-priority-fixed-evaluation-v1.md).
+Latest27 light boundary/graph checks and84 cost/reader regressions pass. These
+do not run native worlds/Docker or prove original-source physical closure.
+The actual evaluation all-label readout and public full-path proof remain
+unfinished; no real unused inventory, evaluation plan preparation or extra
+scientific dispatch occurs while the development experiment is running.
+Default historical inventory behavior and all original outcomes stay unchanged;
+the future route explicitly requires v4 strict coverage, not filename-based
+software exclusions. Missing roots/symlink gaps stop that proof, not score a
+candidate. The current104-page manuscript is not rebuilt during inference.
+
 At04:59:27UTC/13:59JST the [first fresh reference completes](results/native-priority-method-first-reference-prefix-v1.json):
 priority-zero has36 accepted decisions, U28.6667, collected K200/unpaid0,
 L_U=-28.6667 and L_C=-8.6667. These cross-scores are independently recomputed

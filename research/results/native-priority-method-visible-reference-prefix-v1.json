@@ -1,0 +1,178 @@
+{
+  "schema": "scienceutopia.native-priority-method-visible-reference-prefix.v1",
+  "observed_progress_utc": "2026-11-16T05:17:42.107162+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "analysis_implementation_source_commit": "ab250b6a",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "references": [
+    {
+      "label": "priority-zero",
+      "status": "complete",
+      "observation_content_sha256": "107ffab82ec34cd780356f628ba8cf16927451c990a18cc1026c35689202e5e1",
+      "program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 0.0
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 200.0
+        },
+        "native.common_content_score_sum": {
+          "status": "measured",
+          "value": 136.66666666666666
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 30.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 20
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 0.0
+        }
+      },
+      "observed_scientist_path": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "cca4ba583662d76bcf678c74d6e6bd223dc85633a88506ca2ea42331dd427103"
+      }
+    },
+    {
+      "label": "terminal-priority-zero",
+      "status": "complete",
+      "observation_content_sha256": "8f60906ee7ab781c179d3c3f6f801d3f5ba93192e8be704fd989b9ebcd16ee16",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 0.0
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 36
+        },
+        "native.collected_activity_resource_cost": {
+          "status": "measured",
+          "value": 160.0
+        },
+        "native.common_content_score_sum": {
+          "status": "measured",
+          "value": 136.66666666666666
+        },
+        "native.common_content_utility_sum": {
+          "status": "measured",
+          "value": 28.666666666666668
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 1
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 70.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 20
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.uncollected_activity_resource_cost": {
+          "status": "measured",
+          "value": 40.0
+        }
+      },
+      "observed_scientist_path": {
+        "wire_requests": 179,
+        "completed_responses": 179,
+        "wire_inputs_without_committed_reply": 0,
+        "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+        "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+        "ordered_full_provider_body_hashes_sha256": "4db3daac1ea8a8c7a885d50cb8ddd77c5b3d0a6e59f67499044ad63501954963"
+      }
+    }
+  ],
+  "observed_input_classes": [
+    {
+      "seed": 61001,
+      "full_request_sequence_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "physical_ids": [
+        "priority-zero",
+        "terminal-priority-zero"
+      ],
+      "all_literal_response_choices_equal": true,
+      "all_full_provider_bodies_equal": false
+    }
+  ],
+  "bound_file_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/observation.json": "a24e4a0eb6bafdde1f24d2be09684d8b42140ef8b70a8f874fcb12504770e41f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/cross-scores.json": "c95de24f6525b7ef3ed3c28b75dd41236816f668a7077819260e01b7ae7174b5",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/worlds/workflow-reference-priority-zero-s61001/replies/responses.sqlite": "2d9838b9702829ddba3bd88df9b28ff06ae34b3cde77dfce7a470f8b270c90db",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/observation.json": "422d8364c91454a183ee0e90719407467b07e8009d8d92d7a7671a2e265cfa3f",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/cross-scores.json": "e8d5709d48d0a0f77bf4e9c54814574ac1a97b3dbcf05ee18b70e2724586c020",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/replies/responses.sqlite": "3d5464998a5092a03fbe06b9b23daf74979e515a1e01f96f79f917bffe819c50"
+  },
+  "next_reference": "literal-related",
+  "own_slots_completed_at_snapshot": 0,
+  "whole_cold_audit_complete": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "interpretation": "Fresh common visible references, not autonomous invention. Same179 observed full scientist inputs/literal choices; collected K200 to160/unpaid0 to40 gives C gain4 with U/T unchanged. Known accounting headroom, not reduced requested work or better science. Under the declared first-minimum parent rule these scores imply different U/C initial parents, not a generated-edit effect; actual author requests remain unobserved in this prefix.",
+  "content_sha256": "24dc996c73f2dee704ab7ba730866186ee509192ededde7a66ef41e2ea13d002"
+}
