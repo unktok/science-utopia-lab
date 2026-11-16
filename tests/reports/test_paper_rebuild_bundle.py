@@ -360,3 +360,38 @@ def test_terminal_snapshot_rejects_changed_source_illustration_or_pdf_without_re
         bundle.stage(root, policy, tmp_path / 'changed-terminal-subset', source_commit='SCRIPTED')
     assert not (tmp_path / 'changed-terminal-subset').exists()
     assert (root / policy['receipt']).read_bytes() == receipt
+
+
+def consumer_snapshot(tmp_path):
+    policy = json.loads((bundle.ROOT /
+        'research/publication/paper-rebuild-allowlist-integrated-consumer-source-v1.json').read_text())
+    root = historical_integrated_root(tmp_path,
+        source='b760c6242e87b94aad5c6c28c1ebaab41957f997', explicit_policy=policy)
+    return root, policy
+
+
+def test_consumer_policy_stages_reviewed_104_page_inputs_not_later_priority_or_synthesis(tmp_path):
+    root, policy = consumer_snapshot(tmp_path)
+    result = bundle.stage(root, policy, tmp_path / 'consumer-subset', source_commit='SCRIPTED-staging-source')
+    assert len(result['files']) == 84 and len(result['literal_tex_dependencies']) == 81
+    assert result['original_build_source_commit'] == '2d19cc966790ff0c2402b6889485ba58f32a49cd'
+    assert result['original_build_receipt_schema'] == 'scienceutopia.integrated-consumer-source-manuscript.v1'
+    assert {'paper/integrated/native-consumer-source.tex',
+        'paper/figures/native-consumer-source-loss-paths-v1.png'} <= set(result['literal_tex_dependencies'])
+    assert 'paper/integrated/native-priority-method-snapshot.tex' not in result['files']
+    assert 'output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf' in result['files']
+    assert 'output/pdf/science-utopia-lab-integrated-terminal-cost-working-paper.pdf' not in result['files']
+    assert not result['raw_or_model_data_included'] and not result['published_or_uploaded']
+    assert not result['numerical_reproduction_or_clean_machine_build_claimed']
+
+
+@pytest.mark.parametrize('name', ['paper/integrated/native-consumer-source.tex',
+    'paper/figures/native-consumer-source-loss-paths-v1.png',
+    'output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf'])
+def test_consumer_snapshot_rejects_changed_reviewed_section_figure_and_pdf(tmp_path, name):
+    root, policy = consumer_snapshot(tmp_path); receipt = (root / policy['receipt']).read_bytes()
+    path = root / name; path.write_bytes(path.read_bytes() + b'\nSCRIPTED later unreviewed content')
+    destination = tmp_path / 'changed-consumer-subset'
+    with pytest.raises(ValueError, match='changed from reviewed receipt'):
+        bundle.stage(root, policy, destination, source_commit='SCRIPTED')
+    assert not destination.exists() and (root / policy['receipt']).read_bytes() == receipt
