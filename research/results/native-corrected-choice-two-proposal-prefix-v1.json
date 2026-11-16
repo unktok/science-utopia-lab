@@ -53,6 +53,13 @@
   },
   "new_model_calls_by_this_analysis": 0, "new_native_worlds_by_this_analysis": 0,
   "new_generated_code_executions_by_this_analysis": 0,
+  "post_commit_software_checks": {
+    "source_commit": "646fc80f2cea341fd780dd910dce60759b1c18a0",
+    "tests": 61, "failures": 0, "seconds": 11.27,
+    "junit": "research/data/corrected-two-proposal-prefix-v1/pytest.xml",
+    "junit_file_sha256": "05b57029490fba8b93cfda60904281116bdca19edbb9a38cb15b6c8292389d21",
+    "scope": "Light documentary-accounting/publication-pointer/content/all-slot/figure-data checks, overlapping prior59/45/15 runs. Not independent scientific samples, actual whole-study export, cold closure or a PDF build."
+  },
   "final_selection_frozen": false, "full_study_cold_audit_complete": false,
   "candidate_repaired_or_refilled": false, "loss_changed_or_imputed": false, "publication_ready": false,
   "scope": "All six histories have their first two terminal own outcomes, not the full four-step study. Original dispatch is charged before completion:12 terminal slots plus one live third proposal means13 started slots. Direct documentary projection, not full original source-bound cold/readout closure, a final selection, independent method ranking or a finished figure."

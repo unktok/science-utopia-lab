@@ -605,3 +605,14 @@ unfrozen. No active code/model/source/settings/objective or candidate changes,
 and no repair/refill/restart occurs. Original paired audit/cost/all-slot/all8
 author/visibility/native-effect readers continue to wait for the unchanged
 full24-slot original closure. Publication readiness remains open.
+
+Direct checks match every first12 cell/status/loss/canonical observation,
+all13 sealed original charged slot records, visible reference minima and
+478 signed accepted occurrences. A temporary comparison initially omitted the
+zero-valued better class in its accumulator; explicit initialization preserves
+the actual0better/3ties/8worse counts and passes without changing data. This is
+an inspection-script error, not a scientific failure or a changed objective.
+After committing646fc80f,61 overlapping light checks pass in11.27seconds;
+the prefix receipt retains the exact JUnit/source/hash. Full original cold/
+readout closure and final significance/independent-evidence obligations remain
+open, not certified by these documentary/software checks.
