@@ -1,0 +1,111 @@
+{
+  "schema": "scienceutopia.native-priority-method-readout-preparation.v1",
+  "qa": [
+    {
+      "source_commit": "11bbe2b0c9c5b17bf832606b9c918c5947f00157",
+      "original_tool_handle": 56093,
+      "observed_process_exit_code": null,
+      "junit_file": "research/data/native-priority-method-readout-v1/priority-method-readout-v1-a3-junit.xml",
+      "junit_sha256": "9a59fe887423aed5d3fb33a5411fa83910441b9be0e313d37feb6ca0a6ba2d97",
+      "suite": {
+        "tests": "15",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "2.869"
+      },
+      "scope": "light SCRIPTED metadata and pure projection tests; no inference, worlds or rendering"
+    },
+    {
+      "source_commit": "ee030eaa551365e1789a33998cf81ea095654250",
+      "original_tool_handle": 59275,
+      "observed_process_exit_code": 0,
+      "junit_file": "research/data/native-priority-method-readout-v1/priority-method-readout-finish-v1-a1-junit.xml",
+      "junit_sha256": "91e2af339343beeeff7c8bc43e92f16c8f45b715058745d70955c8c1a557ecb3",
+      "suite": {
+        "tests": "56",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "2.387"
+      },
+      "scope": "light SCRIPTED metadata and pure projection tests; no inference, worlds or rendering"
+    }
+  ],
+  "saved_SCRIPTED_projection": {
+    "reader_source_commit": "45992ae0fa9b9eb23f8dd3db12ae63c1a6d9eb6e",
+    "original_tool_handle": 69731,
+    "exit_code": 0,
+    "outputs": [
+      "/Users/shiro/unktok/dev/science-utopia-lab/outputs/priority-method-SCRIPTED-readout-v1-a3",
+      "/Users/shiro/unktok/dev/science-utopia-lab/outputs/priority-method-SCRIPTED-readout-v1-a4"
+    ],
+    "matching_files": {
+      "manifest.json": "0e629446e4e6b24b35df1d4bc122ae7cc3389f02f70ad813cccc867436876820",
+      "report.json": "9cc448055a218b2ebab940df355f257b1ac03f4eaa8fa2809c43bbe68a6afe3a",
+      "slots.csv": "4b09258ccdfef7e2e0d475e349d04a4e14543c2e5197de79bf747736c8fb802b"
+    },
+    "coverage": {
+      "complete_own_slots": 24,
+      "declared_own_slots": 24,
+      "execution_or_measurement_nulls": 0,
+      "generation_nulls": 0,
+      "physical_worlds": 27
+    },
+    "observed_input_classes": 7,
+    "scope": "Two deterministic saved-SCRIPTED serializations using explicit copies of each retained prior audit/cost. Not new independent cold audits, real science or rendering. Prior public proof had paired matching originals; its temporary audit/cost pair no longer exists.",
+    "preserved_bad_invocation": {
+      "original_tool_handle": 57542,
+      "exit_code": 1,
+      "reason": "same-file audit/cost pairs correctly rejected before creating output; caller corrected to explicit copies only for saved-data serialization test; no science rerun"
+    }
+  },
+  "actual_readout_waiter": {
+    "source_commit": "ee030eaa551365e1789a33998cf81ea095654250",
+    "original_tool_handle": 30782,
+    "started_file": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-readouts-v1-a1/started.json",
+    "started_sha256": "570197c44cfaaf6eaa1da4b6d9ce2eb03c496d63e7f79b1462bc586239490481",
+    "started": {
+      "analysis_source_commit": "ee030eaa551365e1789a33998cf81ea095654250",
+      "content_sha256": "d6c2e57e117b00f0db1971fa0b89dc45c45d7ecf7f26dd0f82d60b615984606e",
+      "maximum_wait_seconds": 86400,
+      "new_inference_allowed": false,
+      "plan_file_sha256": "91a63d5753f0f30b5470bdd725bd42365a610cb8f61a1a3002e3175b68d1925b",
+      "preceding_analysis": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1",
+      "report_extra_arguments": [
+        "--frozen-source",
+        "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1",
+        "--cost-one",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1/costs-1.json",
+        "--cost-two",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1/costs-2.json"
+      ],
+      "report_module": "scripts.reports.native_priority_method_readout_v1",
+      "retry_failed_stages": false,
+      "schema": "scienceutopia.native-priority-method-comparison.v1.readout.finish",
+      "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+      "started_utc": "2026-11-16T04:55:14.641075+00:00"
+    },
+    "stage": "waiting for original paired cold audit/cost closure",
+    "new_model_calls": 0,
+    "new_native_worlds": 0
+  },
+  "real_initial_readiness_prefix": {
+    "certificate_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/initial-readiness/author/calibration-a9f923b14d125903294eb883bb944e58ba9d275f1d426fdb21318b092649ebe3/editor-readiness/calibration/certificate.json",
+    "file_sha256": "3d5d4d6d212406000dd506b6fd8b038f9ec1f6f53b4234c32b7465774e43f8da",
+    "content_sha256": "a1d25d56fb501ccc87b6ffe03cd7e3f398b2813770453cfd5eb580eac11dec3f",
+    "all_controls_passed": true,
+    "control_records": 28,
+    "scope": "Real initial readiness only; no own candidate loss observed at 2026-11-16T04:55:14Z. Original scientist path has179 recorded response rows and year4 checkpoint, not yet an audited reference outcome."
+  },
+  "figures": {
+    "renderer_implemented": true,
+    "rendering_performed": false,
+    "visual_review_complete": false,
+    "reason": "No independent heavy rendering while real inference is active"
+  },
+  "scientific_source_unchanged": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "closure_reader_unchanged": "4b43a9a37b1a859772182a244dc419dcec86893e",
+  "publication_ready": false,
+  "content_sha256": "c24b6591651b834fb4fc68f1c9300b620c800bd4e1764d6a8fd1c3149c881d32"
+}

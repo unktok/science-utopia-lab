@@ -1,6 +1,31 @@
 # Current research status
 
-## New finite method comparison: real-source dispatch, initial readiness
+## New finite method comparison: real readiness passed; references running
+
+At04:55UTC/13:55JST November16, the real initial readiness certificate passes
+all28 controls. The original priority-zero reference has179 recorded scientist
+response rows and its year4 checkpoint, but no completed audited reference or
+own loss is claimed in this prefix. Original19200/supervisor19169 remain live;
+the scientific source705b5259 and closure reader4b43a9a3 remain unchanged.
+
+[Complete all-slot readout preparation](results/native-priority-method-readout-preparation-v1.json)
+now covers all24 slots,12 objective/method/history paths and12 frozen own-only
+selections. Compound identities prevent repeated suggestion IDs in different
+histories from collapsing worlds. Generation nulls and measured-world failures
+remain distinct; neither becomes zero loss or a reference fallback.56 light
+projection/continuation/legacy tests pass. Two saved-SCRIPTED exports match all
+three files; their inputs are explicit byte copies of retained prior proof,
+not new independent audits or new science. The original same-file-pair caller
+error is preserved, and the production guard is unchanged.
+
+An additional actual read-only continuation is now waiting at frozenee030eaa,
+handle30782. After original paired audit/cost closure it exports twice using
+the actual distinct audit/cost files and requires matching bytes; no inference,
+candidate execution, repair, refill or reselection. Its child output paths are
+checked before waiting or creating anything. The six-panel path renderer is
+implemented and its plot-data projection tested, but no new graphics rendering
+or visual QA has occurred while the real models are active. Figures, manuscript
+integration, scientific interpretation and later unused evaluation remain open.
 
 At04:20UTC/13:20JST November16, the
 [actual mixed-method comparison](results/native-priority-method-dispatch-v1.json)
@@ -40,7 +65,7 @@ speed benchmark or an assertion of an exclusive lease.
 All original outcomes/nulls will remain; unknown dispatch stops without retry.
 Own-only selections are frozen per method/history/objective, without reference
 fallback. Independent optimizer seeds do not create independent populations or
-establish method superiority. Figures/readout for this new24-slot format and
+establish method superiority. Actual closed24-slot readouts/figures and
 future selection-frozen unused evaluation remain to be completed. The reviewed
 104-page working paper predates this study; no new result is inserted or claimed
 while it is running. R2/R3/R5/R6 and the full publication-ready goal remain open.
