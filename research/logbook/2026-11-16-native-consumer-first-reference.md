@@ -315,3 +315,59 @@ not establish different project choices, causal mediation, higher utility or
 an isolated source-information effect. The original native evaluation continues
 to determine its assigned U loss, without repairing the algorithm, adding a
 novelty condition or changing the still-pending remaining slots.
+
+## Fourth year1 actual native project assignments differ
+
+A [paired saved-checkpoint prefix](../results/native-consumer-source-fourth-year1-actuation-prefix-v1.json)
+reads only completed original year0/year1 checkpoints using data-only decoding
+from frozen scientific source7e51b2a4. Before/after file hashes are checked.
+Both saved systems/years/phases are verified against their literal candidate;
+named initial author fields match. No model, world, generated code, RNG restore
+or checkpoint replay is invoked.
+
+All5 original project-applied events match their native canonical-validation
+events and each saved researcher's actual direction/start/end years. Every
+chosen topic remains in its validated eligible set and retains its catalog
+duration. The explicit shortest-or-merit-rule-enforced fields remain false;
+the host does not replace the authored lexical algorithm with a preferred rule.
+All5 first-year topics change. In sorted original founder order, the strong
+parent end years1/1/2/1/1 become3/3/3/3/3. Thus this particular generated source
+revision reaches actual native project choices/calendar, not just formatting
+or an unused parameter. No graph/node/schedule change is inferred.
+
+The first diagnostic looked for a topic key in newest_direction and observed
+None; the actual saved field is direction. The retained projection explicitly
+checks that literal field against each applied event, rather than interpreting
+a missing key as missing actuation. The original checkpoints are unchanged.
+
+This prefix does not establish equality of every initial field/model input,
+isolate duration from topic/reason changes, identify a source-information effect,
+or complete the final loss/paired original cold audit. The existing readout
+chain must still close and reconcile these original files after all eight slots.
+The whole publication-ready objective is active and not achieved.
+
+## Fourth outcome completes adversely; original second round begins
+
+Original progress advances to consumers/U/g1 readiness at
+00:17:09.545516UTC November16 (09:17:09JST). The [fourth complete outcome](../results/native-consumer-source-fourth-own-outcome-prefix-v1.json)
+has10 accepted decisions, U7 and collected K200/unpaid0/final active5. Its
+assigned U loss=-7 versus strong-parent-28.666666666666668, a deterioration of
+21.666666666666668. Outside scores T=-10 and C=13 remain separate from that
+assigned U loss. The ordinary native outcome, not a component probe or textual
+plan, establishes this measured result.
+
+Its91 full scientist inputs/committed responses differ from the strong parent's
+179-input class; topic, timing, reason and downstream histories are not isolated
+mediators. The exact installed candidate still matches the retained submission,
+and its first-year original project effects remain recorded. This is an actual
+authored original-world change with a worse objective, not a blocked submission
+or evidence that the package improves science. Do not treat the one first-round
+arm contrast as an independent replicated causal effect of source understanding.
+
+Four of eight own slots now complete. The original loop begins its reversed
+second-round order and can use own measured feedback under the existing isolated
+history/parent rules. A readiness request is not yet evidence of a proposal's
+actual feedback-bearing model wire; verify that separately when it exists.
+No unfavorable candidate is hidden, repaired or refilled. Original paired
+audit/cost/readout closure, later frozen unused evaluation and the full
+publication-ready objective remain open.

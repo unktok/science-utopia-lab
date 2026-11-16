@@ -1,0 +1,129 @@
+{
+  "schema": "scienceutopia.native-consumer-source-fourth-own-outcome-prefix.v1",
+  "recorded_utc": "2026-11-16T00:18:29.896450+00:00",
+  "classification": "actual-native-own-outcome-prefix-not-whole-study-original-cold-closure",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "writer_pid": 11821,
+  "original_writer_handle": 15471,
+  "arm": "literal-consumers",
+  "objective": "content-utility",
+  "generation": 0,
+  "request_sha256": "c3b6e25c1612a52a08f3dc3cab983d0e14bad8215381708f148e8a2c7bc9fed3",
+  "suggestion_id": "native-adaptive-72efc298c5322e87007fc4e2",
+  "status": "complete",
+  "assigned_loss": -7.0,
+  "parent_original_stored_loss": -36.0,
+  "parent_original_stored_loss_spec": {
+    "id": "native-joint-v5-throughput",
+    "sha256": "10f3880a252d008a04535ea629c8ef674e3f442d06324d14d3ffd31b3de932ba",
+    "version": "1"
+  },
+  "parent_re_scored_under_assigned_loss": -28.666666666666668,
+  "own_minus_parent_assigned_loss": 21.666666666666668,
+  "cross_scores": {
+    "content-utility": -7.0,
+    "resource-aware-content": 13.0,
+    "throughput": -10.0
+  },
+  "metrics": {
+    "native.accepted_decisions": {
+      "status": "measured",
+      "value": 10
+    },
+    "native.accepted_peer_score_sum": {
+      "status": "measured",
+      "value": 0.0
+    },
+    "native.accepted_unreviewed_decisions": {
+      "status": "measured",
+      "value": 10
+    },
+    "native.collected_activity_resource_cost": {
+      "status": "measured",
+      "value": 200.0
+    },
+    "native.common_content_score_sum": {
+      "status": "measured",
+      "value": 37.0
+    },
+    "native.common_content_utility_sum": {
+      "status": "measured",
+      "value": 7.0
+    },
+    "native.final_active_authors": {
+      "status": "measured",
+      "value": 5
+    },
+    "native.final_author_resources": {
+      "status": "measured",
+      "value": 30.0
+    },
+    "native.institutional_context_deliveries": {
+      "status": "measured",
+      "value": 20
+    },
+    "native.rejected_decisions": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.review_records": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.uncollected_activity_resource_cost": {
+      "status": "measured",
+      "value": 0.0
+    }
+  },
+  "candidate_matches_retained_submission": true,
+  "submission_record_file_sha256": "3f2a87cd02a705a72e1de39c1450a8a9b1f6479713b61f970f22f20c7a156934",
+  "year1_actuation_record_file_sha256": "36ccd3837fefa02c26641f8b65e85ea8c83fae736edf2131fa000eec89d878f0",
+  "original_campaign_record_sha256": "66e782b4035b94e16db471b5ec42d1074269fc6797302a3de4fc271b35834d15",
+  "campaign_state_file_sha256_at_snapshot": "e3ac2ed670b2d981fbfd1cc3071dd82ef5d35400a9ccdbc1ebe361d1473cddf6",
+  "reference_observation_file_sha256": "6fb9e640ad918e410c65e0c1186094d638f43959888201ad3e3286a1b614f38e",
+  "passive_complete_request_sequences": {
+    "own": {
+      "wire_requests": 91,
+      "completed_responses": 91,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "cc31de55155f9c6a0abe0f2ebe4bb1830c665958407ac8eae147b951627bd363",
+      "ordered_completed_request_payload_sha256": "cc31de55155f9c6a0abe0f2ebe4bb1830c665958407ac8eae147b951627bd363",
+      "ordered_literal_response_choices_sha256": "ce382b0e0bd665a2be64e67e3a59f7d910e770a2ee069738de13c6e7817144fa",
+      "ordered_full_provider_body_hashes_sha256": "9294080e82693a31e0a5e65c9ed91da4a929eb2b1953f20b18a44eb5a81b37cb"
+    },
+    "parent": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "72029c0e657b29b0ded39fd885ae1e40880d2d58f103a4e820b67bd8bf8d8821"
+    }
+  },
+  "parent_comparison": {
+    "full_scientist_inputs_equal": false,
+    "literal_response_choices_equal": false,
+    "full_provider_envelopes_equal": false,
+    "all_literal_metrics_equal": false,
+    "global_program_equivalence_claimed": false,
+    "isolated_information_effect_identified": false,
+    "isolated_topic_or_duration_effect_identified": false
+  },
+  "progress_at_snapshot": {
+    "active": "literal-consumers::content-utility:g1",
+    "observed_utc": "2026-11-16T00:17:09.545516+00:00",
+    "stage": "readiness"
+  },
+  "own_completed_slots_at_snapshot": 4,
+  "whole_study_closed": false,
+  "paired_original_audit_cost_readout_closed": false,
+  "institution_improved": false,
+  "held_out_evaluation": false,
+  "independent_optimizer_replication": false,
+  "publication_ready": false,
+  "new_model_calls_by_observation": 0,
+  "new_generated_code_executions_by_observation": 0,
+  "scope": "Complete original native outcome and passive full request/response comparison. This adverse assigned-loss result remains consumed; no repair, slot refill, hidden metric veto, new world or changed selection. Actual project choices/calendar differ, but topic/reason/timing and later responses change together, not an isolated mediator or causal information-treatment estimate. Original paired whole-study audit/cost/readout remain pending."
+}

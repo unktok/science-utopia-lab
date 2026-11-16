@@ -13,9 +13,12 @@ This page is navigation, not a chronological experiment transcript.
   hand comparator stays withheld. [First own U outcome](results/native-consumer-source-first-own-outcome-prefix-v1.json)
   and [second own C outcome](results/native-consumer-source-second-own-outcome-prefix-v1.json)
   complete and tie the strong parent. [The third own C outcome](results/native-consumer-source-third-own-outcome-prefix-v1.json)
-  also completes and ties it;3/8 own slots complete, with no own gain or whole-study
-  closure yet. The [fourth original consumers/U slot submits a lexical agenda revision](results/native-consumer-source-fourth-own-submission-prefix-v1.json)
-  and reaches native scientist requests, with its outcome pending.
+  also completes and ties it. [The fourth original consumers/U outcome](results/native-consumer-source-fourth-own-outcome-prefix-v1.json)
+  completes with U loss-7, worse than-28.6667;4/8 own slots complete, with no own
+  gain or whole-study closure. The original consumers/U/g1 readiness now starts.
+  [Its saved year1 project effects](results/native-consumer-source-fourth-year1-actuation-prefix-v1.json)
+  change all5 founder topics/calendars and agree with actual native author state;
+  that is observed actuation, not an isolated information effect or useful gain.
   [The first two complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
   distinguish ordinary early finish and baseline recovery from an observed editor error.
   [The first3 complete proposal-wire option traces](results/native-consumer-source-completed-decoding-prefix-v1.json)

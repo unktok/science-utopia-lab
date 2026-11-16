@@ -1,0 +1,412 @@
+{
+  "schema": "scienceutopia.native-consumer-source-fourth-year1-actuation-prefix.v1",
+  "recorded_utc": "2026-11-16T00:16:14.588840+00:00",
+  "classification": "actual-saved-native-year1-assignments-not-whole-world-cold-closure",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "scientific_and_reader_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "request_sha256": "c3b6e25c1612a52a08f3dc3cab983d0e14bad8215381708f148e8a2c7bc9fed3",
+  "suggestion_id": "native-adaptive-72efc298c5322e87007fc4e2",
+  "own": {
+    "system_sha256": "d9a363125b4b9a5546d465cbd71e720318d0ec6db00ea9b2b633a289ae509f7d",
+    "checkpoint_file_sha256": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/content-utility/worlds/native-adaptive-72efc298c5322e87007fc4e2-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz": "c6002b0d8f28755ffb2634112c0f2c01523733ea284361dfcfa12842752f4c02",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/content-utility/worlds/native-adaptive-72efc298c5322e87007fc4e2-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz": "e6207aa42a229e621ff86c523c2802787e64d7f83812190e07828af3820b1bcb"
+    },
+    "initial_author_projection": [
+      {
+        "id": "institution_0000_researcher_0",
+        "resources": 40.0,
+        "expertise": [
+          "logic_in_cs",
+          "mathematical_software",
+          "distributed_systems"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0001_researcher_0",
+        "resources": 40.0,
+        "expertise": [
+          "logic_in_cs",
+          "algorithmic_game_theory",
+          "software_engineering"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0002_researcher_0",
+        "resources": 15.0,
+        "expertise": [
+          "formal_methods",
+          "performance_analysis",
+          "numerical_analysis"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0003_researcher_0",
+        "resources": 15.0,
+        "expertise": [
+          "software_engineering",
+          "distributed_systems",
+          "evolutionary_computation"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0004_researcher_0",
+        "resources": 40.0,
+        "expertise": [
+          "social_networks",
+          "operating_systems",
+          "symbolic_computation"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      }
+    ],
+    "year1_project_rows": [
+      {
+        "actor_id": "institution_0000_researcher_0",
+        "topic": "complexity_theory",
+        "catalog_years": 3,
+        "assigned_start_year": 1,
+        "assigned_end_year": 3,
+        "actual_saved_direction": "complexity_theory",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 3,
+        "reason": "Developer catalog agenda: lexical first topic selection.",
+        "original_command_key": "4bf08d60ef4060fe14de5aa6851288dd5dc283afb49b801dc5d2ae7ed1a590ff",
+        "original_applied_event_sha256": "7c26277bc6a6b710e5cac6bc31dfe8861992941e1215b633bc7a762cc3d0fa42",
+        "original_validated_event_sha256": "236ed1095f41507e451db6e669a01933fd531c204967262b365a47f5034d51ec",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      },
+      {
+        "actor_id": "institution_0001_researcher_0",
+        "topic": "algorithmic_game_theory",
+        "catalog_years": 3,
+        "assigned_start_year": 1,
+        "assigned_end_year": 3,
+        "actual_saved_direction": "algorithmic_game_theory",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 3,
+        "reason": "Developer catalog agenda: lexical first topic selection.",
+        "original_command_key": "8ce9618edbb804652455ea364b141d31f13d456a4b7c64e5014c7f980c7c165c",
+        "original_applied_event_sha256": "ca7b22865fc543c1795337393e97ecbf275cadaa007485b314ed176ed561124e",
+        "original_validated_event_sha256": "c7291803eb5883076b7e81d49a7d577d50203a34483bdefec73d1cc830e3b86b",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      },
+      {
+        "actor_id": "institution_0002_researcher_0",
+        "topic": "algorithms",
+        "catalog_years": 3,
+        "assigned_start_year": 1,
+        "assigned_end_year": 3,
+        "actual_saved_direction": "algorithms",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 3,
+        "reason": "Developer catalog agenda: lexical first topic selection.",
+        "original_command_key": "6fd4c794a956416bd347b26002cbc1df36a09ee74488363318605dc178a2c4ff",
+        "original_applied_event_sha256": "1e39487487423c910ea4e279f13b74e61e1cdb943e96f615f5815479fe84fd8c",
+        "original_validated_event_sha256": "689d2046c95198588d61d8d6a861050b261f765230bab450ff681dad93a77ea1",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      },
+      {
+        "actor_id": "institution_0003_researcher_0",
+        "topic": "algorithmic_game_theory",
+        "catalog_years": 3,
+        "assigned_start_year": 1,
+        "assigned_end_year": 3,
+        "actual_saved_direction": "algorithmic_game_theory",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 3,
+        "reason": "Developer catalog agenda: lexical first topic selection.",
+        "original_command_key": "e3bb07e51241669f9fad639b327101f44210e4440757a936bb5280e6b14668d3",
+        "original_applied_event_sha256": "14e38c6776219fd8c4c364c41cb0551e9f110f51d51d339042d81e3fc5f233f1",
+        "original_validated_event_sha256": "e15e887a32a8de598f83e6a2f956dc8d217d286ff88e70c361f5395dc87a09b1",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      },
+      {
+        "actor_id": "institution_0004_researcher_0",
+        "topic": "computer_architecture",
+        "catalog_years": 3,
+        "assigned_start_year": 1,
+        "assigned_end_year": 3,
+        "actual_saved_direction": "computer_architecture",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 3,
+        "reason": "Developer catalog agenda: lexical first topic selection.",
+        "original_command_key": "6912f3757a70286393d7d668396fbd990cc62d0f4f209508025e54cab342aa09",
+        "original_applied_event_sha256": "cec5bcba2a4ee9b7db5a6f3d43c7dc1905916248e3467a73f42f5f3c2e090bdc",
+        "original_validated_event_sha256": "59b79756faf27cc3b4c20b48305968f5b84a2548f3430ccb831c5b5fac1f1d5d",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      }
+    ],
+    "year1_native_event_counts": {
+      "generated.code_executed": 6,
+      "native.domain.command_committed": 5,
+      "native.domain.legacy_topic_project_validated": 5,
+      "native.domain.project_applied": 5,
+      "native.process.completed": 1,
+      "native.process.iteration": 1,
+      "native.system.context_delivered": 5,
+      "native.system.phase_executed": 11,
+      "native.system.research_plan_applied": 1,
+      "native.system.resource_transferred": 1,
+      "native.tensor.executed": 2
+    },
+    "all_project_rows_match_native_validation_and_saved_author_state": true
+  },
+  "parent": {
+    "system_sha256": "67e71aaecc1c5350cb343bb9a0c5b16879aa14fb9041f319f18e99f0b28eb3dd",
+    "checkpoint_file_sha256": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/references/core-plus-related/worlds/workflow-reference-core-plus-related-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz": "ec705d1053e8d1295f22be3fcce029ef9cfed33b1fc630bdaa79136cddb0bd87",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/references/core-plus-related/worlds/workflow-reference-core-plus-related-s61001/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz": "453780d16bf7af145cfba41a6c5509226bb31af11cdc41a89d962eece72695b5"
+    },
+    "initial_author_projection": [
+      {
+        "id": "institution_0000_researcher_0",
+        "resources": 40.0,
+        "expertise": [
+          "logic_in_cs",
+          "mathematical_software",
+          "distributed_systems"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0001_researcher_0",
+        "resources": 40.0,
+        "expertise": [
+          "logic_in_cs",
+          "algorithmic_game_theory",
+          "software_engineering"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0002_researcher_0",
+        "resources": 15.0,
+        "expertise": [
+          "formal_methods",
+          "performance_analysis",
+          "numerical_analysis"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0003_researcher_0",
+        "resources": 15.0,
+        "expertise": [
+          "software_engineering",
+          "distributed_systems",
+          "evolutionary_computation"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      },
+      {
+        "id": "institution_0004_researcher_0",
+        "resources": 40.0,
+        "expertise": [
+          "social_networks",
+          "operating_systems",
+          "symbolic_computation"
+        ],
+        "can_author": true,
+        "is_active": true,
+        "project_start_year": 0,
+        "project_end_year": 0
+      }
+    ],
+    "year1_project_rows": [
+      {
+        "actor_id": "institution_0000_researcher_0",
+        "topic": "neural_symbolic_ai",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "actual_saved_direction": "neural_symbolic_ai",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 1,
+        "reason": "Developer catalog agenda: shortest displayed duration, then lexical topic.",
+        "original_command_key": "4bf08d60ef4060fe14de5aa6851288dd5dc283afb49b801dc5d2ae7ed1a590ff",
+        "original_applied_event_sha256": "33644c5b1f9080f93091917d11354e1ec8bf6676ac32be0d69e8685d3c8da3b0",
+        "original_validated_event_sha256": "be2a864bc3d99e384fcef510972ee1196cad45b2a8f8b3730188053c29226677",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      },
+      {
+        "actor_id": "institution_0001_researcher_0",
+        "topic": "artificial_intelligence",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "actual_saved_direction": "artificial_intelligence",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 1,
+        "reason": "Developer catalog agenda: shortest displayed duration, then lexical topic.",
+        "original_command_key": "8ce9618edbb804652455ea364b141d31f13d456a4b7c64e5014c7f980c7c165c",
+        "original_applied_event_sha256": "8dcca005e0c6e15071d3b976244c30354bda86c0307add9e7d967e2b64e05254",
+        "original_validated_event_sha256": "fe0d0c296b3c74484ace6514f7fa99864e0185a78f1b957a3e3dfd1bab92b7d5",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      },
+      {
+        "actor_id": "institution_0002_researcher_0",
+        "topic": "computational_science",
+        "catalog_years": 2,
+        "assigned_start_year": 1,
+        "assigned_end_year": 2,
+        "actual_saved_direction": "computational_science",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 2,
+        "reason": "Developer catalog agenda: shortest displayed duration, then lexical topic.",
+        "original_command_key": "6fd4c794a956416bd347b26002cbc1df36a09ee74488363318605dc178a2c4ff",
+        "original_applied_event_sha256": "48ff665c7b03f38526d9994ac26a9fd030026b2bc01b1bec358c576b5c284fd5",
+        "original_validated_event_sha256": "5e9d253d89bf920d98f32fc931ef8951e0632150f5ba2d424ccb6abef3fa4771",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      },
+      {
+        "actor_id": "institution_0003_researcher_0",
+        "topic": "deep_learning",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "actual_saved_direction": "deep_learning",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 1,
+        "reason": "Developer catalog agenda: shortest displayed duration, then lexical topic.",
+        "original_command_key": "e3bb07e51241669f9fad639b327101f44210e4440757a936bb5280e6b14668d3",
+        "original_applied_event_sha256": "64d6e9a6d653d32272a2c4378d2f4c34217a430a231e77c350ccd8e4c32d56c0",
+        "original_validated_event_sha256": "7e54ced4858fd3db599c07e183ebdf991a78240d309d496f446e47ebaf33c022",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      },
+      {
+        "actor_id": "institution_0004_researcher_0",
+        "topic": "information_retrieval",
+        "catalog_years": 1,
+        "assigned_start_year": 1,
+        "assigned_end_year": 1,
+        "actual_saved_direction": "information_retrieval",
+        "actual_saved_start_year": 1,
+        "actual_saved_end_year": 1,
+        "reason": "Developer catalog agenda: shortest displayed duration, then lexical topic.",
+        "original_command_key": "6912f3757a70286393d7d668396fbd990cc62d0f4f209508025e54cab342aa09",
+        "original_applied_event_sha256": "ff2b5ef6108bb7525c7f2b5bc8866527334a394e188b2789f6ea234807ba5e0e",
+        "original_validated_event_sha256": "804149cecd1baaf766c45e1a9eb473f841521cd129a22313dec0b921314f4476",
+        "catalog_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+        "original_shortest_or_merit_rule_enforced": false
+      }
+    ],
+    "year1_native_event_counts": {
+      "generated.code_executed": 6,
+      "native.domain.command_committed": 5,
+      "native.domain.legacy_topic_project_validated": 5,
+      "native.domain.project_applied": 5,
+      "native.process.completed": 1,
+      "native.process.iteration": 1,
+      "native.system.context_delivered": 5,
+      "native.system.phase_executed": 11,
+      "native.system.research_plan_applied": 1,
+      "native.system.resource_transferred": 2,
+      "native.tensor.executed": 2
+    },
+    "all_project_rows_match_native_validation_and_saved_author_state": true
+  },
+  "comparison": {
+    "named_initial_author_fields_equal": true,
+    "all_initial_world_fields_or_model_inputs_equal_proven": false,
+    "changed_topics": 5,
+    "changed_project_end_years": 5,
+    "rows": [
+      {
+        "actor_id": "institution_0000_researcher_0",
+        "parent_topic": "neural_symbolic_ai",
+        "parent_end_year": 1,
+        "own_topic": "complexity_theory",
+        "own_end_year": 3,
+        "topic_changed": true,
+        "end_year_changed": true
+      },
+      {
+        "actor_id": "institution_0001_researcher_0",
+        "parent_topic": "artificial_intelligence",
+        "parent_end_year": 1,
+        "own_topic": "algorithmic_game_theory",
+        "own_end_year": 3,
+        "topic_changed": true,
+        "end_year_changed": true
+      },
+      {
+        "actor_id": "institution_0002_researcher_0",
+        "parent_topic": "computational_science",
+        "parent_end_year": 2,
+        "own_topic": "algorithms",
+        "own_end_year": 3,
+        "topic_changed": true,
+        "end_year_changed": true
+      },
+      {
+        "actor_id": "institution_0003_researcher_0",
+        "parent_topic": "deep_learning",
+        "parent_end_year": 1,
+        "own_topic": "algorithmic_game_theory",
+        "own_end_year": 3,
+        "topic_changed": true,
+        "end_year_changed": true
+      },
+      {
+        "actor_id": "institution_0004_researcher_0",
+        "parent_topic": "information_retrieval",
+        "parent_end_year": 1,
+        "own_topic": "computer_architecture",
+        "own_end_year": 3,
+        "topic_changed": true,
+        "end_year_changed": true
+      }
+    ]
+  },
+  "assigned_loss_at_snapshot": null,
+  "own_completed_outcome_at_snapshot": false,
+  "whole_study_closed": false,
+  "original_paired_cold_audit_closed": false,
+  "isolated_duration_or_information_effect_identified": false,
+  "scientific_improvement_claimed": false,
+  "new_model_calls": 0,
+  "new_generated_code_executions": 0,
+  "new_native_worlds": 0,
+  "scope": "Data-only decoding of completed year0/year1 saved checkpoints from the immutable original scientific source. All five original project-applied events match native validation and actual author direction/calendar state. This is observed original-world actuation, not a component counterfactual, extra simulation, full model-input comparison or an explanation of final loss. Source policy/reason change together; no isolated mediator or information-condition effect is identified."
+}

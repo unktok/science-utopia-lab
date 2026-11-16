@@ -1,6 +1,6 @@
 # Current research status
 
-## Current matched study: references3/3 and own slots3/8 complete
+## Current matched study: references3/3 and own slots4/8 complete
 
 The [once-dispatched local-model study](results/native-consumer-source-comparison-dispatch-v1.json)
 runs from immutable7e51b2a4: fixed8B researchers, local35B designer, unchanged
@@ -13,8 +13,8 @@ is development-informed, not a blind independent method comparison.
 | --- | --- |
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
-| Own-system optimization | [Interface-only / U / g0](results/native-consumer-source-first-own-outcome-prefix-v1.json) at-28.6667, [literal-consumers / C / g0](results/native-consumer-source-second-own-outcome-prefix-v1.json) and [interface-only / C / g0](results/native-consumer-source-third-own-outcome-prefix-v1.json) at-8.6667 all complete and tie their strong parent;3/8 own slots complete |
-| Next original slot | [Literal-consumers / U / g0 submits](results/native-consumer-source-fourth-own-submission-prefix-v1.json) after14 steps, compiles and reaches actual native scientist requests; its outcome remains pending |
+| Own-system optimization | First3 outcomes tie the strong parent: [interface/U](results/native-consumer-source-first-own-outcome-prefix-v1.json)=-28.6667, [consumers/C](results/native-consumer-source-second-own-outcome-prefix-v1.json) and [interface/C](results/native-consumer-source-third-own-outcome-prefix-v1.json)=-8.6667. [Fourth consumers/U outcome](results/native-consumer-source-fourth-own-outcome-prefix-v1.json) completes at-7, worse by21.6667;4/8 own slots complete |
+| Next original slot | Literal-consumers / U / g1 readiness begins00:17:09UTC November16 (09:17:09JST), after the first round's four measured outcomes; same original finite loop |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -32,8 +32,8 @@ headroom, not automatic invention, reduced requested work or better science.
 Whole original cold closure remains pending. The third hand policy is not in
 either optimizer's reference context or selection pool.
 
-Each completed own world has179 full scientist inputs and179 literal response
-choices matching its strong reference, with equal measured metrics and different
+The first3 completed own worlds have179 full scientist inputs and179 literal response
+choices matching their strong reference, with equal measured metrics and different
 provider envelopes. The first changes selection source/parameters; the second
 changes only agenda-source formatting, with matching parsed AST. Both execute
 and are scored: no exact-copy, novelty or merit gate rejects them. Neither adds
@@ -65,7 +65,18 @@ The fourth candidate changes agenda topic selection from shortest duration
 then name to lexical name first, keeping original assigned durations. Its AST
 differs, unlike the second/third formatting edits. No node/wire/schedule changes;
 the exact installed candidate and actual scientist-request prefix are retained.
-An authored algorithm change is not yet an operative consequence or loss gain.
+
+[Saved year1 native actuation](results/native-consumer-source-fourth-year1-actuation-prefix-v1.json)
+now confirms all5 founder topic assignments change and match both original
+validation events and saved author state. Their assigned end years change
+from1/1/2/1/1 to3/3/3/3/3, preserving each selected topic's original duration.
+Named initial author fields match the parent. This establishes an observed
+original-world actuation difference, not an isolated duration/source-information
+effect or normally closed whole-world audit. Its [completed original outcome](results/native-consumer-source-fourth-own-outcome-prefix-v1.json)
+has10 accepted decisions/U7 versus the strong parent's36/U28.6667, with equal
+collected K200/unpaid0/final active5. Its91 complete scientist inputs/responses
+are not the parent's179-input class. Assigned U loss worsens, without a refill
+or new veto; neither more source context nor actual actuation guarantees gain.
 
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history
