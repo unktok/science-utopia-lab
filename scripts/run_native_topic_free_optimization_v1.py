@@ -34,6 +34,7 @@ PROTOCOL = 'research/protocols/campaigns/native-topic-free-optimization-v1.md'
 AUDIT_SCRIPTS = ['scripts/run_native_topic_free_optimization_v1.py',
                  'scripts/audit_native_topic_free_optimization_v1.py']
 AUTHOR_ADAPTERS = {
+    'utopia/optimization/native_authoring_recovery_v44.py': 'Designer-only workflow phase calculation bound to actual V45 document visibility; no native world/loss change',
     'utopia/optimization/native_open_workflow_submission_v1.py': 'Explicit v5/v6 author compiler; historical v4/v5 authority unchanged',
     'utopia/optimization/native_workflow_staged_designer_v1.py': 'Explicit new developer component evidence scope',
     'utopia/system/native_capability_catalog.py': 'Author-facing original-topic action semantics and validator identities',

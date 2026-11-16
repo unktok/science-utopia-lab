@@ -7,6 +7,7 @@ This new route needs public native/cold verification before real dispatch.
 import argparse
 import fcntl
 from pathlib import Path
+import subprocess
 
 from scripts.analyze_native_open_v7 import _inventory
 from scripts.native_benchmark_seed_usage import usage_inventory, software_fixture_policy, require_inventory_policy
@@ -15,7 +16,7 @@ from scripts.reports.native_priority_method_readout_v1 import collect, analyze, 
 from scripts.run_native_objective_fixed_evaluation_v1 import run as run_shared
 from scripts.run_native_objective_instrument_loop_v1 import measure_with, utc
 from scripts.run_native_topic_free_optimization_v1 import require_candidate, verify_interval
-from scripts.run_native_workflow_objective_loop_v1 import scientist_factory, native_sources
+from scripts.run_native_workflow_objective_loop_v1 import scientist_factory, native_sources as original_native_sources
 from utopia.optimization.blackbox import Suggestion
 from utopia.optimization.common_content_observer import make_contract
 from utopia.optimization.loss import evaluate_loss
@@ -36,6 +37,19 @@ SEEDS = [83003, 83011]
 
 def read(path):
     return checked(decode_json(Path(path).read_text(), strict=True, finite_floats=True))
+
+
+def native_sources(original):
+    # Fixed evaluation never calls the designer. Still bind the prospective
+    # visibility fix explicitly rather than excluding another file or allowing
+    # arbitrary native drift. Same-source closure needs no invented adapter.
+    name = 'utopia/optimization/native_authoring_recovery_v44.py'
+    source = pinned_revision(ROOT)
+    before = subprocess.check_output(['git', 'show', original + ':' + name], cwd=ROOT)
+    adapters = {} if (ROOT / name).read_bytes() == before else {name: {
+        'source_commit': source,
+        'role': 'Designer-only workflow visibility correction; designer is not called by fixed evaluation'}}
+    return original_native_sources(original, adapters=adapters)
 
 
 def evidence_files(origin):
