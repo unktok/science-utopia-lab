@@ -1,6 +1,26 @@
 # Local manuscript rebuild subsets
 
-## Latest reviewed artifact:104-page source-information working manuscript
+## Latest reviewed artifact:111-page priority-method working manuscript
+
+The [reviewed111-page receipt](../paper/integrated-priority-method-build-v1.json)
+binds source09c2e6d1,53 figures/52 tables/32 references and the unchanged PDF.
+It does not contain the later corrected-study methods or results. The
+[specific86-file policy](../research/publication/paper-rebuild-allowlist-integrated-priority-method-v1.json)
+has [actual clean-source staging](../research/results/integrated-priority-rebuild-subset-preparation-v1.json):
+38 source-only checks pass, and the public CLI at clean2c6773f9 on
+`proof/integrated-priority-subset-v1` stages86 exact files/83 literal dependencies
+under that worktree's ignored `outputs/integrated-priority-rebuild-subset-v1-a1/`.
+Every manifest hash and staged byte matches that exact commit. No TeX, render,
+model or scientific world is executed by staging. The inputs include only the
+explicit manuscript illustrations/UI screenshot, not unlisted game assets.
+
+This111-page minimal-input PDF rebuild remains unverified. After real inference
+and a suitable host-wide resource window, use the staged REBUILD.md with cached/
+untrusted Tectonic, then compare extracted text and all111 page images to the
+reviewed receipt. Do not transplant an earlier100/104-page proof or equate file
+copies with a new PDF, independent scientific reproduction or venue readiness.
+
+## Preserved104-page source-information working manuscript
 
 The [current reviewed receipt](../paper/integrated-consumer-source-build-v1.json)
 binds104 pages,52 figures,49 tables and32 references to source2d19cc96. Both

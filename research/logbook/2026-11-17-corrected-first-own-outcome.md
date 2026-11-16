@@ -853,3 +853,50 @@ Sixteen light publication-entrypoint/readiness-transcription checks pass in
 5.65seconds after this documentation update. An earlier invocation's final
 output was not retained, so it is not counted as a separate pass. These checks
 do not audit all scientific slots or establish publication readiness.
+
+## Third adaptive C outcome
+
+At23:44:21UTC adaptive/C/g2 completes at-11.666666666666668,
+U27.666666666666668/T36/collected160/uncollected40. It worsens the own g1 best
+and assigned reference by1, not a new best. The literal program is
+5d3ca5ec759be5a894b3858c490ddc433346f629952486984febb0463257de6e,
+suggestion s6717aca70ea0ced2. Original observation file SHA
+b13335cc1cb53d4dd75a990363b849c04495b527d56c47410977d317f18045db,
+canonical5c60674de50bb377f72c0dbd474ac049e92919550371f5d00151bdb5fd8e3e21.
+Original tell file2560ad51f9d4d7ef97b320742a9e7d7af981040241987b033e8fbb07de698484,
+sealed contentc9dadbee6ecf411099913e7844e529863e7fd5a6d7ce489a4e3feadca9029294:
+one exact typed Observation occurrence, pending[], internal proposal_index5,
+four observations including the primed reference. Internal index is not the
+number of evaluated native candidates; no world is refilled here.
+
+All183 original scientist requests have committed hash-verified replies.
+Full payload sequence3942958f836a74a6d569600455704a3ab861d6a0a8bac6c8214cf7240365a2ab,
+literal choices8f080802065c7f36efef907f7a4d832b730647c458ee922535f672daa4ea7f41,
+body sequence38421a599c6149a7e2ae49b6a8b21540631e4fb02c9cfd926c28011fce74bb18.
+This is direct observation/tell/response verification, not the pending full
+paired original cold audit. Seventeen own outcomes are16 complete,
+12worse/4ties/0better and1execution-null. The18th charged slot is free/C/g2,
+whose fresh calibration-3ea48c26 begins. It is not yet a native world outcome,
+an implemented next proposal, or a final selected endpoint. All original
+writer/supervisor and five waiting readers remain live at23:45UTC.
+
+## Historical111-page rebuild inputs are now staged exactly
+
+While original real inference continues, the document-staging tool is extended
+to bind the reviewed111-page receipt's actual explicit source/figure hash layout
+to historical Git blobs. The old sealed receipt/PDF are unchanged. A separate
+clean proof source2c6773f9, based on the original published111-page tree, stages
+86 allowlisted files/83 literal TeX dependencies. All hashes/bytes match that
+source; the current unbuilt corrected-study methods/results are not included.
+[Actual CLI/source-only QA evidence](../results/integrated-priority-rebuild-subset-preparation-v1.json).
+
+Thirty-eight source-only checks pass (20 older cases explicitly deselected),
+including corrupt/later source, figure, PDF, unsafe path and historical binding
+rejection. The JUnit is retained only after that original check exits0. A
+separate19-case entrypoint/retention/readiness check passes in6.28seconds, and
+the latest document checker verifies25 documents/712 local links/six archived snapshots.
+These overlapping software checks add no scientific samples. The stale rebuild
+guide's latest104-page heading is corrected to111 while keeping its old scope.
+No TeX/render/model/native execution is added by this work. Actual111-page
+minimal-input reconstruction and a new corrected-study PDF remain unfinished;
+the broad publication goal and R2/R3/R5/R6 are not closed by staging.

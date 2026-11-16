@@ -7,6 +7,15 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Third adaptive C outcome](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-c-outcome):
+  loss-11.6667, worse by1 than the own prior best/reference.183 complete replies
+  and one exact typed tell verify.17terminal/18started; free/C/g2 readiness begins.
+
+- [Exact111-page minimal-source staging](results/integrated-priority-rebuild-subset-preparation-v1.json):
+  86 exact files/83 literal dependencies from clean2c6773f9,38 source-only checks,
+  no new PDF/render/model/world. This historical artifact excludes the current
+  unbuilt corrected methods/results and is not a main-track readiness proof.
+
 - [Third uniform C outcome](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-c-outcome):
   loss-10.6667 improves its own random-search path but stays2 worse than the
   measured reference.185 complete replies and its exact typed tell verify.

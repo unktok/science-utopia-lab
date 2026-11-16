@@ -1,0 +1,41 @@
+{
+  "schema": "scienceutopia.integrated-priority-rebuild-subset-preparation.v1.documentary-record",
+  "recorded_utc": "2026-11-16T23:43:00+00:00",
+  "classification": "actual-clean-source-byte-staging-not-PDF-rebuild-or-visual-verification",
+  "original_build_source_commit": "09c2e6d1315b306bbbb4c7039321f1bd801a59a6",
+  "original_receipt_file_sha256": "2c23900b7446d5aefc296b04b1e9fa3e8fbad0c17637156233ebf58f1167aa5e",
+  "original_reviewed_pdf_sha256": "c5f00446052bb2b30035a0275e1702e5cd0dabb8a0b47fb031f6435726ce526a",
+  "qa_source_commit": "0e8140675a40d6b61bc65b28b669c67bd7d2f386",
+  "qa": {
+    "original_handle": 84064, "exit_code": 0,
+    "tests": 38, "failures": 0, "errors": 0, "skipped": 0, "deselected": 20,
+    "seconds": 49.96,
+    "junit": "research/data/integrated-priority-rebuild-source-v1/pytest.xml",
+    "junit_file_sha256": "b59671719b4aff15df52efc2758f65e854cefee2557ed3fb5b0904bc735a2993",
+    "scope": "Source-only exact historical input/corruption/path binding checks; no TeX/native/world/model execution. Overlaps prior staging checks."
+  },
+  "successful_staging": {
+    "original_handle": 4409, "exit_code": 0,
+    "source_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/integrated-priority-subset-v1-a1",
+    "source_commit": "2c6773f909bfff117ec7fb9a9a5634e44826efc3",
+    "branch": "proof/integrated-priority-subset-v1",
+    "output": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/integrated-priority-subset-v1-a1/outputs/integrated-priority-rebuild-subset-v1-a1",
+    "policy": "research/publication/paper-rebuild-allowlist-integrated-priority-method-v1.json",
+    "policy_file_sha256": "11f50af9efe960be3485568535452b5eec829e50a36c63ad3b4f7e20fa7b6ad2",
+    "tool_file_sha256": "08bf858ba9ee5c09a5a43ff8c5981c6bca448a9ddd8b5d3297a02901c536e81f",
+    "manifest_file_sha256": "cf1fe5978288280b84d7b2017989048c425cb8f0bc6eff5cc73122886e342281",
+    "manifest_content_sha256": "bc9ce413dcaaacb742cc59ebeeae34a94f25f467cb2ef19332aa0a18651cffc3",
+    "input_files": 86, "literal_dependencies": 83,
+    "all_staged_bytes_match_exact_commit": true,
+    "all_manifest_hashes_verified": true, "source_still_clean": true,
+    "limited_text_scan_findings": 0
+  },
+  "current_corrected_methods_or_results_included": false,
+  "new_PDF_rebuild_performed": false,
+  "new_render_or_visual_review_performed": false,
+  "original_pdf_or_receipt_overwritten": false,
+  "new_model_calls": 0, "new_native_worlds": 0, "new_generated_code_executions": 0,
+  "published_or_uploaded": false, "independent_scientific_replication": false,
+  "publication_ready": false,
+  "remaining": "After real inference and resource-window review, compile this exact86-file subset with cached/untrusted Tectonic and compare text/all111 page images. New corrected-study manuscript/PDF integration and main-track claim remain separate and outstanding."
+}

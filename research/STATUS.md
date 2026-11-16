@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November16,2026 at23:35UTC / November17 08:35JST.
+Verified November16,2026 at23:45UTC / November17 08:45JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -43,18 +43,23 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 | Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 not dispatched |
 | Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 not dispatched |
 | Uniform / C | -9.6667 | -10.3333 | g2 -10.6667 / g3 not dispatched |
-| Adaptive / C | -9.6667 | -12.6667 | g2 running / g3 not dispatched |
-| Free code/graph / C | -12.6667 | -12.6667 | Not dispatched |
+| Adaptive / C | -9.6667 | -12.6667 | g2 -11.6667 / g3 not dispatched |
+| Free code/graph / C | -12.6667 | -12.6667 | g2 readiness / g3 not dispatched |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
-Sixteen own slots have terminal outcomes:15 complete (11 worse/4 tied/0 better
-than their assigned reference) and1 execution null. Seventeen slots have started,
-including adaptive/C/g2; the writer charges each at dispatch, not
+Seventeen own slots have terminal outcomes:16 complete (12 worse/4 tied/0 better
+than their assigned reference) and1 execution null. Eighteen slots have started,
+including free/C/g2; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
 programs; uniform g1 is another initial random sample, not an adaptive move.
 Primary best known may remain a labeled reference; own-only selection is a
 separate scope. Final endpoints are not frozen.
+
+[Latest adaptive/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-c-outcome)
+completes at-11.6667, worse by1 than its own prior best and assigned reference.
+All183 replies/body hashes and its one typed tell verify. Free/C/g2 starts
+fresh request-specific readiness; it is not yet a submitted/evaluated world.
 
 [Latest uniform/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-c-outcome)
 completes at-10.6667, improving its previous own best by about1/3 but staying2
@@ -105,7 +110,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 is evaluating adaptive/C/g2; source/plan/settings unchanged |
+| Real scientific search | Original42803 is preparing free/C/g2; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |
@@ -136,6 +141,9 @@ is dated partial evidence, not a full24-slot result or global headroom bound.
 records28 recursive TeX files/153 unique labels/79 literal reference targets,
 no missing labels and25 light post-commit checks. These are not a new layout/
 PDF proof, full corrected-result integration or scientific/claim validation.
+The unchanged reviewed111-page artifact now has [actual86-file input staging](results/integrated-priority-rebuild-subset-preparation-v1.json)
+from clean2c6773f9, with38 source-only checks and83 literal dependencies. Its
+minimal-input PDF rebuild/render still waits; earlier proofs are not reused.
 
 Earlier meaningful parameter/structure/workflow/estimator/game studies remain
 in the index and manuscript. The [old24-slot native method pilot](results/native-priority-method-comparison-closed-v1.json)

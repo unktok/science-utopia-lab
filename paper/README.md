@@ -78,11 +78,14 @@ references or overfull/underfull diagnostics remain. Historical engine notices
 about inputenc and two h-to-ht float changes are explicitly retained.
 
 The historical104-page artifact and receipt remain unchanged. The111-page
-minimal-source subset rebuild is not yet verified; old84-file staging and
-100-page reconstruction do not prove it. This is not a cache-free clean-machine
+[86-file minimal-source subset](../research/results/integrated-priority-rebuild-subset-preparation-v1.json)
+now stages from clean2c6773f9 with38 source-only checks; its actual PDF rebuild
+is not yet verified. Old84-file staging and100-page reconstruction do not prove
+it. This is not a cache-free clean-machine
 build, independent scientific replication, anonymous/venue release clearance
-or a publication-ready main-track finding. Fresh corrected-model readiness
-and a justified finite research comparison still remain.
+or a publication-ready main-track finding. The ongoing corrected search,
+full analysis and justified selection-fixed evaluation remain separate from
+this historical document's local reconstruction.
 
 ## Historical source-only preparation before the111-page build
 
