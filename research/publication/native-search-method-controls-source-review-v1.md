@@ -34,6 +34,16 @@ the **search procedure**, not merely counting valid code or adding evaluation
 seeds. They do not identify a causal explanation for the author's choice,
 exonerate every software path, or predict the remaining six outcomes.
 
+A later [complete first-three wire-option check](../results/native-consumer-source-completed-decoding-prefix-v1.json)
+verifies all31 completed editor-step request bytes against their hashes. They
+request temperature0.6, top-p0.95, top-k20,65,536 context and8,192 output tokens,
+with31 distinct per-step seeds and think=false. Thus the retained request
+configuration is not temperature-zero. This does not prove the backend honors
+every option, adequate search diversity or a causal reason for stagnation.
+Shared outer optimization draw seeds and per-step decoding seeds are different
+layers; paired outer seeds must not be described as identical per-turn LLM
+randomness. A future method comparison must bind and report both layers.
+
 The current procedure selects the minimum-loss visible/own parent and retains
 literal archives for reading. Retaining all records is not the same as sampling
 non-incumbent programs as parents or giving multiple inspirations to a proposal.

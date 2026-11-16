@@ -14,7 +14,7 @@ is development-informed, not a blind independent method comparison.
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
 | Own-system optimization | [Interface-only / U / g0](results/native-consumer-source-first-own-outcome-prefix-v1.json) at-28.6667, [literal-consumers / C / g0](results/native-consumer-source-second-own-outcome-prefix-v1.json) and [interface-only / C / g0](results/native-consumer-source-third-own-outcome-prefix-v1.json) at-8.6667 all complete and tie their strong parent;3/8 own slots complete |
-| Next original slot | Literal-consumers / U / g0 enters readiness at23:49:15UTC November15 (08:49:15JST November16); no new study is dispatched |
+| Next original slot | Literal-consumers / U / g0 passes readiness and enters optimization at23:56:56UTC November15 (08:56:56JST November16); original editing is active, not a new dispatched study |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -48,6 +48,13 @@ are untrusted author statements, not proof of optimum. Reported prompt maxima
 are38,437/45,935 with stop termination, not evidence that future frames fit or
 that the model understands every consumer. This localizes the observed lack of
 change without proving the editor bug-free or identifying a causal reason.
+
+[Literal decoding options](results/native-consumer-source-completed-decoding-prefix-v1.json)
+from the first3 complete sessions cover31 hashed request wires: requested
+temperature0.6 and31 different step seeds, not temperature-zero configuration.
+This is not evidence of adequate exploration, backend option compliance or
+independent search replication; outer sampler seeds differ in scope from
+per-step LLM seeds. It changes no active setting or scientific interpretation.
 
 The third candidate changes world.selection source with a matching parsed AST;
 the installed SystemSpec equals its [submitted candidate](results/native-consumer-source-third-own-submission-prefix-v1.json).

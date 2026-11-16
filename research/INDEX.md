@@ -17,6 +17,9 @@ This page is navigation, not a chronological experiment transcript.
   closure yet. The next original consumers/U slot is in readiness.
   [The first two complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
   distinguish ordinary early finish and baseline recovery from an observed editor error.
+  [The first3 complete proposal-wire option traces](results/native-consumer-source-completed-decoding-prefix-v1.json)
+  request temperature0.6 and31 different step seeds; this is not a temperature-zero
+  configuration, independent replication or proof of effective exploration.
   [Public software proof and19 checks](results/native-consumer-source-comparison-software-v1.json)
   are separate SCRIPTED evidence. [Prepared figure data](components/native-consumer-source-figures-v1.md)
   passes11 light checks, not visual review. Original15471 runs;46051/79215 wait

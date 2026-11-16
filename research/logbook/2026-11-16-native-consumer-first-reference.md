@@ -262,3 +262,38 @@ Light [100-page reconstruction preparation](2026-11-16-terminal-subset-preparati
 is completed separately during this verified wait. It runs no scientific world,
 model, generated code, TeX or renderer. Actual manuscript rebuild/all-page
 verification remains pending, not replaced by the file-stage checks.
+
+## Fourth request readiness passes; verified wait and decoding check
+
+The preceding goal turn makes concrete progress: the third original outcome,
+source-bound82-file staging preparation/27 checks and its exact proof branch
+are retained and pushed. This turn rechecks original writer11821 and both
+continuations11949/11967 live, then repeatedly waits45 seconds on the same
+original15471 session. An observation yield does not restart or terminate it.
+
+The fourth exact-request calibration has a normally returned worker result,
+passed=true and certificate hash4c7b6d2544a4fed9692f4ab900cf4dcdd5349c5a6e3e22e781b951d2e9b2d259.
+Original progress enters literal-consumers/U/g0 optimization at
+23:56:56.537253UTC November15 (08:56:56JST November16). Its plan, reads and
+authored write steps are observed; no new native outcome is claimed from them.
+No scientific setting or source changes. The unchanged loss/visibility/slot
+rules, original paired closure wait and no-refill behavior remain in force.
+
+A [passive complete first-three proposal-wire projection](../results/native-consumer-source-completed-decoding-prefix-v1.json)
+verifies31 chronological completed request strings against their exact hashes
+and parsed payloads. All request temperature0.6, top-p0.95, top-k20, context65,536
+and output reservation8,192 with think=false. All31 step seeds differ. Thus
+describing these actual request settings as temperature-zero would be wrong.
+This does not establish that the backend honors every option, that exploration
+is sufficient, or why a proposal retains the parent. Requested options are not
+a causal experiment on decoding. The31 steps are not total physical designer
+POSTs, independent optimization histories or a projection of the still-active
+fourth session. Equal outer draw seeds are not equal per-step decoding seeds.
+
+The prospective method-comparison memo now makes that seed-layer distinction.
+No temperature, seed mapping, prompt, model or parent-selection rule is changed
+inside this study. Read-only local model inventory/memory checks load or unload
+no model and establish no more-capable replacement; no download or service is
+introduced. No independent heavy QA, PDF build, renderer or video overlaps
+inference. The complete publication-ready goal remains active, not reduced to
+these diagnostic checks or the eventual closure of this one finite pilot.

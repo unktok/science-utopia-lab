@@ -1,0 +1,632 @@
+{
+  "schema": "scienceutopia.native-consumer-source-completed-decoding-prefix.v1",
+  "recorded_utc": "2026-11-16T00:01:53.267597+00:00",
+  "classification": "passive-completed-first-three-author-wire-options-not-backend-randomness-proof",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "scientific_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "complete_sessions": 3,
+  "completed_editor_steps": 31,
+  "unique_requested_decoding_seeds": 31,
+  "requested_temperature_values": [
+    0.6
+  ],
+  "requested_top_p_values": [
+    0.95
+  ],
+  "requested_top_k_values": [
+    20
+  ],
+  "requested_num_ctx_values": [
+    65536
+  ],
+  "requested_num_predict_values": [
+    8192
+  ],
+  "requested_think_values": [
+    false
+  ],
+  "sessions": [
+    {
+      "arm": "interface-only",
+      "objective": "content-utility",
+      "generation": 0,
+      "request_sha256": "a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22",
+      "outer_optimization_draw_rng_seed": 1024557116276438765,
+      "completed_editor_steps": 11,
+      "steps": [
+        {
+          "step": 0,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 601800404,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "254590bfc67c1136572a7d4764a8f97948ad13f514d44f18e34482729fccb7df",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-00.completed.json",
+          "record_file_sha256": "455a0b9e9cea4f6a9ee7f05e26b11f5fd24493008d113f05e9be9f445058b554",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 1,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1517912849,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "a11d549ce1f81bb40fea239ce2a60317c625ae2a08264fdd2c63a32b6d5c242b",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-01.completed.json",
+          "record_file_sha256": "326e423e0023268412ea4c438b7d906aae39e9a57cfac9df6f2c26e29c06d141",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 2,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 2024635761,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "400d3d68b0f62d1e843df2740595f51df5e3ab6cdf40d1b53a42c05c5ab3f278",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-02.completed.json",
+          "record_file_sha256": "d501c352e2d2e5af00d1982185b72caf8483ec9c6c8c7ea85df84b1169c4b5cb",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 3,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 782396119,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "3b57a9295d60cfaef246d21053c36935efcea80e9caaac5db6765e734dbbc77b",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-03.completed.json",
+          "record_file_sha256": "ee45db9883365fa93d6e345bb64b0b12fdb87c8768b8fb2cd0b61697d8921758",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 4,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1078210325,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "508572c8a1b8c5b4d88bd933fda3746bff137065b0b08bcb90de687574b98a7b",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-04.completed.json",
+          "record_file_sha256": "adc3e3585455d4c08c57115142dc35eb045ec549911bbcdabed00cbbfd65ed3f",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 5,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 340188080,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "57588a8c6718c824add9c1af19bc9058564044f5bf87e5c901f07405879ad467",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-05.completed.json",
+          "record_file_sha256": "05311f7a8f5553ee32ea90b229c062d84b76887eb5eb87f5f6701e61b85920ce",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 6,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 61932440,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "3f51197e018285141bc8616900086f5395316f196d3c92ef55a8be65bdab45bc",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-06.completed.json",
+          "record_file_sha256": "c44a67ac7745fe814a2b2792ac045eefe4c132800eaca91225ed6df2eae3e6f2",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 7,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1686326553,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "ebbc51e16691d76a5711690b7ea417e3b2ec36fb7212f9cdc030e47ae63b8eda",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-07.completed.json",
+          "record_file_sha256": "e43b6d4197cffd7336c2929a52e387ce8435706f662af01e855da0d0028f9836",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 8,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 966651883,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "93f4baaa5526ad61be47b510a5d7e598787e24f79510d492a78425e6fc13e91d",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-08.completed.json",
+          "record_file_sha256": "4950f7aac5958eb142515e44e2f2257970d8fad39ea7505dafe5fc6d5f07cfd6",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 9,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1959881303,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "30021795f8ad65f5af5538150decb250ecb4bbeae5dbab451bbd2666d8c8cd53",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-09.completed.json",
+          "record_file_sha256": "1475a63e3c59c6232cea68c1d1936f4031778cf8ca1445ebbcd6027aa131a269",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 10,
+          "status": "finished",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 454109748,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "f021f25c1e89338da2c0e319de815e59b6538c9978bff3a05d31fc386af295d7",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/content-utility/authoring/proposal-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/editor-session/authoring/generation-a9191013090ee0785d211ace134681d89fec5536633aa3d8ddc9a0a202672c22/step-10.completed.json",
+          "record_file_sha256": "f12a68460b374b048e82d0e52bf1734a56f72f9fffac33f6ca5661319f6b0d1a",
+          "reported_done_reason": "stop"
+        }
+      ]
+    },
+    {
+      "arm": "literal-consumers",
+      "objective": "resource-aware-content",
+      "generation": 0,
+      "request_sha256": "85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911",
+      "outer_optimization_draw_rng_seed": 1024557116276438765,
+      "completed_editor_steps": 6,
+      "steps": [
+        {
+          "step": 0,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 255719343,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "e7a1ddb7913bbd121282c9c591ca1f6732b0284b17544d0084ff60c492f35133",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/resource-aware-content/authoring/proposal-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/editor-session/authoring/generation-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/step-00.completed.json",
+          "record_file_sha256": "13d4eca1ed7ddd91eea389a2a49b76bebbb0820154d57a50dbf919a808f1fa51",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 1,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 314072863,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "a703f92a18fb6eb6104a1e4d95dafe1e47e79606b38396752e8bb3a7a5fa53c5",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/resource-aware-content/authoring/proposal-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/editor-session/authoring/generation-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/step-01.completed.json",
+          "record_file_sha256": "09ddb0126baf0c77d12587963698f8aba72373ff4d5f5a2050d02f765c4c020f",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 2,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 926998627,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "43f3a1d65f66a2fa70e2db4b265cfcef64ea26d44bb1eeed87ddd417b8063eac",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/resource-aware-content/authoring/proposal-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/editor-session/authoring/generation-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/step-02.completed.json",
+          "record_file_sha256": "cc92ca2b91199a579b2e37d5089e48cff7ed64582e225f9382a42554dc4cb0dd",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 3,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 593698323,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "269fe9bf68b393e0fe83a29ccf6c5e08e4173ff420e552ba6ec8e65f09944073",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/resource-aware-content/authoring/proposal-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/editor-session/authoring/generation-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/step-03.completed.json",
+          "record_file_sha256": "1bb4f81d618239447551cb5581021f9454c4326374356fe1ac4f9a29dc804b22",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 4,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 305707661,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "4becde9fe141dc1704cef9d2e596a86a30986fbea3021993d5554a225cd4a5b4",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/resource-aware-content/authoring/proposal-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/editor-session/authoring/generation-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/step-04.completed.json",
+          "record_file_sha256": "19271c4d62b28878a9447a04769dfa47068041505ca7192f88d8070e74acb91f",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 5,
+          "status": "finished",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 822904400,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "98702f737827d835845264c69d78b7a3f8150ffe310c28c9105bfde7149ca7e9",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/literal-consumers/resource-aware-content/authoring/proposal-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/editor-session/authoring/generation-85dbe43c8fb9c495167b72b1a4d4d8a919183c300a8598a8b8c86d4444cd5911/step-05.completed.json",
+          "record_file_sha256": "1fde544cbb5e391ee9825fd0f3e72b7d954968e909cb3585e607c38117f8464a",
+          "reported_done_reason": "stop"
+        }
+      ]
+    },
+    {
+      "arm": "interface-only",
+      "objective": "resource-aware-content",
+      "generation": 0,
+      "request_sha256": "3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c",
+      "outer_optimization_draw_rng_seed": 1024557116276438765,
+      "completed_editor_steps": 14,
+      "steps": [
+        {
+          "step": 0,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 939033536,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "0ded6c476a3ccbdf6c16bfcdc546190282e079b17cea982ef34b46e821230d4d",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-00.completed.json",
+          "record_file_sha256": "880c9ad30da50194958268c8df4f587660168b1dd8a2ca0ef9d0c5e55b6556af",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 1,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1169971038,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "78e403b3d9412574580b10e95857b301963fb98031c268db1f9b2e555948a9a0",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-01.completed.json",
+          "record_file_sha256": "6fb687e17b89bf3a2a7efc00b5eeffe4c590eb4630e92f79fe5cc83e8889bce9",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 2,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 232054674,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "c39c5663bee2f83e745106ebbadf1d427ca720c473b4450775f578a38175eb33",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-02.completed.json",
+          "record_file_sha256": "6a16778a86f4ff0ad15ff809bacbb72a8bd22b8bd42e7490288e6c5087d74a18",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 3,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1580786893,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "056a3b20ff55fec28a9e99d9818bf3f0570d889ce4b0b60081ed7f54dc0dbf38",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-03.completed.json",
+          "record_file_sha256": "dfa301e793be234c36a54ea31fb87baad521139f763f4d189c74df9c43d6d42c",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 4,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 421503092,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "dd3f1a0733d2b8fc6939d96b295184b1b9476ce5f6c1de796d33d77e2f7be2df",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-04.completed.json",
+          "record_file_sha256": "ad1b4c51d2ade91d300198a125332e6e965555fd24332d0b5d1fd1c27353d7ad",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 5,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 229124776,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "ba970aa89d72a3dc89dfea0314f8a9f74a90babd0db7be58e57121e0d533f371",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-05.completed.json",
+          "record_file_sha256": "9cfb0f74085cd486dc888e71e17705e6bc7cb301eba7c19e9ec05a0891504395",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 6,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 766349286,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "94ba3dd87851b7f7cd90698f6ba4d0aa54f16da995f266f4d0b51b4770d546f0",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-06.completed.json",
+          "record_file_sha256": "8a3df8d4cfbfecacb8a8f76dd41c6200ab26d5dde9bc66052a91dfdd48eaa715",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 7,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 941557717,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "909cb17080e44403d690319274d9c21c82def3f629a66a28de5cf2a4de3a5187",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-07.completed.json",
+          "record_file_sha256": "10c4f2166faa282bd024cc27ee692133900bb6cecbe71832a04be933f786e58d",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 8,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1890677811,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "729e0e8e030aa46e114f5f06a6f6b9997e42b9357cc130453b797bbcb737330e",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-08.completed.json",
+          "record_file_sha256": "6f1cb43ce9809de1c97f7319511230192384d6ae35b41e53b407a882d4e5245e",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 9,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 150498462,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "9081cd7eefd82620a6f8d3e569cd4b8189957c104c50db2d5656014ad55a4217",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-09.completed.json",
+          "record_file_sha256": "afdffeddc3e85fbbe2b750e74933bcb9c613a2ab4b174ab690ed542a372052d2",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 10,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 426863438,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "5c401f019f15b69b67d297869aafe60d644e77ca57fb7439a81fa1963cda6fdc",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-10.completed.json",
+          "record_file_sha256": "5e527716885ed49bb980699fb63f3d5d011f361847a7b496ae52c74feed553a1",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 11,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 123913884,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "462d576fbe186ae943e8f921b3e9680867f4a1107e06c939217cb97ad8ba9396",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-11.completed.json",
+          "record_file_sha256": "3643e7f5dcab3a3b508ebac7ac2a249880004d727938238ce5551ba94e84452b",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 12,
+          "status": "applied",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1238481039,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "6ff16976ed93dfffa9b9fb223a3c018d9808316d31f2b5fca08a92b5864f2500",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-12.completed.json",
+          "record_file_sha256": "25d74334460ba74d6295df3d9331e1958a6c93beec7b639d187db4487ece8ada",
+          "reported_done_reason": "stop"
+        },
+        {
+          "step": 13,
+          "status": "finished",
+          "requested_options": {
+            "min_p": 0.0,
+            "num_ctx": 65536,
+            "num_predict": 8192,
+            "seed": 1218758822,
+            "temperature": 0.6,
+            "top_k": 20,
+            "top_p": 0.95
+          },
+          "requested_think": false,
+          "request_wire_sha256": "734ceaf504dccc931bd87eaa63050d8367cc65a65e2e8a2e174291b46b0824d2",
+          "record_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3/search/interface-only/resource-aware-content/authoring/proposal-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/editor-session/authoring/generation-3b4f55a7c41aea192a9390648c416b267a61ab88d85b94f777c8b676af5dc64c/step-13.completed.json",
+          "record_file_sha256": "6b0b2fea71446120c8299b4c417b7cb4ffaba848904afb9bfa6dccc63802f8d5",
+          "reported_done_reason": "stop"
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "not_total_physical_designer_POSTs": true,
+    "calibration_and_role_load_not_included": true,
+    "currently_unfinished_fourth_session_not_included": true,
+    "backend_honoring_sampling_parameters_proven": false,
+    "independent_optimizer_replications": false,
+    "temperature_cause_of_stagnation_identified": false,
+    "matching_outer_draw_seeds_implies_matching_per_step_decoding_seeds": false,
+    "new_model_calls": 0,
+    "new_generated_code_executions": 0,
+    "new_native_worlds": 0,
+    "active_settings_changed": false
+  },
+  "interpretation": "The complete retained proposal-step wires request temperature0.6, not zero. This rejects describing those literal requests as temperature-zero configuration; it does not identify effective backend stochasticity, adequate exploration, model understanding or an isolated source-information effect. Shared outer optimization seed is a different layer from each request-derived per-step decoding seed."
+}
