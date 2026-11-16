@@ -1,0 +1,199 @@
+{
+  "schema": "scienceutopia.native-corrected-author-assay-dispatch.v1",
+  "observed_utc": "2026-11-16T15:25:11.900969+00:00",
+  "source_commit": "2f8d8ac38e10fbe006e399ecb846846916c95dce",
+  "plan_content_sha256": "09a483a8dc675b84a34c11d101582d328d0eb55cdb52d10f3ccb6b3957793d48",
+  "plan_file_sha256": "a1a83762f5cc71abb735dab832b2b92e6bb4a1f6d82900899ee2f7ac200b2c09",
+  "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-author-assay-v1-a1/outputs/native-corrected-author-assay-v1-a1",
+  "original_handle": 12849,
+  "writer_pid": 290,
+  "writer_confirmed_live": true,
+  "started_utc": "2026-11-16T15:13:28.257345+00:00",
+  "backend": {
+    "model": "qwen3.6:35b-mlx-64k",
+    "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8",
+    "ollama_version": "0.33.3"
+  },
+  "verified_software": {
+    "QA_content_sha256": "7d07f2ae1e39260196706adc5517775fa6236d586bb917bc4d2e87231ccdf8a7",
+    "exact_production_module_files": 291,
+    "orchestrator_is_new": true,
+    "real_model_certificate_reused": false,
+    "source_commit": "adfd6b947aa6cb5f151faf144d2e708bdb27dea6"
+  },
+  "declared_budget": {
+    "cases": 3,
+    "maximum_calibration_POSTs": 120,
+    "maximum_component_probes": 192,
+    "maximum_content_critic_POSTs": 0,
+    "maximum_designer_role_load_POSTs": 6,
+    "maximum_native_worlds": 0,
+    "maximum_proposal_POSTs": 48,
+    "maximum_scientist_POSTs": 0,
+    "maximum_sessions": 6,
+    "network_retries": 0,
+    "replace_failed_case": false,
+    "session_wall_seconds": 1800
+  },
+  "planned_calibration_POSTs": [
+    28,
+    28,
+    29
+  ],
+  "request_sha256": {
+    "parent-zero": "dcbc32fbcf785ead398e7fe44f8d5299104bdd9014d7030c786e0e75d45850ce",
+    "parent-terminal": "94c74ec3000312d440ed5710307ef478190560d3de65ff2f267eb0f8e9ed4c2f",
+    "after-feature-write": "547a82b2f235623ef434d8acad33978c5eccf25b0626fbe46536ad2b0e477f5b"
+  },
+  "first_calibration": {
+    "records": 28,
+    "all_controls_passed": true,
+    "certificate_file_sha256": "4b3e5c800157fb51c2069ffe069fd299f258339df536ca0dde35c1cfed914cdc",
+    "certificate_content_sha256": "e0891735c077eb616f9084d131bafba2927265ded8ef419cff997168ceb1e053"
+  },
+  "first_free_prefix": [
+    {
+      "step": 0,
+      "status": "applied",
+      "tool": "plan",
+      "capacity": {
+        "actual_wire_utf8_bytes": 138888,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 32093,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "file_sha256": "1578c4cfa7a7a215105a8464e93194345fb2d203bab2570501e48404584c2cbc"
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "tool": "read_file",
+      "capacity": {
+        "actual_wire_utf8_bytes": 147358,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 33575,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "file_sha256": "5d39b4eaf9186f706dad88fab6ca5f180c797fb81daa090b2d5bd64e832aa6c0"
+    },
+    {
+      "step": 2,
+      "status": "applied",
+      "tool": "read_file",
+      "capacity": {
+        "actual_wire_utf8_bytes": 145966,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 33598,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "file_sha256": "b72f154772c27ab852254981e1b2b2dacdbcfec37ee30e6f44e321eaa93864e0"
+    },
+    {
+      "step": 3,
+      "status": "applied",
+      "tool": "read_file",
+      "capacity": {
+        "actual_wire_utf8_bytes": 146622,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 33779,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "file_sha256": "862e99a942a117842315efd0bf099c4d9fb6864ed2223fa8a36acdec2c4da8dd"
+    },
+    {
+      "step": 4,
+      "status": "rejected",
+      "tool": "read_file",
+      "capacity": {
+        "actual_wire_utf8_bytes": 152274,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 35009,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "file_sha256": "da1f20433be5bbd4c626bf66650dc91149afa22e3792b468186773089ffe4ba9"
+    },
+    {
+      "step": 5,
+      "status": "rejected",
+      "tool": "read_file",
+      "capacity": {
+        "actual_wire_utf8_bytes": 150165,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 34372,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "file_sha256": "e1866937ab738ba3d02c1bb050244f4f972060ac9d19c601bb1442056f056ffd"
+    },
+    {
+      "step": 6,
+      "status": "rejected",
+      "tool": "read_file",
+      "capacity": {
+        "actual_wire_utf8_bytes": 150562,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 34505,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "file_sha256": "2d216cf179cc6662e1de0b06b34b0b76b1b39e0dc8ddf37371a3ce503f4415f5"
+    },
+    {
+      "step": 7,
+      "status": "rejected",
+      "tool": "read_file",
+      "capacity": {
+        "actual_wire_utf8_bytes": 150984,
+        "backend_truncation_requested": false,
+        "context_tokens": 65536,
+        "full_output_reservation_fits_observed_prompt": true,
+        "maximum_wire_utf8_bytes": 200000,
+        "observed_prompt_eval_count": 34632,
+        "reserved_output_tokens": 8192,
+        "token_capacity_is_measured": true
+      },
+      "file_sha256": "2f8d61ed9af46ce24050ae50456f332fdfbeb25c6bc0811997a9467fdc3ab78c"
+    }
+  ],
+  "hardware": {
+    "physical_memory_bytes": 68719476736,
+    "local_loaded_models_before_dispatch": [],
+    "hostwide_processes_inspected": true,
+    "other_projects_Docker_trials_observed": true,
+    "exclusive_hardware_claimed": false,
+    "timing_is_dedicated_model_benchmark": false
+  },
+  "all_cases_closed": false,
+  "native_worlds_dispatched": 0,
+  "new_scientific_losses": 0,
+  "original_scientific_records_changed": false,
+  "corrected_free_invention_or_loss_gain_claimed": false,
+  "publication_ready": false,
+  "content_sha256": "37981f3fada2f379106d7be2ca141d49c5786899efa5733900eb148974bf5398"
+}

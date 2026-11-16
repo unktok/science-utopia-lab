@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="17" time="8.529" timestamp="2026-11-17T00:22:01.538521+09:00" hostname="flower-man.local"><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_literal_anchor_initial_samples_and_declared_groups" time="0.730" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_each_declared_single_move_crosses_literal_initial_consumer_boundary[0-neural_symbolic_ai]" time="0.613" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_each_declared_single_move_crosses_literal_initial_consumer_boundary[1-mathematical_software]" time="0.626" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_each_declared_single_move_crosses_literal_initial_consumer_boundary[1-operating_systems]" time="0.610" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_each_declared_single_move_crosses_literal_initial_consumer_boundary[1-parallel_computing]" time="0.614" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_each_declared_single_move_crosses_literal_initial_consumer_boundary[1-performance_analysis]" time="0.616" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_each_declared_single_move_crosses_literal_initial_consumer_boundary[1-software_engineering]" time="0.591" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_each_declared_single_move_crosses_literal_initial_consumer_boundary[2-meta-learning]" time="0.540" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_real_ask_tell_state_replays_without_fabricated_warm_measurement" time="0.321"><failure message="ValueError: initial_random must be positive">def test_real_ask_tell_state_replays_without_fabricated_warm_measurement():
+        space = NativeInitialChoiceSpace(reference(), actors()); anchor = space.binding['anchor']
+&gt;       optimizer = NativeParameterOptimizer(space, seed=13, initial_random=0, mutation_scale=.2)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/optimization/test_native_initial_choice_space_v1.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utopia/optimization/native_parameter_space_v1.py:150: in __init__
+    self._optimizer = AdaptiveRandomSearch(space,seed=seed,initial_random=initial_random,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;utopia.optimization.blackbox.AdaptiveRandomSearch object at 0x10f419a90&gt;
+space = &lt;utopia.optimization.native_initial_choice_space_v1.NativeInitialChoiceSpace object at 0x10f267810&gt;
+
+    def __init__(
+        self,
+        space: SearchSpace,
+        *,
+        seed: int,
+        initial_random: int = 4,
+        mutation_scale: float = 0.2,
+    ):
+        if isinstance(seed, bool) or not isinstance(seed, int):
+            raise ValueError("seed must be an integer")
+        if isinstance(initial_random, bool) or not isinstance(initial_random, int):
+            raise ValueError("initial_random must be an integer")
+        if initial_random &lt; 1:
+&gt;           raise ValueError("initial_random must be positive")
+E           ValueError: initial_random must be positive
+
+utopia/optimization/blackbox.py:296: ValueError</failure></testcase><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_invalid_scale_is_not_repaired[True]" time="0.318" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_invalid_scale_is_not_repaired[0.0]" time="0.332" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_invalid_scale_is_not_repaired[-1.0]" time="0.317" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_invalid_scale_is_not_repaired[1.1]" time="0.326" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_invalid_scale_is_not_repaired[nan]" time="0.349" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_invalid_scale_is_not_repaired[inf]" time="0.360" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_invalid_scale_is_not_repaired[0.2]" time="0.401" /><testcase classname="tests.optimization.test_native_initial_choice_space_v1" name="test_no_initial_choices_is_configuration_error_not_failed_candidate_refill" time="0.425" /></testsuite></testsuites>

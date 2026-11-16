@@ -5,6 +5,15 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Actual corrected-author real-model assay dispatch](results/native-corrected-author-assay-dispatch-v1.json)
+  fixes three real document shapes/requests at2f8d8ac3 and uses fresh source/
+  model/backend-bound calibration plus one free session per shape. The first
+  28 controls pass; the subsequent first free session submits after14 actions.
+  Remaining cases are active. No new scientific loss or invention is claimed.
+  [The separately prepared initial-choice comparator](components/native-initial-choice-space-v1.md)
+  passes25 light cases, addressing the old initial rank barrier without native
+  law changes, behavioral vetoes or an adopted scientific protocol.
+
 - [Reviewed111-page integrated revision](../paper/integrated-priority-method-build-v1.json)
   retains all24 candidate outcomes,12 selections, all8 action/effect/visibility
   traces, role costs and the actual12-path figure. Cached-only double builds

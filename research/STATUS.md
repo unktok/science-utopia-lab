@@ -5,6 +5,32 @@ Latest software verification:14:32UTC/23:32JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
+## Corrected-author real-model assay is active
+
+[The finite real dispatch](results/native-corrected-author-assay-dispatch-v1.json)
+starts once from clean2f8d8ac3, using the same approved35B local designer and
+current0.33.3 backend.291 production modules match the actual adfd6b94 public/
+native QA source. Actual preparation19582 exits0; original12849 owns this
+assay (writer290, confirmed live at the dated15:25UTC snapshot). All three
+requests are fixed first:28/28/29 directed controls followed by one16-step
+free session each, with explicit120+48 POST ceilings and separate6 load POSTs.
+No scientist/critic/native-world call belongs to this technical assay.
+
+The first calibration passes28 controls. By the subsequent live check the first
+free session completes14 actions,5 implementation-phase calls and an explicit
+valid submission. This is not measured improvement: its two source writes
+remain unscored. The other two fixed cases continue. The original closed24-slot
+observations and111-page reviewed PDF remain unchanged. Do not patch the active
+source, refill a failed case or call generic copy controls useful invention.
+
+[A prospective initial-choice comparator](components/native-initial-choice-space-v1.md)
+now makes moves within declared initial2/6/2 topic groups instead of relying on
+global10-swap locality.25 component/state cases pass; the first invalid test-
+configuration failure is retained. Seven developer-source witnesses change one
+initial topic and preserve duration; these are not new native-world outcomes,
+an adopted comparison or a method advantage. Work remains on a separate feature
+source and does not modify the active2f8d8ac3 author runtime.
+
 ## Reviewed111-page integrated revision is available
 
 [The new PDF/build receipt](../paper/integrated-priority-method-build-v1.json)
