@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="1.709" timestamp="2026-11-16T19:21:25.918586+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_actual_author_repair_is_explicitly_bound_not_excluded[method]" time="0.152"><failure message="ValueError: original scientist/effect source differs: utopia/optimization/native_authoring_recovery_v44.py">kind = 'method'
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    def test_actual_author_repair_is_explicitly_bound_not_excluded(kind):
+&gt;       result = proof(kind)
+                 ^^^^^^^^^^^
+
+tests/reports/test_native_author_context_source_binding_v2.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:19: in proof
+    return method.native_sources(ORIGINAL, pinned_revision(method.ROOT))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/run_native_priority_method_comparison_v1.py:57: in native_sources
+    return free.base.native_sources(original, adapters=adapters)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = 'a5be8d3103854368a4bc6ba4c13eff7552e9dd15'
+
+    def native_sources(source, *, adapters=None, source_root=None):
+        import hashlib
+        import io
+        import subprocess
+        exclusions = (*AUTHOR_ONLY_DIFFERENCES, 'utopia/optimization/native_design_space.py')
+        names = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', source, '--', 'utopia'],
+            cwd=ROOT, text=True).splitlines()
+        names += ['scripts/run_native_objective_instrument_loop_v1.py',
+            'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py']
+        names = [n for n in sorted(set(names)) if n.endswith('.py') and n not in exclusions]
+        # Read the same immutable Git blobs in one subprocess. Recheck actual local
+        # bytes on every call; do not cache a prior clean-source verdict.
+        batch = subprocess.run(['git', 'cat-file', '--batch'], cwd=ROOT,
+            input=''.join(source + ':' + n + '\n' for n in names).encode(),
+            stdout=subprocess.PIPE, check=True).stdout
+        stream = io.BytesIO(batch); files = {}; adapted = {}
+        physical_root = ROOT if source_root is None else Path(source_root).resolve()
+        adapters = {} if adapters is None else adapters
+        for name in names:
+            header = stream.readline().split()
+            if len(header) != 3 or header[1] != b'blob':
+                raise ValueError('original source Git blob is missing or not a file: ' + name)
+            size = int(header[2]); raw = stream.read(size)
+            if len(raw) != size or stream.read(1) != b'\n':
+                raise ValueError('original source Git batch framing differs')
+            path = physical_root / name
+            if path.is_symlink() or not path.is_file():
+                raise ValueError('original scientist/effect source differs: ' + name)
+            current = path.read_bytes()
+            if current != raw:
+                adapter = adapters.get(name)
+                if (not isinstance(adapter, dict) or set(adapter) != {'source_commit', 'role'}
+                        or not isinstance(adapter['role'], str) or not adapter['role']):
+&gt;                   raise ValueError('original scientist/effect source differs: ' + name)
+E                   ValueError: original scientist/effect source differs: utopia/optimization/native_authoring_recovery_v44.py
+
+scripts/run_native_workflow_objective_loop_v1.py:97: ValueError</failure></testcase><testcase classname="tests.reports.test_native_author_context_source_binding_v2" name="test_actual_author_repair_is_explicitly_bound_not_excluded[fixed]" time="0.066"><failure message="ValueError: original scientist/effect source differs: utopia/optimization/native_authoring_recovery_v44.py">kind = 'fixed'
+
+    @pytest.mark.parametrize('kind', ['method', 'fixed'])
+    def test_actual_author_repair_is_explicitly_bound_not_excluded(kind):
+&gt;       result = proof(kind)
+                 ^^^^^^^^^^^
+
+tests/reports/test_native_author_context_source_binding_v2.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_author_context_source_binding_v2.py:20: in proof
+    return fixed.native_sources(LEGACY_METHOD)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = '705b5259ad06366f7d178804c6d67ff5ea17cdb4'
+
+    def native_sources(source, *, adapters=None, source_root=None):
+        import hashlib
+        import io
+        import subprocess
+        exclusions = (*AUTHOR_ONLY_DIFFERENCES, 'utopia/optimization/native_design_space.py')
+        names = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', source, '--', 'utopia'],
+            cwd=ROOT, text=True).splitlines()
+        names += ['scripts/run_native_objective_instrument_loop_v1.py',
+            'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py']
+        names = [n for n in sorted(set(names)) if n.endswith('.py') and n not in exclusions]
+        # Read the same immutable Git blobs in one subprocess. Recheck actual local
+        # bytes on every call; do not cache a prior clean-source verdict.
+        batch = subprocess.run(['git', 'cat-file', '--batch'], cwd=ROOT,
+            input=''.join(source + ':' + n + '\n' for n in names).encode(),
+            stdout=subprocess.PIPE, check=True).stdout
+        stream = io.BytesIO(batch); files = {}; adapted = {}
+        physical_root = ROOT if source_root is None else Path(source_root).resolve()
+        adapters = {} if adapters is None else adapters
+        for name in names:
+            header = stream.readline().split()
+            if len(header) != 3 or header[1] != b'blob':
+                raise ValueError('original source Git blob is missing or not a file: ' + name)
+            size = int(header[2]); raw = stream.read(size)
+            if len(raw) != size or stream.read(1) != b'\n':
+                raise ValueError('original source Git batch framing differs')
+            path = physical_root / name
+            if path.is_symlink() or not path.is_file():
+                raise ValueError('original scientist/effect source differs: ' + name)
+            current = path.read_bytes()
+            if current != raw:
+                adapter = adapters.get(name)
+                if (not isinstance(adapter, dict) or set(adapter) != {'source_commit', 'role'}
+                        or not isinstance(adapter['role'], str) or not adapter['role']):
+&gt;                   raise ValueError('original scientist/effect source differs: ' + name)
+E                   ValueError: original scientist/effect source differs: utopia/optimization/native_authoring_recovery_v44.py
+
+scripts/run_native_workflow_objective_loop_v1.py:97: ValueError</failure></testcase></testsuite></testsuites>
