@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Reviewed111-page integrated revision](../paper/integrated-priority-method-build-v1.json)
+  retains all24 candidate outcomes,12 selections, all8 action/effect/visibility
+  traces, role costs and the actual12-path figure. Cached-only double builds
+  match in text/logs/all111 page images; all layouts/new-section detail are
+  reviewed.53 figures/52 tables/32 references. Historical104-page files remain.
+  This is not a minimal-subset rebuild, corrected-model certificate, important
+  main-track finding or publication readiness.
+
 - [Actual corrected public/native software verification](results/native-priority-corrected-public-native-qa-v1.json)
   completes once at adfd6b94:1 pass/1245.16s. Actual native SDK/executor and paired
   cold/cost/readouts cover27 development/2 upstream-fixture/18 evaluation worlds;

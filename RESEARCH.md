@@ -20,14 +20,14 @@
 を実記録・完全な元世界データで再現し、次回ソース向けに修正した。元実験の旧ソースは変更せず、
 測定損失も消さないが、その旧比較からモデル固有能力や純粋な目的／手法差を因果的に結論しない。
 修正後の実モデル校正・有効性は未実証であり、87件の軽量検証やSCRIPTED native通し検証とは区別する。
-最新の確認済み統合PDFは[104ページの原稿記録](paper/integrated-consumer-source-build-v1.json)
-と[PDF](output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf)。
-以前の意味ある研究を保持し、自由制度探索、回収費用の対照、元世界の実装sourceを
-設計者へ見せる情報条件の8候補比較まで含む。2回のcached buildの本文・log・全104ページの
-画像が一致し、全紙面と新結果の拡大表示を確認した。52図・49表・32文献を含むが、
-主会議readyではない。この104ページsnapshot固有の最小source再構築は未検証であり、
+最新の確認済み統合PDFは[111ページの原稿記録](paper/integrated-priority-method-build-v1.json)
+と[PDF](output/pdf/science-utopia-lab-integrated-priority-method-working-paper.pdf)。
+以前の意味ある研究を保持し、元世界の全24候補・12固定選択・全8設計者操作／作用／可視性・
+費用と最適化経路の図まで含む。2回のcached buildの本文・log・全111ページの画像が一致し、
+全紙面と新結果の拡大表示を確認した。53図・52表・32文献を含むが、主会議readyではない。
+以前の104頁PDF／receiptも改変せず保存した。111ページ版固有の最小source再構築は未検証であり、
 以前の[100ページ稿の実再構築](research/results/integrated-terminal-rebuild-subset-verification-v1.json)
-を新しい稿の証明に流用しない。現在稼働する手法比較の結果はまだこのPDFに含まれない。
+を新しい稿の証明に流用しない。原稿更新は修正後設計者の実モデル校正や新たな改善の証明ではない。
 原稿再構築は研究結果の独立再現ではなく、主会議readyの根拠の代わりではない。
 この104頁版固有の[84ファイル／81依存のsource-only subset](research/results/integrated-consumer-rebuild-subset-preparation-v1.json)
 は当時のGitから取り出して一致まで確認し、専用proof branchもpush済み。

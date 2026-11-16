@@ -157,4 +157,4 @@ def test_prior_manuscript_inputs_labels_and_evidence_paths_survive_without_pdf_c
             if operation == 'begin': stack.append(name)
             else: assert stack and stack.pop() == name
         assert not stack
-    assert 'amendments have not been built or visually reviewed' in (ROOT / 'paper/README.md').read_text()
+    assert 'Current111-page revised working paper' in (ROOT / 'paper/README.md').read_text()

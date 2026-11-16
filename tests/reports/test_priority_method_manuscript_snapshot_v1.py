@@ -225,5 +225,30 @@ def test_reviewed_pdf_receipt_is_historical_not_a_new_source_build_claim():
     assert r['source_commit'] == '2d19cc966790ff0c2402b6889485ba58f32a49cd'
     assert r['pages'] == 104 and not r['publication_ready']
     note = (ROOT / 'paper/README.md').read_text()
-    assert 'amendments have not been built or visually reviewed' in note
+    assert 'Current111-page revised working paper' in note
     assert 'Source and numeric-transcription checks alone are not PDF QA' in note
+
+
+def test_new111_page_artifact_is_bound_to_exact_source_and_does_not_replace_old_receipt():
+    r = record('paper/integrated-priority-method-build-v1.json')
+    assert r['source_commit'] == '09c2e6d1315b306bbbb4c7039321f1bd801a59a6'
+    assert (r['pages'], r['figures'], r['tables'], r['cited_references']) == (111, 53, 52, 32)
+    assert hashlib.sha256((ROOT / r['pdf']).read_bytes()).hexdigest() == r['pdf_sha256']
+    assert r['build']['exit_codes'] == [0, 0] and r['build']['downloads'] == 0
+    assert r['build']['text_identical'] and r['build']['log_identical']
+    assert r['build']['off_page_text_words'] == r['build']['overfull_underfull_or_undefined_diagnostics'] == 0
+    assert r['build']['bbox_word_tags_accounted'] == 51578
+    assert len(r['visual_review']['page_sha256']) == 111
+    assert r['visual_review']['all111_layouts_reviewed']
+    assert r['visual_review']['all111_page_images_identical_across_final_builds']
+    for name, sha in r['source_file_sha256'].items():
+        # Literal TeX dependencies can use paper/../research paths; Git tree
+        # lookup requires the canonical repo-relative name for that same file.
+        canonical = (ROOT / name).resolve().relative_to(ROOT)
+        literal = subprocess.check_output(['git', 'show', r['source_commit'] + ':' + str(canonical)], cwd=ROOT)
+        assert hashlib.sha256(literal).hexdigest() == sha
+        assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == sha
+    assert not r['corrected_real_model_readiness_proven'] and not r['publication_ready']
+    assert not r['minimal_source_subset_rebuild_verified'] and not r['independent_scientific_replication']
+    old = record('paper/integrated-consumer-source-build-v1.json')
+    assert old['pages'] == 104 and old['content_sha256'] != r['content_sha256']

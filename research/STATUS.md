@@ -5,6 +5,27 @@ Latest software verification:14:32UTC/23:32JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
+## Reviewed111-page integrated revision is available
+
+[The new PDF/build receipt](../paper/integrated-priority-method-build-v1.json)
+now includes all24 slots/12 frozen selections/all8 author outcomes, the actual
+12-path figure, role costs and the separate corrected public/native software QA.
+Exact source09c2e6d1 builds twice with matching text/logs and all111 page images.
+All layouts are reviewed, including150dpi new-section/first/concept/evidence
+checks;53 figures/52 tables/32 references remain.51,578 original bbox word tags
+have no off-page words. A stale discussion sentence found during review is
+corrected in the final source; no native observation or old artifact is edited.
+27 final source/evidence/artifact-retention checks pass with no skips/deselection;
+the first26-pass/1-failure TeX-path/Git-lookup test mistake is retained separately.
+
+This is a full revised working paper, not a focused submission-ready main paper.
+The previous104-page PDF/receipt remain unchanged. The new111-page minimal
+source subset rebuild and cache-free environment are not verified. Corrected
+real-model readiness, justified prospective experiments, adequate independent
+evidence and an important differentiated finding remain open (R2/R3/R5/R6).
+No scientific inference or queued report continuation is still active in this
+project; the finite original study and its software QA have actually finished.
+
 ## Corrected public/native software verification completes
 
 [The pinned adfd6b94 QA completes](results/native-priority-corrected-public-native-qa-v1.json)

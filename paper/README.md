@@ -1,6 +1,32 @@
 # Objective-conditioned institution paper
 
-## Current editable source versus last reviewed PDF
+## Current111-page revised working paper
+
+The [new111-page integrated draft](../output/pdf/science-utopia-lab-integrated-priority-method-working-paper.pdf)
+and [source-bound build/review receipt](integrated-priority-method-build-v1.json)
+now include the complete24-slot native method pilot,12 frozen selections,
+all8 author effects/visibility analysis, non-overlapping role costs and the
+successful corrected public/native SCRIPTED QA. The53 figures/52 tables/32
+references retain the whole meaningful program, not a newly imposed page cap.
+The six-panel result figure distinguishes actual losses from best-own paths.
+It does not turn coupled histories or a technical interface fix into method
+superiority, corrected real-model readiness or useful institution invention.
+
+Final source09c2e6d1 builds twice using cached-only/untrusted Tectonic, with
+matching text/logs and all111 page images. All layouts are reviewed; the new
+section and first/concept/evidence pages receive150dpi checks.51,578 original
+Poppler word boxes are accounted for with no off-page words. No unresolved
+references or overfull/underfull diagnostics remain. Historical engine notices
+about inputenc and two h-to-ht float changes are explicitly retained.
+
+The historical104-page artifact and receipt remain unchanged. The111-page
+minimal-source subset rebuild is not yet verified; old84-file staging and
+100-page reconstruction do not prove it. This is not a cache-free clean-machine
+build, independent scientific replication, anonymous/venue release clearance
+or a publication-ready main-track finding. Fresh corrected-model readiness
+and a justified finite research comparison still remain.
+
+## Historical source-only preparation before the111-page build
 
 The canonical source [integrated.tex](integrated.tex) now additionally includes
 [the finite priority/free-method pilot and visibility defect](integrated/native-priority-method-snapshot.tex).
@@ -23,7 +49,8 @@ studies; it no longer describes V2 as the latest matched study. No new result,
 pooled replication, important main-track finding or corrected-model benefit is
 created by this editorial synthesis.
 
-**These amendments have not been built or visually reviewed.** The104-page
+At that earlier source-only snapshot, these amendments had not been built or
+visually reviewed. The104-page
 artifact and its source-bound receipt below remain unchanged; they do not prove
 the current source's page count, layout or results. No heavy PDF/render work
 overlaps the active original scientific inference. After a verified hardware
@@ -31,7 +58,7 @@ window, build the exact committed source twice, check all references/layouts,
 inspect all page renders and retain a new artifact/receipt without overwriting
 the old PDF. Source and numeric-transcription checks alone are not PDF QA.
 
-The latest reviewed working artifact is the
+The earlier reviewed working artifact is the
 [104-page integrated draft](../output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf),
 with52 figures,49 tables and32 references. Its
 [source/build/visual receipt](integrated-consumer-source-build-v1.json) binds

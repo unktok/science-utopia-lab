@@ -94,3 +94,34 @@ asbbfed2cf. Originals45972/64020 both build111-page PDFs with matching clean
 logs and no warnings. These remain intermediate artifacts: later manuscript
 source also includes the just-completed software QA. Final source must be
 committed/rebuilt twice and all pages inspected before new PDF release.
+
+## Final revised111-page artifact
+
+Source09c2e6d1 fixes the stale unfinished-discussion sentence found in visual
+review and a table caption. Final originals87953/35158 both exit0 with cached-
+only untrusted builds; text and logs match.11190dpi final page images match
+across original render handles71425/35980. All111 earlier a4 pages were inspected
+in10 sheets;109 final images are byte-identical to those reviewed pages. The
+only changed final pages87/93 are directly inspected at150dpi, as are new
+section86-91 and final front/concept/evidence pages1/4/5 (unchanged pages may use
+their already verified identical a4 render). No clipping/overlap is observed.
+
+The original unsanitized Poppler bbox HTML is parsed with stdlib HTMLParser;
+all51,578 word tags are covered and none is off-page. A preliminary single-line
+bibitem regex missed multiline entries; the actual bibitem-tag and multiline-
+key counts both confirm32 references. Figures/tables are53/52. No unresolved
+reference or overfull/underfull diagnostic remains; inherited inputenc and
+two h-to-ht notices are recorded rather than called absent. New final PDF and
+receipt are retained without changing the104-page historical artifact.
+
+Publication-ready remains unmet. The111-page subset rebuild, corrected real-
+model readiness and identifying corrective research comparison remain separate
+work, not implied by this new reviewed working-paper PDF.
+
+The final artifact-retention check first records26 pass/1 failure (75863):
+the new test sent a literal TeX dependency `paper/../research/...` to Git tree
+lookup, which does not normalize that path. The PDF, source file and retained
+hash already match. Canonical repo-relative resolution for that same checked
+file fixes the test; no checksum/source criterion, PDF, scientific loss or
+original record is changed. The corrected run75662 exits0:27 pass in1.26s,
+without skips/deselection. Both exact JUnit files are retained, not overwritten.
