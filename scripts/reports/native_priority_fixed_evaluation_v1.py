@@ -170,7 +170,7 @@ def observed_paths(root, report):
 
 def export(args):
     root, frozen, out = args.run.resolve(), args.frozen_source.resolve(), args.output.resolve()
-    if out.exists() or any(out.is_relative_to(p) for p in (ROOT, root, frozen)):
+    if out.exists() or any(out.is_relative_to(p.resolve()) for p in (ROOT, root, frozen)):
         raise ValueError('fresh report outside reader/scientific source and raw required')
     reader, scientific = pinned_revision(ROOT), pinned_revision(frozen)
     p = read(root / 'plan.json')
