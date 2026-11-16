@@ -5,6 +5,18 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [New finite uniform/adaptive/free-method protocol](protocols/campaigns/native-priority-method-comparison-v1.md)
+  and [actual pinned real dispatch](results/native-priority-method-dispatch-v1.json):
+  two U/C losses, two optimizer histories/method/objective,24 own slots and3
+  fresh strong references in the original persistent researcher world. The known
+  terminal rule is visible, not an unseen discovery for us. Initial real readiness
+  is running at the dispatch snapshot, not a completed loss comparison.
+  [Actual27-world SOFTWARE proof](results/native-priority-method-public-software-retention-v1.json)
+  closes with matching paired cold/cost records; SCRIPTED success is not a real
+  gain. The separate actual read-only continuation waits for writer and supervisor
+  exit. [Observation log](logbook/2026-11-16-priority-method-dispatch.md) records
+  scope, processes and preserved failures. Main-track readiness remains open.
+
 - [Matched free-institution source-evidence pilot](protocols/campaigns/native-consumer-source-comparison-v1.md):
   [actual pinned dispatch](results/native-consumer-source-comparison-dispatch-v1.json)
   keeps the native world, fixed scientists, free v6 authority and U/C losses.

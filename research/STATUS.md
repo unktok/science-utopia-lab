@@ -1,5 +1,50 @@
 # Current research status
 
+## New finite method comparison: real-source dispatch, initial readiness
+
+At04:20UTC/13:20JST November16, the
+[actual mixed-method comparison](results/native-priority-method-dispatch-v1.json)
+starts from clean frozen705b5259, plan4afcd1a8. Original writer19200 and its
+supervisor19169 are live at dispatch verification; tool handle82425 owns the
+original supervision. This is a new finite study, not a restart/refill of the
+closed source-information pilot below. At the recorded snapshot it is in real
+initial designer readiness, not yet a measured own-system comparison.
+
+Compare uniform priorities, adaptive priorities and free code/mechanism/wiring
+authoring under the existing U/C losses in the original persistent four-year
+world. Each method/objective has two separately seeded optimizer histories and
+two own slots:24 own slots, three fresh references, at most27 native worlds.
+The exact zero-priority and known terminal-consolidation parents are both
+visible to every method; literal related-topic selection is a third comparison.
+Do not call recovering these known rules a new discovery. The numeric family
+does not narrow free authors' authority or impose a hidden scientific veto.
+The unchanged8B scientists, local35B designer, original corpus,61001 development
+condition, critic instrument, costs and declared losses remain explicit.
+
+[Public SOFTWARE verification](results/native-priority-method-public-software-retention-v1.json)
+completes27 SCRIPTED native worlds, all24 slots, actual Docker/installed SDK,
+calibration/feedback, two matching cold audits and cost readouts. The mock path
+has4701 SDK POSTs including two upstream fixture worlds,24 author POSTs and256
+readiness POSTs. These are not real-model scientific observations. The original
+SIGINTed first check and invalid uppercase probe in the second remain recorded.
+
+[Read-only closure continuation](results/native-priority-method-dispatch-v1.json)
+is actually armed at separate frozen4b43a9a3, handle22008. It waits for both the
+original scientist process and the supervisor's sealed successful exit before
+paired original-source audits/costs.15 light tests cover this final-inventory
+race, finite wait, failed exit, output/symlink preflight and old reader behavior.
+No heavy independent QA/PDF/video is launched alongside real inference. Other
+projects' observed CPU work is left untouched; timing is shared-host, not a
+speed benchmark or an assertion of an exclusive lease.
+
+All original outcomes/nulls will remain; unknown dispatch stops without retry.
+Own-only selections are frozen per method/history/objective, without reference
+fallback. Independent optimizer seeds do not create independent populations or
+establish method superiority. Figures/readout for this new24-slot format and
+future selection-frozen unused evaluation remain to be completed. The reviewed
+104-page working paper predates this study; no new result is inserted or claimed
+while it is running. R2/R3/R5/R6 and the full publication-ready goal remain open.
+
 ## Matched study closed:8/8 own slots,7 complete outcomes and1 runtime null
 
 The [once-dispatched local-model study](results/native-consumer-source-comparison-dispatch-v1.json)

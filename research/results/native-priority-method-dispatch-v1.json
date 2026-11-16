@@ -1,0 +1,185 @@
+{
+  "backend": {
+    "model": "qwen3.6:35b-mlx-64k",
+    "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8",
+    "ollama_version": "0.33.3"
+  },
+  "budget": {
+    "candidate_slots": 24,
+    "component_probes_upper_bound": 512,
+    "designer_POSTs_upper_bound": 488,
+    "designer_session_wall_seconds": 1800,
+    "fresh_reference_worlds": 3,
+    "native_worlds_upper_bound": 27,
+    "observer_POSTs_upper_bound": 6000,
+    "proposal_POSTs_per_session": 16,
+    "readiness_POSTs_per_session": 40,
+    "readiness_sessions": 9,
+    "replace_failed_slots": false,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_wall_seconds": 7200
+  },
+  "content_sha256": "81a29a7770def5a352597c9aeb3a4e79359a52ff9fe45bc2ff475edb75f9f58d",
+  "continuation_qa": {
+    "exit_code": 0,
+    "junit_file": "research/data/native-priority-method-software-v1/priority-method-finish-v1-a1-junit.xml",
+    "junit_sha256": "c010b8213b62c0c8895aa14c4071087163c4f8ab2652638e5e80b8b1894d586c",
+    "original_tool_handle": 68869,
+    "reported_seconds": 1.31,
+    "source_commit": "4b43a9a37b1a859772182a244dc419dcec86893e",
+    "tests_passed": 15
+  },
+  "designer": {
+    "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+    "corpus_years": 4,
+    "dataset_identity": {
+      "categories": [
+        "cs.AI",
+        "cs.AR",
+        "cs.CC",
+        "cs.CE",
+        "cs.CG",
+        "cs.CL",
+        "cs.CR",
+        "cs.CY",
+        "cs.DB",
+        "cs.DC",
+        "cs.DL",
+        "cs.DM",
+        "cs.DS",
+        "cs.ET",
+        "cs.FL",
+        "cs.LG",
+        "cs.LO",
+        "cs.NI",
+        "cs.OH",
+        "cs.OS",
+        "cs.PF",
+        "cs.PL",
+        "cs.RO",
+        "cs.SE",
+        "cs.SY"
+      ],
+      "configuration": "arxiv",
+      "dataset": "Ahren09/SciEvo",
+      "normalization": "parallel",
+      "num_years": 4,
+      "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+      "start_year": 2016
+    },
+    "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+    "model": "qwen3.6:35b-mlx-64k",
+    "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8"
+  },
+  "designer_upstream_revision_and_conversion": "unknown; existing approved local digest, not a fresh upstream reproducibility claim",
+  "disk_free_bytes_before_dispatch": 2692055040,
+  "held_out_evaluation": false,
+  "host_is_exclusive": false,
+  "initial_outcomes_not_claimed": true,
+  "initial_stage": "initial-readiness",
+  "loss_spec_sha256": {
+    "content-utility": "37205a64c692bd77a64ddf6a5bdb3843fdbeff3f8e47382b1d59c2ddc92d5867",
+    "resource-aware-content": "ad760ae5f1be3826b0078c916e0db45cd6b5b9ef138c05dbded52a3956b00665",
+    "throughput": "10f3880a252d008a04535ea629c8ef674e3f442d06324d14d3ffd31b3de932ba"
+  },
+  "methods": [
+    "uniform-priority",
+    "adaptive-priority",
+    "free-code-graph"
+  ],
+  "normal_closure_achieved": false,
+  "objectives": [
+    "content-utility",
+    "resource-aware-content"
+  ],
+  "optimizer_seeds": [
+    79011,
+    79019
+  ],
+  "other_project_processes_left_untouched": true,
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "plan_file_sha256": "91a63d5753f0f30b5470bdd725bd42365a610cb8f61a1a3002e3175b68d1925b",
+  "postprocessing": {
+    "analysis_source_commit": "4b43a9a37b1a859772182a244dc419dcec86893e",
+    "analysis_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-analysis-v1-a1",
+    "maximum_wait_seconds": 86400,
+    "new_model_calls_allowed": false,
+    "original_tool_handle": 22008,
+    "output": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-priority-method-closure-v1-a1",
+    "paired_original_source_audits_and_costs": true,
+    "report_figures_or_export_not_yet_implemented": true,
+    "supervisor_grace_seconds": 60,
+    "waits_for_original_writer_and_successful_supervisor_exit": true
+  },
+  "publication_ready": false,
+  "recorded_utc": "2026-11-16T04:27:27.029191+00:00",
+  "reference_order": [
+    "priority-zero",
+    "terminal-priority-zero",
+    "literal-related"
+  ],
+  "role_switching_and_costs_not_a_dedicated_speed_benchmark": true,
+  "schema": "scienceutopia.native-priority-method-dispatch.v1",
+  "scientific_improvement_demonstrated": false,
+  "scientific_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "scientific_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1",
+  "scientist": {
+    "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+    "corpus_years": 4,
+    "dataset_identity": {
+      "categories": [
+        "cs.AI",
+        "cs.AR",
+        "cs.CC",
+        "cs.CE",
+        "cs.CG",
+        "cs.CL",
+        "cs.CR",
+        "cs.CY",
+        "cs.DB",
+        "cs.DC",
+        "cs.DL",
+        "cs.DM",
+        "cs.DS",
+        "cs.ET",
+        "cs.FL",
+        "cs.LG",
+        "cs.LO",
+        "cs.NI",
+        "cs.OH",
+        "cs.OS",
+        "cs.PF",
+        "cs.PL",
+        "cs.RO",
+        "cs.SE",
+        "cs.SY"
+      ],
+      "configuration": "arxiv",
+      "dataset": "Ahren09/SciEvo",
+      "normalization": "parallel",
+      "num_years": 4,
+      "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+      "start_year": 2016
+    },
+    "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+  },
+  "software_proof": "research/results/native-priority-method-public-software-retention-v1.json",
+  "source_sparse_directories": [
+    "utopia",
+    "scripts",
+    "research/protocols"
+  ],
+  "started_utc": "2026-11-16T04:20:03.014405+00:00",
+  "supervisor_pid": 19169,
+  "visible_parent_order": [
+    "priority-zero",
+    "terminal-priority-zero"
+  ],
+  "world_seed": 61001,
+  "writer_identity_observed": "Mon Nov 16 13:20:01 2026     /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -B -m scripts.run_native_priority_method_comparison_v1 run --output /Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1",
+  "writer_original_tool_handle": 82425,
+  "writer_pid": 19200
+}
