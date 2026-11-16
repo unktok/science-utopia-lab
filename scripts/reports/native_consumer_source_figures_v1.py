@@ -101,7 +101,9 @@ def render(data, output):
     refs = [r for r in data['outcomes'] if r['kind'] == 'reference']
     with plt.rc_context({'font.size': 8, 'axes.spines.top': False, 'axes.spines.right': False,
                          'svg.hashsalt': SCHEMA}):
-        fig, axes = plt.subplots(1, 2, figsize=(10.5, 4.6))
+        # Native manuscript width keeps typography legible without shrinking
+        # a wide dashboard. A null annotation is screen-positioned, not a loss.
+        fig, axes = plt.subplots(1, 2, figsize=(6.8, 4.8))
         for ax, objective in zip(axes, OBJECTIVES):
             for row, color, style in zip(refs, ('#92a1b0', '#a37d3a', '#424b60'), ('--', '--', '-.')):
                 ax.axhline(row[objective], color=color, ls=style, lw=1)
@@ -115,26 +117,29 @@ def render(data, output):
                         color=colors[arm], ls=':', lw=1)
                 for point, position in zip(path, x):
                     if point['observed_loss'] is None:
-                        ax.text(position, .04 if arm == ARMS[0] else .10, names[arm] + ': null',
-                            transform=ax.get_xaxis_transform(), ha='center', color=colors[arm], fontsize=6)
+                        ax.text(position, .12 if arm == ARMS[0] else .20, names[arm] + ': null',
+                            transform=ax.get_xaxis_transform(), ha='center', color=colors[arm], fontsize=7,
+                            bbox={'facecolor': 'white', 'edgecolor': 'none', 'pad': 2})
                     else:
                         ax.scatter(position, point['observed_loss'], s=24, color=colors[arm], zorder=3)
-            ax.set(title=objective, xticks=[0, 1], xlim=(-.3, 1.3), xlabel='Own proposal generation',
+            ax.set(title={'content-utility': 'Content utility',
+                          'resource-aware-content': 'Resource-aware content'}[objective],
+                   xticks=[0, 1], xlim=(-.3, 1.3), xlabel='Own proposal generation',
                    ylabel='Declared loss (lower is better)')
             ax.grid(axis='y', color='#e9edf1', lw=.6)
         handles = [Line2D([], [], color=colors[a], label=names[a]) for a in ARMS]
         handles += [Line2D([], [], color='#536474', marker='o', lw=0, label='Observed own loss'),
-            Line2D([], [], color='#536474', lw=1.5, label='Best own submitted loss'),
-            Line2D([], [], color='#536474', ls=':', label='Best known including visible parents'),
+            Line2D([], [], color='#536474', lw=1.5, label='Best own loss'),
+            Line2D([], [], color='#536474', ls=':', label='Best known incl. visible parents'),
             Line2D([], [], color='#92a1b0', ls='--', label='Visible core reference'),
             Line2D([], [], color='#a37d3a', ls='--', label='Visible related reference'),
-            Line2D([], [], color='#424b60', ls='-.', label='Known terminal hand control (withheld)')]
-        fig.suptitle('What changes along objective-conditioned institution search?', fontsize=11, y=.97)
-        fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.5, .075), ncol=3,
-                   frameon=False, fontsize=6.8)
-        fig.text(.04, .025, 'One reused development condition; not independent optimizer replications. '
-                 'Information packages differ; measured compute need not match.', fontsize=6.5)
-        fig.subplots_adjust(left=.075, right=.98, top=.85, bottom=.35, wspace=.30)
+            Line2D([], [], color='#424b60', ls='-.', label='Known terminal rule (withheld)')]
+        fig.suptitle('Objective-conditioned institution search', fontsize=11, y=.97)
+        fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.5, .105), ncol=2,
+                   frameon=False, fontsize=7)
+        fig.text(.04, .055, 'One reused development condition; no independent optimizer replications.', fontsize=7)
+        fig.text(.04, .025, 'Information packages differ; measured compute need not match.', fontsize=7)
+        fig.subplots_adjust(left=.10, right=.98, top=.85, bottom=.40, wspace=.40)
         for ext in ('png', 'svg'):
             fig.savefig(output / ('matched-loss-paths.' + ext), dpi=220,
                         metadata={'Date': None} if ext == 'svg' else None)
