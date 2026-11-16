@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November16,2026 at23:22UTC / November17 08:22JST.
+Verified November16,2026 at23:35UTC / November17 08:35JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -42,19 +42,24 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 | Uniform / U | -27.6667 | -28.3333 | g2 -27.6667 / g3 not dispatched |
 | Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 not dispatched |
 | Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 not dispatched |
-| Uniform / C | -9.6667 | -10.3333 | g2 running / g3 not dispatched |
-| Adaptive / C | -9.6667 | -12.6667 | Not dispatched |
+| Uniform / C | -9.6667 | -10.3333 | g2 -10.6667 / g3 not dispatched |
+| Adaptive / C | -9.6667 | -12.6667 | g2 running / g3 not dispatched |
 | Free code/graph / C | -12.6667 | -12.6667 | Not dispatched |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
-Fifteen own slots have terminal outcomes:14 complete (10 worse/4 tied/0 better
-than their assigned reference) and1 execution null. Sixteen slots have started,
-including uniform/C/g2; the writer charges each at dispatch, not
+Sixteen own slots have terminal outcomes:15 complete (11 worse/4 tied/0 better
+than their assigned reference) and1 execution null. Seventeen slots have started,
+including adaptive/C/g2; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
 programs; uniform g1 is another initial random sample, not an adaptive move.
 Primary best known may remain a labeled reference; own-only selection is a
 separate scope. Final endpoints are not frozen.
+
+[Latest uniform/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-c-outcome)
+completes at-10.6667, improving its previous own best by about1/3 but staying2
+worse than the reference. All185 replies/body hashes and its single typed tell
+verify. It is the third declared initial random sample, not an adaptive update.
 
 [Latest free/U/g2](results/native-corrected-choice-free-utility-recovery-v1.json)
 completes at-28.6667, recovering from own best-7 but only tying the measured
@@ -100,7 +105,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 is evaluating uniform/C/g2; source/plan/settings unchanged |
+| Real scientific search | Original42803 is evaluating adaptive/C/g2; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |

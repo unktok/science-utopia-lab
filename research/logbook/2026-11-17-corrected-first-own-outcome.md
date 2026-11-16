@@ -802,3 +802,54 @@ phase initial, candidate11304963. It is the third declared random sample.
 No code/metric/budget changes, native restart, replacement or loss imputation
 occurs. Both final endpoint scopes and the full original paired closure remain
 uncompleted; the research goal is still active, not publication-ready.
+
+## Third uniform C outcome
+
+By23:31:09UTC uniform/C/g2 completes at-10.666666666666668:
+U26.666666666666668/T36/collected160/uncollected40. Its own path is
+-9.666666666666668, -10.333333333333332, -10.666666666666668, while the
+measured reference remains-12.666666666666668. Lower is better: recovery by
+about1/3 from the last own sample is not improvement beyond that reference
+or evidence that this initial-random proposal adapts to feedback.
+
+The candidate is113049632020a0c9fd0467a07f565cc0985bb701cc7ffa3957cbc12efb140f83,
+suggestion sec0c2cf6e1cb4bd2. Original generation-2 observation file SHA is
+3d4fe01c6ba8aa387dbd005a1692dc83f754da7f7450effd306ed1f6d5dd704b,
+canonical SHA5f16b71acaaca4233f4aa04edf0ee9aaf5e778aa5d71f846c04c22c0303e9333.
+The typed public Observation is registered exactly once in the original tell,
+with pending[], proposal_index3 and four observations including the reference.
+Tell file SHAdab4993a5a368642dce1ae916f6842fd3099540383e0bd39f4158c0518f6cf3f,
+sealed content55baa8e0fac88253353cf6c040e7dc2bede173d207c361352ec63654c34aca10.
+
+All185 literal scientist wires have committed, hash-verified response bodies.
+Full input sequence396d92e2636fd3e1c54616f8d690d0928fb27a524a1b250d0e1ea7dce8536a3f,
+literal choices01bf65530fef921164e316593e95504310a65b9fe00118a2d84846428a642160,
+provider-body sequence4facb6640fa7d3f9ba32ed3b678a64df9d12a06bf2628b14dabb4f49463eb2e7.
+This direct read does not substitute for the pending whole-study source-bound
+cold audit. Sixteen terminal own outcomes are15 complete/11worse/4ties/0better
+and1execution-null. The17th dispatch is actual adaptive/C/g2,
+s6717aca70ea0ced2, candidate5d3ca5ec759be5a894b3858c490ddc433346f629952486984febb0463257de6e,
+started23:31:10.628858UTC. No scientific settings, source or candidates change.
+
+### Seed plumbing check, not new-seed evaluation
+
+Read-only frozen-source inspection traces the declared world seed into native
+arguments, process RNG setup before Simulation construction, model.run_seed
+and the response-cache binding. VLLMServerModel._request_seed derives a31-bit
+per-request seed through SHA256, not Python hash(). An actual saved first
+scientist wire carries seed1759844217, temperature0.7 and max_tokens768.
+The prospective transport wrapper configures the existing SDK client with the
+plan's900-second read allowance and zero SDK retries; it does not replace
+the request payload or reseed the scientist. Base-factory defaults must not be
+mistaken for the experiment-specific applied transport profile.
+
+This is source plumbing plus an observed wire, not proof of population
+variation, deterministic provider execution, seed ignorability or actual
+unused conditions. PYTHONHASHSEED42 is a separate startup setting, not the
+world seed61001. No proposed unused seed, model constructor, model request,
+generated source or new world is executed by this inspection.
+
+Sixteen light publication-entrypoint/readiness-transcription checks pass in
+5.65seconds after this documentation update. An earlier invocation's final
+output was not retained, so it is not counted as a separate pass. These checks
+do not audit all scientific slots or establish publication readiness.

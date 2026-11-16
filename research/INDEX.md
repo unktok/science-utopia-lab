@@ -7,6 +7,11 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Third uniform C outcome](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-c-outcome):
+  loss-10.6667 improves its own random-search path but stays2 worse than the
+  measured reference.185 complete replies and its exact typed tell verify.
+  16terminal/17started; adaptive/C/g2 runs. No method superiority is inferred.
+
 - [Free U/g2 recovers its own best but repeats the reference](results/native-corrected-choice-free-utility-recovery-v1.json):
   complete loss-28.6667 after own-7/null, with four actual agenda executions
   and179 same full inputs/choices as the measured parent. Indentation changes,
