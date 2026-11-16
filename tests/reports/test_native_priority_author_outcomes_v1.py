@@ -1,5 +1,8 @@
 """SCRIPTED post-closure join fixtures, not native or original-source proof."""
 from copy import deepcopy
+import csv
+from pathlib import Path
+import tempfile
 from types import SimpleNamespace
 
 import pytest
@@ -175,3 +178,42 @@ def test_collection_cannot_attach_foreign_request_parent_or_submitted_definition
     if changed != 'returned-definition':
         write_json_atomic(history / 'campaign/native-adaptive-state.json', state)
     with pytest.raises(ValueError): r.collect(tmp_path, p, report)
+
+
+@pytest.mark.parametrize('missing', [False, True])
+def test_public_export_has_three_matching_readonly_files_and_keeps_null_csv_cells(tmp_path, monkeypatch, missing):
+    raw = tmp_path / 'raw'; p, report, _ = original_journals(raw, missing_generation=missing)
+    roots = {k: tmp_path / k for k in ('source', 'analysis', 'readouts', 'reader')}
+    for root in roots.values(): root.mkdir()
+    save(raw / 'plan.json', {k: v for k, v in p.items() if k != 'content_sha256'})
+    (raw / 'writer.lock').touch()
+    report_dir = roots['readouts'] / 'report-1'; report_dir.mkdir()
+    save(report_dir / 'report.json', {k: v for k, v in report.items() if k != 'content_sha256'})
+    cost_path = roots['analysis'] / 'costs-1.json'
+    save(cost_path, {'scope': 'SCRIPTED total campaign costs only', 'scientist': {'SCRIPTED': True}})
+    # Source/closure provenance is explicitly SCRIPTED here, unlike actual
+    # origin_evidence. Exercise collection/join/export, not native cold proof.
+    monkeypatch.setattr(r, 'ROOT', roots['reader'])
+    monkeypatch.setattr(r, 'pinned_revision', lambda root: 'c' * 40
+        if root.resolve() == roots['reader'].resolve() else p['source_commit'])
+    monkeypatch.setattr(r, 'origin_evidence', lambda origin: (p, {'SCRIPTED': True}, {}))
+    monkeypatch.setattr(r, 'evidence_files', lambda origin: [raw / 'plan.json', cost_path, report_dir / 'report.json'])
+    before = r._inventory(raw)
+    with tempfile.TemporaryDirectory(prefix='priority-author-export-scripted-') as external:
+        outputs = [Path(external) / ('export-' + str(i)) for i in (1, 2)]
+        for output in outputs:
+            r.export(SimpleNamespace(output=output, origin_run=raw,
+                **{'origin_' + k: roots[k] for k in ('source', 'analysis', 'readouts')}))
+        files = {p.name: p.read_bytes() for p in outputs[0].iterdir()}
+        assert set(files) == {'report.json', 'authors.csv', 'manifest.json'}
+        assert files == {p.name: p.read_bytes() for p in outputs[1].iterdir()}
+        result = r.read(outputs[0] / 'report.json'); assert len(result['rows']) == 8
+        assert result['original_campaign_cost_summary']['scope'] == 'SCRIPTED total campaign costs only'
+        with (outputs[0] / 'authors.csv').open(newline='') as stream: rows = list(csv.DictReader(stream))
+        assert len(rows) == 8
+        if missing:
+            assert rows[0]['status'] == 'generation-null'
+            assert rows[0]['completed_steps'] == rows[0]['loss'] == rows[0]['own_minus_measured_parent'] == ''
+        with pytest.raises(ValueError, match='fresh output'): r.export(SimpleNamespace(output=outputs[0],
+            origin_run=raw, **{'origin_' + k: roots[k] for k in ('source', 'analysis', 'readouts')}))
+    assert r._inventory(raw) == before
