@@ -76,8 +76,10 @@ def test_public_prepare_run_all_methods_and_paired_cold_without_new_models(tmp_p
                 # Prescribed source/wiring probe, not an autonomously invented rule.
                 actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED loss-aware interface test',
                     'design_intent': 'Exercise new literal code and wiring, not scientific improvement'},
-                    transparent_office(req, identity='SCRIPTED-mixed-office-' + str(req['generation'])),
+                    transparent_office(req, identity='scripted-mixed-office-' + str(req['generation'])),
                     {'tool': 'finish', 'rationale': 'SCRIPTED mixed-method software construction'}]
+                if i >= len(actions):
+                    pytest.fail('SCRIPTED author did not finish after its prescribed valid actions')
                 action = actions[i]; production.append(payload)
                 if req['generation'] == 1:
                     assert len(req['history']) == 1 and req['observations']
