@@ -1,0 +1,363 @@
+{
+  "schema": "scienceutopia.native-consumer-source-sixth-own-runtime-null-prefix.v1",
+  "recorded_utc": "2026-11-16T01:11:08.280463+00:00",
+  "classification": "actual-generated-native-contract-failure-and-passive-cause-projection-not-scientific-loss",
+  "scientific_and_reader_source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "writer_pid": 11821,
+  "original_writer_handle": 15471,
+  "arm": "interface-only",
+  "objective": "resource-aware-content",
+  "generation": 1,
+  "request_sha256": "15089cf72ec71d800e8f17b6968f876cd2bc31073ffc0ae4358183722b577fd4",
+  "suggestion_id": "native-adaptive-0a24958c3694dbcf343a2fb8",
+  "generated": true,
+  "compiled": true,
+  "status": "failed",
+  "assigned_loss": null,
+  "original_technical_failures": [
+    {
+      "error": "catalog project must preserve displayed topic content and native duration",
+      "error_type": "GraphRuntimeError",
+      "loss": null,
+      "run_id": "native-adaptive-0a24958c3694dbcf343a2fb8-s61001",
+      "seed": 61001
+    }
+  ],
+  "original_measurements": [],
+  "original_runs": [],
+  "original_campaign_record_sha256": "8cf1928e8b9dc890e1692aa2b4f6797cd8a5cd08c3d51064ef0782b5660d82c7",
+  "campaign_state_file_sha256_at_snapshot": "6c447041afa572250c3aa14c543bbe41dcaa086e1063c773aef0826e171a5516",
+  "candidate_sha256": "9bf06e1b15b21498b0cc124ed41f1547e62fc8fd041759fe0daf6968b9841976",
+  "candidate_matches_installed_system": true,
+  "installed_system_file_sha256": "994d7dc464225c690b54ee26e6ef699e5260c9417c6dd53e5b8da50077b23ffd",
+  "original_code_context_file_sha256": "59f9bed2327dd811191d915c1e51916ccdcd59fc17e1d58182d4e2107616a8a8",
+  "original_generated_source_matches_retained_code_context": true,
+  "graph_from_parent": {
+    "phase_updates": {},
+    "removed_connections": [],
+    "added_connections": [],
+    "source_parameters_nodes_unchanged": false,
+    "added_nodes": {},
+    "removed_nodes": {},
+    "changed_mechanisms": {
+      "developer-catalog-agenda": {
+        "before_sha256": "9a94ab1c7c206afbf7ca1ed2969cf8f8f457f5f59128a9238857099626cf8083",
+        "after_sha256": "b42a112dbb566d8350d42eb23b1a666459115334c1c77dd3e880064a69c0d080",
+        "changed_fields": [
+          "parameters"
+        ]
+      }
+    },
+    "source_edits": {
+      "developer-catalog-agenda": {
+        "before_source_utf8_sha256": "4287a12ee9ef0a400f0b1090ec3372b1fc752eace42d8a6060a77abbd9d3b041",
+        "after_source_utf8_sha256": "f4dce706c9c61f566f5fe989b0ec39997773fb44475e4e4137e1c825669908bb"
+      }
+    },
+    "changed_system_fields": {},
+    "added_schedules": {},
+    "removed_schedules": {}
+  },
+  "author_steps": [
+    {
+      "step": 0,
+      "status": "applied",
+      "tool": "plan",
+      "filename": null,
+      "all_technical_feedback": [],
+      "record_file_sha256": "ce62c36237810b64aa93da3ac227902887c73593e7b10c564b280eba5558baf0"
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "2ae49a125c70afcd39b9e6fbce84cd018d5ad36bcb9a3edb123b63fc72e7bfff"
+    },
+    {
+      "step": 2,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "adf9e78d662dfd67d1d8d741e992a2b78f6be3fd3386b4fa7747ed39e37e2bde"
+    },
+    {
+      "step": 3,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "25562c6405d1fe27506d5b86b558b0e03123f5508b9f408f933fc814f245b4d7"
+    },
+    {
+      "step": 4,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "af353d950598b8099ae661652e017547f9de9ca32bdc7db7d2717718f9f4376d"
+    },
+    {
+      "step": 5,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "ecf40a40536239e6ffce377f246f5d18b4e639aa2e06ddfa6a35c31dca629f75"
+    },
+    {
+      "step": 6,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "e2081b833891e34bc556de1a35f17ed4a2f6a8f4742691e4654e7cf9242451cf"
+    },
+    {
+      "step": 7,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "57806d8fc3dbe0d95e6598264d1f9b60b7ec7a5cd19ccaa08ca0f7c5bc6eaec1"
+    },
+    {
+      "step": 8,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "cd3520a850dfe5ad9b0886fb4156cf390d36870e9d263e334727fdc2ef09621b"
+    },
+    {
+      "step": 9,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "e6e543b97f5b4c6572033e8ffb4681d760988e8fa66f63322a531a535b30a5b8"
+    },
+    {
+      "step": 10,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "59ae19e0d514b1a60e728008054fdc060c823be4094ca21666bdcc7aa7449a63"
+    },
+    {
+      "step": 11,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "ae335c00ef75a196a9eff0fd49d3629c8e8819c85b0c152d501d964d5cd9abd9"
+    },
+    {
+      "step": 12,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "all_technical_feedback": [],
+      "record_file_sha256": "eac3e7ed4dae4edb172ecf76ec601db40ba0071403de454b44c704f9b1b592f3"
+    },
+    {
+      "step": 13,
+      "status": "finished",
+      "tool": "finish",
+      "filename": null,
+      "all_technical_feedback": [],
+      "record_file_sha256": "88cb5e295de9dd2d76d37904c81a6d0fd81e85bb522e99b535776ba88ebb6aae"
+    }
+  ],
+  "chronological_completed_editor_steps": 14,
+  "steps_are_total_physical_POSTs": false,
+  "actual_saved_command_conditions": [
+    {
+      "actor_id": "institution_0000_researcher_0",
+      "topic": "3d_vision",
+      "years": 1,
+      "original_core_expertise": [
+        "logic_in_cs",
+        "mathematical_software",
+        "distributed_systems"
+      ],
+      "original_allowed_topics": [
+        "complexity_theory",
+        "computational_science",
+        "computer_networks",
+        "database_systems",
+        "distributed_systems",
+        "formal_methods",
+        "logic_in_cs",
+        "mathematical_software",
+        "neural_symbolic_ai",
+        "numerical_analysis",
+        "parallel_computing",
+        "symbolic_computation"
+      ],
+      "condition_checks": {
+        "actor_is_active_idle_author": true,
+        "direction_matches_original_catalog": true,
+        "original_catalog_duration_preserved": true,
+        "assigned_calendar_matches_original_duration": true,
+        "topic_in_original_core_plus_direct_related": false
+      },
+      "original_command_sha256": "da273f5ad75527030cb5efd6b6c6509d8a7d9d269e6427f45b1e9e3cf43da055"
+    },
+    {
+      "actor_id": "institution_0001_researcher_0",
+      "topic": "3d_vision",
+      "years": 1,
+      "original_core_expertise": [
+        "logic_in_cs",
+        "algorithmic_game_theory",
+        "software_engineering"
+      ],
+      "original_allowed_topics": [
+        "algorithmic_game_theory",
+        "artificial_intelligence",
+        "complexity_theory",
+        "computing_education",
+        "formal_methods",
+        "logic_in_cs",
+        "multiagent_systems",
+        "neural_symbolic_ai",
+        "planning_and_scheduling",
+        "programming_languages",
+        "software_engineering"
+      ],
+      "condition_checks": {
+        "actor_is_active_idle_author": true,
+        "direction_matches_original_catalog": true,
+        "original_catalog_duration_preserved": true,
+        "assigned_calendar_matches_original_duration": true,
+        "topic_in_original_core_plus_direct_related": false
+      },
+      "original_command_sha256": "63a74fa540c59a6c0749f7435f0b7ee23759e6494399e1a28f1a42cb3fa4eea6"
+    },
+    {
+      "actor_id": "institution_0002_researcher_0",
+      "topic": "3d_vision",
+      "years": 1,
+      "original_core_expertise": [
+        "formal_methods",
+        "performance_analysis",
+        "numerical_analysis"
+      ],
+      "original_allowed_topics": [
+        "algorithms",
+        "computational_science",
+        "computer_architecture",
+        "formal_methods",
+        "logic_in_cs",
+        "mathematical_software",
+        "numerical_analysis",
+        "operating_systems",
+        "parallel_computing",
+        "performance_analysis",
+        "programming_languages",
+        "software_engineering"
+      ],
+      "condition_checks": {
+        "actor_is_active_idle_author": true,
+        "direction_matches_original_catalog": true,
+        "original_catalog_duration_preserved": true,
+        "assigned_calendar_matches_original_duration": true,
+        "topic_in_original_core_plus_direct_related": false
+      },
+      "original_command_sha256": "b3203061fe08116e7017d1c7477a8fdea03613f7d63995f1166dae8649db6336"
+    },
+    {
+      "actor_id": "institution_0003_researcher_0",
+      "topic": "3d_vision",
+      "years": 1,
+      "original_core_expertise": [
+        "software_engineering",
+        "distributed_systems",
+        "evolutionary_computation"
+      ],
+      "original_allowed_topics": [
+        "algorithmic_game_theory",
+        "computer_networks",
+        "computing_education",
+        "database_systems",
+        "deep_learning",
+        "distributed_systems",
+        "evolutionary_computation",
+        "formal_methods",
+        "meta-learning",
+        "parallel_computing",
+        "programming_languages",
+        "software_engineering"
+      ],
+      "condition_checks": {
+        "actor_is_active_idle_author": true,
+        "direction_matches_original_catalog": true,
+        "original_catalog_duration_preserved": true,
+        "assigned_calendar_matches_original_duration": true,
+        "topic_in_original_core_plus_direct_related": false
+      },
+      "original_command_sha256": "52756a19d28cb6de29925c48f5fa1e7adf900bff1899e46c963a7b1f5637e06d"
+    },
+    {
+      "actor_id": "institution_0004_researcher_0",
+      "topic": "3d_vision",
+      "years": 1,
+      "original_core_expertise": [
+        "social_networks",
+        "operating_systems",
+        "symbolic_computation"
+      ],
+      "original_allowed_topics": [
+        "computer_architecture",
+        "distributed_systems",
+        "information_retrieval",
+        "interdisciplinary_cs",
+        "logic_in_cs",
+        "mathematical_software",
+        "multiagent_systems",
+        "operating_systems",
+        "performance_analysis",
+        "programming_languages",
+        "social_networks",
+        "symbolic_computation"
+      ],
+      "condition_checks": {
+        "actor_is_active_idle_author": true,
+        "direction_matches_original_catalog": true,
+        "original_catalog_duration_preserved": true,
+        "assigned_calendar_matches_original_duration": true,
+        "topic_in_original_core_plus_direct_related": false
+      },
+      "original_command_sha256": "9206335b50127055192ce5784b30e187cedb2d6ed93b35399d6b1ded2676aef3"
+    }
+  ],
+  "invalid_eligibility_assignments": 5,
+  "causal_failure_scope": "The first emitted command chooses canonical 3d_vision outside that original actor's core-plus-directly-related allowed set. Other checked catalog/duration/calendar/idle conditions pass. The generic original error groups eligibility with content/duration checks; do not mislabel this as shortened duration. Later commands in the same returned batch are inspected data, not committed effects or additional world trials.",
+  "declared_world_law_scope": "fixed-native-effects-institution-workflow-v6",
+  "declared_design_space_scope": "Any valid SystemSpec code, mechanisms, wiring and process edits; experimental seed remains fixed. Preserve original native effects, plan/paper origins, initial society/RNG, original catalog durations, causal data prerequisites and complete annual ledger. Arbitrary institutional source, nodes, ports, protocols, wires, schedules and bounded processes remain editable. Explicit native.legacy-topic-project.v1 may assign original core-plus-related topics to eligible idle authors without modifying ongoing projects or durations. native.researcher.work.v15 may ask existing fixed-model original researchers arbitrary authored tasks with typed response artifacts and exact receipts. This grants no extra native research production, fictitious paper/review results, resources, weights, personas or host privileges. Model-work calls count against the same declared total scientist HTTP/world bounds and retain native per-node/process caps. No shortest rule, novelty, fairness, minimum activity, usefulness or improvement veto is imposed.",
+  "retained_scientist_task_wire_requests": 0,
+  "wire_count_is_all_physical_model_calls": false,
+  "retained_checkpoint_filenames": [
+    "portable_checkpoint_year_0.json.gz"
+  ],
+  "consumed_own_slots_at_snapshot": 6,
+  "complete_own_outcomes_at_snapshot": 5,
+  "runtime_null_own_outcomes_at_snapshot": 1,
+  "progress_at_snapshot": {
+    "active": "literal-consumers::resource-aware-content:g1",
+    "observed_utc": "2026-11-16T01:02:39.646544+00:00",
+    "stage": "readiness"
+  },
+  "whole_study_closed": false,
+  "new_model_calls_by_diagnostic": 0,
+  "new_native_worlds_by_diagnostic": 0,
+  "new_generated_code_executions_by_diagnostic": 0,
+  "candidate_repaired_refilled_or_penalized": false,
+  "scientific_or_author_settings_changed": false,
+  "scope": "Passive saved code-output and original fixed-validator predicate reconstruction, with no code re-execution or native replay. Failed original contract is retained as null, not a bad numeric loss. Full paired source/physical/cost closure and remaining planned slots stay open. This does not establish that arbitrary institutions or all local designers cannot improve."
+}

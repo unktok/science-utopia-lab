@@ -425,3 +425,91 @@ observed at retention. That prefix is not a final charged-call total, native
 loss, global program-equivalence proof or improvement. The original finite
 native loop and its paired closure/readout wait continue unchanged. R2/R3/R5/R6
 and the full publication-ready goal remain open.
+
+## Fifth outcome: own-best recovery without a new best-known system
+
+The previous goal turn retained the first g1 actual-feedback wires and fifth
+submitted program, then pushed main. This turn confirms original writer11821
+and original continuations11949/11967 live and waits on the same15471 session.
+The [fifth complete native outcome](../results/native-consumer-source-fifth-own-outcome-prefix-v1.json)
+returns U loss-28.666666666666668. The original loop advances to interface/C/g1
+readiness at00:46:26.872312UTC November16 (09:46:26JST).
+
+The history's own best moves-7→-28.6667, while the best including the already
+visible strong reference stays-28.6667 throughout. All179 full scientist inputs,
+literal choices and measured metrics match the strong parent; provider envelopes
+differ. The installed candidate matches its retained submission. This is recovery
+to a known supplied rule, not improvement beyond it, global program equivalence
+or identified causal learning. The adverse g0 program and all14 g1 editor steps,
+including5 rejected actions, remain retained and charged in their proper scope.
+No final selection file is written by this passive prefix analysis.
+
+## Additional bounded recoverable archive; no raw records deleted
+
+During the next designer role transition, free disk is observed near5GB.
+Read-only revalidation considers20 older feature checkout candidates. The agent
+tree has only the root live; accessible host open-file observation shows no use
+of selected roots. Clean tracked/untracked state, exact HEAD, main ancestry,
+active-declaration references, nested worktrees and ignored-data layouts are
+checked. Ten candidates with linked preserved contents are skipped, not altered.
+
+The [third archive](../results/native-consumer-closed-checkout-archive-v3.json)
+preserves183 ignored data/cache directories by atomic same-volume rename,
+then removes only10 redundant clean tracked code copies using normal worktree
+removal. All183 directory inodes, absent/unregistered old roots and all10 source
+commits in main history are rechecked. Logical tracked bytes total742,875,172.
+Branches, raw scientific/QA/model records, current scientific/origin/analysis/
+readout sources and the paper proof checkout are not deleted or changed.
+
+The later13,592,125,440-byte free observation is not attributed wholly to the
+much smaller code cleanup: shared filesystem/swap use also varies. It is not
+an exclusive-host benchmark or continuous space guarantee. Exact original
+path/source/layout restoration is still required for historical raw replay;
+the [recovery guide](../../docs/research-workflow.md) now includes this mapping.
+No compression, inference restart, extra world or unrelated-process change occurs.
+
+## Sixth native runtime null: actor eligibility, not shortened duration
+
+The [sixth original outcome](../results/native-consumer-source-sixth-own-runtime-null-prefix-v1.json)
+is generated/compiled but fails during native execution, retaining status=failed
+and loss=null. Its14 editor steps finish explicitly. The author changes agenda
+source to collect related topics from the entire catalog, then chooses the
+shortest global topic, instead of the actor's core-plus-directly-related set.
+No node, wire, phase or schedule changes.
+
+The one retained native code call returns5 assignments of canonical3d_vision.
+For the first command, and all5 returned assignments, that topic is outside
+the actual actor's original allowed set. Passive reconstruction with the frozen
+validator confirms displayed content, original duration/calendar and active
+idle-author conditions otherwise pass. The original compound error says
+catalog project must preserve displayed topic content and native duration;
+its precise failing predicate here is eligibility, not a shortened duration.
+Later returned batch entries are inspected data, not committed effects or
+five additional failed world trials. No generated code is re-executed by this
+diagnostic, and the original error/raw output are not rewritten.
+
+Only the year0 checkpoint and one code context are retained, with no scientist-
+task wire entries. This is not a measured scientific loss or proof of zero
+physical model/role-load cost; null is not assigned a numeric penalty. All
+declared fields already restrict this study's native project authority to
+eligible original core-plus-related choices and original durations. The guard
+is not a new fairness/novelty/quality veto, nor evidence that the whole free
+institution space or all designers cannot improve.
+
+Original progress advances to consumers/C/g1 readiness at
+01:02:39.646544UTC November16 (10:02:39JST). Six of eight own slots are consumed:
+5 complete native outcomes and1 runtime null. The failed slot is not repaired
+or refilled; two planned slots remain. Original paired audit/cost/readout closure
+and the full publication-ready goal remain open.
+
+## Seventh slot: submitted and in original native evaluation
+
+Consumers/C/g1 passes its exact-request readiness and enters optimization at
+01:12:50.099589UTC November16 (10:12:50JST). A later passive read of its original
+campaign pending record confirms generated=true and compiled=true for request
+d8fc0805e8cce530d422b3cd65ec68bab223b55115f256f5c92f7af1ea0d0cf7.
+The original world directory contains its installed SystemSpec and native
+scientist-request journal. The original writer is progressing through that
+evaluation; no seventh measured loss or final selection is yet retained here.
+The author does not receive this passive diagnosis of another arm's failure.
+No source, history, selection, loss, model, budget or active request is changed.

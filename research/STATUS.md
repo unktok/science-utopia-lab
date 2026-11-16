@@ -1,6 +1,6 @@
 # Current research status
 
-## Current matched study: references3/3 and own slots4/8 complete
+## Current matched study:6/8 own slots consumed,5 complete outcomes and1 runtime null
 
 The [once-dispatched local-model study](results/native-consumer-source-comparison-dispatch-v1.json)
 runs from immutable7e51b2a4: fixed8B researchers, local35B designer, unchanged
@@ -13,8 +13,8 @@ is development-informed, not a blind independent method comparison.
 | --- | --- |
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
-| Own-system optimization | First3 outcomes tie the strong parent: [interface/U](results/native-consumer-source-first-own-outcome-prefix-v1.json)=-28.6667, [consumers/C](results/native-consumer-source-second-own-outcome-prefix-v1.json) and [interface/C](results/native-consumer-source-third-own-outcome-prefix-v1.json)=-8.6667. [Fourth consumers/U outcome](results/native-consumer-source-fourth-own-outcome-prefix-v1.json) completes at-7, worse by21.6667;4/8 own slots complete |
-| Next original slot | [Consumers/U/g1 actually receives own loss-7](results/native-consumer-source-first-g1-feedback-wire-prefix-v1.json), passes readiness and [submits a selector-source revision](results/native-consumer-source-fifth-own-submission-prefix-v1.json) after14 steps; original native evaluation is active |
+| Own-system optimization | First3 tie the strong parent; [fourth consumers/U](results/native-consumer-source-fourth-own-outcome-prefix-v1.json) worsens to-7; [fifth consumers/U/g1](results/native-consumer-source-fifth-own-outcome-prefix-v1.json) returns to-28.6667 without beating the visible reference; [sixth interface/C/g1](results/native-consumer-source-sixth-own-runtime-null-prefix-v1.json) fails original eligibility and retains null loss |
+| Next original slot | Consumers/C/g1 passes readiness and enters optimization01:12:50UTC November16 (10:12:50JST). Its generated/compiled candidate is installed and original native evaluation is active; no completed seventh loss yet. Same finite loop; no failed-slot refill |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -87,7 +87,21 @@ declared implementation checkpoint, although its full source is already in
 the supplied current system. Available design authority is not unrestricted
 dialogue workflow; no causal effect of that checkpoint is identified here.
 The final submitted change is selector empty-cycle fallback syntax, not the
-unadopted raw plan's liquidity change. Native outcome is still pending.
+unadopted raw plan's liquidity change. Its [completed fifth outcome](results/native-consumer-source-fifth-own-outcome-prefix-v1.json)
+matches the strong parent's179 full scientist inputs/literal choices and all
+metrics. Own-best U recovers-7→-28.6667; reference-inclusive best stays flat at
+-28.6667. This is recovery to a known supplied rule, not useful new invention
+or identified causal learning from feedback.
+
+The [sixth runtime null](results/native-consumer-source-sixth-own-runtime-null-prefix-v1.json)
+comes from assigning globally gathered catalog topics rather than each actor's
+permitted core-plus-directly-related set. Its first returned assignment selects
+canonical3d_vision outside that actor's allowed set; all5 returned assignments
+have this eligibility violation. Original topic contents/durations and calendars
+are otherwise preserved. The generic original error mentions content/duration,
+but this is not duration shortening. One saved code call and year0 checkpoint,
+with no retained scientist-task wire, are not a completed measured world or
+zero physical/model cost. The null stays unknown, not a numeric penalty.
 
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history
@@ -114,6 +128,12 @@ data/cache/tmp directory identities survive the same-volume moves; branches,
 commits and raw records remain. Its later free-space observation is11.57GB,
 not a continuous guarantee or an attribution of all filesystem/swap changes
 to cleanup. Active scientific/origin/analysis/readout sources stay in place.
+
+A [third bounded archive](results/native-consumer-closed-checkout-archive-v3.json)
+moves183 ignored data/cache directories intact and removes10 more clean
+main-integrated code copies. Ten linked-data candidates are skipped. Logical
+tracked bytes are742,875,172; the later13.59GB-free observation also includes
+shared filesystem/swap variation and is not attributed wholly to cleanup.
 
 The [reference/own transition log](logbook/2026-11-16-native-consumer-first-reference.md)
 and [preserved previous top section](status-history-2026-11-16-consumer-reference-prefix.md)

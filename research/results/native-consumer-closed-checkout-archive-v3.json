@@ -1,0 +1,851 @@
+{
+  "schema": "scienceutopia.native-consumer-closed-checkout-archive.v3",
+  "observed_utc": "2026-11-16T00:54:12.037444+00:00",
+  "preflight_manifest": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/preflight.json",
+  "preflight_file_sha256": "f1e47f97e5c6fdcaea7a8d964b61881ee370d0cce990b49bb1f2282107771a3f",
+  "maximum_checkouts": 10,
+  "clean_integrated_tracked_checkouts_removed": 10,
+  "archives": [
+    {
+      "name": "native-resource-instrument-v1",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-resource-instrument-v1",
+      "source_commit": "846454bd11292d3af64570c0b2eced5bb45dda3e",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-resource-instrument-v1",
+      "preserved_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 52197074
+        },
+        {
+          "name": "outputs",
+          "inode": 52264443
+        }
+      ],
+      "tracked_logical_bytes": 282119425
+    },
+    {
+      "name": "native-backprop-v3",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-backprop-v3",
+      "source_commit": "fa78dbb6e87ac7e1dce3254561aef60c6582f084",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-backprop-v3",
+      "preserved_directories": [],
+      "tracked_logical_bytes": 42214474
+    },
+    {
+      "name": "native-open-invention-v3",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-open-invention-v3",
+      "source_commit": "fa78dbb6e87ac7e1dce3254561aef60c6582f084",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-open-invention-v3",
+      "preserved_directories": [],
+      "tracked_logical_bytes": 42214474
+    },
+    {
+      "name": "native-joint-campaign-v5",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-joint-campaign-v5",
+      "source_commit": "9693a108611279139762e415b9a20faab5645662",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-joint-campaign-v5",
+      "preserved_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 22315341
+        },
+        {
+          "name": "outputs",
+          "inode": 22451298
+        },
+        {
+          "name": "scripts/__pycache__",
+          "inode": 22328776
+        },
+        {
+          "name": "scripts/figures/__pycache__",
+          "inode": 22379159
+        },
+        {
+          "name": "scripts/reports/__pycache__",
+          "inode": 22351530
+        },
+        {
+          "name": "tests/__pycache__",
+          "inode": 22313324
+        },
+        {
+          "name": "tests/analysis/__pycache__",
+          "inode": 22488731
+        },
+        {
+          "name": "tests/communication/__pycache__",
+          "inode": 22488751
+        },
+        {
+          "name": "tests/data/__pycache__",
+          "inode": 22488760
+        },
+        {
+          "name": "tests/experiments/__pycache__",
+          "inode": 22488768
+        },
+        {
+          "name": "tests/optimization/__pycache__",
+          "inode": 22313322
+        },
+        {
+          "name": "tests/reports/__pycache__",
+          "inode": 22379125
+        },
+        {
+          "name": "tests/runtime/__pycache__",
+          "inode": 22313326
+        },
+        {
+          "name": "tests/support/__pycache__",
+          "inode": 22488764
+        },
+        {
+          "name": "tests/system/__pycache__",
+          "inode": 22313443
+        },
+        {
+          "name": "tmp",
+          "inode": 22364674
+        },
+        {
+          "name": "utopia/__pycache__",
+          "inode": 22313335
+        },
+        {
+          "name": "utopia/agents/__pycache__",
+          "inode": 22313338
+        },
+        {
+          "name": "utopia/analysis/__pycache__",
+          "inode": 22313434
+        },
+        {
+          "name": "utopia/communication/__pycache__",
+          "inode": 22313517
+        },
+        {
+          "name": "utopia/data/__pycache__",
+          "inode": 22313364
+        },
+        {
+          "name": "utopia/experiments/__pycache__",
+          "inode": 22488744
+        },
+        {
+          "name": "utopia/funding/__pycache__",
+          "inode": 22313422
+        },
+        {
+          "name": "utopia/government/__pycache__",
+          "inode": 22313520
+        },
+        {
+          "name": "utopia/metrics/__pycache__",
+          "inode": 22313368
+        },
+        {
+          "name": "utopia/models/__pycache__",
+          "inode": 22313343
+        },
+        {
+          "name": "utopia/optimization/__pycache__",
+          "inode": 22313448
+        },
+        {
+          "name": "utopia/replay/__pycache__",
+          "inode": 22313458
+        },
+        {
+          "name": "utopia/runtime/__pycache__",
+          "inode": 22313425
+        },
+        {
+          "name": "utopia/system/__pycache__",
+          "inode": 22313445
+        },
+        {
+          "name": "utopia/system/production/__pycache__",
+          "inode": 22313477
+        },
+        {
+          "name": "utopia/utils/__pycache__",
+          "inode": 22313373
+        }
+      ],
+      "tracked_logical_bytes": 45451391
+    },
+    {
+      "name": "native-method-paths-v10",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-method-paths-v10",
+      "source_commit": "fb89280ba0d8f74fad368c1f3b4d1ef3184cf61e",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-method-paths-v10",
+      "preserved_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 24112827
+        },
+        {
+          "name": "outputs",
+          "inode": 24112824
+        },
+        {
+          "name": "scripts/__pycache__",
+          "inode": 24112818
+        },
+        {
+          "name": "scripts/figures/__pycache__",
+          "inode": 24116745
+        },
+        {
+          "name": "tests/__pycache__",
+          "inode": 24112715
+        },
+        {
+          "name": "tests/optimization/__pycache__",
+          "inode": 24112709
+        },
+        {
+          "name": "tests/reports/__pycache__",
+          "inode": 24116737
+        },
+        {
+          "name": "tests/runtime/__pycache__",
+          "inode": 24213259
+        },
+        {
+          "name": "tests/system/__pycache__",
+          "inode": 24213283
+        },
+        {
+          "name": "tmp",
+          "inode": 24152951
+        },
+        {
+          "name": "utopia/__pycache__",
+          "inode": 24112629
+        },
+        {
+          "name": "utopia/agents/__pycache__",
+          "inode": 24112657
+        },
+        {
+          "name": "utopia/analysis/__pycache__",
+          "inode": 24213276
+        },
+        {
+          "name": "utopia/communication/__pycache__",
+          "inode": 24213660
+        },
+        {
+          "name": "utopia/data/__pycache__",
+          "inode": 24112666
+        },
+        {
+          "name": "utopia/funding/__pycache__",
+          "inode": 24112662
+        },
+        {
+          "name": "utopia/government/__pycache__",
+          "inode": 24213663
+        },
+        {
+          "name": "utopia/metrics/__pycache__",
+          "inode": 24112700
+        },
+        {
+          "name": "utopia/models/__pycache__",
+          "inode": 24112696
+        },
+        {
+          "name": "utopia/optimization/__pycache__",
+          "inode": 24112632
+        },
+        {
+          "name": "utopia/replay/__pycache__",
+          "inode": 24112644
+        },
+        {
+          "name": "utopia/runtime/__pycache__",
+          "inode": 24112689
+        },
+        {
+          "name": "utopia/system/__pycache__",
+          "inode": 24112637
+        },
+        {
+          "name": "utopia/system/production/__pycache__",
+          "inode": 24112653
+        },
+        {
+          "name": "utopia/utils/__pycache__",
+          "inode": 24112678
+        }
+      ],
+      "tracked_logical_bytes": 63519421
+    },
+    {
+      "name": "native-method-paths-v10-verification",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-method-paths-v10-verification",
+      "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-method-paths-v10-verification",
+      "preserved_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 24128313
+        },
+        {
+          "name": "outputs",
+          "inode": 24120332
+        },
+        {
+          "name": "tests/__pycache__",
+          "inode": 24120339
+        },
+        {
+          "name": "tests/analysis/__pycache__",
+          "inode": 24120341
+        },
+        {
+          "name": "tests/communication/__pycache__",
+          "inode": 24120383
+        },
+        {
+          "name": "tests/data/__pycache__",
+          "inode": 24120453
+        },
+        {
+          "name": "tests/experiments/__pycache__",
+          "inode": 24120461
+        },
+        {
+          "name": "tests/support/__pycache__",
+          "inode": 24120457
+        },
+        {
+          "name": "utopia/__pycache__",
+          "inode": 24120344
+        },
+        {
+          "name": "utopia/agents/__pycache__",
+          "inode": 24120370
+        },
+        {
+          "name": "utopia/analysis/__pycache__",
+          "inode": 24120347
+        },
+        {
+          "name": "utopia/communication/__pycache__",
+          "inode": 24120386
+        },
+        {
+          "name": "utopia/data/__pycache__",
+          "inode": 24120414
+        },
+        {
+          "name": "utopia/experiments/__pycache__",
+          "inode": 24120376
+        },
+        {
+          "name": "utopia/funding/__pycache__",
+          "inode": 24120361
+        },
+        {
+          "name": "utopia/metrics/__pycache__",
+          "inode": 24120428
+        },
+        {
+          "name": "utopia/models/__pycache__",
+          "inode": 24120424
+        },
+        {
+          "name": "utopia/optimization/__pycache__",
+          "inode": 24120399
+        },
+        {
+          "name": "utopia/replay/__pycache__",
+          "inode": 24120389
+        },
+        {
+          "name": "utopia/runtime/__pycache__",
+          "inode": 24120364
+        },
+        {
+          "name": "utopia/system/__pycache__",
+          "inode": 24120396
+        },
+        {
+          "name": "utopia/system/production/__pycache__",
+          "inode": 24120406
+        },
+        {
+          "name": "utopia/utils/__pycache__",
+          "inode": 24120350
+        }
+      ],
+      "tracked_logical_bytes": 63146988
+    },
+    {
+      "name": "native-objective-structure-v8",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-objective-structure-v8",
+      "source_commit": "351d0a7afcd86204b5962319c53b3cc4ece8e044",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-objective-structure-v8",
+      "preserved_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 23585470
+        },
+        {
+          "name": "outputs",
+          "inode": 23622643
+        },
+        {
+          "name": "scripts/__pycache__",
+          "inode": 23585373
+        },
+        {
+          "name": "scripts/figures/__pycache__",
+          "inode": 23703595
+        },
+        {
+          "name": "scripts/reports/__pycache__",
+          "inode": 23703599
+        },
+        {
+          "name": "tests/__pycache__",
+          "inode": 23585448
+        },
+        {
+          "name": "tests/optimization/__pycache__",
+          "inode": 23585371
+        },
+        {
+          "name": "tests/reports/__pycache__",
+          "inode": 23703590
+        },
+        {
+          "name": "tests/runtime/__pycache__",
+          "inode": 23622672
+        },
+        {
+          "name": "tests/system/__pycache__",
+          "inode": 23622662
+        },
+        {
+          "name": "tmp",
+          "inode": 23754854
+        },
+        {
+          "name": "utopia/__pycache__",
+          "inode": 23585376
+        },
+        {
+          "name": "utopia/agents/__pycache__",
+          "inode": 23585405
+        },
+        {
+          "name": "utopia/analysis/__pycache__",
+          "inode": 23622904
+        },
+        {
+          "name": "utopia/communication/__pycache__",
+          "inode": 23622945
+        },
+        {
+          "name": "utopia/data/__pycache__",
+          "inode": 23585414
+        },
+        {
+          "name": "utopia/funding/__pycache__",
+          "inode": 23585410
+        },
+        {
+          "name": "utopia/government/__pycache__",
+          "inode": 23622948
+        },
+        {
+          "name": "utopia/metrics/__pycache__",
+          "inode": 23622848
+        },
+        {
+          "name": "utopia/models/__pycache__",
+          "inode": 23622841
+        },
+        {
+          "name": "utopia/optimization/__pycache__",
+          "inode": 23585379
+        },
+        {
+          "name": "utopia/replay/__pycache__",
+          "inode": 23585392
+        },
+        {
+          "name": "utopia/runtime/__pycache__",
+          "inode": 23585439
+        },
+        {
+          "name": "utopia/system/__pycache__",
+          "inode": 23585386
+        },
+        {
+          "name": "utopia/system/production/__pycache__",
+          "inode": 23585401
+        },
+        {
+          "name": "utopia/utils/__pycache__",
+          "inode": 23585426
+        }
+      ],
+      "tracked_logical_bytes": 61781509
+    },
+    {
+      "name": "native-parallel-v3",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-parallel-v3",
+      "source_commit": "08c5e1977b8d69d5cc163507a8c6e41449a33a3c",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-parallel-v3",
+      "preserved_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 22025094
+        },
+        {
+          "name": "outputs",
+          "inode": 22033268
+        },
+        {
+          "name": "scripts/__pycache__",
+          "inode": 22029372
+        },
+        {
+          "name": "scripts/figures/__pycache__",
+          "inode": 22029374
+        },
+        {
+          "name": "scripts/reports/__pycache__",
+          "inode": 22044448
+        },
+        {
+          "name": "tests/__pycache__",
+          "inode": 22024971
+        },
+        {
+          "name": "tests/optimization/__pycache__",
+          "inode": 22024925
+        },
+        {
+          "name": "tests/reports/__pycache__",
+          "inode": 22044445
+        },
+        {
+          "name": "tests/runtime/__pycache__",
+          "inode": 22024973
+        },
+        {
+          "name": "tests/system/__pycache__",
+          "inode": 22025241
+        },
+        {
+          "name": "tmp",
+          "inode": 22032037
+        },
+        {
+          "name": "utopia/__pycache__",
+          "inode": 22024927
+        },
+        {
+          "name": "utopia/agents/__pycache__",
+          "inode": 22024953
+        },
+        {
+          "name": "utopia/analysis/__pycache__",
+          "inode": 22025011
+        },
+        {
+          "name": "utopia/communication/__pycache__",
+          "inode": 22025044
+        },
+        {
+          "name": "utopia/data/__pycache__",
+          "inode": 22024962
+        },
+        {
+          "name": "utopia/experiments/__pycache__",
+          "inode": 22054497
+        },
+        {
+          "name": "utopia/funding/__pycache__",
+          "inode": 22024958
+        },
+        {
+          "name": "utopia/government/__pycache__",
+          "inode": 22025047
+        },
+        {
+          "name": "utopia/metrics/__pycache__",
+          "inode": 22024988
+        },
+        {
+          "name": "utopia/models/__pycache__",
+          "inode": 22024980
+        },
+        {
+          "name": "utopia/optimization/__pycache__",
+          "inode": 22024930
+        },
+        {
+          "name": "utopia/replay/__pycache__",
+          "inode": 22024940
+        },
+        {
+          "name": "utopia/runtime/__pycache__",
+          "inode": 22025002
+        },
+        {
+          "name": "utopia/system/__pycache__",
+          "inode": 22024933
+        },
+        {
+          "name": "utopia/system/production/__pycache__",
+          "inode": 22024949
+        },
+        {
+          "name": "utopia/utils/__pycache__",
+          "inode": 22024993
+        }
+      ],
+      "tracked_logical_bytes": 43106998
+    },
+    {
+      "name": "native-v5-paper-evidence",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-v5-paper-evidence",
+      "source_commit": "9693a108611279139762e415b9a20faab5645662",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-v5-paper-evidence",
+      "preserved_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 22530724
+        },
+        {
+          "name": "outputs",
+          "inode": 22554198
+        },
+        {
+          "name": "scripts/__pycache__",
+          "inode": 22530159
+        },
+        {
+          "name": "scripts/figures/__pycache__",
+          "inode": 22530161
+        },
+        {
+          "name": "tests/__pycache__",
+          "inode": 22530152
+        },
+        {
+          "name": "tests/optimization/__pycache__",
+          "inode": 22530332
+        },
+        {
+          "name": "tests/reports/__pycache__",
+          "inode": 22530154
+        },
+        {
+          "name": "tests/runtime/__pycache__",
+          "inode": 22530334
+        },
+        {
+          "name": "tests/system/__pycache__",
+          "inode": 22530448
+        },
+        {
+          "name": "tmp",
+          "inode": 22512594
+        },
+        {
+          "name": "utopia/__pycache__",
+          "inode": 22530213
+        },
+        {
+          "name": "utopia/agents/__pycache__",
+          "inode": 22530238
+        },
+        {
+          "name": "utopia/analysis/__pycache__",
+          "inode": 22530440
+        },
+        {
+          "name": "utopia/communication/__pycache__",
+          "inode": 22552354
+        },
+        {
+          "name": "utopia/data/__pycache__",
+          "inode": 22530247
+        },
+        {
+          "name": "utopia/funding/__pycache__",
+          "inode": 22530243
+        },
+        {
+          "name": "utopia/government/__pycache__",
+          "inode": 22552357
+        },
+        {
+          "name": "utopia/metrics/__pycache__",
+          "inode": 22530416
+        },
+        {
+          "name": "utopia/models/__pycache__",
+          "inode": 22530408
+        },
+        {
+          "name": "utopia/optimization/__pycache__",
+          "inode": 22530219
+        },
+        {
+          "name": "utopia/replay/__pycache__",
+          "inode": 22530225
+        },
+        {
+          "name": "utopia/runtime/__pycache__",
+          "inode": 22530431
+        },
+        {
+          "name": "utopia/system/__pycache__",
+          "inode": 22530216
+        },
+        {
+          "name": "utopia/system/production/__pycache__",
+          "inode": 22530234
+        },
+        {
+          "name": "utopia/utils/__pycache__",
+          "inode": 22530421
+        }
+      ],
+      "tracked_logical_bytes": 45451391
+    },
+    {
+      "name": "native-v8-verification-425ec10",
+      "original_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-v8-verification-425ec10",
+      "source_commit": "425ec10396b17df85efdff20bb063b20c33886e5",
+      "archive": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-consumer-closed-checkout-archives-v3/native-v8-verification-425ec10",
+      "preserved_directories": [
+        {
+          "name": ".pytest_cache",
+          "inode": 23607366
+        },
+        {
+          "name": "outputs",
+          "inode": 23599812
+        },
+        {
+          "name": "tests/__pycache__",
+          "inode": 23599819
+        },
+        {
+          "name": "tests/analysis/__pycache__",
+          "inode": 23599821
+        },
+        {
+          "name": "tests/communication/__pycache__",
+          "inode": 23599863
+        },
+        {
+          "name": "tests/data/__pycache__",
+          "inode": 23599926
+        },
+        {
+          "name": "tests/experiments/__pycache__",
+          "inode": 23599934
+        },
+        {
+          "name": "tests/support/__pycache__",
+          "inode": 23599930
+        },
+        {
+          "name": "utopia/__pycache__",
+          "inode": 23599824
+        },
+        {
+          "name": "utopia/agents/__pycache__",
+          "inode": 23599850
+        },
+        {
+          "name": "utopia/analysis/__pycache__",
+          "inode": 23599827
+        },
+        {
+          "name": "utopia/communication/__pycache__",
+          "inode": 23599866
+        },
+        {
+          "name": "utopia/data/__pycache__",
+          "inode": 23599894
+        },
+        {
+          "name": "utopia/experiments/__pycache__",
+          "inode": 23599856
+        },
+        {
+          "name": "utopia/funding/__pycache__",
+          "inode": 23599841
+        },
+        {
+          "name": "utopia/metrics/__pycache__",
+          "inode": 23599908
+        },
+        {
+          "name": "utopia/models/__pycache__",
+          "inode": 23599904
+        },
+        {
+          "name": "utopia/optimization/__pycache__",
+          "inode": 23599879
+        },
+        {
+          "name": "utopia/replay/__pycache__",
+          "inode": 23599869
+        },
+        {
+          "name": "utopia/runtime/__pycache__",
+          "inode": 23599844
+        },
+        {
+          "name": "utopia/system/__pycache__",
+          "inode": 23599876
+        },
+        {
+          "name": "utopia/system/production/__pycache__",
+          "inode": 23599886
+        },
+        {
+          "name": "utopia/utils/__pycache__",
+          "inode": 23599830
+        }
+      ],
+      "tracked_logical_bytes": 53869101
+    }
+  ],
+  "tracked_logical_bytes": 742875172,
+  "preserved_directory_count": 183,
+  "disk_free_bytes": 13592125440,
+  "skipped_linked_data_checkouts": [
+    "native-project-feedback-outer-v1",
+    "native-probe-consumer-feedback-v1",
+    "native-legacy-topic-pilot-v1",
+    "native-legacy-topic-authority-v1",
+    "native-qwen-response-gradient-v9",
+    "native-qwen-response-v9-final-verification",
+    "native-qwen-response-v9-verification",
+    "native-v8-final-report-verification",
+    "native-v8-integration-verification",
+    "native-v8-publication-verification"
+  ],
+  "raw_scientific_QA_model_records_deleted": false,
+  "branches_or_commits_deleted": false,
+  "active_sources_changed": false,
+  "unrelated_projects_or_processes_changed": false,
+  "new_model_calls": 0,
+  "scope": "Only ten closed clean main-integrated tracked code replicas removed by normal git worktree remove after atomic same-volume ignored-directory rename. Every directory inode is preserved. Linked-data candidates are skipped. Original scientific, origin, analysis, readout and paper-proof sources remain. Free-space variation is not wholly attributed to cleanup or an exclusive-host measurement. Historical raw replay requires restoring original path/source/layout; records are not rewritten."
+}

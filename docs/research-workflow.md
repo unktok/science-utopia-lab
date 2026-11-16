@@ -132,6 +132,14 @@ is relabelled or deleted. An ambiguous ignored layout remains a reason to skip
 a checkout, not permission to discard its contents. This second scope does not
 change the first receipt's historical skipped-path observations.
 
+The [third receipt](../research/results/native-consumer-closed-checkout-archive-v3.json)
+maps10 more clean main-integrated checkouts into
+`outputs/native-consumer-closed-checkout-archives-v3/`. All183 preserved data/cache
+directory inodes are rechecked after atomic same-volume moves. Ten other
+candidates with linked preserved contents are left untouched. Logical code bytes
+are742,875,172; later free-space changes also reflect shared filesystem/swap
+activity. The same exact-path/source restoration requirements below apply.
+
 These paths are not active scientific checkouts. Before cleanup, require clean
 tracked/untracked status, known ignored roots, no active-plan reference, no
 observed process cwd and no other live collaborating agent. Skip ambiguous data

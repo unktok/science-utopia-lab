@@ -14,10 +14,12 @@ This page is navigation, not a chronological experiment transcript.
   and [second own C outcome](results/native-consumer-source-second-own-outcome-prefix-v1.json)
   complete and tie the strong parent. [The third own C outcome](results/native-consumer-source-third-own-outcome-prefix-v1.json)
   also completes and ties it. [The fourth original consumers/U outcome](results/native-consumer-source-fourth-own-outcome-prefix-v1.json)
-  completes with U loss-7, worse than-28.6667;4/8 own slots complete, with no own
-  gain or whole-study closure. [Own measured feedback reaches the first g1 model wire](results/native-consumer-source-first-g1-feedback-wire-prefix-v1.json)
-  and [its14-step selector revision submits](results/native-consumer-source-fifth-own-submission-prefix-v1.json),
-  retaining5 tool rejections and a pending original native outcome.
+  completes with U loss-7, worse than-28.6667. [Own measured feedback reaches the first g1 model wire](results/native-consumer-source-first-g1-feedback-wire-prefix-v1.json)
+  and [the fifth outcome recovers the known strong rule](results/native-consumer-source-fifth-own-outcome-prefix-v1.json).
+  [The sixth has an original actor-eligibility runtime null](results/native-consumer-source-sixth-own-runtime-null-prefix-v1.json):
+  6/8 slots consumed,5 complete own outcomes/1 null; consumers/C/g1 passes readiness,
+  submits its compiled candidate and is in original native evaluation. No own
+  gain beyond the strong reference or whole-study closure is established.
   [Its saved year1 project effects](results/native-consumer-source-fourth-year1-actuation-prefix-v1.json)
   change all5 founder topics/calendars and agree with actual native author state;
   that is observed actuation, not an isolated information effect or useful gain.
@@ -35,6 +37,8 @@ This page is navigation, not a chronological experiment transcript.
   preserves all raw records while reclaiming only recoverable code copies;
   [the second archive](results/native-consumer-closed-checkout-archive-v2.json)
   retains903 data/cache/tmp directories from40 additional clean checkouts.
+  [The third archive](results/native-consumer-closed-checkout-archive-v3.json)
+  preserves183 directories from10 further clean code copies and skips linked data.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)
