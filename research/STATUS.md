@@ -1,6 +1,24 @@
 # Current research status
 
-## Latest verified state: November16,2026 at20:30UTC / November17 05:30JST
+## Latest verified state: November16,2026 at20:48UTC / November17 05:48JST
+
+[First completed feedback-bearing free update ties its parent](results/native-corrected-choice-first-feedback-outcome-v1.json).
+Free/C/g1 completes at-12.6667, U28.6667/T36/collected160/uncollected40. Its
+179 full input/choice paths match the parent. Four actual selection-code
+receipts match the submitted artifact/events, so the code did execute.
+AST-normalized inspection finds the same admission condition/parameters,
+with only empty-list fallback rewritten; all three writes share one AST.
+This is executed refactoring without observed gain, not a new admission rule,
+a missing-feedback claim or global proof that free design cannot work.
+
+The own prefix is7complete/5worse/2ties/0better/0nulls. An exact external
+two-record C state copy is retained; no tie is discarded or repaired.
+Original42803 advances to actual adaptive/C/g1 at20:43:46UTC, with phase
+adaptive and the better measured reference as parent. Whole24-slot closure,
+all8 free outcomes/analysis, frozen unused evaluation, important supported
+claims and publication readiness remain open. All active settings stay fixed.
+
+## Earlier initial generation and next actual submission:20:30UTC / 05:30JST
 
 [All six first-generation own outcomes complete; actual next request carries feedback](results/native-corrected-choice-initial-generation-v1.json).
 Free/C/g0 ties its measured reference at-12.6667, U28.6667/T36/collected160/

@@ -354,3 +354,34 @@ verified own-loss feedback, not an isolated causal effect of that feedback,
 a changed admission outcome, useful invention, a measured gain or a new topology.
 The original source/budget/metric stay fixed and the completed g0 losses remain
 literal. The first six-slot snapshot does not become a frozen final selection.
+
+## First feedback-bearing native outcome: executed refactoring, not a new rule
+
+At20:43:46UTC free/C/g1 completes and the original writer advances to adaptive/C/g1.
+Its L_C-12.6667/U28.6667/T36/collected160/uncollected40 again tie the measured
+parent. All179 full scientist inputs/literal choices match that parent; provider
+bodies differ and all individual body hashes verify. Four original selection
+execution receipts match the actual submitted artifact and annual events.
+The code was executed, not ignored. [Exact outcome, hashes and next ask](../results/native-corrected-choice-first-feedback-outcome-v1.json).
+
+Local AST-normalized comparison shows the per-paper admission condition is
+unchanged, with control_rule accept-all and threshold0. The only normalized
+source change replaces `decisions or [empty_cycle]` at return with an explicit
+append-if-empty branch before return. All three code writes at4/8/12 have the
+same AST, different from the parent. These are not three new algorithms or a
+new admission rule. This explains what this particular submitted edit does;
+it is not a global equivalence proof or a diagnosis of every search failure.
+
+An exact2,991,338-byte external state copy preserves both completed C records
+before later generations extend the live file. The cumulative own prefix is
+7complete/5worse/2ties/0better/0nulls. The next actual numeric ask is phase
+adaptive, using the better measured reference rather than its worse initial
+own sample. Neither this tie nor literal source novelty becomes a hidden
+candidate gate. The full remaining study continues unchanged.
+
+After complete traces, one possible research hypothesis is whether concise
+implemented-code/effect feedback helps the free designer beyond archived
+loss/metrics alone. That would be a separately declared observation/proposal
+method, not a new objective or a mandatory semantic-change veto. It is not
+implemented/dispatched here, and this single case does not establish its cause
+or effectiveness. No active prompt, source, budget, outcome or proposal is repaired.

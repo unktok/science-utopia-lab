@@ -14,7 +14,9 @@ has six own completions:5 worse/1 tie/0 better/0 nulls. Free C's changed sources
 actually execute, but preserve the observed parent's input/choice path and
 metrics in this condition. Its own measured loss/metrics are verified in the
 next actual designer wire; this is functioning feedback, not a gain or final
-method ranking. The next-generation session remains in progress.
+method ranking. The [first feedback-bearing free C update](../research/results/native-corrected-choice-first-feedback-outcome-v1.json)
+also ties its parent: actual code execution rewrites empty-list handling, not
+the admission condition, and preserves the observed path. The study continues.
 The new study's full24-slot paths, final paired audits, selection-fixed unused
 evaluation and consequential interpretation remain open. No method ranking or
 useful invention follows from this partial initial history. Source/notes are

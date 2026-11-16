@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First completed corrected feedback-bearing native outcome](results/native-corrected-choice-first-feedback-outcome-v1.json):
+  free/C/g1 again ties the measured parent at-12.6667, with179 matching complete
+  input/choice paths and four actual executions of its changed selection code.
+  The local source change rewrites empty-list fallback, not the admission rule;
+  three writes share one AST. Seven own slots are measured (5worse/2ties/0better),
+  not a final method result. Actual adaptive/C/g1 starts without repair/refill.
+
 - [First corrected six-slot generation and actual next-request feedback](results/native-corrected-choice-initial-generation-v1.json):
   free/C/g0 ties the reference; the initial six are5worse/1tie/0better/0nulls.
   Both changed C sources execute, but all179 observed input/choice paths and
