@@ -1,5 +1,6 @@
 """Pure SCRIPTED readout fixtures; not actual native/cold/unused evidence."""
 from copy import deepcopy
+import json
 from pathlib import Path
 import tempfile
 from types import SimpleNamespace
@@ -105,6 +106,13 @@ def test_method_contrast_direction_is_literal_left_minus_right():
     rows = [r for r in result['fixed_policy_contrasts'] if r['kind'] == 'fixed-method-selected-policies'
         and r['left'].endswith('/history-0/' + OBJECTIVES[0]) and METHODS[0] in r['left']]
     assert len(rows) == 4 and all(all(v == 3. for v in r['differences'].values()) for r in rows)
+
+
+def test_sorted_json_object_roundtrip_keeps_explicit_scientific_score_order():
+    p, a = fixture(); result = module.summarize(p, a)
+    p, a = json.loads(json.dumps(p, sort_keys=True)), json.loads(json.dumps(a, sort_keys=True))
+    assert module.summarize(p, a) == result
+    assert result['score_order'] == [*OBJECTIVES, 'throughput']
 
 
 @pytest.mark.parametrize('edit', ['drop', 'reorder', 'duplicate', 'score', 'foreign-label',

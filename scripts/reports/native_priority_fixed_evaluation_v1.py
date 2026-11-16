@@ -26,6 +26,7 @@ from utopia.utils.data_utils import decode_json, file_sha256
 
 ROOT = Path(__file__).resolve().parents[2]
 SCHEMA = 'scienceutopia.native-priority-fixed-evaluation-readout.v1'
+SCORE_ORDER = (*OBJECTIVES, 'throughput')
 
 
 def read(path):
@@ -61,6 +62,7 @@ def summarize(p, audit):
             or audit['new_model_calls'] or audit['new_code_executions'] or not audit['held_out_world_seeds']
             or audit['fixed_selection'] != bank or audit['origin_audit_content_sha256'] != p['origin_audit_content_sha256']
             or p['evaluation']['seeds'] != SEEDS or p['losses'] != bank['losses']
+            or set(p['losses']) != set(SCORE_ORDER)
             or p['claims']['candidate_reselection'] or p['claims']['reference_fallback']):
         raise ValueError('exact normally closed frozen-policy evaluation audit required')
     draft = planned_jobs(bank, p['evaluation']['seeds'])
@@ -128,7 +130,7 @@ def summarize(p, audit):
     return {'schema': SCHEMA, 'scientific_source_commit': p['source_commit'], 'plan_content_sha256': p['content_sha256'],
         'input_audit_content_sha256': audit['content_sha256'], 'origin_audit_content_sha256': p['origin_audit_content_sha256'],
         'fixed_bank_content_sha256': bank['content_sha256'], 'seeds': clone(SEEDS),
-        'labels': [e['label'] for e in bank['entries']], 'score_order': list(p['losses']),
+        'labels': [e['label'] for e in bank['entries']], 'score_order': list(SCORE_ORDER),
         'physical_rows': physical, 'logical_rows': logical, 'contrast_definitions': definitions,
         'fixed_policy_contrasts': contrasts, 'descriptive_contrast_summaries': summaries,
         'coverage': {'logical_policy_labels': 15, 'logical_rows': 30, 'physical_worlds': len(physical),
@@ -196,14 +198,14 @@ def export(args):
     if before != _inventory(root) or hashes != {str(f): file_sha256(f) for f in files}:
         raise ValueError('original evaluation records changed during readout')
     out.mkdir(parents=True); save(out / 'report.json', report)
-    fields = ['label', 'seed', 'role', 'physical_job', 'status', *p['losses'], *METRICS]
+    fields = ['label', 'seed', 'role', 'physical_job', 'status', *report['score_order'], *METRICS]
     with (out / 'logical-scores.csv').open('x', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=fields); writer.writeheader()
         for row in report['logical_rows']:
             writer.writerow({**{k: row[k] for k in fields if k in row}, **row['scores'],
                 **{k: row['metrics'].get(k, {}).get('value') for k in METRICS}})
     fields = ['id', 'kind', 'seed', 'left', 'right', 'left_status', 'right_status', 'left_physical_job',
-        'right_physical_job', 'same_physical_job', *p['losses']]
+        'right_physical_job', 'same_physical_job', *report['score_order']]
     with (out / 'contrasts.csv').open('x', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=fields); writer.writeheader()
         writer.writerows({**{k: row[k] for k in fields if k in row}, **row['differences']}
