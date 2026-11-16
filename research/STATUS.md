@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at12:11UTC/21:11JST.
+Last scientific snapshot: November16,2026 at12:19UTC/21:19JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -52,7 +52,11 @@ Real paired all8 export remains unexecuted; the original study is still running.
 The [nineteenth outcome](results/native-author-visibility-export-preparation-and-nineteenth-outcome-v1.json)
 subsequently completes: free/history0/C/g1 literally retains the terminal parent,
 ties C-12.6667 and has the same179 full scientist inputs/literal choices.
-The prefix is19 complete/10 ties/9 worse/0 better, not final study closure.
+The [subsequent twentieth observation and complete dated prefix](results/native-priority-twentieth-own-outcome-and-prefix-v1.json)
+bring it to20 complete/10 ties/10 worse/0 better, not final study closure.
+Adaptive/history0/C/g1 recovers2/3 from its previous own loss but remains7/3
+worse than the strong terminal reference. Its182 full scientist requests/choices
+differ from the reference179. Own-to-own recovery is not a method win.
 
 ## Purpose and present answer
 
@@ -81,8 +85,8 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | First19 own observations complete:10 ties/9 worse/0 better than visible reference. Not final24-slot closure |
-| Current stage | Adaptive priority/history0/C/g1, still old context-v1 |
+| Own outcomes | First20 own observations complete:10 ties/10 worse/0 better than visible reference. Not final24-slot closure |
+| Current stage | Uniform priority/history0/C/g1, still old context-v1 |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
@@ -222,7 +226,10 @@ the earlier adaptive C path has182 and the reference179. Equal aggregate U
 therefore does not establish equal behavior. Preserve physical/logical identity
 and the unchanged selection. The [nineteenth outcome](results/native-author-visibility-export-preparation-and-nineteenth-outcome-v1.json)
 is an unchanged free C parent/tie with matching179 input/choice sequences;
-final closure/cost and5 remaining slots are open at12:11UTC.
+the subsequent twentieth adaptive C outcome is-10.3333, with an actual ask
+matching the trusted reconstruction and an exact original post-tell. Final
+closure/cost and4 remaining slots are open at12:19UTC. The earlier four-ask
+geometry snapshot is retained as dated evidence, not rewritten as five.
 
 ## Actual processes and immutable sources
 

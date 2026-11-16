@@ -10,7 +10,9 @@ V45 sends compact JSON and includes a whole document when it fits65536 UTF-8
 bytes. Its inherited V44 workflow independently measured spaced JSON against
 the same numeric cap. V45 corrected the displayed inclusion flag afterward,
 but not the already computed phase. Thus a fully supplied document could
-silently lose the implementation checkpoint after three successful inspections.
+silently lose the implementation checkpoint after three inspection attempts.
+The original counter uses attempts, not only successful reads; all three
+inspections happen to succeed in these initial boundary examples.
 
 | Actual document | Compact/supplied bytes | Legacy/spaced bytes | Old checkpoint after3 reads |
 | --- | ---: | ---: | --- |

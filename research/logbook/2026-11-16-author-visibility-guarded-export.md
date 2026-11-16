@@ -30,5 +30,16 @@ native/Docker/PDF/render work stays deferred during live inference. R2/R3/R5/R6,
 important differentiated findings, adequate independent evidence and reviewed
 current PDF remain open; no acceptance or positive invention is promised.
 
+Subsequent12:19UTC update: the twentieth original observation completes. The
+adaptive/history0/C/g1 assigned loss-10.3333 is2/3 better than its own prior
+proposal but7/3 worse than the reference. Its actual ask matches reconstruction,
+the exact observation is told, and182 scientist inputs/choices differ from the
+reference179. A read-only sealed all20 row prefix retains10 ties/10 worse/0
+better. Uniform/history0/C/g1 is active. A first one-off numeric metadata read
+uses a free-author state-file path and fails; reading the actual numeric
+generation files corrects that diagnostic only. No original attempt is retried.
+The earlier manuscript/source/PDF and19-slot receipt remain explicitly dated.
+[Twentieth outcome/all20 bindings](../results/native-priority-twentieth-own-outcome-and-prefix-v1.json).
+
 [Method and executable command](../components/native-author-visibility-export-v1.md),
 [sealed evidence](../results/native-author-visibility-export-preparation-and-nineteenth-outcome-v1.json).

@@ -1,0 +1,958 @@
+{
+  "schema": "scienceutopia.native-priority-twentieth-own-outcome-and-prefix.v1",
+  "observed_utc": "2026-11-16T12:19:44.933299+00:00",
+  "analysis_source_commit": "d08b405b77698cd5a615ad05db2d91118f41c144",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "rows": [
+    {
+      "slot_index": 0,
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "scbd86c6da048c335",
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "observation_value_sha256": "603ef7d58f4304832abc455e71ccd6f0021e2572eae084a71e7030c55040ac14",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 1.0,
+      "binding": {
+        "path": "search/uniform-priority/history-0/content-utility/generation-0/observation.json",
+        "file_sha256": "ee39bb52e82bb6cb64283db693d798927c63e5c5bcfaae9506d9413dfdbbf09a"
+      }
+    },
+    {
+      "slot_index": 1,
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "scbd86c6da048c335",
+      "program_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+      "observation_value_sha256": "9cfba0e4971ef54c87b004fdcecf35ad417556f395a37364c17934076803cec9",
+      "cross_scores": {
+        "content-utility": -27.666666666666668,
+        "resource-aware-content": -7.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 1.0,
+      "binding": {
+        "path": "search/adaptive-priority/history-0/content-utility/generation-0/observation.json",
+        "file_sha256": "21cf1bab66854c71b024687f4c3c298587712743e33c3817ddb16c66521bf9f4"
+      }
+    },
+    {
+      "slot_index": 2,
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-c0cbd1982f59807194212235",
+      "program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "observation_value_sha256": "22c57307e42e7c0e04de2a17e650b0a5accca1494ce08703a3eb9bd05851f2bd",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/free-code-graph/history-0/content-utility/campaign/native-adaptive-state.json",
+        "record_index": 0,
+        "record_sha256": "77782b783a4c1d8b031b5cde95f4c79493247151524ea6ad6fed7cfbb696eeab",
+        "not_a_permanent_whole_state_file_hash": true
+      }
+    },
+    {
+      "slot_index": 3,
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "se803cd930f3f7af2",
+      "program_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+      "observation_value_sha256": "388ddbfdca08fbec8a0eb46fa51b466dee0ec07fb3f2f781aaf9c1368f4bc70f",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 3.0,
+      "binding": {
+        "path": "search/uniform-priority/history-0/resource-aware-content/generation-0/observation.json",
+        "file_sha256": "a5e046e5abe2e5b2d3b2d96d2b83d720881c162eb164aca983883aa95919ed8b"
+      }
+    },
+    {
+      "slot_index": 4,
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "se803cd930f3f7af2",
+      "program_sha256": "5f6ee4193d141c8508af86428cd7c7d0de0485aa087f6d75f52d58a1cbf858c4",
+      "observation_value_sha256": "5b7bcde2444a4a18837f70d6cb4577797684c762327420cf5c3bf642290746fc",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 3.0,
+      "binding": {
+        "path": "search/adaptive-priority/history-0/resource-aware-content/generation-0/observation.json",
+        "file_sha256": "b4d6ab0af6c2606ace5ec23c7798d2eccbc25c5ff48754fabee41cffa017c4b0"
+      }
+    },
+    {
+      "slot_index": 5,
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-6f3e5b948760380187a6adea",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "observation_value_sha256": "10cab53f5526f958c3e0c09fd7201f8b9438f09cc9f877fcf59aa492136536a2",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/free-code-graph/history-0/resource-aware-content/campaign/native-adaptive-state.json",
+        "record_index": 0,
+        "record_sha256": "3d98f34774000e10b062fdeb053d935d675c2ef0da37eefadcdefb8cfeffce43",
+        "not_a_permanent_whole_state_file_hash": true
+      }
+    },
+    {
+      "slot_index": 6,
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s439cf53bd46638ab",
+      "program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "observation_value_sha256": "6da57e498046d0d4241cf8a47b430d65a6bfc607b95c9d24978a0f7117c47170",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/uniform-priority/history-1/content-utility/generation-0/observation.json",
+        "file_sha256": "220f1000c16f04e00efc8d4cdc9e76fff5d30588e5f9f207c6f8c7be1ac99939"
+      }
+    },
+    {
+      "slot_index": 7,
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s439cf53bd46638ab",
+      "program_sha256": "eae766d6ab8df5317dab9b02cec0edb248fa41e74af54f5b76bd6e6cc2b52b37",
+      "observation_value_sha256": "4659d55fae02f49575c132e47f7373d888b6e753fe296def8192ff18cf8f7f07",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/adaptive-priority/history-1/content-utility/generation-0/observation.json",
+        "file_sha256": "f1e8a25b6561026ae68c9b35ce15f63ae939f3c5d8bef4d86406bc72d31dd99b"
+      }
+    },
+    {
+      "slot_index": 8,
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-ada832b4da4e271303815783",
+      "program_sha256": "c61f9b554a916750e62db9328d5e9bc062309457e4936470d1e641d090e1d853",
+      "observation_value_sha256": "2f93a65267cd1ac38e907f888a38b484ee624c671044bdcfbd78406526a22470",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/free-code-graph/history-1/content-utility/campaign/native-adaptive-state.json",
+        "record_index": 0,
+        "record_sha256": "e4d22e0d172bf1455a91b041ba19d994c0d482abb28897ae6f70034f98801f75",
+        "not_a_permanent_whole_state_file_hash": true
+      }
+    },
+    {
+      "slot_index": 9,
+      "slot": {
+        "generation": 0,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s4ea8e2cb523eecde",
+      "program_sha256": "34a9bfe9ee25338fc8cf1e8d34b897089fb3b2296cc81bb16b7d5ab47de69505",
+      "observation_value_sha256": "c9510d4357ea1d2601b2c5696b4ba2a838a7eb7c5a9527787cb018862a50ee95",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 3.0,
+      "binding": {
+        "path": "search/uniform-priority/history-1/resource-aware-content/generation-0/observation.json",
+        "file_sha256": "8ccda6cdf49ae0ff32316780f2218d061d0310ac3620a042f023517e75872904"
+      }
+    },
+    {
+      "slot_index": 10,
+      "slot": {
+        "generation": 0,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s4ea8e2cb523eecde",
+      "program_sha256": "34a9bfe9ee25338fc8cf1e8d34b897089fb3b2296cc81bb16b7d5ab47de69505",
+      "observation_value_sha256": "690f08948eded15b8f2bf7e19d0bfb511df997597e98aa8299312ecea7115b0f",
+      "cross_scores": {
+        "content-utility": -25.666666666666668,
+        "resource-aware-content": -9.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 3.0,
+      "binding": {
+        "path": "search/adaptive-priority/history-1/resource-aware-content/generation-0/observation.json",
+        "file_sha256": "2cd8b83302bb49057a17e37c238e47e8d0dfbacf915487a80adc07b1b7fa5d0d"
+      }
+    },
+    {
+      "slot_index": 11,
+      "slot": {
+        "generation": 0,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-50d7b177a3220913368b0bad",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "observation_value_sha256": "82d9aeee1cbd2af75e5b804b4676b17101b48e860b5958e699108a6473a15ab6",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/free-code-graph/history-1/resource-aware-content/campaign/native-adaptive-state.json",
+        "record_index": 0,
+        "record_sha256": "fc8238691d1feaa8a7fe925946e3edff207971681a3a2762d52d03f3718e56c2",
+        "not_a_permanent_whole_state_file_hash": true
+      }
+    },
+    {
+      "slot_index": 12,
+      "slot": {
+        "generation": 1,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-4ac8b75532add3a0b994e569",
+      "program_sha256": "b07c46dcd4a3bdb63827f6c94e4a45bb4d9458b7ed3c74861fa2b628e2862f3e",
+      "observation_value_sha256": "aa2d66553cc50c636cfe9ea3b9f873516ede163f31f927a998dd4cc5ee0c133f",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/free-code-graph/history-1/resource-aware-content/campaign/native-adaptive-state.json",
+        "record_index": 1,
+        "record_sha256": "3da45ea453c5b8bceed9655e1fc42e24d1df8d2bf6ae758a288b53e7b5f21134",
+        "not_a_permanent_whole_state_file_hash": true
+      }
+    },
+    {
+      "slot_index": 13,
+      "slot": {
+        "generation": 1,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s57ba2348ec2b2db7",
+      "program_sha256": "28115133fa3a4e66b0bd218b6c0c29b399e466fb42ebe4cdc77c5136de9c6b47",
+      "observation_value_sha256": "efd6718c35018b7b856a713973baad57555e9d29973c229d25555cdcc7def8f9",
+      "cross_scores": {
+        "content-utility": -28.333333333333332,
+        "resource-aware-content": -12.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.3333333333333357,
+      "binding": {
+        "path": "search/adaptive-priority/history-1/resource-aware-content/generation-1/observation.json",
+        "file_sha256": "45496b10a9be6b97a6ca5bedbc5c383905dff82c87e29f28b13f57fbc2d2d555"
+      }
+    },
+    {
+      "slot_index": 14,
+      "slot": {
+        "generation": 1,
+        "method": "uniform-priority",
+        "objective": "resource-aware-content",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "se71333203546aa95",
+      "program_sha256": "71e45f18dd69df574c14ac86f5c07bdb157d7d772ede7057a7415408c5e5891b",
+      "observation_value_sha256": "10d491ec087337c5ba240aaf1b0b69b86d44674b92262ab311b815091924d4dd",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/uniform-priority/history-1/resource-aware-content/generation-1/observation.json",
+        "file_sha256": "95c2b26f942b888b41dead2d896614feae31b57c466000aaec43645d690c4f74"
+      }
+    },
+    {
+      "slot_index": 15,
+      "slot": {
+        "generation": 1,
+        "method": "free-code-graph",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-cb55dce9c17f9a575ff2923a",
+      "program_sha256": "878b143abf3bcb6b5e585c94c0a4035a3279c0a790f0a232bc38527a9462bdce",
+      "observation_value_sha256": "7f45b7e057f81bd570ea7176d5ada1d5388d0dc17c3179d0a29e0b4a800fb7b1",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -8.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/free-code-graph/history-1/content-utility/campaign/native-adaptive-state.json",
+        "record_index": 1,
+        "record_sha256": "4816c112be2afebedd1b74204a89f99bdb76d4d674e39c1293303845726ad13e",
+        "not_a_permanent_whole_state_file_hash": true
+      }
+    },
+    {
+      "slot_index": 16,
+      "slot": {
+        "generation": 1,
+        "method": "adaptive-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s3ae24de5968caeda",
+      "program_sha256": "346d867f4e0a0303a45845a8ee2cac94d1ef0e0917b907e63a58d88cf27de76d",
+      "observation_value_sha256": "33adb2a4bca025996413e7565bdd94bcad7f19610790ca5b3793cf0dea46094c",
+      "cross_scores": {
+        "content-utility": -28.333333333333332,
+        "resource-aware-content": -8.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.3333333333333357,
+      "binding": {
+        "path": "search/adaptive-priority/history-1/content-utility/generation-1/observation.json",
+        "file_sha256": "4bb6a189dd8c6cd1e1f8b9e0646436aca3637cadd2b21837b9718679a45ce8f5"
+      }
+    },
+    {
+      "slot_index": 17,
+      "slot": {
+        "generation": 1,
+        "method": "uniform-priority",
+        "objective": "content-utility",
+        "replication": 1
+      },
+      "status": "complete",
+      "suggestion_id": "s4e73e51c92913079",
+      "program_sha256": "20e2f71f4b9905159d2f209b43de99871f7b5fe23f8a6144da1d4e25a4d19b6e",
+      "observation_value_sha256": "8fc1eb2af18f6700b2adca28a3e031b0f7bc87bd41833e9bf9530423314df56e",
+      "cross_scores": {
+        "content-utility": -28.333333333333332,
+        "resource-aware-content": -8.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.3333333333333357,
+      "binding": {
+        "path": "search/uniform-priority/history-1/content-utility/generation-1/observation.json",
+        "file_sha256": "480ac43a116655eda5c6511aab3f53c6d8b6f3d11631579ebc44dc2eeb754ce3"
+      }
+    },
+    {
+      "slot_index": 18,
+      "slot": {
+        "generation": 1,
+        "method": "free-code-graph",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "native-adaptive-ae8a4997060a4bc7e836dd3f",
+      "program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "observation_value_sha256": "34950179db818f4b91887ae5016942e9d1db20402f663879e176b63486c7728e",
+      "cross_scores": {
+        "content-utility": -28.666666666666668,
+        "resource-aware-content": -12.666666666666668,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 0.0,
+      "binding": {
+        "path": "search/free-code-graph/history-0/resource-aware-content/campaign/native-adaptive-state.json",
+        "record_index": 1,
+        "record_sha256": "56971188fd5b8499f7d73ed21f03f9b239f1cf9dcd2bbc5a1de8f23712cc93ec",
+        "not_a_permanent_whole_state_file_hash": true
+      }
+    },
+    {
+      "slot_index": 19,
+      "slot": {
+        "generation": 1,
+        "method": "adaptive-priority",
+        "objective": "resource-aware-content",
+        "replication": 0
+      },
+      "status": "complete",
+      "suggestion_id": "scc4bb20c33573167",
+      "program_sha256": "0ae7e1d924cfe4944b12c6621b43174b43806e911c6070b3557b23279054226e",
+      "observation_value_sha256": "ea0bed781e676d8c00e8bd4dfa75778d8029a005f3721a4da8e74471baa894ce",
+      "cross_scores": {
+        "content-utility": -26.333333333333332,
+        "resource-aware-content": -10.333333333333332,
+        "throughput": -36.0
+      },
+      "assigned_loss_minus_reference": 2.3333333333333357,
+      "binding": {
+        "path": "search/adaptive-priority/history-0/resource-aware-content/generation-1/observation.json",
+        "file_sha256": "f3ff9a0ba1f4ef7a7e04030f211bb85724c76290d9f758102b588de09d0b25b2"
+      }
+    }
+  ],
+  "prefix_counts_against_visible_reference": {
+    "complete": 20,
+    "tie": 10,
+    "worse": 10,
+    "better": 0
+  },
+  "twentieth_actual_ask_geometry": {
+    "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+    "input_state_value_sha256": "2793d01834ad14c80077efabf800a80ac55c14a5885fb8fea65dbd878b69f746",
+    "space_binding_sha256": "c258704fc0423bd68d5e4ab0118fe123f59fd4c4b5966bb865adf32e0bd110a7",
+    "config": {
+      "seed": 79011,
+      "initial_random": 1,
+      "mutation_scale": 0.2
+    },
+    "coordinate_count": 53,
+    "expected_suggestion_id": "scc4bb20c33573167",
+    "expected_program_sha256": "0ae7e1d924cfe4944b12c6621b43174b43806e911c6070b3557b23279054226e",
+    "expected_post_ask_state_sha256": "3e15050c8eef627ca3970ad8b6a51ae7ba3e3b5b02ce44ea1818df723dc29b51",
+    "proposal_index": 1,
+    "phase": "adaptive",
+    "actual_ask_receipt_supplied_and_matched": true,
+    "parent_observation_id": "developer-reference-rescore-3c29d5949ab370907a1ac53a4059e134d6adf31af00891a56639b94c3c927d2a",
+    "parent_assigned_loss": -12.666666666666668,
+    "parent_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+    "parent_topic_priorities": {
+      "3d_vision": 0.0,
+      "ai_ethics": 0.0,
+      "algorithmic_game_theory": 0.0,
+      "algorithms": 0.0,
+      "artificial_intelligence": 0.0,
+      "audio_computing": 0.0,
+      "complexity_theory": 0.0,
+      "computational_science": 0.0,
+      "computational_topology": 0.0,
+      "computer_architecture": 0.0,
+      "computer_graphics": 0.0,
+      "computer_networks": 0.0,
+      "computing_education": 0.0,
+      "control_systems": 0.0,
+      "cryptography": 0.0,
+      "cybersecurity": 0.0,
+      "data_structures": 0.0,
+      "database_systems": 0.0,
+      "deep_learning": 0.0,
+      "dialogue_systems": 0.0,
+      "digital_libraries": 0.0,
+      "discrete_mathematics": 0.0,
+      "distributed_systems": 0.0,
+      "evolutionary_computation": 0.0,
+      "formal_methods": 0.0,
+      "generative_models": 0.0,
+      "geometric_algorithms": 0.0,
+      "human_computer_interaction": 0.0,
+      "image_recognition": 0.0,
+      "information_retrieval": 0.0,
+      "information_theory": 0.0,
+      "interdisciplinary_cs": 0.0,
+      "interpretable_ml": 0.0,
+      "logic_in_cs": 0.0,
+      "mathematical_software": 0.0,
+      "meta-learning": 0.0,
+      "multiagent_systems": 0.0,
+      "multimedia_systems": 0.0,
+      "natural_language_processing": 0.0,
+      "neural_symbolic_ai": 0.0,
+      "numerical_analysis": 0.0,
+      "operating_systems": 0.0,
+      "parallel_computing": 0.0,
+      "performance_analysis": 0.0,
+      "planning_and_scheduling": 0.0,
+      "programming_languages": 0.0,
+      "quantum_computing": 0.0,
+      "reinforcement_learning": 0.0,
+      "robotics": 0.0,
+      "social_networks": 0.0,
+      "software_engineering": 0.0,
+      "symbolic_computation": 0.0,
+      "video_understanding": 0.0
+    },
+    "effective_mutation_scale": 0.2,
+    "coordinate_radius": 0.4,
+    "scale_observed_at_original_local_sampler_call": true,
+    "mutation_intervals": {
+      "3d_vision": [
+        -0.4,
+        0.4
+      ],
+      "ai_ethics": [
+        -0.4,
+        0.4
+      ],
+      "algorithmic_game_theory": [
+        -0.4,
+        0.4
+      ],
+      "algorithms": [
+        -0.4,
+        0.4
+      ],
+      "artificial_intelligence": [
+        -0.4,
+        0.4
+      ],
+      "audio_computing": [
+        -0.4,
+        0.4
+      ],
+      "complexity_theory": [
+        -0.4,
+        0.4
+      ],
+      "computational_science": [
+        -0.4,
+        0.4
+      ],
+      "computational_topology": [
+        -0.4,
+        0.4
+      ],
+      "computer_architecture": [
+        -0.4,
+        0.4
+      ],
+      "computer_graphics": [
+        -0.4,
+        0.4
+      ],
+      "computer_networks": [
+        -0.4,
+        0.4
+      ],
+      "computing_education": [
+        -0.4,
+        0.4
+      ],
+      "control_systems": [
+        -0.4,
+        0.4
+      ],
+      "cryptography": [
+        -0.4,
+        0.4
+      ],
+      "cybersecurity": [
+        -0.4,
+        0.4
+      ],
+      "data_structures": [
+        -0.4,
+        0.4
+      ],
+      "database_systems": [
+        -0.4,
+        0.4
+      ],
+      "deep_learning": [
+        -0.4,
+        0.4
+      ],
+      "dialogue_systems": [
+        -0.4,
+        0.4
+      ],
+      "digital_libraries": [
+        -0.4,
+        0.4
+      ],
+      "discrete_mathematics": [
+        -0.4,
+        0.4
+      ],
+      "distributed_systems": [
+        -0.4,
+        0.4
+      ],
+      "evolutionary_computation": [
+        -0.4,
+        0.4
+      ],
+      "formal_methods": [
+        -0.4,
+        0.4
+      ],
+      "generative_models": [
+        -0.4,
+        0.4
+      ],
+      "geometric_algorithms": [
+        -0.4,
+        0.4
+      ],
+      "human_computer_interaction": [
+        -0.4,
+        0.4
+      ],
+      "image_recognition": [
+        -0.4,
+        0.4
+      ],
+      "information_retrieval": [
+        -0.4,
+        0.4
+      ],
+      "information_theory": [
+        -0.4,
+        0.4
+      ],
+      "interdisciplinary_cs": [
+        -0.4,
+        0.4
+      ],
+      "interpretable_ml": [
+        -0.4,
+        0.4
+      ],
+      "logic_in_cs": [
+        -0.4,
+        0.4
+      ],
+      "mathematical_software": [
+        -0.4,
+        0.4
+      ],
+      "meta-learning": [
+        -0.4,
+        0.4
+      ],
+      "multiagent_systems": [
+        -0.4,
+        0.4
+      ],
+      "multimedia_systems": [
+        -0.4,
+        0.4
+      ],
+      "natural_language_processing": [
+        -0.4,
+        0.4
+      ],
+      "neural_symbolic_ai": [
+        -0.4,
+        0.4
+      ],
+      "numerical_analysis": [
+        -0.4,
+        0.4
+      ],
+      "operating_systems": [
+        -0.4,
+        0.4
+      ],
+      "parallel_computing": [
+        -0.4,
+        0.4
+      ],
+      "performance_analysis": [
+        -0.4,
+        0.4
+      ],
+      "planning_and_scheduling": [
+        -0.4,
+        0.4
+      ],
+      "programming_languages": [
+        -0.4,
+        0.4
+      ],
+      "quantum_computing": [
+        -0.4,
+        0.4
+      ],
+      "reinforcement_learning": [
+        -0.4,
+        0.4
+      ],
+      "robotics": [
+        -0.4,
+        0.4
+      ],
+      "social_networks": [
+        -0.4,
+        0.4
+      ],
+      "software_engineering": [
+        -0.4,
+        0.4
+      ],
+      "symbolic_computation": [
+        -0.4,
+        0.4
+      ],
+      "video_understanding": [
+        -0.4,
+        0.4
+      ]
+    },
+    "all_parent_priorities_zero": true,
+    "common_zero_centered_unclipped_intervals": true,
+    "proposed_topic_priorities": {
+      "3d_vision": 0.15987966865998382,
+      "ai_ethics": -0.09063753894528892,
+      "algorithmic_game_theory": 0.11985151838482688,
+      "algorithms": 0.06353151126251405,
+      "artificial_intelligence": 0.3188097438623648,
+      "audio_computing": -0.21727905194876468,
+      "complexity_theory": 0.031090220348765407,
+      "computational_science": -0.39012677887112396,
+      "computational_topology": 0.054863619801938435,
+      "computer_architecture": 0.20429876385434986,
+      "computer_graphics": -0.26037953724679036,
+      "computer_networks": 0.3231776678368862,
+      "computing_education": -0.314927536098867,
+      "control_systems": -0.09434999670775379,
+      "cryptography": -0.03418727506076885,
+      "cybersecurity": 0.055914466495965154,
+      "data_structures": 0.3506218014917296,
+      "database_systems": 0.08031073522144594,
+      "deep_learning": -0.2609102644852557,
+      "dialogue_systems": -0.13114894302010555,
+      "digital_libraries": 0.08506798306445768,
+      "discrete_mathematics": 0.004440202055801368,
+      "distributed_systems": 0.39141665741189746,
+      "evolutionary_computation": -0.2846619019233978,
+      "formal_methods": -0.06093829050285138,
+      "generative_models": -0.03026048470317677,
+      "geometric_algorithms": -0.20684948328023892,
+      "human_computer_interaction": -0.19245688062315935,
+      "image_recognition": -0.14398916409378154,
+      "information_retrieval": 0.3043262980516762,
+      "information_theory": -0.18786946784423827,
+      "interdisciplinary_cs": 0.1327780106724743,
+      "interpretable_ml": 0.37694033891552703,
+      "logic_in_cs": 0.13797816147278563,
+      "mathematical_software": 0.353956511579374,
+      "meta-learning": -0.10779181001201604,
+      "multiagent_systems": 0.3615940575577009,
+      "multimedia_systems": 0.3974283549254173,
+      "natural_language_processing": -0.09732772959834984,
+      "neural_symbolic_ai": -0.2558671103960416,
+      "numerical_analysis": 0.30348918616348375,
+      "operating_systems": 0.0031801548174875682,
+      "parallel_computing": -0.2871291605026365,
+      "performance_analysis": 0.19840157870754782,
+      "planning_and_scheduling": 0.06212317491379693,
+      "programming_languages": -0.23993522935731548,
+      "quantum_computing": 0.3800118690451729,
+      "reinforcement_learning": 0.21845558954966948,
+      "robotics": 0.248136266224793,
+      "social_networks": 0.10717356077796758,
+      "software_engineering": 0.07487076428683387,
+      "symbolic_computation": 0.015662881194140055,
+      "video_understanding": 0.36787203995901097
+    },
+    "proposed_descending_priority_order": [
+      "multimedia_systems",
+      "distributed_systems",
+      "quantum_computing",
+      "interpretable_ml",
+      "video_understanding",
+      "multiagent_systems",
+      "mathematical_software",
+      "data_structures",
+      "computer_networks",
+      "artificial_intelligence",
+      "information_retrieval",
+      "numerical_analysis",
+      "robotics",
+      "reinforcement_learning",
+      "computer_architecture",
+      "performance_analysis",
+      "3d_vision",
+      "logic_in_cs",
+      "interdisciplinary_cs",
+      "algorithmic_game_theory",
+      "social_networks",
+      "digital_libraries",
+      "database_systems",
+      "software_engineering",
+      "algorithms",
+      "planning_and_scheduling",
+      "cybersecurity",
+      "computational_topology",
+      "complexity_theory",
+      "symbolic_computation",
+      "discrete_mathematics",
+      "operating_systems",
+      "generative_models",
+      "cryptography",
+      "formal_methods",
+      "ai_ethics",
+      "control_systems",
+      "natural_language_processing",
+      "meta-learning",
+      "dialogue_systems",
+      "image_recognition",
+      "information_theory",
+      "human_computer_interaction",
+      "geometric_algorithms",
+      "audio_computing",
+      "programming_languages",
+      "neural_symbolic_ai",
+      "computer_graphics",
+      "deep_learning",
+      "evolutionary_computation",
+      "parallel_computing",
+      "computing_education",
+      "computational_science"
+    ],
+    "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+    "new_model_calls": 0,
+    "new_native_worlds": 0,
+    "new_generated_code_executions": 0
+  },
+  "twentieth_actual_post_tell_equals_observation": true,
+  "twentieth_scientist_observed_traces": {
+    "new": {
+      "wire_requests": 182,
+      "completed_responses": 182,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "96c9d73707cc3712751682d71f453680a6a7f3fd3ad612d4cdbeb6c2044109d7",
+      "ordered_completed_request_payload_sha256": "96c9d73707cc3712751682d71f453680a6a7f3fd3ad612d4cdbeb6c2044109d7",
+      "ordered_literal_response_choices_sha256": "21acb7fe9633febb4535e57c84e4b71d8d78d996cce20f0c045187645e979706",
+      "ordered_full_provider_body_hashes_sha256": "ea54dd682762bb68d83ab34a7a1ee5d84f3d640a841da059e536412e0f3403e4"
+    },
+    "reference": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "4db3daac1ea8a8c7a885d50cb8ddd77c5b3d0a6e59f67499044ad63501954963"
+    }
+  },
+  "immutable_original_input_files": {
+    "plan.json": "91a63d5753f0f30b5470bdd725bd42365a610cb8f61a1a3002e3175b68d1925b",
+    "references/priority-zero/observation.json": "a24e4a0eb6bafdde1f24d2be09684d8b42140ef8b70a8f874fcb12504770e41f",
+    "references/terminal-priority-zero/observation.json": "422d8364c91454a183ee0e90719407467b07e8009d8d92d7a7671a2e265cfa3f",
+    "search/uniform-priority/history-0/content-utility/generation-0/observation.json": "ee39bb52e82bb6cb64283db693d798927c63e5c5bcfaae9506d9413dfdbbf09a",
+    "search/adaptive-priority/history-0/content-utility/generation-0/observation.json": "21cf1bab66854c71b024687f4c3c298587712743e33c3817ddb16c66521bf9f4",
+    "search/uniform-priority/history-0/resource-aware-content/generation-0/observation.json": "a5e046e5abe2e5b2d3b2d96d2b83d720881c162eb164aca983883aa95919ed8b",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-0/observation.json": "b4d6ab0af6c2606ace5ec23c7798d2eccbc25c5ff48754fabee41cffa017c4b0",
+    "search/uniform-priority/history-1/content-utility/generation-0/observation.json": "220f1000c16f04e00efc8d4cdc9e76fff5d30588e5f9f207c6f8c7be1ac99939",
+    "search/adaptive-priority/history-1/content-utility/generation-0/observation.json": "f1e8a25b6561026ae68c9b35ce15f63ae939f3c5d8bef4d86406bc72d31dd99b",
+    "search/uniform-priority/history-1/resource-aware-content/generation-0/observation.json": "8ccda6cdf49ae0ff32316780f2218d061d0310ac3620a042f023517e75872904",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-0/observation.json": "2cd8b83302bb49057a17e37c238e47e8d0dfbacf915487a80adc07b1b7fa5d0d",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/observation.json": "45496b10a9be6b97a6ca5bedbc5c383905dff82c87e29f28b13f57fbc2d2d555",
+    "search/uniform-priority/history-1/resource-aware-content/generation-1/observation.json": "95c2b26f942b888b41dead2d896614feae31b57c466000aaec43645d690c4f74",
+    "search/adaptive-priority/history-1/content-utility/generation-1/observation.json": "4bb6a189dd8c6cd1e1f8b9e0646436aca3637cadd2b21837b9718679a45ce8f5",
+    "search/uniform-priority/history-1/content-utility/generation-1/observation.json": "480ac43a116655eda5c6511aab3f53c6d8b6f3d11631579ebc44dc2eeb754ce3",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-1/observation.json": "f3ff9a0ba1f4ef7a7e04030f211bb85724c76290d9f758102b588de09d0b25b2",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-1/started.json": "00e240d993cd73c4ca82c6378731e75ed4a9cce4b0816358ca9fb72cec2e081a",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-1/optimizer-after-tell.json": "2089fff5bd6d833078f8c7b259a508ab8bca6b58059822ecfbbf1c8076aa928c",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-0/optimizer-after-tell.json": "e0e417a26ebfcda9db9a44b5b32c11c5b20ec0b9b2bfc5dbb8e835db568c47e7",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-1/worlds/scc4bb20c33573167-s61001/wire-requests.jsonl": "6437033bfc1926c97e3d7cba5de1d0a227354010c0ec8048782a590d50e1507d",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-1/worlds/scc4bb20c33573167-s61001/replies/responses.sqlite": "34a1316466d14d172c00f001cfa18b768102ca419359cf3df4fc2d555f5a10db",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-1/worlds/scc4bb20c33573167-s61001/system.json": "67e1093833f743bb4acde2faf2d22ab3ad46a92846460d95a86910f68d882dc9",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/replies/responses.sqlite": "3d5464998a5092a03fbe06b9b23daf74979e515a1e01f96f79f917bffe819c50",
+    "references/terminal-priority-zero/worlds/workflow-reference-terminal-priority-zero-s61001/system.json": "2885ba60519787c60491e8c9c484df2cd1b9c5e698f4759c5b58b44166e9691d"
+  },
+  "progress_snapshot": {
+    "active": "uniform-priority/0/resource-aware-content:g1",
+    "observed_utc": "2026-11-16T12:17:33.787387+00:00",
+    "stage": "optimization"
+  },
+  "whole_campaign_closed": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "selection_changed": false,
+  "publication_ready": false,
+  "scope": "Read-only dated20-slot prefix with exact original observations, assigned/cross losses and actual twentieth ask/tell. No full-study cold closure, new code execution, repaired author or unused evaluation is claimed. Same legacy author-visibility limitation and two optimizer histories remain. Numeric own-to-own recovery is not superiority over the strong visible reference; preserve every physical run/null/adverse and wait for actual24-slot closure.",
+  "content_sha256": "684db5aef41c5a061d1fb49116c0e4ba85f78e1f33b236da8a6bc7c543689477"
+}

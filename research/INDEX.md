@@ -12,6 +12,11 @@ This page is navigation, not a chronological experiment transcript.
   the original study's closure. [Exact tests/source/nineteenth outcome](results/native-author-visibility-export-preparation-and-nineteenth-outcome-v1.json)
   retain the subsequent unchanged free C tie:19 complete/10 ties/9 worse/0 better.
   Original normal closure, real all8 exports and publication readiness remain open.
+  [The subsequent twentieth outcome/all20 prefix](results/native-priority-twentieth-own-outcome-and-prefix-v1.json)
+  now retain10 ties/10 worse/0 better. The adaptive C update recovers2/3 from
+  its own previous loss but remains7/3 worse than the strong reference. Original
+  ask/post-tell and182 actual full scientist inputs/choices are retained; this
+  is not full-study closure or a method win.
 
 - [Whole-prefix author visibility reader](components/native-author-visibility-v1.md)
   passes50 metadata/component checks and reads all7 currently generated sessions:
