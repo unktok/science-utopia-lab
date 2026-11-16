@@ -1,0 +1,75 @@
+{
+  "schema": "scienceutopia.native-priority-method-first-reference-prefix.v1",
+  "observed_utc": "2026-11-16T04:59:27.256545+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "original_writer_pid": 19200,
+  "original_tool_handle": 82425,
+  "reference": "priority-zero",
+  "observation_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-priority-method-comparison-v1-a1/outputs/native-priority-method-comparison-v1-a1/references/priority-zero/observation.json",
+  "observation_file_sha256": "a24e4a0eb6bafdde1f24d2be09684d8b42140ef8b70a8f874fcb12504770e41f",
+  "observation_content_sha256": "107ffab82ec34cd780356f628ba8cf16927451c990a18cc1026c35689202e5e1",
+  "literal_program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+  "status": "complete",
+  "cross_scores": {
+    "content-utility": -28.666666666666668,
+    "resource-aware-content": -8.666666666666668,
+    "throughput": -36.0
+  },
+  "metrics": {
+    "native.accepted_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.accepted_peer_score_sum": {
+      "status": "measured",
+      "value": 0.0
+    },
+    "native.accepted_unreviewed_decisions": {
+      "status": "measured",
+      "value": 36
+    },
+    "native.collected_activity_resource_cost": {
+      "status": "measured",
+      "value": 200.0
+    },
+    "native.common_content_score_sum": {
+      "status": "measured",
+      "value": 136.66666666666666
+    },
+    "native.common_content_utility_sum": {
+      "status": "measured",
+      "value": 28.666666666666668
+    },
+    "native.final_active_authors": {
+      "status": "measured",
+      "value": 5
+    },
+    "native.final_author_resources": {
+      "status": "measured",
+      "value": 30.0
+    },
+    "native.institutional_context_deliveries": {
+      "status": "measured",
+      "value": 20
+    },
+    "native.rejected_decisions": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.review_records": {
+      "status": "measured",
+      "value": 0
+    },
+    "native.uncollected_activity_resource_cost": {
+      "status": "measured",
+      "value": 0.0
+    }
+  },
+  "next_reference": "terminal-priority-zero",
+  "own_slots_completed_at_snapshot": 0,
+  "whole_cold_audit_complete": false,
+  "held_out_evaluation": false,
+  "interpretation": "Fresh measured explicit-zero priority reference only; no own-institution improvement, independent replication or scientific truth claim. Original run continues without source/settings changes.",
+  "content_sha256": "b33be621fd304c9520d5e31a8e2def03d41066fcf60d997e78a768ed6561ee33"
+}

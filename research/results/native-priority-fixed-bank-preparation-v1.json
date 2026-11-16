@@ -1,0 +1,69 @@
+{
+  "schema": "scienceutopia.native-priority-fixed-bank-preparation.v1",
+  "qa": [
+    {
+      "implementation_source_commit": "0c8804a6dbfcecd461c2215a521e28d63d87c905",
+      "original_tool_handle": 59957,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-bank-v1/priority-fixed-bank-v1-a1-junit.xml",
+      "junit_sha256": "dfd9ef7daaa42689ebc177990e1d486f911c48ad9c91a76690646e3c033e34f6",
+      "suite": {
+        "tests": "29",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "1.191"
+      },
+      "scope": "Light pure-data SCRIPTED tests, not complete-clean-source/native/unused-seed/dispatch proof"
+    },
+    {
+      "implementation_source_commit": "502f7a21f0654caec84953172097737a586fd90b",
+      "original_tool_handle": 90664,
+      "exit_code": 0,
+      "junit_file": "research/data/native-priority-fixed-bank-v1/priority-fixed-bank-v1-a2-junit.xml",
+      "junit_sha256": "aac426604c5b5edbc2e1e0215c086ea5b1d9dce72f897c1d237eb702082d5068",
+      "suite": {
+        "tests": "33",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "time": "1.506"
+      },
+      "scope": "Light pure-data SCRIPTED tests, not complete-clean-source/native/unused-seed/dispatch proof"
+    }
+  ],
+  "saved_SCRIPTED_transfer": {
+    "implementation_source_commit": "0c8804a6dbfcecd461c2215a521e28d63d87c905",
+    "original_tool_handle": 72649,
+    "exit_code": 0,
+    "original_scientific_fixture_source": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+    "inputs": {
+      "outputs/priority-method-public-v1-a3/test_public_prepare_run_all_me0/mixed-study/plan.json": "ddf19e2b0005c9693bb251459f5c59b902e4a18b50b1b8270547b0e47c9745c2",
+      "outputs/priority-method-public-v1-a3/test_public_prepare_run_all_me0/audit-retained.json": "da0622949fcfc26beb38d220ead279d6d78327023337887b2f35fa9242b1f815"
+    },
+    "bank_content_sha256": "dcdf881ecd32dfa7ad2d7206b2710f95bea34b122e15dd34eb7aaaa01becd16e",
+    "job_draft_content_sha256": "034b61718d2bdde931b6b00e14e307b7cfb1f0dafcf84c670936247e5ac08729",
+    "logical_policy_labels": 15,
+    "planned_physical_jobs": 18,
+    "draft_seeds": [
+      83003,
+      83011
+    ],
+    "seed_usage_validated": false,
+    "dispatchable": false,
+    "scope": "Pure projection of saved prior SCRIPTED native proof only. No generated source execution, model calls or native worlds."
+  },
+  "actual_world_first_reference": "research/results/native-priority-method-first-reference-prefix-v1.json",
+  "future_protocol": "research/protocols/campaigns/native-priority-selection-transfer-draft-v1.md",
+  "missing_before_actual_evaluation": [
+    "original study normal paired cold/cost/readout closure",
+    "seed coverage and unused inventories rechecked at dispatch",
+    "explicit pinned full evaluation plan and role budgets",
+    "public outer runner/cold/cost/readout integration proof",
+    "separate scientific-value decision and real dispatch"
+  ],
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false,
+  "content_sha256": "2630b1583f3cdd3fee7a85dfc9fd40bacf68d8d700cde0d54d1198fd6dd34036"
+}

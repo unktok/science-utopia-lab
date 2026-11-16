@@ -10,11 +10,16 @@ This page is navigation, not a chronological experiment transcript.
   two U/C losses, two optimizer histories/method/objective,24 own slots and3
   fresh strong references in the original persistent researcher world. The known
   terminal rule is visible, not an unseen discovery for us. Initial real readiness
-  now passes28 controls; the first reference is running, not a completed loss
+  now passes28 controls; the [first reference completes](results/native-priority-method-first-reference-prefix-v1.json)
+  at U28.6667/K200 and the second is running, not a completed own-method
   comparison. [All-slot readout preparation](results/native-priority-method-readout-preparation-v1.json)
   adds compound identities, all12 paths/frozen selections and an actual separate
   paired-export waiter, with56 light tests. The renderer is prepared but not yet
-  rendered or visually reviewed; no new scientific result is claimed.
+  rendered or visually reviewed; no own-method gain is claimed.
+  [Frozen bank preparation](results/native-priority-fixed-bank-preparation-v1.json)
+  retains12 own labels/3 controls with33 light checks; its
+  [prospective transfer draft](protocols/campaigns/native-priority-selection-transfer-draft-v1.md)
+  is not unused-seed proof, a full execution-ready evaluation or a new dispatch.
   [Actual27-world SOFTWARE proof](results/native-priority-method-public-software-retention-v1.json)
   closes with matching paired cold/cost records; SCRIPTED success is not a real
   gain. The separate actual read-only continuation waits for writer and supervisor

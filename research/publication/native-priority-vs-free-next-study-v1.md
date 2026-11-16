@@ -1,5 +1,14 @@
 # Next comparison decision after the closed source-information pilot
 
+November16 execution update: the finite layout below is now implemented,
+software-verified and [actually dispatched](../results/native-priority-method-dispatch-v1.json)
+under a separate [frozen protocol](../protocols/campaigns/native-priority-method-comparison-v1.md).
+Initial real readiness passes28 controls and the first reference completes;
+no own gain or completed method comparison is claimed yet. A prospective
+[selection-transfer draft](../protocols/campaigns/native-priority-selection-transfer-draft-v1.md)
+prepares all12 selections/3 references without reselection or assuming unused
+seeds. The dated design note below is retained, not a denial of current dispatch.
+
 This is a prospective design decision, not a dispatch, frozen protocol or
 publication-ready result. The source-information pilot is closed; no model
 job is running on its behalf. See [STATUS](../STATUS.md) for current evidence.

@@ -2,6 +2,25 @@
 
 ## New finite method comparison: real readiness passed; references running
 
+At04:59:27UTC/13:59JST the [first fresh reference completes](results/native-priority-method-first-reference-prefix-v1.json):
+priority-zero has36 accepted decisions, U28.6667, collected K200/unpaid0,
+L_U=-28.6667 and L_C=-8.6667. These cross-scores are independently recomputed
+from its saved original measurements; whole cold closure is still pending.
+The original run advances to terminal-priority-zero, with80 recorded scientist
+response rows at05:06:57UTC. This is a reference outcome, not own-system gain.
+
+[Frozen bank preparation](results/native-priority-fixed-bank-preparation-v1.json)
+now preserves all12 own-selection/3 reference labels for a prospective
+[unused-condition transfer draft](protocols/campaigns/native-priority-selection-transfer-draft-v1.md).
+It never chooses another candidate, drops absent selections or combines policies
+because their scores/observed inputs match. Only literal identity modulo the
+declared world seed shares jobs.33 latest light tests pass; saved SCRIPTED data
+produce15 labels/18 draft jobs for two proposed seeds. No unused-seed inventory,
+full evaluation runner/cold proof, real dispatch or extra native world is claimed.
+The pure draft is explicitly non-dispatchable. The two proposed conditions and
+all paired cross-objective/method/control readouts are fixed in the dated draft;
+actual preparation must prove unused coverage and bind the complete experiment.
+
 At04:55UTC/13:55JST November16, the real initial readiness certificate passes
 all28 controls. The original priority-zero reference has179 recorded scientist
 response rows and its year4 checkpoint, but no completed audited reference or

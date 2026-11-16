@@ -11,14 +11,14 @@
 さらに簡単な数値世界へ置き換える理由でもない。
 
 現在の実行状態・達成範囲は[STATUS](research/STATUS.md)を参照する。
-最新の確認済み統合PDFは[100ページの原稿記録](paper/integrated-terminal-cost-build-v1.json)
-と[PDF](output/pdf/science-utopia-lab-integrated-terminal-cost-working-paper.pdf)。
-以前の意味ある研究を保持し、自由制度6候補の探索と、元世界での手設計制度による
-回収費用の対照を追加している。2回のcached buildの本文・log・全100ページの画像が一致し、
-全紙面と新結果の拡大表示を確認した。51図・47表・29文献を含むが、主会議readyではない。
-この100ページsnapshot固有の最小source再構築は未検証であり、以前の
-[98ページ／80ファイルの実再構築](research/results/integrated-topic-systems-rebuild-subset-verification-v1.json)
-を新しい稿の証明に流用しない。最新の実モデル比較はまだこのPDFの結果に含まれていない。
+最新の確認済み統合PDFは[104ページの原稿記録](paper/integrated-consumer-source-build-v1.json)
+と[PDF](output/pdf/science-utopia-lab-integrated-consumer-source-working-paper.pdf)。
+以前の意味ある研究を保持し、自由制度探索、回収費用の対照、元世界の実装sourceを
+設計者へ見せる情報条件の8候補比較まで含む。2回のcached buildの本文・log・全104ページの
+画像が一致し、全紙面と新結果の拡大表示を確認した。52図・49表・32文献を含むが、
+主会議readyではない。この104ページsnapshot固有の最小source再構築は未検証であり、
+以前の[100ページ稿の実再構築](research/results/integrated-terminal-rebuild-subset-verification-v1.json)
+を新しい稿の証明に流用しない。現在稼働する手法比較の結果はまだこのPDFに含まれない。
 原稿再構築は研究結果の独立再現ではなく、主会議readyの根拠の代わりではない。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 
@@ -72,12 +72,20 @@
 自動発明・実作業量削減・科学の改善を示したものではない。損失に追加vetoは課さない。
 [閉鎖した対照](research/results/native-terminal-cost-pilot-closed-v1.json)を参照。
 
-その後、同じ自由制度権限・U/C損失の下で、設計者に元世界の実際の処理sourceを見せるかどうかを
-比較する[実モデル実験を起動](research/results/native-consumer-source-comparison-dispatch-v1.json)した。
-通しsoftware検証と19件の保存データ／単体確認、両情報条件の初期実モデル校正は通過済みで、
-[比較制度3件が完了](research/results/native-consumer-source-reference-bank-prefix-v1.json)した。
-[最初の自己案](research/results/native-consumer-source-first-own-submission-v1.json)は正式提出から元世界での評価へ進んだが、
-自己候補8枠の損失結果・改善や全体監査はまだ未完了。実行位置は[STATUS](research/STATUS.md)を正本とする。
+その後、同じ自由制度権限・U/C損失の下で、設計者に元世界の実際の処理sourceを見せるかどうかの
+[8候補の実モデル比較が閉鎖](research/results/native-consumer-source-comparison-closed-v1.json)した。
+7候補は測定完了、1候補は元世界の適格性違反によるnullで、全4系統の最終自己選択は
+強い対照と同点。悪化した候補から既知の良いルールへ回復する経路はあるが、新しい優位性はない。
+全体二重監査・費用・修正先での二重集計まで完了し、当初の集計先エラーも保存している。
+
+現在は[ランダム優先度探索・適応的優先度探索・自由コード／構成探索の比較](research/protocols/campaigns/native-priority-method-comparison-v1.md)
+を元世界で稼働中。U/Cそれぞれに各手法2探索履歴×2提案、自己候補24枠と対照3件である。
+初期設計者校正28項目は通過し、[最初の対照の実測](research/results/native-priority-method-first-reference-prefix-v1.json)
+が完了した。自動設計候補の改善結果・全体監査・実結果の可視化はまだ未完了。
+[全候補・探索経路の集計](research/results/native-priority-method-readout-preparation-v1.json)と、
+[選択を固定した未使用条件への移送設計](research/protocols/campaigns/native-priority-selection-transfer-draft-v1.md)
+を準備している。後者は純粋な政策一覧／ジョブ案で、未使用性の証明や実行可能な実験計画ではない。
+実行位置は[STATUS](research/STATUS.md)を正本とする。
 重要で差別化された主張、十分な独立証拠、選択固定の未使用評価、焦点を持つ主稿と最終投稿判断が残る。
 
 以下は日付付きの過去の到達点であり、現在の稼働状態を重ねて宣言するものではない。
