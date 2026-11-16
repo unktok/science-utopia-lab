@@ -1,6 +1,6 @@
 # Current research status
 
-Last scientific snapshot: November16,2026 at10:51UTC/19:51JST.
+Last scientific snapshot: November16,2026 at11:21UTC/20:21JST.
 This is a verified dated snapshot, not a live heartbeat.
 The full publication-ready goal remains active and unachieved.
 
@@ -67,8 +67,8 @@ real science or a publication-ready differentiated main finding.
 | Search | Uniform priorities, adaptive priorities, free code/graph; two seeded optimizer histories per method/objective, two own slots each |
 | Budget | 24 own slots plus3 fresh references; at most27 physical native worlds, with declared finite role/HTTP/time limits |
 | References | All3 complete. Explicit zero priorities and known terminal rule are common visible parents; literal-related is comparison-only |
-| Own outcomes | First16 own observations complete:9 ties/7 worse/0 better than visible reference. Not final24-slot closure |
-| Current stage | Adaptive priority/history1/U/g1; preceding free U/g1 source edit completes and ties its reference, still old context-v1 |
+| Own outcomes | First18 own observations complete:9 ties/9 worse/0 better than visible reference. Not final24-slot closure |
+| Current stage | Free code/graph/history0/C/g1; both preceding history1/U numeric updates complete, still old context-v1 |
 | Free author | First U actual-request readiness passes28 controls; five completed steps are plan/read/read/read/finish, no edits or recorded errors |
 | First free U policy | Exactly retains its parent and ties it; this is a valid own submission, not a newly invented mechanism |
 | First free C policy | Exactly retains/ties the terminal parent;14 completed actions include12 full reads, no edit, explicit finish |
@@ -186,6 +186,27 @@ unpaid0→40, giving C gain4 without reducing requested work. U's declared initi
 parent is zero priorities; C's is terminal. Do not credit that inherited known
 difference to generated edits or call it a discovered tradeoff/global optimum.
 [Complete bank and first dispatch](results/native-priority-method-reference-bank-and-first-dispatch-prefix-v1.json).
+
+## Numeric update geometry, without changing the active method
+
+[The original states/reconstructed asks](components/native-priority-kernel-geometry-v1.md)
+show that all4 adaptive first updates choose the zero reference, not a nonzero
+own incumbent. Four actual g1 receipts match exact public ask/post-ask replay;
+four future reconstructions remain unobserved diagnostics. At zero, each
+coordinate interval is[-0.4,0.4]. Positive common scaling preserves selector
+ordering under ideal continuous draws; smaller coordinate radius is not
+automatically more local policy search. This is not a missing-tell bug, exact
+finite-PRNG equality, global native equivalence or a reason to rewrite outcomes.
+43 scoped checks pass, including observing the sampler's actual scale argument
+and original-actor component cases. No scientific dispatch is added.
+
+[Outcome17](results/native-priority-kernel-geometry-retention-and-seventeenth-outcome-v1.json)
+and [outcome18](results/native-priority-eighteenth-own-outcome-v1.json) both yield
+U-28.3333, worse than the zero reference by1/3. Uniform and adaptive U have the
+same185 full scientist inputs/literal choices despite different programs;
+the earlier adaptive C path has182 and the reference179. Equal aggregate U
+therefore does not establish equal behavior. Preserve physical/logical identity
+and the unchanged selection; final closure/cost and all6 remaining slots are open.
 
 ## Actual processes and immutable sources
 

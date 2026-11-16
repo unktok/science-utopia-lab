@@ -1,0 +1,227 @@
+{
+  "schema": "scienceutopia.native-priority-kernel-geometry-retention-and-seventeenth-outcome.v1",
+  "observed_utc": "2026-11-16T11:18:03.387542+00:00",
+  "analysis_source_commit": "af8890a0d9c8f1eb5bb62e868f6bcdb7a479c04d",
+  "original_scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "original_plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "prior_geometry_prefix_content_sha256": "78f1bd5c0e6f36f715637328d8789df4013585d91546518182dddd1d97347d18",
+  "prior_sixteenth_outcome_content_sha256": "51ea0e4e44612e244c5e393f1652bc12144985e7fcc7efe4e3e4f395ef9da4b8",
+  "local_first_update_reconstructions": [
+    {
+      "method": "uniform-priority",
+      "replication": 0,
+      "objective": "content-utility",
+      "expected_suggestion_id": "s7ce05743c8cceab8",
+      "original_receipt_matched_at_prior_snapshot": false,
+      "scale_observed_in_local_public_sampler": false,
+      "observed_scale": null,
+      "radius": null,
+      "all_parent_priorities_zero": false
+    },
+    {
+      "method": "adaptive-priority",
+      "replication": 0,
+      "objective": "content-utility",
+      "expected_suggestion_id": "sf7b868a9f016e44e",
+      "original_receipt_matched_at_prior_snapshot": false,
+      "scale_observed_in_local_public_sampler": true,
+      "observed_scale": 0.2,
+      "radius": 0.4,
+      "all_parent_priorities_zero": true
+    },
+    {
+      "method": "uniform-priority",
+      "replication": 0,
+      "objective": "resource-aware-content",
+      "expected_suggestion_id": "s1a57305fbff793b2",
+      "original_receipt_matched_at_prior_snapshot": false,
+      "scale_observed_in_local_public_sampler": false,
+      "observed_scale": null,
+      "radius": null,
+      "all_parent_priorities_zero": false
+    },
+    {
+      "method": "adaptive-priority",
+      "replication": 0,
+      "objective": "resource-aware-content",
+      "expected_suggestion_id": "scc4bb20c33573167",
+      "original_receipt_matched_at_prior_snapshot": false,
+      "scale_observed_in_local_public_sampler": true,
+      "observed_scale": 0.2,
+      "radius": 0.4,
+      "all_parent_priorities_zero": true
+    },
+    {
+      "method": "uniform-priority",
+      "replication": 1,
+      "objective": "content-utility",
+      "expected_suggestion_id": "s4e73e51c92913079",
+      "original_receipt_matched_at_prior_snapshot": true,
+      "scale_observed_in_local_public_sampler": false,
+      "observed_scale": null,
+      "radius": null,
+      "all_parent_priorities_zero": false
+    },
+    {
+      "method": "adaptive-priority",
+      "replication": 1,
+      "objective": "content-utility",
+      "expected_suggestion_id": "s3ae24de5968caeda",
+      "original_receipt_matched_at_prior_snapshot": true,
+      "scale_observed_in_local_public_sampler": true,
+      "observed_scale": 0.2,
+      "radius": 0.4,
+      "all_parent_priorities_zero": true
+    },
+    {
+      "method": "uniform-priority",
+      "replication": 1,
+      "objective": "resource-aware-content",
+      "expected_suggestion_id": "se71333203546aa95",
+      "original_receipt_matched_at_prior_snapshot": true,
+      "scale_observed_in_local_public_sampler": false,
+      "observed_scale": null,
+      "radius": null,
+      "all_parent_priorities_zero": false
+    },
+    {
+      "method": "adaptive-priority",
+      "replication": 1,
+      "objective": "resource-aware-content",
+      "expected_suggestion_id": "s57ba2348ec2b2db7",
+      "original_receipt_matched_at_prior_snapshot": true,
+      "scale_observed_in_local_public_sampler": true,
+      "observed_scale": 0.2,
+      "radius": 0.4,
+      "all_parent_priorities_zero": true
+    }
+  ],
+  "actual_test_runs": [
+    {
+      "file": "research/data/native-priority-kernel-geometry-v1/geometry-9c633734.xml",
+      "file_sha256": "27ebfebd011407689889a82d085ec8e10b2b35d599aeb9d13f45f0f6ef58cb0b",
+      "source_commit": "9c6337340aa87c5db6b558715bdf8d0aa3bfd1c5",
+      "original_handle": 97064,
+      "actual_exit_code": 0,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "39",
+        "time": "32.195",
+        "timestamp": "2026-11-16T20:06:26.211080+09:00",
+        "hostname": "flower-man.local"
+      }
+    },
+    {
+      "file": "research/data/native-priority-kernel-geometry-v1/observed-scale-af8890a0.xml",
+      "file_sha256": "9d8730e2c9726901ddcbaa442bf7157e17494afc6759321088adbdfbe4b20454",
+      "source_commit": "af8890a0d9c8f1eb5bb62e868f6bcdb7a479c04d",
+      "original_handle": 80785,
+      "actual_exit_code": 0,
+      "suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "43",
+        "time": "48.813",
+        "timestamp": "2026-11-16T20:14:30.710463+09:00",
+        "hostname": "flower-man.local"
+      }
+    }
+  ],
+  "seventeenth_outcome": {
+    "slot_index": 16,
+    "slot": {
+      "generation": 1,
+      "method": "adaptive-priority",
+      "objective": "content-utility",
+      "replication": 1
+    },
+    "suggestion_id": "s3ae24de5968caeda",
+    "observation_value_sha256": "a11fa57c8aec81aa1a5ab9727813b5cbefc9160cca31d280f2d6b29698d1e7a7",
+    "program_sha256": "346d867f4e0a0303a45845a8ee2cac94d1ef0e0917b907e63a58d88cf27de76d",
+    "status": "complete",
+    "cross_scores": {
+      "content-utility": -28.333333333333332,
+      "resource-aware-content": -8.333333333333332,
+      "throughput": -36.0
+    },
+    "assigned_loss_minus_actual_parent": 0.3333333333333357,
+    "assigned_loss_minus_previous_own": 0.3333333333333357,
+    "actual_parent_observation_id": "developer-reference-rescore-755d09900248810ccb07682f6faf2ee8cd24b2ce9364abe80f7ae5f106df69f3",
+    "prefix_counts_against_reference": {
+      "complete": 17,
+      "tie": 9,
+      "worse": 8,
+      "better": 0
+    }
+  },
+  "observed_scientist_traces": {
+    "new_U": {
+      "wire_requests": 185,
+      "completed_responses": 185,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "93a3f2ac25b3a316d548336ea588541e183d81df9d1990c6e25b827af0bfcfca",
+      "ordered_completed_request_payload_sha256": "93a3f2ac25b3a316d548336ea588541e183d81df9d1990c6e25b827af0bfcfca",
+      "ordered_literal_response_choices_sha256": "a8c78a1a4a7ff753727d79b8ed6e7472a13553c0ce84607daa71abc3a7cd711c",
+      "ordered_full_provider_body_hashes_sha256": "89bac6aa46b4f12b0c913a6a29dc2fb95d2d17d751ffcf42054f4694e409c478"
+    },
+    "previous_C": {
+      "wire_requests": 182,
+      "completed_responses": 182,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "331900d57420f4b1acbbaf8668c345eae91173fe510e72e6239788346348646f",
+      "ordered_completed_request_payload_sha256": "331900d57420f4b1acbbaf8668c345eae91173fe510e72e6239788346348646f",
+      "ordered_literal_response_choices_sha256": "7565542731208fa5ced6d6f89b07411e8eb4ff9754a66afb430a4b6ef7e06014",
+      "ordered_full_provider_body_hashes_sha256": "7307ed3cf3c4a52025ff440fd3bb7de89c4ef4c9a1dbf9e6eeb017eb2e23bc43"
+    },
+    "U_reference": {
+      "wire_requests": 179,
+      "completed_responses": 179,
+      "wire_inputs_without_committed_reply": 0,
+      "ordered_full_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_completed_request_payload_sha256": "6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4",
+      "ordered_literal_response_choices_sha256": "ce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2",
+      "ordered_full_provider_body_hashes_sha256": "cca4ba583662d76bcf678c74d6e6bd223dc85633a88506ca2ea42331dd427103"
+    }
+  },
+  "equal_U_aggregate_does_not_imply_equal_observed_path": true,
+  "analysis_component_file_sha256": {
+    "scripts/reports/native_priority_kernel_geometry_v1.py": "9fa6424380c93003e48f0299acdbd3fc6f34a8399084ebfc52e54b317c23224d",
+    "tests/reports/test_native_priority_kernel_geometry_v1.py": "3d3221507379b3cbdbedc83e05580c4da7ac7150f0e1e0cbd2e8471e3d521b06"
+  },
+  "immutable_original_input_files": {
+    "search/uniform-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "d8fe4a28b7aa58aa0050d49badf467bb806b0cc0d89b46855ea46595a0caa099",
+    "search/adaptive-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "af66601d81b991acfb17ab0c8eb81a5e94f8d1f64766ff1b73e89a84a2ed9fdf",
+    "search/uniform-priority/history-0/resource-aware-content/generation-0/optimizer-after-tell.json": "0f69735cfbd96e009b313b3388996c8b0793c662853c36935bbdd1cccec8e6c0",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-0/optimizer-after-tell.json": "e0e417a26ebfcda9db9a44b5b32c11c5b20ec0b9b2bfc5dbb8e835db568c47e7",
+    "search/uniform-priority/history-1/content-utility/generation-0/optimizer-after-tell.json": "13655e365d95d4bbdd4af52f3e3f1f4552f33e7cd2953bbd9b977caa98b95422",
+    "search/uniform-priority/history-1/content-utility/generation-1/started.json": "4036570035dc241ad75769f1a058f5d79ce772607ee069cdaf59c0b86f25ac14",
+    "search/adaptive-priority/history-1/content-utility/generation-0/optimizer-after-tell.json": "9b89b3fbd077fd89f5afa240c64ea59eb27e5bc71a7f10c5c44276c1452f71be",
+    "search/adaptive-priority/history-1/content-utility/generation-1/started.json": "6b7629fdbee0d5617693935672216c700051886fc5c24e2a29479ed113a26efb",
+    "search/adaptive-priority/history-1/content-utility/generation-1/observation.json": "4bb6a189dd8c6cd1e1f8b9e0646436aca3637cadd2b21837b9718679a45ce8f5",
+    "search/uniform-priority/history-1/resource-aware-content/generation-0/optimizer-after-tell.json": "119a0151c17d20c064dbb62790ae972b3cb69ae4d33dafbc2667e3c93262d918",
+    "search/uniform-priority/history-1/resource-aware-content/generation-1/started.json": "f904c49ece15b33fc4f633a3f08fd0216322282170f6db1cf4a43d5a8d012fb6",
+    "search/uniform-priority/history-1/resource-aware-content/generation-1/observation.json": "95c2b26f942b888b41dead2d896614feae31b57c466000aaec43645d690c4f74",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-0/optimizer-after-tell.json": "1879e67f33e30dc97d2f4df4a2ba8d04d13c39db6736a798c12f4a6609cd1afc",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/started.json": "265cd415b574a15a60d8b740855b842bb8b5315c1a648d3842aedf27049f9a4d",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/observation.json": "45496b10a9be6b97a6ca5bedbc5c383905dff82c87e29f28b13f57fbc2d2d555",
+    "search/adaptive-priority/history-1/content-utility/generation-1/worlds/s3ae24de5968caeda-s61001/wire-requests.jsonl": "ad4ecc4192d934557d4011196f62e8161e1b39007edf664a1146f51ec1135328",
+    "search/adaptive-priority/history-1/content-utility/generation-1/worlds/s3ae24de5968caeda-s61001/replies/responses.sqlite": "0eb988490be3ebd8d2eb04cf843c8469986d6b717ce107109db6cfb4fe0d80b1",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/worlds/s57ba2348ec2b2db7-s61001/wire-requests.jsonl": "46a8dbc8b22d1e6386ddc551e5e70922b0fc958b169c427531d4fddd8c23880a",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/worlds/s57ba2348ec2b2db7-s61001/replies/responses.sqlite": "8cc6e1efebabe7cbaa9e884ab399b2e73a19b27f364889871da7cc4bb2e91f66",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/wire-requests.jsonl": "2ab30fbda73bf4c954133e41529424185d8c1158a86f2f9e25c278ed7d0468d7",
+    "references/priority-zero/worlds/workflow-reference-priority-zero-s61001/replies/responses.sqlite": "2d9838b9702829ddba3bd88df9b28ff06ae34b3cde77dfce7a470f8b270c90db",
+    "references/priority-zero/observation.json": "a24e4a0eb6bafdde1f24d2be09684d8b42140ef8b70a8f874fcb12504770e41f"
+  },
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "whole_campaign_closed": false,
+  "publication_ready": false,
+  "scope": "All8 first-update asks reconstructed from immutable post-g0 states;4 actual receipts matched at the earlier snapshot, other4 remain expected diagnostics rather than observed dispatches. af8890a0 captures the actual scale passed to the original local sampler instead of duplicating its schedule, and confirms the earlier9c633734 projection.43 scoped cases include exact trusted priority source on retained original actors; not real native/model proof. The17th original outcome is valid and worse by1/3. Its U matches the earlier C update aggregate but185/182/179 input sequences are distinct, so neither ranking geometry nor equal loss permits world deduplication, causal method attribution or hidden repair/refill.",
+  "content_sha256": "ffc0f1ed1d4586de1821f77b3365ecc254a77dd1142357e05704d4833a6340b8"
+}

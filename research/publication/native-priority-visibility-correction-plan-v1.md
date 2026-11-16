@@ -19,6 +19,14 @@ corrected real-model experiment or change to the frozen original protocol.
    boundary shapes. The87 light checks and SCRIPTED replay are not that proof;
    old successful certificates/public proofs cannot be transplanted. Preserve
    any new failure; no silent source guard/certificate weakening or extra retry.
+   The [actual numeric first-update geometry](../components/native-priority-kernel-geometry-v1.md)
+   must also inform the corrective comparison: all four post-g0 adaptive states
+   select zero priorities, where a common smaller radius need not be more local
+   in selector ordering. This is a method/representation limitation, not loss
+   corruption or a reason to stop/refill the current run. Inspect meaningful
+   rank/behavioral proposal moves before freezing a new comparator; no new
+   optimizer or scientific dispatch is adopted by this note, and free v6
+   authority/strong references/null accounting must remain intact.
 4. Freeze a finite corrective experiment only after that proof and the completed
    legacy results are inspected. Keep original native activity, scientist
    weights and U/C measurement meanings, declared author/world budgets, strong

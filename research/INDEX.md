@@ -5,6 +5,17 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First-update geometry, not an added optimizer](components/native-priority-kernel-geometry-v1.md)
+  reconstructs all8 numeric next asks, matching4 original receipts at its dated
+  snapshot; the remaining4 are not observed dispatches. All4 adaptive parents
+  are zero, with actual sampler scale0.2/radius0.4.43 scoped cases and a conditional
+  ordering argument explain why small coordinates need not mean local policy
+  search. [Outcomes17/geometry retention](results/native-priority-kernel-geometry-retention-and-seventeenth-outcome-v1.json)
+  and [outcome18](results/native-priority-eighteenth-own-outcome-v1.json) bring
+  the prefix to18 complete/9 ties/9 worse/0 better. Different programs can share
+  an observed input path; equal losses can also have different paths. Do not
+  deduplicate or infer general superiority/equivalence from either observation.
+
 - [Manuscript source integration, not a new PDF](components/native-priority-manuscript-source-v1.md)
   retains all previous26 recursive inputs, adds a dated15-slot table/method and
   interface-confound section, and passes19 source/evidence checks. The reviewed

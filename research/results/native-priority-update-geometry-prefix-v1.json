@@ -1,0 +1,413 @@
+{
+  "schema": "scienceutopia.native-priority-update-geometry-prefix.v1",
+  "observed_utc": "2026-11-16T11:09:11.021462+00:00",
+  "analysis_source_commit": "9c6337340aa87c5db6b558715bdf8d0aa3bfd1c5",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "source_files_equal_to_original": {
+    "utopia/optimization/blackbox.py": "c8d65fbafdf50d2f73551b65f61d99f68ebb6833ab4028bdbe8bfc9ca1c0ab12",
+    "utopia/optimization/native_parameter_space_v1.py": "83ed51d4af0b2c77413d0040e81af3e2646234a52265b7ca63a42007c48627e8",
+    "utopia/optimization/native_topic_priority_space_v1.py": "f0a6998d133b99c69031c2ec1a6c39a0d38f9c657d71a8782d588e129f641569",
+    "utopia/system/native_topic_priority_controls.py": "33235cca5b0a518fc3840ada9af72184363bbf62c549a0f510721fb7d3ef259d"
+  },
+  "analysis_component_file": "scripts/reports/native_priority_kernel_geometry_v1.py",
+  "analysis_component_sha256": "420124a2c5c98eb0039716c16caae869eb9a3a3f29fc74213e223506f41f7249",
+  "rows": [
+    {
+      "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+      "input_state_value_sha256": "06cbd68dd411890342bde5b132522741f7bc79d712c3d6d5393bf2bfa00b9cb7",
+      "space_binding_sha256": "2f67b9741b73a98a923cd5b4e785b7184dd51d28e40688910a402d9fb8ec15db",
+      "config": {
+        "seed": 79011,
+        "initial_random": 2,
+        "mutation_scale": 0.2
+      },
+      "coordinate_count": 53,
+      "expected_suggestion_id": "s7ce05743c8cceab8",
+      "expected_program_sha256": "8d0e15234b9cbec3fb59429bf23fcc75e36eec4ebb73a606c820844c0633b1ae",
+      "expected_post_ask_state_sha256": "7fe3225e2dcb1e95c6f87e740d47e96210006001763c19069350ee66bace6266",
+      "proposal_index": 1,
+      "phase": "initial",
+      "actual_ask_receipt_supplied_and_matched": false,
+      "parent_observation_id": null,
+      "parent_assigned_loss": null,
+      "parent_program_sha256": null,
+      "effective_mutation_scale": null,
+      "coordinate_radius": null,
+      "all_parent_priorities_zero": false,
+      "common_zero_centered_unclipped_intervals": false,
+      "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_generated_code_executions": 0,
+      "method": "uniform-priority",
+      "replication": 0,
+      "objective": "content-utility",
+      "proposed_priority_values_sha256": "f773188275fcb7687912f17e5dc6b940e14379ccbfe7e6067a6bbaba0d540839",
+      "proposed_priority_order_sha256": "3811e22dfd64a41a5ab25162e5230a87e7cc6b1ebb24b7993229248b4914dfa5",
+      "priority_value_range": [
+        -0.9360778373278835,
+        0.9711365349385697
+      ],
+      "common_interval_values": null,
+      "actual_outcome": null
+    },
+    {
+      "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+      "input_state_value_sha256": "02ff1dc0cdda8a3d604f09f08901340fb36f954603a6671c62af1bf7188c0a1e",
+      "space_binding_sha256": "2f67b9741b73a98a923cd5b4e785b7184dd51d28e40688910a402d9fb8ec15db",
+      "config": {
+        "seed": 79011,
+        "initial_random": 1,
+        "mutation_scale": 0.2
+      },
+      "coordinate_count": 53,
+      "expected_suggestion_id": "sf7b868a9f016e44e",
+      "expected_program_sha256": "8bdbc0f26a25fefec949713e003a62386955b5b7cf4863b482f7d1de15c27d30",
+      "expected_post_ask_state_sha256": "68589b5ecee3da173eae4cf0ca93d8dc9ad4cba4365596330ef01791fd18f6ec",
+      "proposal_index": 1,
+      "phase": "adaptive",
+      "actual_ask_receipt_supplied_and_matched": false,
+      "parent_observation_id": "developer-reference-rescore-755d09900248810ccb07682f6faf2ee8cd24b2ce9364abe80f7ae5f106df69f3",
+      "parent_assigned_loss": -28.666666666666668,
+      "parent_program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "effective_mutation_scale": 0.2,
+      "coordinate_radius": 0.4,
+      "all_parent_priorities_zero": true,
+      "common_zero_centered_unclipped_intervals": true,
+      "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_generated_code_executions": 0,
+      "method": "adaptive-priority",
+      "replication": 0,
+      "objective": "content-utility",
+      "proposed_priority_values_sha256": "8accf2a55ce4daad76b05b084de6aa89b63747ee41cf39c2aa058483c03c5ba0",
+      "proposed_priority_order_sha256": "ce2e2583239fc5dfdd4ebd67b648970acbdaac0087eb24c8654593262ef0f622",
+      "priority_value_range": [
+        -0.39431569453714144,
+        0.3869487041523211
+      ],
+      "common_interval_values": [
+        [
+          -0.4,
+          0.4
+        ]
+      ],
+      "actual_outcome": null
+    },
+    {
+      "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+      "input_state_value_sha256": "b26dce34b73838c8da9d851b01d8cdb7f0f3230a2ad8164485cad3ee8fa91da7",
+      "space_binding_sha256": "c258704fc0423bd68d5e4ab0118fe123f59fd4c4b5966bb865adf32e0bd110a7",
+      "config": {
+        "seed": 79011,
+        "initial_random": 2,
+        "mutation_scale": 0.2
+      },
+      "coordinate_count": 53,
+      "expected_suggestion_id": "s1a57305fbff793b2",
+      "expected_program_sha256": "cb55395e5eace05807bd97efa394ac991fd1b4fc9012291d2cea68468e823f69",
+      "expected_post_ask_state_sha256": "ed87bdb2ed00d1103b0e637cfd6ad368cce9cc2972ad3667250052d52027ddca",
+      "proposal_index": 1,
+      "phase": "initial",
+      "actual_ask_receipt_supplied_and_matched": false,
+      "parent_observation_id": null,
+      "parent_assigned_loss": null,
+      "parent_program_sha256": null,
+      "effective_mutation_scale": null,
+      "coordinate_radius": null,
+      "all_parent_priorities_zero": false,
+      "common_zero_centered_unclipped_intervals": false,
+      "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_generated_code_executions": 0,
+      "method": "uniform-priority",
+      "replication": 0,
+      "objective": "resource-aware-content",
+      "proposed_priority_values_sha256": "ce6888cbe3c256633bd3287582b7d2900a9285321201d24074abafae6007d608",
+      "proposed_priority_order_sha256": "ec30cee1a39e39abacad2bdba6ee00ef01b5f4d101aaff6a8c2c53910f91e724",
+      "priority_value_range": [
+        -0.9665506367635506,
+        0.9577454351211827
+      ],
+      "common_interval_values": null,
+      "actual_outcome": null
+    },
+    {
+      "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+      "input_state_value_sha256": "2793d01834ad14c80077efabf800a80ac55c14a5885fb8fea65dbd878b69f746",
+      "space_binding_sha256": "c258704fc0423bd68d5e4ab0118fe123f59fd4c4b5966bb865adf32e0bd110a7",
+      "config": {
+        "seed": 79011,
+        "initial_random": 1,
+        "mutation_scale": 0.2
+      },
+      "coordinate_count": 53,
+      "expected_suggestion_id": "scc4bb20c33573167",
+      "expected_program_sha256": "0ae7e1d924cfe4944b12c6621b43174b43806e911c6070b3557b23279054226e",
+      "expected_post_ask_state_sha256": "3e15050c8eef627ca3970ad8b6a51ae7ba3e3b5b02ce44ea1818df723dc29b51",
+      "proposal_index": 1,
+      "phase": "adaptive",
+      "actual_ask_receipt_supplied_and_matched": false,
+      "parent_observation_id": "developer-reference-rescore-3c29d5949ab370907a1ac53a4059e134d6adf31af00891a56639b94c3c927d2a",
+      "parent_assigned_loss": -12.666666666666668,
+      "parent_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "effective_mutation_scale": 0.2,
+      "coordinate_radius": 0.4,
+      "all_parent_priorities_zero": true,
+      "common_zero_centered_unclipped_intervals": true,
+      "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_generated_code_executions": 0,
+      "method": "adaptive-priority",
+      "replication": 0,
+      "objective": "resource-aware-content",
+      "proposed_priority_values_sha256": "9398ee02037691f2ff0df4bde3c4e0b4758e4ffa897de7408be7cd0eaf1a4cfd",
+      "proposed_priority_order_sha256": "0fdf73e3c8cd2fa33cf9442b9aa15115e51e8ae39ec695805889992ad27e5815",
+      "priority_value_range": [
+        -0.39012677887112396,
+        0.3974283549254173
+      ],
+      "common_interval_values": [
+        [
+          -0.4,
+          0.4
+        ]
+      ],
+      "actual_outcome": null
+    },
+    {
+      "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+      "input_state_value_sha256": "f73ef52c9d322602000e29a033242d8c05c7ad274c8616ff65331017755312ad",
+      "space_binding_sha256": "2f67b9741b73a98a923cd5b4e785b7184dd51d28e40688910a402d9fb8ec15db",
+      "config": {
+        "seed": 79019,
+        "initial_random": 2,
+        "mutation_scale": 0.2
+      },
+      "coordinate_count": 53,
+      "expected_suggestion_id": "s4e73e51c92913079",
+      "expected_program_sha256": "20e2f71f4b9905159d2f209b43de99871f7b5fe23f8a6144da1d4e25a4d19b6e",
+      "expected_post_ask_state_sha256": "8955da46a436cb4a9b3a683151dcb60aa7ca4613e1353f4c996377709692927c",
+      "proposal_index": 1,
+      "phase": "initial",
+      "actual_ask_receipt_supplied_and_matched": true,
+      "parent_observation_id": null,
+      "parent_assigned_loss": null,
+      "parent_program_sha256": null,
+      "effective_mutation_scale": null,
+      "coordinate_radius": null,
+      "all_parent_priorities_zero": false,
+      "common_zero_centered_unclipped_intervals": false,
+      "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_generated_code_executions": 0,
+      "method": "uniform-priority",
+      "replication": 1,
+      "objective": "content-utility",
+      "proposed_priority_values_sha256": "86d5afafba59736276c20d772c9c3d32d0923ca10af0adc95520244946a384fc",
+      "proposed_priority_order_sha256": "63349de9619b57cac700205bf66fc855c2ea583079013f57d842e5823b7dc065",
+      "priority_value_range": [
+        -0.9724695154328131,
+        0.9707284273140282
+      ],
+      "common_interval_values": null,
+      "actual_started_file_sha256": "4036570035dc241ad75769f1a058f5d79ce772607ee069cdaf59c0b86f25ac14",
+      "actual_outcome": null
+    },
+    {
+      "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+      "input_state_value_sha256": "8c9d30c9ac3a45f3e642a7944ea26561dcf58af25b45aec6dfba96a05d2da494",
+      "space_binding_sha256": "2f67b9741b73a98a923cd5b4e785b7184dd51d28e40688910a402d9fb8ec15db",
+      "config": {
+        "seed": 79019,
+        "initial_random": 1,
+        "mutation_scale": 0.2
+      },
+      "coordinate_count": 53,
+      "expected_suggestion_id": "s3ae24de5968caeda",
+      "expected_program_sha256": "346d867f4e0a0303a45845a8ee2cac94d1ef0e0917b907e63a58d88cf27de76d",
+      "expected_post_ask_state_sha256": "c79584380512048657b40a663a8b8070abaa420a229bb181a6a3ae36f794b8fa",
+      "proposal_index": 1,
+      "phase": "adaptive",
+      "actual_ask_receipt_supplied_and_matched": true,
+      "parent_observation_id": "developer-reference-rescore-755d09900248810ccb07682f6faf2ee8cd24b2ce9364abe80f7ae5f106df69f3",
+      "parent_assigned_loss": -28.666666666666668,
+      "parent_program_sha256": "02d22afd75be2eb4dfeb0971fca91910d9cd58489266795244edf675a9dbdd25",
+      "effective_mutation_scale": 0.2,
+      "coordinate_radius": 0.4,
+      "all_parent_priorities_zero": true,
+      "common_zero_centered_unclipped_intervals": true,
+      "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_generated_code_executions": 0,
+      "method": "adaptive-priority",
+      "replication": 1,
+      "objective": "content-utility",
+      "proposed_priority_values_sha256": "11c2b7bc4ef4ce98f97d92b2c6298c99b7844d6fede54d616174d8c34ae836bc",
+      "proposed_priority_order_sha256": "b85504c87de7732caceb45b8c1bcdf95e8c79ab325d7294e2b7662ddb404490f",
+      "priority_value_range": [
+        -0.38487498274894616,
+        0.3937499346371873
+      ],
+      "common_interval_values": [
+        [
+          -0.4,
+          0.4
+        ]
+      ],
+      "actual_started_file_sha256": "6b7629fdbee0d5617693935672216c700051886fc5c24e2a29479ed113a26efb",
+      "actual_outcome": {
+        "status": "complete",
+        "assigned_loss": -28.333333333333332,
+        "cross_scores": {
+          "content-utility": -28.333333333333332,
+          "resource-aware-content": -8.333333333333332,
+          "throughput": -36.0
+        },
+        "observation_value_sha256": "a11fa57c8aec81aa1a5ab9727813b5cbefc9160cca31d280f2d6b29698d1e7a7"
+      }
+    },
+    {
+      "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+      "input_state_value_sha256": "64bcbccba5d984fada230017c670ff582f4c182ae0e9e59c96b28871a84dadb2",
+      "space_binding_sha256": "c258704fc0423bd68d5e4ab0118fe123f59fd4c4b5966bb865adf32e0bd110a7",
+      "config": {
+        "seed": 79019,
+        "initial_random": 2,
+        "mutation_scale": 0.2
+      },
+      "coordinate_count": 53,
+      "expected_suggestion_id": "se71333203546aa95",
+      "expected_program_sha256": "71e45f18dd69df574c14ac86f5c07bdb157d7d772ede7057a7415408c5e5891b",
+      "expected_post_ask_state_sha256": "6624fd9ec5602f4bf9791786dcd547d77975f6219726ffb79fd3f21bf0cf522f",
+      "proposal_index": 1,
+      "phase": "initial",
+      "actual_ask_receipt_supplied_and_matched": true,
+      "parent_observation_id": null,
+      "parent_assigned_loss": null,
+      "parent_program_sha256": null,
+      "effective_mutation_scale": null,
+      "coordinate_radius": null,
+      "all_parent_priorities_zero": false,
+      "common_zero_centered_unclipped_intervals": false,
+      "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_generated_code_executions": 0,
+      "method": "uniform-priority",
+      "replication": 1,
+      "objective": "resource-aware-content",
+      "proposed_priority_values_sha256": "5d11cf74bcfa7564fff4268d09d8827e2c0bba4d3d70bc8b4bed71716c2040d1",
+      "proposed_priority_order_sha256": "76ef2547e33090d2b29d6cfdba9b1f67da5961c88e849411653e8730648bf9fb",
+      "priority_value_range": [
+        -0.998213945512193,
+        0.9785525612436958
+      ],
+      "common_interval_values": null,
+      "actual_started_file_sha256": "f904c49ece15b33fc4f633a3f08fd0216322282170f6db1cf4a43d5a8d012fb6",
+      "actual_outcome": {
+        "status": "complete",
+        "assigned_loss": -12.666666666666668,
+        "cross_scores": {
+          "content-utility": -28.666666666666668,
+          "resource-aware-content": -12.666666666666668,
+          "throughput": -36.0
+        },
+        "observation_value_sha256": "b78965b9b77e0f050c2fc291b0868be2aa88f4f34b045afdb3c996f4f32e25f5"
+      }
+    },
+    {
+      "schema": "scienceutopia.native-priority-first-update-geometry.v1",
+      "input_state_value_sha256": "16bcf7829d4d29e678ef50e524ba745159050216e86ad8346a83df094f3b6c9e",
+      "space_binding_sha256": "c258704fc0423bd68d5e4ab0118fe123f59fd4c4b5966bb865adf32e0bd110a7",
+      "config": {
+        "seed": 79019,
+        "initial_random": 1,
+        "mutation_scale": 0.2
+      },
+      "coordinate_count": 53,
+      "expected_suggestion_id": "s57ba2348ec2b2db7",
+      "expected_program_sha256": "28115133fa3a4e66b0bd218b6c0c29b399e466fb42ebe4cdc77c5136de9c6b47",
+      "expected_post_ask_state_sha256": "4dd77c024fb52ab935c2f0b8116d17fa7c21a980acfa32e96c6259ad6c7f72f4",
+      "proposal_index": 1,
+      "phase": "adaptive",
+      "actual_ask_receipt_supplied_and_matched": true,
+      "parent_observation_id": "developer-reference-rescore-3c29d5949ab370907a1ac53a4059e134d6adf31af00891a56639b94c3c927d2a",
+      "parent_assigned_loss": -12.666666666666668,
+      "parent_program_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "effective_mutation_scale": 0.2,
+      "coordinate_radius": 0.4,
+      "all_parent_priorities_zero": true,
+      "common_zero_centered_unclipped_intervals": true,
+      "scope": "First-update trusted numeric reconstruction only. Common centered intervals describe the coordinate kernel; an ideal continuous ordering argument is not exact finite-PRNG equality, independence, whole-world/loss equivalence or evidence of adaptive benefit. Expected proposals without actual receipts remain unobserved. No candidate is repaired, dispatched, deduplicated or selected.",
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_generated_code_executions": 0,
+      "method": "adaptive-priority",
+      "replication": 1,
+      "objective": "resource-aware-content",
+      "proposed_priority_values_sha256": "f9449f809b72b2fce34986ef9583353eb0d1c4c068aaf87e8be7d7a1284a350b",
+      "proposed_priority_order_sha256": "b2deb762d5b9ae0d0c651d0693a14b7080dc607c21fea5f09d8d2ba085e7d45e",
+      "priority_value_range": [
+        -0.38284083071755987,
+        0.3835636865638524
+      ],
+      "common_interval_values": [
+        [
+          -0.4,
+          0.4
+        ]
+      ],
+      "actual_started_file_sha256": "265cd415b574a15a60d8b740855b842bb8b5315c1a648d3842aedf27049f9a4d",
+      "actual_outcome": {
+        "status": "complete",
+        "assigned_loss": -12.333333333333332,
+        "cross_scores": {
+          "content-utility": -28.333333333333332,
+          "resource-aware-content": -12.333333333333332,
+          "throughput": -36.0
+        },
+        "observation_value_sha256": "e478d3470f6222c19480433388f23d86e49cee26bae879983ed2dd511dd52050"
+      }
+    }
+  ],
+  "actual_next_ask_receipts_matched": 4,
+  "actual_next_outcomes_in_this_numeric_subset": 3,
+  "derived_next_asks_total": 8,
+  "derived_asks_without_original_receipts": 4,
+  "all_four_adaptive_pre_ask_incumbents_zero_by_original_tie_rule": true,
+  "same_kernel_summary": "At the first adaptive update all53 intervals are[-0.4,0.4], with no bound clipping. The declared numeric adaptive loop and scalar feedback are real. It does not follow that the second draw exploits a locally similar topic ordering.",
+  "mathematical_scope": "Conditional ideal-continuous argument: iid common centered uniform priorities have a uniform relative ordering for any positive shared radius. Ranking/lexical selection cannot use the common positive scale. This is not exact finite-PRNG sample equality, equality of serialized programs, independent researcher replication, global native-world/loss equivalence or permission to deduplicate trials. Actual sample/mutate streams have different purpose bindings. Nonzero incumbents can change this conclusion.",
+  "research_implication": "Retain the finite original comparisons and all outcomes, but do not interpret its zero-incumbent adaptive label as demonstrated local policy exploitation. Before any corrective study, inspect rank/behavioral proposal kernels and compare appropriately meaningful methods under a frozen protocol. No new method is adopted or dispatched by this analysis.",
+  "immutable_original_input_files": {
+    "search/uniform-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "d8fe4a28b7aa58aa0050d49badf467bb806b0cc0d89b46855ea46595a0caa099",
+    "search/adaptive-priority/history-0/content-utility/generation-0/optimizer-after-tell.json": "af66601d81b991acfb17ab0c8eb81a5e94f8d1f64766ff1b73e89a84a2ed9fdf",
+    "search/uniform-priority/history-0/resource-aware-content/generation-0/optimizer-after-tell.json": "0f69735cfbd96e009b313b3388996c8b0793c662853c36935bbdd1cccec8e6c0",
+    "search/adaptive-priority/history-0/resource-aware-content/generation-0/optimizer-after-tell.json": "e0e417a26ebfcda9db9a44b5b32c11c5b20ec0b9b2bfc5dbb8e835db568c47e7",
+    "search/uniform-priority/history-1/content-utility/generation-0/optimizer-after-tell.json": "13655e365d95d4bbdd4af52f3e3f1f4552f33e7cd2953bbd9b977caa98b95422",
+    "search/uniform-priority/history-1/content-utility/generation-1/started.json": "4036570035dc241ad75769f1a058f5d79ce772607ee069cdaf59c0b86f25ac14",
+    "search/adaptive-priority/history-1/content-utility/generation-0/optimizer-after-tell.json": "9b89b3fbd077fd89f5afa240c64ea59eb27e5bc71a7f10c5c44276c1452f71be",
+    "search/adaptive-priority/history-1/content-utility/generation-1/started.json": "6b7629fdbee0d5617693935672216c700051886fc5c24e2a29479ed113a26efb",
+    "search/adaptive-priority/history-1/content-utility/generation-1/observation.json": "4bb6a189dd8c6cd1e1f8b9e0646436aca3637cadd2b21837b9718679a45ce8f5",
+    "search/uniform-priority/history-1/resource-aware-content/generation-0/optimizer-after-tell.json": "119a0151c17d20c064dbb62790ae972b3cb69ae4d33dafbc2667e3c93262d918",
+    "search/uniform-priority/history-1/resource-aware-content/generation-1/started.json": "f904c49ece15b33fc4f633a3f08fd0216322282170f6db1cf4a43d5a8d012fb6",
+    "search/uniform-priority/history-1/resource-aware-content/generation-1/observation.json": "95c2b26f942b888b41dead2d896614feae31b57c466000aaec43645d690c4f74",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-0/optimizer-after-tell.json": "1879e67f33e30dc97d2f4df4a2ba8d04d13c39db6736a798c12f4a6609cd1afc",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/started.json": "265cd415b574a15a60d8b740855b842bb8b5315c1a648d3842aedf27049f9a4d",
+    "search/adaptive-priority/history-1/resource-aware-content/generation-1/observation.json": "45496b10a9be6b97a6ca5bedbc5c383905dff82c87e29f28b13f57fbc2d2d555"
+  },
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "original_source_or_protocol_modified": false,
+  "selection_changed": false,
+  "whole_campaign_closed": false,
+  "publication_ready": false,
+  "content_sha256": "78f1bd5c0e6f36f715637328d8789df4013585d91546518182dddd1d97347d18"
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "scienceutopia.native-priority-eighteenth-own-outcome.v1",
+  "observed_utc": "2026-11-16T11:21:57.500341+00:00",
+  "scientific_source_commit": "705b5259ad06366f7d178804c6d67ff5ea17cdb4",
+  "plan_content_sha256": "4afcd1a81a7a29837ca88e089e7df859f6b24bc7920d666c3005bc350e134413",
+  "previous_geometry_and_outcome17_content_sha256": "ffc0f1ed1d4586de1821f77b3365ecc254a77dd1142357e05704d4833a6340b8",
+  "slot_index": 17,
+  "slot": {
+    "generation": 1,
+    "method": "uniform-priority",
+    "objective": "content-utility",
+    "replication": 1
+  },
+  "suggestion_id": "s4e73e51c92913079",
+  "observation_value_sha256": "d152c58013146fd7c902102c145b87173177d0ad2211ac338407881cee4de146",
+  "program_sha256": "20e2f71f4b9905159d2f209b43de99871f7b5fe23f8a6144da1d4e25a4d19b6e",
+  "status": "complete",
+  "cross_scores": {
+    "content-utility": -28.333333333333332,
+    "resource-aware-content": -8.333333333333332,
+    "throughput": -36.0
+  },
+  "assigned_loss_minus_reference": 0.3333333333333357,
+  "literal_post_tell_matches_original_observation": true,
+  "actual_ask_and_post_ask_match_trusted_reconstruction": true,
+  "phase": "initial",
+  "scientist_observed_trace": {
+    "wire_requests": 185,
+    "completed_responses": 185,
+    "wire_inputs_without_committed_reply": 0,
+    "ordered_full_request_payload_sha256": "93a3f2ac25b3a316d548336ea588541e183d81df9d1990c6e25b827af0bfcfca",
+    "ordered_completed_request_payload_sha256": "93a3f2ac25b3a316d548336ea588541e183d81df9d1990c6e25b827af0bfcfca",
+    "ordered_literal_response_choices_sha256": "a8c78a1a4a7ff753727d79b8ed6e7472a13553c0ce84607daa71abc3a7cd711c",
+    "ordered_full_provider_body_hashes_sha256": "d151da81c637bee0ff3da4edb8558fe41f2d1aefc5dbc2b992ca083c0bb7b111"
+  },
+  "comparisons_to_previous_recorded_traces": {
+    "new_U": {
+      "wire_request_count": 185,
+      "same_full_request_sequence_as_new_uniform": true,
+      "same_literal_response_choices_as_new_uniform": true
+    },
+    "previous_C": {
+      "wire_request_count": 182,
+      "same_full_request_sequence_as_new_uniform": false,
+      "same_literal_response_choices_as_new_uniform": false
+    },
+    "U_reference": {
+      "wire_request_count": 179,
+      "same_full_request_sequence_as_new_uniform": false,
+      "same_literal_response_choices_as_new_uniform": false
+    }
+  },
+  "prefix_counts_against_visible_reference": {
+    "complete": 18,
+    "tie": 9,
+    "worse": 9,
+    "better": 0
+  },
+  "progress_snapshot": {
+    "active": "free-code-graph/0/resource-aware-content:g1",
+    "observed_utc": "2026-11-16T11:18:41.424516+00:00",
+    "stage": "optimization"
+  },
+  "immutable_original_input_files": {
+    "search/uniform-priority/history-1/content-utility/generation-1/started.json": "4036570035dc241ad75769f1a058f5d79ce772607ee069cdaf59c0b86f25ac14",
+    "search/uniform-priority/history-1/content-utility/generation-1/observation.json": "480ac43a116655eda5c6511aab3f53c6d8b6f3d11631579ebc44dc2eeb754ce3",
+    "search/uniform-priority/history-1/content-utility/generation-1/optimizer-after-tell.json": "555399848052b91bd5c82959c34b545de3a36afc70857d356102f3ad9c582a0d",
+    "search/uniform-priority/history-1/content-utility/generation-0/optimizer-after-tell.json": "13655e365d95d4bbdd4af52f3e3f1f4552f33e7cd2953bbd9b977caa98b95422",
+    "search/uniform-priority/history-1/content-utility/generation-1/worlds/s4e73e51c92913079-s61001/wire-requests.jsonl": "ad4ecc4192d934557d4011196f62e8161e1b39007edf664a1146f51ec1135328",
+    "search/uniform-priority/history-1/content-utility/generation-1/worlds/s4e73e51c92913079-s61001/replies/responses.sqlite": "f003ff7663d635c82f34b79bdb08b2c31a4d3e6530a6bbd054432bfe7e3280be"
+  },
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_code_executions": 0,
+  "selection_changed": false,
+  "whole_campaign_closed": false,
+  "publication_ready": false,
+  "scope": "The18th actual original slot, not a preview/predicted outcome or refill, joins exact scalar tell and original ask/state. Numeric uniform sample ties the other U update aggregate but worsens the strong reference by1/3. All observations remain valid; same aggregate never authorizes program/world sharing or global semantic equivalence. The old author visibility confound and limited histories still preclude clean general method/competence claims.",
+  "content_sha256": "a7b667e535fffbb035dc7682e7be7e66adfe8ad4302d935bfd0afb668cb70768"
+}
