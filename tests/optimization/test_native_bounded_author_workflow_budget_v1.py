@@ -8,7 +8,7 @@ from tests.optimization.test_native_authoring_ir import request
 from tests.optimization.test_native_bounded_author_context_v45 import frame
 from utopia.optimization.native_staged_author_v15 import initial_draft, call_task
 from utopia.optimization.native_authoring_recovery_v44 import workflow, IMPLEMENT_TASK
-from utopia.optimization.native_bounded_author_context_v45 import compact, MAX_ACTIVE_DOCUMENT_BYTES
+from utopia.optimization.native_bounded_author_context_v45 import compact, MAX_ACTIVE_DOCUMENT_BYTES, context_contract
 from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
 from utopia.system.design_patch import digest
 
@@ -49,6 +49,14 @@ def test_full_document_actually_supplied_must_enable_its_implementation_checkpoi
     # corrected; historical source-bound receipts/certificates are not reused.
     assert workflow(state, steps, max_steps=16)['phase'] == (
         'implementation' if legacy_bytes <= 65536 else 'general')
+
+
+def test_prospective_contract_names_visibility_revision_and_exact_byte_budget():
+    contract = context_contract()
+    assert contract['prospective_context_revision'] == 'matched-bounded-author-64k-v2-literal-visibility'
+    assert contract['max_literal_document_utf8_bytes'] == MAX_ACTIVE_DOCUMENT_BYTES == 65536
+    assert contract['literal_document_visibility_controls_workflow'] is True
+    assert contract['automatic_context_truncation'] is False and contract['source_repair'] is False
 
 
 @pytest.mark.parametrize('target,phase', [(65536, 'implementation'), (65537, 'general')])
