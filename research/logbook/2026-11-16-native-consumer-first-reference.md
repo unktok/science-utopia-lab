@@ -531,3 +531,43 @@ rejects the command. Only that expected message is updated; no guard is removed.
 No model, generated candidate, Docker, independent heavy QA, TeX or render job
 is launched. This is software feedback preparation, not evidence of better
 search, a completed new scientific condition or publication readiness.
+
+## Seventh complete outcome; final original author session begins
+
+The [seventh outcome](../results/native-consumer-source-seventh-own-outcome-prefix-v1.json)
+completes C=-8.666666666666668, tying the strong visible reference. Agenda source
+changes only formatting, with equal parsed AST; no node/wire/schedule changes.
+All14 editor steps finish without retained technical errors. Its179 full
+scientist inputs/literal choices and every measured metric match the strong
+reference, while provider envelopes differ. This is not global equivalence,
+adequate exploration or evidence of an isolated information-condition effect.
+
+Original progress enters final interface/U/g1 readiness at01:42:21.578052UTC,
+then optimization at01:53:36.377738UTC November16 (10:53:36JST). Seven slots are
+consumed,6 native outcomes complete and1 runtime loss stays null. Original
+writer11821 and its audit/cost/readout continuations remain live. No current
+source, loss, author history, model, allocation or selection rule is changed.
+
+## Stronger restricted comparison preparation, not another dispatched study
+
+A passive check of the original initial five authors and permitted catalog
+finds1×2×6×2×1=24 shortest-duration initial assignment combinations. This does
+not prove quality headroom or count longitudinal policies. It motivates a
+named restricted parameter comparator for judging added free-system authority,
+not a replacement for the whole-system research goal.
+
+New helper/source commit1b32e71b implements that literal priority consumer,
+preserves original eligibility/durations and leaves all other mechanisms,
+permissions and wiring unchanged. Zero priorities match full original component
+outputs; changing the selected topic updates its reason accurately. General
+free authors can still replace the entire algorithm/structure. No shortest,
+quality, novelty, fairness or improvement veto is added.
+
+[68 committed-source light checks](../results/native-topic-priority-control-preparation-v1.json)
+pass in5.64s, including13 new control checks and construction/validation of all
+24 static assignments. No model, generated candidate, Docker or native world
+is run. Actual full public/native/cold request proof remains to do after current
+inference; a future comparison still needs a finite plan, appropriate histories,
+strong controls, frozen selection/evaluation and physical costs. No new study
+or unused evaluation is scheduled, and current authors receive none of this
+post-hoc analysis. The publication-ready goal remains active and unachieved.

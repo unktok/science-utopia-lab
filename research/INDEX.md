@@ -17,10 +17,11 @@ This page is navigation, not a chronological experiment transcript.
   completes with U loss-7, worse than-28.6667. [Own measured feedback reaches the first g1 model wire](results/native-consumer-source-first-g1-feedback-wire-prefix-v1.json)
   and [the fifth outcome recovers the known strong rule](results/native-consumer-source-fifth-own-outcome-prefix-v1.json).
   [The sixth has an original actor-eligibility runtime null](results/native-consumer-source-sixth-own-runtime-null-prefix-v1.json):
-  6/8 slots consumed,5 complete own outcomes/1 null; consumers/C/g1 passes readiness,
-  submits its compiled candidate and is in original native evaluation. No own
+  [The seventh consumers/C outcome](results/native-consumer-source-seventh-own-outcome-prefix-v1.json)
+  ties the strong reference:7/8 slots consumed,6 complete own outcomes/1 null.
+  Final interface/U/g1 passes readiness and enters optimization. No own
   gain beyond the strong reference or whole-study closure is established.
-  [Its saved year1 project effects](results/native-consumer-source-fourth-year1-actuation-prefix-v1.json)
+  [The fourth's saved year1 project effects](results/native-consumer-source-fourth-year1-actuation-prefix-v1.json)
   change all5 founder topics/calendars and agree with actual native author state;
   that is observed actuation, not an isolated information effect or useful gain.
   [The first two complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
@@ -41,6 +42,8 @@ This page is navigation, not a chronological experiment transcript.
   preserves183 directories from10 further clean code copies and skips linked data.
   [Prospective precise catalog diagnostics](data/native-catalog-diagnostics-v1/README.md)
   pass55 software checks without changing current scientific source or failures.
+  [Restricted priority-control preparation](components/native-topic-priority-control-v1.md)
+  passes68 light checks; no native score, new optimizer or scientific dispatch.
 
 - [Finite terminal-cost opportunity control](protocols/campaigns/native-terminal-cost-opportunity-v1.md),
   [actual pinned dispatch](results/native-terminal-cost-pilot-dispatch-v1.json)

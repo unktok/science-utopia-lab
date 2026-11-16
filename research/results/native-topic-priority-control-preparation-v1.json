@@ -1,0 +1,51 @@
+{
+  "schema": "scienceutopia.native-topic-priority-control-preparation.v1",
+  "recorded_utc": "2026-11-16T01:54:23+00:00",
+  "classification": "restricted-comparator-software-and-static-domain-analysis-not-native-gain",
+  "source_commit": "1b32e71bba37194493fb0731a7521f4f8372a4b7",
+  "native_exec_session": 82937,
+  "exit_code": 0,
+  "passed_tests": 68,
+  "elapsed_seconds": 5.64,
+  "new_control_tests": 13,
+  "source_files": {
+    "utopia/system/native_topic_priority_controls.py": "33235cca5b0a518fc3840ada9af72184363bbf62c549a0f510721fb7d3ef259d",
+    "tests/system/test_native_topic_priority_controls.py": "e0ad6a653f0800840d6b4df07d33f899be42265a3b5d9f5d431885b551280a65"
+  },
+  "literal_inputs": {
+    "research/results/native-consumer-source-fourth-year1-actuation-prefix-v1.json": "36ccd3837fefa02c26641f8b65e85ea8c83fae736edf2131fa000eec89d878f0",
+    "research/data/native-terminal-cost-pilot-v1/systems/strong-related-reference.json": "e2180df35de70a014e3a7d0dd982d0f285a69d496a74357f50a7860e4b6b37a5"
+  },
+  "catalog_directions_sha256": "2b39042cfdd35a80f5c81758cf1c65a2577c947a2730cca7a1ead11f9c71dc4d",
+  "junit": {
+    "path": "research/data/native-topic-priority-control-v1/junit.xml",
+    "sha256": "0e752a6f4ffde78ab6077d526ca2c4c76221163fe9a64ac558505bf50004904e"
+  },
+  "raw_junit": "outputs/topic-priority-control-v1-a2-junit.xml",
+  "pytest_basetemp": "outputs/topic-priority-control-v1-a2",
+  "test_files": [
+    "tests/system/test_native_topic_priority_controls.py",
+    "tests/system/test_native_catalog_validation_diagnostics.py",
+    "tests/system/test_native_catalog_planning.py",
+    "tests/system/test_native_legacy_topic_planning.py",
+    "tests/optimization/test_native_consumer_evidence_v1.py"
+  ],
+  "static_initial_shortest_choice_counts": [1, 2, 6, 2, 1],
+  "static_initial_assignment_combinations": 24,
+  "static_combinations_are_native_worlds_or_independent_samples": false,
+  "new_automatic_institution_invention": false,
+  "new_real_model_calls": 0,
+  "new_generated_candidate_executions": 0,
+  "new_scientific_worlds": 0,
+  "optimizer_implemented_by_this_constructor": false,
+  "full_native_Docker_and_cold_request_proof_complete": false,
+  "zero_priority_component_outputs_match": true,
+  "zero_priority_complete_scientist_inputs_verified": false,
+  "scientific_loss_or_general_design_space_changed": false,
+  "active_scientific_source_unchanged": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "current_authors_receive_this_analysis": false,
+  "new_study_dispatched": false,
+  "held_out_evaluation": false,
+  "quality_headroom_or_improvement_proved": false,
+  "publication_ready": false
+}

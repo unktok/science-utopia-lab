@@ -1,6 +1,6 @@
 # Current research status
 
-## Current matched study:6/8 own slots consumed,5 complete outcomes and1 runtime null
+## Current matched study:7/8 own slots consumed,6 complete outcomes and1 runtime null
 
 The [once-dispatched local-model study](results/native-consumer-source-comparison-dispatch-v1.json)
 runs from immutable7e51b2a4: fixed8B researchers, local35B designer, unchanged
@@ -14,7 +14,8 @@ is development-informed, not a blind independent method comparison.
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
 | Own-system optimization | First3 tie the strong parent; [fourth consumers/U](results/native-consumer-source-fourth-own-outcome-prefix-v1.json) worsens to-7; [fifth consumers/U/g1](results/native-consumer-source-fifth-own-outcome-prefix-v1.json) returns to-28.6667 without beating the visible reference; [sixth interface/C/g1](results/native-consumer-source-sixth-own-runtime-null-prefix-v1.json) fails original eligibility and retains null loss |
-| Next original slot | Consumers/C/g1 passes readiness and enters optimization01:12:50UTC November16 (10:12:50JST). Its generated/compiled candidate is installed and original native evaluation is active; no completed seventh loss yet. Same finite loop; no failed-slot refill |
+| Seventh outcome | [Consumers/C/g1 completes](results/native-consumer-source-seventh-own-outcome-prefix-v1.json) at C=-8.6667, tying the strong reference. Only agenda formatting differs;14 complete editor steps,179 identical scientist inputs/literal choices and equal metrics |
+| Last original slot | Interface/U/g1 passes readiness and enters optimization01:53:36UTC November16 (10:53:36JST). Same finite loop; no failed-slot refill or eighth outcome yet |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -110,6 +111,14 @@ comparison and existing atomic native unit tests. The first generic-message
 test mismatch is retained. This adds no scientific constraint and repairs no
 candidate; active7e51b2a4 and its original errors remain unchanged. Future use
 requires fresh source cards/readiness, not reuse of this study's certificate.
+
+[A restricted shortest-duration priority control](components/native-topic-priority-control-v1.md)
+is prepared separately:68 light source-bound checks pass. The five founders have
+24 static shortest-duration assignment combinations, not24 new evaluated worlds
+or proven quality headroom. This hand-defined comparison family neither narrows
+free institution authority nor supplies an optimizer. Public native/Docker/cold
+request proof, a finite scientific protocol and actual scores are still pending;
+it is not inserted into the active pilot or current author contexts.
 
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history
