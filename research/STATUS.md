@@ -1,6 +1,23 @@
 # Current research status
 
-## Latest verified state: November16,2026 at18:22UTC / November17 03:22JST
+## Latest verified state: November16,2026 at18:35UTC / November17 03:35JST
+
+[Both numeric initial outcomes complete and free-design calibration starts](results/native-corrected-choice-two-own-prefix-v1.json).
+Uniform/U/g0 and adaptive/U/g0 have the matched literal initial program and
+same L_U-27.666666666666668, worse by1 than reference-28.666666666666668.
+Both186 complete full scientist-input/choice sequences match; provider bodies
+differ. Their actual observations are registered in their own post-tell states.
+Prefix2 complete/2 worse/0 better/0 ties/0 nulls versus the reference is not
+a method ranking; the two methods mutually tie on their initial program.
+
+Original42803 advances to free-code-graph/U/g0 at18:33:44UTC. The dated18:35
+prefix contains4 completed fresh controls/0 production steps. The certificate
+and free submission are not yet complete. Campaign pendingNone during that
+calibration is not a stopped process; writer/supervisor are actually live.
+No active source/settings or slot is changed/refilled. Whole-study closure,
+actual full8 free outcomes/analysis and publication readiness remain open.
+
+## Earlier first-own snapshot:18:22UTC / 03:22JST
 
 [The first own candidate is measured and told](results/native-corrected-choice-first-own-outcome-v1.json).
 Uniform/U/g0 completes at L_U-27.666666666666668 versus visible-28.666666666666668,

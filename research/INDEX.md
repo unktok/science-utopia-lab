@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [Two corrected own numeric outcomes and the free-design stage](results/native-corrected-choice-two-own-prefix-v1.json):
+  both matched initial programs complete at L_U-27.6667, worse by1 than the
+  reference. Their186 full input/choice paths match; they are two physical
+  dispatches, not two distinct policies or independent populations. Actual
+  free/U/g0 fresh calibration is underway, with4 controls/0 production steps
+  at the18:35 snapshot. No free institution/gain or completed update is inferred.
+
 - [First corrected own loss and actual tell](results/native-corrected-choice-first-own-outcome-v1.json):
   uniform/U/g0 completes at L_U-27.6667, worse by1 than the visible-28.6667
   reference. Its186 actual scientist requests/choices differ from the179-request

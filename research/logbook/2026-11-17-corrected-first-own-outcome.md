@@ -40,3 +40,22 @@ The prefix is1 complete/1 worse/0 ties/0 better/0 technical nulls, not the final
 visibility/effects remain waiting. No independent heavy QA, embedding, video
 or PDF/render is started while real inference continues. No useful new free
 institution or publication readiness is claimed from this first numeric result.
+
+At18:35:22UTC the adaptive/U/g0 result also completes and its exact observation
+is present in its original post-tell state. The two initial numeric programs
+are identical, including the repeated suggestion ID, as declared under the
+shared initial seed. Both have L_U-27.6667/T36/U27.6667/K200/uncollected0.
+All186 full scientist-input hashes and literal response-choice hashes match
+between them. Full provider-body hashes differ; their individual cache-body
+hashes all verify. This is scoped consistency on two physical dispatches, one
+literal own program, not independent optimizer replication or two discoveries.
+The prefix against the assigned reference is2 complete/2 worse/0 better/0 ties/
+0 nulls; the two methods' mutual tie is a different comparison.
+
+Original writer progress advances at18:33:44UTC to free-code-graph/U/g0.
+The first actual fresh request calibration has4 completed control files and
+0 production steps at the18:35 snapshot. The campaign pending value isNone
+while its proposal calibration is ongoing; do not fabricate an absent pending
+request or infer a stopped writer from that value alone. This is not completed
+free authoring, a full certificate, a next-generation update or native benefit.
+[Exact second observation/tell/path evidence and scoped prefix](../results/native-corrected-choice-two-own-prefix-v1.json).
