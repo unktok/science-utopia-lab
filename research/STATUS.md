@@ -1,6 +1,23 @@
 # Current research status
 
-## Latest verified state: November16,2026 at20:48UTC / November17 05:48JST
+## Latest verified state: November16,2026 at21:05UTC / November17 06:05JST
+
+[First adaptive numeric update has an actual effect and recovers own loss](results/native-corrected-choice-first-adaptive-update-v1.json).
+Adaptive/C/g1 completes at-12.6667, improving its own initial-9.6667 by3,
+but only matching the already measured strong reference. Best known stays flat.
+Year1 actual topic assignment changes for one actor at equal duration. All183
+scientist replies complete; input/choice paths differ from the parent. Eight
+accepted (year,paper_id) occurrences differ in each36-occurrence multiset,
+despite equal aggregate U28.6667/T36/K160/uncollected40. This is neither an
+inert label change nor a new best-known loss/independent method ranking.
+
+The exact new observation is registered once in its actual optimizer; eight
+own outcomes are complete (5worse/3ties/0better/0nulls against reference).
+Original42803 advances to uniform/C/g1 at20:59:35UTC, phase initial as declared.
+All results/source/settings remain literal; full24-slot paths, final paired
+analyses, frozen unused evaluation and publication readiness remain open.
+
+## Earlier first feedback-bearing free outcome:20:48UTC / 05:48JST
 
 [First completed feedback-bearing free update ties its parent](results/native-corrected-choice-first-feedback-outcome-v1.json).
 Free/C/g1 completes at-12.6667, U28.6667/T36/collected160/uncollected40. Its

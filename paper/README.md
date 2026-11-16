@@ -17,6 +17,10 @@ next actual designer wire; this is functioning feedback, not a gain or final
 method ranking. The [first feedback-bearing free C update](../research/results/native-corrected-choice-first-feedback-outcome-v1.json)
 also ties its parent: actual code execution rewrites empty-list handling, not
 the admission condition, and preserves the observed path. The study continues.
+The [first operative adaptive numeric update](../research/results/native-corrected-choice-first-adaptive-update-v1.json)
+recovers3 units relative to its own initial loss, but only ties the strong
+reference. Its native topic and bibliography change at equal aggregate U/C;
+own-path recovery and gain beyond a known reference are distinct.
 The new study's full24-slot paths, final paired audits, selection-fixed unused
 evaluation and consequential interpretation remain open. No method ranking or
 useful invention follows from this partial initial history. Source/notes are

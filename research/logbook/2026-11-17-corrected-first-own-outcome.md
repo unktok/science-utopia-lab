@@ -385,3 +385,30 @@ loss/metrics alone. That would be a separately declared observation/proposal
 method, not a new objective or a mandatory semantic-change veto. It is not
 implemented/dispatched here, and this single case does not establish its cause
 or effectiveness. No active prompt, source, budget, outcome or proposal is repaired.
+
+## First operative adaptive numeric update recovers own loss, not a new best known
+
+At20:59:35UTC adaptive/C/g1 completes at-12.6667 and advances to uniform/C/g1.
+Its own proposal path improves from-9.6667 by3, with U28.6667/T36/K160/
+uncollected40, while the measured reference and best-known incumbent already
+have-12.6667. Both distinctions matter: this is actual own-trajectory recovery,
+not zero progress and not a new best-known institution. Its exact observation
+is registered once in the actual post-tell state: pending[],proposal_index2,
+one primed reference and two own observations. [Original outcome, paths and next ask](../results/native-corrected-choice-first-adaptive-update-v1.json).
+
+The original year1 checkpoint/specs verify that institution_0001_researcher_0's
+topic changes from artificial_intelligence to neural_symbolic_ai at the same
+one-year duration; the other four initial assignments match. This numeric
+parameter therefore has an actual consumer/effect. All183 scientist replies
+complete and hashes verify, with full input/choice paths different from the
+parent. The two outcomes have36 accepted occurrences each, but eight (year,
+paper_id) occurrences occur only in each respective multiset. They are not
+eight unique papers or independent samples. U/C aggregate ties are compatible
+with different bibliography, not a reason to alter the loss or add a tie-break.
+
+The cumulative prefix is8complete/5worse/3ties/0better/0nulls against assigned
+references. Recovery relative to an own poor sample must not be pooled with
+gains beyond a measured strong reference. The next actual uniform proposal is
+phase initial, as declared for its four initial samples, not a new adaptive
+mutation. Its evaluation continues under the same source, world and objectives;
+final selection, all24 slots and paired analysis/frozen evaluation remain open.

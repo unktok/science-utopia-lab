@@ -5,6 +5,13 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First operative adaptive numeric update](results/native-corrected-choice-first-adaptive-update-v1.json):
+  its own C loss recovers3 (-9.6667→-12.6667), matching but not beating the
+  strong reference. One actual initial topic assignment changes; full model
+  paths and eight accepted occurrences differ while aggregate U/C tie.
+  The exact tell is retained. Eight own slots are complete, not a method
+  ranking; next uniform/C/g1 runs its declared second initial sample.
+
 - [First completed corrected feedback-bearing native outcome](results/native-corrected-choice-first-feedback-outcome-v1.json):
   free/C/g1 again ties the measured parent at-12.6667, with179 matching complete
   input/choice paths and four actual executions of its changed selection code.
