@@ -1,6 +1,24 @@
 # Current research status
 
-## Latest verified state: November16,2026 at18:06UTC / November17 03:06JST
+## Latest verified state: November16,2026 at18:22UTC / November17 03:22JST
+
+[The first own candidate is measured and told](results/native-corrected-choice-first-own-outcome-v1.json).
+Uniform/U/g0 completes at L_U-27.666666666666668 versus visible-28.666666666666668,
+so it is worse by1. It is valid and consumes its slot. U27.6667/T36/K200/
+uncollected0 and all186 complete scientist requests are recorded; observed
+inputs/choices differ from the zero reference's179. This is a numeric parameter
+proposal, not a free LLM-authored institution or useful invention.
+
+The exact own observation is registered once in the actual post-tell state:
+pending[],proposal_index1,one primed reference+one own. Best own is-27.6667,
+best known remains-28.6667. No final selection is frozen yet. Original42803
+continues adaptive/U/g0, whose actual matched initial policy is identical under
+the shared initial seed, in a distinct compound method cell. This is not a
+feedback-conditioned second-generation update or independent replication.
+Prefix1 complete/1 worse/0 better/0 ties/0 nulls is not the full24 result. All
+sources/settings stay unchanged and final paired analysis remains pending.
+
+## Earlier optimization-start snapshot:18:06UTC / 03:06JST
 
 [All3 fresh references are complete and own optimization starts](results/native-corrected-choice-optimization-start-v1.json).
 Original42803/writer30048/supervisor29982 remain live. The comparison-only third

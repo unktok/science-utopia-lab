@@ -1,0 +1,57 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-first-own-outcome.v1.documentary-snapshot",
+  "observed_utc": "2026-11-16T18:22:37+00:00",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "original_handle": 42803,
+  "writer_pid": 30048,
+  "supervisor_pid": 29982,
+  "slot": {"generation": 0, "method": "uniform-priority", "objective": "content-utility", "replication": 0},
+  "suggestion_id": "scbd86c6da048c335",
+  "observation_id": "observation-scbd86c6da048c335",
+  "status": "complete",
+  "candidate_sha256": "8a481b1afcef18145d32176a5061110a5480666c3fe5db8ba7728b7c6694262b",
+  "observation_file_sha256": "5f0f65b53b5e5997efdf58d513cd5cb76d692476384946e97c9c6d07371589e8",
+  "observation_content_sha256": "94155c42d3ad2c611cb162ec0c906f6b2217125a9fbdc62191b9ceb1f8083e43",
+  "optimizer_after_tell_file_sha256": "d0c30514e0fcfdd33e25e5c9cb726e6b38c8be8f8c2b969c598803f997522b11",
+  "optimizer_after_tell_content_sha256": "43166d710351766034b3be1145b5fb0998f69dcdf694a62167fc74064a28bfd2",
+  "metrics": {"U": 27.666666666666668, "K_collected": 200.0, "K_uncollected": 0.0, "T": 36},
+  "cross_losses": {"content-utility": -27.666666666666668, "resource-aware-content": -7.666666666666668, "throughput": -36.0},
+  "assigned_reference_loss": -28.666666666666668,
+  "assigned_own_minus_reference": 1.0,
+  "prefix_best_own_loss_for_this_history": -27.666666666666668,
+  "prefix_best_known_loss_for_this_history": -28.666666666666668,
+  "literal_program_change_from_zero_reference": {
+    "nodes_added": [], "nodes_removed": [], "source_changed_nodes": [],
+    "parameter_changed_nodes": ["developer-catalog-agenda"], "wires_added": 0,
+    "wires_removed": 0, "schedules_changed": false
+  },
+  "observed_scientist_path": {
+    "wire_requests": 186, "completed_responses": 186, "wire_inputs_without_committed_reply": 0,
+    "ordered_full_request_payload_sha256": "8548e60f0474b38479d08ee37c571db40ff186f5dca5f851624240ea5859735e",
+    "ordered_literal_response_choices_sha256": "7b79919f643959ebb67b33745531c3ef1356137d4526fcf9f7d35a49efdd55c9",
+    "ordered_full_provider_body_hashes_sha256": "7ca0daaf4a5c5068596abdbb55445cdf9c50a2eda04aa0886e03adf68e1a5fea",
+    "inputs_match_zero_reference": false, "literal_choices_match_zero_reference": false,
+    "zero_reference_requests": 179, "all_response_cache_body_hashes_checked": true
+  },
+  "optimizer_tell": {
+    "literal_own_observation_matches_original": true, "pending": [], "proposal_index": 1,
+    "observations_including_one_primed_reference": 2, "first_own_observation_registered_once": true,
+    "uniform_initial_random": 4, "feedback_conditioned_new_uniform_proposal_claimed": false
+  },
+  "prefix_counts": {"completed_own_slots": 1, "better": 0, "tie": 0, "worse": 1, "technical_nulls": 0},
+  "next_actual_dispatch": {
+    "slot": {"generation": 0, "method": "adaptive-priority", "objective": "content-utility", "replication": 0},
+    "started_utc": "2026-11-16T18:18:57.298463+00:00", "suggestion_id": "scbd86c6da048c335",
+    "started_file_sha256": "c7d6c8a0b96cf704293fe9af5531d0f3dbf86cd1cc6922cd49b84809c6e83a0d",
+    "started_content_sha256": "1e128eed9c8dfe6fbd890527562b97f1a92f117f8a846f3f48a0cc4eb883de45",
+    "candidate_literal_equal_to_first_uniform_initial_draw": true,
+    "independent_optimizer_replication": false
+  },
+  "final_selection_frozen": false,
+  "full_study_cold_audit_complete": false,
+  "useful_new_institution_demonstrated": false,
+  "method_superiority_claimed": false,
+  "publication_ready": false,
+  "scope": "First completed numeric own candidate and exact ask/tell/input-path evidence, not a free LLM-authored institution or a completed four-step history. U is fixed abstract opinion and K collected cost. A valid worse observation consumes its slot, remains recorded and does not displace the better measured warm parent. Shared initial policy/seed across uniform/adaptive histories is retained as two declared physical dispatches, not independent policies or population samples. No original outcome, source, loss, budget or selection is changed."
+}

@@ -5,6 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 
 ## Current study and publication goal
 
+- [First corrected own loss and actual tell](results/native-corrected-choice-first-own-outcome-v1.json):
+  uniform/U/g0 completes at L_U-27.6667, worse by1 than the visible-28.6667
+  reference. Its186 actual scientist requests/choices differ from the179-request
+  reference path. The original observation is recorded in the optimizer; best
+  known stays the parent, without dropping/refilling the adverse slot. Next
+  adaptive/U/g0 is actually dispatched with the matched literal initial policy.
+  No four-step closure, free LLM institution or method advantage is claimed.
+
 - [Actual corrected optimization begins](results/native-corrected-choice-optimization-start-v1.json):
   all3 fresh references complete and first own uniform/U/g0 native dispatch
   starts at18:01:54UTC. No own loss is yet measured at the18:06 snapshot.
