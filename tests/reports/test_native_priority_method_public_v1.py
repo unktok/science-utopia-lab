@@ -80,7 +80,10 @@ def test_public_prepare_run_all_methods_and_paired_cold_without_new_models(tmp_p
                     {'tool': 'finish', 'rationale': 'SCRIPTED mixed-method software construction'}]
                 action = actions[i]; production.append(payload)
                 if req['generation'] == 1:
-                    assert req['archive'] and req['parent_observation']['loss'] is not None
+                    assert len(req['history']) == 1 and req['observations']
+                    assert all(row['observation']['loss'] is not None for row in req['observations'])
+                    assert req['based_on_observation_id'] in {
+                        row['observation']['observation_id'] for row in req['observations']}
             return Response({'model': provider['model'], 'done': True, 'done_reason': 'stop',
                 'prompt_eval_count': 120, 'eval_count': 12,
                 'message': {'role': 'assistant', 'content': json.dumps(function_data(action)),
