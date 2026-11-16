@@ -117,6 +117,39 @@ def integrated_expected(root, receipt, entrypoint):
     return expected
 
 
+def priority_expected(root, receipt, entrypoint):
+    """Bind the reviewed111-page receipt's explicit hashes to historical blobs.
+
+    This receipt has a different layout from earlier integrated receipts. Do
+    not mutate/reseal it or pretend that later manuscript edits were reviewed.
+    Only its literal repository-parent TeX input is normalized to a safe path.
+    """
+    from utopia.optimization.native_numeric_designer import checked
+    checked(receipt)
+    source = receipt['source_commit']
+    if (not isinstance(source, str) or not re.fullmatch('[0-9a-f]{40}', source)
+            or receipt['entrypoint'] != entrypoint or receipt['pages'] != 111
+            or receipt['visual_review']['all111_layouts_reviewed'] is not True):
+        raise ValueError('exact reviewed111-page source and entrypoint required')
+    expected = {relative(receipt['pdf']): receipt['pdf_sha256']}
+    for group in ('source_file_sha256', 'figure_file_sha256'):
+        hashes = receipt[group]
+        if not isinstance(hashes, dict) or not hashes:
+            raise ValueError('explicit original source/figure hashes required')
+        for literal_name, value in hashes.items():
+            name = relative(posixpath.normpath(literal_name))
+            if (not isinstance(value, str) or not re.fullmatch('[0-9a-f]{64}', value)
+                    or name in expected):
+                raise ValueError('unique safe original hash binding required')
+            original = subprocess.check_output(['git', '-C', str(root), 'show', source + ':' + name])
+            if sha(original) != value:
+                raise ValueError('original priority source hash differs: ' + name)
+            expected[name] = value
+    if entrypoint not in expected:
+        raise ValueError('priority entrypoint absent from original source hashes')
+    return expected
+
+
 def stage(root, policy, output, *, source_commit):
     root = Path(root).resolve(); output = Path(output)
     if (policy.get('schema') != 'scienceutopia.paper-rebuild-allowlist.v1'
@@ -130,7 +163,8 @@ def stage(root, policy, output, *, source_commit):
     # No globbing or recursive source directory copy. Read once and compare later.
     bodies = {relative(name): read_file(root, name) for name in names}
     receipt = json.loads(bodies[policy['receipt']])
-    integrated = receipt.get('schema') in ('scienceutopia.integrated-capacity-authority-build.v1',
+    priority = receipt.get('schema') == 'scienceutopia.integrated-native-priority-method-paper.v1'
+    integrated = priority or receipt.get('schema') in ('scienceutopia.integrated-capacity-authority-build.v1',
                                          'scienceutopia.integrated-catalog-planning-build.v1',
                                          'scienceutopia.integrated-workflow-controls-manuscript.v1',
                                          'scienceutopia.integrated-workflow-feedback-manuscript.v1',
@@ -148,14 +182,19 @@ def stage(root, policy, output, *, source_commit):
     if (receipt.get('schema') == 'scienceutopia.working-paper-build.v3'
             and receipt.get('entrypoint') != policy['entrypoint']):
         raise ValueError('V3 receipt entrypoint differs from explicit policy')
-    expected = integrated_expected(root, receipt, policy['entrypoint']) if integrated else {
-        receipt['output']: receipt['pdf_sha256'], policy['entrypoint']: receipt['tex_sha256'],
-        'paper/submission-sources.bib': receipt['additional_bibliography_sha256'],
-        **receipt['additional_dependencies']}
+    if priority:
+        expected = priority_expected(root, receipt, policy['entrypoint'])
+    elif integrated:
+        expected = integrated_expected(root, receipt, policy['entrypoint'])
+    else:
+        expected = {receipt['output']: receipt['pdf_sha256'], policy['entrypoint']: receipt['tex_sha256'],
+            'paper/submission-sources.bib': receipt['additional_bibliography_sha256'],
+            **receipt['additional_dependencies']}
     for name, body in bodies.items():
         if name not in ('LICENSE', policy['receipt']) and expected.get(name) != sha(body):
             raise ValueError('allowlisted file is unbound or changed from reviewed receipt: ' + name)
-    if not {'LICENSE', receipt['output'], policy['receipt'], 'paper/neurips_2025.sty'} <= set(names):
+    artifact = receipt['pdf'] if priority else receipt['output']
+    if not {'LICENSE', artifact, policy['receipt'], 'paper/neurips_2025.sty'} <= set(names):
         raise ValueError('license, template, reviewed PDF and receipt must be retained')
     dependencies = literal_dependencies(bodies, policy['entrypoint'], repository_parent_inputs=integrated)
     findings = []
