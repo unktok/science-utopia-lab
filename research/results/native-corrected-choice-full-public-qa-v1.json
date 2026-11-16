@@ -1,0 +1,123 @@
+{
+  "JUnit_file_sha256": "5230f7bed80b31319325fd04555c0adeb2bb7e57b686b0ee8da5486f0c67d63c",
+  "SCRIPTED_calibration_POSTs": 258,
+  "SCRIPTED_proposal_POSTs": 72,
+  "actual_completed_native_worlds": 26,
+  "actual_component_probe_statuses": {
+    "raised": 4,
+    "returned": 28
+  },
+  "actual_component_probes": 32,
+  "actual_exact_source_file_count": 351,
+  "actual_exit_code": 0,
+  "actual_model_POSTs": 0,
+  "actual_native_worlds": 27,
+  "actual_own_only_endpoints": 6,
+  "actual_primary_endpoints": 6,
+  "all8_actual_component_sessions": [
+    {
+      "actual_component_probes": 4,
+      "generation": 2,
+      "loss_id": "native-common-content-utility-v1"
+    },
+    {
+      "actual_component_probes": 4,
+      "generation": 0,
+      "loss_id": "native-common-content-utility-v1"
+    },
+    {
+      "actual_component_probes": 4,
+      "generation": 1,
+      "loss_id": "native-common-content-utility-v1"
+    },
+    {
+      "actual_component_probes": 4,
+      "generation": 3,
+      "loss_id": "native-common-content-utility-v1"
+    },
+    {
+      "actual_component_probes": 4,
+      "generation": 1,
+      "loss_id": "native-topic-resource-aware-content-v1"
+    },
+    {
+      "actual_component_probes": 4,
+      "generation": 2,
+      "loss_id": "native-topic-resource-aware-content-v1"
+    },
+    {
+      "actual_component_probes": 4,
+      "generation": 3,
+      "loss_id": "native-topic-resource-aware-content-v1"
+    },
+    {
+      "actual_component_probes": 4,
+      "generation": 0,
+      "loss_id": "native-topic-resource-aware-content-v1"
+    }
+  ],
+  "all_probes_use_current_marker_and_priority_parameters": true,
+  "content_sha256": "5cf71585473f75b8c0fb455f5f812f0535ed0db5f9fbd10370da5cfe4066a4be",
+  "errors": 0,
+  "failures": 0,
+  "intentional_submitted_execution_nulls": 1,
+  "new_scientific_losses": 0,
+  "observed_utc": "2026-11-16T16:54:28+00:00",
+  "original_handle": 67383,
+  "paired_audit_content_sha256": "3529f6488583fdd2ff208fd0281b851d674d8428009f53de563875ef23c7425e",
+  "paired_cost_content_sha256": "5d2ddcad91eb3effe800104b3fb9dffe160468ef623dd2086e052541e621d4f7",
+  "paired_report_content_sha256": "b42bf7fea7dbed67b65ecfd70237688c32e86d2d7c3512f5a2a8d6db33a59c40",
+  "passed": 1,
+  "publication_ready": false,
+  "real_new_source_model_calibration_verified": false,
+  "reported_elapsed_seconds": 973.84,
+  "schema": "scienceutopia.native-corrected-choice-full-public-QA-retention.v1",
+  "scientist_SDK_POSTs_including_upstream": 4538,
+  "scope": "Actual native/Docker/SDK and public calibration/role/probe/loss/ask-tell/endpoints/cold/cost/readouts; HTTP/corpus/upstream attribution/synchronous child supervision are SCRIPTED. One intentional native null remains; no scientific loss estimate, real model capacity, unused condition, independently replicated method advantage or publication readiness follows.",
+  "skipped": 0,
+  "source_clean_after_actual_exit": true,
+  "source_commit": "083f374e0cf446eae64f79a2ec389fe0c884abc3",
+  "subprocess_CLI_routing_verified": false,
+  "upstream_scripted_native_worlds": 2,
+  "verification": {
+    "HTTP_corpus_upstream_and_child_supervision": "SCRIPTED",
+    "actual_current_parameter_component_feedback": true,
+    "actual_model_POSTs": 0,
+    "coverage": {
+      "complete_own_slots": 23,
+      "declared_own_slots": 24,
+      "execution_or_measurement_nulls": 1,
+      "generation_nulls": 0,
+      "physical_worlds": 27
+    },
+    "frozen_primary_and_own_only_endpoints": 6,
+    "held_out_scientific_seeds_consumed": false,
+    "history_lengths": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "known_native_null_retained": true,
+    "new_scientific_result": false,
+    "original_source_cold_and_cost_files": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-public-qa-v1-a1/closure/audit-1.json": "fd719e3338ba281304ab2947811331df8b79df920d46a2cc1b1cd5d7b878a483",
+      "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-public-qa-v1-a1/closure/audit-2.json": "fd719e3338ba281304ab2947811331df8b79df920d46a2cc1b1cd5d7b878a483",
+      "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-public-qa-v1-a1/closure/costs-1.json": "ef0c922156974e832a1227e24555088d3dcec9367791961c6ec2d9bfb2d526b2",
+      "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-public-qa-v1-a1/closure/costs-2.json": "ef0c922156974e832a1227e24555088d3dcec9367791961c6ec2d9bfb2d526b2"
+    },
+    "paired_report_files": {
+      "manifest.json": "111acbd1c4bf313aec8a5fc999112bbd4b84477e12defddce5afb7c604b8586c",
+      "report.json": "cdb11727bd4c68f9455f4d3910d2ff97dc963f713f6bb105dfb259637802885e",
+      "slots.csv": "eab6b00c7d04bea78d6abcb166ac4c543bc32fe446a2da0a14d746c1874c88eb"
+    },
+    "plan_file_sha256": "c08dddc16db2bded8dbafe240a56820297f1b213099f3db46759b6ce493f4ad0",
+    "publication_ready": false,
+    "schema": "scienceutopia.native-corrected-choice-full-public-QA.v1",
+    "source_commit": "083f374e0cf446eae64f79a2ec389fe0c884abc3",
+    "subprocess_CLI_routing_verified": false
+  },
+  "verification_file_sha256": "1d830f1731a8ec878f3861da276b712f04f7d29713457c47246756034c9ed31e"
+}

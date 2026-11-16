@@ -63,3 +63,21 @@ own-only bank explicitly rejects the new profile rather than labeling a returned
 reference as own invention. Support99055 passes65 cases/1.01s, including both
 bank/continuation families. Actual scientific losses/unused evaluation remain
 unmeasured and no corrected real study is dispatched by this preparation.
+
+The actual clean083f374e public test67383 subsequently exits0:1 passes/973.84s,
+no skips/failures/errors. All24 own attempts/27 physical worlds are audited,
+including23 complete own outcomes and the one prescribed execution-null; no
+slot is refilled or given a fake loss. Both full cold audits, both cost exports
+and both report/CSV/manifest triples match. All6 histories have4 steps and both
+6-policy endpoint banks remain separate. A whole-journal inspection also checks
+all8 component sessions/32 actual probes:28 return/4 prescribed raises, all
+using current marker/priority parameters. The original351-file source closure
+matches the subsequently developed core bytes exactly; added supervisor/bank
+helpers have their own scoped tests, not that original full-world proof.
+
+[Exact retained evidence](../results/native-corrected-choice-full-public-qa-v1.json)
+includes the original verification/JUnit plus compressed exact audit/readout.
+It remains SCRIPTED HTTP/corpus/upstream/synchronous child supervision, not
+real-model capacity, scientific loss, unused evaluation or publication readiness.
+Any real run still needs a separately frozen source/plan and fresh per-request
+real-backend certificates. The083f374e test checkout is left unchanged.
