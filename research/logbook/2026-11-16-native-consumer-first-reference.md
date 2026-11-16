@@ -297,3 +297,21 @@ no model and establish no more-capable replacement; no download or service is
 introduced. No independent heavy QA, PDF build, renderer or video overlaps
 inference. The complete publication-ready goal remains active, not reduced to
 these diagnostic checks or the eventual closure of this one finite pilot.
+
+## Fourth actual submitted algorithm change
+
+The fourth author reaches ordinary finish after14 complete chronological steps,
+with empty retained error lists. Its [submitted candidate prefix](../results/native-consumer-source-fourth-own-submission-prefix-v1.json)
+is generated/compiled and matches the literal installed SystemSpec. The native
+cell has38 actual scientist request wires at this snapshot; this is not a total
+response/cost count or completed-world result.
+
+The only final mechanism change is developer-catalog-agenda source: topic
+selection changes from minimum(duration, topic) to minimum(topic), and the
+authored reason string changes. Original catalog durations remain in the
+assignment. The parsed AST differs; this is not merely source formatting.
+No node, wire, phase or schedule changes. This actual source difference does
+not establish different project choices, causal mediation, higher utility or
+an isolated source-information effect. The original native evaluation continues
+to determine its assigned U loss, without repairing the algorithm, adding a
+novelty condition or changing the still-pending remaining slots.

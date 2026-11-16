@@ -14,7 +14,7 @@ is development-informed, not a blind independent method comparison.
 | Initial real readiness | Both information conditions pass;28 controls each |
 | Fresh references | [All3 complete](results/native-consumer-source-reference-bank-prefix-v1.json); only core/related references reach either author |
 | Own-system optimization | [Interface-only / U / g0](results/native-consumer-source-first-own-outcome-prefix-v1.json) at-28.6667, [literal-consumers / C / g0](results/native-consumer-source-second-own-outcome-prefix-v1.json) and [interface-only / C / g0](results/native-consumer-source-third-own-outcome-prefix-v1.json) at-8.6667 all complete and tie their strong parent;3/8 own slots complete |
-| Next original slot | Literal-consumers / U / g0 passes readiness and enters optimization at23:56:56UTC November15 (08:56:56JST November16); original editing is active, not a new dispatched study |
+| Next original slot | [Literal-consumers / U / g0 submits](results/native-consumer-source-fourth-own-submission-prefix-v1.json) after14 steps, compiles and reaches actual native scientist requests; its outcome remains pending |
 | Whole original audit/cost/readout | Separate original46051 and79215 wait for this exact writer; no completed closure yet |
 | Figures and paper | [11 pure figure-data checks](results/native-consumer-source-figure-preparation-v1.json) pass; new figures unrendered/unreviewed. Existing reviewed paper is100 pages, before these live results |
 
@@ -60,6 +60,12 @@ The third candidate changes world.selection source with a matching parsed AST;
 the installed SystemSpec equals its [submitted candidate](results/native-consumer-source-third-own-submission-prefix-v1.json).
 Its completed179 full scientist inputs/literal choices and metrics match the
 strong parent. This is a complete observed path, not global program equivalence.
+
+The fourth candidate changes agenda topic selection from shortest duration
+then name to lexical name first, keeping original assigned durations. Its AST
+differs, unlike the second/third formatting edits. No node/wire/schedule changes;
+the exact installed candidate and actual scientist-request prefix are retained.
+An authored algorithm change is not yet an operative consequence or loss gain.
 
 A [primary-source search-method check](publication/native-search-method-controls-source-review-v1.md)
 and integrated related-work/bibliography amendment distinguish evaluated-history

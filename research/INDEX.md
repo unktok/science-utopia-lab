@@ -14,7 +14,8 @@ This page is navigation, not a chronological experiment transcript.
   and [second own C outcome](results/native-consumer-source-second-own-outcome-prefix-v1.json)
   complete and tie the strong parent. [The third own C outcome](results/native-consumer-source-third-own-outcome-prefix-v1.json)
   also completes and ties it;3/8 own slots complete, with no own gain or whole-study
-  closure yet. The next original consumers/U slot is in readiness.
+  closure yet. The [fourth original consumers/U slot submits a lexical agenda revision](results/native-consumer-source-fourth-own-submission-prefix-v1.json)
+  and reaches native scientist requests, with its outcome pending.
   [The first two complete author-step journals](results/native-consumer-source-first-two-author-traces-v1.json)
   distinguish ordinary early finish and baseline recovery from an observed editor error.
   [The first3 complete proposal-wire option traces](results/native-consumer-source-completed-decoding-prefix-v1.json)

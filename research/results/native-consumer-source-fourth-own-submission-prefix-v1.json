@@ -1,0 +1,186 @@
+{
+  "schema": "scienceutopia.native-consumer-source-fourth-own-submission-prefix.v1",
+  "recorded_utc": "2026-11-16T00:09:09.582110+00:00",
+  "classification": "actual-original-authored-submission-and-native-wire-prefix-not-completed-outcome",
+  "source_commit": "7e51b2a48cbe2fedae3f4f39a5a51209386c3411",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-consumer-source-comparison-v1-a3/outputs/native-consumer-source-comparison-v1-a3",
+  "original_writer_handle": 15471,
+  "writer_pid": 11821,
+  "arm": "literal-consumers",
+  "objective": "content-utility",
+  "generation": 0,
+  "request_sha256": "c3b6e25c1612a52a08f3dc3cab983d0e14bad8215381708f148e8a2c7bc9fed3",
+  "suggestion_id": "native-adaptive-72efc298c5322e87007fc4e2",
+  "generated": true,
+  "compiled": true,
+  "generation_error": null,
+  "candidate_sha256": "d9a363125b4b9a5546d465cbd71e720318d0ec6db00ea9b2b633a289ae509f7d",
+  "candidate_matches_installed_system": true,
+  "installed_system_file_sha256": "aa440d9b7361460304f9aee07b733e02d559322eb8ca9647e3983d043e889d6a",
+  "steps": [
+    {
+      "step": 0,
+      "status": "applied",
+      "tool": "plan",
+      "filename": null,
+      "errors": [],
+      "original_file_sha256": "5904aa8e34b17782538a85b50b18bfd781c47c675113d9b71edd977b7f2fdbf1"
+    },
+    {
+      "step": 1,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "69d288cef87dc29ce983d0eaef76dbeb74a712cb42e1aa9f01db6a312a771147"
+    },
+    {
+      "step": 2,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "f747c281bf8d40df060057f5966094f90ee5c7dbf60040a807e620223382c9cf"
+    },
+    {
+      "step": 3,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "450acef799d5c7485e6366a47c57f517a44e77d694c4acfe149cb76941776352"
+    },
+    {
+      "step": 4,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "be9253becf2a4c6315b3855cdc9dcac2a8516d9f0f3e5c1d39a449c8ebde533a"
+    },
+    {
+      "step": 5,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "6782f1bdd5d45de137032696be9001e349d3efaeb60a1d56f31bfec03531019b"
+    },
+    {
+      "step": 6,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "8283af8421fde543e592631673d5fee6e19eeac79feb6fe0127e680252e7847b"
+    },
+    {
+      "step": 7,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "4a219caaa0d496c321b9213937d2f2ec2cace94deaa083dffc3a5b257e9d9b12"
+    },
+    {
+      "step": 8,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "ce3dd8afee873e2d6f16a18345368ac16866378452a774e4da632384bb5173a3"
+    },
+    {
+      "step": 9,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "6643d92959551835f0e61bca45f8fcfebaefee3604227abf0c2ee734c2355e7b"
+    },
+    {
+      "step": 10,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "c7313617a555113011136b601235a722352e2da804974c69971c015d8fffcecf"
+    },
+    {
+      "step": 11,
+      "status": "applied",
+      "tool": "write_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "174232bb205efb14ffbb4db922f498a3e87e47fd2a781b69986e60a548ef40fd"
+    },
+    {
+      "step": 12,
+      "status": "applied",
+      "tool": "read_file",
+      "filename": "code/developer-catalog-agenda.py",
+      "errors": [],
+      "original_file_sha256": "306f907569a0a1c02095e11d285f2749a499bed9b2f0539c7cd62b182d53a49d"
+    },
+    {
+      "step": 13,
+      "status": "finished",
+      "tool": "finish",
+      "filename": null,
+      "errors": [],
+      "original_file_sha256": "508796a49541279c0b5c816a4772a85b39a2467015b6c7265bd187600ebe2f28"
+    }
+  ],
+  "chronological_completed_author_steps": 14,
+  "step_count_is_physical_POST_total": false,
+  "all_retained_step_errors_empty": true,
+  "graph_from_parent": {
+    "phase_updates": {},
+    "removed_connections": [],
+    "added_connections": [],
+    "source_parameters_nodes_unchanged": false,
+    "added_nodes": {},
+    "removed_nodes": {},
+    "changed_mechanisms": {
+      "developer-catalog-agenda": {
+        "before_sha256": "9a94ab1c7c206afbf7ca1ed2969cf8f8f457f5f59128a9238857099626cf8083",
+        "after_sha256": "624ed0a05644c0d5c7e8b9b07d80f33ea8b15b9190232a04d1dc7e0069d07f32",
+        "changed_fields": [
+          "parameters"
+        ]
+      }
+    },
+    "source_edits": {
+      "developer-catalog-agenda": {
+        "before_source_utf8_sha256": "4287a12ee9ef0a400f0b1090ec3372b1fc752eace42d8a6060a77abbd9d3b041",
+        "after_source_utf8_sha256": "355dd440ecba5ca767873ab484ed8bbaaef05497d6de69b9007c27857aa5600d"
+      }
+    },
+    "changed_system_fields": {},
+    "added_schedules": {},
+    "removed_schedules": {}
+  },
+  "changed_sources_AST_diagnostic": {
+    "developer-catalog-agenda": {
+      "source_bytes_equal": false,
+      "parsed_AST_equal_without_attributes": false
+    }
+  },
+  "literal_algorithm_delta": "developer-catalog-agenda selects min(candidates, key=lambda d: d['topic']) instead of min(candidates, key=lambda d: (d['years'], d['topic'])); the reason string also changes to lexical first topic selection. Original duration assignment remains. This is source inspection, not an observed consequence or global policy proof.",
+  "scientist_wire_requests_at_snapshot": 38,
+  "wire_count_scope": "Literal observed request prefix; not total responses or final charged calls",
+  "checkpoint_filenames_at_snapshot": [
+    "portable_checkpoint_year_0.json.gz",
+    "portable_checkpoint_year_1.json.gz"
+  ],
+  "readiness_worker_result_file_sha256": "1168e6def6902b08ce2e8a7e65b0d710765625e2d986711322383005a5ed7e89",
+  "readiness_certificate_sha256": "4c7b6d2544a4fed9692f4ab900cf4dcdd5349c5a6e3e22e781b951d2e9b2d259",
+  "assigned_loss_at_snapshot": null,
+  "outcome_status_at_snapshot": "pending",
+  "own_completed_slots_at_snapshot": 3,
+  "whole_study_closed": false,
+  "new_model_calls_by_observation": 0,
+  "new_generated_code_executions_by_observation": 0,
+  "settings_changed": false,
+  "scope": "Submitted/compiled candidate is installed literally and has actual native scientist requests. AST inequality and a changed algorithm are not a causal effect, loss improvement or independent method replication. Original paired cold closure remains pending; no source repair or novelty veto occurs."
+}
