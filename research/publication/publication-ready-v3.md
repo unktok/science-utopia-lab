@@ -7,7 +7,16 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
-November16の現在の更新：[情報比較の実8枠](../results/native-consumer-source-comparison-closed-v1.json)は
+November16 07:54UTC更新：元世界の[新手法比較](../results/native-priority-method-dispatch-v1.json)は
+実行中で、自己24枠中7枠が測定済み。対照より良い自己案はまだなく、最初の自由設計2件は
+各親をそのまま提出して同点。[全操作集計の実装・実ログ照合](../results/native-author-step-summary-retention-v1.json)
+は両提案の19操作／編集試行0を確認したが、全8自由提案・最終選択・全体監査は未完了。
+独立評価の実装／通しsoftware検証準備はR2/R3達成ではない。終了後は、読み取りだけで
+終わったか、編集したが入力が変わらなかったか、入力は変わったが改善しなかったかを
+全試行・費用と照合し、次の研究判断をする。まだ原因診断・方法優位・新制度発明とはしない。
+確認済みPDFは104頁版のままで、現在の比較結果は未収録。R2/R3/R5/R6は未達。
+
+November16の以前の更新（新手法比較のdispatch前）：[情報比較の実8枠](../results/native-consumer-source-comparison-closed-v1.json)は
 7完走/1nullで正常閉鎖し、全4選択が強い既知対照と同点。新配線・有効な新制度の発明は未実証。
 [104頁原稿](../../paper/integrated-consumer-source-build-v1.json)に全結果・図・費用と先行研究を反映し、
 二重build/全頁画像一致/全紙面目視と23件のsource/retention checkを完了した。

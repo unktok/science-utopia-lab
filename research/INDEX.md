@@ -15,7 +15,10 @@ This page is navigation, not a chronological experiment transcript.
   numeric evaluations worsen by3, first free submission retains/ties its parent.
   The [sixth original outcome and full free C trace](results/native-priority-sixth-own-outcome-and-read-loop-prefix-v1.json)
   also retain/tie the parent: fourteen actions, repeated full reads, no attempted
-  edit, with exact next-request receipts preserved. This is a
+  edit, with exact next-request receipts preserved.
+  [Seventh original outcome and complete author-prefix reader](results/native-author-step-summary-retention-v1.json)
+  retain a tied numeric draw and actual first2 free-session totals;22 light
+  tests are not full native/CLI proof or causal diagnosis. This is a
   prefix, not the completed24-slot comparison. See [STATUS](STATUS.md) for the
   active slot/source/processes and [first free journal](results/native-priority-first-free-submission-prefix-v1.json)
   for the five applied/finished actions, without an invented institution claim.
