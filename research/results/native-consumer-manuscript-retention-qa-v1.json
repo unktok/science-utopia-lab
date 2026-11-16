@@ -1,0 +1,15 @@
+{
+  "schema": "scienceutopia.consumer-manuscript-retention-qa.v1",
+  "source_commit": "b760c6242e87b94aad5c6c28c1ebaab41957f997",
+  "original_process_handle": 51631,
+  "exit_code": 0,
+  "tests": 23,
+  "failures": 0,
+  "skipped": 0,
+  "reported_test_seconds": 3.49,
+  "junit_file": "research/data/native-consumer-source-comparison-v1/manuscript-retention-junit.xml",
+  "junit_sha256": "182be567abbf9c09e1f18f003623af8c7c24fe1e5204c2cbefe7304f8b0e14d1",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false
+}
