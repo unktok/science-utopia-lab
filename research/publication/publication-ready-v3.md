@@ -19,6 +19,11 @@ November17 UTC追記：[修正後24枠の元実験と七系統の二重解析](.
 これは全policy最適性ではなく、次の実効的な新制度探索を設計するための診断である。
 R1/R4/R5は部分達成、R2/R3/R6は未達。以下の以前の時刻付き記述は履歴である。
 
+同日続報：[新版の89-file実再構築](../results/integrated-corrected-rebuild-subset-verification-v1.json)
+も元の86依存のみからcached buildし、本文・log・全117頁画像が確認済み原稿と一致した。
+直前段落の「新版の最小source実再構築は残る」はその時点の状態であり、この作業は完了。
+独立な数値再現、clean-machine setup、実LLM固定評価、主会議readyは意味しない。
+
 November17 JST更新：[修正後実モデル3形状の技術検証](../results/native-corrected-author-assay-closed-v1.json)
 は85校正／35自由操作、全3明示提出で正常閉鎖し、二重cold／readoutも一致した。
 実測済みの新しい科学損失・有用な制度発明ではない。新たなパラメータ文脈の部品検証も

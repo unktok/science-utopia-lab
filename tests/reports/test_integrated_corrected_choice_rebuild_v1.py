@@ -63,3 +63,18 @@ def test_explicit_policy_cannot_omit_the_new_result_figure(tmp_path):
     with pytest.raises(ValueError, match='missing allowlisted TeX dependency'):
         stage(ROOT, policy, output, source_commit=read(RECEIPT)['source_commit'])
     assert not output.exists()
+
+
+def test_actual_subset_reconstruction_keeps_all117_reviewed_page_hashes():
+    receipt = checked(read(RECEIPT))
+    proof = checked(read('research/results/integrated-corrected-rebuild-subset-verification-v1.json'))
+    assert proof['original_build_receipt_content_sha256'] == receipt['content_sha256']
+    assert proof['original_reviewed_pdf_sha256'] == receipt['pdf_sha256']
+    assert proof['page_png_sha256'] == receipt['visual_review']['page_sha256']
+    assert proof['text_sha256'] == receipt['build']['text_sha256']
+    assert proof['log_sha256'] == receipt['build']['log_sha256']
+    assert proof['input_files'] == len(read(POLICY)['files']) == 89
+    assert proof['literal_dependencies'] == receipt['literal_dependency_count'] == 86
+    assert proof['all117_page_images_match_reviewed_original']
+    assert not proof['numerical_replication'] and not proof['clean_machine_build']
+    assert not proof['publication_ready']

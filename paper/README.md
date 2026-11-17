@@ -11,9 +11,12 @@ There are54 figures,56 tables and32 references. Both final cached builds have
 matching text/logs/all117 page images; all layouts and new section91-96 details
 have been reviewed. Earlier meaningful tracks and older PDFs are preserved.
 The manuscript input source is ``84c87066`` (full commit in the build record).
+The [actual89-file reconstruction](../research/results/integrated-corrected-rebuild-subset-verification-v1.json)
+also matches extracted text, logs and all117 reviewed page images using the
+existing local cache. The initial build record predates this separate proof.
 This is not a focused anonymous submission, useful-invention claim, real new
-unused-condition evaluation or publication-ready research package. A new
-minimal-input rebuild remains unverified. [STATUS](../research/STATUS.md) is current.
+unused-condition evaluation or publication-ready research package. It does not
+prove clean-machine setup or numerical replication. [STATUS](../research/STATUS.md) is current.
 
 ## Historical post-artifact research status: November17, before closure
 

@@ -14,6 +14,9 @@ content-support limits and physical costs accompany all24 own outcomes, includin
 the execution null. The fixed-public/native SCRIPTED test is separate from the
 still-undispatched real unused-condition evaluation. Publication readiness and a
 focused main-track claim remain unachieved. [STATUS](../research/STATUS.md) is current.
+The [actual89-file reconstruction](../research/results/integrated-corrected-rebuild-subset-verification-v1.json)
+matches text/log and all117 reviewed page images with86 literal dependencies;
+this is cached document reconstruction, not independent science or clean-machine setup.
 
 Historical reviewed artifact: the111-page integrated manuscript includes the
 complete old24-slot native method pilot, frozen selections, all8 author/

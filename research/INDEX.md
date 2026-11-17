@@ -10,8 +10,9 @@ heartbeats; live counts and process states are in STATUS.
 - [Reviewed117-page integrated manuscript](../paper/integrated-corrected-choice-build-v1.json):
   complete corrected methods/results,54 figures/56 tables/32 references;
   two cached builds, matching text/logs/all117 page images and whole-layout
-  review. This is not a new minimal-input reconstruction, real scientific
-  fixed evaluation or publication readiness. Earlier meaningful tracks remain.
+  review. Its [actual89-file cached reconstruction](results/integrated-corrected-rebuild-subset-verification-v1.json)
+  also matches text/log/all117 reviewed page images. Neither artifact is real
+  scientific fixed evaluation, clean-machine setup or publication readiness.
 
 - [Complete corrected24-slot study](results/native-corrected-choice-search-closed-v1.json):
   original supervisor and all7 paired analysis chains exit0.23 complete/1 null,
