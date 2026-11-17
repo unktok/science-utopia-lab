@@ -8,6 +8,43 @@ import subprocess
 import sys
 
 
+def require_seed_usage(root, plan, started, *, read, pilot=False, workflow=False,
+        priority_fixed=False, corrected_fixed=False):
+    """Reconstruct the same exact coverage contract used at prepare/dispatch.
+
+    V5 retains original SCRIPTED metadata matches. Its separate scientific
+    matches are admissible only after complete source/file/root reconstruction,
+    never by treating a model label or empty filtered list as evidence.
+    """
+    from scripts.audit_native_institution_loop_v1 import epoch
+    from scripts import native_seed_coverage_v2 as coverage
+    policy = plan.get('seed_software_exclusions')
+    v5 = isinstance(policy, dict) and policy.get('schema') == coverage.POLICY
+    if v5 and not (priority_fixed and corrected_fixed):
+        raise ValueError('v5 fixed coverage is only declared for corrected evaluation')
+    count = 0 if pilot else len(plan['evaluation']['seed_usage'])
+    prepared = [read(root/f'seed-usage-{i:02d}.json') for i in range(count)]
+    dispatched = [read(root/f'pre-dispatch-seed-usage-{i:02d}.json') for i in range(count)]
+    if v5:
+        coverage.require_all(prepared, policy)
+        coverage.require_all(dispatched, policy)
+    for i, (before, after) in enumerate(zip(prepared, dispatched)):
+        matches = after['scientific_prior_matching_runs'] if v5 else after['prior_matching_runs']
+        if (before['content_sha256'] != plan['evaluation']['seed_usage'][i]
+                or not after['valid'] or after['errors'] or matches
+                or after['root'] != before['root'] or after['seeds'] != plan['evaluation']['seeds']
+                or not epoch(before['checked_utc']) <= epoch(after['checked_utc']) <= epoch(started['started_utc'])):
+            raise ValueError('literal pre-dispatch unused-seed proof differs')
+        if priority_fixed and not v5 and (after.get('schema') != 'scienceutopia.native-benchmark-seed-usage.v4'
+                or after.get('strict_path_coverage') is not True
+                or after.get('excluded_software_verification_paths')):
+            raise ValueError('strict all-path pre-dispatch inventory required')
+        if workflow and policy is not None and not v5:
+            from scripts.native_benchmark_seed_usage import require_inventory_policy
+            for receipt in (before, after): require_inventory_policy(receipt, policy)
+    return v5
+
+
 def worker(root,output,*,study='count-content-v1'):
     corrected_fixed = study == 'corrected-choice-fixed-v1'
     priority_fixed = study in ('priority-fixed-v1', 'corrected-choice-fixed-v1')
@@ -124,21 +161,9 @@ def worker(root,output,*,study='count-content-v1'):
                 or start['plan_sha256']!=p['content_sha256'] or end['status']!='closed'
                 or end['completed_jobs']!=len(p['jobs']) or epoch(end['ended_utc'])<epoch(start['started_utc'])):
             raise ValueError('normal fixed-evaluation closure required')
-        for i in range(0 if pilot else len(p['evaluation']['seed_usage'])):
-            prepared=read(root/f'seed-usage-{i:02d}.json');dispatched=read(root/f'pre-dispatch-seed-usage-{i:02d}.json')
-            if (prepared['content_sha256']!=p['evaluation']['seed_usage'][i]
-                    or not dispatched['valid'] or dispatched['errors'] or dispatched['prior_matching_runs']
-                    or dispatched['root']!=prepared['root'] or dispatched['seeds']!=p['evaluation']['seeds']
-                    or not epoch(prepared['checked_utc'])<=epoch(dispatched['checked_utc'])<=epoch(start['started_utc'])):
-                raise ValueError('literal pre-dispatch unused-seed proof differs')
-            if priority_fixed and (dispatched.get('schema') != 'scienceutopia.native-benchmark-seed-usage.v4'
-                    or dispatched.get('strict_path_coverage') is not True
-                    or dispatched.get('excluded_software_verification_paths')):
-                raise ValueError('strict all-path pre-dispatch inventory required')
-            if workflow and 'seed_software_exclusions' in p:
-                from scripts.native_benchmark_seed_usage import require_inventory_policy
-                for receipt in (prepared, dispatched):
-                    require_inventory_policy(receipt, p['seed_software_exclusions'])
+        v5_coverage=require_seed_usage(root,p,start,read=read,pilot=pilot,workflow=workflow,
+            priority_fixed=priority_fixed,corrected_fixed=corrected_fixed)
+        if v5_coverage: source_scripts.append('scripts/native_seed_coverage_v2.py')
         resources=[p['protocol']]
         if workflow and 'seed_software_exclusions' in p:
             source_scripts.append('scripts/native_benchmark_seed_usage.py')

@@ -8,6 +8,7 @@ from scripts import native_seed_coverage_v2 as coverage
 from scripts import run_native_corrected_choice_fixed_evaluation_v1 as driver
 from scripts import run_native_priority_fixed_evaluation_v1 as base
 from scripts import run_native_objective_fixed_evaluation_v1 as shared
+from scripts.audit_native_objective_fixed_evaluation_v1 import require_seed_usage
 from tests.reports import test_native_corrected_choice_fixed_evaluation_v1 as native
 from tests.reports.test_native_benchmark_seed_usage import journal
 from utopia.optimization.native_numeric_designer import save
@@ -80,3 +81,30 @@ def test_actual_prepare_reconstruction_and_predispatch_same_policy(tmp_path, mon
         assert final['valid'] and final['coverage_policy_sha256'] == declaration['content_sha256']
         assert final['prior_matching_runs'] == initial['prior_matching_runs']
         assert driver.read(args.output / 'terminal.json')['status'] == 'closed'
+        assert require_seed_usage(args.output, prepared, driver.read(args.output/'started.json'),
+            read=driver.read, workflow=True, priority_fixed=True, corrected_fixed=True)
+
+
+@pytest.mark.parametrize('corruption', ['raw-binding', 'projection', 'missing-root', 'wrong-study'])
+def test_actual_cold_unusedness_boundary_reconstructs_metadata_not_just_filtered_matches(
+        tmp_path, corruption):
+    from copy import deepcopy
+    raw = tmp_path/'inventory'; raw.mkdir(); declaration = policy(raw)
+    receipt = base.strict_inventory(raw, base.SEEDS, declaration)
+    # Both snapshots retain the metadata match. Only the independently rebuilt
+    # positive provenance classification permits an empty scientific list.
+    root = tmp_path/'evaluation'
+    original = deepcopy(receipt)
+    if corruption == 'raw-binding':
+        receipt['raw_inventory']['bindings'][0]['binding']['model'] = 'REAL-MODEL'
+    elif corruption == 'projection': receipt['prior_matching_runs'] = []
+    if corruption in ('raw-binding', 'projection'):
+        receipt['content_sha256'] = digest({k:v for k,v in receipt.items() if k!='content_sha256'})
+    save(root/'seed-usage-00.json', {k:v for k,v in original.items() if k!='content_sha256'})
+    save(root/'pre-dispatch-seed-usage-00.json', {k:v for k,v in receipt.items() if k!='content_sha256'})
+    p = {'evaluation': {'seed_usage': [original['content_sha256']], 'seeds':list(base.SEEDS)},
+        'seed_software_exclusions': declaration}
+    if corruption == 'missing-root': p['evaluation']['seed_usage'] = []
+    with pytest.raises(ValueError):
+        require_seed_usage(root, p, {'started_utc':'2099-01-01T00:00:00+00:00'},
+            read=driver.read, workflow=True, priority_fixed=True, corrected_fixed=corruption!='wrong-study')
