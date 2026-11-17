@@ -4,15 +4,24 @@ from copy import deepcopy
 import pytest
 
 from utopia.optimization.native_literal_change_observation_v1 import observe, MAX_SOURCE_BYTES
+from utopia.system.code_mechanisms import CODE_SCHEMA, validate_code_artifact
 
 
 def document():
     return {'system_id': 'SCRIPTED', 'mechanisms': [{
         'mechanism_id': 'office', 'implementation': 'code.python.v1',
         'parameters': {'policy': 'one', 'code_artifact': {
-            'language': 'python', 'source': 'def main(context):\n    return 1\n'}}}],
+            'schema': CODE_SCHEMA, 'label': 'SCRIPTED standard native artifact',
+            'inputs': {}, 'outputs': {}, 'state_schema': {},
+            'source': 'def step(context):\n    return {"outputs": {}, "state": {}}\n'}}}],
         'connections': [{'source': 'a', 'target': 'b'}, {'source': 'b', 'target': 'c'}],
         'schedules': [{'node': 'office', 'phase': 'open'}], 'metadata': {'known': True}}
+
+
+def test_fixture_uses_the_actual_native_artifact_contract_not_an_invented_language_field():
+    artifact = document()['mechanisms'][0]['parameters']['code_artifact']
+    validate_code_artifact(artifact)
+    assert 'language' not in artifact and artifact['schema'] == CODE_SCHEMA
 
 
 def test_literal_retention_is_allowed_without_a_novelty_or_gain_verdict():
@@ -28,7 +37,7 @@ def test_literal_retention_is_allowed_without_a_novelty_or_gain_verdict():
 
 def test_changed_source_text_can_have_the_same_AST_without_claiming_world_equivalence():
     a = document(); b = deepcopy(a)
-    b['mechanisms'][0]['parameters']['code_artifact']['source'] = '# SCRIPTED comment\ndef main(context):\n  return 1\n'
+    b['mechanisms'][0]['parameters']['code_artifact']['source'] = '# SCRIPTED comment\ndef step(context):\n  return {"outputs": {}, "state": {}}\n'
     r = observe(a, b); row, = r['node_changes']
     assert r['literal_document_changed'] and r['node_change_count'] == 1
     assert row['standard_python_AST_equal'] and row['non_code_parameter_fields_changed'] == []
@@ -82,12 +91,13 @@ def test_node_order_schedule_new_nodes_and_removed_nodes_are_reported_without_re
     assert r['schedules']['added_occurrences'] == r['schedules']['removed_occurrences'] == 1
 
 
-@pytest.mark.parametrize('kind', ['syntax', 'large', 'other-runtime', 'nested'])
+@pytest.mark.parametrize('kind', ['syntax', 'large', 'other-runtime', 'other-schema', 'nested'])
 def test_unassessed_source_or_runtime_is_not_a_rejection_or_false_AST_equality(kind):
     a = document(); b = deepcopy(a); node = b['mechanisms'][0]
     if kind == 'syntax': node['parameters']['code_artifact']['source'] = 'def broken('
     elif kind == 'large': node['parameters']['code_artifact']['source'] = '#' * (MAX_SOURCE_BYTES + 1)
     elif kind == 'other-runtime': node['implementation'] = 'SCRIPTED.unrestricted.new-runtime'
+    elif kind == 'other-schema': node['parameters']['code_artifact']['schema'] = 'SCRIPTED.new-artifact'
     else: node['parameters']['delegate'] = node['parameters'].pop('code_artifact')
     r = observe(a, b); row, = r['node_changes']
     assert row['standard_python_AST_equal'] is None

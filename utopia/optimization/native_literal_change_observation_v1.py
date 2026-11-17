@@ -8,6 +8,7 @@ from collections import Counter
 import hashlib
 
 from utopia.system.design_patch import digest
+from utopia.system.code_mechanisms import CODE_IMPLEMENTATION, CODE_SCHEMA
 
 SCHEMA = 'scienceutopia.literal-institution-change-observation.v1'
 MAX_SOURCE_BYTES = 65536
@@ -45,7 +46,7 @@ def python_source(node):
     source = artifact['source']; body = source.encode('utf-8')
     result = {'status': 'not-standard-python-artifact',
         'source_sha256': hashlib.sha256(body).hexdigest(), 'AST_sha256': None}
-    if node.get('implementation') != 'code.python.v1' or artifact.get('language') != 'python':
+    if node.get('implementation') != CODE_IMPLEMENTATION or artifact.get('schema') != CODE_SCHEMA:
         return result
     if len(body) > MAX_SOURCE_BYTES:
         return {**result, 'status': 'unassessed-source-over-diagnostic-byte-limit'}
