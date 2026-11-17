@@ -5,6 +5,11 @@ This page is navigation, not a chronological experiment transcript.
 Study-prefix descriptions below are retained milestones, not current process
 heartbeats; live counts and process states are in STATUS.
 
+The [public project page](https://science-utopia-lab.pages.dev/) is a bilingual
+entry point to the current retrospective, figures, game recording, manuscript
+and code. See its [release record](results/cloudflare-project-page-release-v1.json).
+Research experiments remain paused; publishing the exhibit does not resume them.
+
 ## Current study and publication goal
 
 - [Consequential-search diagnosis and prospective information intervention](components/consequential-institutional-search-v1.md):

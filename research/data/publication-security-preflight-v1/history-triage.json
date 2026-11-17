@@ -1,0 +1,12 @@
+{
+  "scope": "All 2152 locally reachable commits; all findings reconstructed from their exact original Git blob and scanner coordinates.",
+  "total": 2706,
+  "classifications": {
+    "file/record SHA256": 24,
+    "content-addressed simulation/cache key": 2677,
+    "literal configuration field name in source": 5
+  },
+  "unresolved": [],
+  "status": "all reconstructed findings classified as noncredentials",
+  "disclaimer": "Automated scan and contextual review are not proof of absence of secrets."
+}

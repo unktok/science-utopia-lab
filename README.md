@@ -10,12 +10,32 @@ design space. Small experiments retain that world; numerical test fixtures are
 not substitutes for scientific evidence.
 
 **November17 retrospective:** experiments are paused at the user's request.
-The [project page](https://science-utopia-lab-research.takagi4646.chatgpt.site)
-(owner-private initial release, English/Japanese) gathers the research question,
+The public [project page](https://science-utopia-lab.pages.dev/)
+(Cloudflare Pages, English/Japanese) gathers the research question,
 implemented system, actual corrected search paths, limitations, game-interface
 video and117-page working manuscript. See [current status](research/STATUS.md)
-and the [release/evidence record](research/results/project-page-retrospective-v1.json).
+and the [public-release record](research/results/cloudflare-project-page-release-v1.json).
+The earlier [owner-private preview record](research/results/project-page-retrospective-v1.json)
+remains historical. The GitHub repository is now public after its documented
+[security preflight](research/results/publication-security-preflight-v1.json).
 Older dated progress descriptions below are historical, not live heartbeats.
+
+## Project page development
+
+Source lives in [project-page](project-page/public/index.html), not in a separate
+hosting-provider repository. Run `node project-page/build.mjs` to assemble the
+static `project-page/dist/` exhibit, or `node --test project-page/test.mjs`
+to verify the original24 losses, nulls, immutable assets and links. No model
+inference, database, API token or experiment worker is needed. The build copies
+existing figures, PDF and video after checking their recorded hashes; these
+large assets are not duplicated in tracked page source.
+
+Cloudflare Pages uses GitHub `main`, root `project-page`, command
+`node build.mjs`, output `dist`. Production deployments are enabled; branch
+previews and PR comments are disabled. The existing private ChatGPT Sites
+preview is retained, but is not the canonical public page. On this macOS host,
+`PROJECT_PAGE_URL=https://science-utopia-lab.pages.dev/ node project-page/verify-browser.mjs`
+checks the public UI using installed Chrome without model calls.
 
 ## Start here
 

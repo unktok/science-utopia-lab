@@ -16,11 +16,16 @@ and zero observations. It is an interrupted study, not a completed result or
 a new successful loss. The exact supervisor/writer/child PIDs are verified absent.
 No experiment is restarted by the retrospective project-page work.
 
-The [project-page retrospective](results/project-page-retrospective-v1.json)
-links the new owner-private bilingual research atlas, existing game recording,
-concept figure, actual24-slot loss paths and117-page working manuscript.
+The [public Cloudflare project page](https://science-utopia-lab.pages.dev/)
+gathers the bilingual research atlas, existing game recording, concept figure,
+actual24-slot loss paths and117-page working manuscript. The
+[public release](results/cloudflare-project-page-release-v1.json) follows the
+documented [GitHub publication preflight](results/publication-security-preflight-v1.json).
+The [earlier owner-private preview](results/project-page-retrospective-v1.json)
+is preserved as history, not the canonical public URL.
 The page is an evidence exhibit, not a hosted experiment API or a main-track
-readiness claim. Its source is versioned separately from scientific checkouts.
+readiness claim. Its source now lives in this repository's `project-page/`;
+the historical scientific experiment checkouts remain untouched.
 
 ## Goal and present answer
 
