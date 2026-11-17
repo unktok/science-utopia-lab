@@ -49,6 +49,24 @@ def test_all_eight_free_information_slots_keep_both_exact_endpoints_and_full_pat
     assert 'not independent replication' in result['interpretation']
 
 
+def test_actual_free_record_collection_never_looks_for_numeric_files_in_either_arm(tmp_path):
+    p, _, slots, refs = fixture()
+    for label, observation in refs.items(): r.save(tmp_path/'references'/label/'observation.json', observation)
+    for method in r.INFORMATION_METHODS:
+        for objective in r.OBJECTIVES:
+            entries = [s for s in slots if r.history_key(s['slot']) == (method,0,objective)]
+            records = [{'compiled':True,'generated':True,'generation_error':None,
+                'request':{'generation':s['slot']['generation'],'parent_system':s['parent_system']},
+                'draws':[{'suggestion':s['suggestion']}], 'observations':[s['observation']]} for s in entries]
+            r.save(tmp_path/'search'/method/'history-0'/objective/'campaign/native-adaptive-state.json',
+                {'pending':None,'records':records})
+    collected, returned_refs = r.collect(tmp_path,p)
+    assert len(collected) == 8
+    assert [s['slot'] for s in collected] == p['schedule']
+    assert all(s['comparison_base_role'] == 'free-author-actual-parent' for s in collected)
+    assert all(returned_refs[key]['candidate'] == value['candidate'] for key,value in refs.items())
+
+
 @pytest.mark.parametrize('error', ['drop-slot','numeric-role','wrong-arm','wrong-protocol','wrong-contract','wrong-primary'])
 def test_information_profile_does_not_relax_compound_identity_or_frozen_selection(error):
     p, a, slots, refs = fixture()

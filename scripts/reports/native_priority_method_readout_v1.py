@@ -252,7 +252,7 @@ def collect(root, plan):
     for slot in plan['schedule']:
         method, rep, objective = history_key(slot); g = slot['generation']
         directory = root / 'search' / method / ('history-' + str(rep)) / objective
-        if method != METHODS[2] and plan['schema'] != INFORMATION_STUDY+'.plan':
+        if method != METHODS[2] and plan.get('schema') != INFORMATION_STUDY+'.plan':
             target = directory / ('generation-' + str(g)); started = read(target / 'started.json')
             parent_id = started['suggestion']['based_on_observation_id']
             before = read(directory / ('initial-state.json' if g == 0 else f'generation-{g-1}/optimizer-after-tell.json'))
@@ -299,7 +299,7 @@ def behavior(root, plan, report):
         if 'cell_id' in row:
             key = history_key(row)
             directory = root / 'search' / key[0] / ('history-' + str(key[1])) / key[2]
-            if key[0] != METHODS[2] and plan['schema'] != INFORMATION_STUDY+'.plan':
+            if key[0] != METHODS[2] and plan.get('schema') != INFORMATION_STUDY+'.plan':
                 directory = directory / ('generation-' + str(row['generation']))
             label = row['cell_id']
         else:
