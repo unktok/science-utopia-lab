@@ -1090,3 +1090,29 @@ actual read-only old-artifact comparison, **not** a new minimal-subset compiler/
 render run, new visual inspection, independent numerical reproduction, a PDF
 containing the corrected study or a submission-ready result. Those outstanding
 requirements remain unchanged; no heavy graphics/inference is added.
+
+## Final free C submission starts native execution; threshold remains a plan
+
+By00:29:30UTC requeste6d3e7de explicitly submits after14 operations:
+plan1/read_file9/write_file3/finish1,13applied/1finished/0rejected/no pending.
+All14 journal views verify with0 phase mismatches and0 missing/different loss
+views; planning1/general9/implementation3/submit1. Terminal content
+bfdfa5964e07e1f1a938bfdab7547d31ae88ece332d80aa7a921bd56dff51a40,
+filecc9ded5e613d93ce1e3fd237bbbcc8458494cd91048eb064f9ed13241ff2011f.
+
+The plan proposes a feature-threshold world.selection rule and also considers
+project assignments. Writes4/8/12 all address code/world.selection.py but each
+has the parent's identical normalized AST. The final code UTF8 SHA is
+c39bf3a4a8bd4f7c881e0d9a91e7dd2026386078f15aa20c20a67f9999d07b00.
+The final candidate changes only this source, not other parameters, nodes,
+wiring or schedules; no threshold is implemented. This differs from the earlier
+wrong target-file choice for a parameter plan, but is still not a demonstrated
+operative new rule. No host code/parameter repair or novelty gate is applied.
+
+One actual compiled suggestion native-adaptive-987ef086b296880a02e0ee09,
+fingerprintd9b4384ad1610dd68bcfbf15fc3b4d4c3242d19b687e4d7dae8b6ddddeb9dd13,
+versionfcf3711dd804dd56cc89509fa35ac00170938b419298d06989c2e49aab6e9707,
+starts native execution (six scientist wires observed00:30:22UTC). Its loss is
+not yet measured. Counts stay18 terminal/19 charged; the full24-slot study and
+original paired closure, both endpoint scopes, fixed evaluation and publication
+claim remain open. Same AST is not used to impute a tied loss before completion.
