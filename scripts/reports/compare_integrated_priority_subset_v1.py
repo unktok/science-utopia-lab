@@ -20,7 +20,7 @@ SCHEMA = 'scienceutopia.integrated-priority-subset-artifact-comparison.v1'
 
 
 def compare(subset, build, renders, original, policy, *, text_path=None, bbox_path=None):
-    subset, build, renders = map(Path, (subset, build, renders))
+    subset, build, renders = (Path(p).resolve() for p in (subset, build, renders))
     original = checked(original)
     manifest_body = read_file(subset, 'bundle-manifest.json')
     manifest = checked(json.loads(manifest_body))
@@ -47,8 +47,12 @@ def compare(subset, build, renders, original, policy, *, text_path=None, bbox_pa
         raise ValueError('complete literal TeX dependencies required')
     locations = {name: build / name for name in
         ('integrated.pdf', 'integrated.txt', 'integrated.log', 'bbox.html')}
-    if text_path is not None: locations['integrated.txt'] = Path(text_path)
-    if bbox_path is not None: locations['bbox.html'] = Path(bbox_path)
+    # Resolve directory roots, not file symlinks: read_file must still reject
+    # a linked extraction artifact instead of silently following it.
+    if text_path is not None:
+        p = Path(text_path); locations['integrated.txt'] = p.parent.resolve() / p.name
+    if bbox_path is not None:
+        p = Path(bbox_path); locations['bbox.html'] = p.parent.resolve() / p.name
     artifacts = {name: read_file(path.parent, path.name) for name, path in locations.items()}
     if sha(artifacts['integrated.txt']) != original['build']['text_sha256']:
         raise ValueError('prepared artifact text differs from reviewed original')

@@ -145,3 +145,21 @@ def test_existing_separate_extraction_paths_are_read_without_copying_or_renderin
     assert r['prepared_artifact_locations']['integrated.txt'] == str(text.resolve())
     assert r['prepared_artifact_locations']['bbox.html'] == str(bbox.resolve())
     assert not r['actual_rebuild_execution_verified'] and not r['prepared_pdf_to_text_render_binding_verified']
+
+
+@pytest.mark.parametrize('separate_extraction', [False, True])
+def test_relative_input_paths_keep_exact_source_containment_guard(tmp_path, monkeypatch, separate_extraction):
+    args = fixture(tmp_path, monkeypatch)
+    monkeypatch.chdir(tmp_path)
+    kwargs = {'text_path': Path('build/integrated.txt'), 'bbox_path': Path('build/bbox.html')} if separate_extraction else {}
+    r = module.compare(Path('subset'), Path('build'), Path('renders'), args[-2], args[-1], **kwargs)
+    assert r['artifact_comparison_passed']
+    assert r['prepared_artifact_locations']['integrated.pdf'] == str(args[1] / 'integrated.pdf')
+    assert not r['actual_rebuild_execution_verified']
+
+
+def test_explicit_extraction_file_symlink_is_not_normalized_away(tmp_path, monkeypatch):
+    args = fixture(tmp_path, monkeypatch)
+    linked = args[1] / 'linked-text.txt'; linked.symlink_to(args[1] / 'integrated.txt')
+    with pytest.raises(ValueError, match='linked'):
+        module.compare(*args, text_path=linked)
