@@ -36,7 +36,9 @@ SOFTWARE_SEEDS = [43003, 43011]
 @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_PRIORITY_FIXED_PUBLIC_QA') != '1',
                    reason='explicit clean-source hardware window, no real inference active')
 def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_readouts(
-        tmp_path, fixed_corpus, monkeypatch, *, corrected=False):
+        tmp_path, fixed_corpus, monkeypatch, *, corrected=False, coverage_policy_v2=False):
+    if coverage_policy_v2 and not corrected:
+        raise ValueError('prospective coverage policy is only for the corrected profile')
     if corrected:
         from scripts import run_native_corrected_choice_fixed_evaluation_v1 as driver
         from scripts import audit_native_corrected_choice_fixed_evaluation_v1 as auditor
@@ -112,14 +114,41 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
         monkeypatch.setattr(shared, 'LocalObserverBackend', lambda **kw: ScriptedCritic())
         target = external / 'evaluation-raw'; stage = 'evaluation-public-prepare'
         before_posts = len(evidence['upstream']['scientist_requests'])
+        inventory_roots = [tmp_path, external]; fixture_policy_file = None
+        if coverage_policy_v2:
+            from scripts import native_seed_coverage_v2 as coverage
+            from tests.reports.test_native_benchmark_seed_usage import journal
+            meta = tmp_path / 'declared-software-fixture/responses.sqlite'
+            journal(meta, SOFTWARE_SEEDS[0])
+            (tmp_path / 'declared-output-alias').symlink_to(external, target_is_directory=True)
+            helper = 'tests/reports/test_native_benchmark_seed_usage.py'
+            declaration = {'schema': coverage.POLICY, 'seeds': clone(SOFTWARE_SEEDS),
+                'roots': sorted(str(p.resolve()) for p in inventory_roots),
+                'files': [{'root': str(tmp_path.resolve()), 'path': str(meta.relative_to(tmp_path)),
+                    'file_sha256': file_sha256(meta), 'kind': 'metadata-only-scripted-fixture',
+                    'binding': {'seed': SOFTWARE_SEEDS[0], 'model': 'SCRIPTED', 'protocol': 'SCRIPTED'},
+                    'fixture_source': helper, 'reason': 'Exact journal helper invocation above; no real model calls'}],
+                'external_links': [{'root': str(tmp_path.resolve()), 'path': 'declared-output-alias',
+                    'target': str(external), 'reason': 'Second explicit root, independently scanned before dispatch'}],
+                'reviewed_fixture_sources': {helper: file_sha256(driver.ROOT / helper),
+                    'tests/reports/test_native_priority_fixed_public_v1.py': file_sha256(Path(__file__))}}
+            fixture_policy_file = external / 'prospective-coverage-policy.json'
+            driver.save(fixture_policy_file, declaration)
+            inventory_roots = [Path(p) for p in declaration['roots']]
         driver.prepare(SimpleNamespace(output=target, origin_run=root, origin_source=driver.ROOT,
-            origin_analysis=analysis, origin_readouts=reports, seed_usage_root=[tmp_path, external],
-            seed_software_exclusions=None))
+            origin_analysis=analysis, origin_readouts=reports, seed_usage_root=inventory_roots,
+            seed_software_exclusions=fixture_policy_file))
         p = driver.require_plan(target)
         assert p['evaluation']['seeds'] == SOFTWARE_SEEDS and p['evaluation']['logical_policy_labels'] == 15
         assert all(driver.read(target / ('seed-usage-' + str(i).zfill(2) + '.json'))['strict_path_coverage']
             for i in range(len(p['evaluation']['seed_usage'])))
         assert p['budget']['designer_generation_POSTs'] == 0
+        if coverage_policy_v2:
+            usages = [driver.read(target / ('seed-usage-' + str(i).zfill(2) + '.json'))
+                      for i in range(len(p['evaluation']['seed_usage']))]
+            coverage.require_all(usages, p['seed_software_exclusions'])
+            assert sum(len(u['prior_matching_runs']) for u in usages) == 1
+            assert all(not u['scientific_prior_matching_runs'] for u in usages)
         stage = 'evaluation-public-run'; driver.run(target)
         end = driver.read(target / 'terminal.json')
         assert end['status'] == 'closed' and end['completed_jobs'] == len(p['jobs'])
@@ -173,7 +202,10 @@ def test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_re
             'paired_rows': paired_rows, 'matching_readout_files': matching, 'new_real_model_calls': 0,
             'same_initial_identity_within_software_seed': True,
             'outer_subprocess_CLI_routing_tested': False, 'visual_review_complete': False,
-            'scientific_gain_or_publication_readiness_claimed': False}, sort_keys=True)
+            'scientific_gain_or_publication_readiness_claimed': False,
+            **({'coverage_policy_schema': coverage.POLICY,
+                'original_metadata_fixture_matches_retained': 1,
+                'all_declared_root_inventories_reconstructed': True} if coverage_policy_v2 else {})}, sort_keys=True)
     except BaseException as error:
         write_json_atomic(external / 'stopped.json', {'stage': stage, 'error_type': type(error).__name__,
             'error': str(error), 'native_raw_and_external_artifacts_preserved': True,

@@ -110,6 +110,12 @@ def project(raw, policy):
             or raw.get('software_fixture_policy_sha256')
             or raw.get('root') not in policy['roots'] or raw.get('seeds') != policy['seeds']):
         raise ValueError('unexcluded original strict-v4 scan over an exact declared root required')
+    expected_matches = [r for r in raw['bindings'] if type(r['seed']) is int and r['seed'] in raw['seeds']]
+    if (raw['prior_matching_runs'] != expected_matches
+            or raw['valid'] is not (not raw['errors'] and not expected_matches)
+            or raw['new_model_calls'] != 0
+            or len({r['path'] for r in raw['bindings']}) != len(raw['bindings'])):
+        raise ValueError('original strict scan binding/match/validity accounting differs')
     root = Path(raw['root']); errors = []; nonmetadata = []; metadata = []; aliases = []
     for row in policy['files']:
         if row['root'] != str(root):
