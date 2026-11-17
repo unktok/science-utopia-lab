@@ -1,0 +1,70 @@
+{
+  "schema": "scienceutopia.project-page-retrospective.v1",
+  "snapshot_date": "2026-11-17",
+  "purpose": "Preserve and present existing project outcomes after the user's explicit experiment pause; no new scientific work or automatic resumption.",
+  "site": {
+    "url": "https://science-utopia-lab-research.takagi4646.chatgpt.site",
+    "access": "owner-private",
+    "deployment_status": "succeeded",
+    "project_id": "appgprj_6afbdfd4100081918bc389cec93f997c",
+    "deployment_id": "appgdep_6afbe205475481918ad54055e40c65e0",
+    "version_id": "appgprj_6afbdfd4100081918bc389cec93f997c~appgver_3d50f62e51908191b1f24b592343c0fd",
+    "source_commit": "a11e55526e9a04e76f908825408ba461ef92c6df",
+    "source_checkout": "/Users/shiro/unktok/dev/science-utopia-lab-project-page",
+    "research_basis_commit": "94b5084c9020bca45a55a969c06776cefd05b182",
+    "languages": ["en", "ja"],
+    "model_calls": 0,
+    "experiment_dispatch": false
+  },
+  "included": [
+    "Original project motivation and four composable design freedoms",
+    "Implemented native-world abstractions, institutional code, search loops and scoped gradients",
+    "All24 submitted losses from the completed corrected study, exact source reconciliation and retained execution null",
+    "Implemented NOCTILUCA screenshots and historical October29 interface recording, clearly distinguished from scientific evidence",
+    "117-page reviewed integrated working manuscript, unmodified",
+    "Research index, source code, local UI setup, evidence boundaries and unresolved goals"
+  ],
+  "checks": {
+    "exact_candidate_values_reconciled": 24,
+    "unchanged_copied_assets": 6,
+    "desktop_width": 1440,
+    "mobile_width": 390,
+    "horizontal_overflow": false,
+    "objectives_switch": "passed",
+    "language_switch": "passed",
+    "execution_null_retained": true,
+    "images_and_video_metadata": "passed",
+    "javascript_errors": 0,
+    "http_errors": 0,
+    "external_runtime_network_requests": 0,
+    "first_browser_check_failure": "The local-only request assertion counted browser-internal data: media-control assets as external. The check was corrected to inspect HTTP(S) requests; both later complete runs passed. No scientific result changed.",
+    "visual_review": "Full desktop page and mobile screenshots inspected."
+  },
+  "paper": {
+    "path": "output/pdf/science-utopia-lab-integrated-corrected-choice-working-paper.pdf",
+    "sha256": "3a96dbc99376512edf549024e509e4b78720cf28e24d534dae8472f58c3b75bc",
+    "pages": 117,
+    "publication_ready": false
+  },
+  "pause": {
+    "study": "native-literal-feedback-comparison-v1-a1",
+    "scientific_source_commit": "534b6ffb6c39ad971d33a9844a9182333ad853b1",
+    "ended_utc": "2026-11-17T05:02:02.252782+00:00",
+    "terminal_status": "stopped",
+    "stage": "references",
+    "consumed_own_slots": 0,
+    "observations": 0,
+    "supervisor_exit_code": 1,
+    "supervisor_exit_utc": "2026-11-17T05:02:03.725229+00:00",
+    "terminated_owned_pids": [1175,1217,7723],
+    "absence_verified": true,
+    "terminal_copy": "research/data/project-page-retrospective-v1/stopped-terminal.json",
+    "terminal_file_sha256": "14d5af4ddfd292910179f106f07f818cec69decb45bd7a62fe223766b0e5ada7",
+    "writer_exit_copy": "research/data/project-page-retrospective-v1/writer-exit.json",
+    "writer_exit_file_sha256": "d27fd6222cae53228b4c29b1a2975f45735775c6f64a41eb6ac9eeb3d30bb85f",
+    "shared_model_daemon_stopped": false,
+    "inflight_server_request_cancellation_confirmed": false,
+    "automatic_resume": false
+  },
+  "interpretation": "Implemented research infrastructure, experimental evidence and a game-like observation UI are shareable outcomes. Useful autonomous institutional invention, stable superiority, latest corrected held-out evaluation and top-conference readiness remain unestablished."
+}

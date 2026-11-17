@@ -9,6 +9,14 @@ The original researcher world is a contained instance, not the limit of the
 design space. Small experiments retain that world; numerical test fixtures are
 not substitutes for scientific evidence.
 
+**November17 retrospective:** experiments are paused at the user's request.
+The [project page](https://science-utopia-lab-research.takagi4646.chatgpt.site)
+(owner-private initial release, English/Japanese) gathers the research question,
+implemented system, actual corrected search paths, limitations, game-interface
+video and117-page working manuscript. See [current status](research/STATUS.md)
+and the [release/evidence record](research/results/project-page-retrospective-v1.json).
+Older dated progress descriptions below are historical, not live heartbeats.
+
 ## Start here
 
 | Question | Canonical document |

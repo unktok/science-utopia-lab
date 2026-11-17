@@ -1,12 +1,26 @@
 # Current research status
 
-Verified November 17, 2026 after the normally closed corrected search.
+Verified November 17, 2026 after the normally closed corrected search and
+the user's explicit pause of subsequent experiments.
 This is the current view, not an experiment transcript. The
 [previous live status is preserved](status-history-2026-11-17-before-corrected-closure.md).
 The [earlier927-line snapshot](status-history-2026-11-17-before-corrected-live-summary.md)
 also remains byte-for-byte unchanged.
 Start with [RESEARCH](../RESEARCH.md), [INDEX](INDEX.md) and the
 [publication requirements](publication/publication-ready-v3.md).
+
+**Experiments are paused at the user's request.** The subsequent information
+comparison's writer stops at05:02:02UTC; its original supervisor records exit1
+at05:02:03UTC. The terminal retains `stage=references`, zero consumed own slots
+and zero observations. It is an interrupted study, not a completed result or
+a new successful loss. The exact supervisor/writer/child PIDs are verified absent.
+No experiment is restarted by the retrospective project-page work.
+
+The [project-page retrospective](results/project-page-retrospective-v1.json)
+links the new owner-private bilingual research atlas, existing game recording,
+concept figure, actual24-slot loss paths and117-page working manuscript.
+The page is an evidence exhibit, not a hosted experiment API or a main-track
+readiness claim. Its source is versioned separately from scientific checkouts.
 
 ## Goal and present answer
 
@@ -32,8 +46,10 @@ comparison runner and original-source cold auditor are implemented. Actual nativ
 public QA23623 exits0 in736s:11 worlds/8 slots/1 retained null,72 SCRIPTED author
 POSTs,0 body/phase mismatches, matching paired cold/cost outputs. The
 [new real comparison starts](results/native-literal-feedback-dispatch-v1.json)
-November17,04:46:47UTC on clean534b6ffb. Supervisor session57162/PID1175 and writer PID1217 are
-observed live, in initial real-backend readiness; no own outcome or benefit yet.
+November17,04:46:47UTC on clean534b6ffb. That dispatch record is historical:
+the user subsequently stops the study at the reference stage, with no own
+outcome or measured benefit. Original terminal/exit records are retained in
+the [retrospective record](results/project-page-retrospective-v1.json).
 The separate explicit readout profile passes34 tests, not an actual new export.
 The [preparation record](results/native-consequential-search-preparation-v1.json)
 retains sources, literal JUnit files, failures and pending evidence.
@@ -149,7 +165,8 @@ the scientific evaluation is still not prepared or dispatched.
 **No real scientific inference or analysis waiter from this study remains
 running. No real selection-fixed evaluation has been prepared or dispatched.**
 This statement concerns the CLOSED corrected24-slot study and its frozen
-evaluation, not the distinct8-slot information follow-up now in real readiness.
+evaluation. The distinct8-slot information follow-up is also now stopped at
+the user's request, as recorded above.
 The next step is not to claim that waiting continues: finish coverage resolution,
 then literally evaluate both frozen scopes, retaining nulls and all labels.
 
