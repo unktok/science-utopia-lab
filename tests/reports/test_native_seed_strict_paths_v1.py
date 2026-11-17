@@ -66,3 +66,33 @@ def test_strict_unresolved_coverage_is_not_unused_proof(tmp_path, kind):
 
 def test_strict_mode_is_not_truthy_string(tmp_path):
     with pytest.raises(ValueError): module.usage_inventory(tmp_path, [83003], strict_paths='true')
+
+
+@pytest.mark.parametrize('name', ['pytest-current', 'ordinary-alias'])
+@pytest.mark.parametrize('seed', [42, 83003])
+def test_internal_alias_is_covered_only_by_actual_enumerated_target(tmp_path, name, seed):
+    journal(tmp_path / 'physical' / 'nested' / 'responses.sqlite', seed)
+    (tmp_path / name).symlink_to(tmp_path / 'physical', target_is_directory=True)
+    result = module.usage_inventory(tmp_path, [83003, 83011], strict_paths=True)
+    assert not result['errors']
+    assert result['valid'] is (seed == 42)
+    assert len(result['bindings']) == 1
+    assert len(result['prior_matching_runs']) == (seed == 83003)
+    assert result['covered_internal_directory_aliases'] == [{
+        'path': name, 'target': 'physical',
+        'proof': 'physical target independently enumerated under this root'}]
+    assert not result['excluded_software_verification_paths']
+
+
+def test_link_cycle_adds_no_hidden_journal_and_outside_target_still_stops(tmp_path):
+    root = tmp_path / 'root'; root.mkdir()
+    journal(root / 'physical' / 'responses.sqlite', 83003)
+    (root / 'loop').symlink_to(root, target_is_directory=True)
+    elsewhere = tmp_path / 'elsewhere'
+    journal(elsewhere / 'responses.sqlite', 83011)
+    (root / 'external').symlink_to(elsewhere, target_is_directory=True)
+    result = module.usage_inventory(root, [83003, 83011], strict_paths=True)
+    assert not result['valid'] and len(result['bindings']) == 1
+    assert result['prior_matching_runs'][0]['seed'] == 83003
+    assert result['covered_internal_directory_aliases'][0]['target'] == '.'
+    assert len(result['errors']) == 1 and result['errors'][0]['path'] == 'external'

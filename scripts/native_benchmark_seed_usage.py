@@ -39,14 +39,28 @@ def software_fixture_policy(policy):
 def usage_inventory(root,seeds,*,software_exclusions=None,strict_paths=False):
     if type(strict_paths) is not bool:
         raise ValueError('explicit boolean prospective path-coverage mode required')
-    root=Path(root).resolve();rows=[];excluded=[];errors=[];seen=[]
+    root=Path(root).resolve();rows=[];excluded=[];errors=[];seen=[];covered_aliases=[]
     if strict_paths:
         if not root.is_dir():
             errors.append({'path': '.', 'error': 'explicit inventory root is missing or not a directory'})
-        for path in root.rglob('*'):
+        entries = list(root.rglob('*'))
+        # rglob does not descend directory symlinks. An internal alias is
+        # nevertheless covered when its *physical* target occurs separately
+        # in this same traversal (including a link back to the root). Never
+        # infer coverage merely from a familiar pytest/current name or from
+        # an outside target that some other inventory might have scanned.
+        physical_directories = {root} | {
+            path for path in entries if not path.is_symlink() and path.is_dir()}
+        for path in entries:
             if path.is_symlink() and path.is_dir():
-                errors.append({'path': str(path.relative_to(root)),
-                    'error': 'directory symlink coverage unresolved; inventory its target as an explicit root'})
+                target = path.resolve()
+                if target.is_relative_to(root) and target in physical_directories:
+                    covered_aliases.append({'path': str(path.relative_to(root)),
+                        'target': str(target.relative_to(root)),
+                        'proof': 'physical target independently enumerated under this root'})
+                else:
+                    errors.append({'path': str(path.relative_to(root)),
+                        'error': 'directory symlink coverage unresolved; inventory its target as an explicit root'})
     explicit = {}; retained = []
     if software_exclusions is not None:
         policy = software_fixture_policy(software_exclusions)
@@ -102,6 +116,7 @@ def usage_inventory(root,seeds,*,software_exclusions=None,strict_paths=False):
             software_fixture_policy_sha256=software_exclusions['content_sha256'])
     if strict_paths:
         receipt.update(schema='scienceutopia.native-benchmark-seed-usage.v4', strict_path_coverage=True,
+            covered_internal_directory_aliases=sorted(covered_aliases, key=lambda row: row['path']),
             scope='All response journals under the explicit resolved root, without directory-name exclusions; '
                   'only exact reviewed non-production file exceptions may be omitted. '
                   'Not proof that other roots/machines or a different corpus are unused.')
