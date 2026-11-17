@@ -4,7 +4,22 @@
   "title": "What if we optimized the institutions of science?",
   "url": "https://science-utopia-lab.pages.dev/story/",
   "language": "en",
-  "status": "source and local verification complete; public deployment pending",
+  "status": "published; public browser verification passed",
+  "public_deployment": {
+    "id": "24073bac-0b74-4a80-9f56-813bea4f61df",
+    "source_commit": "b57c2c7685b90f8c5106a476d3e9e8d3d2c41819",
+    "trigger": "github:push",
+    "status": "success",
+    "ended_utc": "2026-11-17T08:31:11.833168Z",
+    "article_http_status": 200,
+    "atlas_http_status": 200,
+    "both_published_pages_english_only": true,
+    "content_security_policy_present": true,
+    "browser_record": "research/data/visual-research-story-v1/public-story-browser.json",
+    "browser_status": "passed",
+    "javascript_errors": 0,
+    "http_errors": 0
+  },
   "source": "project-page/public/story/index.html",
   "visual_exhibits": 9,
   "interactive_views": [

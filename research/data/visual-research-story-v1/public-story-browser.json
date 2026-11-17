@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "url": "https://science-utopia-lab.pages.dev/story/",
+  "desktop": {
+    "width": 1440,
+    "scroll": 1440,
+    "height": 14334
+  },
+  "mobile": {
+    "width": 390,
+    "scroll": 390
+  },
+  "video": {
+    "duration": 33.2,
+    "error": null
+  },
+  "javascript_errors": [],
+  "http_errors": [],
+  "same_origin_only_requests": true,
+  "new_model_calls": 0,
+  "checks": [
+    "Four design scopes",
+    "No node overlaps",
+    "Both objectives",
+    "Candidate/incumbent views",
+    "Carried incumbent not successful null",
+    "Archived-cost arithmetic at three weights",
+    "English only",
+    "Desktop/mobile overflow",
+    "All images",
+    "Video metadata",
+    "No external runtime requests"
+  ]
+}
