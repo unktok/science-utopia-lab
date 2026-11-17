@@ -955,3 +955,65 @@ This is journal verification, not full actual-wire understanding, a submitted
 institution or a native loss. Pending is unknown, not failed or zero-cost.
 The17 terminal/18 charged counts, original settings/source and all old results
 remain unchanged. The same original writer/supervisor continues.
+
+## Free C/g2 submits: planned policy change remains unimplemented
+
+By November17 00:01UTC request3ea48c26 explicitly submits after14 completed
+actions: plan1/read_file7/write_file5/finish1,13applied/1finished/0rejected,
+no pending reply. The entire14-prompt journal has0 observed phase mismatches
+and0 missing/different loss views; phases planning1/general12/submit1.
+Terminal content7f3980102a6f31b191d2c6f748517b3de7b227f162a17e3e0bfca5c3804f0d19,
+fileced8b1b08c73931c2d5e83114d56956afa98cbf95146ff7d7d2d244016e89a68.
+
+The actual plan proposes candidate_policy=core-only instead of core-plus-related,
+but targets only code/developer-catalog-agenda.py. All seven reads and five
+writes address that same code file; no parameter/node/root file is edited.
+Writes2/5/7/9/11 all have the parent's same normalized AST,
+ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318.
+The final source UTF8 hash85189e79d157b9f388e5d29d19697b25610491eeb9635c1f0f32a589be6953c8
+matches the actual candidate. Only that source changes, not code runtime/ABI,
+other parameters, nodes, wiring or schedules. Actuation remains project and
+candidate_policy core-plus-related. This is an actual plan/implementation gap,
+not a rejected action, lost host-side parameter edit, repaired proposal or
+evidence that the unimplemented core-only policy would improve the objective.
+
+One compiled original-world candidate native-adaptive-ee695ca000a3d334aae8b718,
+fingerprintba188e353680b846a39a3c745df9b81f9af3680a31f0ccdc8e2d5b7e79e0b68e,
+starts real scientist requests (eight observed at00:02:05UTC). Pending version
+1c237070a5c03567527d5476dab55a7001f19dca9a50ff33dd7525b1b9e125dd
+has no observation yet at that point. The formatting-only submission remains
+a charged/evaluated candidate, not a novelty-veto rejection or a refilled slot.
+Same AST alone does not prove universal native/input-path or loss equality;
+the later empirical outcome and original cold audit still need verification.
+
+### Do not rediscover thinking support as an untested guaranteed fix
+
+The actual step7 wire uses plain-function-bounded-v45, think=false, temperature
+0.6, context65536/output8192. Writes2/5/7/9 have known stop completions with
+respectively36796/40222/40391/40742 input tokens and730/730/756/756 output tokens,
+not observed length stops. The step7 actual user message includes the current
+candidate_policy/core-plus-related strings. A search of that one system/user
+frame finds no instructed-copy/calibration directive; the sole calibration
+string is the topic's ordinary camera-calibration focus area. That scoped
+observation does not prove all prompts leak-free or adequate understanding.
+
+A read-only local/api/show reports thinking capability for the unchanged alias.
+This is not proof that enabling it improves executable design or that its
+public upstream revision is known. In fact, the [earlier actual output-mode
+assay](../results/native-workflow-output-mode-assay-v1.json) already includes
+thinking: two calibrations compile, but the sole free call ends length/8192
+with no final JSON. The [one-shot capacity probe](../results/native-workflow-thinking-capacity-probe-v1.json)
+at16384 returns final JSON after12563 output tokens but violates four existing
+zero-latency edges and does not compile. Those are retained one-frame, old
+workflow diagnostics, not current bounded-editor failures, a controlled native
+benefit comparison or grounds to repeat them unchanged. No thinking setting,
+model, output budget, active candidate or historical record is altered now.
+
+After the full original traces close, an explicit candidate question is whether
+passive executable-change feedback (literal parameter/wire/schedule/AST diffs,
+not merely successful file writes) helps translate an author's own plan into
+operative changes under the same free authority. Such diagnostics would not
+implement prose, impose novelty/merit gates, require a change, or replace loss.
+This is a conditional follow-up possibility, not an adopted protocol/dispatch
+or a claim that syntax differences cause scientific improvement. Read the
+complete observed effects and costs before choosing the next contrast.
