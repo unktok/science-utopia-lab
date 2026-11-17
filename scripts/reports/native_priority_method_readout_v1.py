@@ -26,6 +26,9 @@ SCHEMA = 'scienceutopia.native-priority-method-readout.v1'
 STUDY = 'scienceutopia.native-priority-method-comparison.v1'
 CORRECTED_STUDY = 'scienceutopia.native-corrected-choice-search.v1'
 CORRECTED_SCHEMA = 'scienceutopia.native-corrected-choice-readout.v1'
+INFORMATION_STUDY = 'scienceutopia.native-literal-feedback-comparison.v1'
+INFORMATION_SCHEMA = 'scienceutopia.native-literal-feedback-readout.v1'
+INFORMATION_METHODS = ('current-information', 'literal-change-information')
 METHODS = ('uniform-priority', 'adaptive-priority', 'free-code-graph')
 OBJECTIVES = ('content-utility', 'resource-aware-content')
 METRICS = ('native.accepted_decisions', 'native.common_content_utility_sum',
@@ -49,13 +52,14 @@ def cell_id(slot):
                      'generation-' + str(slot['generation'])))
 
 
-def world_key(world, *, histories=2):
+def world_key(world, *, histories=2, methods=METHODS, free_methods=None):
     if world['role'] == 'developer-reference':
         return ('reference', world['identity'])
+    free_methods = (METHODS[2],) if free_methods is None else free_methods
     if (world['role'] not in ('numeric-own-proposal', 'workflow-own-proposal')
-            or world['method'] not in METHODS or type(world['optimizer_history']) is not int
+            or world['method'] not in methods or type(world['optimizer_history']) is not int
             or world['optimizer_history'] not in range(histories) or world['objective'] not in OBJECTIVES
-            or (world['role'] == 'workflow-own-proposal') != (world['method'] == METHODS[2])):
+            or (world['role'] == 'workflow-own-proposal') != (world['method'] in free_methods)):
         raise ValueError('declared compound native world identity required')
     return world['method'], world['optimizer_history'], world['objective'], world['identity']
 
@@ -78,15 +82,21 @@ def analyze(plan, audit, slots, references):
     """Pure all-slot projection. Synthetically supplied audits are not provenance."""
     checked(plan); checked(audit)
     corrected = plan['schema'] == CORRECTED_STUDY + '.plan'
-    study, schema = (CORRECTED_STUDY, CORRECTED_SCHEMA) if corrected else (STUDY, SCHEMA)
-    histories, generations = (1, 4) if corrected else (2, 2)
+    information = plan['schema'] == INFORMATION_STUDY + '.plan'
+    warm_selection = corrected or information
+    methods = INFORMATION_METHODS if information else METHODS
+    free_methods = methods if information else (METHODS[2],)
+    declared = 8 if information else 24
+    study, schema = ((INFORMATION_STUDY, INFORMATION_SCHEMA) if information else
+        (CORRECTED_STUDY, CORRECTED_SCHEMA) if corrected else (STUDY, SCHEMA))
+    histories, generations = (1, 2) if information else (1, 4) if corrected else (2, 2)
     if (plan['schema'] != study + '.plan' or audit['schema'] != study + '.audit'
-            or plan['methods'] != list(METHODS) or plan['objectives'] != list(OBJECTIVES)
+            or plan['methods'] != list(methods) or plan['objectives'] != list(OBJECTIVES)
             or len(plan['replication_seeds']) != histories or plan['generations'] != generations
             or audit['source_commit'] != plan['source_commit'] or audit['plan_sha256'] != plan['content_sha256']
             or audit['source_proof']['status'] != 'verified-exact-source-closure'
             or audit['closure']['terminal']['status'] != 'closed'
-            or audit['closure']['terminal']['consumed_slots'] != 24
+            or audit['closure']['terminal']['consumed_slots'] != declared
             or audit['new_model_calls'] != 0 or audit['new_code_executions'] != 0
             or audit['held_out_evaluation'] or audit['selection']['baseline_fallback']
             or audit['selection']['held_out_evaluation']):
@@ -94,16 +104,20 @@ def analyze(plan, audit, slots, references):
     if corrected and (plan.get('protocol') != 'research/protocols/campaigns/native-corrected-choice-search-v1.md'
             or audit['selection'].get('primary_is_measured_best_known_not_own_discovery') is not True):
         raise ValueError('explicit corrected profile and primary/own-only selection semantics required')
-    expected = {(m, r, o, g) for m in METHODS for r in range(histories) for o in OBJECTIVES for g in range(generations)}
+    if information and (plan.get('protocol') != 'research/protocols/campaigns/native-literal-feedback-comparison-v1.md'
+            or plan.get('literal_feedback_contract', {}).get('scope') != 'parent-relative-literal-design-change-v1'
+            or audit['selection'].get('primary_is_measured_best_known_not_own_discovery') is not True):
+        raise ValueError('explicit information comparison and dual frozen selection required')
+    expected = {(m, r, o, g) for m in methods for r in range(histories) for o in OBJECTIVES for g in range(generations)}
     actual = [(s['method'], s['replication'], s['objective'], s['generation']) for s in plan['schedule']]
-    if (len(actual) != 24 or set(actual) != expected or len(slots) != 24
+    if (len(actual) != declared or set(actual) != expected or len(slots) != declared
             or [s['slot'] for s in slots] != plan['schedule']
             or any(type(s['replication']) is not int or type(s['generation']) is not int for s in plan['schedule'])
             or list(references) != plan['reference_order']):
         raise ValueError('all exact ordered slots/references required, including technical nulls')
     worlds = {}
     for w in audit['worlds']:
-        key = world_key(w, histories=histories)
+        key = world_key(w, histories=histories, methods=methods, free_methods=free_methods)
         if key in worlds: raise ValueError('duplicate compound native world identity')
         worlds[key] = w
     used = set()
@@ -140,7 +154,7 @@ def analyze(plan, audit, slots, references):
         row = {'slot_index': i, 'cell_id': cell_id(slot), **clone(slot), 'generation_error': clone(entry['generation_error']),
                'comparison_base_role': entry.get('comparison_base_role', 'explicit-comparison-base')}
         if o is None:
-            if s is not None or slot['method'] != METHODS[2] or not entry['generation_error']:
+            if s is not None or slot['method'] not in free_methods or not entry['generation_error']:
                 raise ValueError('explicit original generation failure, not fabricated missing observation, required')
             row.update(status='generation-null', suggestion_id=None, loss=None, literal_system_sha256=None,
                 cross_scores={k: None for k in plan['losses']},
@@ -157,7 +171,7 @@ def analyze(plan, audit, slots, references):
     if used != set(worlds) or audit['closure']['terminal']['observations'] != len(worlds):
         raise ValueError('every physical audited world must be accounted for exactly once')
     paths, selected, own_only_selected = {}, [], []
-    for method in METHODS:
+    for method in methods:
         for rep in range(histories):
             for objective in OBJECTIVES:
                 history = [r for r in rows if history_key(r) == (method, rep, objective)]
@@ -176,8 +190,8 @@ def analyze(plan, audit, slots, references):
                     'all_tied_ids': [r['suggestion_id'] for r in ties],
                     'selected_id': chosen['suggestion_id'] if chosen else None,
                     'system': candidates[chosen['cell_id']] if chosen else None, 'reference_loss': reference}
-                if corrected: expected_selection['selected_origin'] = 'own' if chosen else None
-                own_bank = audit['selection']['own_only_selected' if corrected else 'selected']
+                if warm_selection: expected_selection['selected_origin'] = 'own' if chosen else None
+                own_bank = audit['selection']['own_only_selected' if warm_selection else 'selected']
                 if own_bank[method][str(rep)][objective] != expected_selection:
                     raise ValueError('frozen own-only selection differs; no reselection or reference fallback')
                 own_endpoint = {'method': method, 'replication': rep, 'objective': objective, 'loss': best,
@@ -186,7 +200,7 @@ def analyze(plan, audit, slots, references):
                     'literal_system_sha256': chosen['literal_system_sha256'] if chosen else None,
                     'cross_scores': chosen['cross_scores'] if chosen else {k: None for k in plan['losses']},
                     'reference_loss': reference, 'own_minus_reference': None if best is None else best - reference}
-                if not corrected:
+                if not warm_selection:
                     selected.append(own_endpoint)
                     continue
                 own_only_selected.append(own_endpoint)
@@ -212,15 +226,20 @@ def analyze(plan, audit, slots, references):
     return {'schema': schema, 'scientific_source_commit': plan['source_commit'], 'plan_content_sha256': plan['content_sha256'],
         'input_audit_content_sha256': audit['content_sha256'], 'frozen_selection_content_sha256': audit['selection']['content_sha256'],
         'references': refs, 'slots': rows, 'paths': paths, 'selected': selected,
-        **({'own_only_selected':own_only_selected,'method_kernel_descriptions':clone(plan['numeric_kernels'])} if corrected else {}),
-        'coverage': {'declared_own_slots': 24, 'complete_own_slots': sum(r['status'] == 'complete' for r in rows),
+        **({'own_only_selected':own_only_selected} if warm_selection else {}),
+        **({'method_kernel_descriptions':clone(plan['numeric_kernels'])} if corrected else {}),
+        **({'information_contract':clone(plan['literal_feedback_contract'])} if information else {}),
+        'coverage': {'declared_own_slots': declared, 'complete_own_slots': sum(r['status'] == 'complete' for r in rows),
             'generation_nulls': sum(r['status'] == 'generation-null' for r in rows),
             'execution_or_measurement_nulls': sum(r['status'] not in ('complete', 'generation-null') for r in rows),
             'physical_worlds': len(worlds)},
         'nonunique_suggestion_ids_across_compound_cells': {k: n for k, n in sorted(duplicates.items()) if n > 1},
         'interpretation': 'One reused researcher-world condition. U is fixed abstract opinion, K is collected native cost. '
             'Different objectives need not select different systems. Literal edits are not effects; exact input classes '
-            'are not semantic equivalence. ' + ('One four-step optimizer history per cell is not independent replication '
+            'are not semantic equivalence. ' + ('One two-step history per information/objective cell is not '
+                'independent replication or stable information-effect evidence. Primary returned references remain '
+                'labeled, not own invention.' if information else
+                'One four-step optimizer history per cell is not independent replication '
                 'or sufficient general method evidence. Primary returned references remain labeled, not own invention.' if corrected
                 else 'Two seeded histories are not independent populations or sufficient method evidence.'),
         'new_model_calls': 0, 'new_code_executions': 0, 'selection_changed': False,
@@ -233,7 +252,7 @@ def collect(root, plan):
     for slot in plan['schedule']:
         method, rep, objective = history_key(slot); g = slot['generation']
         directory = root / 'search' / method / ('history-' + str(rep)) / objective
-        if method != METHODS[2]:
+        if method != METHODS[2] and plan['schema'] != INFORMATION_STUDY+'.plan':
             target = directory / ('generation-' + str(g)); started = read(target / 'started.json')
             parent_id = started['suggestion']['based_on_observation_id']
             before = read(directory / ('initial-state.json' if g == 0 else f'generation-{g-1}/optimizer-after-tell.json'))
@@ -280,7 +299,8 @@ def behavior(root, plan, report):
         if 'cell_id' in row:
             key = history_key(row)
             directory = root / 'search' / key[0] / ('history-' + str(key[1])) / key[2]
-            if key[0] != METHODS[2]: directory = directory / ('generation-' + str(row['generation']))
+            if key[0] != METHODS[2] and plan['schema'] != INFORMATION_STUDY+'.plan':
+                directory = directory / ('generation-' + str(row['generation']))
             label = row['cell_id']
         else:
             directory = root / 'references' / row['label']; label = 'reference/' + row['label']
