@@ -1,5 +1,14 @@
 # Corrected fixed-evaluation public QA: prepared command, not an execution
 
+**Execution update, November17:** the command below has now run once from the
+specified clean source: original session67369 exits0;1 passed in1384.82s.
+The [closed-study record](../results/native-corrected-choice-search-closed-v1.json)
+retains exact JUnit and verification files. Fourteen physical evaluation worlds,
+30 logical rows and120 paired contrasts use SCRIPTED responses, not new real
+model calls or scientific reserved conditions. The remaining text and NOT RUN
+heading preserve the dated preparation instructions, not current process state.
+Do not rerun into these now-existing destinations.
+
 November17UTC. The active original scientific job must finish first. This
 runbook does not reserve hardware, attest unused scientific conditions, prepare
 a real evaluation plan or authorize an external service. Existing

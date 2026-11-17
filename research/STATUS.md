@@ -3,6 +3,8 @@
 Verified November 17, 2026 after the normally closed corrected search.
 This is the current view, not an experiment transcript. The
 [previous live status is preserved](status-history-2026-11-17-before-corrected-closure.md).
+The [earlier927-line snapshot](status-history-2026-11-17-before-corrected-live-summary.md)
+also remains byte-for-byte unchanged.
 Start with [RESEARCH](../RESEARCH.md), [INDEX](INDEX.md) and the
 [publication requirements](publication/publication-ready-v3.md).
 
@@ -21,7 +23,9 @@ loops are implemented. Useful autonomous institutional invention or stable
 superiority to strong simple references is **not established**. Publication
 readiness remains unachieved; additional QA or seed scaling alone is insufficient.
 
-## Corrected search: complete, unchanged original run
+## Current actual experiment
+
+The corrected search is complete, with the original run unchanged.
 
 [Closed-study record](results/native-corrected-choice-search-closed-v1.json)
 binds the original terminal, frozen selection, paired files and compact data.
@@ -85,7 +89,9 @@ is rendered twice with matching PNG/SVG bytes and visually inspected.
 Full original provenance and bounded interpretation are in the closed record;
 raw caches remain external, out of Git.
 
-## Next evaluation: software check passed, scientific dispatch not started
+## Parallel work and actual waiting processes
+
+The software evaluation check has passed; scientific dispatch has not started.
 
 The actual fixed-public/native QA (session67369) exits0:
 1 passed in1384.82s; SCRIPTED HTTP/corpus/supervision with14 physical evaluation
@@ -124,7 +130,7 @@ in the index and substantial manuscript. Historical studies are not pooled as
 independent replications. The earlier24-slot method pilot (12ties/12worse) is
 distinct from this corrected study (8ties/15worse/1null).
 
-## Remaining publication obligations
+## What remains before a submission-ready claim
 
 1. Resolve exact archive/fixture coverage and perform real selection-fixed
    evaluation with both frozen endpoint scopes, not selection after evaluation.
