@@ -1,7 +1,4 @@
-let language = 'en';
 let objective = 'content-utility';
-const translatable = [...document.querySelectorAll('[data-ja]')];
-for (const element of translatable) element.dataset.en = element.innerHTML;
 const methods = [
   {name:'Uniform priority',color:'#147d78'},
   {name:'Adaptive priority',color:'#866ca8'},
@@ -36,18 +33,9 @@ function chart() {
   });
   svg.push('</svg>');
   document.querySelector('#loss-chart').innerHTML=svg.join('');
-  const nullLabel = language==='ja'?'実行 null':'Execution null';
-  document.querySelector('#loss-table').innerHTML=`<table><caption>${language==='ja'?'各候補の損失（低い方が良い）':'Submitted losses (lower is better)'}</caption><thead><tr><th scope="col">Method</th><th scope="col">g0</th><th scope="col">g1</th><th scope="col">g2</th><th scope="col">g3</th></tr></thead><tbody>${data.map((row,index)=>`<tr><th scope="row">${methods[index].name}</th>${row.losses.map(value=>`<td>${value===null?nullLabel:fixed(value)}</td>`).join('')}</tr>`).join('')}<tr><th scope="row">Strong reference</th><td colspan="4">${fixed(reference)}</td></tr></tbody></table>`;
-  document.querySelector('#loss-definition').textContent = `${objective==='content-utility'?'Lᵤ = −U':'L꜀ = −U + 0.1 K_collected'} · ${language==='ja'?'低い方が良い':'lower is better'}`;
+  document.querySelector('#loss-table').innerHTML=`<table><caption>Submitted losses (lower is better)</caption><thead><tr><th scope="col">Method</th><th scope="col">g0</th><th scope="col">g1</th><th scope="col">g2</th><th scope="col">g3</th></tr></thead><tbody>${data.map((row,index)=>`<tr><th scope="row">${methods[index].name}</th>${row.losses.map(value=>`<td>${value===null?'Execution null':fixed(value)}</td>`).join('')}</tr>`).join('')}<tr><th scope="row">Strong reference</th><td colspan="4">${fixed(reference)}</td></tr></tbody></table>`;
+  document.querySelector('#loss-definition').textContent = `${objective==='content-utility'?'Lᵤ = −U':'L꜀ = −U + 0.1 K_collected'} · lower is better`;
 }
-document.querySelector('#language').addEventListener('click',()=>{
-  language=language==='en'?'ja':'en';
-  document.documentElement.lang=language;
-  for(const element of translatable) element.innerHTML=element.dataset[language];
-  document.querySelector('#language').textContent=language==='en'?'日本語':'English';
-  document.querySelector('#language').setAttribute('aria-label',language==='en'?'Switch to Japanese':'Switch to English');
-  chart();
-});
 document.querySelectorAll('[data-objective]').forEach(button=>button.addEventListener('click',()=>{
   objective=button.dataset.objective;
   document.querySelectorAll('[data-objective]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));

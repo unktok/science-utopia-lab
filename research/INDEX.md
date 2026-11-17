@@ -5,10 +5,14 @@ This page is navigation, not a chronological experiment transcript.
 Study-prefix descriptions below are retained milestones, not current process
 heartbeats; live counts and process states are in STATUS.
 
-The [public project page](https://science-utopia-lab.pages.dev/) is a bilingual
+The [public project page](https://science-utopia-lab.pages.dev/) is an English-language
 entry point to the current retrospective, figures, game recording, manuscript
 and code. See its [release record](results/cloudflare-project-page-release-v1.json).
 Research experiments remain paused; publishing the exhibit does not resume them.
+The [visual research essay](https://science-utopia-lab.pages.dev/story/) provides
+a narrative entry point with9 visual exhibits and interactive evidence views;
+its [release record](results/visual-research-story-v1.json) keeps empirical data,
+illustration and archived arithmetic separate.
 
 ## Current study and publication goal
 

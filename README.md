@@ -11,7 +11,7 @@ not substitutes for scientific evidence.
 
 **November17 retrospective:** experiments are paused at the user's request.
 The public [project page](https://science-utopia-lab.pages.dev/)
-(Cloudflare Pages, English/Japanese) gathers the research question,
+(Cloudflare Pages, English only) gathers the research question,
 implemented system, actual corrected search paths, limitations, game-interface
 video and117-page working manuscript. See [current status](research/STATUS.md)
 and the [public-release record](research/results/cloudflare-project-page-release-v1.json).
@@ -19,6 +19,12 @@ The earlier [owner-private preview record](research/results/project-page-retrosp
 remains historical. The GitHub repository is now public after its documented
 [security preflight](research/results/publication-security-preflight-v1.json).
 Older dated progress descriptions below are historical, not live heartbeats.
+
+Start with the [visual research essay](https://science-utopia-lab.pages.dev/story/):
+**What if we optimized the institutions of science?** Its9 visual exhibits
+include an interactive design-space sketch, original measured search paths,+a clearly marked archived-policy arithmetic explorer, and the game-interface
+recording. The [article source](project-page/public/story/index.html) and
+[release record](research/results/visual-research-story-v1.json) are tracked.
 
 ## Project page development
 
@@ -36,6 +42,8 @@ previews and PR comments are disabled. The existing private ChatGPT Sites
 preview is retained, but is not the canonical public page. On this macOS host,
 `PROJECT_PAGE_URL=https://science-utopia-lab.pages.dev/ node project-page/verify-browser.mjs`
 checks the public UI using installed Chrome without model calls.
+Add `--story` to check the visual essay. For a local preview, build first and
+run `node project-page/serve.mjs`; then open `http://127.0.0.1:4673/story/`.
 
 ## Start here
 

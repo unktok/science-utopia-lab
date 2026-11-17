@@ -17,7 +17,7 @@ a new successful loss. The exact supervisor/writer/child PIDs are verified absen
 No experiment is restarted by the retrospective project-page work.
 
 The [public Cloudflare project page](https://science-utopia-lab.pages.dev/)
-gathers the bilingual research atlas, existing game recording, concept figure,
+gathers the English-language research atlas, existing game recording, concept figure,
 actual24-slot loss paths and117-page working manuscript. The
 [public release](results/cloudflare-project-page-release-v1.json) follows the
 documented [GitHub publication preflight](results/publication-security-preflight-v1.json).
@@ -26,6 +26,15 @@ is preserved as history, not the canonical public URL.
 The page is an evidence exhibit, not a hosted experiment API or a main-track
 readiness claim. Its source now lives in this repository's `project-page/`;
 the historical scientific experiment checkouts remain untouched.
+
+The separate [visual research essay](https://science-utopia-lab.pages.dev/story/)
+presents the motivation, system-design freedoms, actual measured search,
+behavioral diagnosis, proxy-objective interpretation, game UI and scoped
+optimization methods. It is a retrospective, not a new scientific result.
+The [article release record](results/visual-research-story-v1.json) retains
+software and evidence checks. Both public pages are English only; the former
+language toggle and Japanese translations have been removed. Historical
+bilingual preview/release records stay unchanged.
 
 ## Goal and present answer
 
