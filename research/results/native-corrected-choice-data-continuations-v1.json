@@ -1,0 +1,48 @@
+{
+  "schema": "scienceutopia.native-corrected-choice-data-continuations.v1.documentary-record",
+  "recorded_date_UTC": "2026-11-17",
+  "source_commit": "fb87f6afc5f8bf9628f45999571b0aedb1b5a5eb",
+  "source_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-choice-data-v1-a1",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "preceding_readout_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "checks": {
+    "original_handle": 32471,
+    "passed": 91,
+    "failed": 0,
+    "seconds": 5.82,
+    "junit": "research/data/corrected-choice-data-continuations-v1/pytest.xml",
+    "junit_file_sha256": "5acdcfbd87badca77d7addc8bce40a9f6835425d96f30a27002b7139bda35e5e",
+    "scope": "Overlapping SCRIPTED continuation/guard/child-failure/shape and existing pure trajectory/content tests, not91 scientific runs or actual closed full-study exports."
+  },
+  "original_continuations": [
+    {
+      "kind": "loss-paths", "original_handle": 69103, "pid": 36585,
+      "started_utc": "2026-11-17T01:34:52.824420+00:00",
+      "output": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1/loss-paths",
+      "retained_started": "research/data/corrected-choice-data-continuations-v1/loss-paths-started.json",
+      "started_file_sha256": "4f5d7a3bff34a58519f9773dc809de1e78edd230f26b34461eb670550d2fcc9f"
+    },
+    {
+      "kind": "signed-content", "original_handle": 40520, "pid": 36607,
+      "started_utc": "2026-11-17T01:34:53.721949+00:00",
+      "output": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1/signed-content",
+      "retained_started": "research/data/corrected-choice-data-continuations-v1/signed-content-started.json",
+      "started_file_sha256": "ccceddc164928948775d736b729f7f0959b3ed154634086b0025a61a0c6c9e53"
+    }
+  ],
+  "status_at_recording": "live-waiting-for-original-paired-readouts-not-exported",
+  "maximum_wait_seconds": 86400,
+  "maximum_seconds_per_child_export": 1800,
+  "child_exports_per_kind": 2,
+  "new_model_calls_allowed": false,
+  "new_native_worlds_allowed": false,
+  "render_allowed": false,
+  "retry_failed_stage": false,
+  "restart_science": false,
+  "source_repair": false,
+  "selection_changed": false,
+  "loss_changed": false,
+  "actual_full_study_exports_complete": false,
+  "publication_ready": false,
+  "scope": "Exact fresh external destinations and normal original source/plan/readout closure required before data-only exports. Started headers and live process observations establish waiting, not successful analysis, new manuscript figures or a ready paper."
+}

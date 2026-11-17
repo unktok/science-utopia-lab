@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November17,2026 at01:10UTC / November17 10:10JST.
+Verified November17,2026 at01:54UTC / November17 10:54JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -40,21 +40,31 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 | Method / target | Own g0 | Own g1 | g2 / g3 |
 | --- | ---: | ---: | --- |
 | Uniform / U | -27.6667 | -28.3333 | g2 -27.6667 / g3 not dispatched |
-| Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 not dispatched |
-| Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 authoring/readiness |
+| Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 native running |
+| Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 -28.6667 |
 | Uniform / C | -9.6667 | -10.3333 | g2 -10.6667 / g3 -12.3333 |
 | Adaptive / C | -9.6667 | -12.6667 | g2 -11.6667 / g3 -12.6667 |
 | Free code/graph / C | -12.6667 | -12.6667 | g2 -12.6667 / g3 -12.6667 |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
-Twenty-one own slots have terminal outcomes:20 complete (13 worse/7 tied/0 better
-than their assigned reference) and1 execution null. The next free/U/g3 session
-has started; the writer charges each at dispatch, not
+Twenty-two own slots have terminal outcomes:21 complete (13 worse/8 tied/0 better
+than their assigned reference) and1 execution null. The next adaptive/U/g3
+world has started; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
 programs; uniform g1 is another initial random sample, not an adaptive move.
 Primary best known may remain a labeled reference; own-only selection is a
 separate scope. Final endpoints are not frozen.
+
+[Both four-step free-author cells are now terminal](results/native-corrected-choice-free-four-step-complete-v1.json):
+7complete/1execution-null,6ties/1worse/0better. The final U source has a different
+AST and executes in4 actual annual selection receipts/events, yet its179 full
+scientist input/choice path matches the measured priority-zero parent. Removing
+an inactive branch is not a useful new rule in this observed condition. All8
+closed author journals have now been read twice:112 completed actions/25 literal
+source edits,19 equal-AST/6 different-AST incremental changed-node rows,0 wire/
+schedule edits. This is not25 candidates or6 effective algorithms; full original
+native/effect/cost closure and the last two numeric outcomes remain separate.
 
 [Latest adaptive/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-c-outcome)
 completes at-11.6667, worse by1 than its own prior best and assigned reference.
@@ -129,16 +139,20 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 advances to final free/U/g3 after21 terminal own attempts; source/plan/settings unchanged |
+| Real scientific search | Original42803 executes adaptive/U/g3 after22 terminal own attempts; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |
 | All8 author visibility |3077 / PID37902 live from b020; awaits author analysis |
 | Native source/consumer/resource effects |21828 / PID39421 live from fa90; awaits paired closure |
-| Four-step figure data / signed content | Implemented/light checks; actual whole-study exports not yet run |
+| Four-step loss-path data |69103 / PID36585 live from isolated fb87 source; waits for original paired readouts, then two data-only exports |
+| Signed-content data |40520 / PID36607 live from fb87; same original closure dependency; no rendering/new inference |
 | Both-scope fixed evaluation | Implemented/light checks; full public native QA, strict unused inventory and real dispatch outstanding |
 
 Waiting readers do not generate new proposals/worlds or prove completion.
+The [two new data continuations](components/native-corrected-choice-data-continuations-v1.md)
+have91 overlapping SCRIPTED checks and actual retained waiting headers, not
+finished whole-study exports, new rendered figures or fixed scientific evaluation.
 Worktree isolation is not hardware isolation: do not add independent heavy
 Docker/native QA, embedding, PDF/render/video work during real inference.
 The [signed-content reader](components/native-corrected-choice-content-v1.md)

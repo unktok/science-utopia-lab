@@ -7,6 +7,23 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Both four-step free-author cells have all original outcomes](results/native-corrected-choice-free-four-step-complete-v1.json):
+  7complete/1execution-null,6ties/1worse/0better. The final U different-AST code
+  actually executes4 times but repeats all179 parent inputs/choices. Whole-study
+  counts22terminal/21complete/8ties/13worse; original adaptive/U/g3 runs.
+
+- [All8 original author journals now analyzed twice](results/native-author-literal-changes-all8-v1.json):
+  112 completed actions/25 literal edits;19 equal-AST and6 different-AST changed
+  node rows, not19/6 final algorithms or native effects. No new wire/schedule.
+  This journal-only result does not fill pending losses or close source-bound
+  native/effect/cost analyses. [Prepared fixed-QA command](publication/native-corrected-choice-fixed-qa-runbook-v1.md)
+  waits for a hardware window; it has not run or consumed scientific conditions.
+
+- [Whole-study data exports are now queued](components/native-corrected-choice-data-continuations-v1.md):
+  two isolated source-bound processes wait for normal original readouts, then
+  export paired six-path/all27-row data without rendering, inference or
+  reselection.91 overlapping SCRIPTED checks are not completed actual exports.
+
 - [Passive literal-change analysis](components/native-literal-change-observation-v1.md):
   eight saved native C/g2/g3 writes preserve source AST and other configuration;
   a real numeric parameter change remains visible despite equal AST. No new

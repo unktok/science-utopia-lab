@@ -83,3 +83,17 @@ this new diagnostic. Whether such passive feedback would help a designer
 implement its own proposal is an open prospective question, not an adopted
 follow-up, a demonstrated cause of failure or a measured improvement. The
 complete unchanged study's effects/costs still inform the next research choice.
+
+## Later complete author-journal coverage
+
+After the final U author explicitly finishes, the same public reader runs twice
+at cleanfb87f6af on **all8 sessions in original plan order** (original19930,
+both child exits0). The [exact report](../data/native-author-literal-changes-v1/all8-original-native-sessions.json)
+is byte-identical across executions; [receipt](../results/native-author-literal-changes-all8-v1.json).
+All112 original completed actions and25 edit attempts are covered. All25 edits
+have literal source/document changes; incremental changed-node rows have equal
+AST19 times and different AST6 times, with no connection/schedule edit. These
+are edit observations, not25 candidate worlds or6 useful invented algorithms.
+Thus the earlier two-session formatting-only finding is **not** generalized to
+all authors. The original outcome/cost/effect joins, especially the final U
+world, remain separate and are not completed by this journal-only report.

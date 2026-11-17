@@ -1209,3 +1209,65 @@ applied the numeric sealed-file checker and stopped before cache analysis
 contract and exact file/canonical bindings; it does not weaken the sealed
 checker, modify scientific logs or impute a failed loss. The original full cold
 chain remains necessary. No extra world, model/probe request or source runs.
+
+## All8 author journals and all free-native outcomes are now available
+
+At cleanfb87f6af the same passive public reader runs twice on all8 original
+author sessions in the original schedule order (original19930, both children
+exit0). Exact192,849-byte reports match: file
+3bb8da45d2a794c70067795ea88c72357558d955c0c5aa7698c4cf4267f49587,
+content7eb91527d399f70517d689bb115a570c2d2b845477c7cf142bde168bd2befa91.
+[All112 completed actions/25 edits](../results/native-author-literal-changes-all8-v1.json)
+are retained, with19 equal-AST/6 different-AST incremental changed-node rows
+and0 wire/schedule edits. The earlier two-session same-AST observation is not
+generalized to all authors or mistaken for25 programs/6 useful new algorithms.
+No author sees the new diagnostic and no original record is changed.
+
+The final U request08651fb7 passes fresh request-bound readiness (certificate
+contentcbfbb5a56e04a6cbc79e024f71b0bd1df3cd5c7b008ab3a15dfe589798d9d7ce,
+file2e9ae2a8df5d1e757dd174c64820bc6d572045c44997febb4b80be538499c7d0).
+Its14 operations include a rejected overlong actor-creation plan and one
+read rejected at the declared implementation checkpoint. No later accepted
+plan is invented from that prose. Two literal world.selection source writes
+and explicit finish produce actual candidate7190892a, version2550abba. The
+final code replaces conditional acceptance with constant acceptance while the
+current parent rule is already accept-all; other configuration/wires/schedules
+stay unchanged. Its AST differs, which alone does not establish an effect.
+
+By01:47:30UTC this original world completes atU loss-28.666666666666668,
+U28.666666666666668/T36/collected200/uncollected0: another reference tie.
+All24 original code bundles validate against source/candidate/run. Four exact
+selection receipts join bijectively to four committed native events, years1..4;
+the final checkpoint spec equals the actual candidate. Artifact SHA
+685e3a9c707d12cacc6c75ecf06145118782c075b6a40c7c756842cedbb64586,
+checkpoint filed92a872448bd443bd6764c113c61de25f53e65c367d9f3f3e0d9406de987c235.
+All179 complete scientist inputs/choices equal the measured priority-zero
+parent, with every original request/body hash checked and0 missing replies.
+Own provider bodies differ; this remains a scoped observed repeat, not global
+equivalence or whole-study cold proof. [Exact bindings/all8 free outcomes](../results/native-corrected-choice-free-four-step-complete-v1.json)
+include the unchanged original execution null and both external whole-state
+copies. Free search totals7complete/1null,6ties/1worse/0better. This is not a
+new invention, an isolated model-capacity diagnosis or a method ranking.
+
+At01:54UTC the whole study has22terminal/21complete/13worse/8ties/0better,
+with the original adaptive/U/g3 world active and final uniform/U/g3 remaining.
+All final banks/whole-study cold/effects/costs/fixed evaluation stay open.
+
+## Data-only continuations and next fixed-QA hardware window
+
+Newsourcefb87f6af passes91 overlapping SCRIPTED continuation/guard/child/shape/
+pure data checks in5.82seconds. Two original processes start from a dedicated
+clean detached reader:69103/PID36585 for six loss paths,40520/PID36607 for
+all27 signed-content rows. Both are observed live, waiting for normal original
+paired readouts. [Literal headers and dispatch receipt](../results/native-corrected-choice-data-continuations-v1.json)
+are retained. They will export twice without rendering, inference, source
+execution or reselection; a failed stage stops without restart or hidden retry.
+Started records/green unit checks are not completed full-study data exports.
+
+The [fixed-QA runbook](../publication/native-corrected-choice-fixed-qa-runbook-v1.md)
+binds the already-created cleanfb87 reader, exact existing workflow-plan hash,
+two verified-unused external output names and explicit software-only seeds/
+flags. It has not run. Recheck all paths/source and host-wide real inference
+after original normal closure, rather than starting heavy QA alongside models.
+The real15-label frozen bank/strict all-path unused scientific inventory and
+selection-fixed evaluation remain later stages, not supplied by this runbook.

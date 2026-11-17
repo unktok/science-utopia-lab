@@ -29,8 +29,9 @@
 [software QAを完了](research/results/native-corrected-choice-full-public-qa-v1.json)した。
 HTTP等はSCRIPTEDなので科学的な改善とは分ける。その後、別の固定sourceから
 [実モデル探索を一度だけ起動](research/results/native-corrected-choice-real-dispatch-v1.json)した。
-11月17日02:09JST時点で新しい実backend校正28件が通り、最初の対照世界を実行中。
-科学損失・改善はまだ未観測。終了後の二重監査・費用・全枠出力は読み取り専用で待機している。
+dispatch時点の履歴：11月17日02:09JSTには新しい実backend校正28件が通り、最初の対照世界を実行していた。
+その後、新しい自己候補の損失も実測されている。現在の終了数・損失・実行中プロセスは
+[STATUS](research/STATUS.md)を正本とし、上のdispatch時点の記述を現在の状態に流用しない。
 最新の確認済み統合PDFは[111ページの原稿記録](paper/integrated-priority-method-build-v1.json)
 と[PDF](output/pdf/science-utopia-lab-integrated-priority-method-working-paper.pdf)。
 以前の意味ある研究を保持し、元世界の全24候補・12固定選択・全8設計者操作／作用／可視性・
