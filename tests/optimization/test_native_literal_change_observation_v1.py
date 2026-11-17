@@ -43,6 +43,7 @@ def test_changed_source_text_can_have_the_same_AST_without_claiming_world_equiva
     assert row['standard_python_AST_equal'] and row['non_code_parameter_fields_changed'] == []
     assert row['before_source']['source_sha256'] != row['after_source']['source_sha256']
     assert 'not whole-program/world equivalence' in r['scope']
+    assert row['code_artifact_fields_except_source_changed'] == []
 
 
 def test_parameter_change_is_visible_even_when_the_source_AST_is_unchanged():
@@ -50,6 +51,22 @@ def test_parameter_change_is_visible_even_when_the_source_AST_is_unchanged():
     r = observe(a, b); row, = r['node_changes']
     assert row['standard_python_AST_equal'] and row['non_code_parameter_fields_changed'] == ['policy']
     assert not r['veto_on_finish'] and not r['changes_loss']
+
+
+@pytest.mark.parametrize('field', ['label', 'inputs', 'outputs', 'state_schema'])
+def test_artifact_interface_changes_are_not_hidden_by_equal_source_AST(field):
+    a = document(); b = deepcopy(a)
+    b['mechanisms'][0]['parameters']['code_artifact'][field] = 'SCRIPTED revised label' if field == 'label' else {'SCRIPTED': {}}
+    row, = observe(a, b)['node_changes']
+    assert row['standard_python_AST_equal'] is True
+    assert row['code_artifact_fields_except_source_changed'] == [field]
+
+
+def test_canonical_JSON_does_not_claim_to_observe_object_member_order():
+    a = document(); b = {k:a[k] for k in reversed(a)}
+    r = observe(a, b)
+    assert not r['literal_document_changed'] and r['node_change_count'] == 0
+    assert 'object-member order is not assessed' in r['scope']
 
 
 def test_actual_AST_change_is_not_an_improvement_or_validity_certificate():

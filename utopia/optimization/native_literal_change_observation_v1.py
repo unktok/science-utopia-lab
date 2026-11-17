@@ -85,7 +85,8 @@ def observe(before, after, *, maximum_node_rows=32):
         'other_root_fields_changed': None, 'mechanisms': None, 'connections': None, 'schedules': None,
         'new_model_calls': 0, 'new_native_worlds': 0, 'new_source_executions': 0,
         'source_repair': False, 'veto_on_finish': False, 'changes_loss': False, 'grants_world_authority': False,
-        'scope': 'Literal JSON/standard direct Python AST facts only. AST equality is not '
+        'scope': 'Canonical JSON/standard direct Python AST facts only. JSON object-member '
+            'order is not assessed; list order and literal source text are retained. AST equality is not '
             'whole-program/world equivalence; AST difference is not operative behavior or benefit. '
             'Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. '
             'List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. '
@@ -120,6 +121,12 @@ def observe(before, after, *, maximum_node_rows=32):
                 {k:v for k,v in pa.items() if k != 'code_artifact'},
                 {k:v for k,v in pb.items() if k != 'code_artifact'})
                 if isinstance(pa, dict) and isinstance(pb, dict) else None)
+            aa = pa.get('code_artifact') if isinstance(pa, dict) else None
+            ab = pb.get('code_artifact') if isinstance(pb, dict) else None
+            row['code_artifact_fields_except_source_changed'] = (changed_keys(
+                {k:v for k,v in aa.items() if k != 'source'},
+                {k:v for k,v in ab.items() if k != 'source'})
+                if isinstance(aa, dict) and isinstance(ab, dict) else None)
             ca, cb = python_source(a[key]), python_source(b[key])
             row.update(before_source=ca, after_source=cb,
                 standard_python_AST_equal=(ca['AST_sha256'] == cb['AST_sha256']
