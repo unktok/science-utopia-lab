@@ -63,6 +63,9 @@ after both commands exit. The [receipt](../results/native-author-literal-changes
 records sources, handles and exact file/content hashes. No diagnostic is thereby
 exposed to an author; eight edits in two sessions are not eight independent
 design histories or evidence of causal feedback benefit.
+After retention,27 overlapping report/control/hash/publication/navigation checks
+pass in6.29seconds at15fe3717; the separate [JUnit](../data/native-author-literal-changes-v1/retention.xml)
+does not replace or inflate the earlier70-case run.
 
 From a clean committed reader, use distinct fresh external outputs twice:
 

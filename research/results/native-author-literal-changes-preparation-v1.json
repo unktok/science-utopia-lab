@@ -35,6 +35,16 @@
   },
   "original_schema_coverage_failure_preserved_in": "research/results/native-literal-change-journal-replay-prototype-v1.json",
   "genuine_numeric_parameter_control": "research/results/native-literal-change-journal-replay-v1.json",
+  "post_retention_checks": {
+    "source_commit": "15fe3717206b4c4bcd8d3b43c3317c06a8ab692a",
+    "original_handle": 16321,
+    "passed": 27,
+    "failed": 0,
+    "seconds": 6.29,
+    "junit": "research/data/native-author-literal-changes-v1/retention.xml",
+    "junit_file_sha256": "f896b09a1bba3d72c08ffc6f16a7242d1a0bb2de4192b0ebd529b4cf0495bdde",
+    "scope": "Exact retained report/JUnit/control/hash and publication/navigation checks; overlapping earlier checks, not new science or causal evidence."
+  },
   "new_model_calls": 0,
   "new_native_worlds": 0,
   "new_probe_attempts": 0,
