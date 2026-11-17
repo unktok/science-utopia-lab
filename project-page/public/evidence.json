@@ -1,0 +1,23 @@
+{
+  "schema": "scienceutopia.project-page-evidence-projection.v1",
+  "scope": "Latest completed corrected development search; not held-out evaluation",
+  "source_commit": "94b5084c9020bca45a55a969c06776cefd05b182",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "source_record": "research/results/native-corrected-choice-search-closed-v1.json",
+  "source_data": "research/data/native-corrected-choice-search-v1/readout.json",
+  "reference_minima": {"content-utility": -28.666666666666668, "resource-aware-content": -12.666666666666668},
+  "paths": [
+    {"method":"uniform-priority","objective":"content-utility","losses":[-27.666666666666668,-28.333333333333332,-27.666666666666668,-28.333333333333332]},
+    {"method":"adaptive-priority","objective":"content-utility","losses":[-27.666666666666668,-25.666666666666668,-28.333333333333332,-26.666666666666668]},
+    {"method":"free-code-graph","objective":"content-utility","losses":[-7,null,-28.666666666666668,-28.666666666666668]},
+    {"method":"uniform-priority","objective":"resource-aware-content","losses":[-9.666666666666668,-10.333333333333332,-10.666666666666668,-12.333333333333332]},
+    {"method":"adaptive-priority","objective":"resource-aware-content","losses":[-9.666666666666668,-12.666666666666668,-11.666666666666668,-12.666666666666668]},
+    {"method":"free-code-graph","objective":"resource-aware-content","losses":[-12.666666666666668,-12.666666666666668,-12.666666666666668,-12.666666666666668]}
+  ],
+  "own_attempts": 24, "measured_own":23, "execution_nulls":1,
+  "better":0,"tied":8,"worse":15,
+  "independent_optimizer_histories_per_cell":1,
+  "held_out_evaluation":false,
+  "research_experiments":"paused by user",
+  "interrupted_followup_own_outcomes":0
+}

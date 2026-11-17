@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {root,validateEvidence,build} from './build.mjs';
+const projection=JSON.parse(await readFile(resolve(root,'public/evidence.json'),'utf8'));
+const readout=JSON.parse(await readFile(resolve(root,'..',projection.source_data),'utf8'));
+const closed=JSON.parse(await readFile(resolve(root,'..',projection.source_record),'utf8'));
+test('All24 plotted values and the actual null match the original evidence',()=>assert.equal(validateEvidence(projection,readout,closed),24));
+test('An altered loss is rejected',()=>{const changed=structuredClone(projection);changed.paths[0].losses[0]=0;assert.throws(()=>validateEvidence(changed,readout,closed));});
+test('Replacing a null with a numeric loss is rejected',()=>{const changed=structuredClone(projection);changed.paths[2].losses[1]=0;assert.throws(()=>validateEvidence(changed,readout,closed));});
+test('Duplicate paths cannot silently remove a method',()=>{const changed=structuredClone(projection);changed.paths[1]=structuredClone(changed.paths[0]);assert.throws(()=>validateEvidence(changed,readout,closed));});
+test('A false held-out claim is rejected',()=>{const changed=structuredClone(projection);changed.held_out_evaluation=true;assert.throws(()=>validateEvidence(changed,readout,closed));});
+test('Offline build verifies original assets, links and paper without inference',async()=>{const report=await build();assert.equal(report.status,'passed');assert.equal(report.verified_unchanged_assets,6);assert.equal(report.model_calls,0);});

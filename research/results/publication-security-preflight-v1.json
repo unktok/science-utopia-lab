@@ -1,0 +1,46 @@
+{
+  "schema": "scienceutopia.publication-security-preflight.v1",
+  "date": "2026-11-17",
+  "authorization": "User approved GitHub public release after preflight and migration of the project page to GitHub-managed Cloudflare Pages.",
+  "repository": "unktok/science-utopia-lab",
+  "checked_head_before_page_integration": "c7f8c636a35127bcfdae3d8fc9277ed863771e54",
+  "license_detected": "Apache-2.0",
+  "inherited_license_preserved": true,
+  "scanner": "gitleaks 8.30.1",
+  "history_scan": {
+    "scope": "All locally reachable refs via git log --all, including feature/proof branches, not only main",
+    "commits_scanned": 2152,
+    "bytes_scanned_approximately": 192099165,
+    "raw_findings": 2706,
+    "raw_rule": "generic-api-key",
+    "contextual_classification": {
+      "content_addressed_simulation_or_cache_keys": 2677,
+      "file_or_record_sha256": 24,
+      "literal_max_prompt_utf8_bytes_configuration_field": 5
+    },
+    "unresolved_findings": 0,
+    "method": "Reconstruct matches from exact Git blobs using redacted scanner templates and positions. Unique full-blob matches resolve multiline/shifted entries. Review simulation receipt consumers and literal configuration source; do not disable the generic rule or suppress all high-entropy strings.",
+    "raw_report_kept_out_of_git": true
+  },
+  "page_staged_scan": {
+    "scope": "New project-page source and configuration staged for Git",
+    "findings": 0,
+    "scanner_exit_code": 0
+  },
+  "other_checks": {
+    "tracked_env_private_key_credential_files": "None found in the explicit tracked filename inventory or matching path history",
+    "tracked_symlinks_or_submodules": 0,
+    "github_actions_runs_at_check": 0,
+    "wiki_enabled_at_check": false,
+    "raw_corpus_directory_tracked": false,
+    "raw_outputs_directory_tracked": false,
+    "page_tests": "6 passed; all24 original losses, preserved null, false held-out rejection and unchanged assets verified",
+    "page_external_runtime_services": "None; static exhibit, no model or experiment API"
+  },
+  "limitations": [
+    "Automated scanning and contextual review do not prove absence of every secret or personal datum.",
+    "Repository commits intentionally retain researcher names, author metadata, local paths, engineering records and earlier manuscripts; this is not an anonymous conference artifact.",
+    "The license check identifies and preserves the repository license and reviewed asset provenance; it is not an exhaustive legal clearance of every upstream dependency or scientific text.",
+    "No history rewriting, record deletion, credential revocation, model inference or scientific rerun was performed."
+  ]
+}
