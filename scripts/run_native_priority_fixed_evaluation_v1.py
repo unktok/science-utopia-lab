@@ -10,7 +10,8 @@ from pathlib import Path
 import subprocess
 
 from scripts.analyze_native_open_v7 import _inventory
-from scripts.native_benchmark_seed_usage import usage_inventory, software_fixture_policy, require_inventory_policy
+from scripts.native_benchmark_seed_usage import usage_inventory, software_fixture_policy as legacy_fixture_policy, require_inventory_policy
+from scripts import native_seed_coverage_v2 as coverage_v2
 from scripts.native_priority_fixed_bank_v1 import freeze_bank, planned_jobs
 from scripts.reports.native_priority_method_readout_v1 import collect, analyze, SCHEMA as READOUT_SCHEMA
 from scripts.run_native_objective_fixed_evaluation_v1 import run as run_shared
@@ -33,6 +34,10 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = 'scienceutopia.native-priority-fixed-evaluation.v1'
 PROTOCOL = 'research/protocols/campaigns/native-priority-fixed-evaluation-v1.md'
 SEEDS = [83003, 83011]
+
+
+def software_fixture_policy(policy):
+    return coverage_v2.validate(policy) if policy.get('schema') == coverage_v2.POLICY else legacy_fixture_policy(policy)
 
 
 def profile_contract(profile):
@@ -143,8 +148,17 @@ def build_plan(original, audit, bank, *, source, origin, usages, observer_backen
             or bank['origin_selection_content_sha256'] != audit['selection']['content_sha256']
             or not usages or len({u['root'] for u in usages}) != len(usages)):
         raise ValueError('exact source, origin policy bank and explicit unique seed roots required')
+    new_coverage = software_exclusions is not None and software_exclusions.get('schema') == coverage_v2.POLICY
+    if new_coverage:
+        if profile != 'corrected-choice-v1' or software_exclusions['seeds'] != SEEDS:
+            raise ValueError('prospective v2 coverage only for corrected fixed conditions')
+        coverage_v2.require_all(usages, software_exclusions)
     for u in usages:
         checked(u)
+        if new_coverage:
+            if u['schema'] != coverage_v2.SCHEMA or u['scientific_prior_matching_runs']:
+                raise ValueError('exact v5 scientific unused-condition projection required')
+            continue
         if (u['schema'] != 'scienceutopia.native-benchmark-seed-usage.v4' or not u['strict_path_coverage']
                 or not u['valid'] or u['errors'] or u['prior_matching_runs'] or u['seeds'] != SEEDS
                 or u['excluded_software_verification_paths']):
@@ -206,6 +220,8 @@ def require_plan(root, *, profile='priority-v1'):
 
 
 def strict_inventory(root, seeds, policy=None):
+    if policy is not None and policy.get('schema') == coverage_v2.POLICY:
+        return coverage_v2.inventory(root, seeds, policy)
     return usage_inventory(root, seeds, strict_paths=True,
         **({} if policy is None else {'software_exclusions': policy}))
 
