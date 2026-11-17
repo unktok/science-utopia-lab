@@ -11,19 +11,30 @@ def test_first_integrated_pdf_pointer_matches_the_latest_closed_receipt():
     from utopia.optimization.native_numeric_designer import checked
     text=(ROOT/'paper/README.md').read_text()
     paths=re.findall(r'\]\((\.\./output/pdf/[^)]+\.pdf)\)',text)
-    receipt=checked(json.loads((ROOT/'paper/integrated-priority-method-build-v1.json').read_text()))
+    receipt=checked(json.loads((ROOT/'paper/integrated-corrected-choice-build-v1.json').read_text()))
     first=(ROOT/'paper'/paths[0]).resolve()
     assert first==ROOT/receipt['pdf']
     assert hashlib.sha256(first.read_bytes()).hexdigest()==receipt['pdf_sha256']
-    assert f"{receipt['pages']}-page integrated draft" in text
-    assert f"{receipt['figures']} figures/{receipt['tables']} tables/{receipt['cited_references']}" in text
+    assert f"Current reviewed{receipt['pages']}-page integrated working paper" in text
+    current=text.split('## Historical post-artifact research status:',1)[0]
+    normalized=' '.join(current.split())
+    assert f"{receipt['figures']} figures,{receipt['tables']} tables and{receipt['cited_references']} references" in normalized
     assert not receipt['publication_ready']
-    assert receipt['new_model_calls']==receipt['new_native_worlds']==0
+    assert receipt['new_real_model_calls']==receipt['new_scientific_worlds']==0
+    assert not receipt['latest_minimal_source_rebuild_verified']
+    assert 'not a focused anonymous submission' in current
+    assert 'unused-condition evaluation' in current
+    assert receipt['source_commit'][:8] in current
+
+
+def test_historical111_page_pdf_keeps_its_literal_identity_and_limits():
+    from utopia.optimization.native_numeric_designer import checked
+    receipt=checked(json.loads((ROOT/'paper/integrated-priority-method-build-v1.json').read_text()))
+    assert hashlib.sha256((ROOT/receipt['pdf']).read_bytes()).hexdigest()==receipt['pdf_sha256']
+    assert receipt['pages']==111 and receipt['visual_review']['all111_layouts_reviewed']
+    assert not receipt['publication_ready']
     assert not receipt['minimal_source_subset_rebuild_verified']
     assert not receipt['corrected_real_model_readiness_proven']
-    current=text.split('## Current111-page revised working paper',1)[0]
-    assert 'it does not contain' in current and 'ongoing corrected four-step study' in current
-    assert receipt['source_commit'][:8] in text
 
 
 def test_historical_topic_paper_preserves_its_original_identity_and_scientific_scope():

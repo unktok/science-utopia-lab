@@ -10,6 +10,7 @@ native-input and visibility evidence; content support and physical costs.
 There are54 figures,56 tables and32 references. Both final cached builds have
 matching text/logs/all117 page images; all layouts and new section91-96 details
 have been reviewed. Earlier meaningful tracks and older PDFs are preserved.
+The manuscript input source is ``84c87066`` (full commit in the build record).
 This is not a focused anonymous submission, useful-invention claim, real new
 unused-condition evaluation or publication-ready research package. A new
 minimal-input rebuild remains unverified. [STATUS](../research/STATUS.md) is current.
