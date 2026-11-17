@@ -96,7 +96,10 @@ def test_actual_cold_unusedness_boundary_reconstructs_metadata_not_just_filtered
     root = tmp_path/'evaluation'
     original = deepcopy(receipt)
     if corruption == 'raw-binding':
-        receipt['raw_inventory']['bindings'][0]['binding']['model'] = 'REAL-MODEL'
+        raw_receipt = receipt['raw_inventory']
+        raw_receipt['bindings'][0].update(model='REAL-MODEL', binding_sha256='0'*64)
+        raw_receipt['prior_matching_runs'] = deepcopy(raw_receipt['bindings'])
+        raw_receipt['content_sha256'] = digest({k:v for k,v in raw_receipt.items() if k!='content_sha256'})
     elif corruption == 'projection': receipt['prior_matching_runs'] = []
     if corruption in ('raw-binding', 'projection'):
         receipt['content_sha256'] = digest({k:v for k,v in receipt.items() if k!='content_sha256'})
