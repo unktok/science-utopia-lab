@@ -7,6 +7,11 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [All six three-proposal paths are terminal](logbook/2026-11-17-corrected-first-own-outcome.md#third-free-c-outcome-repeats-the-measured-parent):
+  18terminal/19started,17complete/1execution-null,0better/5ties/12worse. Free/C/g2
+  ties the reference with179 same inputs/choices and four actual agenda calls;
+  its planned parameter change is not implemented. Free/C/g3 readiness begins.
+
 - [Third adaptive C outcome](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-c-outcome):
   loss-11.6667, worse by1 than the own prior best/reference.183 complete replies
   and one exact typed tell verify.17terminal/18started; free/C/g2 readiness begins.

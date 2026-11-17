@@ -1017,3 +1017,76 @@ implement prose, impose novelty/merit gates, require a change, or replace loss.
 This is a conditional follow-up possibility, not an adopted protocol/dispatch
 or a claim that syntax differences cause scientific improvement. Read the
 complete observed effects and costs before choosing the next contrast.
+
+## Third free C outcome repeats the measured parent
+
+At00:13:57UTC free/C/g2 completes at-12.666666666666668,
+U28.666666666666668/T36/collected160/uncollected40: a reference tie, not a new
+best. The observation canonical SHA is
+85a238bafbe8250e460ec48f9fcd277e11afe47734f44bc8c90667b892245521,
+record20880d6d53ba659da361feccb5bab57b64ddd8aea788cd14f9168587a00d124f.
+The prior submitted program/intent gap remains literal; no repair or refill.
+
+All24 original code-context bundles validate. Four exact agenda-artifact
+receipts join bijectively to four committed generated.code_executed events
+for years1..4 by image/artifact/context/result hashes. The artifact SHA is
+ecda64e767ee12ab8edc63d698d75bef35555248c41ebad90a5adaaa0c17dc92.
+The final portable checkpoint spec equals the recorded candidate exactly;
+checkpoint file SHAe912d5f8901d184c8a141f2a3c6a6b8b56f1a38dd3f981047e6c3f084ee7884f.
+Thus the formatting-only code is actually invoked, not silently discarded.
+The plan's candidate_policy remains unimplemented; invocation is not novelty.
+
+All179 literal scientist inputs and choices equal the measured terminal-priority-zero
+parent. Both complete caches/body hashes verify. Input sequence
+6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4,
+choicesce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2,
+own body sequencefc54241c877a7b27ab72101ad415f4f69589d6524b31a3684bc1ccdd21dbcc39,
+parent body sequence694d34ad6dcc11342664e79b0775d6ed39310a9874aa13cc3957874f7e3d003d.
+Provider bodies differ. Exact observed input/choice equality is not universal
+policy equivalence, a new population, causal feedback benefit or full cold proof.
+
+An exact5,033,559-byte three-record state/pendingNone snapshot is retained
+outside the scientific source at exports/native-corrected-choice-search-v1-a1/
+milestones/free-cost-g2/native-adaptive-state.json (under the project's sibling
+science-utopia-lab-exports directory), file SHA
+a5bb676a22b2396da079134d7f173d163716351e4bd6bed1db53321ae33bbca1.
+All six histories now have their first three terminal attempts:18terminal,
+17complete/12worse/5ties/0better and1execution-null. Nineteen slots are charged;
+free/C/g3 starts unchanged at00:13:57UTC, not a frozen final endpoint.
+
+By00:23UTC its actual requeste6d3e7de03db65bf336b0a4f3e5b2bdd3c3bad789ac6b343d387ddc46cfc4ee0
+passes fresh29-control readiness (certificate content
+f785adbe0aa0beff87437a072c7e4a164b2c1cfe071d4ee120f5f9f88b605cb6)
+and production begins. No g3 submission or loss is inferred. Original writer,
+supervisor and all five waiting analysis processes remain live.
+
+## Read-only111-page comparison: actual control catches a relative-path defect
+
+A new data-only comparator checks exact staged inputs/literal dependencies,
+existing text/bbox/all111 page images against the unchanged reviewed receipt.
+It does not run TeX/Poppler or create a PDF and deliberately leaves compiler,
+PDF-to-text/render binding and fresh visual-review verification false.
+Copying old artifacts can pass comparison; it is not evidence of a fresh build.
+
+The first actual historical control at sourcef8dd5c65/handle20727 exits1:
+relative build roots reach the literal file guard as relative Paths, while
+resolved artifact paths are absolute. The earlier23 passing absolute-fixture
+checks miss this real CLI case. This is a new comparator defect, not a failed
+scientific candidate, missing original PDF or reason to restart the study.
+Its failure/error/source are [retained explicitly](../results/priority-subset-comparison-preparation-v1.json).
+
+The fix at5725b3fa resolves directory roots while preserving explicit file-
+symlink rejection. Relative default/separate extraction paths gain regression
+cases.26 post-commit light checks pass in1.28seconds, including output guards,
+source/artifact mutation, missing/changed/extra page images and non-execution
+evidence boundaries. Both pre-fix and post-fix JUnits remain retained.
+
+The separately named actual control35657 exits0 against existing full-build a6,
+its old text/bbox/pages and the exact86-file staged subset:83 literal inputs,
+111 page images,51,578 complete in-page word tags and supplied original PDF
+binary all match the original receipt. The sealed control report is copied
+literally after command exit, not resealed through orchestration. This is an
+actual read-only old-artifact comparison, **not** a new minimal-subset compiler/
+render run, new visual inspection, independent numerical reproduction, a PDF
+containing the corrected study or a submission-ready result. Those outstanding
+requirements remain unchanged; no heavy graphics/inference is added.

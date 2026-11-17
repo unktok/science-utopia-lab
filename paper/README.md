@@ -80,7 +80,9 @@ about inputenc and two h-to-ht float changes are explicitly retained.
 The historical104-page artifact and receipt remain unchanged. The111-page
 [86-file minimal-source subset](../research/results/integrated-priority-rebuild-subset-preparation-v1.json)
 now stages from clean2c6773f9 with38 source-only checks; its actual PDF rebuild
-is not yet verified. Old84-file staging and100-page reconstruction do not prove
+is not yet verified. A [data-only comparison control](../research/results/priority-subset-comparison-preparation-v1.json)
+matches the previously saved full-build artifacts, not a new subset build or
+fresh visual review. Old84-file staging and100-page reconstruction do not prove
 it. This is not a cache-free clean-machine
 build, independent scientific replication, anonymous/venue release clearance
 or a publication-ready main-track finding. The ongoing corrected search,

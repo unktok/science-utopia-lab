@@ -1,0 +1,53 @@
+{
+  "observed_utc": "2026-11-17T00:21:52.400157+00:00",
+  "comparison_source_commit": "5725b3fa50e0de540502c43408666965af175ad7",
+  "failed_actual_control": {
+    "original_handle": 20727,
+    "exit_code": 1,
+    "source_commit": "f8dd5c65b14cadefc6af9822cc9c697399f48830",
+    "error": "ValueError: missing, linked or outside-root allowlisted file: integrated.pdf",
+    "cause": "Relative build root was compared against a resolved absolute artifact path. Absolute fixture roots did not cover the real CLI case.",
+    "report_written": false,
+    "old_artifacts_or_scientific_run_changed": false
+  },
+  "corrected_actual_control": {
+    "original_handle": 35657,
+    "exit_code": 0,
+    "report": "research/data/priority-artifact-comparison-v1/historical-full-build-control.json",
+    "report_file_sha256": "4b843f3421696f652ab237b12b6b005568dda6ba72688755e5555e5edbaf13cc",
+    "report_content_sha256": "0e95e19cc8c03c0277992e3d6d2b260c68da1fc6bf8fd5e2eee9b77707691312",
+    "input_files": 86,
+    "literal_dependencies": 83,
+    "pages": 111,
+    "word_tags": 51578,
+    "artifact_comparison_passed": true,
+    "supplied_historical_PDF_binary_matches_reference": true,
+    "scope": "Existing reviewed full-build a6 with its original saved text/bbox/pages, compared to the exact86-file staged inputs. Not a new minimal-subset build, extraction/render run or fresh visual review."
+  },
+  "checks": [
+    {
+      "original_handle": 26512,
+      "tests": 23,
+      "file": "research/data/priority-artifact-comparison-v1/before-relative-fix.xml",
+      "file_sha256": "6f0cef049b9b7a55302d1c713a675ff2d2f8231095ba9067bc350436238d1a68",
+      "scope": "Pre-fix absolute-fixture checks; they did not catch the actual relative CLI path problem."
+    },
+    {
+      "original_handle": 11858,
+      "tests": 26,
+      "file": "research/data/priority-artifact-comparison-v1/after-relative-fix.xml",
+      "file_sha256": "559acd280ed96192488ffb758b9535d14fa70b89d6bbcbfc1e4b516c6d99ee91",
+      "seconds": 1.28,
+      "scope": "Post-commit source5725b3fa; includes relative/default/separate extraction path and file-symlink guard regression, output guards, mutation, all-page corruption, and explicit non-execution evidence boundaries."
+    }
+  ],
+  "check_invocations_overlap": true,
+  "new_PDF_compile_or_render": false,
+  "fresh_visual_review_complete": false,
+  "minimal_subset_rebuild_execution_verified": false,
+  "numerical_reproduction_verified": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "publication_ready": false,
+  "schema": "scienceutopia.priority-subset-comparison-preparation.v1.documentary-record"
+}

@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November17,2026 at00:06UTC / November17 09:06JST.
+Verified November17,2026 at00:23UTC / November17 09:23JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -44,12 +44,12 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 | Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 not dispatched |
 | Uniform / C | -9.6667 | -10.3333 | g2 -10.6667 / g3 not dispatched |
 | Adaptive / C | -9.6667 | -12.6667 | g2 -11.6667 / g3 not dispatched |
-| Free code/graph / C | -12.6667 | -12.6667 | g2 native running / g3 not dispatched |
+| Free code/graph / C | -12.6667 | -12.6667 | g2 -12.6667 / g3 authoring |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
-Seventeen own slots have terminal outcomes:16 complete (12 worse/4 tied/0 better
-than their assigned reference) and1 execution null. Eighteen slots have started,
-including free/C/g2; the writer charges each at dispatch, not
+Eighteen own slots have terminal outcomes:17 complete (12 worse/5 tied/0 better
+than their assigned reference) and1 execution null. Nineteen slots have started,
+including free/C/g3; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
 programs; uniform g1 is another initial random sample, not an adaptive move.
@@ -60,9 +60,11 @@ separate scope. Final endpoints are not frozen.
 completes at-11.6667, worse by1 than its own prior best and assigned reference.
 All183 replies/body hashes and its one typed tell verify. Free/C/g2 passes
 fresh29-control readiness and explicitly submits after14 actions/0 rejections.
-Its native world starts, but the core-only plan is not implemented: five code
-writes preserve the parent's AST, and the final policy stays core-plus-related.
-This is a submitted/executing world, not a completed loss or useful invention.
+Its native world completes at-12.6667, tying the reference. The core-only plan
+is not implemented: five code writes preserve the parent's AST, and the final
+policy stays core-plus-related. Four actual annual agenda receipts/events join
+exactly, with179 complete inputs/choices equal to the parent. This is operative
+formatting-only code, not a useful new institution or reference improvement.
 
 [Latest uniform/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-c-outcome)
 completes at-10.6667, improving its previous own best by about1/3 but staying2
@@ -113,7 +115,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 is executing free/C/g2; source/plan/settings unchanged |
+| Real scientific search | Original42803 is authoring free/C/g3 after fresh29-control readiness; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |
@@ -152,6 +154,10 @@ PDF proof, full corrected-result integration or scientific/claim validation.
 The unchanged reviewed111-page artifact now has [actual86-file input staging](results/integrated-priority-rebuild-subset-preparation-v1.json)
 from clean2c6773f9, with38 source-only checks and83 literal dependencies. Its
 minimal-input PDF rebuild/render still waits; earlier proofs are not reused.
+The [new artifact-comparison preparation](results/priority-subset-comparison-preparation-v1.json)
+retains a real relative-path failure, its fix/26 light checks and a successful
+read-only historical full-build control. Matching old files/pages is explicitly
+not proof that a new subset compiler/render ran or a fresh visual review passed.
 
 Earlier meaningful parameter/structure/workflow/estimator/game studies remain
 in the index and manuscript. The [old24-slot native method pilot](results/native-priority-method-comparison-closed-v1.json)

@@ -20,6 +20,32 @@ untrusted Tectonic, then compare extracted text and all111 page images to the
 reviewed receipt. Do not transplant an earlier100/104-page proof or equate file
 copies with a new PDF, independent scientific reproduction or venue readiness.
 
+The [read-only artifact comparator](../scripts/reports/compare_integrated_priority_subset_v1.py)
+has [26 light checks and an actual historical control](../research/results/priority-subset-comparison-preparation-v1.json).
+The first real control exposes a relative-path bug missed by absolute fixtures;
+that failed attempt is retained. The corrected control compares the existing
+full-build a6 PDF/text/bbox/all111 page images to the original receipt and86
+staged inputs. It compiles/renders nothing and does not prove a new subset
+reconstruction. Exact byte/image agreement cannot itself authenticate compiler,
+extraction or rendering execution, or a fresh visual review.
+
+After an actual subset build/extraction/render has its own retained commands
+and exit evidence, run from a clean committed research checkout with the
+historical Git objects, not from the86-file subset:
+
+```text
+<approved-project-python> -B -m scripts.reports.compare_integrated_priority_subset_v1 \
+  --subset <frozen-subset> --build <actual-build-directory> \
+  --renders <actual-render-directory> --output <fresh-external-comparison.json>
+```
+
+The default extraction files are integrated.txt/bbox.html in the build directory;
+explicit --text/--bbox paths support separately retained original extraction
+outputs. The comparison does not invoke TeX/Poppler or create a PDF, and keeps
+execution/visual-review verification false. Those require the separate actual
+command/exit provenance and fresh PNG inspection; never override the flags just
+because a file comparison passes. Real build/render still waits for inference.
+
 ## Preserved104-page source-information working manuscript
 
 The [current reviewed receipt](../paper/integrated-consumer-source-build-v1.json)
