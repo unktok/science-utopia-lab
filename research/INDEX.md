@@ -7,6 +7,14 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Complete corrected24-slot study](results/native-corrected-choice-search-closed-v1.json):
+  original supervisor and all7 paired analysis chains exit0.23 complete/1 null,
+  0better/8ties/15worse; all6 primary endpoints retain supplied references.
+  Both frozen endpoint scopes, complete paths, content and physical costs are
+  retained. Actual fixed-public/native SCRIPTED QA passes; real unused-condition
+  evaluation has not started. [STATUS](STATUS.md) is the authoritative current
+  view; all prefix/process descriptions below are dated historical milestones.
+
 - [Both four-step free-author cells have all original outcomes](results/native-corrected-choice-free-four-step-complete-v1.json):
   7complete/1execution-null,6ties/1worse/0better. The final U different-AST code
   actually executes4 times but repeats all179 parent inputs/choices. Whole-study
