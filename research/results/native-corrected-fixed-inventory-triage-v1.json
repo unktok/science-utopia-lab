@@ -1,0 +1,310 @@
+{
+  "schema": "scienceutopia.corrected-fixed-unused-condition-triage.v1",
+  "recorded_utc": "2026-11-17T03:57:08.730409+00:00",
+  "source_commit": "a8f331f30e7364e49c42d460d281a77bd3973e57",
+  "inventory_session": 5910,
+  "inventory_exit_code": 0,
+  "summary_file": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-unused-preflight-v1-a3/summary.json",
+  "summary_file_sha256": "6014f977dc7e49f2a8ac1d0a99c8ae037577ec252fd488a81b117d267abfd9dc",
+  "summary_content_sha256": "15444920fb8466d773b243c334e517cb6b0bd1d26d050640e409774b0017a51b",
+  "roots": 284,
+  "valid_roots": 277,
+  "covered_internal_directory_aliases": 4924,
+  "error_counts": {
+    "DatabaseError: file is not a database": 68,
+    "OperationalError: no such table: metadata": 97,
+    "directory symlink coverage unresolved; inventory its target as an explicit root": 4
+  },
+  "matching_binding_classes": {
+    "('SCRIPTED', 'SCRIPTED', 83003)": 39,
+    "('SCRIPTED', 'SCRIPTED', 83011)": 1
+  },
+  "all_matching_databases_contain_only_a_metadata_table": true,
+  "all_matching_bindings_are_exact_SCRIPTED_fixture_values": true,
+  "matching_database_file_hash_counts": {
+    "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8": 39,
+    "8016eb1a8432462c5a5540f88c552d3cc2936946d1e5336ac609f51a2390d3d7": 1
+  },
+  "matching_files": [
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_all_metadata_journals_sca0/software-verification/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_all_metadata_journals_sca1/pytest-actual/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_all_metadata_journals_sca2/outer/verification-inner/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_internal_alias_is_covered2/physical/nested/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_internal_alias_is_covered3/physical/nested/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_link_cycle_adds_no_hidden0/elsewhere/responses.sqlite",
+      "file_sha256": "8016eb1a8432462c5a5540f88c552d3cc2936946d1e5336ac609f51a2390d3d7",
+      "binding_sha256": "1fa363a68e354990cb55bbbfb0dbf5ff224940213ce4ea24ff8e64afbbebb9d9",
+      "seed": 83011
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_link_cycle_adds_no_hidden0/root/physical/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_public_prepare_never_call1/usage/pytest-real/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_public_prepare_preserves_1/strict-root/pytest-real/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_strict_cannot_exclude_rea0/pytest-actual/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_strict_unresolved_coverag0/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_strict_unresolved_coverag0/scan/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_strict_unresolved_coverag1/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_strict_unresolved_coverag2/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a1/test_all_metadata_journals_sca0/software-verification/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a1/test_all_metadata_journals_sca1/pytest-actual/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a1/test_all_metadata_journals_sca2/outer/verification-inner/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a1/test_strict_cannot_exclude_rea0/pytest-actual/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a1/test_strict_unresolved_coverag0/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a1/test_strict_unresolved_coverag0/scan/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a1/test_strict_unresolved_coverag1/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a1/test_strict_unresolved_coverag2/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_all_metadata_journals_sca0/software-verification/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_all_metadata_journals_sca1/pytest-actual/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_all_metadata_journals_sca2/outer/verification-inner/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_public_prepare_preserves_1/strict-root/pytest-real/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_strict_cannot_exclude_rea0/pytest-actual/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_strict_unresolved_coverag0/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_strict_unresolved_coverag0/scan/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_strict_unresolved_coverag1/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-evaluation-boundary-v1-a2/test_strict_unresolved_coverag2/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-readout-boundary-regression-v1-a1/test_public_prepare_preserves_1/strict-root/pytest-real/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-strict-seeds-v1-a1/test_all_metadata_journals_sca0/software-verification/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-strict-seeds-v1-a1/test_all_metadata_journals_sca1/pytest-actual/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-strict-seeds-v1-a1/test_all_metadata_journals_sca2/outer/verification-inner/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-strict-seeds-v1-a1/test_strict_cannot_exclude_rea0/pytest-actual/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-strict-seeds-v1-a1/test_strict_unresolved_coverag0/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-strict-seeds-v1-a1/test_strict_unresolved_coverag0/scan/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-strict-seeds-v1-a1/test_strict_unresolved_coverag1/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-strict-seeds-v1-a1/test_strict_unresolved_coverag2/other/responses.sqlite",
+      "file_sha256": "bae016bbd4b686537091357bb158649b6c7874ca44aaa22dc8d7a479cccf34e8",
+      "binding_sha256": "756244dfde6a9bb39d6db1d951e735edda9dbfc2c38f48d7fbd1ebb21f472a11",
+      "seed": 83003
+    }
+  ],
+  "unresolved_external_links": [
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-seed-alias-coverage-check-v1-a1/tmp/test_new_profile_public_prefli3/alias",
+      "target": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1"
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-public-preflight-v1-a1/test_invalid_destination_stops3/alias",
+      "target": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1"
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-public-preflight-v1-a3/test_invalid_destination_stops3/alias",
+      "target": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1"
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1/outputs/priority-fixed-public-preflight-v1-a2/test_invalid_destination_stops3/alias",
+      "target": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-priority-search-v1"
+    }
+  ],
+  "alias_fix": {
+    "module": "scripts/native_benchmark_seed_usage.py",
+    "file_sha256": "989458fa4f4107f922cddd2e25b130ef51ec2f9c03f9bcbbd98f099e7dd641cc",
+    "contract": "Only an internal alias whose physical target is independently enumerated by this same root traversal is covered. Metadata matches, external links and unknown stores still stop; no directory-name exclusions."
+  },
+  "QA": {
+    "session": 98863,
+    "exit_code": 0,
+    "tests": 64,
+    "seconds": 45.63,
+    "junit_file_sha256": "fde3953062f20ddac90da036004f3fec8cc7b89f05d9d9286ac4466188c7dcaf",
+    "scope": "SCRIPTED strict-inventory/fixture/fixed-plan/public-preflight tests, not new scientific worlds."
+  },
+  "prospective_resolution_not_yet_implemented": "Resolve the four literal source-checkout aliases through an explicit complete root set. Positively bind the two exact metadata-only SCRIPTED fixture shapes and each remaining non-production store to inspected file/source provenance, retaining metadata rows rather than pretending they never existed. Any scientific-profile metadata match or unclassified/changed file still stops. This needs a declared prospective coverage contract and prepare/dispatch regression; current v4 is not weakened or silently waived.",
+  "scientific_evaluation_prepared": false,
+  "scientific_evaluation_dispatched": false,
+  "seeds_changed": false,
+  "metadata_journals_excluded": false,
+  "new_model_calls": 0,
+  "publication_ready": false,
+  "scope": "Read-only triage of a new same284-root scan. Additional software tests explain why metadata fixtures rose from26 to40; this is not evidence of new real-world seed consumption. All observed matching bindings are SCRIPTED, but remaining errors prevent a scientific unusedness declaration.",
+  "content_sha256": "82ec69a47b8bbec82049789eae36059a15973eee7941b102044eedb7178813a6"
+}

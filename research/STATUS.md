@@ -110,6 +110,18 @@ unusedness certificate. No error is hidden and no seed is silently changed.
 Exact fixture provenance and target coverage must be reconciled before real
 prepare/dispatch, with rechecks under the declared writer locks.
 
+The [subsequent alias-coverage repair and actual rerun](results/native-corrected-fixed-inventory-triage-v1.json)
+independently enumerate each internal physical target instead of rejecting
+already covered aliases.64 SCRIPTED regressions pass. The same284-root scan
+now records4,924 covered internal aliases,277 valid roots,169 remaining errors
+(97 metadata-less stores,68 non-database files,4 external source-checkout links)
+and40 metadata matches. All40 have only a metadata table and the exact SCRIPTED
+binding, across two file hashes;39 use83003 and1 uses83011. Newly run software
+tests account for the changed fixture counts, not real research worlds.
+No metadata journal has been excluded or seed silently switched. Positive
+fixture provenance and explicit external-target coverage remain unresolved;
+the scientific evaluation is still not prepared or dispatched.
+
 **No real scientific inference or analysis waiter from this study remains
 running. No real selection-fixed evaluation has been prepared or dispatched.**
 The next step is not to claim that waiting continues: finish coverage resolution,
