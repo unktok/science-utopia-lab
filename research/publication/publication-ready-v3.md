@@ -7,6 +7,18 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November17 UTC追記：[修正後24枠の元実験と七系統の二重解析](../results/native-corrected-choice-search-closed-v1.json)
+が正常閉鎖した。23完走／1実行null、0改善／8同点／15悪化。全6primary選択は既知対照を返す。
+実応答・実行・損失の記録は保持し、新配線や有用な制度発明とはしない。固定評価経路の
+実native software QAはSCRIPTED応答で14物理world／30論理行を完走したが、実LLM未使用条件評価は未着手。
+厳密inventoryでテストmetadata26件とsymlink／fixtureエラーを検出したため未使用を宣言していない。
+[117頁の統合改訂稿](../../paper/integrated-corrected-choice-build-v1.json)は全24行・固定選択・図・費用・
+作用分析まで含み、54図／56表／32文献、二重cached buildと全117頁画像一致／紙面確認を完了した。
+旧111頁稿は保存し、新版の最小source実再構築、重要な主張と独立証拠、焦点ある主稿、最終投稿判断は残る。
+観測済みU/K支持上では強い既知対照が全23自己点を弱く支配し、非負cost重みの再集計だけでは新優位を示せない。
+これは全policy最適性ではなく、次の実効的な新制度探索を設計するための診断である。
+R1/R4/R5は部分達成、R2/R3/R6は未達。以下の以前の時刻付き記述は履歴である。
+
 November17 JST更新：[修正後実モデル3形状の技術検証](../results/native-corrected-author-assay-closed-v1.json)
 は85校正／35自由操作、全3明示提出で正常閉鎖し、二重cold／readoutも一致した。
 実測済みの新しい科学損失・有用な制度発明ではない。新たなパラメータ文脈の部品検証も

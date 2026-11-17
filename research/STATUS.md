@@ -123,7 +123,7 @@ then literally evaluate both frozen scopes, retaining nulls and all labels.
 | Optimization | Numeric and free code/graph black-box loops; scoped tensor/relaxation and gradient estimators. No universal world autograd or general live-gradient advantage is claimed or required |
 | Invention / feedback | Source can change native plans and researcher inputs. Useful new institutional advantage and improvement of the inventor itself are unproved |
 | Game interface | English pixel/cyberpunk event/replay UI exists, not a complete management game. No active UI-development worker is claimed |
-| Manuscript | Reviewed historical111-page PDF remains unchanged. Working TeX now contains complete corrected methods/results, paths, accounting and limits; new PDF/rebuild/visual review remains pending |
+| Manuscript | Reviewed117-page PDF now includes corrected methods/results, paths, accounting and limits:54 figures/56 tables/32 references; two cached builds and all117 page images agree. Full visual review completed; new minimal-input rebuild and focused submission narrative remain pending. Historical111-page PDF stays unchanged |
 
 Earlier meaningful parameter/structure/workflow/estimator/game studies stay
 in the index and substantial manuscript. Historical studies are not pooled as
@@ -139,8 +139,8 @@ distinct from this corrected study (8ties/15worse/1null).
    scale a flat search or treat reference retention as an invention.
 3. Obtain evidence adequate to the intended important claim. Coupled proposals,
    shared policies, readout rows and software tests are not independent histories.
-4. Build/rebuild/render/review the updated integrated PDF, then a focused
-   submission narrative; keep all scientifically meaningful earlier material.
+4. Verify a minimal-input reconstruction of the new reviewed integrated PDF,
+   then develop a focused submission narrative; retain meaningful earlier material.
 5. Finish reproducibility materials and a critical final main-track judgment.
    No positive result or acceptance is guaranteed.
 

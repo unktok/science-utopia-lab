@@ -1,6 +1,20 @@
 # Objective-conditioned institution paper
 
-## Post-artifact research status: November17,2026
+## Current reviewed117-page integrated working paper
+
+The [updated integrated PDF](../output/pdf/science-utopia-lab-integrated-corrected-choice-working-paper.pdf)
+and [source-bound build/review record](integrated-corrected-choice-build-v1.json)
+include the normally closed corrected24-slot study:23 complete,1 null,
+0better/8ties/15worse; both frozen endpoint scopes; full loss paths; source,
+native-input and visibility evidence; content support and physical costs.
+There are54 figures,56 tables and32 references. Both final cached builds have
+matching text/logs/all117 page images; all layouts and new section91-96 details
+have been reviewed. Earlier meaningful tracks and older PDFs are preserved.
+This is not a focused anonymous submission, useful-invention claim, real new
+unused-condition evaluation or publication-ready research package. A new
+minimal-input rebuild remains unverified. [STATUS](../research/STATUS.md) is current.
+
+## Historical post-artifact research status: November17, before closure
 
 Use the [current status/table/process map](../research/STATUS.md) for live
 counts. The prefix descriptions below are retained milestones, not current

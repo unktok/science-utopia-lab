@@ -5,7 +5,17 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
-Current reviewed artifact: the111-page integrated manuscript includes the
+Current reviewed artifact: the117-page integrated manuscript adds the complete
+corrected24-slot study to the meaningful earlier program:54 figures/56 tables/
+32 references. The [new literal build/review record](integrated-corrected-choice-build-v1.json)
+binds both final cached builds, all117 identical page images and full visual
+review. Full observed/best-own/best-known paths, primary versus own-only origins,
+content-support limits and physical costs accompany all24 own outcomes, including
+the execution null. The fixed-public/native SCRIPTED test is separate from the
+still-undispatched real unused-condition evaluation. Publication readiness and a
+focused main-track claim remain unachieved. [STATUS](../research/STATUS.md) is current.
+
+Historical reviewed artifact: the111-page integrated manuscript includes the
 complete old24-slot native method pilot, frozen selections, all8 author/
 visibility joins and measured role costs:53 figures/52 tables/32 references.
 The [literal build/visual receipt](integrated-priority-method-build-v1.json)

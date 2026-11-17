@@ -7,6 +7,12 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Reviewed117-page integrated manuscript](../paper/integrated-corrected-choice-build-v1.json):
+  complete corrected methods/results,54 figures/56 tables/32 references;
+  two cached builds, matching text/logs/all117 page images and whole-layout
+  review. This is not a new minimal-input reconstruction, real scientific
+  fixed evaluation or publication readiness. Earlier meaningful tracks remain.
+
 - [Complete corrected24-slot study](results/native-corrected-choice-search-closed-v1.json):
   original supervisor and all7 paired analysis chains exit0.23 complete/1 null,
   0better/8ties/15worse; all6 primary endpoints retain supplied references.
