@@ -23,6 +23,13 @@ loops are implemented. Useful autonomous institutional invention or stable
 superiority to strong simple references is **not established**.
 Publication readiness remains unachieved; additional QA or seed scaling alone is insufficient.
 
+[Research-priority correction](components/consequential-institutional-search-v1.md):
+the immediate central bottleneck is consequential proposal generation, not more
+flat-search comparisons. A new explicitly declared parent-relative literal/AST/
+parameter/graph information pane is implemented for prospective author requests;
+verification and a finite same-world information comparison remain pending.
+This is not measured improvement, a new loss, forced novelty or a finish veto.
+
 ## Current actual experiment
 
 The corrected search is complete, with the original run unchanged.

@@ -431,6 +431,8 @@ def protocol_binding():
         'parent_evidence_source_sha256': hashlib.sha256(Path(native_parent_evidence_v46.__file__).read_bytes()).hexdigest(),
         'consumer_evidence_source_sha256': hashlib.sha256(Path(__file__).with_name('native_consumer_evidence_v1.py').read_bytes()).hexdigest(),
         'post_edit_feedback_source_sha256': hashlib.sha256(Path(__file__).with_name('native_post_edit_feedback_v1.py').read_bytes()).hexdigest(),
+        'literal_change_feedback_source_sha256': hashlib.sha256(Path(__file__).with_name('native_literal_change_feedback_v1.py').read_bytes()).hexdigest(),
+        'literal_change_observation_source_sha256': hashlib.sha256(Path(__file__).with_name('native_literal_change_observation_v1.py').read_bytes()).hexdigest(),
         'component_lab_source_sha256': hashlib.sha256(Path(__file__).with_name('native_component_lab_v1.py').read_bytes()).hexdigest(),
         'initial_evidence_source_sha256': hashlib.sha256(Path(native_initial_evidence.__file__).read_bytes()).hexdigest(),
         'feedback_control_source_sha256': hashlib.sha256(Path(native_feedback_control.__file__).read_bytes()).hexdigest(),
@@ -1018,6 +1020,12 @@ def build_prompt(request,state,steps,*,image_id,binding_sha256,settings):
             raise ValueError('explicit source-owned post-edit contract required')
         view=_strict_json(text);view['declared_post_edit_component_tests']=clone(contract)
         text=json.dumps(view,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(',',':'))
+    from .native_literal_change_feedback_v1 import view as change_view, VIEW
+    observations=change_view(request,state,conversation_profile=settings.get(
+        'conversation_profile','hermes-function-history-v26'))
+    if observations is not None:
+        view=_strict_json(text);view[VIEW]=observations
+        text=json.dumps(view,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(',',':'))
     return text
 
 
@@ -1198,6 +1206,9 @@ def build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fal
     if _strict_json(prompt).get('declared_post_edit_component_tests') is not None:
         from .native_post_edit_feedback_v1 import NOTE
         messages[0]['content'] += '\n\n' + NOTE
+    from .native_literal_change_feedback_v1 import VIEW, NOTE as CHANGE_NOTE
+    if VIEW in _strict_json(prompt):
+        messages[0]['content'] += '\n\n' + CHANGE_NOTE
     if native_tools:
         from .native_designer_tools_v25 import tool_system_prompt
         from .native_authoring_recovery_v44 import IMPLEMENT_TASK, RECOVER_TASK, IMPLEMENT_CONTROL_PREFIX

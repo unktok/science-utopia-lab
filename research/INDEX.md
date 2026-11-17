@@ -7,6 +7,12 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Consequential-search diagnosis and prospective information intervention](components/consequential-institutional-search-v1.md):
+  nominal program freedom is not effective exploration. An opt-in parent-relative
+  change pane is being verified; it changes information, not loss or finish
+  eligibility. A finite native feedback comparison is designed, not dispatched
+  or shown effective. Fixed-evaluation coverage remains a separate obligation.
+
 - [Reviewed117-page integrated manuscript](../paper/integrated-corrected-choice-build-v1.json):
   complete corrected methods/results,54 figures/56 tables/32 references;
   two cached builds, matching text/logs/all117 page images and whole-layout
