@@ -45,6 +45,16 @@
     "content_security_policy_verified": true,
     "x_content_type_options": "nosniff"
   },
+  "github_push_deployment_verification": {
+    "id": "b8d0b269-d017-4638-86c4-60ba7685e946",
+    "source_commit": "395271b7aeeb807a6f3754a1199b5de5112a7f15",
+    "trigger": "github:push",
+    "branch": "main",
+    "clone_build_and_deploy": "success",
+    "ended_utc": "2026-11-17T07:02:37.962016Z",
+    "url": "https://b8d0b269.science-utopia-lab.pages.dev",
+    "scope": "Actual automatic GitHub-triggered build, not just an enabled configuration flag"
+  },
   "historical_preview": {
     "url": "https://science-utopia-lab-research.takagi4646.chatgpt.site",
     "audience": "owner-private; unchanged",
