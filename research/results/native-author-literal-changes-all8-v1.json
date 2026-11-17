@@ -12,6 +12,16 @@
     "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1/all8-literal-author-projection-v1-a2.json"
   ],
   "byte_equal": true,
+  "post_retention_checks": {
+    "source_commit": "02f1e70c72a804b6979fdddff8cf847d6422bd59",
+    "original_handle": 88000,
+    "passed": 31,
+    "failed": 0,
+    "seconds": 13.91,
+    "junit": "research/data/corrected-choice-data-continuations-v1/all-author-retention.xml",
+    "junit_file_sha256": "b12c20d33b542df9bc0a3453ef32fada562977988e65096dd8fa144b4c4b364e",
+    "scope": "Overlapping exact all8 report/data headers/free-loss snapshot/earlier report/publication/navigation checks; not31 scientific experiments."
+  },
   "retained_report": "research/data/native-author-literal-changes-v1/all8-original-native-sessions.json",
   "report_bytes": 192849,
   "report_file_sha256": "3bb8da45d2a794c70067795ea88c72357558d955c0c5aa7698c4cf4267f49587",

@@ -43,6 +43,14 @@
   "selection_changed": false,
   "loss_changed": false,
   "actual_full_study_exports_complete": false,
+  "prepared_fixed_QA_command": {
+    "runbook": "research/publication/native-corrected-choice-fixed-qa-runbook-v1.md",
+    "shell_syntax_exit": 0,
+    "shell_block_sha256": "d5efefa506f8675563889030c667c37f905087e0a9c2f5926455d91a458d13ef",
+    "original_tool_chunk": "6940df",
+    "command_executed": false,
+    "scope": "zsh -f -n parses the fail-closed subshell only; no native QA, new world, condition inventory or hardware lease."
+  },
   "publication_ready": false,
   "scope": "Exact fresh external destinations and normal original source/plan/readout closure required before data-only exports. Started headers and live process observations establish waiting, not successful analysis, new manuscript figures or a ready paper."
 }

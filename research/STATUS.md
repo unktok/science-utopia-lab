@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November17,2026 at01:54UTC / November17 10:54JST.
+Verified November17,2026 at02:18UTC / November17 11:18JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -39,16 +39,16 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 
 | Method / target | Own g0 | Own g1 | g2 / g3 |
 | --- | ---: | ---: | --- |
-| Uniform / U | -27.6667 | -28.3333 | g2 -27.6667 / g3 not dispatched |
-| Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 native running |
+| Uniform / U | -27.6667 | -28.3333 | g2 -27.6667 / g3 native running |
+| Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 -26.6667 |
 | Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 -28.6667 |
 | Uniform / C | -9.6667 | -10.3333 | g2 -10.6667 / g3 -12.3333 |
 | Adaptive / C | -9.6667 | -12.6667 | g2 -11.6667 / g3 -12.6667 |
 | Free code/graph / C | -12.6667 | -12.6667 | g2 -12.6667 / g3 -12.6667 |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
-Twenty-two own slots have terminal outcomes:21 complete (13 worse/8 tied/0 better
-than their assigned reference) and1 execution null. The next adaptive/U/g3
+Twenty-three own slots have terminal outcomes:22 complete (14 worse/8 tied/0 better
+than their assigned reference) and1 execution null. The final uniform/U/g3
 world has started; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
@@ -64,7 +64,9 @@ an inactive branch is not a useful new rule in this observed condition. All8
 closed author journals have now been read twice:112 completed actions/25 literal
 source edits,19 equal-AST/6 different-AST incremental changed-node rows,0 wire/
 schedule edits. This is not25 candidates or6 effective algorithms; full original
-native/effect/cost closure and the last two numeric outcomes remain separate.
+native/effect/cost closure remains separate. Adaptive/U/g3 completes at-26.6667,
+2 worse than the reference; final uniform/U/g3 starts02:03:07UTC and is still
+running at the latest process check. No final selection is inferred early.
 
 [Latest adaptive/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-adaptive-c-outcome)
 completes at-11.6667, worse by1 than its own prior best and assigned reference.
@@ -139,7 +141,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 executes adaptive/U/g3 after22 terminal own attempts; source/plan/settings unchanged |
+| Real scientific search | Original42803 executes final uniform/U/g3 after23 terminal own attempts; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |

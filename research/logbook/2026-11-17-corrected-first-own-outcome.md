@@ -1271,3 +1271,20 @@ flags. It has not run. Recheck all paths/source and host-wide real inference
 after original normal closure, rather than starting heavy QA alongside models.
 The real15-label frozen bank/strict all-path unused scientific inventory and
 selection-fixed evaluation remain later stages, not supplied by this runbook.
+
+At source02f1e70c,31 overlapping retained-report/header/free-loss/publication/
+navigation checks pass in13.91seconds (original88000). The exact JUnit is retained
+separately; its hash and scope are in the all8 receipt. The prepared fixed-QA
+command now uses a fail-closed subshell. `zsh -f -n` parses that block without
+executing it (tool6940df, block SHA
+d5efefa506f8675563889030c667c37f905087e0a9c2f5926455d91a458d13ef).
+This is not actual QA or an unused-condition proof.
+
+At02:03:07.194143UTC adaptive/U/g3 finishes at-26.666666666666668,
+suggestion see73ac944102ecaf, worse by2 versus reference. Original sealed
+observation contentf56ddd3d93883d6766d5ac9d011b27851f8f9116671add89e8c5d1e7c0854eb9,
+file807b4d78d8cbd8bc8855a5ccf909d17353441d01bd0846f10baab6e8c599b779.
+The final uniform/U/g3 starts unchanged. At02:18UTC the original writer and
+supervisor are live,23terminal/22complete/14worse/8ties/0better/1execution-null.
+All seven original paired-analysis/data processes continue waiting; no frozen
+endpoint, last loss or normal whole-study closure is invented in advance.

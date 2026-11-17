@@ -34,6 +34,8 @@ raw/test destinations. These are software seeds42/43003/43011, not the proposed
 scientific evaluation conditions83003/83011.
 
 ```sh
+(
+set -eu
 cd /Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-choice-data-v1-a1
 test ! -e /Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-fixed-public-check-v1-a1
 test ! -e /Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-fixed-public-qa-v1-a1
@@ -49,10 +51,11 @@ SCIENCE_UTOPIA_CORRECTED_CHOICE_FIXED_QA_EXTERNAL=/Users/shiro/unktok/dev/scienc
   tests/reports/test_native_corrected_choice_fixed_public_v1.py --maxfail=1 \
   --basetemp=/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-fixed-public-check-v1-a1/pytest-tmp \
   --junitxml=/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-fixed-public-check-v1-a1/pytest.xml
+)
 ```
 
-Execute only after the preconditions pass. In a shell, ensure a failed preflight
-stops the dependent launch; the listed lines are not a failure-tolerant script.
+Execute only after the preconditions pass. The subshell stops the dependent
+launch on a failed preflight without changing the caller's shell options.
 If a target already exists, inspect/preserve it and deliberately name a new
 attempt rather than invoking pytest's basetemp cleanup on prior evidence.
 
