@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1263.105" timestamp="2026-11-17T13:08:13.889763+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_native_corrected_choice_fixed_coverage_public_v2" name="test_corrected_native_fixed_path_preserves_and_classifies_exact_software_metadata" time="1261.690"><failure message="ValueError: literal pre-dispatch unused-seed proof differs">tmp_path = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-fixed-coverage-public-check-v2-a1/tmp/test_corrected_native_fixed_pa0')
+fixed_corpus = None
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x12665bd10&gt;
+
+    @pytest.mark.skipif(os.environ.get('SCIENCE_UTOPIA_CORRECTED_CHOICE_FIXED_COVERAGE_V2_QA') != '1',
+        reason='explicit clean-source hardware window without real inference required')
+    def test_corrected_native_fixed_path_preserves_and_classifies_exact_software_metadata(tmp_path, fixed_corpus, monkeypatch):
+&gt;       public_path(tmp_path, fixed_corpus, monkeypatch, corrected=True, coverage_policy_v2=True)
+
+tests/reports/test_native_corrected_choice_fixed_coverage_public_v2.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/reports/test_native_priority_fixed_public_v1.py:165: in test_public_frozen_bank_prepare_native_run_cold_cost_and_paired_all_label_readouts
+    path = audits / ('audit-' + str(i) + '.json'); auditor.worker(target, path)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/audit_native_corrected_choice_fixed_evaluation_v1.py:13: in worker
+    return common_worker(root, output, study='corrected-choice-fixed-v1')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-fixed-coverage-public-qa-v2-a1/evaluation-raw')
+output = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-fixed-coverage-public-qa-v2-a1/evaluation-analysis/audit-1.json')
+
+    def worker(root,output,*,study='count-content-v1'):
+        corrected_fixed = study == 'corrected-choice-fixed-v1'
+        priority_fixed = study in ('priority-fixed-v1', 'corrected-choice-fixed-v1')
+        workflow = study in ('workflow-v1', 'longitudinal-v1', 'priority-fixed-v1', 'corrected-choice-fixed-v1')
+        topic_pilot = study == 'legacy-topic-v1'
+        terminal_pilot = study == 'terminal-cost-v1'
+        resource_pilot = topic_pilot or terminal_pilot or priority_fixed
+        pilot = study in ('legacy-choice-v1', 'legacy-topic-v1', 'terminal-cost-v1')
+        if study=='count-content-v1':
+            from scripts import run_native_objective_fixed_evaluation_v1 as driver
+            audit_schema='scienceutopia.native-objective-fixed-evaluation-audit.v1'
+            source_scripts=['scripts/run_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        elif study=='planning-v1':
+            from scripts import run_native_planning_fixed_evaluation_v1 as driver
+            audit_schema='scienceutopia.native-planning-fixed-evaluation-audit.v1'
+            source_scripts=['scripts/run_native_planning_fixed_evaluation_v1.py',
+                'scripts/run_native_objective_fixed_evaluation_v1.py',
+                'scripts/audit_native_planning_fixed_evaluation_v1.py',
+                'scripts/audit_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        elif study=='joint-v1':
+            from scripts import run_native_joint_fixed_evaluation_v1 as driver
+            audit_schema='scienceutopia.native-joint-fixed-evaluation-audit.v1'
+            source_scripts=['scripts/run_native_joint_fixed_evaluation_v1.py',
+                'scripts/audit_native_joint_fixed_evaluation_v1.py',
+                'scripts/audit_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        elif study=='workflow-v1':
+            from scripts import run_native_workflow_fixed_evaluation_v1 as driver
+            audit_schema='scienceutopia.native-workflow-fixed-evaluation-audit.v1'
+            source_scripts=['scripts/run_native_workflow_fixed_evaluation_v1.py',
+                'scripts/run_native_objective_fixed_evaluation_v1.py',
+                'scripts/run_native_workflow_objective_loop_v1.py',
+                'scripts/run_native_objective_instrument_loop_v1.py',
+                'scripts/audit_native_workflow_fixed_evaluation_v1.py',
+                'scripts/audit_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        elif study=='longitudinal-v1':
+            from scripts import run_native_longitudinal_fixed_evaluation_v1 as driver
+            audit_schema='scienceutopia.native-longitudinal-fixed-evaluation-audit.v1'
+            source_scripts=['scripts/run_native_longitudinal_fixed_evaluation_v1.py',
+                'scripts/audit_native_longitudinal_fixed_evaluation_v1.py',
+                'scripts/audit_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        elif priority_fixed:
+            if corrected_fixed:
+                from scripts import run_native_corrected_choice_fixed_evaluation_v1 as driver
+            else:
+                from scripts import run_native_priority_fixed_evaluation_v1 as driver
+            audit_schema=driver.SCHEMA+'.audit'
+            source_scripts=['scripts/run_native_priority_fixed_evaluation_v1.py',
+                'scripts/native_priority_fixed_bank_v1.py', 'scripts/native_benchmark_seed_usage.py',
+                'scripts/reports/native_priority_method_readout_v1.py',
+                'scripts/run_native_objective_fixed_evaluation_v1.py',
+                'scripts/run_native_topic_free_optimization_v1.py',
+                'scripts/run_native_workflow_objective_loop_v1.py',
+                'scripts/run_native_objective_instrument_loop_v1.py',
+                'scripts/run_native_legacy_topic_pilot_v1.py',
+                'scripts/audit_native_priority_fixed_evaluation_v1.py',
+                'scripts/audit_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+            if corrected_fixed:
+                source_scripts.extend(['scripts/run_native_corrected_choice_fixed_evaluation_v1.py',
+                    'scripts/native_corrected_choice_fixed_bank_v1.py',
+                    'scripts/audit_native_corrected_choice_fixed_evaluation_v1.py'])
+        elif terminal_pilot:
+            from scripts import run_native_terminal_cost_pilot_v1 as driver
+            audit_schema='scienceutopia.native-terminal-cost-pilot-audit.v1'
+            source_scripts=['scripts/run_native_terminal_cost_pilot_v1.py',
+                'scripts/run_native_legacy_topic_pilot_v1.py',
+                'scripts/run_native_legacy_choice_pilot_v1.py',
+                'scripts/audit_native_terminal_cost_pilot_v1.py',
+                'scripts/audit_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        elif topic_pilot:
+            from scripts import run_native_legacy_topic_pilot_v1 as driver
+            audit_schema='scienceutopia.native-legacy-topic-pilot-audit.v1'
+            source_scripts=['scripts/run_native_legacy_topic_pilot_v1.py',
+                'scripts/run_native_legacy_choice_pilot_v1.py',
+                'scripts/audit_native_legacy_topic_pilot_v1.py',
+                'scripts/audit_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        elif pilot:
+            from scripts import run_native_legacy_choice_pilot_v1 as driver
+            audit_schema='scienceutopia.native-legacy-choice-pilot-audit.v1'
+            source_scripts=['scripts/run_native_legacy_choice_pilot_v1.py',
+                'scripts/audit_native_legacy_choice_pilot_v1.py',
+                'scripts/audit_native_objective_fixed_evaluation_v1.py',
+                'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        else:raise ValueError('explicit known fixed-evaluation study or legacy-choice pilot required')
+        group = 'controls' if pilot else 'evaluation'
+        role = driver.ROLE if pilot else 'selection-fixed-evaluation'
+        from scripts.analyze_native_open_v7 import _inventory
+        from scripts.analyze_native_design_benchmark import loaded
+        from scripts.native_benchmark_physical import physical_proof
+        from scripts.native_benchmark_source import source_proofs
+        from scripts.native_observer_physical_v1 import ColdObserver,accepted_request_keys,reconstruct_measurement
+        from scripts.audit_native_institution_loop_v1 import epoch
+        from utopia.optimization.blackbox import Suggestion,Observation
+        from utopia.optimization.native_discrete_policy import verify_native_observation
+        from utopia.optimization.loss import evaluate_loss,loss_spec_sha256
+        from utopia.runtime.checkpointing import read_portable_checkpoint
+        from utopia.system import SystemSpec
+        from utopia.system.design_patch import digest
+        from utopia.utils.data_utils import file_sha256,write_json_atomic
+        root,output=Path(root).resolve(),Path(output).resolve();read=driver.read
+        if output.exists() or output.is_relative_to(root) or output.is_relative_to(driver.ROOT):
+            raise ValueError('fresh audit outside scientific source/raw required')
+        with (root/'writer.lock').open('r') as owner:
+            fcntl.flock(owner,fcntl.LOCK_EX|fcntl.LOCK_NB);before=_inventory(root);p=driver.require_plan(root)
+            start,end=read(root/'started.json'),read(root/'terminal.json')
+            if (start['schema']!=driver.SCHEMA+'.start' or end['schema']!=driver.SCHEMA+'.terminal'
+                    or start['plan_sha256']!=p['content_sha256'] or end['status']!='closed'
+                    or end['completed_jobs']!=len(p['jobs']) or epoch(end['ended_utc'])&lt;epoch(start['started_utc'])):
+                raise ValueError('normal fixed-evaluation closure required')
+            for i in range(0 if pilot else len(p['evaluation']['seed_usage'])):
+                prepared=read(root/f'seed-usage-{i:02d}.json');dispatched=read(root/f'pre-dispatch-seed-usage-{i:02d}.json')
+                if (prepared['content_sha256']!=p['evaluation']['seed_usage'][i]
+                        or not dispatched['valid'] or dispatched['errors'] or dispatched['prior_matching_runs']
+                        or dispatched['root']!=prepared['root'] or dispatched['seeds']!=p['evaluation']['seeds']
+                        or not epoch(prepared['checked_utc'])&lt;=epoch(dispatched['checked_utc'])&lt;=epoch(start['started_utc'])):
+&gt;                   raise ValueError('literal pre-dispatch unused-seed proof differs')
+E                   ValueError: literal pre-dispatch unused-seed proof differs
+
+scripts/audit_native_objective_fixed_evaluation_v1.py:133: ValueError</failure></testcase></testsuite></testsuites>

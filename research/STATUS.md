@@ -27,7 +27,12 @@ Publication readiness remains unachieved; additional QA or seed scaling alone is
 the immediate central bottleneck is consequential proposal generation, not more
 flat-search comparisons. A new explicitly declared parent-relative literal/AST/
 parameter/graph information pane is implemented for prospective author requests;
-verification and a finite same-world information comparison remain pending.
+106/35/70 overlapping software checks pass; the8-slot same-world information
+comparison runner and original-source cold auditor are implemented. Actual native
+public QA has started on a separate clean534b6ffb checkout (session23623, observed
+live November17,04:37UTC); no new scientific comparison has been dispatched.
+The [preparation record](results/native-consequential-search-preparation-v1.json)
+retains sources, literal JUnit files, failures and pending evidence.
 This is not measured improvement, a new loss, forced novelty or a finish veto.
 
 ## Current actual experiment
@@ -99,6 +104,14 @@ raw caches remain external, out of Git.
 ## Parallel work and actual waiting processes
 
 The software evaluation check has passed; scientific dispatch has not started.
+
+That historical pass is not the result of the newer v2 provenance route. Its
+first actual native public check (session82177/source5d4d4a69) fails after1263s
+in the final cold unusedness reader, which still rejects every retained metadata
+match. The stopped check/raw/JUnit remain unchanged. New source534b6ffb makes
+the cold reader reconstruct the same positive file/source/root provenance as
+prepare/dispatch; direct cold-boundary and tamper regressions now pass. A new
+full native v2 evaluation proof and complete global policy remain pending.
 
 The actual fixed-public/native QA (session67369) exits0:
 1 passed in1384.82s; SCRIPTED HTTP/corpus/supervision with14 physical evaluation

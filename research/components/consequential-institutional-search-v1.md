@@ -55,9 +55,15 @@ Implementation is not an effectiveness result. SCRIPTED transport and historical
 request regressions must be distinguished from real model/backend calibration,
 new submitted proposals, actual native trajectories and measured loss advantages.
 
-## Next finite scientific comparison: design, not yet dispatched
+The [preparation record](../results/native-consequential-search-preparation-v1.json)
+retains106/35/70 overlapping passed software checks, the explicit native-test
+skip, two actual failed checks and the newly started native information QA.
+These are not independent scientific repetitions or an effectiveness result.
 
-The next author comparison should test the information intervention rather than
+## Next finite scientific comparison: implemented, not yet dispatched
+
+The [executable protocol](../protocols/campaigns/native-literal-feedback-comparison-v1.md)
+and runner/cold auditor implement an information comparison rather than
 silently folding it into an enlarged search. Proposed ceiling:2 information arms
 (current interface / added literal-change evidence) x2 existing objectives x2
 chronological proposals =8 own native attempts, plus the same3 fresh strong
@@ -69,8 +75,9 @@ Qwen3-8B scientists, current35B designer, authority, fixed panel, losses,
 component tests and finite author/model budgets. The61001 condition is reused
 development, not fresh independent confirmation. Within each objective, both
 arms must receive the same reference bank and selection rule; prospective
-order/seed/source/transport controls and exact allowed first-wire differences
-must be frozen in the actual executable protocol before dispatch. The losses
+order/seed/source/transport controls are frozen in that protocol. Actual campaign
+tests verify the same generation RNG, parent, loss and all other request values
+except the declared information field and derived binding hash. The losses
 remain L_U=-U and L_C=-U+0.1K_collected; K is collected native resources and U is
 centered abstract-panel opinion, not real work or scientific truth.
 

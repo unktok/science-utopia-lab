@@ -1,0 +1,127 @@
+{
+  "schema": "scienceutopia.consequential-search-preparation-record.v1",
+  "classification": "implementation-and-software-evidence-not-scientific-improvement",
+  "scientific_followup_dispatched": false,
+  "scientific_followup_prepared": false,
+  "publication_ready": false,
+  "research_decision": "Nominal design expressivity is not effective exploration. Compare a concrete information intervention before expanding the same flat search; preserve frozen scientific evaluation separately.",
+  "new_intervention": {
+    "scope": "parent-relative-literal-design-change-v1",
+    "source_commit": "534b6ffb6c39ad971d33a9844a9182333ad853b1",
+    "explicit_opt_in": true,
+    "candidate_repair": false,
+    "candidate_code_executed_by_diagnostic": false,
+    "loss_changed": false,
+    "novelty_behavior_or_gain_veto": false,
+    "effectiveness_demonstrated": false
+  },
+  "proposed_executable_comparison": {
+    "protocol": "research/protocols/campaigns/native-literal-feedback-comparison-v1.md",
+    "arms": ["current-information", "literal-change-information"],
+    "objectives": ["content-utility", "resource-aware-content"],
+    "proposals_per_arm_objective": 2,
+    "own_slots": 8,
+    "fresh_reference_worlds": 3,
+    "maximum_native_worlds": 11,
+    "development_world_seed_reused": 61001,
+    "optimizer_seed": 79011,
+    "independent_histories_claimed": false,
+    "failed_slots_refilled": false,
+    "held_out_evaluation": false,
+    "same_generation_within_objective_request_rng_verified_in_campaign_test": true
+  },
+  "native_byte_closure_check": {
+    "checked_source_commit": "534b6ffb6c39ad971d33a9844a9182333ad853b1",
+    "underlying_original_source": "a5be8d3103854368a4bc6ba4c13eff7552e9dd15",
+    "literal_original_files": 263,
+    "existing_versioned_native_adapters": 11,
+    "relative_to_corrected_scientific_source": "57b351443131c9add50ee1dc448eea07066fcb01",
+    "declared_native_files_compared": 274,
+    "changed_file_hashes": [],
+    "scope": "Actual native_sources reconstruction plus comparison of literal/current adapter file hashes. Author information and protocol changed; global semantic equivalence is not claimed."
+  },
+  "completed_checks": [
+    {
+      "source_commit": "306ee87a5cd66e94b76c765e5a0740f070fe50a6",
+      "original_session": 13211,
+      "exit_code": 0,
+      "passed": 106,
+      "skipped": 0,
+      "seconds": 16.776,
+      "junit": "research/data/native-consequential-search-preparation-v1/literal-feedback-106.xml",
+      "file_sha256": "ba0231ab5197a7ff7cea418f5a39a973db8aca002fff0991389e7a6b0706aaa9",
+      "scope": "Opt-in pane, actual generator next prompts and saved cold replay, passive AST and bounded/staged regressions; SCRIPTED transport only."
+    },
+    {
+      "source_commit": "807c04c8a505769867fac4f975f4e2781c1ba1bf",
+      "original_session": 93316,
+      "exit_code": 0,
+      "passed": 35,
+      "skipped": 0,
+      "seconds": 32.672,
+      "junit": "research/data/native-consequential-search-preparation-v1/comparison-contract-35.xml",
+      "file_sha256": "d5709388a61ef1aa2a35a919e679efb3d3ae626d2430524d820c1b4f09c6cb6d",
+      "scope": "Finite comparison plan, actual campaign requests, budgets, unchanged objectives/native conditions, dual selection and stopped readiness; not native public execution."
+    },
+    {
+      "source_commit": "534b6ffb6c39ad971d33a9844a9182333ad853b1",
+      "original_session": 32586,
+      "exit_code": 0,
+      "passed": 70,
+      "skipped": 1,
+      "seconds": 21.686,
+      "junit": "research/data/native-consequential-search-preparation-v1/information-cold-70.xml",
+      "file_sha256": "7fcc95d6f874e11aabd02e07267abeee9e65486be6b3a7aa752cc3b1f7c218e0",
+      "scope": "Direct actual prepare/shared-dispatch/cold seed boundary, tamper and missing-root rejection, comparison contracts and cost readers. The native public test is the explicit skip, not a passed native route."
+    }
+  ],
+  "retained_failures": [
+    {
+      "source_commit": "5d4d4a692460f5c1ee78abdf23ccdec150e4e09f",
+      "original_session": 82177,
+      "exit_code": 1,
+      "seconds": 1263.105,
+      "junit": "research/data/native-consequential-search-preparation-v1/fixed-public-v2-failed.xml",
+      "file_sha256": "66ef9e4a8243a54a017c68efac62e03bbb6a89e9ae46215e28f632047472a02d",
+      "failure": "ValueError: literal pre-dispatch unused-seed proof differs",
+      "cause": "Shared cold reader retained legacy rejection of any metadata match, although explicit v5 dispatch retains exact positively classified SCRIPTED fixture matches.",
+      "repair": "Shared cold boundary now reconstructs both complete root-set receipt lists with the same positive source/file/metadata provenance policy. Real/unclassified matches and missing targets still stop; old v4 behavior remains strict.",
+      "current_source_native_public_revalidation_complete": false,
+      "scope": "SCRIPTED HTTP/corpus native software route, not real unused scientific conditions. Original stopped check and raw data are unchanged."
+    },
+    {
+      "source_commit": "31d2ba2c90c864075baf2423c27deefa4b6d6e8e",
+      "original_session": 52801,
+      "exit_code": 1,
+      "passed_before_failure": 3,
+      "seconds": 8.691,
+      "junit": "research/data/native-consequential-search-preparation-v1/cold-fixture-failed.xml",
+      "file_sha256": "92e051d1c279a4fe66dc65d40e54bfdada11e916012a13fa2b89c607e10269f4",
+      "failure": "KeyError: binding",
+      "cause": "The new tamper test assumed a nested binding instead of the actual flat scanner receipt.",
+      "repair": "The test now corrupts the real flat model/binding hash and consistently reseals the raw report. The production cold reader is not weakened."
+    }
+  ],
+  "native_information_public_QA": {
+    "source_checkout": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-literal-feedback-public-qa-v1-a1",
+    "source_commit": "534b6ffb6c39ad971d33a9844a9182333ad853b1",
+    "original_session": 23623,
+    "last_verified_live_utc": "2026-11-17T04:37:29+00:00",
+    "terminal_result_at_recording": null,
+    "test": "tests/reports/test_native_literal_feedback_public_v1.py",
+    "external_check": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-literal-feedback-public-check-v1-a1",
+    "external_closure": "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-literal-feedback-public-qa-v1-a1",
+    "classification": "Actual native Docker/SDK/author-worker path, SCRIPTED HTTP/corpus/critics/upstream/child supervision; not real model readiness or improvement.",
+    "exclusive_hardware_claimed": false,
+    "new_real_model_calls": 0
+  },
+  "not_yet_proved": [
+    "Actual native public comparison and paired cold/cost outputs at the new source",
+    "Real source/model/backend/request-bound readiness for this new intervention",
+    "New model-authored proposals and actual native behavior/loss outcomes",
+    "Information intervention effectiveness or useful autonomous invention",
+    "Complete positive global fixture/alias coverage and real frozen unused-condition evaluation",
+    "Publication-ready main-track claim"
+  ],
+  "scope": "Overlapping software checks are not independent scientific replications. This is a documentary projection with literal JUnit bytes, not a replacement or resealing of historical scientific reports."
+}

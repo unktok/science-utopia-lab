@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="4" time="8.691" timestamp="2026-11-17T13:31:35.263994+09:00" hostname="flower-man.local"><testcase classname="tests.reports.test_native_seed_coverage_fixed_v2" name="test_v5_keeps_original_bank_world_losses_and_literal_jobs" time="1.646" /><testcase classname="tests.reports.test_native_seed_coverage_fixed_v2" name="test_actual_prepare_reconstruction_and_predispatch_same_policy[False]" time="2.985" /><testcase classname="tests.reports.test_native_seed_coverage_fixed_v2" name="test_actual_prepare_reconstruction_and_predispatch_same_policy[True]" time="2.588" /><testcase classname="tests.reports.test_native_seed_coverage_fixed_v2" name="test_actual_cold_unusedness_boundary_reconstructs_metadata_not_just_filtered_matches[raw-binding]" time="0.002"><failure message="KeyError: 'binding'">tmp_path = PosixPath('/Users/shiro/unktok/dev/science-utopia-lab-exports/native-information-and-cold-coverage-check-v1-a1/tmp/test_actual_cold_unusedness_bo0')
+corruption = 'raw-binding'
+
+    @pytest.mark.parametrize('corruption', ['raw-binding', 'projection', 'missing-root', 'wrong-study'])
+    def test_actual_cold_unusedness_boundary_reconstructs_metadata_not_just_filtered_matches(
+            tmp_path, corruption):
+        from copy import deepcopy
+        raw = tmp_path/'inventory'; raw.mkdir(); declaration = policy(raw)
+        receipt = base.strict_inventory(raw, base.SEEDS, declaration)
+        # Both snapshots retain the metadata match. Only the independently rebuilt
+        # positive provenance classification permits an empty scientific list.
+        root = tmp_path/'evaluation'
+        original = deepcopy(receipt)
+        if corruption == 'raw-binding':
+&gt;           receipt['raw_inventory']['bindings'][0]['binding']['model'] = 'REAL-MODEL'
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'binding'
+
+tests/reports/test_native_seed_coverage_fixed_v2.py:99: KeyError</failure></testcase></testsuite></testsuites>
