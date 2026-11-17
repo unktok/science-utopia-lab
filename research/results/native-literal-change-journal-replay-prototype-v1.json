@@ -1,0 +1,773 @@
+{
+  "schema": "scienceutopia.literal-change-native-journal-replay.v1.documentary-snapshot",
+  "observed_utc": "2026-11-17T00:49:47.627437+00:00",
+  "analysis_source_commit": "664dd51f4153485ba063e0249d1b2f3fb22b776f",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "plan_content_sha256": "4259e41dfb28933c50ece4d7eb1abfbe98254d1fdf7850102f83bd18f9553da5",
+  "prototype_initial_native_replay": {
+    "source_commit": "6236147f",
+    "result": "unassessed standard artifact; projection assertion failed before any feedback/model call",
+    "cause": "Prototype fixtures invented a language field. The actual standard artifact is identified by CODE_SCHEMA and CODE_IMPLEMENTATION. No active-world or model request was changed."
+  },
+  "scope": "Saved original native author journals, not actual exposure of this new diagnostic, a new proposal, component/native rerun, semantic-equivalence certificate or causal benefit of feedback. Before/after literal documents match original saved prompt/receipt hashes; all session file hashes remain unchanged. The typed parameter-change control remains visible despite equal Python AST.",
+  "sessions": [
+    {
+      "objective": "resource-aware-content",
+      "generation": 2,
+      "request_sha256": "3ea48c2622daf0a87237d00dd627b722e00e424380ebbf384e6db2297fcd116d",
+      "session_path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-choice-search-v1-a1/outputs/native-corrected-choice-search-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-3ea48c2622daf0a87237d00dd627b722e00e424380ebbf384e6db2297fcd116d/editor-session/authoring/generation-3ea48c2622daf0a87237d00dd627b722e00e424380ebbf384e6db2297fcd116d",
+      "verified_original_session_file_hashes_sha256": "e43cd0e0102ee105b830bcc0115afc334b5658a9670c8207ed09fdb411dc091b",
+      "terminal_status": "generated",
+      "writes": [
+        {
+          "step": 2,
+          "tool": "write_file",
+          "filename": "code/developer-catalog-agenda.py",
+          "original_completed_receipt_sha256": "d23fcc3dba08b483881144d6974b6709a69877457c27085366b6b9c2dc324cf0",
+          "before_intent_file_sha256": "84ace2d47953eded0aaf3d9c4af3d5ecaa7d4b8fc41b96d8b337aa6fef0a34db",
+          "after_intent_file_sha256": "13a0a0e2de31f4996bbec87239a8885f200397b55db3fb90a12e9c4612f81b08",
+          "diagnostic": {
+            "schema": "scienceutopia.literal-institution-change-observation.v1",
+            "before_document_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+            "after_document_sha256": "1a306961e06ff508d65fa83eaa0d2382b1919b239dc8287b5f03a796e52b2782",
+            "literal_document_changed": true,
+            "node_resolution": "unique-literal-identities",
+            "node_change_count": 1,
+            "node_changes": [
+              {
+                "mechanism_id": "developer-catalog-agenda",
+                "change": "changed",
+                "before_node_sha256": "1c73f25f6a3a3947bf81ba35cb1e94862b49e377e84889e92b52e009f1a907ef",
+                "after_node_sha256": "80a5f5e64e3b44b1b9dfae3e31871a780b96269d8ecebdc8eb7efc16dc1dfcdb",
+                "node_fields_changed": [
+                  "parameters"
+                ],
+                "non_code_parameter_fields_changed": [],
+                "before_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "after_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "cae52d63484b2453939c30d7b0cb3c3d43cbb76ea2ab8368f1be32f247b18fd0",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "standard_python_AST_equal": true
+              }
+            ],
+            "omitted_node_rows": 0,
+            "other_root_fields_changed": [],
+            "mechanisms": {
+              "literal_changed": true,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": true,
+              "order_only_change": false,
+              "added_occurrences": 1,
+              "removed_occurrences": 1
+            },
+            "connections": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "schedules": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "new_model_calls": 0,
+            "new_native_worlds": 0,
+            "new_source_executions": 0,
+            "source_repair": false,
+            "veto_on_finish": false,
+            "changes_loss": false,
+            "grants_world_authority": false,
+            "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+          },
+          "already_recorded_probe_attempts": 4,
+          "already_recorded_probe_status_counts": {
+            "returned": 4
+          }
+        },
+        {
+          "step": 5,
+          "tool": "write_file",
+          "filename": "code/developer-catalog-agenda.py",
+          "original_completed_receipt_sha256": "42554a4fca7527977276be0fd339632271a5cdf69f7b3d30bd7db64a2c97e2dd",
+          "before_intent_file_sha256": "a3238d305d791cfcbdd7d6a776819eb09830a3fab89703232fee8f2b13043286",
+          "after_intent_file_sha256": "bc0cd9a64b1db03d6f16d98a2477746bd507f736dc53fec87e812dbafe2ad270",
+          "diagnostic": {
+            "schema": "scienceutopia.literal-institution-change-observation.v1",
+            "before_document_sha256": "1a306961e06ff508d65fa83eaa0d2382b1919b239dc8287b5f03a796e52b2782",
+            "after_document_sha256": "9f95a4232c232f17b9c3e2d362fcf5f503ef7dcb20af0503e3c036dd5ab25a98",
+            "literal_document_changed": true,
+            "node_resolution": "unique-literal-identities",
+            "node_change_count": 1,
+            "node_changes": [
+              {
+                "mechanism_id": "developer-catalog-agenda",
+                "change": "changed",
+                "before_node_sha256": "80a5f5e64e3b44b1b9dfae3e31871a780b96269d8ecebdc8eb7efc16dc1dfcdb",
+                "after_node_sha256": "3152441474c9c756c1f60522f583e995bbe04932d614b6ed47eb3d356423fe34",
+                "node_fields_changed": [
+                  "parameters"
+                ],
+                "non_code_parameter_fields_changed": [],
+                "before_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "cae52d63484b2453939c30d7b0cb3c3d43cbb76ea2ab8368f1be32f247b18fd0",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "after_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "5e42701df8e3e7d4e621bd9d210147719e705cb5b3619bbad145a080ff9ca0ed",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "standard_python_AST_equal": true
+              }
+            ],
+            "omitted_node_rows": 0,
+            "other_root_fields_changed": [],
+            "mechanisms": {
+              "literal_changed": true,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": true,
+              "order_only_change": false,
+              "added_occurrences": 1,
+              "removed_occurrences": 1
+            },
+            "connections": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "schedules": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "new_model_calls": 0,
+            "new_native_worlds": 0,
+            "new_source_executions": 0,
+            "source_repair": false,
+            "veto_on_finish": false,
+            "changes_loss": false,
+            "grants_world_authority": false,
+            "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+          },
+          "already_recorded_probe_attempts": 4,
+          "already_recorded_probe_status_counts": {
+            "returned": 4
+          }
+        },
+        {
+          "step": 7,
+          "tool": "write_file",
+          "filename": "code/developer-catalog-agenda.py",
+          "original_completed_receipt_sha256": "cac0b023d62d06033bbe09006dc7040ed624f5fcefd7678efd11171eb9cdf0a6",
+          "before_intent_file_sha256": "57bc325cdf1740ea8da1d6658ee9bbe8d968df085c612a84bc966dfefba5b961",
+          "after_intent_file_sha256": "4b6bf93d5cd6b062f90a62bcdd2117ec18acac6833e9f336d6e1e7022642a1f2",
+          "diagnostic": {
+            "schema": "scienceutopia.literal-institution-change-observation.v1",
+            "before_document_sha256": "9f95a4232c232f17b9c3e2d362fcf5f503ef7dcb20af0503e3c036dd5ab25a98",
+            "after_document_sha256": "28514ba8746f0557a1a0b39fb93bc88c721ee71e6fabf52c574c13e2ca147190",
+            "literal_document_changed": true,
+            "node_resolution": "unique-literal-identities",
+            "node_change_count": 1,
+            "node_changes": [
+              {
+                "mechanism_id": "developer-catalog-agenda",
+                "change": "changed",
+                "before_node_sha256": "3152441474c9c756c1f60522f583e995bbe04932d614b6ed47eb3d356423fe34",
+                "after_node_sha256": "2fa70ddc2cf5c457d655c700db7328248fb9c12b72efdb84bbcdd90c4839f732",
+                "node_fields_changed": [
+                  "parameters"
+                ],
+                "non_code_parameter_fields_changed": [],
+                "before_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "5e42701df8e3e7d4e621bd9d210147719e705cb5b3619bbad145a080ff9ca0ed",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "after_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "03b8d1f5803f028c7b686d0d098ec5286277ead025643e5e73b6b466db7e6141",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "standard_python_AST_equal": true
+              }
+            ],
+            "omitted_node_rows": 0,
+            "other_root_fields_changed": [],
+            "mechanisms": {
+              "literal_changed": true,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": true,
+              "order_only_change": false,
+              "added_occurrences": 1,
+              "removed_occurrences": 1
+            },
+            "connections": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "schedules": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "new_model_calls": 0,
+            "new_native_worlds": 0,
+            "new_source_executions": 0,
+            "source_repair": false,
+            "veto_on_finish": false,
+            "changes_loss": false,
+            "grants_world_authority": false,
+            "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+          },
+          "already_recorded_probe_attempts": 4,
+          "already_recorded_probe_status_counts": {
+            "returned": 4
+          }
+        },
+        {
+          "step": 9,
+          "tool": "write_file",
+          "filename": "code/developer-catalog-agenda.py",
+          "original_completed_receipt_sha256": "b4a9fcd373720ab5e74d9cd629396fad2c8df13440a0e89f6eab685c294f76e0",
+          "before_intent_file_sha256": "14513563a94ff3a6427b3921d2b108df217bed281e77fe4d82bd9e65139df317",
+          "after_intent_file_sha256": "201b1b08f9b7030effe4519b3d63146db265bb43749ed5c11f80c180e25293c8",
+          "diagnostic": {
+            "schema": "scienceutopia.literal-institution-change-observation.v1",
+            "before_document_sha256": "28514ba8746f0557a1a0b39fb93bc88c721ee71e6fabf52c574c13e2ca147190",
+            "after_document_sha256": "2569d6b82803462d5650b82cbb3dac2d7c05ef55e7878e05776a67c42acdcabc",
+            "literal_document_changed": true,
+            "node_resolution": "unique-literal-identities",
+            "node_change_count": 1,
+            "node_changes": [
+              {
+                "mechanism_id": "developer-catalog-agenda",
+                "change": "changed",
+                "before_node_sha256": "2fa70ddc2cf5c457d655c700db7328248fb9c12b72efdb84bbcdd90c4839f732",
+                "after_node_sha256": "ff6e9de5a51e3eed46961915fa0c2d8d6a7eb775da3053aaaa8f4d6ffa9caec6",
+                "node_fields_changed": [
+                  "parameters"
+                ],
+                "non_code_parameter_fields_changed": [],
+                "before_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "03b8d1f5803f028c7b686d0d098ec5286277ead025643e5e73b6b466db7e6141",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "after_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "5f41f281eedc19947fcdb30cc2be38404718d9f0ed29e23a5f0ab7e2e1b8c7a0",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "standard_python_AST_equal": true
+              }
+            ],
+            "omitted_node_rows": 0,
+            "other_root_fields_changed": [],
+            "mechanisms": {
+              "literal_changed": true,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": true,
+              "order_only_change": false,
+              "added_occurrences": 1,
+              "removed_occurrences": 1
+            },
+            "connections": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "schedules": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "new_model_calls": 0,
+            "new_native_worlds": 0,
+            "new_source_executions": 0,
+            "source_repair": false,
+            "veto_on_finish": false,
+            "changes_loss": false,
+            "grants_world_authority": false,
+            "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+          },
+          "already_recorded_probe_attempts": 4,
+          "already_recorded_probe_status_counts": {
+            "returned": 4
+          }
+        },
+        {
+          "step": 11,
+          "tool": "write_file",
+          "filename": "code/developer-catalog-agenda.py",
+          "original_completed_receipt_sha256": "421179d62cae6d101eb28b18d9b1c99aa4a033ae6957a08d3a7c74981e65306e",
+          "before_intent_file_sha256": "025d9a05b2a63e0cdfe68e1372a4f1ec86b807f7e6f92f89462520d3c29ca563",
+          "after_intent_file_sha256": "8e841fe0d57aaea7f402332b2a63853dbb62bd1d66ce94f1e007679585727eb5",
+          "diagnostic": {
+            "schema": "scienceutopia.literal-institution-change-observation.v1",
+            "before_document_sha256": "2569d6b82803462d5650b82cbb3dac2d7c05ef55e7878e05776a67c42acdcabc",
+            "after_document_sha256": "ba188e353680b846a39a3c745df9b81f9af3680a31f0ccdc8e2d5b7e79e0b68e",
+            "literal_document_changed": true,
+            "node_resolution": "unique-literal-identities",
+            "node_change_count": 1,
+            "node_changes": [
+              {
+                "mechanism_id": "developer-catalog-agenda",
+                "change": "changed",
+                "before_node_sha256": "ff6e9de5a51e3eed46961915fa0c2d8d6a7eb775da3053aaaa8f4d6ffa9caec6",
+                "after_node_sha256": "6706f4e044ad3ecc2188abe7ab76efa1e2e01221a14ed18f3405076ab923b5fc",
+                "node_fields_changed": [
+                  "parameters"
+                ],
+                "non_code_parameter_fields_changed": [],
+                "before_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "5f41f281eedc19947fcdb30cc2be38404718d9f0ed29e23a5f0ab7e2e1b8c7a0",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "after_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "85189e79d157b9f388e5d29d19697b25610491eeb9635c1f0f32a589be6953c8",
+                  "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+                },
+                "standard_python_AST_equal": true
+              }
+            ],
+            "omitted_node_rows": 0,
+            "other_root_fields_changed": [],
+            "mechanisms": {
+              "literal_changed": true,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": true,
+              "order_only_change": false,
+              "added_occurrences": 1,
+              "removed_occurrences": 1
+            },
+            "connections": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "schedules": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "new_model_calls": 0,
+            "new_native_worlds": 0,
+            "new_source_executions": 0,
+            "source_repair": false,
+            "veto_on_finish": false,
+            "changes_loss": false,
+            "grants_world_authority": false,
+            "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+          },
+          "already_recorded_probe_attempts": 4,
+          "already_recorded_probe_status_counts": {
+            "returned": 4
+          }
+        }
+      ]
+    },
+    {
+      "objective": "resource-aware-content",
+      "generation": 3,
+      "request_sha256": "e6d3e7de03db65bf336b0a4f3e5b2bdd3c3bad789ac6b343d387ddc46cfc4ee0",
+      "session_path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-corrected-choice-search-v1-a1/outputs/native-corrected-choice-search-v1-a1/search/free-code-graph/history-0/resource-aware-content/authoring/proposal-e6d3e7de03db65bf336b0a4f3e5b2bdd3c3bad789ac6b343d387ddc46cfc4ee0/editor-session/authoring/generation-e6d3e7de03db65bf336b0a4f3e5b2bdd3c3bad789ac6b343d387ddc46cfc4ee0",
+      "verified_original_session_file_hashes_sha256": "4cf8cd282b9ad7cc463602ae0d01a491b72554ff022095cc4e8d4170e7bf429e",
+      "terminal_status": "generated",
+      "writes": [
+        {
+          "step": 4,
+          "tool": "write_file",
+          "filename": "code/world.selection.py",
+          "original_completed_receipt_sha256": "07c2ee7c6aa02c1e110286c8a7a89e4eeb52d08f7729023c07b8e94d338ca211",
+          "before_intent_file_sha256": "6ae167414d3e1568d9b9e606b8e29fab624bdad76a279ad4df343e0b783aca49",
+          "after_intent_file_sha256": "2948d5e971f08dcfa1817d51c5e06c4330903344c618f34d52df792257ac7766",
+          "diagnostic": {
+            "schema": "scienceutopia.literal-institution-change-observation.v1",
+            "before_document_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+            "after_document_sha256": "682e386f0996b552148ef819b4fe06460b581168c59f93ef4e5ea9c55db6b3e2",
+            "literal_document_changed": true,
+            "node_resolution": "unique-literal-identities",
+            "node_change_count": 1,
+            "node_changes": [
+              {
+                "mechanism_id": "world.selection",
+                "change": "changed",
+                "before_node_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+                "after_node_sha256": "fb7162bc896b813e02ef00f4ef426aaf41945e46ebd544efee6b450f2823b509",
+                "node_fields_changed": [
+                  "parameters"
+                ],
+                "non_code_parameter_fields_changed": [],
+                "before_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6",
+                  "AST_sha256": "f5474b2741c83133680263f1e4a305ca8add053518cd2860adcd4db0f9527fce"
+                },
+                "after_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "8b3d69c7623528eec090708e2fb42338571cd2a072f0abeabf0cabb291dbf044",
+                  "AST_sha256": "f5474b2741c83133680263f1e4a305ca8add053518cd2860adcd4db0f9527fce"
+                },
+                "standard_python_AST_equal": true
+              }
+            ],
+            "omitted_node_rows": 0,
+            "other_root_fields_changed": [],
+            "mechanisms": {
+              "literal_changed": true,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": true,
+              "order_only_change": false,
+              "added_occurrences": 1,
+              "removed_occurrences": 1
+            },
+            "connections": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "schedules": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "new_model_calls": 0,
+            "new_native_worlds": 0,
+            "new_source_executions": 0,
+            "source_repair": false,
+            "veto_on_finish": false,
+            "changes_loss": false,
+            "grants_world_authority": false,
+            "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+          },
+          "already_recorded_probe_attempts": 4,
+          "already_recorded_probe_status_counts": {
+            "returned": 4
+          }
+        },
+        {
+          "step": 8,
+          "tool": "write_file",
+          "filename": "code/world.selection.py",
+          "original_completed_receipt_sha256": "49dffae6ca7d6d27a9591fffae523db37b94570144948bc1b6d1045ae07db82e",
+          "before_intent_file_sha256": "e62a2f05140c487cf883c62a59894024846a26815ce3557b82b19895732afd83",
+          "after_intent_file_sha256": "d68bb24931624510e3277fa047c3677d32a44dabde4bac906a9e5776d583779c",
+          "diagnostic": {
+            "schema": "scienceutopia.literal-institution-change-observation.v1",
+            "before_document_sha256": "682e386f0996b552148ef819b4fe06460b581168c59f93ef4e5ea9c55db6b3e2",
+            "after_document_sha256": "7a53aefec07a6fcb5f424ba01f460b4047f4e0de6a5eda9d95f3ffb472c1536e",
+            "literal_document_changed": true,
+            "node_resolution": "unique-literal-identities",
+            "node_change_count": 1,
+            "node_changes": [
+              {
+                "mechanism_id": "world.selection",
+                "change": "changed",
+                "before_node_sha256": "fb7162bc896b813e02ef00f4ef426aaf41945e46ebd544efee6b450f2823b509",
+                "after_node_sha256": "de7c7a45626585d55dc7f8c6703c24a1286e47f609b2b139d840f6c2c273fb3d",
+                "node_fields_changed": [
+                  "parameters"
+                ],
+                "non_code_parameter_fields_changed": [],
+                "before_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "8b3d69c7623528eec090708e2fb42338571cd2a072f0abeabf0cabb291dbf044",
+                  "AST_sha256": "f5474b2741c83133680263f1e4a305ca8add053518cd2860adcd4db0f9527fce"
+                },
+                "after_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "501930fce2b105b3f951132e9d9c950f40cf53efafe0c2b78e17709d5d660ded",
+                  "AST_sha256": "f5474b2741c83133680263f1e4a305ca8add053518cd2860adcd4db0f9527fce"
+                },
+                "standard_python_AST_equal": true
+              }
+            ],
+            "omitted_node_rows": 0,
+            "other_root_fields_changed": [],
+            "mechanisms": {
+              "literal_changed": true,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": true,
+              "order_only_change": false,
+              "added_occurrences": 1,
+              "removed_occurrences": 1
+            },
+            "connections": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "schedules": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "new_model_calls": 0,
+            "new_native_worlds": 0,
+            "new_source_executions": 0,
+            "source_repair": false,
+            "veto_on_finish": false,
+            "changes_loss": false,
+            "grants_world_authority": false,
+            "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+          },
+          "already_recorded_probe_attempts": 4,
+          "already_recorded_probe_status_counts": {
+            "returned": 4
+          }
+        },
+        {
+          "step": 12,
+          "tool": "write_file",
+          "filename": "code/world.selection.py",
+          "original_completed_receipt_sha256": "a33188b67bd2e60741402845c7de943ca7aca8a7c1e568740ef161c38839cfa8",
+          "before_intent_file_sha256": "493e9b1761a12767c44d800fb4721cc6500c1e679b01dfd94728859fe222613f",
+          "after_intent_file_sha256": "152ab3811cbc25969846a8d56edd69db71f751f590f3182623a8e6f62d3954f3",
+          "diagnostic": {
+            "schema": "scienceutopia.literal-institution-change-observation.v1",
+            "before_document_sha256": "7a53aefec07a6fcb5f424ba01f460b4047f4e0de6a5eda9d95f3ffb472c1536e",
+            "after_document_sha256": "d9b4384ad1610dd68bcfbf15fc3b4d4c3242d19b687e4d7dae8b6ddddeb9dd13",
+            "literal_document_changed": true,
+            "node_resolution": "unique-literal-identities",
+            "node_change_count": 1,
+            "node_changes": [
+              {
+                "mechanism_id": "world.selection",
+                "change": "changed",
+                "before_node_sha256": "de7c7a45626585d55dc7f8c6703c24a1286e47f609b2b139d840f6c2c273fb3d",
+                "after_node_sha256": "648cf2c966f145a0406b180589f4d28e5783fe5abb117adb2519e521fa4df750",
+                "node_fields_changed": [
+                  "parameters"
+                ],
+                "non_code_parameter_fields_changed": [],
+                "before_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "501930fce2b105b3f951132e9d9c950f40cf53efafe0c2b78e17709d5d660ded",
+                  "AST_sha256": "f5474b2741c83133680263f1e4a305ca8add053518cd2860adcd4db0f9527fce"
+                },
+                "after_source": {
+                  "status": "parsed-without-execution",
+                  "source_sha256": "c39bf3a4a8bd4f7c881e0d9a91e7dd2026386078f15aa20c20a67f9999d07b00",
+                  "AST_sha256": "f5474b2741c83133680263f1e4a305ca8add053518cd2860adcd4db0f9527fce"
+                },
+                "standard_python_AST_equal": true
+              }
+            ],
+            "omitted_node_rows": 0,
+            "other_root_fields_changed": [],
+            "mechanisms": {
+              "literal_changed": true,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": true,
+              "order_only_change": false,
+              "added_occurrences": 1,
+              "removed_occurrences": 1
+            },
+            "connections": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "schedules": {
+              "literal_changed": false,
+              "before_present": true,
+              "after_present": true,
+              "multiset_changed": false,
+              "order_only_change": false,
+              "added_occurrences": 0,
+              "removed_occurrences": 0
+            },
+            "new_model_calls": 0,
+            "new_native_worlds": 0,
+            "new_source_executions": 0,
+            "source_repair": false,
+            "veto_on_finish": false,
+            "changes_loss": false,
+            "grants_world_authority": false,
+            "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+          },
+          "already_recorded_probe_attempts": 4,
+          "already_recorded_probe_status_counts": {
+            "returned": 4
+          }
+        }
+      ]
+    }
+  ],
+  "numeric_parameter_control": {
+    "slot": "adaptive-priority/0/resource-aware-content/g1",
+    "suggestion_id": "s75aa754d71b0e21a",
+    "original_started_file_sha256": "27bb9cc6bcd814b65e4fe459ace6926b05cc955ff8888510ca43814ce1642f53",
+    "diagnostic": {
+      "schema": "scienceutopia.literal-institution-change-observation.v1",
+      "before_document_sha256": "e5f1b654b0fae62192ba47954f590b9b90e722b538e9945cbae1b8a5a9aafcad",
+      "after_document_sha256": "0f2414b45ca1c8d2f92ca8f07ee3165ef24deee3e18683731af28809eee6f82d",
+      "literal_document_changed": true,
+      "node_resolution": "unique-literal-identities",
+      "node_change_count": 1,
+      "node_changes": [
+        {
+          "mechanism_id": "developer-catalog-agenda",
+          "change": "changed",
+          "before_node_sha256": "1c73f25f6a3a3947bf81ba35cb1e94862b49e377e84889e92b52e009f1a907ef",
+          "after_node_sha256": "e13582ce28df2d3c89b464dba55612e0f2f82ad4ecb0ca1d22df18d5a011305d",
+          "node_fields_changed": [
+            "parameters"
+          ],
+          "non_code_parameter_fields_changed": [
+            "topic_priorities"
+          ],
+          "before_source": {
+            "status": "parsed-without-execution",
+            "source_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+            "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+          },
+          "after_source": {
+            "status": "parsed-without-execution",
+            "source_sha256": "b9e4b07bdfdab74ae2329d46575a8e430b1e37a4711eb2bf47725e1393000021",
+            "AST_sha256": "ddad99d4e9c57b795e7813390d315f67fce623d4a26800ad7362526d3da8c318"
+          },
+          "standard_python_AST_equal": true
+        }
+      ],
+      "omitted_node_rows": 0,
+      "other_root_fields_changed": [],
+      "mechanisms": {
+        "literal_changed": true,
+        "before_present": true,
+        "after_present": true,
+        "multiset_changed": true,
+        "order_only_change": false,
+        "added_occurrences": 1,
+        "removed_occurrences": 1
+      },
+      "connections": {
+        "literal_changed": false,
+        "before_present": true,
+        "after_present": true,
+        "multiset_changed": false,
+        "order_only_change": false,
+        "added_occurrences": 0,
+        "removed_occurrences": 0
+      },
+      "schedules": {
+        "literal_changed": false,
+        "before_present": true,
+        "after_present": true,
+        "multiset_changed": false,
+        "order_only_change": false,
+        "added_occurrences": 0,
+        "removed_occurrences": 0
+      },
+      "new_model_calls": 0,
+      "new_native_worlds": 0,
+      "new_source_executions": 0,
+      "source_repair": false,
+      "veto_on_finish": false,
+      "changes_loss": false,
+      "grants_world_authority": false,
+      "scope": "Literal JSON/standard direct Python AST facts only. AST equality is not whole-program/world equivalence; AST difference is not operative behavior or benefit. Nested/non-Python/new runtimes remain unassessed by the AST diagnostic, not forbidden. List order/multiplicity, unavailable/ambiguous nodes and invalid source are retained. No candidate is changed, repaired, rejected, promoted or required to differ. No plan prose is interpreted or implemented. This report has no measured native loss."
+    }
+  },
+  "checks": {
+    "execution": "post-commit local pytest",
+    "original_tool_chunk_id": "e10a14",
+    "source_commit": "664dd51f4153485ba063e0249d1b2f3fb22b776f",
+    "tests": 20,
+    "seconds": 0.23,
+    "junit": "research/data/literal-change-observation-v1/pytest.xml",
+    "junit_file_sha256": "8215fccd5b5b859c872906b5dcbf93f2eef876fb5d092d85c59c15a3a2bf9442",
+    "scope": "Synthetic UTF8 JSON/AST diagnostic checks including actual standard native artifact schema, not20 scientific worlds."
+  },
+  "native_write_observations": 8,
+  "already_recorded_probe_attempts": 32,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_probe_attempts": 0,
+  "new_authored_source_executions": 0,
+  "new_author_prompts_exposing_this_diagnostic": 0,
+  "active_experiment_source_modified": false,
+  "source_repaired": false,
+  "loss_changed": false,
+  "novelty_or_merit_veto_added": false,
+  "future_feedback_condition_adopted_or_dispatched": false,
+  "publication_ready": false
+}
