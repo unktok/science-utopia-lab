@@ -9,9 +9,11 @@ heartbeats; live counts and process states are in STATUS.
 
 - [Consequential-search diagnosis and prospective information intervention](components/consequential-institutional-search-v1.md):
   nominal program freedom is not effective exploration. An opt-in parent-relative
-  change pane is being verified; it changes information, not loss or finish
-  eligibility. A finite native feedback comparison is designed, not dispatched
-  or shown effective. Fixed-evaluation coverage remains a separate obligation.
+  change pane changes information, not loss or finish eligibility. The
+  [8-slot real comparison has started](results/native-literal-feedback-dispatch-v1.json)
+  after actual11-world SCRIPTED native/double-cold QA passes. Initial real
+  readiness is not a passed certificate, proposal, measured benefit or completed
+  study. Fixed-evaluation coverage remains a separate obligation.
 
 - [Reviewed117-page integrated manuscript](../paper/integrated-corrected-choice-build-v1.json):
   complete corrected methods/results,54 figures/56 tables/32 references;

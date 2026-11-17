@@ -29,8 +29,12 @@ flat-search comparisons. A new explicitly declared parent-relative literal/AST/
 parameter/graph information pane is implemented for prospective author requests;
 106/35/70 overlapping software checks pass; the8-slot same-world information
 comparison runner and original-source cold auditor are implemented. Actual native
-public QA has started on a separate clean534b6ffb checkout (session23623, observed
-live November17,04:37UTC); no new scientific comparison has been dispatched.
+public QA23623 exits0 in736s:11 worlds/8 slots/1 retained null,72 SCRIPTED author
+POSTs,0 body/phase mismatches, matching paired cold/cost outputs. The
+[new real comparison starts](results/native-literal-feedback-dispatch-v1.json)
+November17,04:46:47UTC on clean534b6ffb. Supervisor session57162/PID1175 and writer PID1217 are
+observed live, in initial real-backend readiness; no own outcome or benefit yet.
+The separate explicit readout profile passes34 tests, not an actual new export.
 The [preparation record](results/native-consequential-search-preparation-v1.json)
 retains sources, literal JUnit files, failures and pending evidence.
 This is not measured improvement, a new loss, forced novelty or a finish veto.
@@ -144,6 +148,8 @@ the scientific evaluation is still not prepared or dispatched.
 
 **No real scientific inference or analysis waiter from this study remains
 running. No real selection-fixed evaluation has been prepared or dispatched.**
+This statement concerns the CLOSED corrected24-slot study and its frozen
+evaluation, not the distinct8-slot information follow-up now in real readiness.
 The next step is not to claim that waiting continues: finish coverage resolution,
 then literally evaluate both frozen scopes, retaining nulls and all labels.
 
