@@ -20,8 +20,8 @@ separate. Historical fairness/novelty/improvement vetoes are not default losses.
 
 Native lifecycle containment, executable design interfaces and optimization
 loops are implemented. Useful autonomous institutional invention or stable
-superiority to strong simple references is **not established**. Publication
-readiness remains unachieved; additional QA or seed scaling alone is insufficient.
+superiority to strong simple references is **not established**.
+Publication readiness remains unachieved; additional QA or seed scaling alone is insufficient.
 
 ## Current actual experiment
 
