@@ -75,7 +75,7 @@ def test_public_prepare_run_all_methods_and_paired_cold_without_new_models(tmp_p
 
 
 def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_output=None,
-        driver_module=driver, auditor_module=auditor, corrected=False):
+        driver_module=driver, auditor_module=auditor, corrected=False, information=False):
     driver, auditor = driver_module, auditor_module
     # Optional persistent external closure is for the follow-on public
     # evaluation proof. Keep both actual cold outputs, never duplicate one
@@ -91,6 +91,9 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
     monkeypatch.setattr(OpenAI, '__init__', sdk_init)
     monkeypatch.setattr(driver, 'SEED', 42); monkeypatch.setattr(driver.free, 'SEED', 42)
     if corrected: monkeypatch.setattr(driver.legacy, 'SEED', 42)
+    if information:
+        monkeypatch.setattr(driver.preceding, 'SEED', 42)
+        monkeypatch.setattr(driver.preceding.legacy, 'SEED', 42)
     monkeypatch.setattr(driver, 'LocalObserverBackend', lambda **kw: ScriptedCritic())
     monkeypatch.setattr(driver, 'native_sources', lambda old, source: {'original_source': old,
         'SCRIPTED': 'upstream provenance only; actual current runtime source cold checked'})
@@ -141,6 +144,23 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
                             'path':'/parameters/code_artifact/source',
                             'value':"def step(context):\n    raise ValueError('SCRIPTED-DECLARED-KNOWN-NATIVE-NULL')\n"})
                 workflows.append(checked_actual_workflow(payload, step=i, request=req))
+                if information:
+                    from utopia.optimization.native_literal_change_feedback_v1 import OPTION, VIEW
+                    marker = 'BOUNDED ACTIVE SESSION DATA\n'
+                    active, _ = json.JSONDecoder().raw_decode(next(m['content'][len(marker):]
+                        for m in payload['messages'] if m.get('content','').startswith(marker)))
+                    enabled = OPTION in req['strategy_provenance']
+                    assert (VIEW in active) == enabled
+                    if enabled:
+                        pane = active[VIEW]
+                        assert pane['parent_system_sha256'] == digest(req['parent_system'])
+                        assert pane['current_system_sha256'] == active['current_system_sha256']
+                        assert pane['literal_document_changed'] == (i >= 5)
+                        assert pane['native_loss'] == 'not-measured'
+                    if enabled and req['generation'] == 1 and req['loss_spec']['id'].endswith('resource-aware-content-v1'):
+                        actions[4]['operations'].append({'op':'replace','selector':{'mechanism_id':'developer-catalog-agenda'},
+                            'path':'/parameters/code_artifact/source',
+                            'value':"def step(context):\n    raise ValueError('SCRIPTED-DECLARED-KNOWN-NATIVE-NULL')\n"})
                 if i >= len(actions):
                     pytest.fail('SCRIPTED author did not finish after its prescribed valid actions')
                 action = actions[i]; production.append(payload)
@@ -171,7 +191,8 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
     driver.prepare(SimpleNamespace(output=root, origin_run=upstream['run'], origin_source=driver.ROOT,
         audit_one=upstream['audit_one'], audit_two=upstream['audit_two']))
     driver.run(root); p = driver.require_plan(root); end = driver.read(root / 'terminal.json')
-    assert end['status'] == 'closed' and end['consumed_slots'] == 24 and end['observations'] == 27
+    own_slots, worlds = (8,11) if information else (24,27)
+    assert end['status'] == 'closed' and end['consumed_slots'] == own_slots and end['observations'] == worlds
     assert len(sessions) == 8 and set(sessions.values()) == {9}
     assert len(production) == len(workflows) == 72 and calibration
     boundary = [r for r in workflows if r['step'] == 4 and r['whole_document_actually_supplied']
@@ -180,9 +201,9 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
     assert all(r['recorded_phase'] == 'implementation' for r in boundary)
     post_edit = [r for r in workflows if r['step'] == 8 and r['whole_document_actually_supplied']]
     assert post_edit and all(r['recorded_phase'] == 'implementation' for r in post_edit)
-    assert len(list((root / 'slots').glob('*.json'))) == 24
-    for key in driver.all_history_keys(p):
-        if key[0] == driver.METHODS[2]:
+    assert len(list((root / 'slots').glob('*.json'))) == own_slots
+    for key in (driver.history_keys(p) if information else driver.all_history_keys(p)):
+        if information or key[0] == driver.METHODS[2]:
             c = driver.campaign(root, p, key, driver.read(root / 'developer-reference-context.json'))
             assert len(c.state['records']) == (4 if corrected else 2) and not c.state['pending']
             assert all(len(r['draws'][0]['suggestion']['candidate']['mechanisms']) >
@@ -205,17 +226,17 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
         paths = [Path(external) / f'audit-{i}.json' for i in (1, 2)]
         for path in paths: auditor.worker(root, path)
         assert paths[0].read_bytes() == paths[1].read_bytes()
-        proof = driver.read(paths[0]); assert len(proof['worlds']) == 27
+        proof = driver.read(paths[0]); assert len(proof['worlds']) == worlds
         pair = [costs(root, p, driver.read(path)) for path in paths]
         assert pair[0] == pair[1]
         assert len(pair[0]['scientist']['physical_response_caches']) == len(list(root.rglob('responses.sqlite')))
-        if not corrected: assert len(pair[0]['scientist']['physical_response_caches']) == 27
+        if not corrected and not information: assert len(pair[0]['scientist']['physical_response_caches']) == 27
         assert all(w['loaded']['confirmed'] for w in proof['worlds'])
-        assert sum(w['status']=='failed' for w in proof['worlds']) == (1 if corrected else 0)
-        if not corrected: assert all(w['status']=='complete' for w in proof['worlds'])
+        assert sum(w['status']=='failed' for w in proof['worlds']) == (1 if corrected or information else 0)
+        if not corrected and not information: assert all(w['status']=='complete' for w in proof['worlds'])
         assert len({digest(w['physical_proof']['initial_identity']) for w in proof['worlds']
             if w['physical_proof'] is not None}) == 1
-        assert len([w for w in proof['worlds'] if w['role'] == 'numeric-own-proposal']) == 16
+        assert len([w for w in proof['worlds'] if w['role'] == 'numeric-own-proposal']) == (0 if information else 16)
         assert len([w for w in proof['worlds'] if w['role'] == 'workflow-own-proposal']) == 8
         driver.save(tmp_path / 'audit-retained.json', driver.literal(proof))
         driver.save(tmp_path / 'cost-retained.json', driver.literal(pair[0]))
@@ -226,11 +247,12 @@ def public_mixed_operator_path(tmp_path, fixed_corpus, monkeypatch, *, closure_o
     assert before == _inventory(root) and posts == (len(production), len(calibration), len(upstream['scientist_requests']))
     with pytest.raises(ValueError, match='no redispatch'): driver.run(root)
     write_json_atomic(tmp_path / 'verification.json', {
-        'schema': ('scienceutopia.native-corrected-choice-public-software.v1' if corrected else
+        'schema': ('scienceutopia.native-literal-feedback-public-software.v1' if information else
+            'scienceutopia.native-corrected-choice-public-software.v1' if corrected else
             'scienceutopia.native-priority-method-public-software.v1'), 'source_commit': p['source_commit'],
         'classification': 'SCRIPTED-HTTP-corpus-critics-upstream-and-child-supervision-not-scientific-performance',
-        'public_prepare_run_and_double_cold': True, 'native_worlds': 27, 'upstream_native_software_worlds': 2,
-        'own_slots': 24, 'numeric_own_worlds': 16, 'free_own_worlds': 8,
+        'public_prepare_run_and_double_cold': True, 'native_worlds': worlds, 'upstream_native_software_worlds': 2,
+        'own_slots': own_slots, 'numeric_own_worlds': 0 if information else 16, 'free_own_worlds': 8,
         'scientist_SDK_POSTs_including_upstream': len(upstream['scientist_requests']),
         'scripted_proposal_POSTs': len(production), 'scripted_calibration_POSTs': len(calibration),
         'scripted_workflow_calls': len(workflows), 'literal_serializer_boundary_checkpoint_calls': len(boundary),
