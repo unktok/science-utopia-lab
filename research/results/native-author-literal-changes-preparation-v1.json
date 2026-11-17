@@ -1,0 +1,49 @@
+{
+  "schema": "scienceutopia.native-author-literal-changes-preparation.v1.documentary-record",
+  "recorded_utc": "2026-11-17T01:17:11+00:00",
+  "analysis_source_commit": "12997729fb394b0abe608e5f8ae76608af47237d",
+  "scientific_source_commit": "57b351443131c9add50ee1dc448eea07066fcb01",
+  "tests": {
+    "original_handle": 43000,
+    "passed": 70,
+    "failed": 0,
+    "seconds": 1.32,
+    "junit": "research/data/native-author-literal-changes-v1/pytest.xml",
+    "junit_file_sha256": "4a575a0494825807f7f8ebbbd006470fe876db10c320c5383f68ef601972b879",
+    "scope": "Overlapping SCRIPTED observer, full journal chain and new closed-session reader checks, not independent experiments."
+  },
+  "actual_exports": {
+    "original_handles": [25033, 80490],
+    "exit_codes": [0, 0],
+    "output_files": [
+      "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1/literal-author-journal-projection-v1-a1.json",
+      "/Users/shiro/unktok/dev/science-utopia-lab-exports/native-corrected-choice-search-v1-a1/literal-author-journal-projection-v1-a2.json"
+    ],
+    "byte_equal": true,
+    "report": "research/data/native-author-literal-changes-v1/original-native-sessions.json",
+    "report_file_sha256": "619de6a7718ca35b987396f1e7c28a55b70d853dd596a6e8e659d0db707e4054",
+    "report_content_sha256": "0ebaf234a215c4035e117670f4c9c99173767d9563bb9b2eccde2c90b8cbd973",
+    "explicit_sessions": 2,
+    "original_completed_steps": 28,
+    "original_edit_attempts": 8,
+    "edits_with_literal_before_and_next_document": 8,
+    "edits_with_changed_source_text_and_equal_AST": 8,
+    "other_artifact_fields_changed": 0,
+    "other_parameter_fields_changed": 0,
+    "wire_or_schedule_changes": 0,
+    "scope": "Only complete original free/C/g2 and free/C/g3. Original file/hash/prefix/terminal/receipt/document checks, not all8 author sessions, source-bound native cold replay, global semantic equivalence or actual diagnostic exposure."
+  },
+  "original_schema_coverage_failure_preserved_in": "research/results/native-literal-change-journal-replay-prototype-v1.json",
+  "genuine_numeric_parameter_control": "research/results/native-literal-change-journal-replay-v1.json",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_probe_attempts": 0,
+  "new_authored_source_executions": 0,
+  "new_author_prompts_exposing_this_diagnostic": 0,
+  "active_source_modified": false,
+  "source_repair": false,
+  "veto_on_finish": false,
+  "changes_loss": false,
+  "followup_condition_adopted_or_dispatched": false,
+  "publication_ready": false
+}

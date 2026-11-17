@@ -52,6 +52,18 @@ are explicit inputs; an export of two sessions is not all eight proposals.
 Caller-declared scientific source cleanliness is checked separately; this
 reader is not the original source-bound whole-native cold replay.
 
+At clean12997729 the observer/journal/CLI tests pass70 overlapping cases in
+1.32seconds. The actual public CLI then runs twice on those two original native
+sessions (handles25033/80490, both exit0), with byte-identical sealed outputs:
+28 original completed steps, all8 edit attempts assessed from saved documents,
+all8 changed source texts with equal AST and unchanged other configuration.
+The exact54,510-byte [report](../data/native-author-literal-changes-v1/original-native-sessions.json)
+and [JUnit](../data/native-author-literal-changes-v1/pytest.xml) are retained only
+after both commands exit. The [receipt](../results/native-author-literal-changes-preparation-v1.json)
+records sources, handles and exact file/content hashes. No diagnostic is thereby
+exposed to an author; eight edits in two sessions are not eight independent
+design histories or evidence of causal feedback benefit.
+
 From a clean committed reader, use distinct fresh external outputs twice:
 
 ```text

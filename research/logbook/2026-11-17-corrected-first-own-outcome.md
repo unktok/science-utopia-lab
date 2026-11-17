@@ -1166,3 +1166,46 @@ author or optimizer imports the observer and no current model prompt includes
 it. A future passive-feedback contrast is not adopted/dispatched and its
 causal benefit is unknown. Full original effects/costs still precede choosing
 the next consequential study, rather than scaling this flat search blindly.
+
+At committed12997729,70 light observer/journal/CLI checks pass in1.32seconds
+(original43000). The actual public reader then exits0 twice (25033/80490) on
+the two original sessions. Both54,510-byte sealed reports match exactly:
+file619de6a7718ca35b987396f1e7c28a55b70d853dd596a6e8e659d0db707e4054,
+content0ebaf234a215c4035e117670f4c9c99173767d9563bb9b2eccde2c90b8cbd973.
+The exact report/JUnit and [preparation receipt](../results/native-author-literal-changes-preparation-v1.json)
+are retained after both original command exits. This establishes repeatable
+saved-journal analysis, not author exposure, changed behavior or new loss.
+
+## Final C outcomes: full observed-path projection
+
+A separate read-only request/cache projection verifies all179 original free/C/g3
+inputs and committed choices against the measured terminal-priority-zero parent.
+Input sequence6d3a633392e4cdce3a454f22dfcf33557a6a91fa1fea8c9646dc69ce1d25a7b4
+and choicesce4f5c7a462a049bf9c6112444217a738612a6b1dc5add60f782ce7a24d84bc2
+match; own provider-body sequence
+d51b27ccf1ab3c48b8fdfc2c02098764f226763942cb99e57a4e457b5ff8ffb5
+differs from parent's694d34ad6dcc11342664e79b0775d6ed39310a9874aa13cc3957874f7e3d003d.
+Every recorded provider body/request hash checks and no wire reply is missing.
+This is an observed repeat, not global semantics or final source-bound cold proof.
+
+Adaptive/C/g3 has179 complete replies but a different full input sequence,
+34e74635907750d367f08dc07432a78488c856b53fdbb2295dc4f19bee0226a1,
+and different choices7f23eb1baf634bff9bdd474d862c5a2d40bd919e72beefb4a376866ef80f7f38.
+Its tied aggregate is not a repeated researcher trajectory. Uniform/C/g3 has185
+complete replies, inputs93a3f2ac25b3a316d548336ea588541e183d81df9d1990c6e25b827af0bfcfca,
+choicesa8c78a1a4a7ff753727d79b8ed6e7472a13553c0ce84607daa71abc3a7cd711c.
+Their original body hashes check; this remains a single coupled condition.
+
+The now-closed C campaign state (4records/pendingNone) is copied exactly outside
+the scientific source to sibling science-utopia-lab-exports/native-corrected-choice-search-v1-a1/
+milestones/free-cost-g3/native-adaptive-state.json:7,611,692bytes, file SHA
+6b0018c452b42e608285270934b6a3590974fd6278c4b88ba759176ee82196ae.
+Free/C/g3 record canonical3e4853156e398567dcba63d8561267ada300c1cde371ca096b7cec093c2a2626,
+observation3996457cf80c4662b8facf415bf24e9337f8562e24320008a2137959a4208371.
+These embedded observations are plain original state values, not independently
+sealed numeric journal files. An initial local read-only projection incorrectly
+applied the numeric sealed-file checker and stopped before cache analysis
+(tool chunke4cc1f). The corrected projection uses the original plain-state
+contract and exact file/canonical bindings; it does not weaken the sealed
+checker, modify scientific logs or impute a failed loss. The original full cold
+chain remains necessary. No extra world, model/probe request or source runs.
