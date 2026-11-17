@@ -1,6 +1,6 @@
 # Current research status
 
-Verified November17,2026 at00:30UTC / November17 09:30JST.
+Verified November17,2026 at01:10UTC / November17 10:10JST.
 This is the current view, not an experiment transcript. The previous927-line
 [status history is retained byte-for-byte](status-history-2026-11-17-before-corrected-live-summary.md);
 its dated active-process claims are historical. Start with [RESEARCH](../RESEARCH.md),
@@ -41,15 +41,15 @@ money or real work. No fairness/unpaid-cost/novelty/improvement veto is added.
 | --- | ---: | ---: | --- |
 | Uniform / U | -27.6667 | -28.3333 | g2 -27.6667 / g3 not dispatched |
 | Adaptive / U | -27.6667 | -25.6667 | g2 -28.3333 / g3 not dispatched |
-| Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 not dispatched |
-| Uniform / C | -9.6667 | -10.3333 | g2 -10.6667 / g3 not dispatched |
-| Adaptive / C | -9.6667 | -12.6667 | g2 -11.6667 / g3 not dispatched |
-| Free code/graph / C | -12.6667 | -12.6667 | g2 -12.6667 / g3 native running |
+| Free code/graph / U | -7 | Execution null | g2 -28.6667 / g3 authoring/readiness |
+| Uniform / C | -9.6667 | -10.3333 | g2 -10.6667 / g3 -12.3333 |
+| Adaptive / C | -9.6667 | -12.6667 | g2 -11.6667 / g3 -12.6667 |
+| Free code/graph / C | -12.6667 | -12.6667 | g2 -12.6667 / g3 -12.6667 |
 
 Lower is better. Measured visible reference minima are U-28.6667/C-12.6667.
-Eighteen own slots have terminal outcomes:17 complete (12 worse/5 tied/0 better
-than their assigned reference) and1 execution null. Nineteen slots have started,
-including free/C/g3; the writer charges each at dispatch, not
+Twenty-one own slots have terminal outcomes:20 complete (13 worse/7 tied/0 better
+than their assigned reference) and1 execution null. The next free/U/g3 session
+has started; the writer charges each at dispatch, not
 at outcome completion. All remain literal, without repair,
 refill or imputed loss. Both numeric g0 dispatches use matching literal initial
 programs; uniform g1 is another initial random sample, not an adaptive move.
@@ -65,10 +65,20 @@ is not implemented: five code writes preserve the parent's AST, and the final
 policy stays core-plus-related. Four actual annual agenda receipts/events join
 exactly, with179 complete inputs/choices equal to the parent. This is operative
 formatting-only code, not a useful new institution or reference improvement.
-The final free/C proposal also submits after14 actions/0 rejections and starts
-native execution. Its threshold plan is not implemented: all three selection-
-code writes preserve the parent's AST, with no parameter/wire/schedule changes.
-Its loss remains unavailable until that original world completes.
+The final free/C proposal also submits after14 actions/0 rejections and completes
+at-12.6667, tying the reference. Its threshold plan is not implemented: all three
+selection-code writes preserve the parent's AST, with no other configuration,
+wire or schedule changes. Its full native-input/effect verification remains
+separate from this observed loss and the earlier g2 path verification.
+Adaptive/C/g3 also ties at-12.6667. Uniform/C/g3 improves its own best to-12.3333,
+still about1/3 worse than its reference. The original final U proposals remain.
+
+The new [passive literal-change analysis](components/native-literal-change-observation-v1.md)
+verifies eight saved C/g2/g3 writes and a genuine numeric parameter-change
+control. It distinguishes source-only formatting, artifact interfaces, other
+parameters and graph/process edits without a novelty/merit gate. It is not
+integrated into production prompts or the active experiment and has no measured
+feedback benefit. Its first actual-schema coverage failure is retained.
 
 [Latest uniform/C/g2](logbook/2026-11-17-corrected-first-own-outcome.md#third-uniform-c-outcome)
 completes at-10.6667, improving its previous own best by about1/3 but staying2
@@ -119,7 +129,7 @@ not establish downstream native compatibility. Loss remains unavailable.
 
 | Work | Present state |
 | --- | --- |
-| Real scientific search | Original42803 is executing free/C/g3 after fresh29-control readiness; source/plan/settings unchanged |
+| Real scientific search | Original42803 advances to final free/U/g3 after21 terminal own attempts; source/plan/settings unchanged |
 | Original paired cold audits/costs |47015 / PID31346 live; waits for original writer AND supervisor normal exit |
 | All24-slot/both-endpoint readouts |48527 / PID31483 live; waits for paired original closure |
 | All8 free-author/outcome analysis |37722 / PID37882 live from separate b020 source; awaits original readouts |

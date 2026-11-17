@@ -1116,3 +1116,53 @@ starts native execution (six scientist wires observed00:30:22UTC). Its loss is
 not yet measured. Counts stay18 terminal/19 charged; the full24-slot study and
 original paired closure, both endpoint scopes, fixed evaluation and publication
 claim remain open. Same AST is not used to impute a tied loss before completion.
+
+## All C-target attempts are terminal
+
+At01:10UTC the original writer/supervisor continue unchanged. Free/C/g3 has
+completed at-12.666666666666668, tying the reference; its full input/effect
+verification is not inferred from equal AST or aggregate loss. Adaptive/C/g3,
+suggestion s3625dc5dc1c9ba7e, also completes at-12.666666666666668. Its sealed
+observation content SHA is6930be535d7f9472d23f24feb02ba5de9c6eb650d684c5dbfc2ad3167d133003,
+file9c65da99829b6379d5e1c2ac4256b705a2aa665ae4e8c669eb0b8293c5af7820.
+Uniform/C/g3, suggestion s42fd6041557e4634, completes at-12.333333333333332:
+its best own sample so far, still about1/3 worse than the assigned reference.
+Observation content971fad51ff67ddf1b5057123195300f25f769b4851ada37dd0bf1d22508825c2,
+file1c98b87b1065949e161f53c02f6606577e900e8e99e78ca394b78c0155f1ef44.
+These are actual observed floats, not a changed loss, new reference improvement
+or final method ranking. Full typed tells, original cold audits and path/effect
+joins remain separate evidence. At01:09:36.912199UTC progress advances to the
+last free/U proposal, not another C retry or a repaired/refilled failed slot.
+
+The complete observed prefix is21 terminal own attempts:20complete,13worse/
+7ties/0better and1execution-null. The remaining three are U/g3 for free,
+adaptive and uniform. Final endpoints, all24-slot readouts, unused-condition
+evaluation and publication readiness remain open.
+
+## Passive literal-change observer: actual-schema correction and saved replay
+
+The [observer preparation](../components/native-literal-change-observation-v1.md)
+records literal source/configuration/graph changes without executing source,
+implementing plan prose, changing loss or vetoing unchanged proposals. A first
+prototype6236147f incorrectly expected a language field; actual native replay
+returned unassessed AST and failed its projection assertion before any prompt
+or scientific change. Fix664dd51f uses the actual CODE_SCHEMA/implementation
+constants and validates a real-schema fixture, then passes20 light checks.
+Sourcec75a6386 separately exposes artifact-interface changes and passes25 light
+checks. Both original JUnits and the prototype classification are retained.
+
+The [expanded saved replay](../results/native-literal-change-journal-replay-v1.json)
+at20240400 verifies every original journal/file chain and all eight C/g2/g3
+before/next-document hashes against completed receipts. All eight change source
+text but have equal parsed AST, unchanged other artifact fields/parameters and
+unchanged wires/schedules. The real adaptive/C/g1 topic_priorities edit is
+correctly visible despite identical AST. The32 probes mentioned are existing
+original probes, not32 new tests/worlds. AST equality alone is not native
+equivalence; actual effects/loss and plan fulfillment remain separate layers.
+
+The new closed-session CLI makes that projection re-executable and retains
+rejected attempts, missing full views and source/schema limitations. No active
+author or optimizer imports the observer and no current model prompt includes
+it. A future passive-feedback contrast is not adopted/dispatched and its
+causal benefit is unknown. Full original effects/costs still precede choosing
+the next consequential study, rather than scaling this flat search blindly.

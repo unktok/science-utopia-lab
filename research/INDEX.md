@@ -7,6 +7,17 @@ heartbeats; live counts and process states are in STATUS.
 
 ## Current study and publication goal
 
+- [Passive literal-change analysis](components/native-literal-change-observation-v1.md):
+  eight saved native C/g2/g3 writes preserve source AST and other configuration;
+  a real numeric parameter change remains visible despite equal AST. No new
+  diagnostic is exposed to production authors or added as a finish/merit gate.
+  The prototype's actual-schema mistake is retained, not hidden by mock success.
+
+- [All C-target attempts finish](logbook/2026-11-17-corrected-first-own-outcome.md#all-c-target-attempts-are-terminal):
+  21terminal/20complete/1execution-null,0better/7ties/13worse. Final free/C and
+  adaptive/C tie; uniform/C reaches-12.3333, still worse than reference. Final
+  free/U authoring begins; no endpoints or original paired analyses are frozen.
+
 - [All six three-proposal paths are terminal](logbook/2026-11-17-corrected-first-own-outcome.md#third-free-c-outcome-repeats-the-measured-parent):
   18terminal/19started,17complete/1execution-null,0better/5ties/12worse. Free/C/g2
   ties the reference with179 same inputs/choices and four actual agenda calls;
